@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>やすらぎ整骨院 | 痛みのない毎日を、あなたに。</title>
+  <meta name="description" content="やすらぎ整骨院は、一人ひとりの痛みに寄り添うオーダーメイド施術。腰痛・肩こり・産後ケア・スポーツ外傷に対応。駅徒歩3分・予約優先制。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --color-primary: #2C5F4B;
+      --color-primary-light: #E8F0EB;
+      --color-primary-dark: #1E4435;
+      --color-accent: #C4915E;
+      --color-accent-light: #F5EDE3;
+      --color-bg: #FAFAF7;
+      --color-bg-warm: #F5F0E8;
+      --color-text: #2A2A28;
+      --color-text-light: #6B6B66;
+      --color-white: #FFFFFF;
+      --color-border: #E0DDD6;
+      --font-serif: 'Noto Serif JP', serif;
+      --font-sans: 'Noto Sans JP', sans-serif;
+      --font-accent: 'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--color-text); background: var(--color-bg); line-height: 1.9; font-size: 15px; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    /* ========== Header ========== */
+    header { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(250,250,247,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--color-border); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .logo { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--color-primary); letter-spacing: 0.08em; }
+    .logo small { font-size: 0.65rem; font-weight: 400; color: var(--color-text-light); display: block; letter-spacing: 0.15em; font-family: var(--font-accent); }
+    nav a { font-size: 0.8rem; color: var(--color-text-light); margin-left: 28px; transition: color 0.2s; letter-spacing: 0.04em; }
+    nav a:hover { color: var(--color-primary); }
+    .header-cta { font-size: 0.8rem; color: var(--color-primary); font-weight: 600; margin-left: 28px; border: 1px solid var(--color-primary); padding: 8px 20px; border-radius: 4px; transition: all 0.2s; }
+    .header-cta:hover { background: var(--color-primary); color: white; }
+    .hamburger { display: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 20px; height: 1.5px; background: var(--color-text); margin: 5px 0; transition: 0.3s; }
+
+    /* ========== Hero ========== */
+    .hero { position: relative; height: 100vh; min-height: 600px; max-height: 900px; overflow: hidden; margin-top: 64px; }
+    .hero-img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(250,250,247,0.88) 0%, rgba(250,250,247,0.6) 40%, rgba(0,0,0,0) 70%); }
+    .hero-content { position: absolute; top: 50%; left: 0; transform: translateY(-50%); padding: 0 24px; max-width: 1080px; width: 100%; margin: 0 auto; left: 50%; transform: translate(-50%, -50%); }
+    .hero-label { font-family: var(--font-accent); font-size: 0.7rem; letter-spacing: 0.2em; color: var(--color-accent); margin-bottom: 20px; text-transform: uppercase; }
+    .hero-title { font-family: var(--font-serif); font-size: clamp(28px, 4.5vw, 44px); font-weight: 700; line-height: 1.5; margin-bottom: 24px; color: var(--color-text); }
+    .hero-desc { font-size: 0.9rem; color: var(--color-text-light); line-height: 2; max-width: 420px; margin-bottom: 36px; }
+    .hero-btn { display: inline-block; font-size: 0.85rem; font-weight: 500; color: var(--color-white); background: var(--color-primary); padding: 14px 36px; border-radius: 4px; transition: 0.2s; letter-spacing: 0.04em; }
+    .hero-btn:hover { background: var(--color-primary-dark); }
+    .hero-phone { margin-top: 20px; font-family: var(--font-accent); font-size: 1.2rem; font-weight: 600; color: var(--color-primary); }
+    .hero-phone small { font-size: 0.7rem; font-weight: 400; color: var(--color-text-light); display: block; font-family: var(--font-sans); }
+
+    /* ========== Section Common ========== */
+    .section { padding: 100px 0; }
+    .section-alt { background: var(--color-bg-warm); }
+    .section-white { background: var(--color-white); }
+
+    /* Section dividers */
+    .section-divider { height: 200px; background-size: cover; background-position: center; position: relative; }
+    .section-divider::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(245,240,232,0.6) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.05) 60%, rgba(255,255,255,0.6) 100%); }
+    .divider-w2w::after { background: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.05) 60%, rgba(255,255,255,0.6) 100%); }
+    .section-label { font-family: var(--font-accent); font-size: 0.7rem; letter-spacing: 0.2em; color: var(--color-accent); text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-family: var(--font-serif); font-size: clamp(22px, 3.5vw, 32px); font-weight: 700; line-height: 1.5; margin-bottom: 16px; }
+    .section-subtitle { font-size: 0.9rem; color: var(--color-text-light); line-height: 1.9; max-width: 560px; }
+    .section-header { margin-bottom: 60px; }
+    .section-header-center { text-align: center; }
+    .section-header-center .section-subtitle { margin: 0 auto; }
+
+    /* ========== Trust ========== */
+    .trust { padding: 32px 0; border-bottom: 1px solid var(--color-border); background: var(--color-white); }
+    .trust-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 32px; }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; font-weight: 500; color: var(--color-text-light); }
+    .trust-item i { color: var(--color-primary); font-size: 0.9rem; width: 20px; text-align: center; }
+
+    /* ========== Problems ========== */
+    .problems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 48px; }
+    .problem-card { background: transparent; border: none; border-radius: 0; padding: 0 8px; border-left: 2px solid var(--color-accent); padding-left: 20px; }
+    .problem-card i { display: none; }
+    .problem-card h3 { font-family: var(--font-serif); font-size: 1rem; font-weight: 700; margin-bottom: 8px; line-height: 1.6; color: var(--color-primary-dark); }
+    .problem-card p { font-size: 0.85rem; color: var(--color-text-light); line-height: 1.8; }
+
+    .cta-banner { background: var(--color-primary); border-radius: 6px; padding: 40px; text-align: center; color: white; }
+    .cta-banner h3 { font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 8px; }
+    .cta-banner p { font-size: 0.85rem; opacity: 0.8; margin-bottom: 20px; }
+    .cta-banner a { display: inline-block; background: white; color: var(--color-primary); font-weight: 600; font-size: 0.85rem; padding: 12px 32px; border-radius: 4px; transition: 0.2s; }
+    .cta-banner a:hover { opacity: 0.9; }
+
+    /* ========== Features ========== */
+    .feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 64px; }
+    .feature-row:nth-child(even) .feature-img { order: -1; }
+    .feature-img { border-radius: 6px; overflow: hidden; }
+    .feature-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .feature-num { font-family: var(--font-accent); font-size: 0.7rem; letter-spacing: 0.15em; color: var(--color-accent); margin-bottom: 8px; }
+    .feature-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; line-height: 1.6; }
+    .feature-text { font-size: 0.9rem; color: var(--color-text-light); line-height: 2; }
+
+    /* ========== Menu ========== */
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .menu-card { background: var(--color-white); border: 1px solid var(--color-border); border-radius: 6px; overflow: hidden; }
+    .menu-card-header { background: var(--color-primary); color: white; padding: 20px 24px; }
+    .menu-card-header h3 { font-family: var(--font-serif); font-size: 1rem; }
+    .menu-card-header p { font-size: 0.75rem; opacity: 0.7; margin-top: 2px; }
+    .menu-card-body { padding: 20px 24px; }
+    .menu-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed var(--color-border); font-size: 0.85rem; }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-price { font-family: var(--font-accent); font-weight: 600; color: var(--color-primary); }
+    .menu-popular .menu-card-header { background: var(--color-accent); }
+    .menu-note { text-align: center; margin-top: 32px; padding: 20px; background: var(--color-accent-light); border-radius: 6px; font-size: 0.85rem; }
+
+    /* ========== Testimonials ========== */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .testimonial-card { background: var(--color-white); border: 1px solid var(--color-border); border-radius: 6px; padding: 28px 24px; }
+    .testimonial-stars { color: var(--color-accent); font-size: 0.8rem; margin-bottom: 14px; letter-spacing: 2px; }
+    .testimonial-text { font-size: 0.85rem; line-height: 1.9; margin-bottom: 18px; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; padding-top: 14px; border-top: 1px solid var(--color-border); }
+    .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--color-primary-light); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: var(--color-primary); }
+    .testimonial-name { font-size: 0.85rem; font-weight: 600; }
+    .testimonial-meta { font-size: 0.7rem; color: var(--color-text-light); }
+
+    /* ========== Flow ========== */
+    .flow-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .flow-step { text-align: center; position: relative; }
+    .flow-num { width: 44px; height: 44px; border-radius: 50%; background: var(--color-primary); color: white; display: flex; align-items: center; justify-content: center; font-family: var(--font-accent); font-weight: 600; font-size: 0.9rem; margin: 0 auto 14px; }
+    .flow-step h4 { font-family: var(--font-serif); font-size: 0.9rem; margin-bottom: 6px; }
+    .flow-step p { font-size: 0.75rem; color: var(--color-text-light); line-height: 1.7; }
+
+    /* ========== Director ========== */
+    .director-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 48px; align-items: center; }
+    .director-img { border-radius: 6px; overflow: hidden; }
+    .director-img img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+    .director-name { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; }
+    .director-title { font-size: 0.8rem; color: var(--color-text-light); margin-bottom: 24px; }
+    .director-quote { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--color-primary-dark); line-height: 1.7; margin-bottom: 20px; }
+    .director-text { font-size: 0.9rem; color: var(--color-text-light); line-height: 2; }
+    .director-text p + p { margin-top: 14px; }
+
+    /* ========== Access ========== */
+    .access-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .access-map { border-radius: 6px; overflow: hidden; background: var(--color-primary-light); min-height: 320px; display: flex; align-items: center; justify-content: center; }
+    .access-map-inner { text-align: center; color: var(--color-text-light); }
+    .access-map-inner i { font-size: 2rem; color: var(--color-primary); margin-bottom: 8px; display: block; }
+    .access-info { display: flex; flex-direction: column; gap: 18px; }
+    .access-item { display: flex; gap: 14px; }
+    .access-item i { color: var(--color-primary); font-size: 0.9rem; width: 20px; text-align: center; margin-top: 4px; flex-shrink: 0; }
+    .access-label { font-size: 0.7rem; color: var(--color-text-light); }
+    .access-value { font-size: 0.9rem; font-weight: 500; }
+    .hours-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 6px; }
+    .hours-table th, .hours-table td { padding: 6px 8px; text-align: center; border: 1px solid var(--color-border); }
+    .hours-table th { background: var(--color-primary-light); font-weight: 500; font-size: 0.75rem; }
+    .hours-open { color: var(--color-primary); font-weight: 600; }
+    .hours-closed { color: var(--color-text-light); }
+
+    /* ========== FAQ ========== */
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--color-border); }
+    .faq-q { display: flex; align-items: center; gap: 14px; padding: 20px 0; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
+    .faq-q span:first-child { font-family: var(--font-accent); font-size: 0.75rem; color: var(--color-primary); font-weight: 700; }
+    .faq-q i { margin-left: auto; font-size: 0.7rem; color: var(--color-text-light); transition: transform 0.3s; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-item.open .faq-a { max-height: 200px; }
+    .faq-item.open .faq-q i { transform: rotate(180deg); }
+    .faq-a p { font-size: 0.85rem; color: var(--color-text-light); line-height: 1.9; padding: 0 0 20px 32px; }
+
+    /* ========== Final CTA ========== */
+    .final-cta { background: var(--color-primary-dark); color: white; padding: 80px 0; text-align: center; }
+    .final-cta h2 { font-family: var(--font-serif); font-size: clamp(20px, 3vw, 28px); margin-bottom: 12px; }
+    .final-cta p { font-size: 0.9rem; opacity: 0.7; margin-bottom: 28px; }
+    .final-cta-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .final-cta-btns a { font-size: 0.85rem; font-weight: 500; padding: 14px 32px; border-radius: 4px; transition: 0.2s; }
+    .btn-white { background: white; color: var(--color-primary-dark); }
+    .btn-outline-w { border: 1px solid rgba(255,255,255,0.4); color: white; }
+    .final-cta-phone { margin-top: 24px; font-family: var(--font-accent); font-size: 1.4rem; font-weight: 600; }
+    .final-cta-phone small { display: block; font-size: 0.75rem; opacity: 0.5; font-family: var(--font-sans); font-weight: 400; margin-top: 4px; }
+
+    /* ========== Footer ========== */
+    footer { background: #1A1A18; color: rgba(255,255,255,0.5); padding: 48px 0 28px; font-size: 0.8rem; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; margin-bottom: 32px; }
+    .footer-logo { font-family: var(--font-serif); color: rgba(255,255,255,0.8); font-size: 1rem; margin-bottom: 8px; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { opacity: 0.5; transition: opacity 0.2s; }
+    .footer-links a:hover { opacity: 1; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; text-align: center; font-size: 0.7rem; opacity: 0.4; }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 768px) {
+      nav, .header-cta { display: none; }
+      .hamburger { display: block; }
+      .hero { height: 70vh; }
+      .hero-overlay { background: linear-gradient(to bottom, rgba(250,250,247,0.9) 0%, rgba(250,250,247,0.5) 60%, rgba(0,0,0,0.1) 100%); }
+      .problems-grid { grid-template-columns: 1fr; }
+      .feature-row { grid-template-columns: 1fr; gap: 24px; }
+      .feature-row:nth-child(even) .feature-img { order: 0; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .flow-steps { grid-template-columns: 1fr; gap: 24px; }
+      .flow-step { text-align: left; display: flex; gap: 14px; align-items: flex-start; }
+      .flow-num { margin: 0; flex-shrink: 0; }
+      .director-inner { grid-template-columns: 1fr; }
+      .director-img { max-width: 280px; }
+      .access-inner { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; }
+    }
+
+    /* ========== Animations ========== */
+
+    /* Hero entrance */
+    @keyframes heroSlideUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .hero-label { animation: heroFadeIn 0.8s 0.2s both; }
+    .hero-title { animation: heroSlideUp 0.9s 0.3s both; }
+    .hero-desc { animation: heroSlideUp 0.9s 0.5s both; }
+    .hero-btn { animation: heroSlideUp 0.9s 0.7s both; }
+    .hero-phone { animation: heroFadeIn 0.8s 0.9s both; }
+
+    /* Scroll reveal */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+    .fade-in-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in-left.is-visible { opacity: 1; transform: translateX(0); }
+    .fade-in-right { opacity: 0; transform: translateX(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in-right.is-visible { opacity: 1; transform: translateX(0); }
+
+    /* Stagger children */
+    .stagger > * { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .stagger.is-visible > *:nth-child(1) { transition-delay: 0s; }
+    .stagger.is-visible > *:nth-child(2) { transition-delay: 0.08s; }
+    .stagger.is-visible > *:nth-child(3) { transition-delay: 0.16s; }
+    .stagger.is-visible > *:nth-child(4) { transition-delay: 0.24s; }
+    .stagger.is-visible > *:nth-child(5) { transition-delay: 0.32s; }
+    .stagger.is-visible > *:nth-child(6) { transition-delay: 0.40s; }
+    .stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+
+    /* Section title underline */
+    .section-title { position: relative; display: inline-block; }
+    .section-title::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px; background: var(--color-accent); transition: width 0.6s ease 0.2s; }
+    .is-visible .section-title::after, .section-header.is-visible .section-title::after { width: 48px; }
+
+    /* Photo hover zoom */
+    .feature-img img { transition: transform 0.6s ease; }
+    .feature-img:hover img { transform: scale(1.04); }
+
+    /* Button hover lift */
+    .hero-btn, .header-cta, .cta-banner a, .final-cta-btns a { transition: all 0.25s ease; }
+    .hero-btn:hover, .cta-banner a:hover, .btn-white:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+    /* Trust bar slide in */
+    .trust-grid { opacity: 0; transform: translateY(10px); transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s; }
+    .trust.is-visible .trust-grid { opacity: 1; transform: translateY(0); }
+
+    /* Flow step counter pulse */
+    .flow-num { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .flow-step:hover .flow-num { transform: scale(1.1); box-shadow: 0 4px 12px rgba(44,95,75,0.25); }
+
+    /* Testimonial card hover */
+    .testimonial-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+
+    /* Parallax-like section divider */
+    .section-divider { background-attachment: fixed; }
+    @media (max-width: 768px) { .section-divider { background-attachment: scroll; } }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">やすらぎ整骨院<small>YASURAGI OSTEOPATHY</small></a>
+      <div style="display:flex;align-items:center;">
+        <nav>
+          <a href="#about">当院について</a>
+          <a href="#features">施術の特徴</a>
+          <a href="#menu">施術メニュー</a>
+          <a href="#voice">お客様の声</a>
+          <a href="#access">アクセス</a>
+        </nav>
+        <a href="#contact" class="header-cta"><i class="fa-regular fa-calendar-check"></i> ご予約</a>
+      </div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1400&h=900&fit=crop&q=80" alt="施術イメージ" class="hero-img">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <div class="hero-label">Chiropractic &amp; Osteopathy</div>
+      <h1 class="hero-title">痛みのない毎日を、<br>あなたに。</h1>
+      <p class="hero-desc">腰痛・肩こり・産後のつらさ——<br>ガマンし続けていませんか？<br>痛みの根本原因にアプローチする、<br>オーダーメイド施術をご提供しています。</p>
+      <a href="#contact" class="hero-btn"><i class="fa-regular fa-calendar-check"></i> 初回限定で予約する</a>
+      <div class="hero-phone"><small>お電話でのご予約</small>078-XXX-XXXX</div>
+    </div>
+  </section>
+
+  <!-- Trust -->
+  <div class="trust" id="trust">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item"><i class="fa-solid fa-user-doctor"></i>国家資格保有</div>
+        <div class="trust-item"><i class="fa-solid fa-shield-halved"></i>各種保険適用</div>
+        <div class="trust-item"><i class="fa-solid fa-location-dot"></i>駅徒歩3分</div>
+        <div class="trust-item"><i class="fa-regular fa-clock"></i>夜20時まで受付</div>
+        <div class="trust-item"><i class="fa-solid fa-baby"></i>キッズスペース完備</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Problems -->
+  <section class="section section-alt" id="about">
+    <div class="container">
+      <div class="section-header section-header-center fade-in">
+        <div class="section-label">Problems</div>
+        <h2 class="section-title">こんなお悩みありませんか？</h2>
+        <p class="section-subtitle">一つでも当てはまるなら、やすらぎ整骨院がお力になれます。</p>
+      </div>
+      <div class="problems-grid stagger">
+        <div class="problem-card">
+          <i class="fa-solid fa-bed"></i>
+          <h3>慢性的な腰痛で<br>朝起きるのがつらい</h3>
+          <p>デスクワークや立ち仕事で蓄積する腰の疲労。湿布やマッサージでは一時的にしか楽にならず、根本的な改善には至らない。</p>
+        </div>
+        <div class="problem-card">
+          <i class="fa-solid fa-head-side-virus"></i>
+          <h3>肩こり・頭痛が<br>仕事に集中できないほど</h3>
+          <p>パソコン作業やスマホの使いすぎで首・肩がガチガチ。頭痛や目の疲れまで併発して、日常生活にも支障が出ている。</p>
+        </div>
+        <div class="problem-card">
+          <i class="fa-solid fa-person-breastfeeding"></i>
+          <h3>産後の骨盤の歪みが<br>ずっと気になっている</h3>
+          <p>出産後、体型が戻らない・腰が痛い・尿漏れが気になる。忙しくてなかなか自分のケアに時間を使えない。</p>
+        </div>
+        <div class="problem-card">
+          <i class="fa-solid fa-person-running"></i>
+          <h3>スポーツ中のケガが<br>なかなか治らない</h3>
+          <p>捻挫・肉離れ・膝の痛み。病院では「安静に」と言われるだけで、いつ復帰できるのか分からず不安が募る。</p>
+        </div>
+        <div class="problem-card">
+          <i class="fa-solid fa-moon"></i>
+          <h3>身体の不調で<br>ぐっすり眠れない</h3>
+          <p>肩や腰が痛くて寝返りが打てない。自律神経の乱れからくる不眠や倦怠感に悩まされている。</p>
+        </div>
+        <div class="problem-card">
+          <i class="fa-solid fa-circle-question"></i>
+          <h3>どこに行けばいいか<br>分からない</h3>
+          <p>整形外科・整骨院・整体・マッサージ……選択肢が多すぎて迷う。自分の症状に合った施術を受けたい。</p>
+        </div>
+      </div>
+      <div class="cta-banner fade-in">
+        <h3>そのお悩み、一緒に解決しませんか？</h3>
+        <p>初回は丁寧なカウンセリングからスタート。あなたに最適な施術プランをご提案します。</p>
+        <a href="#contact"><i class="fa-regular fa-calendar-check"></i> 初回限定で予約する</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="section-divider" style="background-image:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1400&h=400&fit=crop&q=70');"></div>
+
+  <!-- Features -->
+  <section class="section section-white" id="features">
+    <div class="container">
+      <div class="section-header section-header-center fade-in">
+        <div class="section-label">Features</div>
+        <h2 class="section-title">やすらぎ整骨院が<br>選ばれる4つの理由</h2>
+        <p class="section-subtitle">痛みの根本にアプローチし、再発しない身体づくりをサポートします。</p>
+      </div>
+
+      <div class="feature-row fade-in-left">
+        <div>
+          <div class="feature-num">Feature 01</div>
+          <h3 class="feature-title">原因を見つける<br>徹底カウンセリング</h3>
+          <p class="feature-text">初回は30分以上かけて、お身体の状態を詳しくヒアリング。姿勢分析・可動域テスト・生活習慣の確認を通じて、痛みの本当の原因を特定します。</p>
+        </div>
+        <div class="feature-img">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=450&fit=crop&q=80" alt="カウンセリング" loading="lazy">
+        </div>
+      </div>
+
+      <div class="feature-row fade-in-right">
+        <div>
+          <div class="feature-num">Feature 02</div>
+          <h3 class="feature-title">オーダーメイドの<br>施術プラン</h3>
+          <p class="feature-text">同じ「腰痛」でも原因は人それぞれ。お一人おひとりの症状・体質・生活スタイルに合わせた完全オーダーメイドの施術プランをご提案します。</p>
+        </div>
+        <div class="feature-img">
+          <img src="https://images.unsplash.com/photo-1598257006458-087169a1f08d?w=600&h=450&fit=crop&q=80" alt="施術プラン" loading="lazy">
+        </div>
+      </div>
+
+      <div class="feature-row fade-in-left">
+        <div>
+          <div class="feature-num">Feature 03</div>
+          <h3 class="feature-title">国家資格者による<br>安心の施術</h3>
+          <p class="feature-text">柔道整復師の国家資格を持つ施術者が担当。解剖学・運動学に基づいた確かな技術で、ボキボキしない優しい施術を提供します。</p>
+        </div>
+        <div class="feature-img">
+          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&h=450&fit=crop&q=80" alt="国家資格" loading="lazy">
+        </div>
+      </div>
+
+      <div class="feature-row fade-in-right">
+        <div>
+          <div class="feature-num">Feature 04</div>
+          <h3 class="feature-title">施術後も<br>サポートが続く</h3>
+          <p class="feature-text">施術して終わりではありません。ご自宅でできるセルフケア・ストレッチをお伝えし、LINEでの相談にも対応。施術効果を最大化します。</p>
+        </div>
+        <div class="feature-img">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=450&fit=crop&q=80" alt="アフターケア" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section class="section section-alt" id="menu">
+    <div class="container">
+      <div class="section-header section-header-center fade-in">
+        <div class="section-label">Menu</div>
+        <h2 class="section-title">施術メニュー・料金</h2>
+        <p class="section-subtitle">各種健康保険適用可能。症状やお悩みに合わせてご提案します。</p>
+      </div>
+      <div class="menu-grid stagger">
+        <div class="menu-card">
+          <div class="menu-card-header"><h3>保険施術</h3><p>各種健康保険適用</p></div>
+          <div class="menu-card-body">
+            <div class="menu-item"><span>初診料</span><span class="menu-price">&yen;1,500〜</span></div>
+            <div class="menu-item"><span>2回目以降</span><span class="menu-price">&yen;500〜</span></div>
+            <div class="menu-item"><span>捻挫・打撲・挫傷</span><span class="menu-price">保険適用</span></div>
+          </div>
+        </div>
+        <div class="menu-card menu-popular">
+          <div class="menu-card-header"><h3>骨盤矯正コース</h3><p>一番人気</p></div>
+          <div class="menu-card-body">
+            <div class="menu-item"><span>骨盤矯正（40分）</span><span class="menu-price">&yen;5,500</span></div>
+            <div class="menu-item"><span>産後骨盤矯正（50分）</span><span class="menu-price">&yen;6,600</span></div>
+            <div class="menu-item"><span>姿勢改善コース（60分）</span><span class="menu-price">&yen;7,700</span></div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header"><h3>特別施術</h3><p>自費メニュー</p></div>
+          <div class="menu-card-body">
+            <div class="menu-item"><span>肩こり集中ケア（30分）</span><span class="menu-price">&yen;4,400</span></div>
+            <div class="menu-item"><span>スポーツコンディショニング</span><span class="menu-price">&yen;5,500</span></div>
+            <div class="menu-item"><span>鍼灸施術（40分）</span><span class="menu-price">&yen;4,950</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-note"><i class="fa-solid fa-gift"></i> <strong>初回限定：</strong>自費メニューすべて <strong>40%OFF</strong> でお試しいただけます。</div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section-white" id="voice">
+    <div class="container">
+      <div class="section-header section-header-center fade-in">
+        <div class="section-label">Voice</div>
+        <h2 class="section-title">お客様の声</h2>
+        <p class="section-subtitle">実際にご来院いただいた患者様からの声をご紹介します。</p>
+      </div>
+      <div class="testimonials-grid stagger">
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testimonial-text">10年以上悩んでいた腰痛が、3回の施術で驚くほど改善しました。毎回丁寧にカウンセリングしてもらえるので、自分の身体の状態が分かるようになったのも大きいです。</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">T.S</div>
+            <div><div class="testimonial-name">T.S 様</div><div class="testimonial-meta">40代女性 / デスクワーク / 腰痛</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testimonial-text">産後の骨盤矯正で通い始めました。キッズスペースがあるので子連れでも安心。施術後は身体が軽くなって、育児の疲れも軽減されました。もっと早く来ればよかった！</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M.K</div>
+            <div><div class="testimonial-name">M.K 様</div><div class="testimonial-meta">30代女性 / 産後6ヶ月 / 骨盤矯正</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testimonial-text">サッカーで膝を痛めて通院中です。ただ治すだけでなく、再発しないためのトレーニング方法まで教えてもらえるのがありがたい。おかげで2ヶ月で復帰できました。</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">R.Y</div>
+            <div><div class="testimonial-name">R.Y 様</div><div class="testimonial-meta">20代男性 / 学生 / スポーツ外傷</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flow -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header section-header-center fade-in">
+        <div class="section-label">Flow</div>
+        <h2 class="section-title">施術の流れ</h2>
+        <p class="section-subtitle">ご予約から施術完了まで、安心のステップをご案内します。</p>
+      </div>
+      <div class="flow-steps stagger">
+        <div class="flow-step"><div class="flow-num">1</div><div><h4>ご予約</h4><p>お電話・Web・LINEからお気軽に。当日予約も対応可能です。</p></div></div>
+        <div class="flow-step"><div class="flow-num">2</div><div><h4>カウンセリング</h4><p>問診票をもとに、痛みの部位・経緯・生活習慣を詳しくヒアリング。</p></div></div>
+        <div class="flow-step"><div class="flow-num">3</div><div><h4>施術</h4><p>お身体の状態に合わせたオーダーメイドの施術を丁寧に行います。</p></div></div>
+        <div class="flow-step"><div class="flow-num">4</div><div><h4>アフターケア</h4><p>施術後の状態確認と、今後のプラン・セルフケア方法をご説明。</p></div></div>
+        <div class="flow-step"><div class="flow-num">5</div><div><h4>ホームケア</h4><p>ご自宅でのストレッチ指導。LINEでいつでもご相談いただけます。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="section-divider divider-w2w" style="background-image:url('https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=1400&h=400&fit=crop&q=70');"></div>
+
+  <!-- Director -->
+  <section class="section section-white" id="director">
+    <div class="container">
+      <div class="director-inner fade-in">
+        <div class="director-img">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=533&fit=crop&q=80" alt="院長 山田健太郎" loading="lazy">
+        </div>
+        <div>
+          <div class="section-label">Greeting</div>
+          <div class="director-name">院長 山田 健太郎</div>
+          <div class="director-title">柔道整復師 / 12年の施術歴</div>
+          <div class="director-quote">「痛みに寄り添い、<br>笑顔を取り戻す。」</div>
+          <div class="director-text">
+            <p>はじめまして。やすらぎ整骨院 院長の山田健太郎です。</p>
+            <p>私自身、学生時代にスポーツで大きなケガをした経験があります。そのとき、一人の柔道整復師の先生に出会い、身体だけでなく心まで救われました。あの経験が、この道を志すきっかけです。</p>
+            <p>開院以来、大切にしていることがあります。それは「痛みの原因を、患者様ご自身にも理解していただくこと」。一方的に施術するのではなく、一緒に治していく。そんな二人三脚の施術を心がけています。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Access -->
+  <section class="section section-alt" id="access">
+    <div class="container">
+      <div class="section-header section-header-center fade-in">
+        <div class="section-label">Access</div>
+        <h2 class="section-title">アクセス・院情報</h2>
+      </div>
+      <div class="access-inner">
+        <div class="access-map">
+          <div class="access-map-inner">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <p><strong>Google Map</strong></p>
+            <p style="font-size:0.75rem;margin-top:6px;">〒XXX-XXXX<br>兵庫県神戸市○○区○○町1-2-3<br>○○ビル 1F</p>
+          </div>
+        </div>
+        <div class="access-info">
+          <div class="access-item"><i class="fa-solid fa-hospital"></i><div><div class="access-label">院名</div><div class="access-value">やすらぎ整骨院</div></div></div>
+          <div class="access-item"><i class="fa-solid fa-location-dot"></i><div><div class="access-label">所在地</div><div class="access-value">兵庫県神戸市○○区○○町1-2-3 ○○ビル 1F</div></div></div>
+          <div class="access-item"><i class="fa-solid fa-train"></i><div><div class="access-label">最寄り駅</div><div class="access-value">○○駅 徒歩3分</div></div></div>
+          <div class="access-item"><i class="fa-solid fa-phone"></i><div><div class="access-label">電話番号</div><div class="access-value">078-XXX-XXXX</div></div></div>
+          <div class="access-item"><i class="fa-regular fa-clock"></i>
+            <div style="width:100%;">
+              <div class="access-label">営業時間</div>
+              <table class="hours-table">
+                <tr><th></th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th></tr>
+                <tr><th>9:00-12:30</th><td class="hours-open">○</td><td class="hours-open">○</td><td class="hours-open">○</td><td class="hours-closed">—</td><td class="hours-open">○</td><td class="hours-open">○</td><td class="hours-closed">休</td></tr>
+                <tr><th>15:00-20:00</th><td class="hours-open">○</td><td class="hours-open">○</td><td class="hours-open">○</td><td class="hours-closed">—</td><td class="hours-open">○</td><td class="hours-open">△</td><td class="hours-closed">休</td></tr>
+              </table>
+              <p style="font-size:0.7rem;color:var(--color-text-light);margin-top:4px;">△ = 土曜午後は17:00まで / 木・日・祝休診</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-white" id="faq">
+    <div class="container">
+      <div class="section-header section-header-center fade-in">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">よくあるご質問</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q"><span>Q</span><span>予約なしでも受診できますか？</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>はい、予約なしでもご来院いただけます。ただし、予約の方を優先させていただいておりますので、お待ちいただく場合がございます。スムーズにご案内するために、事前のご予約をおすすめしています。</p></div></div>
+        <div class="faq-item"><div class="faq-q"><span>Q</span><span>健康保険は使えますか？</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>はい、急性のケガ（捻挫・打撲・挫傷など）には健康保険が適用されます。慢性的な肩こりや腰痛については自費施術となりますが、初回限定の割引もご用意しております。</p></div></div>
+        <div class="faq-item"><div class="faq-q"><span>Q</span><span>施術は痛くないですか？</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>当院ではボキボキするような施術は行いません。ソフトな手技を中心とした、身体に優しい施術を提供しています。痛みに敏感な方やお子様でも安心して受けていただけます。</p></div></div>
+        <div class="faq-item"><div class="faq-q"><span>Q</span><span>子どもを連れて行っても大丈夫ですか？</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>もちろんです！院内にキッズスペースをご用意しています。お子様連れのママさんも多くご来院いただいており、産後骨盤矯正と合わせてご利用いただいています。</p></div></div>
+        <div class="faq-item"><div class="faq-q"><span>Q</span><span>どのくらいの頻度で通えばいいですか？</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>症状や目的によって異なりますが、初期は週1〜2回、改善に伴い2週に1回、月1回とペースを落としていくのが一般的です。初回のカウンセリングで最適な通院ペースをご提案します。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta" id="contact">
+    <div class="container">
+      <h2>痛みのない毎日は、ここから始まります。</h2>
+      <p>初回限定で自費メニュー40%OFF。まずはお気軽にご予約ください。</p>
+      <div class="final-cta-btns">
+        <a href="#" class="btn-white"><i class="fa-regular fa-calendar-check"></i> Webで予約する</a>
+        <a href="tel:078-XXX-XXXX" class="btn-outline-w"><i class="fa-solid fa-phone"></i> 電話で予約する</a>
+      </div>
+      <div class="final-cta-phone">078-XXX-XXXX<small>受付時間 9:00〜20:00（木・日・祝休診）</small></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">やすらぎ整骨院</div>
+          <p>痛みの根本原因にアプローチする<br>オーダーメイド施術。</p>
+        </div>
+        <div class="footer-links">
+          <a href="#about">当院について</a>
+          <a href="#features">施術の特徴</a>
+          <a href="#menu">施術メニュー</a>
+          <a href="#voice">お客様の声</a>
+          <a href="#access">アクセス</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 やすらぎ整骨院. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    // Scroll reveal — add .is-visible when element enters viewport
+    const animEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger, .trust');
+    const animObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          animObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    // Elements already in viewport at load → show immediately
+    animEls.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        el.classList.add('is-visible');
+      } else {
+        animObs.observe(el);
+      }
+    });
+  </script>
+</body>
+</html>
