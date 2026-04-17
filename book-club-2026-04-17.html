@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026/4/17 ゆるっと読書会 📚 | おけもんカンパニー</title>
+  <meta name="description" content="2026年4月17日『ゆるっと読書会』で集まった7冊の推し本。おけもんカンパニー＆仲間たちが持ち寄った温度感のある本棚。">
+
+  <!-- OGP -->
+  <meta property="og:title" content="2026/4/17 ゆるっと読書会 📚">
+  <meta property="og:description" content="仲間たちが持ち寄った7冊の推し本リスト。">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --color-primary: #4A3F5C;
+      --color-primary-dark: #35304A;
+      --color-accent: #C4915E;
+      --color-accent-light: #D4A574;
+      --color-pink: #E4A5AE;
+      --color-bg: #FBF6EE;
+      --color-bg-warm: #F5EDE0;
+      --color-text: #2D2738;
+      --color-text-light: #6D6278;
+      --color-border: #E8DDC8;
+      --color-wood: #B8926A;
+      --color-wood-dark: #7A5E42;
+      --color-star: #E6B54A;
+
+      --shadow-sm: 0 4px 12px rgba(74, 63, 92, 0.06);
+      --shadow-md: 0 10px 30px rgba(74, 63, 92, 0.09);
+      --shadow-book: 0 20px 40px rgba(74, 63, 92, 0.15);
+
+      --font-serif: 'Shippori Mincho', 'Noto Serif JP', serif;
+      --font-sans: 'Noto Sans JP', sans-serif;
+      --font-inter: 'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.8;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      padding: 80px 24px 120px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at top right, rgba(228, 165, 174, 0.25), transparent 60%),
+        radial-gradient(ellipse at bottom left, rgba(196, 145, 94, 0.2), transparent 60%),
+        linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-warm) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-date {
+      font-family: var(--font-inter);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      color: var(--color-accent);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 0.8s 0.2s forwards;
+    }
+
+    .hero-date i {
+      margin-right: 6px;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: slideUp 0.9s 0.4s forwards;
+    }
+
+    .hero-title .accent {
+      display: inline-block;
+      position: relative;
+      color: var(--color-accent);
+    }
+
+    .hero-title .accent::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--color-pink);
+      opacity: 0.5;
+      border-radius: 2px;
+    }
+
+    .hero-sub {
+      font-family: var(--font-serif);
+      font-size: clamp(15px, 2vw, 18px);
+      font-weight: 500;
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      letter-spacing: 0.08em;
+      line-height: 2;
+      opacity: 0;
+      animation: slideUp 0.9s 0.6s forwards;
+    }
+
+    .hero-stats {
+      display: inline-flex;
+      gap: 32px;
+      padding: 24px 40px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow-sm);
+      opacity: 0;
+      animation: slideUp 0.9s 0.8s forwards;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-num {
+      font-family: var(--font-inter);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .hero-stat-num span {
+      font-size: 14px;
+      font-weight: 500;
+      margin-left: 2px;
+    }
+
+    .hero-stat-label {
+      font-size: 11px;
+      color: var(--color-text-light);
+      letter-spacing: 0.15em;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-inter);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: var(--color-text-light);
+      opacity: 0;
+      animation: fadeIn 1s 1.2s forwards;
+    }
+
+    .hero-scroll i {
+      display: block;
+      margin-top: 8px;
+      animation: bounce 2s infinite;
+    }
+
+    /* 装飾 */
+    .hero-decor {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.15;
+    }
+
+    .hero-decor-1 {
+      top: 10%;
+      left: 5%;
+      font-size: 80px;
+      color: var(--color-accent);
+      transform: rotate(-15deg);
+    }
+
+    .hero-decor-2 {
+      bottom: 20%;
+      right: 8%;
+      font-size: 70px;
+      color: var(--color-pink);
+      transform: rotate(15deg);
+    }
+
+    /* ============================================
+       INTRO
+       ============================================ */
+    .intro {
+      padding: 100px 24px 80px;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .intro-label {
+      font-family: var(--font-inter);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+    }
+
+    .intro h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 3.5vw, 32px);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 32px;
+      line-height: 1.5;
+      letter-spacing: 0.05em;
+    }
+
+    .intro p {
+      font-size: 15px;
+      color: var(--color-text-light);
+      line-height: 2;
+      margin-bottom: 16px;
+    }
+
+    .intro-divider {
+      margin: 48px auto 0;
+      width: 60px;
+      height: 2px;
+      background: var(--color-accent);
+      border-radius: 2px;
+    }
+
+    /* ============================================
+       BOOKSHELF
+       ============================================ */
+    .bookshelf {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .shelf-label {
+      text-align: center;
+      font-family: var(--font-inter);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    .shelf-title {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3.5vw, 34px);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 60px;
+      letter-spacing: 0.05em;
+    }
+
+    .book {
+      position: relative;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--color-border);
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.9s, transform 0.9s;
+    }
+
+    .book.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .book:last-of-type {
+      border-bottom: none;
+    }
+
+    .book:nth-child(even) {
+      grid-template-columns: 1fr 280px;
+    }
+
+    .book:nth-child(even) .book-cover-wrap {
+      order: 2;
+    }
+
+    .book-cover-wrap {
+      position: relative;
+      padding: 8px;
+    }
+
+    .book-cover {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: var(--shadow-book);
+      transition: transform 0.5s ease;
+      aspect-ratio: 3 / 4.3;
+      background: linear-gradient(135deg, #e8d5b8 0%, #c9a577 100%);
+    }
+
+    .book:hover .book-cover {
+      transform: translateY(-6px) rotate(-1deg);
+      box-shadow: 0 30px 50px rgba(74, 63, 92, 0.25);
+    }
+
+    .book:nth-child(even):hover .book-cover {
+      transform: translateY(-6px) rotate(1deg);
+    }
+
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .book-cover-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 14px;
+      color: var(--color-primary-dark);
+      background: linear-gradient(135deg, #e8d5b8, #c9a577);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .book-cover img:not([src]) + .book-cover-fallback,
+    .book-cover img[src=""] + .book-cover-fallback {
+      opacity: 1;
+    }
+
+    .star-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--color-star) 0%, var(--color-accent) 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 20px;
+      box-shadow: 0 6px 16px rgba(196, 145, 94, 0.4);
+      z-index: 2;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    .star-badge.double::after {
+      content: '⭐';
+      position: absolute;
+      bottom: -10px;
+      right: -4px;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--color-pink) 0%, #D2717F 100%);
+      border-radius: 50%;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(226, 113, 127, 0.4);
+    }
+
+    .book-num {
+      font-family: var(--font-inter);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    .book-title {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1.4;
+      margin-bottom: 12px;
+      letter-spacing: 0.03em;
+    }
+
+    .book-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 14px;
+      font-size: 12px;
+      color: var(--color-text-light);
+      margin-bottom: 20px;
+      font-family: var(--font-inter);
+      letter-spacing: 0.02em;
+    }
+
+    .book-meta span::after {
+      content: '•';
+      margin-left: 14px;
+      color: var(--color-border);
+    }
+
+    .book-meta span:last-child::after {
+      display: none;
+    }
+
+    .recommender {
+      padding: 20px 24px;
+      background: linear-gradient(135deg, rgba(228, 165, 174, 0.12) 0%, rgba(196, 145, 94, 0.08) 100%);
+      border-left: 3px solid var(--color-pink);
+      border-radius: 4px;
+      margin-bottom: 24px;
+    }
+
+    .recommender-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-inter);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .recommender-label i {
+      color: var(--color-pink);
+    }
+
+    .recommender-name {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 6px;
+    }
+
+    .recommender-name .star-inline {
+      color: var(--color-star);
+      margin-left: 4px;
+    }
+
+    .recommender-comment {
+      font-size: 14px;
+      color: var(--color-text);
+      line-height: 1.9;
+      font-style: italic;
+    }
+
+    .recommender-comment.pending {
+      font-style: normal;
+      color: var(--color-text-light);
+      font-size: 13px;
+    }
+
+    .book-desc {
+      font-size: 14px;
+      color: var(--color-text-light);
+      line-height: 2;
+      margin-bottom: 20px;
+    }
+
+    .book-desc strong {
+      color: var(--color-text);
+      font-weight: 600;
+    }
+
+    .book-awards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+
+    .book-awards .award {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(196, 145, 94, 0.1);
+      border: 1px solid rgba(196, 145, 94, 0.3);
+      color: var(--color-accent);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .award i {
+      font-size: 10px;
+    }
+
+    .book-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .book-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-family: var(--font-inter);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: all 0.3s ease;
+    }
+
+    .book-link.amazon {
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    .book-link.amazon:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .book-link.rakuten {
+      background: #fff;
+      color: #BF0000;
+      border: 1.5px solid #BF0000;
+    }
+
+    .book-link.rakuten:hover {
+      background: #BF0000;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .book-link.kindle {
+      background: transparent;
+      color: var(--color-text-light);
+      border: 1px solid var(--color-border);
+    }
+
+    .book-link.kindle:hover {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================
+       STATS
+       ============================================ */
+    .highlights {
+      padding: 80px 24px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlights::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(196, 145, 94, 0.2), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(228, 165, 174, 0.15), transparent 40%);
+    }
+
+    .highlights-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      text-align: center;
+    }
+
+    .highlights-label {
+      font-family: var(--font-inter);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      color: var(--color-accent-light);
+      margin-bottom: 16px;
+    }
+
+    .highlights h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 3vw, 30px);
+      font-weight: 700;
+      margin-bottom: 48px;
+      letter-spacing: 0.05em;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .highlight-card {
+      padding: 32px 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+      transition: transform 0.3s;
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .highlight-num {
+      font-family: var(--font-inter);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--color-accent-light);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .highlight-num span {
+      font-size: 16px;
+      font-weight: 500;
+      margin-left: 2px;
+    }
+
+    .highlight-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.1em;
+    }
+
+    /* ============================================
+       OUTRO
+       ============================================ */
+    .outro {
+      padding: 100px 24px;
+      text-align: center;
+      background: var(--color-bg-warm);
+    }
+
+    .outro-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .outro-label {
+      font-family: var(--font-inter);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+    }
+
+    .outro h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 3vw, 30px);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 24px;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
+    }
+
+    .outro p {
+      font-size: 14px;
+      color: var(--color-text-light);
+      line-height: 2;
+      margin-bottom: 12px;
+    }
+
+    .outro-signature {
+      margin-top: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 28px;
+      background: #fff;
+      border-radius: 30px;
+      box-shadow: var(--shadow-sm);
+      font-family: var(--font-serif);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .outro-signature i {
+      color: var(--color-pink);
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      padding: 32px 24px;
+      text-align: center;
+      background: var(--color-bg);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer p {
+      font-family: var(--font-inter);
+      font-size: 12px;
+      color: var(--color-text-light);
+      letter-spacing: 0.08em;
+    }
+
+    /* ============================================
+       ANIMATIONS
+       ============================================ */
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 60px 20px 100px;
+        min-height: auto;
+      }
+
+      .hero-stats {
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px 24px;
+      }
+
+      .book {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 40px 0;
+      }
+
+      .book:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+
+      .book:nth-child(even) .book-cover-wrap {
+        order: 0;
+      }
+
+      .book-cover-wrap {
+        max-width: 220px;
+        margin: 0 auto;
+      }
+
+      .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .highlight-card {
+        padding: 24px 12px;
+      }
+
+      .highlight-num {
+        font-size: 32px;
+      }
+
+      .hero-decor-1, .hero-decor-2 {
+        font-size: 50px;
+      }
+
+      .book-title {
+        text-align: center;
+      }
+
+      .book-num {
+        text-align: center;
+      }
+
+      .book-meta {
+        justify-content: center;
+      }
+
+      .book-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<header class="hero">
+  <i class="fas fa-book-open hero-decor hero-decor-1"></i>
+  <i class="fas fa-star hero-decor hero-decor-2"></i>
+
+  <p class="hero-date"><i class="far fa-calendar"></i>2026.04.17 &nbsp;FRIDAY</p>
+  <h1 class="hero-title">
+    ゆるっと<span class="accent">読書会</span><br>
+    <span style="font-size: 0.6em; font-weight: 500;">みんなの推し本、8冊📚</span>
+  </h1>
+  <p class="hero-sub">
+    おけもんカンパニー＆仲間たちが持ち寄った、<br>
+    ひと夜ぶんの本棚。<br>
+    それぞれの温度と、推したい気持ちと一緒に。
+  </p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">8<span>冊</span></div>
+      <div class="hero-stat-label">BOOKS</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">5<span>+</span></div>
+      <div class="hero-stat-label">RECOMMENDERS</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">2<span>冊</span></div>
+      <div class="hero-stat-label">OKEMON ⭐</div>
+    </div>
+  </div>
+  <p class="hero-scroll">SCROLL<i class="fas fa-chevron-down"></i></p>
+</header>
+
+<!-- ============================================
+     INTRO
+     ============================================ -->
+<section class="intro">
+  <p class="intro-label">ABOUT THIS SHELF</p>
+  <h2>"ゆるっと"が育てる、<br>みんなの本棚。</h2>
+  <p>
+    紹介したい本を、ただ持ち寄って、<br>
+    どうしてその本が好きか、ゆるっと話す。
+  </p>
+  <p>
+    一冊ずつの選書には、<br>
+    それを選んだ人の "いま" が映っている。
+  </p>
+  <p>
+    この本棚は、4/17 の夜の温度を<br>
+    そのまま残すためのアーカイブです。
+  </p>
+  <div class="intro-divider"></div>
+</section>
+
+<!-- ============================================
+     BOOKSHELF
+     ============================================ -->
+<section class="bookshelf">
+  <p class="shelf-label">BOOKSHELF</p>
+  <h2 class="shelf-title">紹介された8冊</h2>
+
+  <!-- 1冊目 -->
+  <article class="book">
+    <div class="book-cover-wrap">
+      <div class="book-cover">
+        <img src="https://m.media-amazon.com/images/P/4534061641.09.LZZZZZZZ.jpg" alt="ブレずに「やりたいこと」で食べていく起業" loading="lazy">
+        <div class="book-cover-fallback">ブレずに<br>「やりたいこと」で<br>食べていく起業</div>
+      </div>
+    </div>
+    <div class="book-info">
+      <p class="book-num">BOOK 01</p>
+      <h3 class="book-title">ブレずに「やりたいこと」で食べていく起業</h3>
+      <div class="book-meta">
+        <span>矢島里佳</span>
+        <span>日本実業出版社</span>
+        <span>2025.01.31</span>
+        <span>¥1,760</span>
+      </div>
+
+      <div class="recommender">
+        <p class="recommender-label"><i class="fas fa-microphone"></i>RECOMMENDED BY</p>
+        <p class="recommender-name">ちーちゃん</p>
+        <p class="recommender-comment">
+          「自分が会社つくるなんて…」って思ってる人。事業をもっとやっていきたいけど現状にモヤモヤ、このままでよいのかなと思ってる人におすすめ。
+        </p>
+      </div>
+
+      <p class="book-desc">
+        「やりたいこと」で起業したはずが、気づけば休みなく働いて疲弊している人へ。<strong>"こんなはずじゃなかった"に陥らないための起業論</strong>。著者は日本政策金融公庫 女性起業家大賞・APEC best award 受賞、『ガイアの夜明け』でも取り上げられた経営者。
+      </p>
+
+      <div class="book-awards">
+        <span class="award"><i class="fas fa-trophy"></i>女性起業家大賞</span>
+        <span class="award"><i class="fas fa-trophy"></i>APEC best award</span>
+        <span class="award"><i class="fas fa-tv"></i>ガイアの夜明け</span>
+      </div>
+
+      <div class="book-links">
+        <a href="https://www.amazon.co.jp/dp/4534061641" class="book-link amazon" target="_blank" rel="noopener"><i class="fab fa-amazon"></i>Amazon</a>
+        <a href="https://books.rakuten.co.jp/search?sitem=9784534061645" class="book-link rakuten" target="_blank" rel="noopener"><i class="fas fa-shopping-bag"></i>楽天ブックス</a>
+        <a href="https://www.amazon.co.jp/dp/B0DVGWZMNJ" class="book-link kindle" target="_blank" rel="noopener"><i class="fas fa-tablet-alt"></i>Kindle</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- 2冊目 -->
+  <article class="book">
+    <div class="book-cover-wrap">
+      <div class="book-cover">
+        <img src="https://m.media-amazon.com/images/P/447811904X.09.LZZZZZZZ.jpg" alt="頭のいい人だけが解ける論理的思考問題" loading="lazy">
+        <div class="book-cover-fallback">頭のいい人だけが解ける<br>論理的思考問題</div>
+      </div>
+    </div>
+    <div class="book-info">
+      <p class="book-num">BOOK 02</p>
+      <h3 class="book-title">頭のいい人だけが解ける論理的思考問題</h3>
+      <div class="book-meta">
+        <span>野村裕之</span>
+        <span>ダイヤモンド社</span>
+        <span>2024.03.27</span>
+        <span>¥1,980</span>
+      </div>
+
+      <div class="recommender">
+        <p class="recommender-label"><i class="fas fa-microphone"></i>RECOMMENDED BY</p>
+        <p class="recommender-name">ちりめんさん</p>
+        <p class="recommender-comment pending">
+          オフ会当日のコメント、あとでここに追記します。
+        </p>
+      </div>
+
+      <p class="book-desc">
+        <strong>30万部突破の大ベストセラー</strong>。5つの思考力（論理・批判・水平・俯瞰・多角）を鍛える<strong>67問の知的トレーニング</strong>。Google・Apple・Microsoft の採用試験で出題された問題を収録。<strong>知識も計算も一切不要</strong>、問われるのは「考える力」だけ。
+      </p>
+
+      <div class="book-awards">
+        <span class="award"><i class="fas fa-fire"></i>30万部突破</span>
+        <span class="award"><i class="fas fa-medal"></i>年間ベスト4位</span>
+        <span class="award"><i class="fas fa-globe"></i>世界11カ国翻訳オファー</span>
+      </div>
+
+      <div class="book-links">
+        <a href="https://www.amazon.co.jp/dp/447811904X" class="book-link amazon" target="_blank" rel="noopener"><i class="fab fa-amazon"></i>Amazon</a>
+        <a href="https://books.rakuten.co.jp/search?sitem=9784478119044" class="book-link rakuten" target="_blank" rel="noopener"><i class="fas fa-shopping-bag"></i>楽天ブックス</a>
+        <a href="https://www.amazon.co.jp/dp/B0CSFDKWR2" class="book-link kindle" target="_blank" rel="noopener"><i class="fas fa-tablet-alt"></i>Kindle</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- 3冊目 -->
+  <article class="book">
+    <div class="book-cover-wrap">
+      <div class="book-cover">
+        <img src="https://m.media-amazon.com/images/P/4065403308.09.LZZZZZZZ.jpg" alt="殺し屋の営業術" loading="lazy">
+        <div class="book-cover-fallback">殺し屋の営業術</div>
+      </div>
+      <div class="star-badge" title="おけもん推し">⭐</div>
+    </div>
+    <div class="book-info">
+      <p class="book-num">BOOK 03 &nbsp;·&nbsp; ⭐ OKEMON'S PICK</p>
+      <h3 class="book-title">殺し屋の営業術</h3>
+      <div class="book-meta">
+        <span>野宮有</span>
+        <span>講談社</span>
+        <span>2025.08.29</span>
+        <span>単行本</span>
+      </div>
+
+      <div class="recommender">
+        <p class="recommender-label"><i class="fas fa-microphone"></i>RECOMMENDED BY</p>
+        <p class="recommender-name">おけもん<span class="star-inline">⭐</span></p>
+        <p class="recommender-comment pending">
+          オフ会当日のコメント、あとでここに追記します。
+        </p>
+      </div>
+
+      <p class="book-desc">
+        超一流セールスマンが2人の殺し屋に遭遇し死に瀕するも、<strong>巧みなセールストークで殺し屋を説得</strong>、自分自身に<strong>「2週間で2億円の営業ノルマ」</strong>を課して挑むエンタメ小説。
+      </p>
+
+      <p class="book-desc" style="background: rgba(228, 165, 174, 0.08); padding: 16px 20px; border-radius: 8px;">
+        <strong style="color: var(--color-primary);">豪華推薦</strong><br>
+        有栖川有栖 / 貫井徳郎 / 東野圭吾 / 湊かなえ / 横関大
+      </p>
+
+      <div class="book-awards">
+        <span class="award"><i class="fas fa-crown"></i>第71回 江戸川乱歩賞</span>
+        <span class="award"><i class="fas fa-tv"></i>王様のブランチBOOK大賞</span>
+        <span class="award"><i class="fas fa-medal"></i>本屋大賞2026 6位</span>
+        <span class="award"><i class="fas fa-fire"></i>15万部突破</span>
+      </div>
+
+      <div class="book-links">
+        <a href="https://www.amazon.co.jp/dp/4065403308" class="book-link amazon" target="_blank" rel="noopener"><i class="fab fa-amazon"></i>Amazon</a>
+        <a href="https://books.rakuten.co.jp/search?sitem=9784065403303" class="book-link rakuten" target="_blank" rel="noopener"><i class="fas fa-shopping-bag"></i>楽天ブックス</a>
+        <a href="https://www.amazon.co.jp/dp/B0FM3RG94G" class="book-link kindle" target="_blank" rel="noopener"><i class="fas fa-tablet-alt"></i>Kindle</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- 4冊目 -->
+  <article class="book">
+    <div class="book-cover-wrap">
+      <div class="book-cover">
+        <img src="https://m.media-amazon.com/images/P/4799112198.09.LZZZZZZZ.jpg" alt="移動する人はうまくいく" loading="lazy">
+        <div class="book-cover-fallback">移動する人は<br>うまくいく</div>
+      </div>
+      <div class="star-badge double" title="かりんさん×おけもんW推し">⭐</div>
+    </div>
+    <div class="book-info">
+      <p class="book-num">BOOK 04 &nbsp;·&nbsp; ⭐⭐ W PICK</p>
+      <h3 class="book-title">移動する人はうまくいく</h3>
+      <div class="book-meta">
+        <span>長倉顕太</span>
+        <span>すばる舎</span>
+        <span>2024.04.11</span>
+        <span>¥1,650</span>
+      </div>
+
+      <div class="recommender">
+        <p class="recommender-label"><i class="fas fa-microphone"></i>RECOMMENDED BY</p>
+        <p class="recommender-name">かりんさん <span style="font-size: 13px; color: var(--color-text-light);">×</span> おけもん<span class="star-inline">⭐</span></p>
+        <p class="recommender-comment">
+          「私もこの本大好きなんだよね」<span style="color: var(--color-text-light); font-size: 13px;">── おけもん</span>
+        </p>
+      </div>
+
+      <p class="book-desc">
+        「<strong>考えてばかりで動けない</strong>」が消えてなくなる最高の方法。人を行動させてきたプロが教える、<strong>移動で行動力＆継続力を上げて人生を好転させる秘訣</strong>。仕事・人間関係・お金・成長・留学まで、ライフスタイルの変化に対応。
+      </p>
+
+      <div class="book-awards">
+        <span class="award"><i class="fas fa-fire"></i>20万部突破</span>
+        <span class="award"><i class="fas fa-chart-line"></i>SNSで話題沸騰</span>
+        <span class="award"><i class="fas fa-book"></i>著者累計1100万部</span>
+      </div>
+
+      <div class="book-links">
+        <a href="https://www.amazon.co.jp/dp/4799112198" class="book-link amazon" target="_blank" rel="noopener"><i class="fab fa-amazon"></i>Amazon</a>
+        <a href="https://books.rakuten.co.jp/search?sitem=9784799112199" class="book-link rakuten" target="_blank" rel="noopener"><i class="fas fa-shopping-bag"></i>楽天ブックス</a>
+        <a href="https://www.amazon.co.jp/dp/B0CTHSC2CH" class="book-link kindle" target="_blank" rel="noopener"><i class="fas fa-tablet-alt"></i>Kindle</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- 5冊目 -->
+  <article class="book">
+    <div class="book-cover-wrap">
+      <div class="book-cover">
+        <img src="https://m.media-amazon.com/images/P/416771101X.09.LZZZZZZZ.jpg" alt="イン・ザ・プール" loading="lazy">
+        <div class="book-cover-fallback">イン・ザ・プール</div>
+      </div>
+    </div>
+    <div class="book-info">
+      <p class="book-num">BOOK 05</p>
+      <h3 class="book-title">イン・ザ・プール</h3>
+      <div class="book-meta">
+        <span>奥田英朗</span>
+        <span>文春文庫</span>
+        <span>2006.03.10</span>
+        <span>¥726</span>
+      </div>
+
+      <div class="recommender">
+        <p class="recommender-label"><i class="fas fa-microphone"></i>RECOMMENDED BY</p>
+        <p class="recommender-name">ちーちゃん <span style="font-size: 12px; color: var(--color-text-light); font-weight: 500;">（2冊目の推し）</span></p>
+        <p class="recommender-comment pending">
+          オフ会当日のコメント、あとでここに追記します。
+        </p>
+      </div>
+
+      <p class="book-desc">
+        精神科医・伊良部一郎シリーズの第1作。<strong>水泳中毒・ケータイ中毒・慢性勃起症</strong>を抱えた患者たちが訪れる伊良部総合病院。型破りな医師の奇妙な治療で、<strong>深刻な悩みがバカらしくなる</strong>コミカルかつ軽妙な連作短編集。続編『空中ブランコ』は直木賞受賞作。
+      </p>
+
+      <div class="book-awards">
+        <span class="award"><i class="fas fa-trophy"></i>第4回 大藪春彦賞</span>
+        <span class="award"><i class="fas fa-book-open"></i>伊良部シリーズ第1作</span>
+      </div>
+
+      <div class="book-links">
+        <a href="https://www.amazon.co.jp/dp/416771101X" class="book-link amazon" target="_blank" rel="noopener"><i class="fab fa-amazon"></i>Amazon</a>
+        <a href="https://books.rakuten.co.jp/search?sitem=9784167711016" class="book-link rakuten" target="_blank" rel="noopener"><i class="fas fa-shopping-bag"></i>楽天ブックス</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- 6冊目 -->
+  <article class="book">
+    <div class="book-cover-wrap">
+      <div class="book-cover">
+        <img src="https://m.media-amazon.com/images/P/4296071068.09.LZZZZZZZ.jpg" alt="#100日チャレンジ 毎日連続100本アプリを作ったら人生が変わった" loading="lazy">
+        <div class="book-cover-fallback">#100日チャレンジ</div>
+      </div>
+    </div>
+    <div class="book-info">
+      <p class="book-num">BOOK 06</p>
+      <h3 class="book-title">#100日チャレンジ 毎日連続100本アプリを作ったら人生が変わった</h3>
+      <div class="book-meta">
+        <span>大塚あみ</span>
+        <span>日経BP</span>
+        <span>2025.01.11</span>
+        <span>¥1,980</span>
+      </div>
+
+      <div class="recommender">
+        <p class="recommender-label"><i class="fas fa-microphone"></i>RECOMMENDED BY</p>
+        <p class="recommender-name">ぽめさん</p>
+        <p class="recommender-comment pending">
+          オフ会当日のコメント、あとでここに追記します。
+        </p>
+      </div>
+
+      <p class="book-desc">
+        <strong>怠け者の大学4年生がChatGPTに出会い、ノリでプログラミング</strong>に取り組んだら、教授に褒められ、海外論文が認められ、ITエンジニアとして就職できた。100日で100本のアプリを作りXに投稿し続けた<strong>Z世代のAI駆動型プログラミング学習探究記</strong>。
+      </p>
+
+      <div class="book-awards">
+        <span class="award"><i class="fas fa-bolt"></i>AI駆動型開発</span>
+        <span class="award"><i class="fas fa-graduation-cap"></i>学会・国際シンポ発表</span>
+        <span class="award"><i class="fas fa-star"></i>★4.6 / 717 reviews</span>
+      </div>
+
+      <div class="book-links">
+        <a href="https://www.amazon.co.jp/dp/4296071068" class="book-link amazon" target="_blank" rel="noopener"><i class="fab fa-amazon"></i>Amazon</a>
+        <a href="https://books.rakuten.co.jp/search?sitem=9784296071067" class="book-link rakuten" target="_blank" rel="noopener"><i class="fas fa-shopping-bag"></i>楽天ブックス</a>
+        <a href="https://www.amazon.co.jp/dp/B0DQ81M5TF" class="book-link kindle" target="_blank" rel="noopener"><i class="fas fa-tablet-alt"></i>Kindle</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- 7冊目 -->
+  <article class="book">
+    <div class="book-cover-wrap">
+      <div class="book-cover">
+        <img src="https://m.media-amazon.com/images/P/4591185664.09.LZZZZZZZ.jpg" alt="さみしい夜のページをめくれ" loading="lazy">
+        <div class="book-cover-fallback">さみしい夜の<br>ページをめくれ</div>
+      </div>
+    </div>
+    <div class="book-info">
+      <p class="book-num">BOOK 07</p>
+      <h3 class="book-title">さみしい夜のページをめくれ</h3>
+      <div class="book-meta">
+        <span>古賀史健</span>
+        <span>ならの（イラスト）</span>
+        <span>ポプラ社</span>
+        <span>2025.03.19</span>
+        <span>¥1,760</span>
+      </div>
+
+      <div class="recommender">
+        <p class="recommender-label"><i class="fas fa-microphone"></i>RECOMMENDED BY</p>
+        <p class="recommender-name">（オフ会で追記予定）</p>
+        <p class="recommender-comment pending">
+          紹介者コメント、あとでここに追記します。
+        </p>
+      </div>
+
+      <p class="book-desc">
+        『嫌われる勇気』の著者・古賀史健による13歳向け人生ガイド<strong>第2弾</strong>。前作『さみしい夜にはペンを持て』の続編で、今度のテーマは<strong>「読書」</strong>。中学3年生のタコジローが謎のヒトデ占い師と出会い、本の言葉を使って占ってもらう──<strong>不確かな世界との人間関係を築く本</strong>。
+      </p>
+
+      <p class="book-desc" style="background: rgba(228, 165, 174, 0.08); padding: 16px 20px; border-radius: 8px; font-style: italic;">
+        「こんな本があったらよかったのに。こんな大人に会いたかったのに。それをまず作者たちは思ったわけだ。そして、ほんとうに書いて作った。」<br>
+        <span style="font-style: normal; color: var(--color-text-light); font-size: 12px;">── 糸井重里</span>
+      </p>
+
+      <div class="book-awards">
+        <span class="award"><i class="fas fa-heart"></i>糸井重里 推薦</span>
+        <span class="award"><i class="fas fa-fire"></i>シリーズ累計16万部</span>
+        <span class="award"><i class="fas fa-book"></i>『嫌われる勇気』著者</span>
+      </div>
+
+      <div class="book-links">
+        <a href="https://www.amazon.co.jp/dp/4591185664" class="book-link amazon" target="_blank" rel="noopener"><i class="fab fa-amazon"></i>Amazon</a>
+        <a href="https://books.rakuten.co.jp/search?sitem=9784591185667" class="book-link rakuten" target="_blank" rel="noopener"><i class="fas fa-shopping-bag"></i>楽天ブックス</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- 8冊目 -->
+  <article class="book">
+    <div class="book-cover-wrap">
+      <div class="book-cover">
+        <img src="https://m.media-amazon.com/images/P/486410915X.09.LZZZZZZZ.jpg" alt="プロだけが知っている小説の書き方" loading="lazy">
+        <div class="book-cover-fallback">プロだけが知っている<br>小説の書き方</div>
+      </div>
+    </div>
+    <div class="book-info">
+      <p class="book-num">BOOK 08</p>
+      <h3 class="book-title">プロだけが知っている小説の書き方</h3>
+      <div class="book-meta">
+        <span>森沢明夫</span>
+        <span>飛鳥新社</span>
+        <span>¥1,430</span>
+        <span>Audible対応</span>
+      </div>
+
+      <div class="recommender">
+        <p class="recommender-label"><i class="fas fa-microphone"></i>RECOMMENDED BY</p>
+        <p class="recommender-name">（オフ会で追記予定）</p>
+        <p class="recommender-comment pending">
+          紹介者コメント、あとでここに追記します。
+        </p>
+      </div>
+
+      <p class="book-desc">
+        『虹の岬の喫茶店』『おいしくて泣くとき』などのベストセラーを送り出してきた<strong>森沢明夫 初の実用書</strong>。小説投稿サイト「ノベルアップ+」に寄せられた「書き方」の質問に<strong>一問一答形式</strong>で回答。曖昧な"心得"はいっさい無し、<strong>本当に役立つ具体的・実用的な情報</strong>だけをまとめた一冊。著者の講義を受けて実際にデビューした人もいる実績あり。
+      </p>
+
+      <div class="book-awards">
+        <span class="award"><i class="fas fa-fire"></i>発売3年超も ベストセラー</span>
+        <span class="award"><i class="fas fa-pen-nib"></i>ノベルアップ+ 一問一答</span>
+        <span class="award"><i class="fas fa-headphones"></i>Audible完全版あり</span>
+      </div>
+
+      <div class="book-links">
+        <a href="https://www.amazon.co.jp/dp/486410915X" class="book-link amazon" target="_blank" rel="noopener"><i class="fab fa-amazon"></i>Amazon</a>
+        <a href="https://books.rakuten.co.jp/search?sitem=9784864109154" class="book-link rakuten" target="_blank" rel="noopener"><i class="fas fa-shopping-bag"></i>楽天ブックス</a>
+        <a href="https://www.amazon.co.jp/dp/B0B76MQSPR" class="book-link kindle" target="_blank" rel="noopener"><i class="fas fa-tablet-alt"></i>Kindle</a>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ============================================
+     HIGHLIGHTS
+     ============================================ -->
+<section class="highlights">
+  <div class="highlights-inner">
+    <p class="highlights-label">HIGHLIGHTS</p>
+    <h2>この夜、集まった数字。</h2>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-num">8<span>冊</span></div>
+        <div class="highlight-label">紹介された本</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">5<span>+</span></div>
+        <div class="highlight-label">紹介してくれた人</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">2<span>冊</span></div>
+        <div class="highlight-label">おけもん推し⭐</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">1<span>冊</span></div>
+        <div class="highlight-label">W推し⭐⭐</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     OUTRO
+     ============================================ -->
+<section class="outro">
+  <div class="outro-inner">
+    <p class="outro-label">THANKS</p>
+    <h2>また、ページをめくれる夜に。</h2>
+    <p>
+      紹介してくれたみんな、ありがとう。<br>
+      それぞれの一冊が、<br>
+      きっと誰かの「あした」を連れてくる。
+    </p>
+    <p>
+      次回の"ゆるっと読書会"も、<br>
+      きっとどこかで、そっと開かれます。
+    </p>
+    <div class="outro-signature">
+      <i class="fas fa-heart"></i>
+      <span>おけもんカンパニー 編</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+  <p>&copy; 2026 おけもんカンパニー &nbsp;·&nbsp; ゆるっと読書会 2026.04.17</p>
+</footer>
+
+<!--
+  楽天ブックスAPIはPhase 2として残す：
+  - 書影画像URLは現状 Amazon CDN（m.media-amazon.com）で安定取得
+  - 楽天APIでISBN検索→書影・価格・レビュー差し替えはアプリID取得後に実装
+-->
+
+<script>
+  // 書影が読み込めなかった場合のフォールバック表示
+  document.querySelectorAll('.book-cover img').forEach(img => {
+    img.addEventListener('error', () => {
+      img.style.display = 'none';
+      const fallback = img.nextElementSibling;
+      if (fallback && fallback.classList.contains('book-cover-fallback')) {
+        fallback.style.opacity = '1';
+      }
+    });
+  });
+
+  // スクロール連動フェードイン（各book要素）
+  const books = document.querySelectorAll('.book');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  books.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) {
+      el.classList.add('is-visible');
+    } else {
+      obs.observe(el);
+    }
+  });
+</script>
+
+</body>
+</html>
