@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>補助金制度わかりやすく解説 | AI研修×補助金事業</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --color-primary:#2C5F4B;
+  --color-primary-light:#3d7a62;
+  --color-primary-dark:#1e4434;
+  --color-accent:#C4915E;
+  --color-accent-light:#d6a87a;
+  --color-bg:#F4EFE6;
+  --color-bg-deep:#EAE2D1;
+  --color-paper:#FBF8F2;
+  --color-ink:#1a1a1a;
+  --color-muted:#6b6658;
+  --color-line:rgba(44,95,75,0.15);
+  --color-danger:#b04e3a;
+  --color-warn:#c78940;
+  --color-success:#4a8268;
+  --serif:"Noto Serif JP",serif;
+  --sans:"Noto Sans JP",sans-serif;
+  --en:"Cormorant Garamond","Inter",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{
+  font-family:var(--sans);
+  color:var(--color-ink);
+  background:var(--color-bg);
+  line-height:1.9;
+  overflow-x:hidden;
+}
+
+/* ========== ナビ ========== */
+.nav{
+  position:fixed;
+  top:0;left:0;right:0;z-index:100;
+  background:rgba(251,248,242,0.92);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--color-line);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;
+  padding:14px 32px;
+  display:flex;justify-content:space-between;align-items:center;gap:24px;
+}
+.nav-back{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:14px;
+  color:var(--color-primary-dark);
+  text-decoration:none;
+  display:flex;align-items:center;gap:10px;
+  transition:color 0.2s ease;
+}
+.nav-back:hover{color:var(--color-accent)}
+.nav-back i{color:var(--color-accent);transition:transform 0.3s ease}
+.nav-back:hover i{transform:translateX(-4px)}
+.nav-back-sub{
+  font-family:var(--en);
+  font-size:11px;
+  color:var(--color-muted);
+  letter-spacing:2px;
+  margin-left:4px;
+  text-transform:uppercase;
+}
+.nav-links{display:flex;gap:22px;list-style:none;align-items:center}
+.nav-links a{
+  font-family:var(--sans);
+  font-size:13px;
+  font-weight:500;
+  color:var(--color-ink);
+  text-decoration:none;
+  position:relative;
+  padding:6px 0;
+  transition:color 0.2s ease;
+}
+.nav-links a:hover{color:var(--color-accent)}
+.nav-links a::after{
+  content:"";position:absolute;bottom:0;left:0;
+  width:0;height:1px;background:var(--color-accent);
+  transition:width 0.3s ease;
+}
+.nav-links a:hover::after{width:100%}
+.nav-toggle{
+  display:none;background:none;border:none;
+  font-size:20px;color:var(--color-primary-dark);cursor:pointer;
+}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .nav-toggle{display:block}
+  .nav-back-sub{display:none}
+  .nav-links.open{
+    display:flex;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;background:var(--color-paper);
+    padding:20px 32px;border-bottom:1px solid var(--color-line);
+    gap:14px;align-items:flex-start;
+  }
+}
+
+/* ========== 共通 ========== */
+.chapter{
+  min-height:auto;
+  padding:100px 40px;
+  position:relative;
+}
+.container{max-width:1080px;margin:0 auto}
+.ch-num{
+  font-family:var(--en);
+  font-size:14px;
+  letter-spacing:4px;
+  color:var(--color-accent);
+  text-transform:uppercase;
+  margin-bottom:16px;
+  display:flex;align-items:center;gap:14px;
+}
+.ch-num::before{
+  content:"";width:40px;height:1px;
+  background:var(--color-accent);
+}
+.ch-title{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(26px,3.8vw,40px);
+  line-height:1.4;
+  color:var(--color-primary-dark);
+  margin-bottom:20px;
+  letter-spacing:0.02em;
+}
+.ch-sub{
+  font-family:var(--serif);
+  font-size:clamp(15px,1.7vw,18px);
+  color:var(--color-muted);
+  margin-bottom:50px;
+  line-height:1.9;
+}
+
+/* ========== 表紙（Ch.1） ========== */
+.cover{
+  background:linear-gradient(135deg,var(--color-primary-dark) 0%,var(--color-primary) 60%,var(--color-primary-light) 100%);
+  color:#fff;
+  padding:150px 40px 80px;
+  position:relative;
+  overflow:hidden;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+}
+.cover::before{
+  content:"";position:absolute;
+  top:-20%;right:-10%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(196,145,94,0.15) 0%,transparent 70%);
+  border-radius:50%;
+}
+.cover::after{
+  content:"";position:absolute;
+  bottom:-20%;left:-10%;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(196,145,94,0.08) 0%,transparent 70%);
+  border-radius:50%;
+}
+.cover-inner{position:relative;z-index:2;width:100%;max-width:1080px;margin:0 auto}
+.cover-kicker{
+  font-family:var(--en);
+  font-size:clamp(14px,1.5vw,18px);
+  letter-spacing:4px;
+  color:var(--color-accent);
+  margin-bottom:24px;
+  text-transform:uppercase;
+}
+.cover-title{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(36px,6vw,68px);
+  line-height:1.2;
+  color:#fff;
+  margin-bottom:28px;
+  letter-spacing:0.02em;
+}
+.cover-title .accent{color:var(--color-accent-light)}
+.cover-sub{
+  font-family:var(--serif);
+  font-size:clamp(16px,1.9vw,22px);
+  color:rgba(255,255,255,0.85);
+  line-height:1.9;
+  max-width:720px;
+  margin-bottom:60px;
+}
+.cover-numbers{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:30px;
+  margin-top:40px;
+  padding-top:40px;
+  border-top:1px solid rgba(196,145,94,0.4);
+}
+.cover-num-value{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(32px,4.5vw,48px);
+  color:var(--color-accent-light);
+  line-height:1;
+  margin-bottom:12px;
+}
+.cover-num-value .unit{font-size:0.5em;color:rgba(255,255,255,0.7);margin-left:4px}
+.cover-num-label{
+  font-size:14px;
+  color:rgba(255,255,255,0.8);
+  letter-spacing:1px;
+}
+.cover-tag{
+  display:inline-block;
+  font-family:var(--en);
+  font-size:12px;
+  padding:6px 16px;
+  background:rgba(196,145,94,0.2);
+  color:var(--color-accent-light);
+  border:1px solid rgba(196,145,94,0.4);
+  border-radius:100px;
+  letter-spacing:2px;
+  margin-bottom:24px;
+  text-transform:uppercase;
+}
+
+/* ========== Ch.2 比較 ========== */
+.ch2{background:var(--color-bg)}
+.compare-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin-top:40px;
+}
+@media (max-width:880px){.compare-grid{grid-template-columns:1fr}}
+.compare-card{
+  padding:36px 30px;
+  background:var(--color-paper);
+  border-top:4px solid;
+  position:relative;
+  transition:transform 0.3s ease;
+}
+.compare-card:hover{transform:translateY(-4px)}
+.compare-card.main{border-top-color:var(--color-danger)}
+.compare-card.sub{border-top-color:var(--color-accent)}
+.compare-card.option{border-top-color:var(--color-success)}
+.compare-rank{
+  position:absolute;
+  top:22px;right:24px;
+  font-family:var(--en);
+  font-size:11px;
+  letter-spacing:2px;
+  padding:4px 10px;
+  background:var(--color-primary-dark);
+  color:#fff;
+  text-transform:uppercase;
+}
+.compare-card.main .compare-rank{background:var(--color-danger)}
+.compare-card.sub .compare-rank{background:var(--color-accent)}
+.compare-card.option .compare-rank{background:var(--color-success)}
+.compare-icon{
+  font-size:28px;
+  color:var(--color-primary);
+  margin-bottom:18px;
+}
+.compare-card.main .compare-icon{color:var(--color-danger)}
+.compare-card.sub .compare-icon{color:var(--color-accent)}
+.compare-card.option .compare-icon{color:var(--color-success)}
+.compare-name{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:18px;
+  color:var(--color-primary-dark);
+  margin-bottom:8px;
+  line-height:1.5;
+}
+.compare-agency{
+  font-size:12px;
+  color:var(--color-muted);
+  margin-bottom:20px;
+  font-family:var(--en);
+  letter-spacing:1px;
+}
+.compare-items{
+  list-style:none;padding:0;
+  padding-top:16px;
+  border-top:1px solid var(--color-line);
+}
+.compare-items li{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  font-size:13px;
+  line-height:1.5;
+  gap:10px;
+}
+.compare-items .label{
+  color:var(--color-muted);
+  font-family:var(--en);
+  font-size:11px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  flex-shrink:0;
+}
+.compare-items .value{
+  font-family:var(--serif);
+  font-weight:700;
+  color:var(--color-primary-dark);
+  text-align:right;
+}
+
+/* ========== Ch.3 人材開発支援助成金（メイン） ========== */
+.ch3{background:var(--color-paper)}
+.main-block{
+  margin-top:40px;
+  padding:40px 36px;
+  background:linear-gradient(135deg,rgba(44,95,75,0.06),rgba(196,145,94,0.03));
+  border-left:4px solid var(--color-primary);
+}
+.main-block-label{
+  font-family:var(--en);
+  font-size:12px;
+  letter-spacing:3px;
+  color:var(--color-accent);
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+.main-block-title{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(22px,3vw,28px);
+  color:var(--color-primary-dark);
+  margin-bottom:14px;
+  line-height:1.4;
+}
+.main-block-desc{
+  font-size:15px;
+  color:var(--color-ink);
+  line-height:2;
+  max-width:800px;
+}
+.kv-grid{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.kv-card{
+  padding:24px 22px;
+  background:var(--color-paper);
+  border:1px solid var(--color-line);
+  border-top:3px solid var(--color-accent);
+}
+.kv-label{
+  font-family:var(--en);
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--color-muted);
+  margin-bottom:8px;
+  text-transform:uppercase;
+}
+.kv-value{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:20px;
+  color:var(--color-primary-dark);
+  line-height:1.4;
+  margin-bottom:4px;
+}
+.kv-sub{font-size:12px;color:var(--color-muted);line-height:1.6}
+
+/* 申請ステップフロー */
+.steps-section{
+  margin-top:60px;
+}
+.steps-section-title{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:22px;
+  color:var(--color-primary-dark);
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.steps-section-title i{color:var(--color-accent)}
+.steps-section-sub{
+  font-size:14px;
+  color:var(--color-muted);
+  margin-bottom:30px;
+}
+.steps{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+  position:relative;
+}
+@media (max-width:880px){
+  .steps{grid-template-columns:1fr;gap:20px}
+}
+.step{
+  padding:26px 20px;
+  background:var(--color-paper);
+  border:1px solid var(--color-line);
+  position:relative;
+  display:flex;
+  flex-direction:column;
+}
+.step-num{
+  font-family:var(--en);
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--color-accent);
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.step-icon{
+  width:42px;height:42px;
+  background:rgba(196,145,94,0.12);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--color-accent);font-size:16px;
+  margin-bottom:14px;
+}
+.step-title{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:15px;
+  color:var(--color-primary-dark);
+  line-height:1.5;
+  margin-bottom:6px;
+}
+.step-desc{
+  font-size:12.5px;
+  color:var(--color-muted);
+  line-height:1.7;
+}
+.step::after{
+  content:"→";
+  position:absolute;
+  right:-15px;top:50%;
+  transform:translateY(-50%);
+  color:var(--color-accent);
+  font-family:var(--en);
+  font-size:20px;
+  z-index:2;
+}
+.step:last-child::after{display:none}
+@media (max-width:880px){
+  .step::after{
+    content:"↓";
+    right:50%;top:auto;bottom:-18px;
+    transform:translateX(50%);
+  }
+}
+
+/* Claude Codeハイライト */
+.cc-highlight{
+  margin-top:50px;
+  padding:36px 36px;
+  background:var(--color-primary-dark);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.cc-highlight::before{
+  content:"";
+  position:absolute;
+  top:0;right:0;
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(196,145,94,0.2),transparent 70%);
+  border-radius:50%;
+}
+.cc-label{
+  font-family:var(--en);
+  font-size:12px;
+  letter-spacing:3px;
+  color:var(--color-accent-light);
+  margin-bottom:12px;
+  text-transform:uppercase;
+  position:relative;z-index:2;
+}
+.cc-title{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(18px,2.5vw,24px);
+  line-height:1.6;
+  margin-bottom:14px;
+  position:relative;z-index:2;
+}
+.cc-title .accent{color:var(--color-accent-light)}
+.cc-body{
+  font-size:14.5px;
+  color:rgba(255,255,255,0.85);
+  line-height:2;
+  position:relative;z-index:2;
+  max-width:800px;
+}
+
+/* ========== Ch.4 AI導入補助金 ========== */
+.ch4{background:var(--color-bg)}
+.sub-block{
+  margin-top:40px;
+  padding:0;
+  background:var(--color-paper);
+}
+.sub-header{
+  padding:30px 36px;
+  border-bottom:1px solid var(--color-line);
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  flex-wrap:wrap;
+  gap:20px;
+}
+.sub-header-left{flex:1;min-width:250px}
+.sub-tag{
+  font-family:var(--en);
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--color-accent);
+  margin-bottom:6px;
+  text-transform:uppercase;
+}
+.sub-title{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:22px;
+  color:var(--color-primary-dark);
+  line-height:1.4;
+}
+.sub-rate{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:28px;
+  color:var(--color-accent);
+  line-height:1;
+}
+.sub-rate .unit{font-size:0.5em;color:var(--color-muted);margin-left:4px}
+.sub-body{padding:36px}
+.sub-desc{
+  font-size:15px;
+  color:var(--color-ink);
+  line-height:2;
+  margin-bottom:30px;
+}
+.target-list{
+  list-style:none;padding:0;
+  background:var(--color-bg);
+  padding:24px 28px;
+}
+.target-list li{
+  padding:10px 0 10px 28px;
+  position:relative;
+  font-size:14.5px;
+  line-height:1.7;
+  color:var(--color-ink);
+}
+.target-list li i{
+  position:absolute;left:0;top:14px;
+  color:var(--color-accent);
+  font-size:13px;
+}
+.target-list li strong{color:var(--color-primary-dark)}
+
+.individual-note{
+  margin-top:30px;
+  padding:26px 28px;
+  background:linear-gradient(135deg,rgba(196,145,94,0.12),rgba(196,145,94,0.04));
+  border-left:3px solid var(--color-accent);
+}
+.individual-note-label{
+  font-family:var(--en);
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--color-accent);
+  margin-bottom:8px;
+  text-transform:uppercase;
+}
+.individual-note-title{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:17px;
+  color:var(--color-primary-dark);
+  margin-bottom:12px;
+  line-height:1.5;
+}
+.individual-note-body{
+  font-size:14px;
+  color:var(--color-ink);
+  line-height:1.9;
+}
+
+/* ========== Ch.5 外部講師・Win-Win-Win ========== */
+.ch5{background:var(--color-paper)}
+.reason-box{
+  margin-top:40px;
+  padding:36px 36px;
+  background:var(--color-bg);
+  border-left:4px solid var(--color-danger);
+  position:relative;
+}
+.reason-label{
+  font-family:var(--en);
+  font-size:12px;
+  letter-spacing:3px;
+  color:var(--color-danger);
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+.reason-title{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(20px,2.5vw,24px);
+  color:var(--color-primary-dark);
+  margin-bottom:16px;
+  line-height:1.5;
+}
+.reason-body{
+  font-size:15px;
+  color:var(--color-ink);
+  line-height:2;
+  max-width:800px;
+}
+.triangle-section{margin-top:60px}
+.triangle-wrap{
+  position:relative;
+  max-width:900px;
+  margin:40px auto;
+  min-height:540px;
+}
+.win-card{
+  position:absolute;
+  width:min(300px,90%);
+  padding:26px 22px;
+  background:var(--color-paper);
+  border-top:3px solid var(--color-accent);
+  box-shadow:0 4px 20px rgba(44,95,75,0.06);
+  transition:transform 0.3s ease;
+}
+.win-card:hover{transform:translateY(-4px)}
+.win-card-icon{
+  font-size:26px;
+  color:var(--color-primary);
+  margin-bottom:12px;
+}
+.win-card-role{
+  font-family:var(--en);
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--color-accent);
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.win-card-name{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:17px;
+  color:var(--color-primary-dark);
+  margin-bottom:14px;
+}
+.win-card-list{list-style:none;padding:0}
+.win-card-list li{
+  font-size:13.5px;
+  color:var(--color-ink);
+  padding:4px 0 4px 14px;
+  position:relative;
+  line-height:1.7;
+}
+.win-card-list li::before{
+  content:"";
+  position:absolute;left:0;top:13px;
+  width:5px;height:5px;
+  background:var(--color-accent);
+  border-radius:50%;
+}
+.win-card-list li strong{color:var(--color-primary-dark)}
+.win-top{top:0;left:50%;transform:translateX(-50%)}
+.win-left{bottom:0;left:0}
+.win-right{bottom:0;right:0}
+.win-center{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(14px,1.8vw,18px);
+  color:var(--color-primary-dark);
+  text-align:center;
+  padding:18px;
+  background:var(--color-bg);
+  border-radius:50%;
+  width:150px;height:150px;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--color-accent);
+  line-height:1.4;
+}
+@media (max-width:720px){
+  .triangle-wrap{min-height:auto}
+  .win-card{position:relative;width:100%;margin-bottom:20px;top:auto;left:auto;right:auto;bottom:auto;transform:none}
+  .win-center{display:none}
+}
+
+/* ========== Ch.6 誤解5つ ========== */
+.ch6{background:var(--color-bg)}
+.myth-list{
+  margin-top:40px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.myth{
+  background:var(--color-paper);
+  overflow:hidden;
+  border:1px solid var(--color-line);
+}
+.myth-num{
+  font-family:var(--en);
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--color-accent);
+  padding:14px 28px 0;
+  text-transform:uppercase;
+}
+.myth-ba{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:0;
+  padding:14px 0;
+}
+@media (max-width:720px){.myth-ba{grid-template-columns:1fr;gap:14px}}
+.myth-col{
+  padding:18px 28px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.myth-col.wrong{background:linear-gradient(135deg,rgba(176,78,58,0.05),transparent 70%)}
+.myth-col.right{background:linear-gradient(135deg,transparent 30%,rgba(74,130,104,0.06))}
+.myth-col-label{
+  font-family:var(--en);
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  display:flex;align-items:center;gap:6px;
+}
+.myth-col.wrong .myth-col-label{color:var(--color-danger)}
+.myth-col.right .myth-col-label{color:var(--color-success)}
+.myth-col-text{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:15px;
+  line-height:1.8;
+  color:var(--color-ink);
+}
+.myth-col.right .myth-col-text strong{color:var(--color-success)}
+.myth-arrow{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  color:var(--color-accent);
+  padding:0 16px;
+}
+@media (max-width:720px){.myth-arrow{transform:rotate(90deg)}}
+
+/* ========== Ch.7 CTA ========== */
+.ch7{
+  background:linear-gradient(135deg,var(--color-primary-dark),var(--color-primary));
+  color:#fff;
+}
+.ch7 .ch-num{color:var(--color-accent-light)}
+.ch7 .ch-num::before{background:var(--color-accent-light)}
+.ch7 .ch-title{color:#fff}
+.ch7 .ch-sub{color:rgba(255,255,255,0.8)}
+.cta-main{
+  margin-top:40px;
+  padding:50px 40px;
+  background:rgba(196,145,94,0.1);
+  border:1px solid rgba(196,145,94,0.3);
+  text-align:center;
+}
+.cta-label{
+  font-family:var(--en);
+  font-size:12px;
+  letter-spacing:4px;
+  color:var(--color-accent-light);
+  margin-bottom:18px;
+  text-transform:uppercase;
+}
+.cta-title{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(22px,3vw,30px);
+  line-height:1.6;
+  margin-bottom:20px;
+}
+.cta-title .accent{color:var(--color-accent-light)}
+.cta-desc{
+  font-size:15px;
+  color:rgba(255,255,255,0.85);
+  line-height:1.9;
+  max-width:600px;
+  margin:0 auto 28px;
+}
+.cta-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:16px 36px;
+  background:var(--color-accent);
+  color:#fff;
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:15px;
+  text-decoration:none;
+  transition:all 0.3s ease;
+  border:1px solid var(--color-accent);
+}
+.cta-btn:hover{
+  background:transparent;
+  color:var(--color-accent-light);
+  transform:translateY(-2px);
+}
+.cta-btn i{font-size:13px;transition:transform 0.3s ease}
+.cta-btn:hover i{transform:translateX(4px)}
+.official-links{
+  margin-top:50px;
+  padding-top:40px;
+  border-top:1px solid rgba(255,255,255,0.15);
+}
+.official-links-title{
+  font-family:var(--en);
+  font-size:13px;
+  letter-spacing:3px;
+  color:var(--color-accent-light);
+  margin-bottom:24px;
+  text-transform:uppercase;
+  text-align:center;
+}
+.official-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+}
+.official-link{
+  padding:20px 22px;
+  background:rgba(255,255,255,0.05);
+  border-left:2px solid var(--color-accent-light);
+  text-decoration:none;
+  color:#fff;
+  transition:all 0.3s ease;
+  display:block;
+}
+.official-link:hover{
+  background:rgba(255,255,255,0.1);
+  transform:translateX(4px);
+}
+.official-link-tag{
+  font-family:var(--en);
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--color-accent-light);
+  margin-bottom:6px;
+  text-transform:uppercase;
+}
+.official-link-title{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:14px;
+  color:#fff;
+  margin-bottom:4px;
+  line-height:1.5;
+}
+.official-link-url{
+  font-family:var(--en);
+  font-size:11px;
+  color:rgba(255,255,255,0.5);
+  word-break:break-all;
+}
+.back-home-cta{
+  margin-top:50px;
+  text-align:center;
+}
+.back-home-cta a{
+  font-family:var(--serif);
+  font-size:15px;
+  color:var(--color-accent-light);
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.back-home-cta a:hover{color:#fff}
+.back-home-cta i{transition:transform 0.3s ease}
+.back-home-cta a:hover i{transform:translateX(-4px)}
+
+/* ========== フッター ========== */
+.footer{
+  padding:50px 40px;
+  background:var(--color-ink);
+  color:rgba(255,255,255,0.6);
+  text-align:center;
+}
+.footer-logo{
+  font-family:var(--serif);
+  font-size:14px;
+  color:var(--color-accent-light);
+  letter-spacing:2px;
+  margin-bottom:10px;
+}
+.footer-text{
+  font-family:var(--en);
+  font-size:11px;
+  letter-spacing:2px;
+  margin-bottom:16px;
+}
+.footer-disclaimer{
+  max-width:600px;
+  margin:16px auto 0;
+  font-size:11px;
+  color:rgba(255,255,255,0.4);
+  line-height:1.8;
+}
+
+/* ========== アニメ ========== */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity 0.9s ease,transform 0.9s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.stagger>*{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease}
+.stagger.visible>*{opacity:1;transform:translateY(0)}
+.stagger.visible>*:nth-child(1){transition-delay:0.05s}
+.stagger.visible>*:nth-child(2){transition-delay:0.15s}
+.stagger.visible>*:nth-child(3){transition-delay:0.25s}
+.stagger.visible>*:nth-child(4){transition-delay:0.35s}
+.stagger.visible>*:nth-child(5){transition-delay:0.45s}
+.stagger.visible>*:nth-child(6){transition-delay:0.55s}
+
+@media (max-width:720px){
+  .chapter{padding:70px 24px}
+  .cover{padding:120px 24px 60px}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== ナビ ========== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="ai-grant-dashboard.html" class="nav-back">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>PJホームへ戻る</span>
+      <span class="nav-back-sub">Back to Hub</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#compare">比較</a></li>
+      <li><a href="#main-grant">人材開発助成金</a></li>
+      <li><a href="#ai-subsidy">AI導入補助金</a></li>
+      <li><a href="#structure">外部講師</a></li>
+      <li><a href="#myths">誤解を解く</a></li>
+      <li><a href="#cta">相談</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ========== Ch.1 表紙 ========== -->
+<section class="cover" id="top">
+  <div class="cover-inner">
+    <div class="fade-in">
+      <div class="cover-tag">Chapter 01 / Introduction</div>
+      <div class="cover-kicker">AI研修 × 補助金ガイド</div>
+      <h1 class="cover-title">
+        AI導入、<br>
+        <span class="accent">国が75%</span>払ってくれます。
+      </h1>
+      <p class="cover-sub">
+        「補助金って難しそう」「ウチみたいな小さい会社は対象外でしょ？」<br>
+        ― そう思ってる経営者さんにこそ、読んでほしい1ページ。<br>
+        3つの補助金を、30秒で全部わかるように噛み砕きます。
+      </p>
+    </div>
+
+    <div class="cover-numbers stagger">
+      <div>
+        <div class="cover-num-value">75<span class="unit">%</span></div>
+        <div class="cover-num-label">国が負担してくれる率</div>
+      </div>
+      <div>
+        <div class="cover-num-value">¥300,000</div>
+        <div class="cover-num-label">1社あたりの上限目安</div>
+      </div>
+      <div>
+        <div class="cover-num-value">2027.3<span class="unit">末</span></div>
+        <div class="cover-num-label">今の補助金制度の期限</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Ch.2 3つの補助金を30秒で比較 ========== -->
+<section class="chapter ch2" id="compare">
+  <div class="container">
+    <div class="fade-in">
+      <div class="ch-num">Chapter 02 / Compare</div>
+      <h2 class="ch-title">3つの補助金を、<br>30秒で見比べる。</h2>
+      <p class="ch-sub">
+        「どれを使えばいいの？」<br>
+        その最初の壁を、ひと目で解消する比較表。
+      </p>
+    </div>
+
+    <div class="compare-grid stagger">
+      <div class="compare-card main">
+        <span class="compare-rank">メイン</span>
+        <div class="compare-icon"><i class="fa-solid fa-landmark"></i></div>
+        <div class="compare-name">人材開発支援助成金<br><span style="font-size:13px;font-weight:400;color:var(--color-muted)">（リスキリング支援コース）</span></div>
+        <div class="compare-agency">Ministry of Health, Labour and Welfare</div>
+        <ul class="compare-items">
+          <li><span class="label">管轄</span><span class="value">厚生労働省</span></li>
+          <li><span class="label">補助率</span><span class="value">75%</span></li>
+          <li><span class="label">対象</span><span class="value">従業員のAI研修</span></li>
+          <li><span class="label">期限</span><span class="value">2027.3末</span></li>
+          <li><span class="label">使いどき</span><span class="value">従業員を育てたい</span></li>
+        </ul>
+      </div>
+
+      <div class="compare-card sub">
+        <span class="compare-rank">サブ</span>
+        <div class="compare-icon"><i class="fa-solid fa-microchip"></i></div>
+        <div class="compare-name">デジタル化・<br>AI導入補助金2026</div>
+        <div class="compare-agency">Small and Medium Enterprise Agency</div>
+        <ul class="compare-items">
+          <li><span class="label">管轄</span><span class="value">中小企業庁</span></li>
+          <li><span class="label">補助率</span><span class="value">75〜80%</span></li>
+          <li><span class="label">対象</span><span class="value">AIツール導入費</span></li>
+          <li><span class="label">個人事業主</span><span class="value">OK</span></li>
+          <li><span class="label">使いどき</span><span class="value">AIツールを買いたい</span></li>
+        </ul>
+      </div>
+
+      <div class="compare-card option">
+        <span class="compare-rank">オプション</span>
+        <div class="compare-icon"><i class="fa-solid fa-store"></i></div>
+        <div class="compare-name">小規模事業者<br>持続化補助金</div>
+        <div class="compare-agency">Japan Chamber of Commerce</div>
+        <ul class="compare-items">
+          <li><span class="label">管轄</span><span class="value">商工会議所</span></li>
+          <li><span class="label">補助率</span><span class="value">2/3</span></li>
+          <li><span class="label">対象</span><span class="value">販路開拓・HP改修</span></li>
+          <li><span class="label">上限</span><span class="value">¥250万</span></li>
+          <li><span class="label">使いどき</span><span class="value">HPも新しくしたい</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:40px;text-align:center;font-family:var(--serif);font-size:15px;color:var(--color-muted);line-height:2">
+      <strong style="color:var(--color-primary-dark)">まず「メイン」の人材開発支援助成金から押さえるのが王道。</strong><br>
+      従業員を育てる補助金で、AI研修にそのまま使えます。
+    </p>
+  </div>
+</section>
+
+<!-- ========== Ch.3 人材開発支援助成金 完全ガイド ========== -->
+<section class="chapter ch3" id="main-grant">
+  <div class="container">
+    <div class="fade-in">
+      <div class="ch-num">Chapter 03 / Main Grant</div>
+      <h2 class="ch-title">メイン：<br>人材開発支援助成金。</h2>
+      <p class="ch-sub">
+        厚生労働省が用意している、<strong style="color:var(--color-primary-dark)">従業員の研修費用を75%まで肩代わりしてくれる制度</strong>。<br>
+        AI研修は、この「リスキリング支援コース」で使えます。
+      </p>
+    </div>
+
+    <div class="main-block fade-in">
+      <div class="main-block-label">What — ひとことで言うと</div>
+      <div class="main-block-title">
+        研修費¥300,000払ったら、<br>
+        あとで国から¥225,000戻ってくる制度。
+      </div>
+      <div class="main-block-desc">
+        さらに、研修中の従業員の人件費も、<strong style="color:var(--color-primary-dark)">1時間あたり¥1,000</strong>が上乗せで戻ってきます（賃金助成）。<br>
+        10時間の研修なら、それだけで¥10,000が追加で支給されます。
+      </div>
+
+      <div class="kv-grid">
+        <div class="kv-card">
+          <div class="kv-label">経費助成</div>
+          <div class="kv-value">75%</div>
+          <div class="kv-sub">研修費用のうち国が負担する割合</div>
+        </div>
+        <div class="kv-card">
+          <div class="kv-label">賃金助成</div>
+          <div class="kv-value">¥1,000 / h</div>
+          <div class="kv-sub">研修中の従業員の賃金補填</div>
+        </div>
+        <div class="kv-card">
+          <div class="kv-label">研修時間の下限</div>
+          <div class="kv-value">10時間以上</div>
+          <div class="kv-sub">これを下回ると対象外</div>
+        </div>
+        <div class="kv-card">
+          <div class="kv-label">期限</div>
+          <div class="kv-value">2027年3月末</div>
+          <div class="kv-sub">令和8年度末まで</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps-section">
+      <div class="steps-section-title fade-in">
+        <i class="fa-solid fa-route"></i>
+        申請〜入金までの5ステップ
+      </div>
+      <p class="steps-section-sub fade-in">
+        申請は「研修が始まる前」と「研修が終わった後」の2回。最初の計画届さえ通せば、あとは粛々と進みます。
+      </p>
+      <div class="steps stagger">
+        <div class="step">
+          <div class="step-num">Step 01</div>
+          <div class="step-icon"><i class="fa-solid fa-clipboard"></i></div>
+          <div class="step-title">計画届を提出</div>
+          <div class="step-desc">研修開始の<strong>1ヶ月前まで</strong>に労働局へ。研修内容・時間・対象者を書く</div>
+        </div>
+        <div class="step">
+          <div class="step-num">Step 02</div>
+          <div class="step-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <div class="step-title">研修を実施</div>
+          <div class="step-desc">計画通り10時間以上の研修を実施。<strong>外部講師が必須</strong></div>
+        </div>
+        <div class="step">
+          <div class="step-num">Step 03</div>
+          <div class="step-icon"><i class="fa-solid fa-file-signature"></i></div>
+          <div class="step-title">支給申請</div>
+          <div class="step-desc">研修終了から<strong>2ヶ月以内</strong>に実施結果と請求書を提出</div>
+        </div>
+        <div class="step">
+          <div class="step-num">Step 04</div>
+          <div class="step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <div class="step-title">審査</div>
+          <div class="step-desc">労働局が書類を審査。要件を満たしていれば採択</div>
+        </div>
+        <div class="step">
+          <div class="step-num">Step 05</div>
+          <div class="step-icon"><i class="fa-solid fa-coins"></i></div>
+          <div class="step-title">入金</div>
+          <div class="step-desc">審査完了後、数ヶ月で補助金が企業口座に振り込まれる</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cc-highlight fade-in">
+      <div class="cc-label">Okemon's Edge — うちの独自価値</div>
+      <div class="cc-title">
+        申請書は、<span class="accent">Claude Codeで自分で書けます。</span>
+      </div>
+      <div class="cc-body">
+        申請書類は厚生労働省の公式サイトで全件ダウンロードできます。社労士に頼まなくても、AIアシスタント（Claude Code）を使えば、記入例を見ながら自分で書き切れる。うちの研修パッケージには、<strong style="color:var(--color-accent-light)">Claude Code用の申請書作成プロンプト集</strong>を付帯しているので、受講企業さんは研修後にそのまま申請まで完結できます。<br>
+        <span style="color:var(--color-accent-light);font-weight:700">社労士パートナーは必須じゃない。</span>これが、他のAI研修会社にはないおけもんカンパニーの武器です。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Ch.4 AI導入補助金 ========== -->
+<section class="chapter ch4" id="ai-subsidy">
+  <div class="container">
+    <div class="fade-in">
+      <div class="ch-num">Chapter 04 / AI Subsidy</div>
+      <h2 class="ch-title">サブ：<br>デジタル化・AI導入補助金2026。</h2>
+      <p class="ch-sub">
+        旧「IT導入補助金」が2026年に名前を変えてリニューアル。<br>
+        <strong style="color:var(--color-primary-dark)">AIツールを買う費用</strong>を、国が最大80%負担してくれる制度です。
+      </p>
+    </div>
+
+    <div class="sub-block fade-in">
+      <div class="sub-header">
+        <div class="sub-header-left">
+          <div class="sub-tag">Administered by</div>
+          <div class="sub-title">中小企業庁（事務局：中小機構）</div>
+        </div>
+        <div class="sub-rate">75<span class="unit">〜80%</span></div>
+      </div>
+
+      <div class="sub-body">
+        <div class="sub-desc">
+          研修（人の育成）じゃなく、<strong style="color:var(--color-primary-dark)">AIツールそのものの導入費</strong>を補助してくれる制度。<br>
+          ChatGPTの有料プラン、AIチャットボット、AI-OCR、AI需要予測ツールなどが対象。<br>
+          <strong style="color:var(--color-primary-dark)">個人事業主も対象</strong>なのがポイント。
+        </div>
+
+        <ul class="target-list">
+          <li><i class="fa-solid fa-check"></i><strong>対象ツール例：</strong>生成AI搭載ツール／AIチャットボット／AI-OCR／AI需要予測ツール／AI分析ツール</li>
+          <li><i class="fa-solid fa-check"></i><strong>補助率：</strong>中小企業 最大3/4（75%）／小規模事業者 最大4/5（80%）</li>
+          <li><i class="fa-solid fa-check"></i><strong>上限：</strong>枠による（最大¥450万）</li>
+          <li><i class="fa-solid fa-check"></i><strong>対象事業主：</strong>中小企業・小規模事業者・<strong>個人事業主も可</strong></li>
+          <li><i class="fa-solid fa-check"></i><strong>申請条件：</strong>「IT導入支援事業者」として登録されたベンダー経由で申請</li>
+        </ul>
+
+        <div class="individual-note">
+          <div class="individual-note-label">For Solo Entrepreneur</div>
+          <div class="individual-note-title">
+            個人事業主が「AI導入したい」なら、これが本命。
+          </div>
+          <div class="individual-note-body">
+            人材開発支援助成金は「従業員研修」が対象なので、個人事業主本人には使えません。<br>
+            でも、このAI導入補助金2026なら、<strong style="color:var(--color-primary-dark)">個人事業主本人がAIツールを買う費用</strong>に75〜80%の補助が出ます。<br>
+            <strong style="color:var(--color-primary-dark)">おけもんカンパニーが最初にやるのは、ここの実証実験。</strong>自分で申請して、通してから、その体験ごとお客さんに届ける設計です。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Ch.5 外部講師の理由＋Win-Win-Win ========== -->
+<section class="chapter ch5" id="structure">
+  <div class="container">
+    <div class="fade-in">
+      <div class="ch-num">Chapter 05 / Why External</div>
+      <h2 class="ch-title">「外部講師じゃないとダメ」の理由。</h2>
+      <p class="ch-sub">
+        人材開発支援助成金には、はっきりとした要件があります。<br>
+        この要件を読み解くと、<strong style="color:var(--color-primary-dark)">補助金の設計思想そのもの</strong>が見えてきます。
+      </p>
+    </div>
+
+    <div class="reason-box fade-in">
+      <div class="reason-label">Key Requirement</div>
+      <div class="reason-title">
+        「事業主以外の者が行う訓練であること」<br>
+        ― 社内講師は対象外、外部委託が必須。
+      </div>
+      <div class="reason-body">
+        つまり国は、<strong style="color:var(--color-primary-dark)">「社内でうまく育てられない会社が、外部の専門家を呼んで社員を育てる」シーン</strong>を制度的にサポートしている。<br>
+        逆に言えば、<strong style="color:var(--color-primary-dark)">補助金を使う企業は、必ず外部の研修会社に頼むしかない</strong>。<br>
+        だから、おけもんカンパニーのような外部AI研修プロバイダーの出番が、制度の側から作られているんです。
+      </div>
+    </div>
+
+    <div class="triangle-section">
+      <div class="fade-in">
+        <div class="steps-section-title">
+          <i class="fa-solid fa-users"></i>
+          つまり、3者全員が得をする構造。
+        </div>
+        <p class="steps-section-sub">
+          企業・うち・国、3つの立場がきれいに噛み合う制度設計になっています。
+        </p>
+      </div>
+
+      <div class="triangle-wrap">
+        <div class="win-card win-top fade-in">
+          <div class="win-card-icon"><i class="fa-solid fa-landmark"></i></div>
+          <div class="win-card-role">Nation</div>
+          <div class="win-card-name">国</div>
+          <ul class="win-card-list">
+            <li>与える：<strong>補助金75%</strong></li>
+            <li>得る：中小企業のAI人材育成</li>
+            <li>得る：外部研修市場の発展</li>
+          </ul>
+        </div>
+
+        <div class="win-center">Win × Win × Win</div>
+
+        <div class="win-card win-left fade-in">
+          <div class="win-card-icon"><i class="fa-solid fa-building"></i></div>
+          <div class="win-card-role">Client</div>
+          <div class="win-card-name">顧客企業</div>
+          <ul class="win-card-list">
+            <li>支払う：¥300,000</li>
+            <li>戻る：<strong>¥225,000（75%）</strong></li>
+            <li>実質負担：¥75,000</li>
+            <li>得る：社員のAI人材化</li>
+          </ul>
+        </div>
+
+        <div class="win-card win-right fade-in">
+          <div class="win-card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="win-card-role">Provider</div>
+          <div class="win-card-name">おけもんカンパニー</div>
+          <ul class="win-card-list">
+            <li>受領：<strong>¥300,000</strong></li>
+            <li>提供：AI研修＋申請支援</li>
+            <li>得る：事例資産</li>
+            <li>得る：長期関係</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Ch.6 よくある誤解5つ ========== -->
+<section class="chapter ch6" id="myths">
+  <div class="container">
+    <div class="fade-in">
+      <div class="ch-num">Chapter 06 / Myth Busters</div>
+      <h2 class="ch-title">よくある誤解を、<br>5つほどいてみる。</h2>
+      <p class="ch-sub">
+        補助金に挑戦する前に、多くの経営者さんが引っかかる思い込み。<br>
+        ひとつずつ、ビフォーアフター形式で解いていきます。
+      </p>
+    </div>
+
+    <div class="myth-list stagger">
+      <div class="myth">
+        <div class="myth-num">Myth 01</div>
+        <div class="myth-ba">
+          <div class="myth-col wrong">
+            <div class="myth-col-label"><i class="fa-solid fa-xmark"></i>こう思ってた</div>
+            <div class="myth-col-text">社労士さんがいないと、<br>申請できないんでしょ？</div>
+          </div>
+          <div class="myth-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="myth-col right">
+            <div class="myth-col-label"><i class="fa-solid fa-check"></i>実はこう</div>
+            <div class="myth-col-text">申請書は厚労省が<strong>公式サイトで全件公開</strong>してます。記入例もAI（Claude Code）で補助できるので、<strong>社労士なしで自分で書ける</strong>んです。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="myth">
+        <div class="myth-num">Myth 02</div>
+        <div class="myth-ba">
+          <div class="myth-col wrong">
+            <div class="myth-col-label"><i class="fa-solid fa-xmark"></i>こう思ってた</div>
+            <div class="myth-col-text">ウチみたいな小さい会社は、<br>そもそも対象外でしょ？</div>
+          </div>
+          <div class="myth-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="myth-col right">
+            <div class="myth-col-label"><i class="fa-solid fa-check"></i>実はこう</div>
+            <div class="myth-col-text">中小企業はむしろ<strong>補助率が高く優遇</strong>されます。AI導入補助金2026は<strong>個人事業主も対象</strong>。小さい会社ほど、使わない手はない。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="myth">
+        <div class="myth-num">Myth 03</div>
+        <div class="myth-ba">
+          <div class="myth-col wrong">
+            <div class="myth-col-label"><i class="fa-solid fa-xmark"></i>こう思ってた</div>
+            <div class="myth-col-text">補助金って後払いだから、<br>先にお金かかるんでしょ？</div>
+          </div>
+          <div class="myth-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="myth-col right">
+            <div class="myth-col-label"><i class="fa-solid fa-check"></i>実はこう</div>
+            <div class="myth-col-text">確かに後払い（研修後の支給）です。ただし、<strong>着手金分割</strong>で研修費の支払いを軽くしたり、制度融資を使ったりする選択肢もあります。<strong>キャッシュフローは設計できます。</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="myth">
+        <div class="myth-num">Myth 04</div>
+        <div class="myth-ba">
+          <div class="myth-col wrong">
+            <div class="myth-col-label"><i class="fa-solid fa-xmark"></i>こう思ってた</div>
+            <div class="myth-col-text">申請書が複雑そうで、<br>読む気にもなれない。</div>
+          </div>
+          <div class="myth-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="myth-col right">
+            <div class="myth-col-label"><i class="fa-solid fa-check"></i>実はこう</div>
+            <div class="myth-col-text">申請書の作成時間は、<strong>Claude Code活用で大幅に短縮</strong>できます。うちの研修パッケージには、申請書を書くためのAIプロンプト集が付いています。<strong>書き始めてしまえば、半日〜1日で初稿が書けます。</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="myth">
+        <div class="myth-num">Myth 05</div>
+        <div class="myth-ba">
+          <div class="myth-col wrong">
+            <div class="myth-col-label"><i class="fa-solid fa-xmark"></i>こう思ってた</div>
+            <div class="myth-col-text">採択されにくいって聞くし、<br>時間の無駄になりそう。</div>
+          </div>
+          <div class="myth-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="myth-col right">
+            <div class="myth-col-label"><i class="fa-solid fa-check"></i>実はこう</div>
+            <div class="myth-col-text">人材開発支援助成金は<strong>要件を満たせば基本的に採択される</strong>タイプの制度です（コンペ型の補助金とは違います）。研修時間・外部講師・正社員対象、この3つを守れば、採択率は高い。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Ch.7 CTA ========== -->
+<section class="chapter ch7" id="cta">
+  <div class="container">
+    <div class="fade-in">
+      <div class="ch-num">Chapter 07 / Next Step</div>
+      <h2 class="ch-title">次の一歩は、<br>ひとつだけ。</h2>
+      <p class="ch-sub">
+        ここまで読んでくださったあなたには、<br>
+        もう「補助金がどんなものか」の全体像が見えているはず。<br>
+        あとは、うちと30分話すだけ。
+      </p>
+    </div>
+
+    <div class="cta-main fade-in">
+      <div class="cta-label">Free Consultation</div>
+      <div class="cta-title">
+        無料相談のご予約、<br>
+        <span class="accent">受付中です。</span>
+      </div>
+      <p class="cta-desc">
+        「ウチの会社で使えるのか知りたい」「自分の事業に合うか見てほしい」<br>
+        30分のオンライン相談で、あなたの状況に合わせた使い道をお伝えします。<br>
+        もちろん無料、売り込みナシでお話します。
+      </p>
+      <a href="mailto:okemonogatari@gmail.com?subject=補助金活用AI研修のご相談" class="cta-btn">
+        メールで相談する
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="official-links">
+      <div class="official-links-title">Official References / 公式情報の一次ソース</div>
+      <div class="official-grid">
+        <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/d01-1.html" target="_blank" rel="noopener" class="official-link">
+          <div class="official-link-tag">MHLW — Top</div>
+          <div class="official-link-title">人材開発支援助成金（厚労省）</div>
+          <div class="official-link-url">mhlw.go.jp/.../d01-1.html</div>
+        </a>
+        <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/38819_00007.html" target="_blank" rel="noopener" class="official-link">
+          <div class="official-link-tag">MHLW — Forms</div>
+          <div class="official-link-title">申請書類一覧（令和7年4月〜）</div>
+          <div class="official-link-url">mhlw.go.jp/stf/.../38819_00007.html</div>
+        </a>
+        <a href="https://it-shien.smrj.go.jp/" target="_blank" rel="noopener" class="official-link">
+          <div class="official-link-tag">SME Agency — Top</div>
+          <div class="official-link-title">デジタル化・AI導入補助金2026</div>
+          <div class="official-link-url">it-shien.smrj.go.jp</div>
+        </a>
+        <a href="https://it-shien.smrj.go.jp/applicant/subsidy/normal/" target="_blank" rel="noopener" class="official-link">
+          <div class="official-link-tag">SME Agency — Detail</div>
+          <div class="official-link-title">通常枠の詳細</div>
+          <div class="official-link-url">it-shien.smrj.go.jp/.../normal/</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="back-home-cta fade-in">
+      <a href="ai-grant-dashboard.html">
+        <i class="fa-solid fa-arrow-left"></i>
+        PJホーム（中央司令塔）へ戻る
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== フッター ========== -->
+<footer class="footer">
+  <div class="footer-logo">OKEMON COMPANY</div>
+  <div class="footer-text">AI Training × Subsidy / Grant Guide / 2026.04.17</div>
+  <div class="footer-disclaimer">
+    本ページは制度の概要を噛み砕いた解説資料です。最新の要件・金額・期限は、必ず各公式サイトで最新情報を確認してください。<br>
+    補助金制度は年度ごとに変更されることがあります。
+  </div>
+  <div style="margin-top:24px;font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:1px">
+    Designed by デザイン担当（CDO傘下）
+  </div>
+</footer>
+
+<script>
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in, .stagger').forEach(el => {
+  observer.observe(el);
+  const rect = el.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    el.classList.add('visible');
+  }
+});
+</script>
+
+</body>
+</html>

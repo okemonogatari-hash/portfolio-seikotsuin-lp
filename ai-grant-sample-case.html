@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サンプル事例：A社の8ヶ月 | AI研修×補助金事業</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --color-primary:#2C5F4B;
+  --color-primary-light:#3d7a62;
+  --color-primary-dark:#1e4434;
+  --color-accent:#C4915E;
+  --color-accent-light:#d6a87a;
+  --color-bg:#F4EFE6;
+  --color-bg-deep:#EAE2D1;
+  --color-paper:#FBF8F2;
+  --color-ink:#1a1a1a;
+  --color-muted:#6b6658;
+  --color-line:rgba(44,95,75,0.15);
+  --color-danger:#b04e3a;
+  --color-success:#4a8268;
+  --serif:"Noto Serif JP",serif;
+  --sans:"Noto Sans JP",sans-serif;
+  --en:"Cormorant Garamond","Inter",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{
+  font-family:var(--sans);
+  color:var(--color-ink);
+  background:var(--color-bg);
+  line-height:1.9;
+  overflow-x:hidden;
+}
+
+/* ========== ナビ ========== */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(251,248,242,0.92);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--color-line);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;
+  padding:14px 32px;
+  display:flex;justify-content:space-between;align-items:center;gap:24px;
+}
+.nav-back{
+  font-family:var(--serif);font-weight:700;font-size:14px;
+  color:var(--color-primary-dark);text-decoration:none;
+  display:flex;align-items:center;gap:10px;
+  transition:color 0.2s ease;
+}
+.nav-back:hover{color:var(--color-accent)}
+.nav-back i{color:var(--color-accent);transition:transform 0.3s ease}
+.nav-back:hover i{transform:translateX(-4px)}
+.nav-back-sub{
+  font-family:var(--en);font-size:11px;color:var(--color-muted);
+  letter-spacing:2px;margin-left:4px;text-transform:uppercase;
+}
+.nav-links{display:flex;gap:22px;list-style:none;align-items:center}
+.nav-links a{
+  font-family:var(--sans);font-size:13px;font-weight:500;
+  color:var(--color-ink);text-decoration:none;
+  position:relative;padding:6px 0;transition:color 0.2s ease;
+}
+.nav-links a:hover{color:var(--color-accent)}
+.nav-links a::after{
+  content:"";position:absolute;bottom:0;left:0;
+  width:0;height:1px;background:var(--color-accent);
+  transition:width 0.3s ease;
+}
+.nav-links a:hover::after{width:100%}
+.nav-toggle{
+  display:none;background:none;border:none;
+  font-size:20px;color:var(--color-primary-dark);cursor:pointer;
+}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .nav-toggle{display:block}
+  .nav-back-sub{display:none}
+  .nav-links.open{
+    display:flex;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;background:var(--color-paper);
+    padding:20px 32px;border-bottom:1px solid var(--color-line);
+    gap:14px;align-items:flex-start;
+  }
+}
+
+/* ========== 共通 ========== */
+.chapter{padding:100px 40px;position:relative}
+.container{max-width:1080px;margin:0 auto}
+.ch-num{
+  font-family:var(--en);font-size:14px;letter-spacing:4px;
+  color:var(--color-accent);text-transform:uppercase;
+  margin-bottom:16px;display:flex;align-items:center;gap:14px;
+}
+.ch-num::before{content:"";width:40px;height:1px;background:var(--color-accent)}
+.ch-title{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(26px,3.8vw,40px);line-height:1.4;
+  color:var(--color-primary-dark);margin-bottom:20px;letter-spacing:0.02em;
+}
+.ch-sub{
+  font-family:var(--serif);font-size:clamp(15px,1.7vw,18px);
+  color:var(--color-muted);margin-bottom:50px;line-height:1.9;
+}
+
+/* ========== 表紙 ========== */
+.cover{
+  background:linear-gradient(135deg,var(--color-primary-dark) 0%,var(--color-primary) 60%,var(--color-primary-light) 100%);
+  color:#fff;padding:150px 40px 80px;
+  position:relative;overflow:hidden;
+  min-height:100vh;display:flex;align-items:center;
+}
+.cover::before{
+  content:"";position:absolute;top:-20%;right:-10%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(196,145,94,0.15) 0%,transparent 70%);
+  border-radius:50%;
+}
+.cover::after{
+  content:"";position:absolute;bottom:-20%;left:-10%;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(196,145,94,0.08) 0%,transparent 70%);
+  border-radius:50%;
+}
+.cover-inner{position:relative;z-index:2;width:100%;max-width:1080px;margin:0 auto}
+.cover-tag{
+  display:inline-block;font-family:var(--en);font-size:12px;
+  padding:6px 16px;background:rgba(196,145,94,0.2);
+  color:var(--color-accent-light);
+  border:1px solid rgba(196,145,94,0.4);
+  border-radius:100px;letter-spacing:2px;
+  margin-bottom:24px;text-transform:uppercase;
+}
+.cover-fictional{
+  display:inline-block;font-family:var(--en);font-size:11px;
+  padding:4px 12px;background:rgba(176,78,58,0.2);
+  color:#f2b4a4;border:1px solid rgba(176,78,58,0.4);
+  letter-spacing:2px;margin-bottom:20px;text-transform:uppercase;
+}
+.cover-kicker{
+  font-family:var(--en);font-size:clamp(14px,1.5vw,18px);
+  letter-spacing:4px;color:var(--color-accent);
+  margin-bottom:24px;text-transform:uppercase;
+}
+.cover-title{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(34px,5.5vw,58px);line-height:1.25;
+  color:#fff;margin-bottom:28px;letter-spacing:0.02em;
+}
+.cover-title .accent{color:var(--color-accent-light)}
+.cover-sub{
+  font-family:var(--serif);font-size:clamp(16px,1.9vw,22px);
+  color:rgba(255,255,255,0.85);line-height:1.9;
+  max-width:720px;margin-bottom:60px;
+}
+.cover-numbers{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:30px;margin-top:40px;padding-top:40px;
+  border-top:1px solid rgba(196,145,94,0.4);
+}
+.cover-num-value{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(28px,4vw,42px);color:var(--color-accent-light);
+  line-height:1;margin-bottom:12px;
+}
+.cover-num-value .unit{font-size:0.5em;color:rgba(255,255,255,0.7);margin-left:4px}
+.cover-num-label{font-size:14px;color:rgba(255,255,255,0.8);letter-spacing:1px}
+
+/* ========== Ch.1 登場人物 ========== */
+.ch1{background:var(--color-bg)}
+.company-card{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+@media (max-width:760px){.company-card{grid-template-columns:1fr}}
+.company-panel{
+  padding:36px 32px;
+  background:var(--color-paper);
+  border-top:3px solid var(--color-accent);
+  position:relative;
+}
+.company-panel-label{
+  font-family:var(--en);font-size:11px;letter-spacing:2px;
+  color:var(--color-accent);margin-bottom:10px;text-transform:uppercase;
+}
+.company-panel-icon{
+  font-size:28px;color:var(--color-primary);
+  margin-bottom:14px;
+}
+.company-panel-name{
+  font-family:var(--serif);font-weight:700;
+  font-size:24px;color:var(--color-primary-dark);
+  margin-bottom:18px;line-height:1.4;
+}
+.company-panel-attr{list-style:none;padding:0}
+.company-panel-attr li{
+  display:flex;gap:14px;
+  padding:10px 0;border-bottom:1px solid var(--color-line);
+  font-size:14px;line-height:1.6;
+}
+.company-panel-attr li:last-child{border-bottom:none}
+.company-panel-attr .attr-label{
+  font-family:var(--en);font-size:11px;letter-spacing:1.5px;
+  color:var(--color-muted);min-width:80px;text-transform:uppercase;
+  padding-top:2px;
+}
+.company-panel-attr .attr-value{
+  flex:1;font-family:var(--serif);color:var(--color-ink);
+}
+.company-panel-attr .attr-value strong{color:var(--color-primary-dark)}
+
+.problem-box{
+  margin-top:50px;
+  padding:36px 36px;
+  background:linear-gradient(135deg,rgba(176,78,58,0.06),rgba(176,78,58,0.02));
+  border-left:4px solid var(--color-danger);
+}
+.problem-label{
+  font-family:var(--en);font-size:12px;letter-spacing:3px;
+  color:var(--color-danger);margin-bottom:10px;text-transform:uppercase;
+}
+.problem-title{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(18px,2.4vw,22px);line-height:1.6;
+  color:var(--color-primary-dark);margin-bottom:14px;
+}
+.problem-body{font-size:15px;color:var(--color-ink);line-height:2}
+
+/* ========== Ch.2 全体俯瞰 ========== */
+.ch2{background:var(--color-paper)}
+.overview-timeline{
+  margin-top:40px;
+  padding:40px 30px;
+  background:var(--color-bg);
+  overflow-x:auto;
+}
+.overview-track{
+  display:grid;
+  grid-template-columns:repeat(9,minmax(100px,1fr));
+  gap:8px;
+  position:relative;
+  min-width:720px;
+}
+.overview-month{
+  text-align:center;
+  padding:18px 10px;
+  background:var(--color-paper);
+  border-top:3px solid var(--color-line);
+  position:relative;
+}
+.overview-month.milestone{
+  background:linear-gradient(135deg,rgba(196,145,94,0.12),rgba(196,145,94,0.04));
+  border-top-color:var(--color-accent);
+}
+.overview-month.highlight{
+  background:var(--color-primary-dark);
+  border-top-color:var(--color-accent-light);
+}
+.overview-month.highlight *{color:#fff!important}
+.overview-month-num{
+  font-family:var(--en);font-size:11px;letter-spacing:2px;
+  color:var(--color-accent);margin-bottom:6px;text-transform:uppercase;
+}
+.overview-month-title{
+  font-family:var(--serif);font-weight:700;font-size:13px;
+  color:var(--color-primary-dark);line-height:1.4;margin-bottom:6px;
+}
+.overview-month-sub{
+  font-size:10px;color:var(--color-muted);line-height:1.4;
+}
+.overview-track::before{
+  content:"";
+  position:absolute;
+  top:50%;left:0;right:0;height:1px;
+  background:linear-gradient(to right,transparent,var(--color-accent),transparent);
+  z-index:-1;
+}
+.money-summary{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:16px;
+}
+.money-card{
+  padding:24px 22px;
+  background:var(--color-paper);
+  border:1px solid var(--color-line);
+  text-align:center;
+}
+.money-card.final{
+  background:var(--color-primary-dark);
+  border-color:var(--color-primary-dark);
+}
+.money-card.final *{color:#fff!important}
+.money-card-label{
+  font-family:var(--en);font-size:10px;letter-spacing:2px;
+  color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;
+}
+.money-card-value{
+  font-family:var(--serif);font-weight:700;font-size:22px;
+  color:var(--color-primary-dark);line-height:1.2;margin-bottom:4px;
+}
+.money-card-sub{font-size:11px;color:var(--color-muted);line-height:1.4}
+.money-card.final .money-card-label{color:var(--color-accent-light)}
+.money-card.final .money-card-value{color:var(--color-accent-light)}
+
+/* ========== Ch.3 月ごと詳細 ========== */
+.ch3{background:var(--color-bg)}
+.month-block{
+  margin-top:30px;
+  display:grid;
+  grid-template-columns:100px 1fr;
+  gap:24px;
+  padding:30px 32px;
+  background:var(--color-paper);
+  border-left:3px solid var(--color-accent);
+  position:relative;
+}
+@media (max-width:760px){
+  .month-block{grid-template-columns:1fr;gap:14px;padding:26px 22px}
+}
+.month-badge{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  padding-top:6px;
+}
+.month-badge-num{
+  font-family:var(--en);font-weight:700;
+  font-size:42px;color:var(--color-accent);
+  line-height:1;letter-spacing:-0.02em;
+}
+.month-badge-unit{
+  font-family:var(--en);font-size:11px;letter-spacing:2px;
+  color:var(--color-muted);margin-top:4px;text-transform:uppercase;
+}
+.month-content{flex:1}
+.month-phase-tag{
+  display:inline-block;font-size:10px;padding:3px 10px;
+  background:var(--color-accent);color:#fff;
+  letter-spacing:1px;font-family:var(--sans);
+  margin-bottom:12px;
+}
+.month-title{
+  font-family:var(--serif);font-weight:700;font-size:20px;
+  color:var(--color-primary-dark);margin-bottom:12px;line-height:1.5;
+}
+.month-story{
+  font-size:14.5px;color:var(--color-ink);
+  line-height:2;margin-bottom:18px;
+}
+.month-story strong{color:var(--color-primary-dark)}
+.month-actions{
+  margin-top:14px;padding-top:16px;
+  border-top:1px dashed var(--color-line);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+@media (max-width:640px){.month-actions{grid-template-columns:1fr}}
+.month-action{
+  font-size:13px;line-height:1.7;
+}
+.month-action-role{
+  font-family:var(--en);font-size:10px;letter-spacing:1.5px;
+  color:var(--color-accent);margin-bottom:4px;text-transform:uppercase;
+}
+.month-action-name{
+  font-family:var(--serif);font-weight:700;font-size:13.5px;
+  color:var(--color-primary-dark);margin-bottom:4px;
+}
+.month-action-body{color:var(--color-muted);font-size:12.5px}
+.month-money{
+  margin-top:14px;padding:12px 16px;
+  background:var(--color-bg);
+  font-family:var(--en);font-size:12px;
+  color:var(--color-primary-dark);letter-spacing:1px;
+}
+.month-money i{color:var(--color-accent);margin-right:8px}
+.month-money strong{font-family:var(--serif);letter-spacing:0}
+
+/* ========== Ch.4 お金の流れ ========== */
+.ch4{background:var(--color-paper)}
+.money-timeline{
+  margin-top:40px;
+  padding:0;
+  background:var(--color-bg);
+}
+.money-row{
+  display:grid;
+  grid-template-columns:100px 1fr 160px;
+  gap:20px;
+  padding:20px 28px;
+  border-bottom:1px solid var(--color-line);
+  align-items:center;
+}
+@media (max-width:680px){.money-row{grid-template-columns:1fr;gap:10px;padding:20px}}
+.money-row:last-child{border-bottom:none}
+.money-row.in{background:linear-gradient(135deg,transparent 70%,rgba(74,130,104,0.08))}
+.money-row.out{background:linear-gradient(135deg,rgba(176,78,58,0.05),transparent 70%)}
+.money-row.final-row{
+  background:var(--color-primary-dark);
+  color:#fff;
+}
+.money-row.final-row *{color:#fff!important}
+.money-row-when{
+  font-family:var(--en);font-size:12px;letter-spacing:2px;
+  color:var(--color-muted);text-transform:uppercase;
+}
+.money-row-what{
+  font-family:var(--serif);font-weight:500;font-size:15px;
+  color:var(--color-ink);
+}
+.money-row-amount{
+  font-family:var(--serif);font-weight:700;font-size:18px;
+  text-align:right;
+}
+.money-row.in .money-row-amount{color:var(--color-success)}
+.money-row.out .money-row-amount{color:var(--color-danger)}
+.money-row-amount .label{
+  display:block;font-family:var(--en);font-size:10px;
+  letter-spacing:1.5px;font-weight:500;color:var(--color-muted);
+  text-transform:uppercase;margin-bottom:2px;
+}
+
+/* ========== Ch.5 何が残ったか ========== */
+.ch5{background:var(--color-bg)}
+.asset-grid{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+.asset-card{
+  padding:28px 26px;
+  background:var(--color-paper);
+  border-top:3px solid var(--color-accent);
+  transition:transform 0.3s ease;
+}
+.asset-card:hover{transform:translateY(-4px)}
+.asset-icon{
+  width:44px;height:44px;border-radius:8px;
+  background:rgba(196,145,94,0.12);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--color-accent);font-size:18px;margin-bottom:16px;
+}
+.asset-title{
+  font-family:var(--serif);font-weight:700;font-size:17px;
+  color:var(--color-primary-dark);margin-bottom:10px;line-height:1.5;
+}
+.asset-desc{
+  font-size:13.5px;color:var(--color-muted);line-height:1.9;
+}
+.asset-whom{
+  margin-top:14px;padding-top:12px;
+  border-top:1px dashed var(--color-line);
+  font-family:var(--en);font-size:10px;letter-spacing:1.5px;
+  color:var(--color-accent);text-transform:uppercase;
+}
+
+/* ========== Ch.6 CTA ========== */
+.ch6{
+  background:linear-gradient(135deg,var(--color-primary-dark),var(--color-primary));
+  color:#fff;
+}
+.ch6 .ch-num{color:var(--color-accent-light)}
+.ch6 .ch-num::before{background:var(--color-accent-light)}
+.ch6 .ch-title{color:#fff}
+.ch6 .ch-sub{color:rgba(255,255,255,0.8)}
+.cta-main{
+  margin-top:40px;padding:50px 40px;
+  background:rgba(196,145,94,0.1);
+  border:1px solid rgba(196,145,94,0.3);
+  text-align:center;
+}
+.cta-label{
+  font-family:var(--en);font-size:12px;letter-spacing:4px;
+  color:var(--color-accent-light);margin-bottom:18px;text-transform:uppercase;
+}
+.cta-title{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(22px,3vw,30px);line-height:1.6;margin-bottom:20px;
+}
+.cta-title .accent{color:var(--color-accent-light)}
+.cta-desc{
+  font-size:15px;color:rgba(255,255,255,0.85);
+  line-height:1.9;max-width:600px;margin:0 auto 28px;
+}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 36px;background:var(--color-accent);
+  color:#fff;font-family:var(--serif);font-weight:700;font-size:15px;
+  text-decoration:none;transition:all 0.3s ease;
+  border:1px solid var(--color-accent);
+}
+.cta-btn:hover{
+  background:transparent;color:var(--color-accent-light);transform:translateY(-2px);
+}
+.cta-btn i{font-size:13px;transition:transform 0.3s ease}
+.cta-btn:hover i{transform:translateX(4px)}
+.back-home-cta{margin-top:50px;text-align:center}
+.back-home-cta a{
+  font-family:var(--serif);font-size:15px;
+  color:var(--color-accent-light);text-decoration:none;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.back-home-cta a:hover{color:#fff}
+.back-home-cta i{transition:transform 0.3s ease}
+.back-home-cta a:hover i{transform:translateX(-4px)}
+
+/* ========== フッター ========== */
+.footer{
+  padding:50px 40px;
+  background:var(--color-ink);
+  color:rgba(255,255,255,0.6);
+  text-align:center;
+}
+.footer-logo{
+  font-family:var(--serif);font-size:14px;
+  color:var(--color-accent-light);letter-spacing:2px;margin-bottom:10px;
+}
+.footer-text{
+  font-family:var(--en);font-size:11px;letter-spacing:2px;margin-bottom:16px;
+}
+.footer-disclaimer{
+  max-width:640px;margin:16px auto 0;font-size:11px;
+  color:rgba(255,255,255,0.4);line-height:1.8;
+}
+
+/* ========== アニメ ========== */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity 0.9s ease,transform 0.9s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.stagger>*{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease}
+.stagger.visible>*{opacity:1;transform:translateY(0)}
+.stagger.visible>*:nth-child(1){transition-delay:0.05s}
+.stagger.visible>*:nth-child(2){transition-delay:0.15s}
+.stagger.visible>*:nth-child(3){transition-delay:0.25s}
+.stagger.visible>*:nth-child(4){transition-delay:0.35s}
+.stagger.visible>*:nth-child(5){transition-delay:0.45s}
+.stagger.visible>*:nth-child(6){transition-delay:0.55s}
+
+@media (max-width:720px){
+  .chapter{padding:70px 24px}
+  .cover{padding:120px 24px 60px}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== ナビ ========== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="ai-grant-dashboard.html" class="nav-back">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>PJホームへ戻る</span>
+      <span class="nav-back-sub">Back to Hub</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#company">A社設定</a></li>
+      <li><a href="#overview">全体俯瞰</a></li>
+      <li><a href="#timeline">月ごとの流れ</a></li>
+      <li><a href="#money">お金の流れ</a></li>
+      <li><a href="#assets">得たもの</a></li>
+      <li><a href="#cta">相談</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ========== 表紙 ========== -->
+<section class="cover" id="top">
+  <div class="cover-inner">
+    <div class="fade-in">
+      <div class="cover-fictional">※ Fictional Sample / 架空サンプル</div>
+      <div class="cover-tag">Case Sample #000 / Walkthrough</div>
+      <div class="cover-kicker">もし A社さんが申し込んだら</div>
+      <h1 class="cover-title">
+        A社の8ヶ月。<br>
+        <span class="accent">出会いから事例化まで</span>、<br>
+        全部を時系列で見る。
+      </h1>
+      <p class="cover-sub">
+        架空の介護事業所「あおぞら介護サービス（神戸市・従業員10名）」が<br>
+        おけもんカンパニーと出会って、AI研修を受け、補助金を申請し、入金まで到達する全フロー。<br>
+        見込み客への提案・自己理解・事例化のすべてに使うサンプル事例です。
+      </p>
+    </div>
+
+    <div class="cover-numbers stagger">
+      <div>
+        <div class="cover-num-value">8<span class="unit">ヶ月</span></div>
+        <div class="cover-num-label">出会いから事例化までの総期間</div>
+      </div>
+      <div>
+        <div class="cover-num-value">¥65,000</div>
+        <div class="cover-num-label">A社の実質負担（¥300,000中）</div>
+      </div>
+      <div>
+        <div class="cover-num-value">¥235,000</div>
+        <div class="cover-num-label">A社に戻る補助金総額（経費＋賃金）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Ch.1 登場人物 ========== -->
+<section class="chapter ch1" id="company">
+  <div class="container">
+    <div class="fade-in">
+      <div class="ch-num">Chapter 01 / Cast</div>
+      <h2 class="ch-title">登場するのは、<br>A社と、おけもんカンパニー。</h2>
+      <p class="ch-sub">
+        まずは架空のA社を紹介。<br>
+        「こんな会社が、こういう課題を抱えていて、うちに出会った」— そのベースから見ていきます。
+      </p>
+    </div>
+
+    <div class="company-card stagger">
+      <div class="company-panel">
+        <div class="company-panel-label">Client / 顧客企業</div>
+        <div class="company-panel-icon"><i class="fa-solid fa-building-user"></i></div>
+        <div class="company-panel-name">あおぞら介護サービス<br>（架空）</div>
+        <ul class="company-panel-attr">
+          <li><span class="attr-label">業種</span><span class="attr-value">訪問介護・小規模デイサービス</span></li>
+          <li><span class="attr-label">所在</span><span class="attr-value">兵庫県神戸市</span></li>
+          <li><span class="attr-label">従業員</span><span class="attr-value"><strong>10名</strong>（正社員8名＋パート2名）</span></li>
+          <li><span class="attr-label">代表</span><span class="attr-value">A社長（50代・元現場介護士）</span></li>
+          <li><span class="attr-label">雇用保険</span><span class="attr-value"><strong>加入済み</strong>（補助金要件クリア）</span></li>
+          <li><span class="attr-label">ITレベル</span><span class="attr-value">LINE・Googleカレンダー程度</span></li>
+        </ul>
+      </div>
+
+      <div class="company-panel">
+        <div class="company-panel-label">Provider / 研修提供側</div>
+        <div class="company-panel-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="company-panel-name">おけもんカンパニー</div>
+        <ul class="company-panel-attr">
+          <li><span class="attr-label">サービス</span><span class="attr-value">AI研修10時間パッケージ ¥300,000</span></li>
+          <li><span class="attr-label">講師</span><span class="attr-value">代表（外部講師として実施）</span></li>
+          <li><span class="attr-label">強み</span><span class="attr-value"><strong>Claude Code で申請書作成支援</strong></span></li>
+          <li><span class="attr-label">差別化</span><span class="attr-value">社労士不要・企業が自分で申請完結</span></li>
+          <li><span class="attr-label">実績</span><span class="attr-value">AI導入イベント 主催20回以上<br>登壇・イベント開催 通算100回超<br>登録者数百万人のYouTuberが主催するビジネスコミュニティで 評価No.1・累計400件超の販売実績</span></li>
+          <li><span class="attr-label">立ち位置</span><span class="attr-value">外部講師委託先として制度要件クリア</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="problem-box fade-in">
+      <div class="problem-label">A社の抱える課題</div>
+      <div class="problem-title">
+        「AI、気になってる。でも、何から始めたらいいかわからない。」
+      </div>
+      <div class="problem-body">
+        介護業界は慢性的な人手不足。A社長は「記録業務や請求書作成をAIで効率化できれば、職員が利用者さんに向き合う時間を増やせるはず」と感じている。でも具体的に何を導入すればいいのか、従業員にどう教えればいいのか、そもそも予算の作り方がわからない。<br>
+        そんなA社長が、<strong>地元商工会議所の経営者交流会</strong>で代表と出会うところから、このストーリーは始まる。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Ch.2 全体俯瞰 ========== -->
+<section class="chapter ch2" id="overview">
+  <div class="container">
+    <div class="fade-in">
+      <div class="ch-num">Chapter 02 / Overview</div>
+      <h2 class="ch-title">8ヶ月の全体像を、<br>まず1枚の図で俯瞰。</h2>
+      <p class="ch-sub">
+        月ごとに何が起きるか。まず全体を見てから、次章で各月の中身を詳しく見ていきます。
+      </p>
+    </div>
+
+    <div class="overview-timeline fade-in">
+      <div class="overview-track">
+        <div class="overview-month">
+          <div class="overview-month-num">M 0</div>
+          <div class="overview-month-title">出会い</div>
+          <div class="overview-month-sub">経営者交流会</div>
+        </div>
+        <div class="overview-month milestone">
+          <div class="overview-month-num">M 1</div>
+          <div class="overview-month-title">相談→契約</div>
+          <div class="overview-month-sub">着手金¥100,000</div>
+        </div>
+        <div class="overview-month milestone">
+          <div class="overview-month-num">M 2</div>
+          <div class="overview-month-title">計画届提出</div>
+          <div class="overview-month-sub">労働局へ</div>
+        </div>
+        <div class="overview-month milestone">
+          <div class="overview-month-num">M 3</div>
+          <div class="overview-month-title">研修実施</div>
+          <div class="overview-month-sub">10時間完了</div>
+        </div>
+        <div class="overview-month milestone">
+          <div class="overview-month-num">M 4</div>
+          <div class="overview-month-title">申請書提出</div>
+          <div class="overview-month-sub">Claude Code活用</div>
+        </div>
+        <div class="overview-month">
+          <div class="overview-month-num">M 5</div>
+          <div class="overview-month-title">審査中</div>
+          <div class="overview-month-sub">待機</div>
+        </div>
+        <div class="overview-month">
+          <div class="overview-month-num">M 6</div>
+          <div class="overview-month-title">審査中</div>
+          <div class="overview-month-sub">追加確認対応</div>
+        </div>
+        <div class="overview-month highlight">
+          <div class="overview-month-num">M 7</div>
+          <div class="overview-month-title">入金</div>
+          <div class="overview-month-sub">¥235,000</div>
+        </div>
+        <div class="overview-month milestone">
+          <div class="overview-month-num">M 8</div>
+          <div class="overview-month-title">事例化</div>
+          <div class="overview-month-sub">次の営業資産</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="money-summary stagger">
+      <div class="money-card">
+        <div class="money-card-label">A社の支払い</div>
+        <div class="money-card-value">¥300,000</div>
+        <div class="money-card-sub">研修費（M1契約〜M3完了）</div>
+      </div>
+      <div class="money-card">
+        <div class="money-card-label">補助金（経費）</div>
+        <div class="money-card-value">¥225,000</div>
+        <div class="money-card-sub">研修費の75%が戻る</div>
+      </div>
+      <div class="money-card">
+        <div class="money-card-label">補助金（賃金）</div>
+        <div class="money-card-value">¥10,000</div>
+        <div class="money-card-sub">10時間 × ¥1,000 × 1名分</div>
+      </div>
+      <div class="money-card final">
+        <div class="money-card-label">A社 実質負担 (Net)</div>
+        <div class="money-card-value">¥65,000</div>
+        <div class="money-card-sub">¥300,000 − ¥235,000（経費＋賃金助成）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Ch.3 月ごとの詳細 ========== -->
+<section class="chapter ch3" id="timeline">
+  <div class="container">
+    <div class="fade-in">
+      <div class="ch-num">Chapter 03 / Month-by-Month</div>
+      <h2 class="ch-title">8ヶ月を、<br>ひと月ずつ歩いてみる。</h2>
+      <p class="ch-sub">
+        ここからはストーリー仕立てで、各月の出来事を詳細に。<br>
+        代表が「この月にこれをやる」とリハーサルできる粒度で書いています。
+      </p>
+    </div>
+
+    <div class="stagger">
+
+      <!-- Month 0 -->
+      <div class="month-block">
+        <div class="month-badge">
+          <div class="month-badge-num">0</div>
+          <div class="month-badge-unit">Month</div>
+        </div>
+        <div class="month-content">
+          <span class="month-phase-tag">出会い</span>
+          <div class="month-title">経営者交流会で、AIの雑談から始まる。</div>
+          <div class="month-story">
+            神戸商工会議所の経営者交流会で、A社長と代表が隣の席になる。A社長が「介護記録のAI化に興味あるけど何から始めたらいいかわからない」とこぼすのを聞いて、代表が <strong>『AI研修を補助金で75%戻しながらやれる方法があるんですよ』</strong>と話す。<br>
+            A社長が興味を示し、<strong>来週Zoomで1時間、詳しい話を聞きたい</strong>と約束。名刺交換。この時点で契約の話はまだゼロ。<strong>「気になる経営者」を1人増やしただけ</strong>だが、ここがスタート地点。
+          </div>
+          <div class="month-actions">
+            <div class="month-action">
+              <div class="month-action-role">Okemon</div>
+              <div class="month-action-name">代表</div>
+              <div class="month-action-body">補助金活用のざっくり説明＋Zoom日程打診</div>
+            </div>
+            <div class="month-action">
+              <div class="month-action-role">Client</div>
+              <div class="month-action-name">A社長</div>
+              <div class="month-action-body">課題感を話す＋Zoom予約（無料相談）</div>
+            </div>
+          </div>
+          <div class="month-money"><i class="fa-solid fa-coins"></i>Money Flow: <strong>¥0</strong>（商談前）</div>
+        </div>
+      </div>
+
+      <!-- Month 1 -->
+      <div class="month-block">
+        <div class="month-badge">
+          <div class="month-badge-num">1</div>
+          <div class="month-badge-unit">Month</div>
+        </div>
+        <div class="month-content">
+          <span class="month-phase-tag">相談〜契約</span>
+          <div class="month-title">Zoom相談 → 見積＋プラン提案 → 契約。</div>
+          <div class="month-story">
+            Zoomで1時間、A社の課題・業務内容・補助金要件を整理。代表が <strong>『10時間研修¥300,000／75%補助で実質¥75,000／申請書作成はClaude Codeで伴走します』</strong>を提案。A社長の心が動く。<br>
+            A社長が社内で稟議を通し、<strong>契約書締結・着手金¥100,000の入金</strong>。残額¥200,000は研修完了時に支払う設計。同時に、A社内で「職業能力開発推進者」（補助金要件）の選任が完了。
+          </div>
+          <div class="month-actions">
+            <div class="month-action">
+              <div class="month-action-role">Okemon</div>
+              <div class="month-action-name">代表</div>
+              <div class="month-action-body">見積書・プラン提案書・契約書の送付／着手金請求</div>
+            </div>
+            <div class="month-action">
+              <div class="month-action-role">Client</div>
+              <div class="month-action-name">A社長</div>
+              <div class="month-action-body">社内稟議／契約書押印／着手金支払／推進者選任</div>
+            </div>
+          </div>
+          <div class="month-money"><i class="fa-solid fa-coins"></i>Money Flow: A社 → おけもん <strong>+¥100,000</strong>（着手金）</div>
+        </div>
+      </div>
+
+      <!-- Month 2 -->
+      <div class="month-block">
+        <div class="month-badge">
+          <div class="month-badge-num">2</div>
+          <div class="month-badge-unit">Month</div>
+        </div>
+        <div class="month-content">
+          <span class="month-phase-tag">計画届提出</span>
+          <div class="month-title">労働局へ計画届を提出。事前準備の月。</div>
+          <div class="month-story">
+            A社長（A社）が労働局に <strong>「訓練計画届」を提出</strong>。これは研修開始の1ヶ月前までに出す必要がある書類。代表は <strong>Claude Code用の計画届作成プロンプト集</strong>を渡して、A社長が自分で書けるよう伴走。<br>
+            必要書類は：①訓練計画届 ②事業内職業能力開発計画 ③年間職業能力開発計画 ④訓練カリキュラム（おけもんが提供） ⑤受講予定者名簿。この5点セットで申請。<br>
+            <strong>社労士には頼まない。A社長が自分で完結させる</strong>のがうちの提供モデル。
+          </div>
+          <div class="month-actions">
+            <div class="month-action">
+              <div class="month-action-role">Okemon</div>
+              <div class="month-action-name">代表</div>
+              <div class="month-action-body">計画届作成プロンプト提供／訓練カリキュラム書類提供／メール質問対応</div>
+            </div>
+            <div class="month-action">
+              <div class="month-action-role">Client</div>
+              <div class="month-action-name">A社長</div>
+              <div class="month-action-body">Claude Codeで計画届作成→労働局提出</div>
+            </div>
+          </div>
+          <div class="month-money"><i class="fa-solid fa-coins"></i>Money Flow: <strong>¥0</strong>（書類提出）</div>
+        </div>
+      </div>
+
+      <!-- Month 3 -->
+      <div class="month-block">
+        <div class="month-badge">
+          <div class="month-badge-num">3</div>
+          <div class="month-badge-unit">Month</div>
+        </div>
+        <div class="month-content">
+          <span class="month-phase-tag">研修実施</span>
+          <div class="month-title">10時間のAI研修を、実際にやる月。</div>
+          <div class="month-story">
+            ついに研修月。前半2時間は <strong>eラーニング（録画動画）</strong>でAI基礎とClaude Codeの操作感覚を受講者全員（正社員4名）に予習してもらう。<br>
+            後半8時間は <strong>対面＋オンラインのハイブリッド</strong>。代表がA社事務所に訪問して、介護業務でよく発生する「記録の要約」「ケアプラン下書き」「スタッフシフト調整」などを、Claude Codeで実際に動かすハンズオン。受講者は「自分の仕事が楽になる未来」を具体的に体感する。<br>
+            研修中の賃金助成 <strong>¥1,000/h × 10時間 × 1名分 = ¥10,000</strong> も、後で国から戻る。研修後、<strong>残金¥200,000の請求書</strong>をA社に発行。
+          </div>
+          <div class="month-actions">
+            <div class="month-action">
+              <div class="month-action-role">Okemon</div>
+              <div class="month-action-name">代表</div>
+              <div class="month-action-body">eラーニング動画配信／対面研修8時間実施／残金¥200,000請求</div>
+            </div>
+            <div class="month-action">
+              <div class="month-action-role">Client</div>
+              <div class="month-action-name">A社</div>
+              <div class="month-action-body">正社員4名受講／受講記録・修了証受領／残金支払</div>
+            </div>
+          </div>
+          <div class="month-money"><i class="fa-solid fa-coins"></i>Money Flow: A社 → おけもん <strong>+¥200,000</strong>（残金）→ 累計<strong>¥300,000</strong>完済</div>
+        </div>
+      </div>
+
+      <!-- Month 4 -->
+      <div class="month-block">
+        <div class="month-badge">
+          <div class="month-badge-num">4</div>
+          <div class="month-badge-unit">Month</div>
+        </div>
+        <div class="month-content">
+          <span class="month-phase-tag">支給申請</span>
+          <div class="month-title">研修終了から2ヶ月以内に、支給申請。</div>
+          <div class="month-story">
+            研修終了から2ヶ月以内に、労働局へ <strong>「支給申請書」＋実施結果報告</strong>を出す必要がある。A社長は再びClaude Codeを相棒に。代表提供の <strong>支給申請書作成プロンプト集</strong> で、受講記録・請求書・修了証のコピーを添付して書類一式を完成。<br>
+            提出書類：①支給申請書 ②訓練実施結果報告書 ③受講者出席簿 ④おけもんカンパニーの請求書コピー ⑤振込控え。これらを期限内に労働局へ。<br>
+            この時点で <strong>A社の手出しは¥300,000</strong>。ここから数ヶ月、審査を待つ。
+          </div>
+          <div class="month-actions">
+            <div class="month-action">
+              <div class="month-action-role">Okemon</div>
+              <div class="month-action-name">代表</div>
+              <div class="month-action-body">支給申請書作成プロンプト提供／研修実績証明書発行</div>
+            </div>
+            <div class="month-action">
+              <div class="month-action-role">Client</div>
+              <div class="month-action-name">A社長</div>
+              <div class="month-action-body">Claude Codeで支給申請書作成→書類一式を労働局に提出</div>
+            </div>
+          </div>
+          <div class="month-money"><i class="fa-solid fa-coins"></i>Money Flow: <strong>¥0</strong>（審査待ちへ）</div>
+        </div>
+      </div>
+
+      <!-- Month 5 -->
+      <div class="month-block">
+        <div class="month-badge">
+          <div class="month-badge-num">5</div>
+          <div class="month-badge-unit">Month</div>
+        </div>
+        <div class="month-content">
+          <span class="month-phase-tag">審査期間</span>
+          <div class="month-title">待機の月。A社は通常業務、うちは次の案件へ。</div>
+          <div class="month-story">
+            労働局の審査期間。A社はもう通常業務に戻っている。研修を受けた職員は、すでに <strong>Claude Codeで介護記録の要約を始めている</strong>。業務時間が実感として短くなったと評判。<br>
+            代表は次の見込み客（B社・C社）の提案中。<strong>A社の事例は、まだ「進行中の匿名事例」として営業資料の隅に記載</strong>している。
+          </div>
+          <div class="month-actions">
+            <div class="month-action">
+              <div class="month-action-role">Okemon</div>
+              <div class="month-action-name">代表</div>
+              <div class="month-action-body">次の案件B社・C社へ営業活動／A社事例は進行中として匿名で活用</div>
+            </div>
+            <div class="month-action">
+              <div class="month-action-role">Client</div>
+              <div class="month-action-name">A社</div>
+              <div class="month-action-body">通常業務／研修受講者がAI活用を現場で実践</div>
+            </div>
+          </div>
+          <div class="month-money"><i class="fa-solid fa-coins"></i>Money Flow: <strong>¥0</strong>（待機中）</div>
+        </div>
+      </div>
+
+      <!-- Month 6 -->
+      <div class="month-block">
+        <div class="month-badge">
+          <div class="month-badge-num">6</div>
+          <div class="month-badge-unit">Month</div>
+        </div>
+        <div class="month-content">
+          <span class="month-phase-tag">追加確認</span>
+          <div class="month-title">労働局から電話。追加書類の確認。</div>
+          <div class="month-story">
+            労働局から A社長に電話。「受講者の出席簿について、時刻の記載をもう少し詳細にしていただけますか」という軽微な確認依頼。A社長が再度Claude Codeで修正書類を作り、1週間以内に提出。<br>
+            <strong>これは不採択の予兆ではなく、よくある書類の微修正</strong>。要件を満たしていれば、このフェーズは粛々と進む。
+          </div>
+          <div class="month-actions">
+            <div class="month-action">
+              <div class="month-action-role">Okemon</div>
+              <div class="month-action-name">代表</div>
+              <div class="month-action-body">A社長からの質問対応（LINE・メール）</div>
+            </div>
+            <div class="month-action">
+              <div class="month-action-role">Client</div>
+              <div class="month-action-name">A社長</div>
+              <div class="month-action-body">追加書類修正→再提出</div>
+            </div>
+          </div>
+          <div class="month-money"><i class="fa-solid fa-coins"></i>Money Flow: <strong>¥0</strong>（再審査）</div>
+        </div>
+      </div>
+
+      <!-- Month 7 -->
+      <div class="month-block">
+        <div class="month-badge">
+          <div class="month-badge-num">7</div>
+          <div class="month-badge-unit">Month</div>
+        </div>
+        <div class="month-content">
+          <span class="month-phase-tag">入金 🎉</span>
+          <div class="month-title">補助金¥235,000がA社の口座に入金。</div>
+          <div class="month-story">
+            労働局から採択通知。A社の指定口座に <strong>経費助成¥225,000＋賃金助成¥10,000 = ¥235,000</strong> が入金される。<br>
+            A社長が代表に <strong>「ちゃんと戻ってきましたよ！」</strong> と嬉しい報告LINE。数ヶ月前は半信半疑だったA社長が、ここで初めて「**補助金って本当に戻るんだ**」を体感する。<br>
+            <strong>A社の実質負担は、¥300,000 − ¥225,000 = ¥75,000</strong>。¥75,000で正社員4名がAI活用できる体制を作れた計算。さらに賃金助成¥10,000もボーナスで戻っている。
+          </div>
+          <div class="month-actions">
+            <div class="month-action">
+              <div class="month-action-role">Okemon</div>
+              <div class="month-action-name">代表</div>
+              <div class="month-action-body">A社長に「事例化お願いしてもいいですか」と提案</div>
+            </div>
+            <div class="month-action">
+              <div class="month-action-role">Client</div>
+              <div class="month-action-name">A社長</div>
+              <div class="month-action-body">補助金入金確認／喜びの報告／事例化にOK</div>
+            </div>
+          </div>
+          <div class="month-money"><i class="fa-solid fa-coins"></i>Money Flow: 国 → A社 <strong>+¥235,000</strong>（経費¥225,000＋賃金¥10,000）</div>
+        </div>
+      </div>
+
+      <!-- Month 8 -->
+      <div class="month-block">
+        <div class="month-badge">
+          <div class="month-badge-num">8</div>
+          <div class="month-badge-unit">Month</div>
+        </div>
+        <div class="month-content">
+          <span class="month-phase-tag">事例化</span>
+          <div class="month-title">事例化 → 次の営業の武器に。</div>
+          <div class="month-story">
+            A社長にインタビューし、「導入前の課題」「研修内容の感想」「現場での変化」「補助金申請の実感」を30分ほど聞き取り。<strong>写真撮影＋許可取り</strong>をして、デザイン担当が事例ページ（実践事例 #001）を制作。<br>
+            PJホームの子ページとして公開。これが <strong>B社・C社への営業で『同業の先行事例ありますよ』で見せる最強の武器</strong>になる。<br>
+            おけもんカンパニー側は、8ヶ月かけて <strong>¥300,000の売上＋事例資産1件＋長期関係1社</strong> を獲得。Phase 1の最初の1社が走り切った瞬間。
+          </div>
+          <div class="month-actions">
+            <div class="month-action">
+              <div class="month-action-role">Okemon</div>
+              <div class="month-action-name">代表 × デザイン担当</div>
+              <div class="month-action-body">インタビュー実施／事例ページ制作／公開／PJホームに掲載</div>
+            </div>
+            <div class="month-action">
+              <div class="month-action-role">Client</div>
+              <div class="month-action-name">A社長</div>
+              <div class="month-action-body">インタビュー協力／事例掲載の許諾</div>
+            </div>
+          </div>
+          <div class="month-money"><i class="fa-solid fa-coins"></i>Money Flow: <strong>¥0</strong>（事例化フェーズ）／資産化は別の価値</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== Ch.4 お金の流れ ========== -->
+<section class="chapter ch4" id="money">
+  <div class="container">
+    <div class="fade-in">
+      <div class="ch-num">Chapter 04 / Cash Flow</div>
+      <h2 class="ch-title">お金の流れを、<br>1枚の表で全部見る。</h2>
+      <p class="ch-sub">
+        誰が、いつ、いくら払って、いつ、いくら戻るか。<br>
+        キャッシュフロー感覚をクリアに持っておく月別サマリー。
+      </p>
+    </div>
+
+    <div class="money-timeline fade-in">
+      <div class="money-row out">
+        <div class="money-row-when">Month 1</div>
+        <div class="money-row-what">A社 → おけもん：着手金（契約時）</div>
+        <div class="money-row-amount"><span class="label">A社の出費</span>−¥100,000</div>
+      </div>
+      <div class="money-row out">
+        <div class="money-row-when">Month 3</div>
+        <div class="money-row-what">A社 → おけもん：残金（研修完了時）</div>
+        <div class="money-row-amount"><span class="label">A社の出費</span>−¥200,000</div>
+      </div>
+      <div class="money-row">
+        <div class="money-row-when">Month 4</div>
+        <div class="money-row-what">A社、労働局へ支給申請書を提出（書類のみ）</div>
+        <div class="money-row-amount"><span class="label">動き</span>¥0</div>
+      </div>
+      <div class="money-row in">
+        <div class="money-row-when">Month 7</div>
+        <div class="money-row-what">国 → A社：経費助成（研修費の75%）</div>
+        <div class="money-row-amount"><span class="label">A社の受領</span>+¥225,000</div>
+      </div>
+      <div class="money-row in">
+        <div class="money-row-when">Month 7</div>
+        <div class="money-row-what">国 → A社：賃金助成（10h × ¥1,000 × 1名）</div>
+        <div class="money-row-amount"><span class="label">A社の受領</span>+¥10,000</div>
+      </div>
+      <div class="money-row final-row">
+        <div class="money-row-when">合計 / Net</div>
+        <div class="money-row-what">A社の実質負担額（¥300,000 − ¥235,000）</div>
+        <div class="money-row-amount"><span class="label">Net Cost</span>¥65,000</div>
+      </div>
+    </div>
+
+    <p style="margin-top:40px;text-align:center;font-family:var(--serif);font-size:15px;color:var(--color-muted);line-height:2">
+      <strong style="color:var(--color-primary-dark)">4ヶ月の立替期間（M3〜M7）</strong>を挟むが、最終的には<strong style="color:var(--color-accent)">¥65,000で正社員4名がAI研修を受けられた</strong>計算。<br>
+      うちは¥300,000満額を受領、売上として計上。双方得をする仕組み。
+    </p>
+  </div>
+</section>
+
+<!-- ========== Ch.5 得たもの ========== -->
+<section class="chapter ch5" id="assets">
+  <div class="container">
+    <div class="fade-in">
+      <div class="ch-num">Chapter 05 / Assets</div>
+      <h2 class="ch-title">8ヶ月で、<br>双方が得たもの。</h2>
+      <p class="ch-sub">
+        お金だけじゃない。A社側・おけもん側・そして国側。<br>
+        この取引で何が資産として残ったかを整理します。
+      </p>
+    </div>
+
+    <div class="asset-grid stagger">
+      <div class="asset-card">
+        <div class="asset-icon"><i class="fa-solid fa-brain"></i></div>
+        <div class="asset-title">AI活用できる職員</div>
+        <div class="asset-desc">正社員4名が、介護記録の要約・ケアプラン下書き・請求書作成補助をClaude Codeで実践できる状態に。</div>
+        <div class="asset-whom">For A社</div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-icon"><i class="fa-solid fa-clock"></i></div>
+        <div class="asset-title">月間の業務時間短縮</div>
+        <div class="asset-desc">職員1人あたり月10〜15時間の業務時間削減（想定）。その時間を利用者さんに向けられる。</div>
+        <div class="asset-whom">For A社</div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div class="asset-title">事例資産 #001</div>
+        <div class="asset-desc">A社の導入事例ページが公開。B社・C社への営業で「介護業界の先行事例」として見せられる最強の武器に。</div>
+        <div class="asset-whom">For Okemon</div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-icon"><i class="fa-solid fa-handshake"></i></div>
+        <div class="asset-title">長期関係1社</div>
+        <div class="asset-desc">A社長との信頼関係構築。追加研修・継続サポート・他社紹介への発展可能性。LTVが伸びる。</div>
+        <div class="asset-whom">For Okemon</div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-icon"><i class="fa-solid fa-receipt"></i></div>
+        <div class="asset-title">¥300,000の安定売上</div>
+        <div class="asset-desc">おけもんカンパニーの月商の1本分として計上。CW案件に依存しない企業向け売上の第1号。</div>
+        <div class="asset-whom">For Okemon</div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-icon"><i class="fa-solid fa-landmark"></i></div>
+        <div class="asset-title">政策目的の達成</div>
+        <div class="asset-desc">国が狙う「中小企業のAI人材育成・DX推進」が、実際の現場（神戸の小さな介護事業所）で1件進んだ。</div>
+        <div class="asset-whom">For Nation</div>
+      </div>
+    </div>
+
+    <div class="problem-box fade-in" style="margin-top:50px;background:linear-gradient(135deg,rgba(44,95,75,0.08),rgba(196,145,94,0.03));border-left-color:var(--color-primary)">
+      <div class="problem-label" style="color:var(--color-primary)">Key Insight</div>
+      <div class="problem-title">
+        「受注1件 = 売上¥300,000」ではなく、<br>
+        「受注1件 = 売上¥300,000 + 事例資産1件 + 長期関係1社」。
+      </div>
+      <div class="problem-body">
+        補助金があることで、顧客企業側の意思決定ハードルが下がる。だからこそ、Phase 1は <strong>「1件通す」こと自体が、その後の営業を10倍楽にする投資</strong>になる。<br>
+        1社目は単なる売上じゃなく、<strong>営業資産の母胎</strong>として設計する。ここがうちのPhase 1戦略の核。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Ch.6 CTA ========== -->
+<section class="chapter ch6" id="cta">
+  <div class="container">
+    <div class="fade-in">
+      <div class="ch-num">Chapter 06 / Next Step</div>
+      <h2 class="ch-title">このサンプルを、<br>あなたの会社で再現する。</h2>
+      <p class="ch-sub">
+        A社と同じ流れを、あなたの業種・規模・課題に合わせて設計します。<br>
+        ここまで読んでいただいたなら、もう全体像は掴めているはず。あとは30分、話すだけ。
+      </p>
+    </div>
+
+    <div class="cta-main fade-in">
+      <div class="cta-label">Free Consultation</div>
+      <div class="cta-title">
+        無料相談のご予約、<br>
+        <span class="accent">受付中です。</span>
+      </div>
+      <p class="cta-desc">
+        「ウチの業種だとどうなる？」「従業員3人だけでも使える？」「申請書、本当に自分で書ける？」<br>
+        30分のオンライン相談で、あなたの状況に当てはめたサンプルストーリーをお伝えします。<br>
+        もちろん無料、売り込みナシ。
+      </p>
+      <a href="mailto:okemonogatari@gmail.com?subject=補助金活用AI研修のサンプル相談" class="cta-btn">
+        メールで相談する
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="back-home-cta fade-in">
+      <a href="ai-grant-dashboard.html">
+        <i class="fa-solid fa-arrow-left"></i>
+        PJホーム（中央司令塔）へ戻る
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== フッター ========== -->
+<footer class="footer">
+  <div class="footer-logo">OKEMON COMPANY</div>
+  <div class="footer-text">Sample Case #000 / Fictional Walkthrough / 2026.04.17</div>
+  <div class="footer-disclaimer">
+    本ページに登場する「あおぞら介護サービス／A社長」は、制度と流れをわかりやすく伝えるための<strong>架空の設定</strong>です。<br>
+    実在の企業・個人とは一切関係ありません。数字・期間は制度の標準的なケースを元にした想定値で、実際の採択・支給時期は労働局の審査状況により異なります。
+  </div>
+  <div style="margin-top:24px;font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:1px">
+    Designed by デザイン担当（CDO傘下）
+  </div>
+</footer>
+
+<script>
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in, .stagger').forEach(el => {
+  observer.observe(el);
+  const rect = el.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    el.classList.add('visible');
+  }
+});
+</script>
+
+</body>
+</html>
