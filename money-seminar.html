@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100年先へ、資産と教養を繋ぐ｜SO マネーアカデミー</title>
+<meta name="description" content="経営者・富裕層のための資産形成セミナー。円資産偏重のリスクを学び、次世代へバトンを繋ぐ資産設計を。資料請求・個別相談はこちらから。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --color-primary:#1A2B4C;
+  --color-primary-light:#E8ECF2;
+  --color-accent:#C9A961;
+  --color-accent-dark:#A88A47;
+  --color-text:#2D2D2D;
+  --color-text-light:#6B6B6B;
+  --color-bg:#F7F5F0;
+  --color-bg-white:#FFFFFF;
+  --color-border:#E5E0D5;
+  --font-serif:'Noto Serif JP',serif;
+  --font-sans:'Noto Sans JP',sans-serif;
+  --font-inter:'Inter',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-sans);background:var(--color-bg);color:var(--color-text);line-height:1.8;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+.container{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+/* ========== ANIMATIONS ========== */
+@keyframes heroFadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes heroSlideUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);}}
+@keyframes scrollCue{0%,100%{transform:translateY(0);opacity:0.5;}50%{transform:translateY(8px);opacity:1;}}
+.fade-in,.fade-in-left,.fade-in-right,.stagger>*,.trust-bar{opacity:0;transition:opacity 0.9s ease, transform 0.9s ease;}
+.fade-in{transform:translateY(24px);}
+.fade-in-left{transform:translateX(-32px);}
+.fade-in-right{transform:translateX(32px);}
+.stagger>*{transform:translateY(24px);}
+.stagger.is-visible>*{opacity:1;transform:translateY(0);}
+.stagger.is-visible>*:nth-child(1){transition-delay:0.05s;}
+.stagger.is-visible>*:nth-child(2){transition-delay:0.15s;}
+.stagger.is-visible>*:nth-child(3){transition-delay:0.25s;}
+.stagger.is-visible>*:nth-child(4){transition-delay:0.35s;}
+.stagger.is-visible>*:nth-child(5){transition-delay:0.45s;}
+.stagger.is-visible>*:nth-child(6){transition-delay:0.55s;}
+.fade-in.is-visible,.fade-in-left.is-visible,.fade-in-right.is-visible,.trust-bar.is-visible{opacity:1;transform:translate(0,0);}
+
+/* ========== HEADER ========== */
+.header{position:fixed;top:0;left:0;right:0;padding:16px 0;background:rgba(247,245,240,0.92);backdrop-filter:blur(8px);border-bottom:1px solid transparent;z-index:100;transition:border-color 0.3s;}
+.header.scrolled{border-bottom-color:var(--color-border);}
+.header-inner{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:0 24px;}
+.logo{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--color-primary);letter-spacing:0.1em;}
+.logo small{font-family:var(--font-inter);font-size:10px;font-weight:500;letter-spacing:0.3em;color:var(--color-accent);display:block;margin-bottom:2px;}
+.nav{display:flex;gap:32px;align-items:center;}
+.nav a{font-size:13px;font-weight:500;color:var(--color-text);letter-spacing:0.05em;transition:color 0.3s;}
+.nav a:hover{color:var(--color-accent);}
+.nav-cta{background:var(--color-primary);color:#fff !important;padding:10px 24px;font-size:12px !important;letter-spacing:0.1em;transition:background 0.3s, transform 0.2s;}
+.nav-cta:hover{background:var(--color-accent);color:#fff !important;transform:translateY(-2px);}
+@media(max-width:768px){.nav{gap:12px;}.nav a:not(.nav-cta){display:none;}}
+
+/* ========== HERO ========== */
+.hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:center;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1920&q=80');background-size:cover;background-position:center;z-index:1;}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,43,76,0.88) 0%,rgba(26,43,76,0.7) 50%,rgba(26,43,76,0.9) 100%);z-index:2;}
+.hero-inner{position:relative;z-index:3;max-width:1120px;margin:0 auto;padding:0 24px;color:#fff;}
+.hero-label{font-family:var(--font-inter);font-size:12px;font-weight:600;letter-spacing:0.4em;color:var(--color-accent);margin-bottom:24px;animation:heroFadeIn 0.8s 0.2s both;}
+.hero-label::before{content:'';display:inline-block;width:40px;height:1px;background:var(--color-accent);vertical-align:middle;margin-right:16px;}
+.hero-title{font-family:var(--font-serif);font-size:clamp(32px,5.5vw,64px);font-weight:700;line-height:1.35;margin-bottom:32px;letter-spacing:0.03em;animation:heroSlideUp 0.9s 0.3s both;}
+.hero-title span{color:var(--color-accent);}
+.hero-sub{font-size:clamp(14px,1.5vw,17px);line-height:2.1;max-width:640px;margin-bottom:48px;opacity:0.92;animation:heroSlideUp 0.9s 0.5s both;}
+.hero-cta-group{display:flex;gap:20px;flex-wrap:wrap;animation:heroSlideUp 0.9s 0.7s both;}
+.btn-primary{display:inline-flex;align-items:center;gap:12px;background:var(--color-accent);color:#fff;padding:18px 40px;font-size:15px;font-weight:600;letter-spacing:0.1em;border:none;cursor:pointer;transition:background 0.3s, transform 0.3s, box-shadow 0.3s;}
+.btn-primary:hover{background:var(--color-accent-dark);transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,169,97,0.3);}
+.btn-secondary{display:inline-flex;align-items:center;gap:12px;background:transparent;color:#fff;padding:18px 40px;font-size:15px;font-weight:500;letter-spacing:0.1em;border:1px solid rgba(255,255,255,0.5);transition:background 0.3s, border-color 0.3s;}
+.btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff;}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;color:#fff;font-family:var(--font-inter);font-size:10px;letter-spacing:0.3em;animation:scrollCue 2s infinite;}
+.hero-scroll::after{content:'';display:block;width:1px;height:40px;background:#fff;margin:12px auto 0;opacity:0.5;}
+
+/* ========== TRUST BAR ========== */
+.trust-bar{background:var(--color-bg-white);padding:56px 0;border-bottom:1px solid var(--color-border);}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1000px;margin:0 auto;padding:0 24px;}
+.trust-item{text-align:center;position:relative;}
+.trust-item:not(:last-child)::after{content:'';position:absolute;top:20%;right:-12px;width:1px;height:60%;background:var(--color-border);}
+.trust-num{font-family:var(--font-serif);font-size:clamp(32px,4.5vw,52px);font-weight:700;color:var(--color-primary);line-height:1;}
+.trust-num span{font-size:0.45em;color:var(--color-accent);margin-left:4px;letter-spacing:0;}
+.trust-label{font-size:12px;color:var(--color-text-light);margin-top:10px;letter-spacing:0.15em;}
+@media(max-width:768px){.trust-grid{grid-template-columns:repeat(2,1fr);gap:40px 24px;}.trust-item:nth-child(2n)::after{display:none;}.trust-item:nth-child(3)::after{display:none;}}
+
+/* ========== SECTION COMMON ========== */
+section{padding:120px 0;}
+.section-label{font-family:var(--font-inter);font-size:11px;font-weight:600;letter-spacing:0.4em;color:var(--color-accent);text-transform:uppercase;margin-bottom:16px;text-align:center;}
+.section-title{font-family:var(--font-serif);font-size:clamp(26px,3.5vw,40px);font-weight:700;color:var(--color-primary);text-align:center;line-height:1.55;margin-bottom:24px;letter-spacing:0.05em;position:relative;}
+.section-title::after{content:'';display:block;width:0;height:2px;background:var(--color-accent);margin:24px auto 0;transition:width 0.8s ease 0.3s;}
+.fade-in.is-visible .section-title::after,.section-head.is-visible .section-title::after{width:48px;}
+.section-sub{font-size:15px;color:var(--color-text-light);text-align:center;max-width:640px;margin:0 auto 72px;line-height:2;}
+
+/* ========== CONCEPT ========== */
+.concept{background:var(--color-bg-white);}
+.concept-inner{max-width:820px;margin:0 auto;padding:0 24px;text-align:center;}
+.concept-headline{font-family:var(--font-serif);font-size:clamp(22px,2.8vw,32px);font-weight:500;color:var(--color-primary);line-height:2.2;margin-bottom:40px;letter-spacing:0.08em;}
+.concept-headline em{font-style:normal;color:var(--color-accent);font-weight:700;}
+.concept-body{font-size:15px;color:var(--color-text);line-height:2.2;text-align:left;}
+.concept-body p{margin-bottom:20px;}
+
+/* ========== PROBLEMS ========== */
+.problems{background:var(--color-bg);}
+.problem-list{max-width:800px;margin:0 auto;}
+.problem-item{padding:32px 32px 32px 40px;border-left:3px solid var(--color-accent);margin-bottom:24px;background:var(--color-bg-white);transition:transform 0.3s, box-shadow 0.3s;}
+.problem-item:hover{transform:translateX(4px);box-shadow:0 8px 24px rgba(26,43,76,0.06);}
+.problem-item h3{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--color-primary);margin-bottom:10px;letter-spacing:0.05em;}
+.problem-item p{font-size:14px;color:var(--color-text-light);line-height:1.9;}
+
+/* ========== DIVIDER ========== */
+.divider{height:280px;background-size:cover;background-position:center;background-attachment:fixed;position:relative;}
+.divider::after{content:'';position:absolute;inset:0;background:linear-gradient(rgba(26,43,76,0.6),rgba(26,43,76,0.4));}
+.divider-1{background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80');}
+.divider-2{background-image:url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1920&q=80');}
+.divider-quote{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;height:100%;color:#fff;font-family:var(--font-serif);font-size:clamp(16px,2vw,22px);font-weight:500;letter-spacing:0.15em;text-align:center;padding:0 24px;line-height:2;}
+
+/* ========== FEATURES ========== */
+.features{background:var(--color-bg-white);}
+.feature-block{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-bottom:100px;}
+.feature-block:last-child{margin-bottom:0;}
+.feature-block:nth-child(even) .feature-img{order:2;}
+.feature-img{overflow:hidden;aspect-ratio:4/3;}
+.feature-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;}
+.feature-img:hover img{transform:scale(1.05);}
+.feature-content .feature-num{font-family:var(--font-inter);font-size:11px;font-weight:600;letter-spacing:0.4em;color:var(--color-accent);margin-bottom:16px;}
+.feature-content h3{font-family:var(--font-serif);font-size:clamp(22px,2.5vw,30px);font-weight:700;color:var(--color-primary);line-height:1.6;margin-bottom:24px;letter-spacing:0.05em;}
+.feature-content p{font-size:14px;color:var(--color-text);line-height:2.1;}
+@media(max-width:900px){.feature-block{grid-template-columns:1fr;gap:32px;margin-bottom:80px;}.feature-block:nth-child(even) .feature-img{order:0;}}
+
+/* ========== CURRICULUM ========== */
+.curriculum{background:var(--color-bg);}
+.curriculum-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.curriculum-item{background:var(--color-bg-white);padding:48px 32px;text-align:center;border:1px solid var(--color-border);transition:transform 0.3s, box-shadow 0.3s, border-color 0.3s;}
+.curriculum-item:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(26,43,76,0.08);border-color:var(--color-accent);}
+.curriculum-icon{width:64px;height:64px;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;background:var(--color-primary-light);color:var(--color-primary);font-size:26px;transition:background 0.3s, color 0.3s;}
+.curriculum-item:hover .curriculum-icon{background:var(--color-primary);color:var(--color-accent);}
+.curriculum-item h3{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--color-primary);margin-bottom:16px;line-height:1.6;letter-spacing:0.05em;}
+.curriculum-item p{font-size:13px;color:var(--color-text-light);line-height:1.9;}
+@media(max-width:900px){.curriculum-grid{grid-template-columns:1fr;gap:24px;}}
+
+/* ========== TESTIMONIALS ========== */
+.testimonials{background:var(--color-bg-white);}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.voice-card{padding:40px 32px;background:var(--color-bg);border-top:3px solid var(--color-accent);transition:transform 0.3s, box-shadow 0.3s;}
+.voice-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(26,43,76,0.08);}
+.voice-mark{font-family:var(--font-serif);font-size:48px;color:var(--color-accent);line-height:1;margin-bottom:8px;}
+.voice-text{font-size:14px;line-height:2;color:var(--color-text);margin-bottom:28px;min-height:140px;}
+.voice-profile{display:flex;align-items:center;gap:16px;padding-top:24px;border-top:1px solid var(--color-border);}
+.voice-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.voice-meta{font-family:var(--font-serif);font-size:14px;font-weight:700;color:var(--color-primary);}
+.voice-meta small{display:block;font-family:var(--font-sans);font-size:11px;font-weight:400;color:var(--color-text-light);margin-top:4px;letter-spacing:0.05em;}
+@media(max-width:900px){.voice-grid{grid-template-columns:1fr;gap:24px;}.voice-text{min-height:auto;}}
+
+/* ========== LECTURER ========== */
+.lecturer{background:var(--color-bg);}
+.lecturer-inner{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:center;max-width:1000px;margin:0 auto;}
+.lecturer-photo{aspect-ratio:3/4;overflow:hidden;}
+.lecturer-photo img{width:100%;height:100%;object-fit:cover;}
+.lecturer-content .section-label{text-align:left;margin-bottom:12px;}
+.lecturer-name{font-family:var(--font-serif);font-size:clamp(24px,3vw,32px);font-weight:700;color:var(--color-primary);line-height:1.5;margin-bottom:8px;letter-spacing:0.05em;}
+.lecturer-name small{display:block;font-family:var(--font-inter);font-size:12px;font-weight:500;color:var(--color-accent);letter-spacing:0.3em;margin-top:8px;}
+.lecturer-role{font-size:13px;color:var(--color-text-light);margin:16px 0 24px;letter-spacing:0.1em;}
+.lecturer-bio{font-size:14px;line-height:2.1;color:var(--color-text);margin-bottom:24px;}
+.lecturer-credentials{list-style:none;padding:20px 0 0;border-top:1px solid var(--color-border);}
+.lecturer-credentials li{position:relative;padding-left:24px;font-size:13px;color:var(--color-text);line-height:1.9;margin-bottom:8px;}
+.lecturer-credentials li::before{content:'';position:absolute;left:0;top:14px;width:12px;height:1px;background:var(--color-accent);}
+@media(max-width:900px){.lecturer-inner{grid-template-columns:1fr;gap:40px;}.lecturer-photo{max-width:320px;margin:0 auto;}}
+
+/* ========== FLOW ========== */
+.flow{background:var(--color-bg-white);}
+.flow-list{max-width:760px;margin:0 auto;}
+.flow-item{display:grid;grid-template-columns:80px 1fr;gap:32px;align-items:flex-start;padding:32px 0;border-bottom:1px solid var(--color-border);}
+.flow-item:last-child{border-bottom:none;}
+.flow-num{font-family:var(--font-serif);font-size:38px;font-weight:700;color:var(--color-accent);line-height:1;transition:transform 0.3s;}
+.flow-item:hover .flow-num{transform:scale(1.1);}
+.flow-num small{display:block;font-family:var(--font-inter);font-size:10px;font-weight:500;letter-spacing:0.3em;color:var(--color-text-light);margin-bottom:4px;}
+.flow-body h3{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--color-primary);margin-bottom:10px;letter-spacing:0.05em;}
+.flow-body p{font-size:14px;color:var(--color-text-light);line-height:1.9;}
+
+/* ========== OUTLINE ========== */
+.outline{background:var(--color-primary);color:#fff;position:relative;overflow:hidden;}
+.outline::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border:1px solid rgba(201,169,97,0.15);border-radius:50%;}
+.outline::after{content:'';position:absolute;bottom:-150px;left:-100px;width:500px;height:500px;border:1px solid rgba(201,169,97,0.1);border-radius:50%;}
+.outline .section-label{color:var(--color-accent);}
+.outline .section-title{color:#fff;}
+.outline-table{max-width:720px;margin:0 auto;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(4px);}
+.outline-row{display:grid;grid-template-columns:180px 1fr;padding:24px 40px;border-bottom:1px solid rgba(255,255,255,0.1);align-items:center;}
+.outline-row:last-child{border-bottom:none;}
+.outline-key{font-family:var(--font-inter);font-size:11px;font-weight:600;letter-spacing:0.3em;color:var(--color-accent);text-transform:uppercase;}
+.outline-val{font-size:14px;line-height:1.9;color:#fff;}
+@media(max-width:768px){.outline-row{grid-template-columns:1fr;gap:6px;padding:20px 24px;}}
+
+/* ========== FAQ ========== */
+.faq{background:var(--color-bg);}
+.faq-list{max-width:800px;margin:0 auto;}
+.faq-item{background:var(--color-bg-white);margin-bottom:12px;border:1px solid var(--color-border);transition:border-color 0.3s;}
+.faq-item[open]{border-color:var(--color-accent);}
+.faq-item summary{padding:24px 32px;cursor:pointer;font-family:var(--font-serif);font-size:15px;font-weight:700;color:var(--color-primary);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;letter-spacing:0.05em;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::before{content:'Q';font-family:var(--font-inter);font-size:13px;font-weight:700;color:var(--color-accent);letter-spacing:0.2em;margin-right:20px;flex-shrink:0;}
+.faq-item summary::after{content:'＋';font-family:var(--font-inter);font-size:20px;font-weight:300;color:var(--color-accent);transition:transform 0.3s;flex-shrink:0;margin-left:auto;}
+.faq-item[open] summary::after{content:'−';}
+.faq-body{padding:0 32px 28px 76px;font-size:14px;color:var(--color-text);line-height:2;}
+
+/* ========== FINAL CTA ========== */
+.final-cta{background:var(--color-bg-white);padding:140px 0;position:relative;}
+.final-cta::before{content:'';position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=1920&q=80');background-size:cover;background-position:center;opacity:0.08;}
+.final-inner{position:relative;max-width:760px;margin:0 auto;padding:0 24px;text-align:center;}
+.final-inner .section-title{margin-bottom:20px;}
+.final-desc{font-size:15px;color:var(--color-text);line-height:2.1;margin-bottom:48px;}
+.final-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;}
+.btn-primary-dark{background:var(--color-primary);}
+.btn-primary-dark:hover{background:var(--color-accent);}
+.final-note{font-size:12px;color:var(--color-text-light);letter-spacing:0.1em;}
+
+/* ========== FOOTER ========== */
+.footer{background:var(--color-primary);color:rgba(255,255,255,0.7);padding:64px 0 32px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;max-width:1120px;margin:0 auto;padding:0 24px 48px;border-bottom:1px solid rgba(255,255,255,0.1);}
+.footer-logo{font-family:var(--font-serif);font-size:20px;font-weight:700;color:#fff;letter-spacing:0.1em;margin-bottom:16px;}
+.footer-logo small{font-family:var(--font-inter);font-size:10px;font-weight:500;letter-spacing:0.3em;color:var(--color-accent);display:block;margin-bottom:4px;}
+.footer-desc{font-size:12px;line-height:2;max-width:360px;}
+.footer-col h4{font-family:var(--font-inter);font-size:11px;font-weight:600;letter-spacing:0.3em;color:var(--color-accent);margin-bottom:20px;text-transform:uppercase;}
+.footer-col ul{list-style:none;}
+.footer-col li{font-size:13px;margin-bottom:10px;}
+.footer-col a:hover{color:var(--color-accent);}
+.footer-bottom{max-width:1120px;margin:32px auto 0;padding:0 24px;text-align:center;font-family:var(--font-inter);font-size:11px;letter-spacing:0.2em;}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr;gap:32px;}}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:768px){
+  section{padding:80px 0;}
+  .divider{height:200px;background-attachment:scroll;}
+  .hero-cta-group,.final-buttons{flex-direction:column;width:100%;}
+  .btn-primary,.btn-secondary{justify-content:center;width:100%;}
+  .section-sub{margin-bottom:48px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="header" id="siteHeader">
+  <div class="header-inner">
+    <a href="#" class="logo"><small>SO MONEY ACADEMY</small>100年資産塾</a>
+    <nav class="nav">
+      <a href="#concept">理念</a>
+      <a href="#features">特長</a>
+      <a href="#curriculum">学べること</a>
+      <a href="#lecturer">講師</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="nav-cta">資料請求</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-label">FOR THE NEXT 100 YEARS</p>
+    <h1 class="hero-title">100年先へ、<br><span>資産</span>と<span>教養</span>を繋ぐ。</h1>
+    <p class="hero-sub">事業は順調──本当にそれで、安心と言えますか？<br>円資産100%のリスク、世界の常識、次世代へのバトン。<br>経営者のためのマネーアカデミーが、資産形成の本質をお伝えします。</p>
+    <div class="hero-cta-group">
+      <a href="#contact" class="btn-primary">資料請求・個別相談 <i class="fas fa-arrow-right"></i></a>
+      <a href="#concept" class="btn-secondary">理念を読む <i class="fas fa-chevron-down"></i></a>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- ========== TRUST BAR ========== -->
+<div class="trust-bar">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <div class="trust-num">12<span>年</span></div>
+      <div class="trust-label">開催実績</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">3,200<span>名</span></div>
+      <div class="trust-label">累計参加者</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">96<span>%</span></div>
+      <div class="trust-label">満足度</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">85<span>%</span></div>
+      <div class="trust-label">紹介・リピート率</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== CONCEPT ========== -->
+<section class="concept" id="concept">
+  <div class="concept-inner fade-in">
+    <p class="section-label">Our Philosophy</p>
+    <h2 class="section-title">事業は順調。<br>でも、<em>個人財務</em>にも同じ確信を。</h2>
+    <div class="concept-body">
+      <p>「売上は伸ばせる、会社は成長している。けれど、退任後・次世代・30年後の自分と家族の資産設計には、同じ確信が持てない」──そんな声を、この12年で幾度となく伺ってきました。</p>
+      <p>日本人の常識は、世界から見ればしばしば非常識です。円資産に100%を預けること、保険で老後を設計すること、預貯金に偏ること。そのどれもが、グローバルスタンダードでは「集中投資」と見なされます。</p>
+      <p>このアカデミーは、単なる投資の手法ではなく、「<em>100年先へ、資産と教養をどう繋ぐか</em>」という経営者のための思想の場です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROBLEMS ========== -->
+<section class="problems">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Problems</p>
+      <h2 class="section-title">こんな想いを抱えていませんか</h2>
+      <p class="section-sub">経営者・富裕層の方から多く寄せられる、個人財務の悩み。一つでも当てはまるなら、次の一歩を考えるタイミングです。</p>
+    </div>
+    <div class="problem-list stagger">
+      <div class="problem-item">
+        <h3>事業は順調だが、個人の資産設計に自信がない</h3>
+        <p>法人の財務には詳しくても、個人の資産ポートフォリオとなると誰に相談すればいいか分からない。銀行・証券・保険、どの提案も立場が透けて見えて信用しきれない。</p>
+      </div>
+      <div class="problem-item">
+        <h3>円預金・保険中心の「日本的」資産構成に不安がある</h3>
+        <p>円安・インフレ・低金利が続く中、預貯金に寝かせておくことが「機会損失」どころか「資産の目減り」であると気づいたが、何から手をつければいいか分からない。</p>
+      </div>
+      <div class="problem-item">
+        <h3>次世代への承継──相続・教育・事業承継の全体像が見えない</h3>
+        <p>子や孫の世代に、どれだけの資産と、どのような金融リテラシーを残すべきか。相続税、事業承継税制、海外資産の扱い。断片的な情報はあるが全体像が掴めない。</p>
+      </div>
+      <div class="problem-item">
+        <h3>時間対効果を重視したい──点ではなく「体系」で学びたい</h3>
+        <p>YouTubeや書籍で断片的に学ぶには時間が足りない。同じ立場の経営者と、体系的かつ骨太な議論ができる場で、本質だけを短時間で掴みたい。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DIVIDER 1 ========== -->
+<div class="divider divider-1">
+  <p class="divider-quote">資産を増やす技術ではなく、<br>資産を守り、次代へ繋ぐ思想を。</p>
+</div>
+
+<!-- ========== FEATURES ========== -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Features</p>
+      <h2 class="section-title">選ばれ続ける<br>3つの理由</h2>
+      <p class="section-sub">特定の金融機関・商品に紐付かない、完全独立中立の立場から、経営者と富裕層のための資産形成を体系的にお伝えします。</p>
+    </div>
+
+    <div class="feature-block fade-in-left">
+      <div class="feature-img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80" alt="グローバルスタンダードの資産設計"></div>
+      <div class="feature-content">
+        <p class="feature-num">01 / GLOBAL STANDARD</p>
+        <h3>世界基準の資産設計思想を、日本の文脈で学ぶ</h3>
+        <p>欧米の富裕層が100年スパンで実践してきた資産分散・承継の考え方を、日本の税制・商習慣・家族観に翻訳してお伝えします。海外のマネー教育の"当たり前"を、輸入品ではなく「自分の思想」として身につけていただきます。</p>
+      </div>
+    </div>
+
+    <div class="feature-block fade-in-right">
+      <div class="feature-img"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80" alt="中立独立・完全非販売型"></div>
+      <div class="feature-content">
+        <p class="feature-num">02 / INDEPENDENT</p>
+        <h3>金融商品は一切扱わない、純粋な教育の場</h3>
+        <p>保険・投資信託・不動産商品の販売は一切ございません。特定の金融機関・商品から独立した立場だからこそ、「誰の利益でもなく、あなたの資産のため」の判断基準をお渡しできます。セミナー内での個別商品勧誘も行いません。</p>
+      </div>
+    </div>
+
+    <div class="feature-block fade-in-left">
+      <div class="feature-img"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80" alt="経営者同士の学びの場"></div>
+      <div class="feature-content">
+        <p class="feature-num">03 / PEER COMMUNITY</p>
+        <h3>同じ目線の経営者・専門家と議論できる少人数制</h3>
+        <p>講義だけでなく、同じ立場の参加者同士の対話が最大の学びになります。1回あたりの定員は8〜12名。経営者・医師・士業・資産家の方々と、普段は聞けない個人財務の本音を交わす場をご用意しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DIVIDER 2 ========== -->
+<div class="divider divider-2">
+  <p class="divider-quote">知識は、時間とともに色褪せる。<br>教養は、世代を超えて残り続ける。</p>
+</div>
+
+<!-- ========== CURRICULUM ========== -->
+<section class="curriculum" id="curriculum">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Curriculum</p>
+      <h2 class="section-title">セミナーで<br>学べる6つのこと</h2>
+      <p class="section-sub">全6セッション、累計12時間。知識の断片ではなく、一貫した"思想"としてお持ち帰りいただきます。</p>
+    </div>
+    <div class="curriculum-grid stagger">
+      <div class="curriculum-item">
+        <div class="curriculum-icon"><i class="fas fa-globe-asia"></i></div>
+        <h3>グローバル資産配分<br>の原則</h3>
+        <p>地域・通貨・アセットクラスの3軸で考える、富裕層の基本配分を、日本の税制と家族構成に合わせて再設計します。</p>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>円資産100%<br>というリスク</h3>
+        <p>通貨・地政学・制度という3つのリスクを可視化。なぜ日本人だけが円集中を「安全」と錯覚するのか、その構造を解剖します。</p>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-icon"><i class="fas fa-sitemap"></i></div>
+        <h3>法人・個人の<br>最適バランス設計</h3>
+        <p>役員報酬・退職金・配当・保険の最適配分。法人と個人、どちらに残すべきか。税・承継・リスクの3観点で判断軸を作ります。</p>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-icon"><i class="fas fa-seedling"></i></div>
+        <h3>次世代への<br>承継設計</h3>
+        <p>相続税・贈与・信託・教育資金。資産だけでなく、金融リテラシーそのものを次世代に承継する設計を一緒に考えます。</p>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-icon"><i class="fas fa-book-open"></i></div>
+        <h3>情報の選別と<br>判断の技術</h3>
+        <p>玉石混淆のマネー情報の中から、何を信じ、何を捨てるか。金融リテラシーの前提となる「情報の読み方」を体系化します。</p>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-icon"><i class="fas fa-handshake"></i></div>
+        <h3>専門家との<br>付き合い方</h3>
+        <p>税理士・弁護士・IFA・プライベートバンカー。それぞれの立場と限界を理解し、自分の"ファミリーオフィス"を設計する発想を持ちます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="testimonials">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Voices</p>
+      <h2 class="section-title">受講者の声</h2>
+      <p class="section-sub">経営者・医師・士業など、業種を超えて受講いただいている皆さまからの感想の一部です。</p>
+    </div>
+    <div class="voice-grid stagger">
+      <div class="voice-card">
+        <div class="voice-mark">“</div>
+        <p class="voice-text">銀行からの提案に違和感があったが、何が違和感の正体なのか言語化できずにいた。受講後、自分の資産の「軸」ができて、誰からの提案も冷静に評価できるようになった。</p>
+        <div class="voice-profile">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80" alt="50代 製造業経営者" class="voice-avatar">
+          <div class="voice-meta">I.K 様<small>50代／製造業経営者</small></div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-mark">“</div>
+        <p class="voice-text">医院経営で忙しく、自分の資産は後回しにしてきた。セミナーで初めて「子世代への承継」を具体的に考えられた。知識ではなく、思想が手に入った実感がある。</p>
+        <div class="voice-profile">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&q=80" alt="60代 医療法人理事長" class="voice-avatar">
+          <div class="voice-meta">T.M 様<small>60代／医療法人理事長</small></div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-mark">“</div>
+        <p class="voice-text">同業以外の経営者と、個人のお金の話を真剣に交わせる場は貴重。講師だけでなく、隣の受講者からの一言が一番の学びになりました。少人数制の意味を実感しています。</p>
+        <div class="voice-profile">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80" alt="40代 IT企業代表" class="voice-avatar">
+          <div class="voice-meta">S.Y 様<small>40代／IT企業代表</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== LECTURER ========== -->
+<section class="lecturer" id="lecturer">
+  <div class="container">
+    <div class="lecturer-inner">
+      <div class="lecturer-photo fade-in-left"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="代表講師"></div>
+      <div class="lecturer-content fade-in-right">
+        <p class="section-label">Lecturer</p>
+        <h2 class="lecturer-name">代表講師<br><small>CHIEF LECTURER</small></h2>
+        <p class="lecturer-role">経営者・富裕層向け資産形成コンサルタント</p>
+        <p class="lecturer-bio">2013年より、経営者・医師・士業に特化した資産形成セミナーを主宰。金融商品販売を一切行わない中立独立の立場から、累計3,200名超に「世代を超える資産設計」を伝えてきた。証券・保険・不動産のいずれにも属さない、独立系マネー教育の第一人者。</p>
+        <ul class="lecturer-credentials">
+          <li>著書『100年先へ繋ぐ資産と教養』他、計5冊</li>
+          <li>日経、東洋経済ほか主要経済誌への寄稿多数</li>
+          <li>全国の商工会議所・経済団体にて年間40回以上の講演</li>
+          <li>米国FP協会（CFP®）／日本FP協会 1級ファイナンシャルプランナー</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FLOW ========== -->
+<section class="flow">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Flow</p>
+      <h2 class="section-title">お申し込みの流れ</h2>
+      <p class="section-sub">資料請求から受講開始まで、最短1週間。強引な勧誘や営業電話は一切ございません。</p>
+    </div>
+    <div class="flow-list stagger">
+      <div class="flow-item">
+        <div class="flow-num"><small>STEP 01</small>01</div>
+        <div class="flow-body">
+          <h3>資料請求・お問い合わせ</h3>
+          <p>ページ下部のフォームより、資料請求または個別相談をお申し込みください。24時間以内に担当者より開催日程・詳細資料をお送りいたします。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num"><small>STEP 02</small>02</div>
+        <div class="flow-body">
+          <h3>個別相談（任意・無料）</h3>
+          <p>ご希望の方には、受講前に30分の個別相談を実施。現状の資産構成・ご家族のご状況を伺い、受講効果が見込めるかを率直にお伝えします。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num"><small>STEP 03</small>03</div>
+        <div class="flow-body">
+          <h3>お申し込み・受講料のお振込</h3>
+          <p>ご納得いただけた場合のみ、正式にお申し込みください。受講料のお振込を確認後、受講証をお送りいたします。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num"><small>STEP 04</small>04</div>
+        <div class="flow-body">
+          <h3>セミナー開講（全6回）</h3>
+          <p>隔週・全6回（1回2時間）の構成。会場またはオンラインで受講いただけます。受講後も個別質問・OB会コミュニティをご利用いただけます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== OUTLINE ========== -->
+<section class="outline">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Outline</p>
+      <h2 class="section-title">開催概要</h2>
+    </div>
+    <div class="outline-table fade-in">
+      <div class="outline-row">
+        <div class="outline-key">Course</div>
+        <div class="outline-val">100年資産塾 ベーシックコース（全6回）</div>
+      </div>
+      <div class="outline-row">
+        <div class="outline-key">Schedule</div>
+        <div class="outline-val">隔週開講／1回2時間／全12時間<br>次期開講：資料請求後にご案内</div>
+      </div>
+      <div class="outline-row">
+        <div class="outline-key">Format</div>
+        <div class="outline-val">会場受講（東京・大阪）／オンライン受講 いずれも可</div>
+      </div>
+      <div class="outline-row">
+        <div class="outline-key">Capacity</div>
+        <div class="outline-val">1クラス 8〜12名（少人数制）</div>
+      </div>
+      <div class="outline-row">
+        <div class="outline-key">Tuition</div>
+        <div class="outline-val">受講料は資料にて個別にご案内しております</div>
+      </div>
+      <div class="outline-row">
+        <div class="outline-key">Target</div>
+        <div class="outline-val">経営者・医師・士業・資産家の皆さま（個人投資家の方も可）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-title">よくあるご質問</h2>
+    </div>
+    <div class="faq-list stagger">
+      <details class="faq-item">
+        <summary>セミナーでは金融商品の勧誘はありますか？</summary>
+        <div class="faq-body">一切ございません。当アカデミーは特定の金融機関・商品に属さない中立独立の立場であり、セミナー中・受講後を問わず、具体的な商品の販売・勧誘は行いません。純粋な教育の場としてご安心ください。</div>
+      </details>
+      <details class="faq-item">
+        <summary>資産運用の初心者でも受講できますか？</summary>
+        <div class="faq-body">はい、可能です。受講者の約3割は「本格的な投資経験がない方」です。知識の前提ではなく、「思想と判断軸」を体系的にお渡しする設計ですので、初学者の方にも十分にご活用いただけます。個別相談にて現状を伺った上で受講可否をご案内することも可能です。</div>
+      </details>
+      <details class="faq-item">
+        <summary>受講料はいくらですか？</summary>
+        <div class="faq-body">資料請求いただいた方に個別にご案内しております。価格表示を控えている理由は、受講対象・回数・フォーマットによって複数のプランがあり、安易な比較検討ではなく「内容と目的の一致」を最優先したいためです。資料請求は無料ですので、お気軽にお問い合わせください。</div>
+      </details>
+      <details class="faq-item">
+        <summary>オンラインでも受講できますか？</summary>
+        <div class="faq-body">はい。全コース、オンライン受講（Zoom）に対応しております。グループワーク・個別質疑もオンラインでご参加いただけます。会場受講とオンライン受講を回ごとに選択することも可能です。</div>
+      </details>
+      <details class="faq-item">
+        <summary>受講を途中でキャンセルすることは可能ですか？</summary>
+        <div class="faq-body">初回受講後2週間以内であれば、全額返金保証をご用意しております。内容にご納得いただけない場合、理由を問わず返金いたしますので、安心してお試しください。</div>
+      </details>
+      <details class="faq-item">
+        <summary>家族（配偶者・後継者）と一緒に受講できますか？</summary>
+        <div class="faq-body">はい。ご家族割引をご用意しております。特に「次世代への承継」を重視される方には、配偶者・後継者（お子様）との同時受講を推奨しております。詳細は資料にてご案内いたします。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FINAL CTA ========== -->
+<section class="final-cta" id="contact">
+  <div class="final-inner fade-in">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">まずは資料請求から。<br>次の100年の、はじめの一歩を。</h2>
+    <p class="final-desc">資料請求は無料です。開催日程・カリキュラム詳細・受講料をまとめてお送りいたします。<br>強引な営業電話や個別勧誘は一切ございませんので、どうぞお気軽にご請求ください。</p>
+    <div class="final-buttons">
+      <a href="#" class="btn-primary btn-primary-dark"><i class="far fa-envelope"></i> 資料請求する（無料）</a>
+      <a href="#" class="btn-primary"><i class="far fa-calendar-check"></i> 個別相談を予約する</a>
+    </div>
+    <p class="final-note">TEL：03-0000-0000（平日 10:00 - 18:00）／MAIL：info@so-money.example.jp</p>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo"><small>SO MONEY ACADEMY</small>100年資産塾</div>
+      <p class="footer-desc">経営者・富裕層のための、中立独立のマネーアカデミー。特定の金融機関・商品に属さず、純粋な教育の場として、100年先へ繋ぐ資産と教養を伝えています。</p>
+    </div>
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="#concept">理念</a></li>
+        <li><a href="#features">選ばれる理由</a></li>
+        <li><a href="#curriculum">学べること</a></li>
+        <li><a href="#lecturer">講師紹介</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#contact">資料請求</a></li>
+        <li><a href="#contact">個別相談予約</a></li>
+        <li>TEL：03-0000-0000</li>
+        <li>平日 10:00 - 18:00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 SO MONEY ACADEMY. ALL RIGHTS RESERVED.</div>
+</footer>
+
+<script>
+(function(){
+  const header=document.getElementById('siteHeader');
+  const onScroll=()=>{header.classList.toggle('scrolled',window.scrollY>20);};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  const targets=document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger, .trust-bar, .section-head');
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}});
+  },{threshold:0.12});
+  targets.forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(r.top<window.innerHeight && r.bottom>0){el.classList.add('is-visible');}
+    else{io.observe(el);}
+  });
+})();
+</script>
+
+</body>
+</html>
