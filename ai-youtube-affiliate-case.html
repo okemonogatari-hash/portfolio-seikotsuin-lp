@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ケーススタディ：AI × YouTubeアフィリエイト ─ 育毛剤を例に</title>
+<meta name="description" content="YouTubeアフィリエイトの9工程、どのAIをどう使えば効率化できるのか。育毛剤ジャンルを具体例に、AIと人の手の役割分担を可視化。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --color-primary:#2C5F4B;
+  --color-primary-light:#3d7a62;
+  --color-primary-dark:#1e4434;
+  --color-accent:#C4915E;
+  --color-accent-light:#d6a87a;
+  --color-youtube:#C8372A;
+  --color-affil:#8B4A9A;
+  --color-ai-blue:#4F7FD4;
+  --color-human:#D68A3C;
+  --color-bg:#F4EFE6;
+  --color-bg-deep:#EAE2D1;
+  --color-paper:#FBF8F2;
+  --color-ink:#1a1a1a;
+  --color-muted:#6b6658;
+  --color-line:rgba(44,95,75,0.15);
+  --color-danger:#b04e3a;
+  --serif:"Noto Serif JP",serif;
+  --sans:"Noto Sans JP",sans-serif;
+  --en:"Cormorant Garamond","Inter",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:var(--sans);color:var(--color-ink);background:var(--color-bg);line-height:1.8;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(251,248,242,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--color-line)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.nav-brand{font-family:var(--serif);font-weight:700;font-size:15px;color:var(--color-primary)}
+.nav-brand em{font-family:var(--en);font-style:normal;color:var(--color-accent);letter-spacing:.04em}
+.nav-back{font-family:var(--en);font-size:13px;color:var(--color-muted);letter-spacing:.05em;display:inline-flex;align-items:center;gap:8px;transition:color .3s}
+.nav-back:hover{color:var(--color-primary)}
+
+/* HERO */
+.hero{padding:140px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(139,74,154,.08),transparent 70%)}
+.hero-tag{display:inline-block;font-family:var(--en);font-size:13px;letter-spacing:.25em;color:var(--color-affil);padding:6px 18px;border:1px solid var(--color-affil);border-radius:99px;margin-bottom:28px;text-transform:uppercase;position:relative}
+.hero-breadcrumb{display:inline-flex;align-items:center;gap:10px;font-family:var(--en);font-size:12px;color:var(--color-muted);margin-bottom:18px;position:relative;letter-spacing:.1em}
+.hero-breadcrumb a{color:var(--color-accent);transition:color .3s}
+.hero-breadcrumb a:hover{color:var(--color-primary-dark)}
+.hero h1{font-family:var(--serif);font-size:clamp(28px,4.5vw,44px);font-weight:900;line-height:1.45;letter-spacing:.02em;color:var(--color-primary-dark);margin-bottom:24px;position:relative}
+.hero h1 em{font-style:normal;color:var(--color-affil)}
+.hero-sub{max-width:660px;margin:0 auto;font-size:15px;line-height:2;color:var(--color-muted);position:relative}
+.hero-spec{display:flex;justify-content:center;gap:32px;margin-top:40px;padding:20px 0;border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);max-width:720px;margin-left:auto;margin-right:auto;position:relative;flex-wrap:wrap}
+.hero-spec-item{font-size:13px;color:var(--color-muted)}
+.hero-spec-item strong{display:block;font-family:var(--en);font-size:20px;color:var(--color-primary-dark);margin-bottom:4px;letter-spacing:.04em}
+
+/* SECTION */
+.sec{padding:88px 24px;position:relative}
+.sec-inner{max-width:1100px;margin:0 auto}
+.sec-label{display:block;text-align:center;font-family:var(--en);font-size:13px;letter-spacing:.3em;color:var(--color-accent);margin-bottom:14px;text-transform:uppercase}
+.sec-title{font-family:var(--serif);font-size:clamp(24px,3.5vw,36px);font-weight:900;text-align:center;color:var(--color-primary-dark);line-height:1.5;margin-bottom:16px}
+.sec-sub{text-align:center;font-size:14.5px;line-height:2;color:var(--color-muted);max-width:640px;margin:0 auto 56px}
+
+/* LEGEND */
+.legend{display:flex;justify-content:center;gap:24px;margin-bottom:32px;flex-wrap:wrap}
+.legend-item{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--color-ink)}
+.legend-dot{width:14px;height:14px;border-radius:3px}
+.legend-dot.ai{background:var(--color-ai-blue)}
+.legend-dot.human{background:var(--color-human)}
+.legend-dot.hybrid{background:linear-gradient(135deg,var(--color-ai-blue) 50%,var(--color-human) 50%)}
+
+/* STEP CARDS */
+.steps{display:flex;flex-direction:column;gap:20px}
+.step{background:var(--color-paper);border:1px solid var(--color-line);border-radius:16px;padding:28px 28px;display:grid;grid-template-columns:80px 1fr;gap:24px;align-items:start;position:relative}
+.step-num{font-family:var(--en);font-size:54px;font-weight:600;line-height:1;color:var(--color-accent);letter-spacing:-.02em}
+.step-body h3{font-family:var(--serif);font-size:19px;font-weight:700;color:var(--color-primary-dark);margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.step-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:4px;vertical-align:middle}
+.step-tag.ai{background:#E4EDF8;color:var(--color-ai-blue)}
+.step-tag.human{background:#F7E8D4;color:var(--color-human)}
+.step-tag.hybrid{background:linear-gradient(135deg,#E4EDF8 50%,#F7E8D4 50%);color:var(--color-primary-dark)}
+.step-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+@media(max-width:680px){.step-split{grid-template-columns:1fr}}
+.split-box{padding:16px 18px;border-radius:10px;font-size:13px;line-height:1.85}
+.split-box.ai{background:#F0F5FB;border-left:3px solid var(--color-ai-blue)}
+.split-box.human{background:#FBF3E8;border-left:3px solid var(--color-human)}
+.split-box h5{font-size:12px;font-weight:700;letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.split-box.ai h5{color:var(--color-ai-blue)}
+.split-box.human h5{color:var(--color-human)}
+.split-box ul{list-style:none;padding:0}
+.split-box li{padding:3px 0 3px 16px;position:relative;font-size:12.5px}
+.split-box li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:2px}
+.split-box.ai li::before{background:var(--color-ai-blue)}
+.split-box.human li::before{background:var(--color-human)}
+.step-tools{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.tool-chip{font-size:11px;padding:3px 10px;border-radius:99px;background:var(--color-bg);color:var(--color-primary-dark);border:1px solid var(--color-line);font-family:var(--en);letter-spacing:.03em}
+.tool-chip i{margin-right:4px;font-size:10px;color:var(--color-accent)}
+
+/* TIMELINE */
+.timeline-wrap{background:var(--color-bg-deep);border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);padding:88px 24px}
+.timeline{display:flex;flex-direction:column;gap:14px;margin-top:32px}
+.tl-item{display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:start;padding:18px 22px;background:#fff;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.03)}
+@media(max-width:680px){.tl-item{grid-template-columns:1fr}}
+.tl-time{font-family:var(--en);font-size:13px;color:var(--color-accent);font-weight:600;letter-spacing:.05em}
+.tl-time strong{display:block;font-size:15px;color:var(--color-primary-dark);margin-bottom:2px}
+.tl-body{font-size:13.5px;color:var(--color-ink);line-height:1.85}
+.tl-body strong{color:var(--color-primary-dark)}
+.tl-body .tl-owner{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:8px;letter-spacing:.05em}
+.tl-body .tl-owner.ai{background:#E4EDF8;color:var(--color-ai-blue)}
+.tl-body .tl-owner.human{background:#F7E8D4;color:var(--color-human)}
+
+/* LEGAL */
+.legal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:32px}
+.legal-card{background:#fff;border-left:3px solid var(--color-danger);padding:20px 22px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.03)}
+.legal-card h4{font-size:13.5px;font-weight:700;color:var(--color-danger);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.legal-card h4 i{font-size:12px}
+.legal-card p{font-size:12.5px;color:var(--color-ink);line-height:1.85}
+
+/* COST */
+.cost-card{max-width:720px;margin:32px auto 0;background:var(--color-paper);border:1px solid var(--color-accent);border-radius:18px;padding:36px 36px;position:relative}
+.cost-card::before{content:"COST & PROFIT";position:absolute;top:-11px;left:36px;background:var(--color-bg);padding:0 12px;font-family:var(--en);font-size:11px;letter-spacing:.2em;color:var(--color-accent)}
+.cost-row{display:grid;grid-template-columns:1fr auto;gap:12px;padding:10px 0;border-bottom:1px dashed var(--color-line);font-size:14px}
+.cost-row:last-child{border-bottom:none;font-weight:700;color:var(--color-primary-dark);padding-top:16px}
+.cost-row .cost-label{color:var(--color-ink)}
+.cost-row .cost-val{font-family:var(--en);color:var(--color-primary-dark);font-weight:600}
+
+/* REUSE */
+.reuse-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:28px}
+.reuse-card{background:var(--color-paper);border:1px solid var(--color-line);border-radius:12px;padding:20px 18px;text-align:center}
+.reuse-card i{font-size:22px;color:var(--color-accent);margin-bottom:10px;display:block}
+.reuse-card h5{font-size:14px;font-weight:700;color:var(--color-primary-dark);margin-bottom:4px}
+.reuse-card p{font-size:12px;color:var(--color-muted);line-height:1.7}
+
+/* CLOSING */
+.closing{padding:92px 24px;text-align:center;background:var(--color-primary);color:#fff}
+.closing h2{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:700;line-height:1.7;margin-bottom:20px}
+.closing h2 em{font-style:normal;color:var(--color-accent)}
+.closing p{font-size:14px;line-height:2;max-width:660px;margin:0 auto 30px;opacity:.9}
+.closing-cta{display:inline-block;padding:14px 36px;background:var(--color-accent);color:#fff;border-radius:4px;font-size:13.5px;font-weight:700;letter-spacing:.05em;transition:all .3s}
+.closing-cta:hover{background:#b07f4a;transform:translateY(-2px)}
+
+.footer{padding:40px 24px;text-align:center;font-size:12px;color:var(--color-muted);font-family:var(--en);letter-spacing:.1em}
+
+@media(max-width:720px){
+  .nav-inner{padding:14px 20px}
+  .hero{padding:120px 20px 60px}
+  .sec{padding:68px 20px}
+  .step{grid-template-columns:1fr;gap:6px;padding:24px 22px}
+  .step-num{font-size:40px}
+  .timeline-wrap{padding:68px 20px}
+  .cost-card{padding:28px 24px}
+  .closing{padding:72px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">Case Study <em>affiliate.</em></div>
+    <a href="ai-youtube-support.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to AI × YouTube Main</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-breadcrumb">
+    <a href="./">Portfolio</a> / <a href="ai-youtube-support.html">AI × YouTube Support</a> / <span style="color:var(--color-affil)">Affiliate Case Study</span>
+  </div>
+  <span class="hero-tag">Affiliate Case Study</span>
+  <h1>
+    <em>育毛剤</em> を例に、<br>
+    AIでどこまで効率化できるのか。
+  </h1>
+  <p class="hero-sub">
+    YouTubeアフィリエイトの9工程。<br>
+    「どのAIを」「どう使って」効率化し、<br>
+    「どこは人の手でなければいけないか」を可視化した1枚ケーススタディです。
+  </p>
+  <div class="hero-spec">
+    <div class="hero-spec-item"><strong>商品例</strong>育毛剤</div>
+    <div class="hero-spec-item"><strong>想定動画</strong>3ヶ月使用レビュー型</div>
+    <div class="hero-spec-item"><strong>収益モデル</strong>アフィリエイト</div>
+    <div class="hero-spec-item"><strong>想定CVR</strong>再生10,000→成約10件</div>
+  </div>
+</section>
+
+<!-- LEGEND & 9 STEPS -->
+<section class="sec">
+  <div class="sec-inner">
+    <span class="sec-label">9 Steps Breakdown</span>
+    <h2 class="sec-title">9工程 × AI効率化 × 人の手</h2>
+    <p class="sec-sub">
+      各工程で「使うAI」「AIが担うこと」「人の手が必須なこと」を具体ツール名つきで整理しました。
+    </p>
+
+    <div class="legend">
+      <span class="legend-item"><span class="legend-dot ai"></span>AIで効率化</span>
+      <span class="legend-item"><span class="legend-dot human"></span>人の手が必須</span>
+      <span class="legend-item"><span class="legend-dot hybrid"></span>ハイブリッド</span>
+    </div>
+
+    <div class="steps">
+
+      <!-- STEP 1 -->
+      <article class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h3>商品設定 <span class="step-tag hybrid">HYBRID</span></h3>
+          <div class="step-split">
+            <div class="split-box ai">
+              <h5><i class="fas fa-robot"></i> AIがやる</h5>
+              <ul>
+                <li>競合10製品の成分・価格・アフィリ報酬単価を自動比較</li>
+                <li>市場規模・成長率・検索需要の Deep Research</li>
+                <li>ASP別の報酬条件リサーチ（A8.net / もしもアフィリ / Amazon等）</li>
+              </ul>
+            </div>
+            <div class="split-box human">
+              <h5><i class="fas fa-user"></i> 人がやる</h5>
+              <ul>
+                <li>どの商品を扱うか最終選定（自分が使った／信頼できる）</li>
+                <li>薬機法・景表法の最終判断（効果保証しない姿勢）</li>
+                <li>アフィリASPとの契約・規約読み込み</li>
+              </ul>
+            </div>
+          </div>
+          <div class="step-tools">
+            <span class="tool-chip"><i class="fas fa-check"></i>Claude Opus</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Gemini Deep Research</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Perplexity</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>ASP API</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- STEP 2 -->
+      <article class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h3>ペルソナ設計 <span class="step-tag hybrid">HYBRID</span></h3>
+          <div class="step-split">
+            <div class="split-box ai">
+              <h5><i class="fas fa-robot"></i> AIがやる</h5>
+              <ul>
+                <li>「30代男性・遺伝性薄毛」の典型ペルソナ自動生成</li>
+                <li>悩みパターン分類（遺伝性／ストレス／加齢／円形）</li>
+                <li>検索行動・情報接触チャネル・購買動機マップ</li>
+              </ul>
+            </div>
+            <div class="split-box human">
+              <h5><i class="fas fa-user"></i> 人がやる</h5>
+              <ul>
+                <li>自分の体験・知人の体験との整合チェック</li>
+                <li>どの悩みに寄り添うかの感情的選択</li>
+                <li>ペルソナの「本当のインサイト」検証</li>
+              </ul>
+            </div>
+          </div>
+          <div class="step-tools">
+            <span class="tool-chip"><i class="fas fa-check"></i>Claude Opus</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>GPT-5</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>カスタマージャーニー生成</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- STEP 3 -->
+      <article class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h3>キーワード設定 <span class="step-tag ai">AI MAIN</span></h3>
+          <div class="step-split">
+            <div class="split-box ai">
+              <h5><i class="fas fa-robot"></i> AIがやる</h5>
+              <ul>
+                <li>YouTubeサジェスト／Google Trends／関連語を一括取得</li>
+                <li>検索ボリューム×競合強度マトリックス化</li>
+                <li>ロングテール候補抽出（例：「30代 つむじ 薄くなった」）</li>
+                <li>季節性・トレンド波追跡</li>
+              </ul>
+            </div>
+            <div class="split-box human">
+              <h5><i class="fas fa-user"></i> 人がやる</h5>
+              <ul>
+                <li>釣りキーワード / 誤誘導ワードの除外</li>
+                <li>自分が答えられるキーワードかの判断</li>
+              </ul>
+            </div>
+          </div>
+          <div class="step-tools">
+            <span class="tool-chip"><i class="fas fa-check"></i>Keyword Tool</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>YouTube Suggestions API</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Google Keyword Planner</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Claude グルーピング</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- STEP 4 -->
+      <article class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h3>動画検索・収集 <span class="step-tag ai">AI MAIN</span></h3>
+          <div class="step-split">
+            <div class="split-box ai">
+              <h5><i class="fas fa-robot"></i> AIがやる</h5>
+              <ul>
+                <li>「育毛剤 レビュー」「薄毛 改善」で上位100本を自動収集</li>
+                <li>再生数・コメント数・公開日でランキング</li>
+                <li>チャンネル軸でグループ化</li>
+                <li>スプシ or Notionに自動保存、週次更新</li>
+              </ul>
+            </div>
+            <div class="split-box human">
+              <h5><i class="fas fa-user"></i> 人がやる</h5>
+              <ul>
+                <li>（ほぼ不要。最終アウトプット眺めるだけ）</li>
+              </ul>
+            </div>
+          </div>
+          <div class="step-tools">
+            <span class="tool-chip"><i class="fas fa-check"></i>YouTube Data API v3</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Claude Code バッチ</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Notion API</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- STEP 5 -->
+      <article class="step">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <h3>動画分析 <span class="step-tag ai">AI MAIN</span></h3>
+          <div class="step-split">
+            <div class="split-box ai">
+              <h5><i class="fas fa-robot"></i> AIがやる</h5>
+              <ul>
+                <li><strong>Gemini 3で動画直接解析</strong>（MP4 / YouTube URL投入）</li>
+                <li>Whisperで逐語文字起こし（高精度）</li>
+                <li>Claude Visionでサムネ分析（色・構図・文字量・顔）</li>
+                <li>Groq + llama でコメント感情分析を爆速処理</li>
+                <li>OBS画面収録→MP4でGeminiに食わせる高度パターンも</li>
+              </ul>
+            </div>
+            <div class="split-box human">
+              <h5><i class="fas fa-user"></i> 人がやる</h5>
+              <ul>
+                <li>ステマ動画の見分け判定</li>
+                <li>「本物感」の肌感チェック</li>
+              </ul>
+            </div>
+          </div>
+          <div class="step-tools">
+            <span class="tool-chip"><i class="fas fa-check"></i>Gemini 3 Pro (Video)</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Whisper (OpenAI)</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Claude Vision</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Groq (llama-3.3-70b)</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>OBS Studio</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- STEP 6 -->
+      <article class="step">
+        <div class="step-num">06</div>
+        <div class="step-body">
+          <h3>ヒット要素抽出 <span class="step-tag hybrid">HYBRID</span></h3>
+          <div class="step-split">
+            <div class="split-box ai">
+              <h5><i class="fas fa-robot"></i> AIがやる</h5>
+              <ul>
+                <li>成功動画の共通パターン抽出（Claude Opus）</li>
+                <li>勝ち要素分類：「ビフォーアフター写真」「3ヶ月経過」「科学的根拠引用」「他製品比較」</li>
+                <li>タイトル定型（数字／疑問形／期間指定）</li>
+                <li>フック15秒・本編・CTA の型抽出</li>
+              </ul>
+            </div>
+            <div class="split-box human">
+              <h5><i class="fas fa-user"></i> 人がやる</h5>
+              <ul>
+                <li>自分のスタイルに合う要素を選別</li>
+                <li>真似していい要素／真似してはダメな要素の判断</li>
+                <li>差別化ポイント（自分だけの独自性）の確定</li>
+              </ul>
+            </div>
+          </div>
+          <div class="step-tools">
+            <span class="tool-chip"><i class="fas fa-check"></i>Claude Opus</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Gemini 3 Pro</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>スコアリング Sheet</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- STEP 7 -->
+      <article class="step">
+        <div class="step-num">07</div>
+        <div class="step-body">
+          <h3>動画生成（企画・台本・制作）<span class="step-tag human">HUMAN MAIN</span></h3>
+          <div class="step-split">
+            <div class="split-box ai">
+              <h5><i class="fas fa-robot"></i> AIがやる</h5>
+              <ul>
+                <li>企画20案出し（ペルソナ×ヒット要素）</li>
+                <li>詳細台本生成（オープニング15秒／本編／CTA／締め）</li>
+                <li>サムネ5パターン生成（nano-banana / Gemini Image）</li>
+                <li>AI動画生成候補（Veo3 / Runway / Sora） ※ショート向き</li>
+                <li>BGM選定・効果音候補提案</li>
+                <li>テロップ候補一括生成</li>
+              </ul>
+            </div>
+            <div class="split-box human">
+              <h5><i class="fas fa-user"></i> 人がやる</h5>
+              <ul>
+                <li><strong>自分の顔出し撮影</strong>（信頼の核）</li>
+                <li><strong>実体験ベースの言葉・表情</strong>（AIでは作れない）</li>
+                <li><strong>ビフォーアフター写真など本物の証拠</strong></li>
+                <li><strong>薬機法チェック</strong>（「発毛」「治る」は完全NG）</li>
+                <li>アフィリリンクの開示ルール設計</li>
+                <li>編集の最終判断（カット・色・BGM選定）</li>
+              </ul>
+            </div>
+          </div>
+          <div class="step-tools">
+            <span class="tool-chip"><i class="fas fa-check"></i>Claude Opus (台本)</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>nano-banana (サムネ)</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Gemini Image</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Veo3 / Runway / Sora (AI動画)</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>ElevenLabs (音声)</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>DaVinci Resolve / Premiere</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- STEP 8 -->
+      <article class="step">
+        <div class="step-num">08</div>
+        <div class="step-body">
+          <h3>配信設定 <span class="step-tag hybrid">HYBRID</span></h3>
+          <div class="step-split">
+            <div class="split-box ai">
+              <h5><i class="fas fa-robot"></i> AIがやる</h5>
+              <ul>
+                <li>タイトル3案・説明文・タグ最適化（SEO観点）</li>
+                <li>投稿タイミング最適化（過去データから）</li>
+                <li>サムネA/Bテスト候補の自動生成</li>
+                <li>アフィリリンクをASPから取得して概要欄に配置</li>
+                <li>YouTube Data API write で自動予約投稿</li>
+              </ul>
+            </div>
+            <div class="split-box human">
+              <h5><i class="fas fa-user"></i> 人がやる</h5>
+              <ul>
+                <li><strong>投稿前の最終チェック</strong>（薬機法・景表法）</li>
+                <li><strong>PR/広告表記の明示</strong>（ステマ規制対応）</li>
+                <li>概要欄のアフィリ開示文章の責任執筆</li>
+                <li>コメント対応の初動（信頼維持）</li>
+              </ul>
+            </div>
+          </div>
+          <div class="step-tools">
+            <span class="tool-chip"><i class="fas fa-check"></i>YouTube Data API (write)</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>TubeBuddy / VidIQ</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Metricool</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>ASP API (A8 / もしも)</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- STEP 9 -->
+      <article class="step">
+        <div class="step-num">09</div>
+        <div class="step-body">
+          <h3>結果分析 <span class="step-tag ai">AI MAIN</span></h3>
+          <div class="step-split">
+            <div class="split-box ai">
+              <h5><i class="fas fa-robot"></i> AIがやる</h5>
+              <ul>
+                <li>YouTube Analytics API で再生・CTR・視聴維持取得</li>
+                <li>ASP CSV連携で<strong>動画別アフィリ成約数</strong>取得</li>
+                <li><strong>動画別CVR（再生→成約率）</strong>自動算出</li>
+                <li>週次/月次レポ自動生成＋ヒット要因分析</li>
+                <li>Looker Studioでダッシュボード化</li>
+              </ul>
+            </div>
+            <div class="split-box human">
+              <h5><i class="fas fa-user"></i> 人がやる</h5>
+              <ul>
+                <li>改善方針の判断（次の動画テーマ選定）</li>
+                <li>継続するか Pivot するかの経営判断</li>
+                <li>商品入れ替え・ジャンル変更の判断</li>
+              </ul>
+            </div>
+          </div>
+          <div class="step-tools">
+            <span class="tool-chip"><i class="fas fa-check"></i>YouTube Analytics API</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>ASP CSV / API</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Looker Studio</span>
+            <span class="tool-chip"><i class="fas fa-check"></i>Claude Code レポbot</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-wrap">
+  <div class="sec-inner">
+    <span class="sec-label">Real Timeline</span>
+    <h2 class="sec-title">実際の1本を作る時系列</h2>
+    <p class="sec-sub">
+      Day 0〜Day 30で、どこをAIが、どこを人が担うか。
+    </p>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-time"><strong>Day 0 - AM</strong>企画・リサーチ</div>
+        <div class="tl-body">
+          <span class="tl-owner ai">AI</span>
+          <strong>09:00-12:00</strong> `/kadocchi-workflow` 起動。商品リサーチ → ペルソナ生成 → キーワード20候補 → 競合動画100本自動収集 → Gemini 3 で上位10本を直接解析 → ヒット要素抽出まで自動化。所要3時間。
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time"><strong>Day 0 - PM</strong>選択・企画確定</div>
+        <div class="tl-body">
+          <span class="tl-owner human">Human</span>
+          <strong>13:00-14:00</strong> AI出力のヒット要素から「3ヶ月経過報告型」を選択。企画20案から1案絞り込み。AI詳細台本→<strong>自分の言葉・体験エピソードに書き直し</strong>。
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time"><strong>Day 0 - 夕方</strong>素材生成</div>
+        <div class="tl-body">
+          <span class="tl-owner ai">AI</span>
+          <strong>16:00-17:00</strong> nano-bananaでサムネ5案、ElevenLabsで音声候補、Veo3でBロール素材生成。人間が1枚選ぶだけの状態に。
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time"><strong>Day 1</strong>撮影・編集</div>
+        <div class="tl-body">
+          <span class="tl-owner human">Human</span>
+          <strong>1日かけて</strong>顔出し撮影・ビフォーアフター写真準備・語り・編集。<strong>AI補助：</strong>テロップ候補自動挿入、カット候補提案、色補正AI。所要5〜6時間。
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time"><strong>Day 2 - AM</strong>配信設定</div>
+        <div class="tl-body">
+          <span class="tl-owner ai">AI</span>
+          <strong>09:00-09:30</strong> タイトル3案／説明文／タグ／公開時間をAIが推奨。
+          <span class="tl-owner human" style="margin-left:0;margin-right:8px">Human</span><strong>09:30-10:00</strong> 薬機法チェック／PR表記挿入／アフィリリンク開示文章の責任執筆→公開。
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time"><strong>Day 2-30</strong>運用・分析</div>
+        <div class="tl-body">
+          <span class="tl-owner ai">AI</span>
+          週次で自動レポ：再生・CTR・維持率・アフィリCVR。ヒット/ミスの共通要因抽出→次動画に反映。<span class="tl-owner human" style="margin-left:0;margin-right:8px">Human</span>週1回30分でレポ見て次の方針判断。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section class="sec">
+  <div class="sec-inner">
+    <span class="sec-label">Legal Compliance</span>
+    <h2 class="sec-title">アフィリエイトで「絶対に人の手で守る」4つの法務</h2>
+    <p class="sec-sub">
+      AIに任せたら1発アウトの領域。ここだけは運営者の責任で守る。
+    </p>
+
+    <div class="legal-grid">
+
+      <div class="legal-card">
+        <h4><i class="fas fa-exclamation-triangle"></i> 薬機法（医薬品医療機器等法）</h4>
+        <p>
+          「発毛する」「治る」「必ず効く」は**完全NG**。化粧品系育毛剤は「頭皮を健やかに保つ」「ハリコシを与える」までしか言えない。<br>
+          <strong>AIに薬機法知識なし。必ず人がチェック。</strong>
+        </p>
+      </div>
+
+      <div class="legal-card">
+        <h4><i class="fas fa-exclamation-triangle"></i> 景品表示法（優良誤認）</h4>
+        <p>
+          「〇〇%の人が実感」「業界No.1」などの数値訴求は根拠必須。**根拠なければ優良誤認**で措置命令リスク。<br>
+          <strong>使うなら公式データソースを必ず人が確認。</strong>
+        </p>
+      </div>
+
+      <div class="legal-card">
+        <h4><i class="fas fa-exclamation-triangle"></i> ステマ規制（2023年施行）</h4>
+        <p>
+          アフィリエイト動画は **「PR」「広告」「プロモーションを含む」** の明示必須。動画内・概要欄・サムネいずれか明確な位置で。<br>
+          <strong>違反=消費者庁の措置命令対象。</strong>
+        </p>
+      </div>
+
+      <div class="legal-card">
+        <h4><i class="fas fa-exclamation-triangle"></i> 実体験ベース原則</h4>
+        <p>
+          使ってもいない商品を「使った」と紹介すると**虚偽表示**。アフィリ報酬欲しさにこれをやる人がいるが、**発覚時の信用崩壊は致命的**。<br>
+          <strong>本当に使った商品だけ扱う。</strong>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COST -->
+<section class="sec" style="background:var(--color-bg-deep);border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line)">
+  <div class="sec-inner">
+    <span class="sec-label">Cost & Profit</span>
+    <h2 class="sec-title">1本あたりのコスト試算</h2>
+    <p class="sec-sub">
+      AI使った場合の現実的な数字（週1本ペース想定）。
+    </p>
+
+    <div class="cost-card">
+      <div class="cost-row">
+        <span class="cost-label">Gemini 3 Pro API（動画解析）</span>
+        <span class="cost-val">約 $3〜5</span>
+      </div>
+      <div class="cost-row">
+        <span class="cost-label">Claude API（台本・ヒット要素抽出）</span>
+        <span class="cost-val">約 $2〜3</span>
+      </div>
+      <div class="cost-row">
+        <span class="cost-label">Whisper API（文字起こし）</span>
+        <span class="cost-val">約 $1</span>
+      </div>
+      <div class="cost-row">
+        <span class="cost-label">nano-banana / Gemini Image（サムネ）</span>
+        <span class="cost-val">約 $0.5〜1</span>
+      </div>
+      <div class="cost-row">
+        <span class="cost-label">ElevenLabs（音声）※任意</span>
+        <span class="cost-val">約 $2〜3</span>
+      </div>
+      <div class="cost-row">
+        <span class="cost-label">人件時間</span>
+        <span class="cost-val">約 6〜8時間 / 本</span>
+      </div>
+      <div class="cost-row">
+        <span class="cost-label">1本あたりAIコスト計</span>
+        <span class="cost-val">約 $10〜15</span>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:13.5px;color:var(--color-muted);line-height:1.9;margin-top:28px;max-width:640px;margin-left:auto;margin-right:auto">
+      <strong style="color:var(--color-primary-dark)">アフィリ報酬例：</strong>育毛剤系は1件 ¥5,000〜¥15,000。<br>
+      月4本×10件成約×¥8,000 = <strong style="color:var(--color-primary-dark)">月¥32万ポテンシャル</strong>。AI費は月¥10,000以下。
+    </p>
+  </div>
+</section>
+
+<!-- REUSE -->
+<section class="sec">
+  <div class="sec-inner">
+    <span class="sec-label">Pipeline Reusability</span>
+    <h2 class="sec-title">このパイプライン、他ジャンルに転用できます</h2>
+    <p class="sec-sub">
+      商品を差し替えるだけで同じフローが回る。＝スケール可能な資産。
+    </p>
+
+    <div class="reuse-grid">
+      <div class="reuse-card">
+        <i class="fas fa-pump-soap"></i>
+        <h5>スキンケア</h5>
+        <p>コスメ比較<br>アフィリ高単価</p>
+      </div>
+      <div class="reuse-card">
+        <i class="fas fa-dumbbell"></i>
+        <h5>フィットネス</h5>
+        <p>プロテイン<br>トレ器具</p>
+      </div>
+      <div class="reuse-card">
+        <i class="fas fa-capsules"></i>
+        <h5>サプリ</h5>
+        <p>健康食品<br>薬機法注意</p>
+      </div>
+      <div class="reuse-card">
+        <i class="fas fa-money-bill-wave"></i>
+        <h5>投資・金融</h5>
+        <p>証券口座<br>金商法注意</p>
+      </div>
+      <div class="reuse-card">
+        <i class="fas fa-laptop-code"></i>
+        <h5>SaaSツール</h5>
+        <p>サブスク紹介<br>継続報酬</p>
+      </div>
+      <div class="reuse-card">
+        <i class="fas fa-graduation-cap"></i>
+        <h5>学習・教材</h5>
+        <p>オンライン講座<br>書籍紹介</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <h2>
+    AIで <em>作業</em> を効率化し、<br>
+    人の手で <em>信頼</em> を積み上げる。
+  </h2>
+  <p>
+    アフィリエイトは「誰が紹介したか」で売れ行きが変わる世界。<br>
+    調査・分析・生成はAIに任せて、<br>
+    撮影・実体験・言葉の温度・法務責任は人の手で守る。<br>
+    この役割分担ができた人が、次のアフィリ時代の勝ち筋を持ちます。
+  </p>
+  <a href="ai-youtube-support.html" class="closing-cta">メインガイドに戻る <i class="fas fa-arrow-right" style="margin-left:8px"></i></a>
+</section>
+
+<footer class="footer">
+  <p>© 2026 okemon — Affiliate Case Study (Branch of AI × YouTube Support Guide)</p>
+</footer>
+
+</body>
+</html>
