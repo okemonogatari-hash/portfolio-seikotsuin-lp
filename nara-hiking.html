@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5月3日 奈良 山旅しおり｜新緑とツツジを巡る半日プラン</title>
+<meta name="description" content="5月3日・12時出発。奈良市内から日帰りで巡る、4つの山旅プラン。吉野山・葛城山・若草山・生駒山——それぞれの魅力を一枚のしおりに。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --c-primary:#2C5F4B;
+  --c-primary-dark:#1E443A;
+  --c-primary-light:#E8EFE9;
+  --c-accent:#A93226;
+  --c-accent-soft:#C4915E;
+  --c-bg:#F7F3EC;
+  --c-bg-warm:#EFE8DA;
+  --c-text:#2B2A26;
+  --c-text-mid:#5C5A52;
+  --c-text-light:#8A887F;
+  --c-border:#E0D9C9;
+  --c-white:#FFFFFF;
+  --shadow-sm:0 2px 12px rgba(43,42,38,.06);
+  --shadow-md:0 8px 32px rgba(43,42,38,.10);
+  --shadow-lg:0 20px 60px rgba(43,42,38,.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  color:var(--c-text);
+  background:var(--c-bg);
+  line-height:1.8;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none;transition:color .3s}
+h1,h2,h3,h4{font-family:'Noto Serif JP',serif;font-weight:500;letter-spacing:.02em;line-height:1.4}
+.label-en{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:.25em;color:var(--c-accent);text-transform:uppercase;display:block;margin-bottom:14px}
+
+/* Header */
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;transition:all .3s;background:transparent}
+header.scrolled{background:rgba(247,243,236,.95);backdrop-filter:blur(10px);box-shadow:var(--shadow-sm);padding:14px 40px}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;color:var(--c-white);letter-spacing:.08em;transition:color .3s}
+.logo .small{font-size:11px;font-family:'Inter',sans-serif;letter-spacing:.3em;font-weight:400;opacity:.8;margin-left:6px}
+header.scrolled .logo{color:var(--c-primary-dark)}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{font-size:13px;font-family:'Inter',sans-serif;font-weight:500;letter-spacing:.15em;color:var(--c-white);opacity:.9;text-transform:uppercase}
+.nav-links a:hover{opacity:1;color:var(--c-accent-soft)}
+header.scrolled .nav-links a{color:var(--c-primary-dark)}
+header.scrolled .nav-links a:hover{color:var(--c-accent)}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,68,58,.45) 0%,rgba(30,68,58,.25) 40%,rgba(30,68,58,.65) 100%);z-index:1}
+.hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:0 40px;width:100%;color:var(--c-white)}
+.hero-date{font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.4em;color:var(--c-accent-soft);margin-bottom:32px;animation:fadeIn 1s .2s both}
+.hero-date::before{content:'';display:inline-block;width:40px;height:1px;background:var(--c-accent-soft);margin-right:16px;vertical-align:middle}
+.hero-title{font-size:clamp(42px,7vw,88px);font-weight:500;line-height:1.25;margin-bottom:28px;animation:slideUp 1s .4s both}
+.hero-title em{font-style:normal;color:var(--c-accent-soft)}
+.hero-sub{font-size:clamp(15px,1.6vw,19px);font-weight:400;max-width:580px;margin-bottom:40px;opacity:.95;animation:slideUp 1s .6s both;line-height:2}
+.hero-meta{display:flex;gap:32px;flex-wrap:wrap;animation:slideUp 1s .8s both}
+.hero-meta-item{display:flex;align-items:center;gap:10px;font-size:13px;font-family:'Inter',sans-serif;letter-spacing:.1em;opacity:.9}
+.hero-meta-item i{color:var(--c-accent-soft)}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;color:var(--c-white);font-size:10px;font-family:'Inter',sans-serif;letter-spacing:.4em;animation:fadeIn 1s 1.2s both}
+.hero-scroll::after{content:'';display:block;width:1px;height:40px;background:var(--c-white);margin:12px auto 0;animation:scrollLine 2s ease-in-out infinite}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollLine{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.3)}}
+
+/* Trust bar */
+.trust{background:var(--c-primary-dark);color:var(--c-white);padding:48px 40px}
+.trust-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.trust-item{text-align:center;padding:0 20px;border-right:1px solid rgba(255,255,255,.1)}
+.trust-item:last-child{border-right:none}
+.trust-num{font-family:'Noto Serif JP',serif;font-size:38px;font-weight:500;color:var(--c-accent-soft);line-height:1;margin-bottom:8px}
+.trust-num span{font-size:16px;margin-left:4px}
+.trust-lbl{font-size:12px;letter-spacing:.15em;opacity:.85}
+
+/* Section */
+section{padding:120px 40px}
+.container{max-width:1200px;margin:0 auto}
+.section-head{text-align:center;margin-bottom:80px}
+.section-title{font-size:clamp(28px,4vw,44px);font-weight:500;margin-bottom:20px;position:relative;display:inline-block;padding-bottom:24px}
+.section-title::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--c-accent);transition:width .7s ease .3s}
+.fade-in.is-visible .section-title::after{width:56px}
+.section-sub{font-size:15px;color:var(--c-text-mid);max-width:600px;margin:0 auto;line-height:2}
+
+/* Intro */
+.intro{background:var(--c-bg)}
+.intro-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
+.intro-text .label-en{margin-bottom:20px}
+.intro-text h2{font-size:clamp(26px,3.5vw,38px);margin-bottom:28px;line-height:1.5}
+.intro-text p{font-size:15px;color:var(--c-text-mid);line-height:2.1;margin-bottom:18px}
+.intro-img{position:relative;height:520px;overflow:hidden;box-shadow:var(--shadow-md)}
+.intro-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s}
+.intro-img:hover img{transform:scale(1.05)}
+.intro-img::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 70%,rgba(30,68,58,.2) 100%);z-index:1;pointer-events:none}
+
+/* Spots */
+.spots{background:var(--c-bg-warm)}
+.spot{display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:stretch;margin-bottom:110px}
+.spot:last-child{margin-bottom:0}
+.spot.reverse{grid-template-columns:1fr 1.15fr}
+.spot.reverse .spot-media{order:2}
+.spot-media{position:relative;min-height:540px;overflow:hidden;box-shadow:var(--shadow-md)}
+.spot-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s}
+.spot-media:hover img{transform:scale(1.06)}
+.spot-num{position:absolute;top:28px;left:28px;z-index:2;font-family:'Noto Serif JP',serif;font-size:14px;letter-spacing:.3em;color:var(--c-white);background:rgba(30,68,58,.85);padding:10px 18px;backdrop-filter:blur(6px)}
+.spot-tag{position:absolute;top:28px;right:28px;z-index:2;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--c-white);background:var(--c-accent);padding:8px 14px;text-transform:uppercase}
+.spot-body{padding:16px 0;display:flex;flex-direction:column;justify-content:center}
+.spot-body .label-en{color:var(--c-accent)}
+.spot-name{font-size:clamp(28px,3.2vw,38px);margin-bottom:12px;line-height:1.3}
+.spot-sub{font-family:'Noto Serif JP',serif;font-style:italic;color:var(--c-accent);font-size:16px;margin-bottom:26px;font-weight:400}
+.spot-lead{font-size:14.5px;color:var(--c-text-mid);line-height:2;margin-bottom:32px}
+.spot-lead strong{color:var(--c-primary-dark);font-weight:500;background:linear-gradient(transparent 65%,rgba(169,50,38,.15) 65%)}
+.spot-points{list-style:none;margin-bottom:32px}
+.spot-points li{padding:10px 0 10px 28px;font-size:14px;border-bottom:1px solid var(--c-border);position:relative;color:var(--c-text)}
+.spot-points li:last-child{border-bottom:none}
+.spot-points li::before{content:'\f068';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;left:0;top:12px;color:var(--c-accent-soft);font-size:10px}
+.spot-info{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:24px;border-top:1px solid var(--c-border)}
+.info-item{}
+.info-item dt{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.2em;color:var(--c-text-light);margin-bottom:6px;text-transform:uppercase}
+.info-item dd{font-size:13.5px;color:var(--c-text);font-weight:500;line-height:1.5}
+.info-item dd i{color:var(--c-accent);margin-right:4px;font-size:12px}
+
+/* Divider */
+.divider{position:relative;height:280px;overflow:hidden}
+.divider img{width:100%;height:100%;object-fit:cover}
+.divider-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,68,58,.55),rgba(30,68,58,.3));display:flex;align-items:center;justify-content:center}
+.divider-text{color:var(--c-white);text-align:center;padding:0 40px}
+.divider-text .jp{font-family:'Noto Serif JP',serif;font-size:clamp(22px,3vw,32px);font-weight:400;letter-spacing:.1em;margin-bottom:14px;line-height:1.6}
+.divider-text .en{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.4em;opacity:.9}
+
+/* Extra spots */
+.extras{background:var(--c-bg)}
+.extras-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.extra-card{background:var(--c-white);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .5s,box-shadow .5s}
+.extra-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.extra-img{position:relative;height:260px;overflow:hidden}
+.extra-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s}
+.extra-card:hover .extra-img img{transform:scale(1.1)}
+.extra-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(30,68,58,.5));pointer-events:none}
+.extra-body{padding:32px 28px}
+.extra-body .label-en{margin-bottom:12px}
+.extra-body h3{font-size:22px;margin-bottom:14px}
+.extra-body p{font-size:13.5px;color:var(--c-text-mid);line-height:1.9;margin-bottom:18px}
+.extra-meta{display:flex;gap:16px;font-size:12px;color:var(--c-text-light);font-family:'Inter',sans-serif;letter-spacing:.05em;padding-top:16px;border-top:1px solid var(--c-border)}
+.extra-meta span i{color:var(--c-accent);margin-right:5px}
+
+/* Timeline */
+.timeline{background:var(--c-primary);color:var(--c-white);background-image:linear-gradient(rgba(30,68,58,.92),rgba(30,68,58,.96)),url('https://upload.wikimedia.org/wikipedia/commons/d/df/Kasugayama_Primeval_Forest_02.jpg');background-size:cover;background-attachment:fixed;background-position:center}
+.timeline .section-title::after{background:var(--c-accent-soft)}
+.timeline .section-sub{color:rgba(255,255,255,.8)}
+.timeline-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
+.tl-card{background:rgba(255,255,255,.06);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);padding:40px 36px}
+.tl-card h4{font-size:22px;margin-bottom:8px;color:var(--c-white)}
+.tl-card .tl-tag{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.25em;color:var(--c-accent-soft);margin-bottom:26px;display:block}
+.tl-list{list-style:none}
+.tl-item{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,.15);align-items:baseline}
+.tl-item:last-child{border-bottom:none}
+.tl-time{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:var(--c-accent-soft);letter-spacing:.05em}
+.tl-act{font-size:13.5px;color:rgba(255,255,255,.9)}
+
+/* Checklist */
+.checklist{background:var(--c-bg-warm)}
+.check-wrap{max-width:880px;margin:0 auto}
+.check-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
+.check-col h4{font-size:20px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--c-border);display:flex;align-items:center;gap:12px;color:var(--c-primary-dark)}
+.check-col h4 i{color:var(--c-accent);font-size:18px}
+.check-list{list-style:none}
+.check-list li{display:flex;align-items:center;gap:14px;padding:12px 0;font-size:14px;color:var(--c-text);cursor:pointer;transition:color .3s}
+.check-list li:hover{color:var(--c-primary-dark)}
+.check-box{width:20px;height:20px;border:1.5px solid var(--c-border);background:var(--c-white);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.check-list li.checked .check-box{background:var(--c-primary);border-color:var(--c-primary)}
+.check-list li.checked .check-box::after{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;color:var(--c-white);font-size:11px}
+.check-list li.checked{text-decoration:line-through;opacity:.55}
+
+/* Final CTA */
+.final{position:relative;padding:160px 40px;text-align:center;color:var(--c-white);overflow:hidden}
+.final-bg{position:absolute;inset:0;z-index:0}
+.final-bg img{width:100%;height:100%;object-fit:cover}
+.final::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,68,58,.8),rgba(169,50,38,.5));z-index:1}
+.final-inner{position:relative;z-index:2;max-width:760px;margin:0 auto}
+.final .label-en{color:var(--c-accent-soft)}
+.final h2{font-size:clamp(32px,4.5vw,52px);margin-bottom:26px;line-height:1.5}
+.final p{font-size:16px;line-height:2.1;margin-bottom:44px;opacity:.95}
+.final-quote{font-family:'Noto Serif JP',serif;font-style:italic;font-size:19px;letter-spacing:.05em}
+.final-quote::before,.final-quote::after{content:'—';margin:0 14px;color:var(--c-accent-soft)}
+
+/* Footer */
+footer{background:var(--c-primary-dark);color:rgba(255,255,255,.7);padding:60px 40px 40px;text-align:center}
+.foot-logo{font-family:'Noto Serif JP',serif;font-size:22px;color:var(--c-white);margin-bottom:12px;letter-spacing:.08em}
+.foot-text{font-size:13px;letter-spacing:.08em;margin-bottom:8px}
+.foot-meta{font-size:11px;letter-spacing:.15em;opacity:.6;margin-top:24px;font-family:'Inter',sans-serif}
+
+/* Animations */
+.fade-in,.fade-in-left,.fade-in-right{opacity:0;transition:opacity .9s ease,transform .9s ease}
+.fade-in{transform:translateY(40px)}
+.fade-in-left{transform:translateX(-40px)}
+.fade-in-right{transform:translateX(40px)}
+.fade-in.is-visible,.fade-in-left.is-visible,.fade-in-right.is-visible{opacity:1;transform:translate(0,0)}
+.stagger>*{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.stagger.is-visible>*{opacity:1;transform:translateY(0)}
+.stagger.is-visible>*:nth-child(1){transition-delay:.05s}
+.stagger.is-visible>*:nth-child(2){transition-delay:.15s}
+.stagger.is-visible>*:nth-child(3){transition-delay:.25s}
+.stagger.is-visible>*:nth-child(4){transition-delay:.35s}
+
+/* Responsive */
+@media(max-width:900px){
+  header{padding:16px 20px}
+  .nav-links{display:none}
+  section{padding:80px 24px}
+  .trust{padding:40px 24px}
+  .trust-inner{grid-template-columns:repeat(2,1fr);gap:32px}
+  .trust-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:24px}
+  .trust-item:nth-last-child(-n+2){border-bottom:none;padding-bottom:0}
+  .intro-grid,.spot,.spot.reverse{grid-template-columns:1fr;gap:40px}
+  .spot.reverse .spot-media{order:0}
+  .spot-media,.intro-img{min-height:380px;height:380px}
+  .extras-grid,.timeline-grid,.check-grid{grid-template-columns:1fr;gap:32px}
+  .hero-inner{padding:0 24px}
+  .hero-meta{gap:20px}
+  .spot-info{grid-template-columns:1fr 1fr;gap:14px}
+  .section-head{margin-bottom:56px}
+  .divider{height:220px}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="nav-inner">
+    <div class="logo">奈良山旅<span class="small">MAY 3 . 2026</span></div>
+    <nav class="nav-links">
+      <a href="#intro">About</a>
+      <a href="#spots">Spots</a>
+      <a href="#timeline">Plan</a>
+      <a href="#final">Go</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Sakura-honbo_Yoshino_Nara01n4272.jpg" alt="奈良の山">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-inner">
+    <p class="hero-date">MAY 3 . 2026 ── 12:00 START</p>
+    <h1 class="hero-title">新緑とツツジの奈良へ、<br>半日だけの<em>山旅</em>。</h1>
+    <p class="hero-sub">昼からでも間に合う、奈良市内発の四つの選択肢。<br>吉野の蒼い新緑、葛城の紅い絨毯、若草の芝、生駒の夕景——<br>あなたは今日、どの山に登りますか。</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><i class="fa-solid fa-calendar-day"></i> 2026.5.3 ( Sun )</div>
+      <div class="hero-meta-item"><i class="fa-regular fa-clock"></i> Start 12:00 / Return 19:00</div>
+      <div class="hero-meta-item"><i class="fa-solid fa-location-dot"></i> 奈良市内発</div>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="trust-inner stagger">
+    <div class="trust-item"><div class="trust-num">4<span>プラン</span></div><div class="trust-lbl">SELECTED ROUTES</div></div>
+    <div class="trust-item"><div class="trust-num">7<span>時間</span></div><div class="trust-lbl">HALF-DAY TRIP</div></div>
+    <div class="trust-item"><div class="trust-num">959<span>m</span></div><div class="trust-lbl">HIGHEST PEAK</div></div>
+    <div class="trust-item"><div class="trust-num">3<span>スポット</span></div><div class="trust-lbl">HIDDEN PLACES</div></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section id="intro" class="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-text fade-in-left">
+        <span class="label-en">About this trip</span>
+        <h2>昼過ぎ出発でも、<br>五月の奈良は<br>まだ間に合う。</h2>
+        <p>ゴールデンウィークど真ん中の五月三日。奈良市内を出るのは、ゆっくりめの十二時。</p>
+        <p>目指すのは、新緑が最も深まる吉野の森、真紅のツツジが山頂を染める葛城、東大寺の向こうで鹿と戯れる若草山、そして生駒のケーブルカーに揺られて辿り着く山上遊園地。</p>
+        <p>どれを選んでも、半日で奈良の初夏を味わい尽くせる——そんな四つの旅を、一枚のしおりにまとめました。</p>
+      </div>
+      <div class="intro-img fade-in-right">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Yoshino_Montage.jpg" alt="奈良四季" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER 1 -->
+<div class="divider">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Kasugayama_Primeval_Forest_02.jpg" alt="奈良の森">
+  <div class="divider-overlay">
+    <div class="divider-text fade-in">
+      <p class="jp">── 四つの山。四つの物語。</p>
+      <p class="en">FOUR MOUNTAINS . FOUR STORIES</p>
+    </div>
+  </div>
+</div>
+
+<!-- SPOTS -->
+<section id="spots" class="spots">
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="label-en">Main Spots</span>
+      <h2 class="section-title">4 大候補スポット</h2>
+      <p class="section-sub">奈良市内から片道2時間以内で辿り着ける、5月3日に最適な四つの選択肢</p>
+    </div>
+
+    <!-- SPOT 1: 葛城山 -->
+    <article class="spot fade-in">
+      <div class="spot-media">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Mount_Yamatokatsuragi04.JPG" alt="大和葛城山" loading="lazy">
+        <span class="spot-num">No. 01</span>
+        <span class="spot-tag">Best in May</span>
+      </div>
+      <div class="spot-body">
+        <span class="label-en">Mount Katsuragi . 959m</span>
+        <h3 class="spot-name">葛城山（大和葛城山）</h3>
+        <p class="spot-sub">— 一目百万本、真紅のツツジ絨毯 —</p>
+        <p class="spot-lead">標高959m の山頂一帯に広がる<strong>約100万本のヤマツツジ</strong>が、五月の連休前後に真っ赤に咲き誇る。近鉄御所駅からバス15分、ロープウェイわずか6分で山頂へ。山頂からは大阪平野と奈良盆地を一望。<strong>GW明け〜5月中旬が最盛期</strong>だが、早咲き年なら5月3日も十分間に合う可能性あり。</p>
+        <ul class="spot-points">
+          <li>山頂360°パノラマに真紅のツツジ絨毯が広がる奈良屈指の絶景</li>
+          <li>ロープウェイで登頂できるため体力不要・初心者歓迎</li>
+          <li>葛城高原ロッジで昼食・コーヒー・休憩OK</li>
+          <li>シャクナゲ・カタクリも同時期に開花</li>
+        </ul>
+        <dl class="spot-info">
+          <div class="info-item"><dt>Access</dt><dd><i class="fa-solid fa-car"></i>奈良市内から車80分</dd></div>
+          <div class="info-item"><dt>Fare</dt><dd><i class="fa-solid fa-ticket"></i>ロープウェイ往復1,500円</dd></div>
+          <div class="info-item"><dt>Duration</dt><dd><i class="fa-regular fa-clock"></i>現地 3〜4時間</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- SPOT 2: 吉野山 -->
+    <article class="spot reverse fade-in">
+      <div class="spot-media">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Sakura-honbo_Yoshino_Nara01n4272.jpg" alt="吉野山" loading="lazy">
+        <span class="spot-num">No. 02</span>
+        <span class="spot-tag">World Heritage</span>
+      </div>
+      <div class="spot-body">
+        <span class="label-en">Mount Yoshino . UNESCO</span>
+        <h3 class="spot-name">吉野山</h3>
+        <p class="spot-sub">— 桜の聖地が、新緑と静けさに還る季節 —</p>
+        <p class="spot-lead">桜で知られる世界遺産・吉野山。しかし<strong>五月は新緑とシャクナゲの季節</strong>として、地元では「桜より空いていて最高」と囁かれる。金峯山寺蔵王堂の堂々たる佇まいと、<strong>奥千本・上千本のシャクナゲ</strong>が息を呑む美しさ。GW明けは観光客も引き、ゆったりと修験道の空気に浸れる。</p>
+        <ul class="spot-points">
+          <li>世界遺産・修験道の聖地で蔵王堂と吉水神社を参拝</li>
+          <li>桜シーズンより圧倒的に人が少なく、ゆったり散策できる</li>
+          <li>奥千本〜上千本エリアでシャクナゲが5月上旬に開花</li>
+          <li>山岳信仰の街並みと葛餅・柿の葉寿司など食の名所</li>
+        </ul>
+        <dl class="spot-info">
+          <div class="info-item"><dt>Access</dt><dd><i class="fa-solid fa-car"></i>奈良市内から車90分</dd></div>
+          <div class="info-item"><dt>Fare</dt><dd><i class="fa-solid fa-yen-sign"></i>入山無料</dd></div>
+          <div class="info-item"><dt>Duration</dt><dd><i class="fa-regular fa-clock"></i>現地 4〜5時間</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- SPOT 3: 若草山・奈良公園 -->
+    <article class="spot fade-in">
+      <div class="spot-media">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/WakakusaYama.jpg" alt="若草山" loading="lazy">
+        <span class="spot-num">No. 03</span>
+        <span class="spot-tag">By Train</span>
+      </div>
+      <div class="spot-body">
+        <span class="label-en">Mount Wakakusa . 342m</span>
+        <h3 class="spot-name">若草山・奈良公園</h3>
+        <p class="spot-sub">— 芝生の丘に、千頭の鹿が寝そべる —</p>
+        <p class="spot-lead">奈良を代表する観光地。<strong>約1,300頭の野生の鹿</strong>が暮らす天然記念物の公園と、芝生に覆われた標高342m の若草山。山頂からは奈良盆地・生駒山・大和三山を一望。<strong>電車で直接アクセスできる</strong>最も手軽なプランで、東大寺・春日大社など世界遺産も徒歩圏内。</p>
+        <ul class="spot-points">
+          <li>鹿せんべいで1,300頭の野生の鹿と触れ合える</li>
+          <li>若草山山頂まで徒歩30〜40分の初心者コース</li>
+          <li>山頂から奈良の街並みと山々のパノラマ</li>
+          <li>東大寺・春日大社など世界遺産も隣接</li>
+        </ul>
+        <dl class="spot-info">
+          <div class="info-item"><dt>Access</dt><dd><i class="fa-solid fa-train"></i>近鉄奈良駅から10分</dd></div>
+          <div class="info-item"><dt>Fare</dt><dd><i class="fa-solid fa-ticket"></i>若草山入山150円</dd></div>
+          <div class="info-item"><dt>Duration</dt><dd><i class="fa-regular fa-clock"></i>現地 2〜4時間</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- SPOT 4: 生駒山・宝山寺・山上遊園地 -->
+    <article class="spot reverse fade-in">
+      <div class="spot-media">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Hozan-ji_keidai_001.jpg" alt="宝山寺" loading="lazy">
+        <span class="spot-num">No. 04</span>
+        <span class="spot-tag">Editor's Pick</span>
+      </div>
+      <div class="spot-body">
+        <span class="label-en">Mount Ikoma . Hōzan-ji</span>
+        <h3 class="spot-name">生駒・宝山寺 → 山上遊園地</h3>
+        <p class="spot-sub">— 聖天さんとレトロ遊園地の、二段重ね山旅 —</p>
+        <p class="spot-lead">近鉄生駒駅から<strong>日本最古のケーブルカー</strong>「ブル号・ミケ号」で宝山寺へ。通称「聖天さん」として関西屈指の寺院を参拝したあと、もう一本ケーブルを乗り継いで標高642m の<strong>生駒山上遊園地</strong>へ。レトロな観覧車から見下ろす大阪・奈良の夕景は、言葉を失う美しさ。</p>
+        <ul class="spot-points">
+          <li>日本最古級・犬猫型のケーブルカーは乗るだけで楽しい</li>
+          <li>宝山寺は商売繁盛の聖地、関西屈指のパワースポット</li>
+          <li>入場無料の生駒山上遊園地（個別アトラクション300〜500円）</li>
+          <li>夕方の眺望は関西屈指、大阪湾まで見渡せる</li>
+        </ul>
+        <dl class="spot-info">
+          <div class="info-item"><dt>Access</dt><dd><i class="fa-solid fa-train"></i>近鉄生駒駅</dd></div>
+          <div class="info-item"><dt>Fare</dt><dd><i class="fa-solid fa-ticket"></i>ケーブル片道500円</dd></div>
+          <div class="info-item"><dt>Duration</dt><dd><i class="fa-regular fa-clock"></i>現地 3〜5時間</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- DIVIDER 2 -->
+<div class="divider">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Shika_senbei_2017.jpg" alt="奈良の鹿">
+  <div class="divider-overlay">
+    <div class="divider-text fade-in">
+      <p class="jp">── もう少し、踏み込んでみるなら。</p>
+      <p class="en">HIDDEN GEMS OF NARA</p>
+    </div>
+  </div>
+</div>
+
+<!-- EXTRAS -->
+<section class="extras">
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="label-en">Hidden Spots</span>
+      <h2 class="section-title">追加のおすすめ3選</h2>
+      <p class="section-sub">定番に飽きたら、奈良の裏道へ。パワースポットと秘境の森</p>
+    </div>
+    <div class="extras-grid stagger">
+      <article class="extra-card">
+        <div class="extra-img"><img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Kasugayama_Primeval_Forest_02.jpg" alt="春日山原始林" loading="lazy"></div>
+        <div class="extra-body">
+          <span class="label-en">World Heritage</span>
+          <h3>春日山原始林</h3>
+          <p>1,000年以上斧を入れず守られてきた原生林。奈良公園のすぐ隣とは思えない、苔と巨木の深い静寂。片道90分ほどの遊歩道でタイムスリップ体験を。</p>
+          <div class="extra-meta">
+            <span><i class="fa-solid fa-gauge-simple"></i>難易度 中</span>
+            <span><i class="fa-regular fa-clock"></i>90分</span>
+          </div>
+        </div>
+      </article>
+      <article class="extra-card">
+        <div class="extra-img"><img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Kintetsu_Ikoma_kosakusen_Nara_JPN_001.jpg" alt="生駒ケーブル" loading="lazy"></div>
+        <div class="extra-body">
+          <span class="label-en">Retro Transport</span>
+          <h3>生駒ケーブル線</h3>
+          <p>1918年開業の日本最古級のケーブルカー。犬型「ブル号」、猫型「ミケ号」というレトロかわいい車両が今も現役で走る、乗るだけで体験になる一本。</p>
+          <div class="extra-meta">
+            <span><i class="fa-solid fa-gauge-simple"></i>難易度 低</span>
+            <span><i class="fa-regular fa-clock"></i>16分</span>
+          </div>
+        </div>
+      </article>
+      <article class="extra-card">
+        <div class="extra-img"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/TanzanJinja.JPG" alt="談山神社" loading="lazy"></div>
+        <div class="extra-body">
+          <span class="label-en">Sacred Site</span>
+          <h3>談山神社</h3>
+          <p>世界唯一の木造十三重塔で知られる、奈良・桜井の古社。大化改新の密談が行われたと伝わるパワースポット。五月の新緑に包まれる朱塗りの塔は息を呑む。</p>
+          <div class="extra-meta">
+            <span><i class="fa-solid fa-gauge-simple"></i>難易度 低</span>
+            <span><i class="fa-regular fa-clock"></i>60分</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline" class="timeline">
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="label-en">Half-Day Plan</span>
+      <h2 class="section-title">12時出発の時間割</h2>
+      <p class="section-sub">どのスポットを選んでも、夜19時までに奈良に戻れる現実的な4プラン</p>
+    </div>
+    <div class="timeline-grid">
+      <div class="tl-card fade-in-left">
+        <span class="tl-tag">PLAN . 01 ── KATSURAGI</span>
+        <h4>葛城山・ツツジ鑑賞</h4>
+        <ul class="tl-list">
+          <li class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">奈良市内出発（レンタカー）</span></li>
+          <li class="tl-item"><span class="tl-time">13:20</span><span class="tl-act">葛城ロープウェイ乗り場到着</span></li>
+          <li class="tl-item"><span class="tl-time">13:40</span><span class="tl-act">山頂・葛城高原に到着 ／ ツツジ鑑賞</span></li>
+          <li class="tl-item"><span class="tl-time">15:00</span><span class="tl-act">ロッジで休憩・コーヒー</span></li>
+          <li class="tl-item"><span class="tl-time">16:00</span><span class="tl-act">ロープウェイで下山・帰路</span></li>
+          <li class="tl-item"><span class="tl-time">18:00</span><span class="tl-act">奈良市内着</span></li>
+        </ul>
+      </div>
+      <div class="tl-card fade-in-right">
+        <span class="tl-tag">PLAN . 02 ── YOSHINO</span>
+        <h4>吉野山・新緑と蔵王堂</h4>
+        <ul class="tl-list">
+          <li class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">奈良市内出発（レンタカー）</span></li>
+          <li class="tl-item"><span class="tl-time">13:30</span><span class="tl-act">吉野山到着・七曲り坂〜下千本</span></li>
+          <li class="tl-item"><span class="tl-time">14:30</span><span class="tl-act">金峯山寺・蔵王堂参拝</span></li>
+          <li class="tl-item"><span class="tl-time">15:30</span><span class="tl-act">上千本・シャクナゲ鑑賞</span></li>
+          <li class="tl-item"><span class="tl-time">17:00</span><span class="tl-act">帰路</span></li>
+          <li class="tl-item"><span class="tl-time">19:00</span><span class="tl-act">奈良市内着</span></li>
+        </ul>
+      </div>
+      <div class="tl-card fade-in-left">
+        <span class="tl-tag">PLAN . 03 ── WAKAKUSA</span>
+        <h4>若草山・奈良公園</h4>
+        <ul class="tl-list">
+          <li class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">奈良市内出発（徒歩 or バス）</span></li>
+          <li class="tl-item"><span class="tl-time">12:20</span><span class="tl-act">奈良公園到着・鹿と対面</span></li>
+          <li class="tl-item"><span class="tl-time">13:30</span><span class="tl-act">若草山登山開始（徒歩30〜40分）</span></li>
+          <li class="tl-item"><span class="tl-time">14:30</span><span class="tl-act">山頂で景色＋お弁当</span></li>
+          <li class="tl-item"><span class="tl-time">16:00</span><span class="tl-act">下山・東大寺 or 春日大社</span></li>
+          <li class="tl-item"><span class="tl-time">18:00</span><span class="tl-act">カフェで一休み</span></li>
+        </ul>
+      </div>
+      <div class="tl-card fade-in-right">
+        <span class="tl-tag">PLAN . 04 ── IKOMA</span>
+        <h4>生駒・宝山寺＋山上遊園地</h4>
+        <ul class="tl-list">
+          <li class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">奈良駅→近鉄生駒駅（約50分）</span></li>
+          <li class="tl-item"><span class="tl-time">13:00</span><span class="tl-act">ケーブルカー・宝山寺駅下車</span></li>
+          <li class="tl-item"><span class="tl-time">13:30</span><span class="tl-act">宝山寺参拝・門前町散策</span></li>
+          <li class="tl-item"><span class="tl-time">15:00</span><span class="tl-act">山上ケーブル → 山上遊園地</span></li>
+          <li class="tl-item"><span class="tl-time">17:30</span><span class="tl-act">展望台で夕景</span></li>
+          <li class="tl-item"><span class="tl-time">19:00</span><span class="tl-act">奈良へ帰着</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="checklist">
+  <div class="container check-wrap">
+    <div class="section-head fade-in">
+      <span class="label-en">Packing List</span>
+      <h2 class="section-title">持ち物チェック</h2>
+      <p class="section-sub">クリックでチェック。山の昼と夕方は想像より冷えるので、羽織りものは必須</p>
+    </div>
+    <div class="check-grid">
+      <div class="check-col fade-in-left">
+        <h4><i class="fa-solid fa-shoe-prints"></i>装備系</h4>
+        <ul class="check-list">
+          <li><span class="check-box"></span>スニーカー or トレッキングシューズ</li>
+          <li><span class="check-box"></span>ウインドブレーカー（山頂は肌寒い）</li>
+          <li><span class="check-box"></span>帽子・日焼け止め</li>
+          <li><span class="check-box"></span>リュック（両手を空けて）</li>
+          <li><span class="check-box"></span>折りたたみ傘 or レインウェア</li>
+        </ul>
+      </div>
+      <div class="check-col fade-in-right">
+        <h4><i class="fa-solid fa-bottle-water"></i>道具・食糧</h4>
+        <ul class="check-list">
+          <li><span class="check-box"></span>水筒（500ml以上）</li>
+          <li><span class="check-box"></span>おにぎり・行動食</li>
+          <li><span class="check-box"></span>タオル・ウェットティッシュ</li>
+          <li><span class="check-box"></span>モバイルバッテリー</li>
+          <li><span class="check-box"></span>現金（山上施設はカード不可が多い）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section id="final" class="final">
+  <div class="final-bg"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Mount_Ikoma.jpg" alt="生駒山"></div>
+  <div class="final-inner fade-in">
+    <span class="label-en">See you on the trail</span>
+    <h2>どの山を、選びますか。</h2>
+    <p>迷ったら、一番ワクワクした山へ。<br>五月の奈良は、どの道を選んでも間違いません。</p>
+    <p class="final-quote">いってらっしゃい</p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">奈良山旅</div>
+  <p class="foot-text">5月3日のしおり ／ 奈良市内発 12:00 スタート</p>
+  <p class="foot-text">情報は2025〜2026年の公式サイト・観光情報をもとに作成</p>
+  <p class="foot-meta">CRAFTED BY はるか × あおい ／ おけもんカンパニー</p>
+</footer>
+
+<script>
+// Header scroll
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>50)});
+
+// Checklist
+document.querySelectorAll('.check-list li').forEach(li=>{li.addEventListener('click',()=>li.classList.toggle('checked'))});
+
+// Animations
+const animEls=document.querySelectorAll('.fade-in,.fade-in-left,.fade-in-right,.stagger');
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');obs.unobserve(e.target)}});
+},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+animEls.forEach(el=>{
+  const r=el.getBoundingClientRect();
+  if(r.top<window.innerHeight&&r.bottom>0)el.classList.add('is-visible');
+  else obs.observe(el);
+});
+</script>
+</body>
+</html>
