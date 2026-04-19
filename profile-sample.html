@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【サンプル】秋月 遼 — ケアラボ経営研究所 | プロフィール</title>
+  <meta name="description" content="医療・介護分野の事業立ち上げ支援を手がける秋月遼のプロフィール。※本ページは架空人物の匿名サンプルです。">
+  <meta name="robots" content="noindex">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --ink: #1C1917;
+      --ink-light: #4A4540;
+      --ink-mute: #7A736C;
+      --paper: #FAF8F4;
+      --paper-warm: #F3EFE6;
+      --paper-cream: #EDE7D9;
+      --accent: #9B3A3A;
+      --accent-dark: #7A2929;
+      --accent-soft: #C78B8B;
+      --rule: #D6CFC2;
+      --font-mincho: 'Shippori Mincho', 'Noto Serif JP', 'YuMincho', 'Hiragino Mincho ProN', serif;
+      --font-sans: 'Noto Sans JP', sans-serif;
+      --font-en: 'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--paper);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.9;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+    a { text-decoration: none; color: inherit; transition: color 0.3s; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== Animations ===== */
+    .fade-in, .fade-left, .fade-right { opacity: 0; transition: opacity 1s ease, transform 1s ease; }
+    .fade-in { transform: translateY(24px); }
+    .fade-left { transform: translateX(-32px); }
+    .fade-right { transform: translateX(32px); }
+    .fade-in.is-visible, .fade-left.is-visible, .fade-right.is-visible {
+      opacity: 1; transform: translate(0, 0);
+    }
+
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: none; }
+    .stagger.is-visible > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: none; }
+    .stagger.is-visible > *:nth-child(3) { transition-delay: 0.25s; opacity: 1; transform: none; }
+    .stagger.is-visible > *:nth-child(4) { transition-delay: 0.35s; opacity: 1; transform: none; }
+    .stagger.is-visible > *:nth-child(5) { transition-delay: 0.45s; opacity: 1; transform: none; }
+    .stagger.is-visible > *:nth-child(6) { transition-delay: 0.55s; opacity: 1; transform: none; }
+    .stagger.is-visible > *:nth-child(7) { transition-delay: 0.65s; opacity: 1; transform: none; }
+
+    /* ===== Demo Banner ===== */
+    .demo-banner {
+      background: var(--ink);
+      color: var(--paper);
+      text-align: center;
+      padding: 10px 16px;
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+    .demo-banner span { color: var(--accent-soft); margin-right: 8px; }
+
+    /* ===== Header ===== */
+    .header {
+      padding: 28px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .header-logo {
+      font-family: var(--font-mincho);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+    }
+    .header-logo .sep {
+      display: inline-block;
+      width: 1px;
+      height: 12px;
+      background: var(--rule);
+      margin: 0 12px;
+      vertical-align: middle;
+    }
+    .header-logo .en {
+      font-family: var(--font-en);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--ink-mute);
+      text-transform: uppercase;
+    }
+    .header-nav {
+      display: flex;
+      gap: 32px;
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+    .header-nav a:hover { color: var(--accent); }
+
+    /* ===== Hero ===== */
+    .hero {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 90px 40px 140px;
+      position: relative;
+    }
+    .hero-label {
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 40px;
+      display: inline-block;
+      padding-left: 48px;
+      position: relative;
+    }
+    .hero-label::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+    .hero-name {
+      font-family: var(--font-mincho);
+      font-weight: 800;
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .hero-name .kana {
+      display: block;
+      font-family: var(--font-en);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      color: var(--ink-mute);
+      margin-top: 24px;
+      text-transform: uppercase;
+    }
+    .hero-sub {
+      font-family: var(--font-mincho);
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 500;
+      color: var(--ink-light);
+      line-height: 2.2;
+      margin-top: 56px;
+      max-width: 620px;
+      border-left: 1px solid var(--accent);
+      padding-left: 28px;
+    }
+    .hero-meta {
+      margin-top: 72px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px 40px;
+      max-width: 560px;
+      font-size: 13px;
+      color: var(--ink-light);
+      line-height: 2.2;
+    }
+    .hero-meta dt {
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      padding-top: 2px;
+    }
+    .hero-meta dd {
+      font-family: var(--font-mincho);
+      font-size: 15px;
+    }
+
+    /* ===== Section Common ===== */
+    .section {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 96px 40px;
+      position: relative;
+    }
+    .section-wide { max-width: 960px; }
+    .section-number {
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .section-title {
+      font-family: var(--font-mincho);
+      font-size: clamp(24px, 3.5vw, 34px);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.45;
+      letter-spacing: 0.06em;
+      margin-bottom: 48px;
+      position: relative;
+      padding-bottom: 20px;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+    .section-body p {
+      font-family: var(--font-mincho);
+      font-size: 16px;
+      line-height: 2.3;
+      color: var(--ink);
+      margin-bottom: 28px;
+      letter-spacing: 0.04em;
+    }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body em {
+      font-style: normal;
+      background: linear-gradient(transparent 60%, rgba(155,58,58,0.15) 60%);
+      padding: 0 2px;
+      font-weight: 600;
+    }
+
+    /* ===== Divider (wabi) ===== */
+    .rule-divider {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .rule-divider::before, .rule-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+    .rule-divider span {
+      font-family: var(--font-mincho);
+      color: var(--accent);
+      font-size: 14px;
+      letter-spacing: 0.5em;
+    }
+
+    /* ===== Pull Quote ===== */
+    .pull-quote {
+      max-width: 780px;
+      margin: 40px auto;
+      padding: 48px 40px;
+      background: var(--paper-warm);
+      border-left: 2px solid var(--accent);
+    }
+    .pull-quote p {
+      font-family: var(--font-mincho);
+      font-size: clamp(18px, 2.4vw, 22px);
+      font-weight: 500;
+      line-height: 1.9;
+      color: var(--ink);
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== Timeline ===== */
+    .timeline {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .timeline li {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 32px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .timeline li:last-child { border-bottom: none; }
+    .timeline .year {
+      font-family: var(--font-en);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      padding-top: 6px;
+    }
+    .timeline .era {
+      display: block;
+      font-family: var(--font-mincho);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--ink-mute);
+      letter-spacing: 0.15em;
+      margin-top: 4px;
+    }
+    .timeline .desc h4 {
+      font-family: var(--font-mincho);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .timeline .desc p {
+      font-size: 14px;
+      color: var(--ink-light);
+      line-height: 2;
+    }
+
+    /* ===== Skills / Beliefs Grid ===== */
+    .beliefs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 56px 64px;
+      margin-top: 16px;
+    }
+    .belief {
+      position: relative;
+      padding-left: 44px;
+    }
+    .belief::before {
+      content: attr(data-num);
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: var(--font-en);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+    .belief h4 {
+      font-family: var(--font-mincho);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: 0.06em;
+    }
+    .belief p {
+      font-size: 14px;
+      color: var(--ink-light);
+      line-height: 2;
+    }
+
+    /* ===== Service Cards ===== */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-top: 8px;
+    }
+    .service {
+      padding: 36px 32px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+    .service:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+    .service-label {
+      font-family: var(--font-en);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .service h4 {
+      font-family: var(--font-mincho);
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.6;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .service p {
+      font-size: 14px;
+      line-height: 2;
+      color: var(--ink-light);
+    }
+
+    /* ===== Contact ===== */
+    .contact-wrap {
+      background: var(--paper-cream);
+      padding: 100px 40px 120px;
+      margin-top: 80px;
+    }
+    .contact-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .contact-wrap .section-number { margin-bottom: 14px; }
+    .contact-wrap .section-title {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .contact-wrap .section-title::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .contact-lead {
+      font-family: var(--font-mincho);
+      font-size: 16px;
+      line-height: 2.2;
+      color: var(--ink);
+      margin: 0 auto 48px;
+      max-width: 560px;
+    }
+    .contact-list {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .contact-item {
+      text-align: center;
+    }
+    .contact-item .lbl {
+      font-family: var(--font-en);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      color: var(--ink-mute);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .contact-item .val {
+      font-family: var(--font-mincho);
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .contact-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 48px;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--font-mincho);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      transition: background 0.3s, transform 0.3s, letter-spacing 0.3s;
+    }
+    .contact-cta:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+      letter-spacing: 0.2em;
+    }
+    .contact-cta i {
+      font-size: 12px;
+      transition: transform 0.3s;
+    }
+    .contact-cta:hover i { transform: translateX(6px); }
+
+    /* ===== Footer ===== */
+    .footer {
+      padding: 56px 40px 40px;
+      text-align: center;
+      border-top: 1px solid var(--rule);
+    }
+    .footer-logo {
+      font-family: var(--font-mincho);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+    }
+    .footer p {
+      font-family: var(--font-en);
+      font-size: 11px;
+      color: var(--ink-mute);
+      letter-spacing: 0.1em;
+      line-height: 1.9;
+    }
+    .footer .note {
+      margin-top: 18px;
+      font-family: var(--font-mincho);
+      color: var(--ink-light);
+      letter-spacing: 0.04em;
+      font-size: 12px;
+    }
+    .footer .wink {
+      display: inline-block;
+      margin-top: 6px;
+      font-family: var(--font-mincho);
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .header { padding: 20px 24px; }
+      .header-nav { display: none; }
+      .hero { padding: 56px 24px 96px; }
+      .hero-name { font-size: clamp(40px, 12vw, 64px); }
+      .hero-meta { grid-template-columns: 1fr; gap: 4px 0; }
+      .hero-meta dt { margin-top: 12px; }
+      .section { padding: 72px 24px; }
+      .pull-quote { padding: 36px 28px; margin: 28px 24px; }
+      .timeline li { grid-template-columns: 1fr; gap: 10px; }
+      .beliefs { grid-template-columns: 1fr; gap: 40px; }
+      .services { grid-template-columns: 1fr; }
+      .contact-wrap { padding: 72px 24px 88px; margin-top: 48px; }
+      .contact-list { gap: 28px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Demo Banner -->
+  <div class="demo-banner">
+    <span>◆</span>SAMPLE — AI感ゼロ・プロフィールLP 匿名デモ<span style="margin-left:8px;">◆</span>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-logo">
+      秋月 遼<span class="sep"></span><span class="en">Ryo Akizuki</span>
+    </div>
+    <nav class="header-nav">
+      <a href="#profile">Profile</a>
+      <a href="#story">Story</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="hero-label fade-in">Profile — 2026</p>
+    <h1 class="hero-name fade-in">
+      秋月 遼。
+      <span class="kana">Ryo Akizuki — Care Labo Management</span>
+    </h1>
+    <p class="hero-sub fade-in">
+      医療・介護の現場が、<br>もう少しだけ穏やかに回るように。<br>事業の立ち上げと、人の仕組みの設計を、<br>十年ほど手伝ってきました。
+    </p>
+    <dl class="hero-meta fade-in">
+      <dt>Role</dt><dd>ケアラボ経営研究所 代表</dd>
+      <dt>Field</dt><dd>医療・介護の事業立ち上げ／採用設計</dd>
+      <dt>Base</dt><dd>大阪（出身：兵庫県西播磨）</dd>
+      <dt>Born</dt><dd>1983年</dd>
+    </dl>
+  </section>
+
+  <!-- Rule Divider -->
+  <div class="rule-divider"><span>◆</span></div>
+
+  <!-- ===== Section 01: Intro ===== -->
+  <section class="section" id="profile">
+    <p class="section-number fade-in">01 — Introduction</p>
+    <h2 class="section-title fade-in">はじめまして。</h2>
+    <div class="section-body fade-in">
+      <p>
+        秋月 遼（あきづき りょう）と申します。関西を拠点に、医療・介護分野の事業立ち上げと採用設計を手がけています。
+      </p>
+      <p>
+        表に出る仕事ではありません。経営者の隣に座り、現場の声に耳を傾け、<em>人と仕組みを一緒に整える</em>。そういう役回りで、気づけば十年が経っていました。
+      </p>
+      <p>
+        プロフィールは、素敵な見た目よりも、読んだ方が「ああ、こういう人か」と少しだけ掴めることの方が大切だと思っています。肩に力を入れず、いつもの速度で書きました。
+      </p>
+    </div>
+  </section>
+
+  <!-- Rule Divider -->
+  <div class="rule-divider"><span>◆</span></div>
+
+  <!-- ===== Section 02: Background ===== -->
+  <section class="section">
+    <p class="section-number fade-in">02 — Background</p>
+    <h2 class="section-title fade-in">生まれ育ち、家族のこと。</h2>
+    <div class="section-body fade-in">
+      <p>
+        生まれは兵庫県、西播磨の小さな町です。周囲は山と田んぼ。人口よりも鹿のほうが多いような場所でした。いまは大阪に居を移していますが、夏になると実家の裏山の匂いを思い出します。
+      </p>
+      <p>
+        父は市役所、母は看護師。三人きょうだいの真ん中で、兄と妹の間で「ちゃんとしていなければ」という感覚が早くから育ちました。家庭の中に医療職が一人いる、というのは、思っているよりも子どもの進路に影響します。
+      </p>
+    </div>
+  </section>
+
+  <!-- Pull Quote -->
+  <div class="pull-quote fade-in">
+    <p>
+      「家族の頑張りだけに頼る介護は、<br>どこかで限界が来る。」
+    </p>
+  </div>
+
+  <!-- ===== Section 03: Why ===== -->
+  <section class="section" id="story">
+    <p class="section-number fade-in">03 — Why This Work</p>
+    <h2 class="section-title fade-in">なぜ、この仕事を選んだのか。</h2>
+    <div class="section-body fade-in">
+      <p>
+        高校二年の夏、祖母が脳梗塞で倒れました。在宅で介護することになり、母は夜勤の合間に祖母の体位を変え、父は朝五時に起きて朝食の介助をしていました。私は、救急車を呼んだあの朝の手の震えを、いまでもはっきり覚えています。
+      </p>
+      <p>
+        祖母は半年後に亡くなりました。葬儀のあと、母が台所で静かに泣いていました。悲しみとはまた別の疲れが、その背中にありました。
+      </p>
+      <p>
+        社会人になって医療や介護の現場に触れるたびに、<em>あの台所の景色</em>が重なります。在宅の環境を、家族の献身だけに委ねきらない。そのための仕組みを、経営の側から整えたい。この仕事を続けている理由は、結局はそこに尽きます。
+      </p>
+    </div>
+  </section>
+
+  <!-- Rule Divider -->
+  <div class="rule-divider"><span>◆</span></div>
+
+  <!-- ===== Section 04: Timeline ===== -->
+  <section class="section">
+    <p class="section-number fade-in">04 — Timeline</p>
+    <h2 class="section-title fade-in">これまでの道のり。</h2>
+    <ul class="timeline stagger">
+      <li>
+        <div class="year">1983<span class="era">昭和五十八年</span></div>
+        <div class="desc">
+          <h4>兵庫県西播磨で生まれる</h4>
+          <p>三人きょうだいの真ん中。山と田んぼと、少しだけの寂しさに囲まれた町。</p>
+        </div>
+      </li>
+      <li>
+        <div class="year">2006<span class="era">平成十八年</span></div>
+        <div class="desc">
+          <h4>国内メーカー、技術職として入社</h4>
+          <p>工場のラインで三年間。ものづくりの段取りと、現場の仁義を教わった時期。</p>
+        </div>
+      </li>
+      <li>
+        <div class="year">2010<span class="era">平成二十二年</span></div>
+        <div class="desc">
+          <h4>語学留学。そのまま小さな代理店を起業</h4>
+          <p>フィリピン・セブ島で一年間。帰国後に留学支援の事業を立ち上げる。はじめての「自分で決めて、自分で畳む」経験。</p>
+        </div>
+      </li>
+      <li>
+        <div class="year">2014<span class="era">平成二十六年</span></div>
+        <div class="desc">
+          <h4>医療・介護の採用支援コンサルへ</h4>
+          <p>全国の医療法人・介護事業者を訪問する日々。採用は「集める」よりも「辞めない設計」だと思い知らされる。</p>
+        </div>
+      </li>
+      <li>
+        <div class="year">2020<span class="era">令和二年</span></div>
+        <div class="desc">
+          <h4>高齢者住宅・訪問看護の立ち上げ支援を本格化</h4>
+          <p>制度・採用・運営の三つを同時に回す仕事に軸足を移す。</p>
+        </div>
+      </li>
+      <li>
+        <div class="year">2024<span class="era">令和六年</span></div>
+        <div class="desc">
+          <h4>ケアラボ経営研究所を設立</h4>
+          <p>医療・介護の事業立ち上げと、採用設計の伴走をしている。主に中小規模の法人と、長い呼吸で仕事をすることが多い。</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Rule Divider -->
+  <div class="rule-divider"><span>◆</span></div>
+
+  <!-- ===== Section 05: Beliefs ===== -->
+  <section class="section section-wide">
+    <p class="section-number fade-in">05 — Principles</p>
+    <h2 class="section-title fade-in">仕事で大切にしている、四つのこと。</h2>
+    <div class="beliefs stagger">
+      <div class="belief" data-num="01">
+        <h4>現場から、はじめる。</h4>
+        <p>経営者の椅子からではなく、廊下を歩く人の視点から設計を始める。最初の三回は、必ず現場に入らせてもらう。</p>
+      </div>
+      <div class="belief" data-num="02">
+        <h4>採用は、辞めない設計。</h4>
+        <p>人を集めることよりも、入った人が二年、三年と残れる環境を作ることに時間を使う。結局はそれが一番、数字に効く。</p>
+      </div>
+      <div class="belief" data-num="03">
+        <h4>短期の数字と、長い納得。</h4>
+        <p>来期の経営計画を仕上げながら、十年先の理事長の心残りの方も、同じテーブルに置いて話す。</p>
+      </div>
+      <div class="belief" data-num="04">
+        <h4>家族という変数を、忘れない。</h4>
+        <p>利用者には家族がおり、職員にも家族がいる。その背景を落とさないことが、医療介護の仕事の品質を決める。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rule Divider -->
+  <div class="rule-divider"><span>◆</span></div>
+
+  <!-- ===== Section 06: Services ===== -->
+  <section class="section section-wide" id="work">
+    <p class="section-number fade-in">06 — Work</p>
+    <h2 class="section-title fade-in">いま、お受けしている仕事。</h2>
+    <div class="section-body fade-in" style="margin-bottom: 48px;">
+      <p>
+        基本的には、経営者の隣に座って中長期で関わる仕事をしています。単発の研修や、その場限りのアドバイスは、あまり向いていないと思います。
+      </p>
+    </div>
+    <div class="services stagger">
+      <div class="service">
+        <p class="service-label">For / 医療法人・介護事業者</p>
+        <h4>事業立ち上げの伴走</h4>
+        <p>訪問看護、高齢者住宅、在宅医療クリニックの立ち上げを、制度・採用・運営の三点から設計し、開業後一年の運営まで伴走します。</p>
+      </div>
+      <div class="service">
+        <p class="service-label">For / 複数店舗を抱える経営者</p>
+        <h4>採用・定着の仕組みづくり</h4>
+        <p>求人票のリライトから面接設計、入職後六か月のフォロー体制まで。離職の原因は採用の前工程に潜んでいることが多いため、入り口と出口を一緒に直します。</p>
+      </div>
+      <div class="service">
+        <p class="service-label">For / 地域の医療ネットワーク</p>
+        <h4>連携会議のファシリテーション</h4>
+        <p>在宅医、訪問看護、ケアマネ、薬局の定例会を、単なる情報交換で終わらせない設計に。議題のつくり方から見直します。</p>
+      </div>
+      <div class="service">
+        <p class="service-label">For / 経営者個人</p>
+        <h4>月一回の壁打ち面談</h4>
+        <p>数字ではない、「本当はどうしたいか」を一時間、言語化していく場です。紙一枚に残して、次の決断を軽くします。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="contact-wrap" id="contact">
+    <div class="contact-inner">
+      <p class="section-number fade-in">07 — Contact</p>
+      <h2 class="section-title fade-in">まずは、三十分ほど。</h2>
+      <p class="contact-lead fade-in">
+        合う合わないは、一度話してみないと分からないと思っています。お問い合わせいただいた方には、必ず一度お返事します。急ぎの案件でも、難しい状況でも、まずはお聞かせください。
+      </p>
+      <div class="contact-list fade-in">
+        <div class="contact-item">
+          <div class="lbl">Email</div>
+          <div class="val">ryo@example-carelabo.jp</div>
+        </div>
+        <div class="contact-item">
+          <div class="lbl">Office</div>
+          <div class="val">大阪市内（詳細はご連絡時に）</div>
+        </div>
+        <div class="contact-item">
+          <div class="lbl">Hours</div>
+          <div class="val">平日 10:00 – 18:00</div>
+        </div>
+      </div>
+      <a href="#" onclick="alert('これはサンプルLPです。実際の問い合わせ機能は接続されていません。'); return false;" class="contact-cta">
+        無料相談のお申し込み（サンプル） <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">秋月 遼 — Ryo Akizuki</div>
+    <p>© 2026 Care Labo Management (Sample). All Rights Reserved.</p>
+    <p class="note">
+      ※ 本ページは、AI生成デザインのクオリティ検証を目的とした架空人物・架空法人のサンプルです。<br>
+      実在の個人・団体とは一切関係ありません。
+    </p>
+    <span class="wink">— このページは、AIで書いていません。（AIと、一緒に書きました。）</span>
+  </footer>
+
+  <script>
+    const animEls = document.querySelectorAll('.fade-in, .fade-left, .fade-right, .stagger');
+    const animObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          animObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    animEls.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+      else animObs.observe(el);
+    });
+  </script>
+
+</body>
+</html>
