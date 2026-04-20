@@ -144,7 +144,8 @@ section{padding:120px 40px}
 
 /* Extra spots */
 .extras{background:var(--c-bg)}
-.extras-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.extras-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+@media(max-width:1100px){.extras-grid{grid-template-columns:repeat(2,1fr)}}
 .extra-card{background:var(--c-white);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .5s,box-shadow .5s}
 .extra-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
 .extra-img{position:relative;height:260px;overflow:hidden}
@@ -460,8 +461,8 @@ footer{background:var(--c-primary-dark);color:rgba(255,255,255,.7);padding:60px 
   <div class="container">
     <div class="section-head fade-in">
       <span class="label-en">Hidden Spots</span>
-      <h2 class="section-title">追加のおすすめ3選</h2>
-      <p class="section-sub">定番に飽きたら、奈良の裏道へ。パワースポットと秘境の森</p>
+      <h2 class="section-title">追加のおすすめ4選</h2>
+      <p class="section-sub">定番に飽きたら、奈良の裏道へ。原始林・古社・レトロケーブル・高原</p>
     </div>
     <div class="extras-grid stagger">
       <article class="extra-card">
@@ -501,6 +502,19 @@ footer{background:var(--c-primary-dark);color:rgba(255,255,255,.7);padding:60px 
             <span><i class="fa-regular fa-clock"></i>60分</span>
           </div>
           <div class="extra-official"><a href="https://www.tanzan.or.jp/" target="_blank" rel="noopener">談山神社 公式 <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+        </div>
+      </article>
+      <article class="extra-card">
+        <div class="extra-img"><img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Soni_highlands_Nara12n4592.jpg" alt="曽爾高原" loading="lazy"></div>
+        <div class="extra-body">
+          <span class="label-en">Grass Plateau</span>
+          <h3>曽爾高原</h3>
+          <p>関西屈指のススキの名所（見頃は9月下旬〜11月）。5月は新緑の草原が一面に広がり、お亀池を囲む散策路で絶景のハイキング。<strong>ススキを見るなら秋、静けさを楽しむなら初夏。</strong></p>
+          <div class="extra-meta">
+            <span><i class="fa-solid fa-gauge-simple"></i>難易度 中</span>
+            <span><i class="fa-regular fa-clock"></i>90分〜</span>
+          </div>
+          <div class="extra-official"><a href="https://sonimura.com/kankou/" target="_blank" rel="noopener">曽爾村観光 公式 <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
         </div>
       </article>
     </div>
