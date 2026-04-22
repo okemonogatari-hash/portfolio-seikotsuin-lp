@@ -1,0 +1,1965 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRODORIの理念 | 縁ある方々を魅力的に彩る</title>
+<meta name="description" content="愛・感謝・お節介精神で、超・一流、超・提案型の左腕パートナーとして最大限の貢献を行い、縁ある方々を魅力的に彩る。IRODORIの理念・ビジョン・バリュー。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --color-primary: #C8635F;
+  --color-primary-deep: #A84E4A;
+  --color-accent: #D89A68;
+  --color-accent-deep: #B47A4B;
+  --color-bg: #FDF7F0;
+  --color-bg-warm: #FAEEDE;
+  --color-white: #FFFFFF;
+  --color-text: #2A2A2E;
+  --color-text-mid: #5A5A5E;
+  --color-text-light: #8A8A8E;
+  --color-border: #EDE3D6;
+  --color-rose-tint: #FCEFE9;
+  --color-peach-tint: #FDE9D6;
+  --font-serif: 'Noto Serif JP', serif;
+  --font-sans: 'Noto Sans JP', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --shadow-soft: 0 8px 32px rgba(168, 78, 74, 0.06);
+  --shadow-mid: 0 16px 48px rgba(168, 78, 74, 0.10);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.container-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+.en-label {
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding-bottom: 24px;
+  margin-bottom: 48px;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.8s ease 0.2s;
+}
+.section-title.center { text-align: center; }
+.section-title.center::after { left: 50%; transform: translateX(-50%); }
+.fade-in.is-visible .section-title::after { width: 48px; }
+
+.section-lead {
+  font-size: 15px;
+  color: var(--color-text-mid);
+  line-height: 2;
+  margin-bottom: 64px;
+  max-width: 680px;
+}
+.section-lead.center { margin-left: auto; margin-right: auto; text-align: center; }
+
+/* ========== HEADER ========== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  background: rgba(253, 247, 240, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, padding 0.3s;
+}
+.header.scrolled {
+  padding: 14px 0;
+  border-bottom-color: var(--color-border);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: var(--color-text);
+}
+.brand span { color: var(--color-primary); }
+.nav {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+.nav a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-mid);
+  transition: color 0.3s;
+  position: relative;
+}
+.nav a:hover { color: var(--color-primary); }
+.nav-cta {
+  padding: 10px 22px;
+  background: var(--color-primary);
+  color: var(--color-white) !important;
+  border-radius: 100px;
+  font-weight: 600 !important;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+.nav-cta:hover {
+  background: var(--color-primary-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(200, 99, 95, 0.3);
+}
+.nav-toggle { display: none; background: none; border: none; font-size: 22px; color: var(--color-text); cursor: pointer; }
+
+/* ========== HERO ========== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 120px 24px 80px;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 30%, var(--color-peach-tint) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 70%, var(--color-rose-tint) 0%, transparent 50%),
+    linear-gradient(180deg, #FEF9F4 0%, #FDF1E6 100%);
+  z-index: -2;
+}
+.hero-shape {
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(40px);
+}
+.hero-shape.s1 { width: 500px; height: 500px; background: #FBCCBC; top: -100px; left: -150px; animation: float 12s ease-in-out infinite; }
+.hero-shape.s2 { width: 400px; height: 400px; background: #F8D9B8; bottom: -100px; right: -100px; animation: float 15s ease-in-out infinite reverse; }
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(40px, -40px); }
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  max-width: 920px;
+}
+.hero-icons {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: heroFadeIn 1s 0.2s both;
+}
+.hero-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--color-white);
+  box-shadow: 0 8px 24px rgba(200, 99, 95, 0.18);
+}
+.hero-icon.i1 { background: linear-gradient(135deg, #D89A68, #C87F4D); }
+.hero-icon.i2 { background: linear-gradient(135deg, #E88582, #C8635F); }
+.hero-icon.i3 { background: linear-gradient(135deg, #F5B582, #E89A65); }
+
+.hero-tag {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-primary);
+  letter-spacing: 0.12em;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: heroFadeIn 0.9s 0.4s both;
+}
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(42px, 7vw, 84px);
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: heroSlideUp 1s 0.5s both;
+}
+.hero-title .accent { color: var(--color-primary); }
+.hero-sub {
+  font-size: clamp(15px, 1.6vw, 18px);
+  color: var(--color-text-mid);
+  line-height: 2;
+  letter-spacing: 0.05em;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: heroFadeIn 0.9s 0.8s both;
+}
+.hero-divider {
+  width: 1px;
+  height: 48px;
+  background: var(--color-accent);
+  margin: 0 auto;
+  opacity: 0;
+  animation: heroFadeIn 0.9s 1.0s both;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-inter);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--color-text-light);
+  writing-mode: vertical-rl;
+  opacity: 0;
+  animation: heroFadeIn 1s 1.5s both;
+}
+.hero-scroll::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: var(--color-text-light);
+  margin: 12px auto 0;
+  animation: scrollBar 2s ease-in-out infinite;
+}
+@keyframes scrollBar {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes heroSlideUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== SECTION COMMON ========== */
+section {
+  padding: 120px 0;
+  position: relative;
+}
+
+/* ========== WHY (なぜ理念) ========== */
+.why {
+  background: var(--color-white);
+}
+.why-head { text-align: center; margin-bottom: 72px; }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 56px;
+}
+.why-card {
+  background: var(--color-bg);
+  border-radius: 20px;
+  padding: 48px 32px;
+  text-align: center;
+  border: 1px solid var(--color-border);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-mid);
+  border-color: var(--color-accent);
+}
+.why-card-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-size: 28px;
+  margin: 0 auto 24px;
+  box-shadow: 0 10px 30px rgba(200, 99, 95, 0.25);
+}
+.why-card h3 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 0.03em;
+}
+.why-card p {
+  font-size: 14px;
+  color: var(--color-text-mid);
+  line-height: 1.9;
+}
+.why-card p strong { color: var(--color-primary); font-weight: 700; }
+
+.why-alert {
+  background: linear-gradient(135deg, #FDE4DE, #FDEFE4);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 12px;
+  padding: 28px 36px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.why-alert-icon {
+  width: 48px; height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-white);
+  font-size: 20px;
+}
+.why-alert-body h4 {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-primary-deep);
+  margin-bottom: 6px;
+}
+.why-alert-body p {
+  font-size: 14px;
+  color: var(--color-text-mid);
+  line-height: 1.8;
+}
+
+/* ========== PHILOSOPHY ========== */
+.philosophy {
+  position: relative;
+  background:
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-warm) 100%);
+  overflow: hidden;
+}
+.philosophy::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1600&q=80&auto=format') center/cover;
+  opacity: 0.08;
+  z-index: 0;
+}
+.philosophy-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.philosophy-box {
+  background: var(--color-white);
+  border-radius: 24px;
+  padding: 80px 56px;
+  max-width: 840px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-mid);
+  border: 1px solid var(--color-border);
+  position: relative;
+}
+.philosophy-box::before {
+  content: '"';
+  position: absolute;
+  top: 16px; left: 32px;
+  font-family: var(--font-serif);
+  font-size: 120px;
+  line-height: 1;
+  color: var(--color-accent);
+  opacity: 0.3;
+}
+.philosophy-mark {
+  display: inline-block;
+  font-family: var(--font-inter);
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+  padding: 6px 18px;
+  border: 1px solid var(--color-primary);
+  border-radius: 100px;
+}
+.philosophy-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  margin-bottom: 48px;
+  letter-spacing: 0.05em;
+}
+.philosophy-text {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 500;
+  line-height: 2.1;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+}
+.philosophy-text .hl {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+.philosophy-text .sep {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--color-accent);
+  margin: 24px auto;
+}
+
+/* ========== PHOTO DIVIDER ========== */
+.photo-divider {
+  height: 280px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+.photo-divider::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(200, 99, 95, 0.35), rgba(216, 154, 104, 0.35));
+}
+.photo-divider-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2.4vw, 26px);
+  color: var(--color-white);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  padding: 0 24px;
+}
+.pd-1 { background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=1600&q=80&auto=format'); }
+.pd-2 { background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1600&q=80&auto=format'); }
+.pd-3 { background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1600&q=80&auto=format'); }
+
+/* ========== VISION MEMBER ========== */
+.vision-member { background: var(--color-white); }
+.vision-member-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  position: relative;
+}
+.vision-arrow {
+  position: absolute;
+  top: 80px;
+  font-size: 20px;
+  color: var(--color-accent);
+  z-index: 2;
+}
+.vision-arrow.a1 { left: 33.33%; transform: translateX(-50%); }
+.vision-arrow.a2 { left: 66.66%; transform: translateX(-50%); }
+
+.vision-card {
+  background: var(--color-bg);
+  border-radius: 20px;
+  padding: 56px 32px;
+  text-align: center;
+  border-top: 3px solid var(--color-accent);
+  transition: transform 0.4s, box-shadow 0.4s;
+  position: relative;
+}
+.vision-card:nth-child(5) { border-top-color: var(--color-primary); }
+.vision-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-mid);
+}
+.vision-card-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 28px;
+  box-shadow: 0 10px 30px rgba(216, 154, 104, 0.15);
+}
+.vision-card:nth-child(1) .vision-card-icon { color: var(--color-accent); }
+.vision-card:nth-child(3) .vision-card-icon { color: var(--color-accent-deep); }
+.vision-card:nth-child(5) .vision-card-icon { color: var(--color-primary); }
+.vision-card h3 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.vision-card p {
+  font-size: 14px;
+  color: var(--color-text-mid);
+  line-height: 1.9;
+}
+.vision-card p strong { color: var(--color-primary); font-weight: 700; }
+
+/* ========== VISION CLIENT ========== */
+.vision-client {
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-warm) 100%);
+}
+.vc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.vc-card {
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 48px 40px;
+  border-top: 4px solid var(--color-primary);
+  transition: transform 0.4s, box-shadow 0.4s;
+  box-shadow: var(--shadow-soft);
+}
+.vc-card:nth-child(2) { border-top-color: var(--color-accent); }
+.vc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-mid); }
+
+.vc-card-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+.vc-card-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-size: 22px;
+}
+.vc-card:nth-child(1) .vc-card-icon { background: var(--color-primary); }
+.vc-card:nth-child(2) .vc-card-icon { background: var(--color-accent); }
+.vc-card-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+}
+.vc-card-sub {
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-text-light);
+  margin-left: auto;
+}
+.vc-list {
+  list-style: none;
+  padding: 0;
+}
+.vc-list li {
+  position: relative;
+  padding: 14px 0 14px 32px;
+  border-bottom: 1px dashed var(--color-border);
+  font-size: 15px;
+  color: var(--color-text);
+  line-height: 1.8;
+}
+.vc-list li:last-child { border-bottom: none; }
+.vc-list li::before {
+  content: '';
+  position: absolute;
+  left: 6px; top: 24px;
+  width: 8px; height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+}
+.vc-card:nth-child(2) .vc-list li::before { background: var(--color-accent); }
+.vc-list-hl {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.vc-card:nth-child(2) .vc-list-hl { color: var(--color-accent-deep); }
+.vc-list-note {
+  display: block;
+  font-size: 13px;
+  color: var(--color-text-mid);
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+/* ========== 5 VALUES ========== */
+.values-5 { background: var(--color-white); }
+.v5-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+.v5-card {
+  background: var(--color-bg);
+  border-radius: 16px;
+  padding: 40px 24px;
+  text-align: center;
+  border-top: 3px solid var(--v5-c, var(--color-primary));
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.v5-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-mid);
+}
+.v5-num {
+  font-family: var(--font-inter);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--v5-c, var(--color-primary));
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.v5-icon {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: var(--v5-c, var(--color-primary));
+  margin: 0 auto 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+}
+.v5-title {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  min-height: 54px;
+}
+.v5-desc {
+  font-size: 13px;
+  color: var(--color-text-mid);
+  line-height: 1.9;
+  text-align: left;
+}
+
+/* ========== 7 CORE VALUES ========== */
+.core-values {
+  background: linear-gradient(180deg, var(--color-bg-warm) 0%, var(--color-bg) 100%);
+  position: relative;
+}
+.cv-intro {
+  background: var(--color-white);
+  border-left: 4px solid var(--color-primary);
+  padding: 28px 36px;
+  border-radius: 12px;
+  max-width: 880px;
+  margin: 0 auto 64px;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--color-text-mid);
+}
+.cv-intro strong { color: var(--color-primary); font-weight: 700; }
+
+.cv-list {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  gap: 28px;
+}
+.cv-item {
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 48px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-border);
+  transition: transform 0.4s, box-shadow 0.4s;
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.cv-item:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-mid);
+}
+.cv-badge {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cv-c1, #C8635F), var(--cv-c2, #A84E4A));
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(200, 99, 95, 0.2);
+}
+.cv-badge-num {
+  position: absolute;
+  top: -8px; right: -8px;
+  width: 28px; height: 28px;
+  background: var(--color-white);
+  color: var(--cv-c1, var(--color-primary));
+  font-family: var(--font-inter);
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--cv-c1, var(--color-primary));
+}
+.cv-body { min-width: 0; }
+.cv-title {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  color: var(--color-text);
+}
+.cv-title .hl { color: var(--cv-c1, var(--color-primary)); }
+
+.cv-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.cv-pillar {
+  background: var(--color-bg);
+  padding: 20px;
+  border-radius: 12px;
+  border-top: 2px solid var(--cv-c1, var(--color-primary));
+}
+.cv-pillar h4 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--cv-c1, var(--color-primary));
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+.cv-pillar p {
+  font-size: 13px;
+  color: var(--color-text-mid);
+  line-height: 1.8;
+}
+
+.cv-dodont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.cv-do, .cv-dont {
+  padding: 20px 24px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+.cv-do {
+  background: #E9F5ED;
+  border-left: 3px solid #3FAE5C;
+}
+.cv-dont {
+  background: #FCECEC;
+  border-left: 3px solid #D55252;
+}
+.cv-do-title, .cv-dont-title {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cv-do-title { color: #2A8D45; }
+.cv-dont-title { color: #B13838; }
+.cv-dodont ul { list-style: none; padding: 0; }
+.cv-dodont ul li {
+  position: relative;
+  padding: 4px 0 4px 16px;
+  line-height: 1.8;
+  color: var(--color-text-mid);
+}
+.cv-dodont ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 14px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+.cv-do ul li::before { background: #3FAE5C; }
+.cv-dont ul li::before { background: #D55252; }
+
+/* ========== PYRAMID ========== */
+.pyramid {
+  background: var(--color-white);
+}
+.pyramid-wrap {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.pyramid-text-list {
+  display: grid;
+  gap: 24px;
+}
+.pyramid-text-item {
+  padding: 20px 28px;
+  background: var(--color-bg);
+  border-radius: 12px;
+  border-left: 4px solid var(--color-primary);
+}
+.pyramid-text-item:nth-child(1) { border-left-color: #7A8EA8; }
+.pyramid-text-item:nth-child(2) { border-left-color: #5B7593; }
+.pyramid-text-item:nth-child(3) { border-left-color: #4A658A; }
+.pyramid-text-item:nth-child(4) { border-left-color: #345079; }
+.pyramid-text-item h4 {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.pyramid-text-item p {
+  font-size: 13px;
+  color: var(--color-text-mid);
+  font-family: var(--font-inter);
+  letter-spacing: 0.03em;
+}
+.pyramid-visual {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+  aspect-ratio: 1 / 0.95;
+}
+.pyramid-layer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-white);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: transform 0.4s;
+}
+.pyramid-layer:hover { transform: translateX(-50%) translateY(-4px); }
+.pyramid-layer .layer-en {
+  font-family: var(--font-inter);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+.pl-1 {
+  top: 0; width: 26%;
+  aspect-ratio: 1 / 1.1;
+  background: #2C4767;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  font-size: 11px;
+  padding-top: 40%;
+}
+.pl-1 .label-main { font-size: 12px; }
+.pl-2 {
+  top: 28%; width: 52%;
+  height: 20%;
+  background: #345079;
+  clip-path: polygon(25% 0, 75% 0, 100% 100%, 0% 100%);
+  font-size: 18px;
+}
+.pl-3 {
+  top: 50%; width: 76%;
+  height: 22%;
+  background: #4A658A;
+  clip-path: polygon(16% 0, 84% 0, 100% 100%, 0% 100%);
+  font-size: 18px;
+}
+.pl-4 {
+  top: 74%; width: 100%;
+  height: 24%;
+  background: #7A8EA8;
+  clip-path: polygon(13% 0, 87% 0, 100% 100%, 0% 100%);
+  font-size: 18px;
+}
+.pyramid-side-label {
+  position: absolute;
+  right: -16px;
+  font-family: var(--font-inter);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-text-light);
+}
+.psl-1 { top: 14%; }
+.psl-2 { top: 70%; }
+
+/* ========== CLOSING ========== */
+.closing {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #FEECE4, #FCE3E0);
+  padding: 140px 0;
+}
+.closing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 85%, rgba(245, 168, 108, 0.4), transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(242, 139, 139, 0.4), transparent 40%);
+}
+.closing-inner {
+  position: relative;
+  text-align: center;
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.closing-mark {
+  font-family: var(--font-inter);
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--color-primary);
+  margin-bottom: 24px;
+  display: inline-block;
+  padding: 8px 20px;
+  background: var(--color-white);
+  border-radius: 100px;
+  box-shadow: var(--shadow-soft);
+}
+.closing-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 900;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  margin-bottom: 56px;
+  color: var(--color-text);
+}
+.closing-heading .accent { color: var(--color-primary); }
+.closing-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 56px;
+}
+.closing-card {
+  background: var(--color-white);
+  padding: 36px 24px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.closing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-mid);
+}
+.closing-card-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 24px;
+}
+.closing-card:nth-child(1) .closing-card-icon { color: #8FB588; }
+.closing-card:nth-child(2) .closing-card-icon { color: var(--color-primary); }
+.closing-card:nth-child(3) .closing-card-icon { color: #7594BA; }
+.closing-card p {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+/* ========== CTA ========== */
+.cta {
+  padding: 120px 24px;
+  background: linear-gradient(135deg, var(--color-primary), #D07A5E);
+  text-align: center;
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08), transparent 40%);
+}
+.cta-inner { position: relative; max-width: 720px; margin: 0 auto; }
+.cta-tag {
+  font-family: var(--font-inter);
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 24px;
+  display: inline-block;
+}
+.cta-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  letter-spacing: 0.04em;
+}
+.cta-sub {
+  font-size: 15px;
+  line-height: 2;
+  opacity: 0.95;
+  margin-bottom: 40px;
+}
+.cta-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 40px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.cta-btn.primary {
+  background: var(--color-white);
+  color: var(--color-primary);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.cta-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.2);
+}
+.cta-btn.secondary {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.6);
+  color: var(--color-white);
+}
+.cta-btn.secondary:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  background: #1E1A1A;
+  color: rgba(255,255,255,0.7);
+  padding: 64px 24px 32px;
+}
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-brand {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--color-white);
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+}
+.footer-brand span { color: var(--color-primary); }
+.footer-desc {
+  font-size: 13px;
+  line-height: 2;
+  color: rgba(255,255,255,0.55);
+}
+.footer-col h5 {
+  font-family: var(--font-inter);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--color-white);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.footer-col ul { list-style: none; padding: 0; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul li a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  transition: color 0.3s;
+}
+.footer-col ul li a:hover { color: var(--color-primary); }
+.footer-copy {
+  max-width: 1120px;
+  margin: 32px auto 0;
+  text-align: center;
+  font-family: var(--font-inter);
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em;
+}
+
+/* ========== ANIMATIONS ========== */
+.fade-in, .fade-in-left, .fade-in-right, .stagger > * {
+  opacity: 0;
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.fade-in { transform: translateY(32px); }
+.fade-in-left { transform: translateX(-40px); }
+.fade-in-right { transform: translateX(40px); }
+.stagger > * { transform: translateY(24px); }
+
+.fade-in.is-visible,
+.fade-in-left.is-visible,
+.fade-in-right.is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+.stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+.stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger.is-visible > *:nth-child(2) { transition-delay: 0.15s; }
+.stagger.is-visible > *:nth-child(3) { transition-delay: 0.25s; }
+.stagger.is-visible > *:nth-child(4) { transition-delay: 0.35s; }
+.stagger.is-visible > *:nth-child(5) { transition-delay: 0.45s; }
+.stagger.is-visible > *:nth-child(6) { transition-delay: 0.55s; }
+.stagger.is-visible > *:nth-child(7) { transition-delay: 0.65s; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 960px) {
+  section { padding: 80px 0; }
+  .why-grid, .vision-member-grid, .closing-3 { grid-template-columns: 1fr; }
+  .vision-arrow { display: none; }
+  .v5-grid { grid-template-columns: repeat(2, 1fr); }
+  .v5-title { min-height: auto; }
+  .vc-grid { grid-template-columns: 1fr; }
+  .cv-item { grid-template-columns: 1fr; gap: 24px; padding: 36px 28px; }
+  .cv-badge { margin: 0 auto; }
+  .cv-pillars { grid-template-columns: 1fr; }
+  .cv-dodont { grid-template-columns: 1fr; }
+  .pyramid-wrap { grid-template-columns: 1fr; gap: 40px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .philosophy-box { padding: 56px 28px; }
+  .photo-divider { background-attachment: scroll; }
+}
+
+@media (max-width: 640px) {
+  .nav { display: none; }
+  .nav-toggle { display: block; }
+  .v5-grid { grid-template-columns: 1fr; }
+  .hero-icons { gap: 16px; }
+  .hero-icon { width: 44px; height: 44px; font-size: 18px; }
+  .hero-scroll { display: none; }
+  .philosophy-box { padding: 40px 20px; }
+  .philosophy-text { font-size: 17px; line-height: 2; }
+  .closing-heading { font-size: 26px; }
+  .cta-btns { flex-direction: column; }
+  .cta-btn { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="#top" class="brand">IRO<span>DORI</span></a>
+    <nav class="nav">
+      <a href="#philosophy">理念</a>
+      <a href="#vision">ビジョン</a>
+      <a href="#values">バリュー</a>
+      <a href="#core">コアバリュー</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-shape s1"></div>
+  <div class="hero-shape s2"></div>
+
+  <div class="hero-content">
+    <div class="hero-icons">
+      <div class="hero-icon i1"><i class="fas fa-hands-holding-heart"></i></div>
+      <div class="hero-icon i2"><i class="fas fa-heart"></i></div>
+      <div class="hero-icon i3"><i class="fas fa-face-smile-beam"></i></div>
+    </div>
+    <p class="hero-tag">縁ある方々を魅力的に彩る</p>
+    <h1 class="hero-title">IRODORI の<br><span class="accent">理念</span></h1>
+    <p class="hero-sub">
+      愛・感謝・おせっかいを軸に、<br>
+      超・提案型の<strong style="color:var(--color-primary);">左腕パートナー</strong>へ
+    </p>
+    <div class="hero-divider"></div>
+  </div>
+
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="why-head fade-in">
+      <span class="en-label">Why Philosophy</span>
+      <h2 class="section-title center">なぜ理念・ビジョンが大事か</h2>
+      <p class="section-lead center">
+        個人の挑戦・成長がつながり、<br>
+        組織で新しい景色を見にいくために。
+      </p>
+    </div>
+
+    <div class="why-grid stagger">
+      <div class="why-card">
+        <div class="why-card-icon"><i class="fas fa-people-group"></i></div>
+        <h3>組織の一体感</h3>
+        <p>チーム全体が同じ方向を向くための<strong>共通言語</strong>をつくる。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon"><i class="fas fa-seedling"></i></div>
+        <h3>文化の定義・育成</h3>
+        <p>「IRODORIらしさ」という<strong>カルチャー</strong>を明確にし、育てていく。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon"><i class="fas fa-compass"></i></div>
+        <h3>判断と行動の軸</h3>
+        <p>迷ったときに立ち返る<strong>「軸（理念）」</strong>と、目指す<strong>「未来（ビジョン）」</strong>。</p>
+      </div>
+    </div>
+
+    <div class="why-alert fade-in">
+      <div class="why-alert-icon"><i class="fas fa-triangle-exclamation"></i></div>
+      <div class="why-alert-body">
+        <h4>こんな行動は「IRODORIらしくない」</h4>
+        <p>冷たい対応・事務的な対応・クライアントを悪者にする・言われたことしかやらない</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophy">
+  <div class="container philosophy-inner">
+    <div class="fade-in" style="margin-bottom: 56px;">
+      <span class="en-label" style="text-align:center;">Our Philosophy</span>
+      <h2 class="section-title center" style="margin-bottom: 16px;">理念</h2>
+      <p class="section-lead center">
+        組織が何のために存在し、どんな姿勢で価値提供するのか。<br>
+        意思決定や行動に迷いや不安が出たときに、立ち返るための軸。
+      </p>
+    </div>
+
+    <div class="philosophy-box fade-in">
+      <span class="philosophy-mark">IRODORI PHILOSOPHY</span>
+      <p class="philosophy-text">
+        <span class="hl">愛・感謝・お節介</span>精神で、<br>
+        <span class="hl">超・一流、超・提案型</span>の<br>
+        <span class="hl">左腕パートナー</span>として
+        <span class="sep"></span>
+        最大限の貢献を行い、<br>
+        <span class="hl">縁ある方々を魅力的に彩る</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO DIVIDER -->
+<div class="photo-divider pd-1">
+  <div class="photo-divider-text">一人ひとりが、もっと輝ける場所へ。</div>
+</div>
+
+<!-- VISION MEMBER -->
+<section class="vision-member" id="vision">
+  <div class="container">
+    <div class="fade-in" style="text-align: center; margin-bottom: 72px;">
+      <span class="en-label">Vision for Members</span>
+      <h2 class="section-title center">働く人が<br class="sp-only">いきいきと輝ける未来へ</h2>
+      <p class="section-lead center">
+        IRODORIに関わるメンバーが、自分らしくあり続けられる。<br>
+        それが私たちの目指す姿です。
+      </p>
+    </div>
+
+    <div class="vision-member-grid stagger">
+      <div class="vision-card">
+        <div class="vision-card-icon"><i class="fas fa-house-heart"></i></div>
+        <h3>自分らしい働き方</h3>
+        <p>パパママが社畜から解放され、<strong>在宅ワーク</strong>で自分らしく生き生き暮らせる未来を作る。</p>
+      </div>
+      <div class="vision-arrow a1"><i class="fas fa-chevron-right"></i></div>
+
+      <div class="vision-card">
+        <div class="vision-card-icon"><i class="fas fa-star"></i></div>
+        <h3>得意に全集中</h3>
+        <p>どんな方でも、自分の得意を生かして働ける。弱みは人に任せ、<strong>得意なことに全集中</strong>してスキルを伸ばす。</p>
+      </div>
+      <div class="vision-arrow a2"><i class="fas fa-chevron-right"></i></div>
+
+      <div class="vision-card">
+        <div class="vision-card-icon"><i class="fas fa-heart"></i></div>
+        <h3>温かいチーム</h3>
+        <p>子どもの体調不良などがあった時に、チームで<strong>助け合い支え合える温かい場所</strong>を作りたい。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO DIVIDER -->
+<div class="photo-divider pd-2">
+  <div class="photo-divider-text">クライアントの、一番の応援団であり続けたい。</div>
+</div>
+
+<!-- VISION CLIENT -->
+<section class="vision-client">
+  <div class="container">
+    <div class="fade-in" style="text-align: center; margin-bottom: 72px;">
+      <span class="en-label">Vision for Clients</span>
+      <h2 class="section-title center">クライアントへのビジョン</h2>
+      <p class="section-lead center">
+        単なる代行ではなく、あなたの事業を本気で勝たせたい。<br>
+        「左腕パートナー」として伴走する、IRODORIの約束です。
+      </p>
+    </div>
+
+    <div class="vc-grid">
+      <div class="vc-card fade-in-left">
+        <div class="vc-card-head">
+          <div class="vc-card-icon"><i class="fas fa-gift"></i></div>
+          <div>
+            <div class="vc-card-title">提供する価値</div>
+          </div>
+          <span class="vc-card-sub">Mission</span>
+        </div>
+        <ul class="vc-list">
+          <li><span class="vc-list-hl">圧倒的な提案力とヒアリング力</span></li>
+          <li><span class="vc-list-hl">目的から逆算した最適な戦略設計</span></li>
+          <li><span class="vc-list-hl">プロ品質の文章と画像</span>で、強みや魅力を最大限に引き出し、「成果」につなげる</li>
+          <li><span class="vc-list-hl">単なる代行ではなく左腕パートナーとして伴走</span></li>
+        </ul>
+      </div>
+
+      <div class="vc-card fade-in-right">
+        <div class="vc-card-head">
+          <div class="vc-card-icon"><i class="fas fa-flag"></i></div>
+          <div>
+            <div class="vc-card-title">目指す姿</div>
+          </div>
+          <span class="vc-card-sub">Vision</span>
+        </div>
+        <ul class="vc-list">
+          <li>
+            <span class="vc-list-hl">クライアントの1番の応援団</span>
+            <span class="vc-list-note">意図や想いを汲み取り、勝たせる</span>
+          </li>
+          <li>
+            <span class="vc-list-hl">事業を加速させる伴走型パートナー</span>
+            <span class="vc-list-note">タイパ・成約率を高め、コア業務に集中できる環境を整える</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 VALUES -->
+<section class="values-5" id="values">
+  <div class="container">
+    <div class="fade-in" style="text-align: center; margin-bottom: 72px;">
+      <span class="en-label">Our Value</span>
+      <h2 class="section-title center">クライアントに提供する<br class="sp-only">5つの価値の柱</h2>
+      <p class="section-lead center">
+        バリューとは、IRODORIがクライアントに提供する具体的な価値のこと。<br>
+        理念やビジョンを実現するために、実際にどのような価値を届けるのかを明確にしたものです。
+      </p>
+    </div>
+
+    <div class="v5-grid stagger">
+      <div class="v5-card" style="--v5-c: #E89C5C;">
+        <div class="v5-num">VALUE 01</div>
+        <div class="v5-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3 class="v5-title">気づきをもたらす<br>外の視点</h3>
+        <p class="v5-desc">客観性やプロ目線で、自社では気づかない魅力や課題を発見し提供します。</p>
+      </div>
+      <div class="v5-card" style="--v5-c: #D89A68;">
+        <div class="v5-num">VALUE 02</div>
+        <div class="v5-icon"><i class="fas fa-clock"></i></div>
+        <h3 class="v5-title">やるべきことに集中できる時間を創出</h3>
+        <p class="v5-desc">ドラえもんのように、クライアントの時間を生み出し、やるべきことに集中できる環境を実現します。</p>
+      </div>
+      <div class="v5-card" style="--v5-c: #78AC6B;">
+        <div class="v5-num">VALUE 03</div>
+        <div class="v5-icon"><i class="fas fa-leaf"></i></div>
+        <h3 class="v5-title">社会にやさしい<br>仕組みづくり</h3>
+        <p class="v5-desc">子育て中の優秀な人材を活用し、企業の人件費も軽減する、社会にやさしい仕組みです。</p>
+      </div>
+      <div class="v5-card" style="--v5-c: #6B8AB5;">
+        <div class="v5-num">VALUE 04</div>
+        <div class="v5-icon"><i class="fas fa-rocket"></i></div>
+        <h3 class="v5-title">"最初からプロに頼む"を当たり前に</h3>
+        <p class="v5-desc">手探りで進める無駄をなくし、プロの力で最短距離での目標達成を支援します。</p>
+      </div>
+      <div class="v5-card" style="--v5-c: #C8635F;">
+        <div class="v5-num">VALUE 05</div>
+        <div class="v5-icon"><i class="fas fa-file-lines"></i></div>
+        <h3 class="v5-title">"想い"を伝わる<br>カタチに</h3>
+        <p class="v5-desc">デザイン、ライティング、事務経理など、各分野のプロの力であなたの魅力を彩ります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO DIVIDER -->
+<div class="photo-divider pd-3">
+  <div class="photo-divider-text">日々の判断が、文化になる。</div>
+</div>
+
+<!-- CORE VALUES -->
+<section class="core-values" id="core">
+  <div class="container">
+    <div class="fade-in" style="text-align: center; margin-bottom: 48px;">
+      <span class="en-label">Core Values</span>
+      <h2 class="section-title center">7つのコアバリュー</h2>
+    </div>
+
+    <div class="cv-intro fade-in">
+      コアバリューとは、<strong>IRODORIのメンバー全員が大切にする行動指針・価値観</strong>のこと。<br>
+      日々の判断や行動の基準となり、チームの文化を形成します。
+    </div>
+
+    <div class="cv-list">
+
+      <!-- CV 1 -->
+      <div class="cv-item fade-in-left" style="--cv-c1: #E06963; --cv-c2: #B94742;">
+        <div class="cv-badge">
+          <i class="fas fa-heart"></i>
+          <span class="cv-badge-num">1</span>
+        </div>
+        <div class="cv-body">
+          <h3 class="cv-title">縁ある人々に最上級の<span class="hl">愛情と思いやり</span>を持って接す</h3>
+          <div class="cv-pillars">
+            <div class="cv-pillar">
+              <h4><i class="fas fa-fire"></i> 相手目線</h4>
+              <p>押し付けではなく、動機(想い)を聴きながら相手目線で寄りそう</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-bullhorn"></i> クライアントは推し！</h4>
+              <p>愛を言葉と行動で示す</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-scale-balanced"></i> 小善は大悪に似たり</h4>
+              <p>表面的な優しさだけで本質を逸らさない</p>
+            </div>
+          </div>
+          <div class="cv-dodont">
+            <div class="cv-do">
+              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
+              <ul>
+                <li>助け合い</li>
+                <li>相手理解を優先</li>
+                <li>必要な厳しい提言も愛</li>
+              </ul>
+            </div>
+            <div class="cv-dont">
+              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
+              <ul>
+                <li>事務的</li>
+                <li>自己本位</li>
+                <li>形だけの親切</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CV 2 -->
+      <div class="cv-item fade-in-left" style="--cv-c1: #E28B6B; --cv-c2: #B96B49;">
+        <div class="cv-badge">
+          <i class="fas fa-hands-praying"></i>
+          <span class="cv-badge-num">2</span>
+        </div>
+        <div class="cv-body">
+          <h3 class="cv-title">これまでの人生・今起きている出来事の、<span class="hl">全ての物事に感謝</span>をする</h3>
+          <div class="cv-pillars">
+            <div class="cv-pillar">
+              <h4><i class="fas fa-handshake-angle"></i> 一期一会と利他の精神</h4>
+              <p>一つひとつの出会いを大切に</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-user-check"></i> 原因自分論</h4>
+              <p>起きた出来事の責任を自分に置く</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-eye"></i> 「これだけある」の視点</h4>
+              <p>「これしかない」ではなく前向きに捉え直す</p>
+            </div>
+          </div>
+          <div class="cv-dodont">
+            <div class="cv-do">
+              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
+              <ul>
+                <li>1メッセージに、1ありがとうを添える意識！</li>
+                <li>指摘は期待の裏返し（クレームはギフト）</li>
+                <li>違いは間違いじゃない！柔軟に受け止める</li>
+              </ul>
+            </div>
+            <div class="cv-dont">
+              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
+              <ul>
+                <li>協力を当たり前とみなす</li>
+                <li>感謝を忘れる</li>
+                <li>他責思考・他社/他者否定・言い訳</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CV 3 -->
+      <div class="cv-item fade-in-left" style="--cv-c1: #E8A168; --cv-c2: #B8784A;">
+        <div class="cv-badge">
+          <i class="fas fa-gift"></i>
+          <span class="cv-badge-num">3</span>
+        </div>
+        <div class="cv-body">
+          <h3 class="cv-title">真心を込めて、相手の気持ちに立ち、常に<span class="hl">先回りで気配り</span>を行う</h3>
+          <div class="cv-pillars">
+            <div class="cv-pillar">
+              <h4><i class="fas fa-star"></i> そこまでやる？がスタンダード</h4>
+              <p>期待を超える気配りを当たり前にする</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-hand-holding-heart"></i> 配慮はしても遠慮はしない</h4>
+              <p>相手のために必要なことは言い切る</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-flag"></i> 相手の1番の応援団</h4>
+              <p>勝たせるために全力で支える</p>
+            </div>
+          </div>
+          <div class="cv-dodont">
+            <div class="cv-do">
+              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
+              <ul>
+                <li>すみません→ありがとうに変える</li>
+                <li>共感したうえでの提案</li>
+                <li>倒れたら支える！人として当たり前の助け合い</li>
+              </ul>
+            </div>
+            <div class="cv-dont">
+              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
+              <ul>
+                <li>過剰に気を遣いすぎて疲弊</li>
+                <li>押し付けがましい</li>
+                <li>自分本位</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CV 4 -->
+      <div class="cv-item fade-in-left" style="--cv-c1: #D86A66; --cv-c2: #B04A46;">
+        <div class="cv-badge">
+          <i class="fas fa-face-smile-beam"></i>
+          <span class="cv-badge-num">4</span>
+        </div>
+        <div class="cv-body">
+          <h3 class="cv-title">常に<span class="hl">ご機嫌かつ笑顔</span>で周りを明るく照らす</h3>
+          <div class="cv-pillars">
+            <div class="cv-pillar">
+              <h4><i class="fas fa-sun"></i> ニコ・キビ・ハキ</h4>
+              <p>いつもニコニコ笑顔で、キビキビと動き、ハキハキと受け答えする</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-tower-broadcast"></i> 同じ波動の人が集まる</h4>
+              <p>ポジティブなエネルギーの人の周りにはポジティブな人が集まる</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-brain"></i> 解釈は無数</h4>
+              <p>事実は1つだが、解釈は無数。自分の捉え方次第</p>
+            </div>
+          </div>
+          <div class="cv-dodont">
+            <div class="cv-do">
+              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
+              <ul>
+                <li>自分から挨拶</li>
+                <li>ポジティブな言葉選び</li>
+                <li>笑顔を先出し</li>
+              </ul>
+            </div>
+            <div class="cv-dont">
+              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
+              <ul>
+                <li>感傷的な悩み</li>
+                <li>過去への固執</li>
+                <li>ネガティブな態度</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CV 5 -->
+      <div class="cv-item fade-in-left" style="--cv-c1: #6B8AB5; --cv-c2: #4E6B93;">
+        <div class="cv-badge">
+          <i class="fas fa-shield-halved"></i>
+          <span class="cv-badge-num">5</span>
+        </div>
+        <div class="cv-body">
+          <h3 class="cv-title">ごまかしや言い訳はせず、時間や約束など決めたことを<span class="hl">誠実に守る</span></h3>
+          <div class="cv-pillars">
+            <div class="cv-pillar">
+              <h4><i class="fas fa-handshake-simple"></i> 嘘をつかない</h4>
+              <p>事実に対してまっすぐ向き合う</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-comments"></i> 先回りコミュニケーション</h4>
+              <p>聞かれる前に共有・確認する</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-scale-balanced"></i> 動機善なりや、私心なかりしか</h4>
+              <p>動機と目的を常に問い直す</p>
+            </div>
+          </div>
+          <div class="cv-dodont">
+            <div class="cv-do">
+              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
+              <ul>
+                <li>言行一致</li>
+                <li>誠実な謝罪→改善</li>
+                <li>約束を守る</li>
+                <li>愚痴や不平不満だけでなく、一緒に改善策を考える</li>
+              </ul>
+            </div>
+            <div class="cv-dont">
+              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
+              <ul>
+                <li>値引き前提</li>
+                <li>安請け合い</li>
+                <li>雑な仕事</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CV 6 -->
+      <div class="cv-item fade-in-left" style="--cv-c1: #E06963; --cv-c2: #B84F4A;">
+        <div class="cv-badge">
+          <i class="fas fa-fire-flame-curved"></i>
+          <span class="cv-badge-num">6</span>
+        </div>
+        <div class="cv-body">
+          <h3 class="cv-title">仕事に<span class="hl">熱い情熱</span>を持ち、誰よりも本気で取り組む</h3>
+          <div class="cv-pillars">
+            <div class="cv-pillar">
+              <h4><i class="fas fa-medal"></i> プロの誇り</h4>
+              <p>どんな仕事にも誇りを持って取り組む</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-fire"></i> 自燃する</h4>
+              <p>人に言われたからではなく、自分から仕事の面白さやワクワクを見つける</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-battery-three-quarters"></i> 持続可能な熱量</h4>
+              <p>燃え尽きず、長く走り続ける</p>
+            </div>
+          </div>
+          <div class="cv-dodont">
+            <div class="cv-do">
+              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
+              <ul>
+                <li>小さな仕事にも心を込める</li>
+                <li>仕事を楽しむ</li>
+                <li>最高を追求</li>
+              </ul>
+            </div>
+            <div class="cv-dont">
+              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
+              <ul>
+                <li>不燃性</li>
+                <li>空回り</li>
+                <li>遠慮しすぎ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CV 7 -->
+      <div class="cv-item fade-in-left" style="--cv-c1: #E06963; --cv-c2: #B94742;">
+        <div class="cv-badge">
+          <i class="fas fa-arrow-trend-up"></i>
+          <span class="cv-badge-num">7</span>
+        </div>
+        <div class="cv-body">
+          <h3 class="cv-title">常に<span class="hl">学び続け</span>、高みを目指して<span class="hl">挑戦し続ける</span></h3>
+          <div class="cv-pillars">
+            <div class="cv-pillar">
+              <h4><i class="fas fa-chart-line"></i> 現状維持は退化の始まり</h4>
+              <p>立ち止まった瞬間に後退していることを知る</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-lightbulb"></i> GoodはGreatの敵</h4>
+              <p>「そこそこ」に満足しない</p>
+            </div>
+            <div class="cv-pillar">
+              <h4><i class="fas fa-bolt"></i> 完璧は無い。常に改善</h4>
+              <p>今日の最高を、明日さらに超えていく</p>
+            </div>
+          </div>
+          <div class="cv-dodont">
+            <div class="cv-do">
+              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
+              <ul>
+                <li>優先順位の明確化</li>
+                <li>ライバルは他人ではなく、自分</li>
+                <li>学んだことをすぐ実践</li>
+              </ul>
+            </div>
+            <div class="cv-dont">
+              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
+              <ul>
+                <li>「駆け出しなので」は使わない（クライアントにとって私たちはプロ）</li>
+                <li>「なんとなくいい感じ」で満足</li>
+                <li>学んだだけで実践しない</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PYRAMID -->
+<section class="pyramid">
+  <div class="container">
+    <div class="fade-in" style="text-align: center; margin-bottom: 72px;">
+      <span class="en-label">Structure</span>
+      <h2 class="section-title center">理念・ビジョン・バリューの関係性</h2>
+      <p class="section-lead center">
+        パーパスを頂点に、ミッション・ビジョン・バリューが積み重なる。<br>
+        すべてが一貫してはじめて、IRODORIらしい行動が生まれます。
+      </p>
+    </div>
+
+    <div class="pyramid-wrap">
+      <div class="pyramid-text-list fade-in-left">
+        <div class="pyramid-text-item">
+          <h4>企業・組織の存在意義</h4>
+          <p>PURPOSE — なぜ社会に存在するのか</p>
+        </div>
+        <div class="pyramid-text-item">
+          <h4>果たす使命や責務</h4>
+          <p>MISSION — なにを達成すべきか</p>
+        </div>
+        <div class="pyramid-text-item">
+          <h4>目指す未来像</h4>
+          <p>VISION — どこを目指すか</p>
+        </div>
+        <div class="pyramid-text-item">
+          <h4>具体的な行動指針</h4>
+          <p>VALUE — どのような行動を取るべきか</p>
+        </div>
+      </div>
+
+      <div class="pyramid-visual fade-in-right">
+        <div class="pyramid-side-label psl-1">経営理念 ↑</div>
+        <div class="pyramid-side-label psl-2">企業理念 ↓</div>
+
+        <div class="pyramid-layer pl-1">
+          <span class="label-main">PURPOSE</span>
+          <span class="layer-en">縁ある方々を<br>魅力的に彩る</span>
+        </div>
+        <div class="pyramid-layer pl-2">ミッション</div>
+        <div class="pyramid-layer pl-3">ビジョン</div>
+        <div class="pyramid-layer pl-4">バリュー</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-inner">
+    <div class="fade-in">
+      <span class="closing-mark">Our Promise</span>
+      <h2 class="closing-heading">
+        「まず<span class="accent">IRODORI</span>に<br>相談しよう」と<br>
+        思われる存在へ
+      </h2>
+    </div>
+
+    <div class="closing-3 stagger">
+      <div class="closing-card">
+        <div class="closing-card-icon"><i class="fas fa-seedling"></i></div>
+        <p>価値が正しく届き<br>成果が広がる未来を共創</p>
+      </div>
+      <div class="closing-card">
+        <div class="closing-card-icon"><i class="fas fa-hourglass-half"></i></div>
+        <p>時間・信頼・健康は<br>失ったら戻らない</p>
+      </div>
+      <div class="closing-card">
+        <div class="closing-card-icon"><i class="fas fa-book-open"></i></div>
+        <p>理念と行動を結ぶ<br>フィロソフィー運用へ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-inner fade-in">
+    <span class="cta-tag">Get in Touch</span>
+    <h2 class="cta-heading">
+      あなたの事業を<br>
+      "左腕" で加速させたい。
+    </h2>
+    <p class="cta-sub">
+      IRODORIの理念に共感いただけた方、<br>
+      クライアントとして、メンバーとして、お気軽にご相談ください。
+    </p>
+    <div class="cta-btns">
+      <a href="#" class="cta-btn primary">
+        <i class="fas fa-paper-plane"></i>
+        お問い合わせ
+      </a>
+      <a href="#" class="cta-btn secondary">
+        <i class="fas fa-user-plus"></i>
+        採用・一緒に働く
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">IRO<span>DORI</span></div>
+      <p class="footer-desc">
+        愛・感謝・おせっかいを軸に、<br>
+        縁ある方々を魅力的に彩る<br>
+        左腕パートナーです。
+      </p>
+    </div>
+    <div class="footer-col">
+      <h5>Philosophy</h5>
+      <ul>
+        <li><a href="#philosophy">理念</a></li>
+        <li><a href="#vision">ビジョン</a></li>
+        <li><a href="#values">バリュー</a></li>
+        <li><a href="#core">コアバリュー</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="#contact">お問い合わせ</a></li>
+        <li><a href="#contact">採用情報</a></li>
+        <li><a href="#">サービス一覧</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; IRODORI. All Rights Reserved.</p>
+</footer>
+
+<script>
+// Header scroll
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 40) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+});
+
+// IntersectionObserver for animations
+const animEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger');
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      animObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+animEls.forEach(el => {
+  const r = el.getBoundingClientRect();
+  if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+  else animObs.observe(el);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function (e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
