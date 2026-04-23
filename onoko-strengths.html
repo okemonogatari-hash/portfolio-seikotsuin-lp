@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>おの子さん取説 | StrengthsFinder × Profile の仮プロフィール</title>
+<meta name="description" content="おの子さん（薬剤師・副業クリエイター）のストレングスファインダーTOP10とプロフィールから読み解く、ワクワクする仮の取扱説明書。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  /* Pastel Girly Palette */
+  --main:#E8A5B8;        /* ダスティピンク */
+  --main-deep:#C77890;
+  --accent:#A890C4;      /* ラベンダー */
+  --accent-deep:#7D65A4;
+  --sub:#F4C89A;         /* ピーチ */
+  --sub-deep:#D9A26E;
+  --gold:#E8C97F;
+  --mint:#A8D8CB;
+  --bg:#FDF8F5;
+  --bg-soft:#F8EDF0;
+  --text:#4A3F4A;
+  --text-sub:#8B7B8A;
+  --line:#EADDE3;
+
+  /* 4領域カラー（StrengthsFinder公式） */
+  --d-exec:#9B7ABA;       /* 実行力 紫 */
+  --d-infl:#E89B5E;       /* 影響力 オレンジ */
+  --d-rel:#5AA2DC;        /* 人間関係構築力 青 */
+  --d-str:#6FB987;        /* 戦略的思考力 緑 */
+  --d-exec-soft:#EFE6F5;
+  --d-infl-soft:#FCEFE0;
+  --d-rel-soft:#E4F1FB;
+  --d-str-soft:#E7F4EC;
+
+  --font-serif:'Noto Serif JP', serif;
+  --font-sans:'Noto Sans JP', sans-serif;
+  --font-en:'Inter', sans-serif;
+  --font-script:'Dancing Script', cursive;
+  --rainbow:linear-gradient(90deg,#F4A6B8 0%,#F4C89A 20%,#F5E4A4 40%,#B4D8B1 60%,#9EC5E0 75%,#BDA8D4 90%,#E5A9D4 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);line-height:1.85;font-size:15px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none;transition:all .3s}
+
+/* ========== Hero ========== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#FDF2F8 0%,#F4E4F0 45%,#E9D8E9 100%);padding:60px 24px}
+.bubbles{position:absolute;inset:0;z-index:1;pointer-events:none}
+.bubble{position:absolute;border-radius:50%;filter:blur(2px);opacity:.55;animation:float 9s ease-in-out infinite}
+.bubble:nth-child(1){width:130px;height:130px;background:radial-gradient(circle at 30% 30%,#F8BFD2,#E8A5B8);top:10%;left:6%;animation-delay:0s}
+.bubble:nth-child(2){width:90px;height:90px;background:radial-gradient(circle at 30% 30%,#C8B4E0,#A890C4);top:22%;right:10%;animation-delay:1.5s}
+.bubble:nth-child(3){width:100px;height:100px;background:radial-gradient(circle at 30% 30%,#FADDBB,#F4C89A);bottom:18%;left:14%;animation-delay:3s}
+.bubble:nth-child(4){width:70px;height:70px;background:radial-gradient(circle at 30% 30%,#BBDFD7,#89C0BD);bottom:26%;right:14%;animation-delay:4.5s}
+.bubble:nth-child(5){width:80px;height:80px;background:radial-gradient(circle at 30% 30%,#F5E4A4,#E8D57D);top:50%;left:38%;animation-delay:2s}
+.bubble:nth-child(6){width:55px;height:55px;background:radial-gradient(circle at 30% 30%,#E3B3E1,#C88FC4);top:10%;right:32%;animation-delay:5s}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
+
+.sparkle{position:absolute;z-index:2;font-size:22px;opacity:.7;animation:twinkle 4s ease-in-out infinite}
+.sparkle:nth-child(1){top:16%;left:20%;animation-delay:.5s}
+.sparkle:nth-child(2){top:70%;left:12%;animation-delay:2s}
+.sparkle:nth-child(3){top:30%;right:20%;animation-delay:1s}
+.sparkle:nth-child(4){bottom:20%;right:30%;animation-delay:3s}
+.sparkle:nth-child(5){top:45%;right:8%;animation-delay:1.7s}
+@keyframes twinkle{0%,100%{opacity:.3;transform:scale(.9)}50%{opacity:1;transform:scale(1.2) rotate(15deg)}}
+
+.hero-inner{position:relative;z-index:5;max-width:880px;text-align:center}
+.hero-label{font-family:var(--font-en);font-size:12px;letter-spacing:.5em;color:var(--accent-deep);margin-bottom:20px;text-transform:uppercase;animation:fadein .9s .2s both}
+.hero-script{font-family:var(--font-script);font-size:clamp(42px,7vw,68px);background:var(--rainbow);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:10px;animation:fadein 1s .3s both}
+.hero-title{font-family:var(--font-serif);font-size:clamp(26px,4.5vw,44px);font-weight:500;line-height:1.55;margin-bottom:24px;letter-spacing:.04em;animation:slideup 1s .5s both}
+.hero-title .accent{background:linear-gradient(120deg,var(--main-deep),var(--accent-deep));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:15px;color:var(--text-sub);line-height:2;letter-spacing:.06em;max-width:640px;margin:0 auto 32px;animation:slideup 1s .7s both}
+.hero-meta{display:inline-flex;flex-wrap:wrap;gap:10px;justify-content:center;animation:slideup 1s .9s both}
+.meta-chip{padding:8px 18px;background:#fff;border-radius:999px;font-size:12px;letter-spacing:.05em;color:var(--main-deep);border:1px solid var(--line);box-shadow:0 4px 14px rgba(199,120,144,.08)}
+.meta-chip i{margin-right:6px;color:var(--sub-deep);font-size:11px}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes slideup{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* ========== Section common ========== */
+section{padding:100px 24px;position:relative}
+.inner{max-width:1080px;margin:0 auto}
+.sec-label{font-family:var(--font-en);font-size:12px;letter-spacing:.4em;color:var(--accent-deep);text-align:center;margin-bottom:14px;text-transform:uppercase}
+.sec-title{font-family:var(--font-serif);font-size:clamp(24px,3.5vw,34px);font-weight:500;text-align:center;margin-bottom:16px;letter-spacing:.04em;line-height:1.5;position:relative;padding-bottom:22px}
+.sec-title::after{content:'';position:absolute;left:50%;bottom:0;width:60px;height:2px;background:var(--rainbow);transform:translateX(-50%)}
+.sec-title .script{display:block;font-family:var(--font-script);font-size:.6em;color:var(--main-deep);margin-bottom:2px;font-weight:600}
+.sec-desc{text-align:center;font-size:14px;color:var(--text-sub);margin-bottom:60px;line-height:2;max-width:720px;margin-left:auto;margin-right:auto}
+
+/* ========== Domain map ========== */
+.domain{background:linear-gradient(180deg,#fff 0%,var(--bg-soft) 100%)}
+.domain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
+.domain-card{padding:28px 22px;border-radius:14px;background:#fff;border:2px solid transparent;text-align:center;position:relative;overflow:hidden;transition:transform .4s}
+.domain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.domain-card.highlight{transform:scale(1.04);box-shadow:0 18px 44px rgba(90,162,220,.2);border-color:var(--d-rel)}
+.domain-card:hover{transform:translateY(-4px)}
+.domain-card.highlight:hover{transform:translateY(-4px) scale(1.04)}
+.domain-card.rel::before{background:var(--d-rel)}
+.domain-card.str::before{background:var(--d-str)}
+.domain-card.infl::before{background:var(--d-infl)}
+.domain-card.exec::before{background:var(--d-exec)}
+.domain-num{font-family:var(--font-serif);font-size:48px;font-weight:500;line-height:1;margin-bottom:6px}
+.domain-card.rel .domain-num{color:var(--d-rel)}
+.domain-card.str .domain-num{color:var(--d-str)}
+.domain-card.infl .domain-num{color:var(--d-infl)}
+.domain-card.exec .domain-num{color:var(--d-exec)}
+.domain-name{font-family:var(--font-serif);font-size:17px;font-weight:500;margin-bottom:6px}
+.domain-en{font-family:var(--font-en);font-size:10px;letter-spacing:.18em;color:var(--text-sub);text-transform:uppercase;margin-bottom:14px}
+.domain-tops{font-size:11.5px;color:var(--text-sub);line-height:1.7;letter-spacing:.02em}
+.domain-badge{display:inline-block;margin-top:10px;padding:3px 10px;background:linear-gradient(90deg,#F4A6B8,#BDA8D4);color:#fff;border-radius:999px;font-size:10px;letter-spacing:.12em;font-weight:600}
+
+.insight{margin-top:50px;padding:32px 36px;background:#fff;border-radius:16px;border:1px dashed var(--main);position:relative}
+.insight::before{content:'💡';position:absolute;top:-16px;left:26px;background:#fff;padding:2px 10px;font-size:20px;border-radius:50%;border:1px dashed var(--main)}
+.insight h4{font-family:var(--font-serif);font-size:18px;margin-bottom:10px;color:var(--main-deep);letter-spacing:.04em}
+.insight p{font-size:13.5px;line-height:2;color:var(--text)}
+
+/* ========== TOP5 cards ========== */
+.top5{background:#fff;position:relative;overflow:hidden}
+.top5::before{content:'';position:absolute;top:80px;right:-100px;width:340px;height:340px;background:var(--rainbow);border-radius:50%;opacity:.08;filter:blur(70px)}
+.top5::after{content:'';position:absolute;bottom:80px;left:-100px;width:300px;height:300px;background:linear-gradient(135deg,#A890C4,#E8A5B8);border-radius:50%;opacity:.08;filter:blur(70px)}
+
+.strength-list{display:grid;gap:26px;position:relative;z-index:2}
+.strength-card{display:grid;grid-template-columns:110px 1fr;gap:28px;background:#fff;border-radius:18px;padding:28px 32px;border:1px solid var(--line);transition:all .4s;position:relative;overflow:hidden}
+.strength-card:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(168,144,196,.18)}
+.strength-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:5px}
+.strength-card.d-str::before{background:var(--d-str)}
+.strength-card.d-rel::before{background:var(--d-rel)}
+.strength-card.d-infl::before{background:var(--d-infl)}
+.strength-card.d-exec::before{background:var(--d-exec)}
+
+.s-rank{text-align:center;padding-top:6px}
+.s-rank-num{font-family:var(--font-serif);font-size:64px;font-weight:500;line-height:1;background:var(--rainbow);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.s-rank-label{font-family:var(--font-en);font-size:9.5px;letter-spacing:.3em;color:var(--text-sub);text-transform:uppercase;margin-top:4px}
+
+.s-body h3{font-family:var(--font-serif);font-size:24px;font-weight:500;margin-bottom:4px;letter-spacing:.04em}
+.s-en{font-family:var(--font-en);font-size:11px;letter-spacing:.22em;color:var(--text-sub);text-transform:uppercase;margin-bottom:6px}
+.s-tag{display:inline-block;padding:3px 10px;border-radius:999px;font-size:10.5px;letter-spacing:.1em;font-weight:600;margin-bottom:14px}
+.s-tag.d-str{background:var(--d-str-soft);color:var(--d-str)}
+.s-tag.d-rel{background:var(--d-rel-soft);color:var(--d-rel)}
+.s-tag.d-infl{background:var(--d-infl-soft);color:var(--d-infl)}
+.s-tag.d-exec{background:var(--d-exec-soft);color:var(--d-exec)}
+
+.s-catch{font-family:var(--font-serif);font-size:15.5px;color:var(--text);line-height:1.9;margin-bottom:16px;padding:14px 18px;background:var(--bg-soft);border-radius:10px;border-left:3px solid var(--main)}
+.s-desc{font-size:13.5px;line-height:2;color:var(--text-sub);margin-bottom:16px}
+.s-link{padding:18px 22px;background:linear-gradient(135deg,rgba(232,165,184,.1),rgba(168,144,196,.1));border-radius:12px;border:1px dashed rgba(232,165,184,.4)}
+.s-link-ttl{font-size:11.5px;letter-spacing:.12em;color:var(--main-deep);font-weight:600;margin-bottom:6px}
+.s-link-ttl i{margin-right:6px}
+.s-link p{font-size:13px;line-height:1.9;color:var(--text)}
+
+/* ========== Multipliers ========== */
+.multiply{background:linear-gradient(180deg,var(--bg) 0%,#fff 100%);position:relative;overflow:hidden}
+.multiply::before{content:'×';position:absolute;font-family:var(--font-script);font-size:400px;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--main);opacity:.03;z-index:0;pointer-events:none}
+.mul-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;position:relative;z-index:2}
+.mul-card{padding:32px;border-radius:20px;background:#fff;border:1px solid var(--line);transition:all .4s;position:relative;overflow:hidden}
+.mul-card:hover{transform:translateY(-5px);box-shadow:0 22px 48px rgba(168,144,196,.18)}
+.mul-recipe{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:18px}
+.mul-chip{padding:6px 14px;border-radius:999px;font-size:11.5px;font-weight:600;letter-spacing:.04em}
+.mul-chip.str{background:var(--d-str-soft);color:var(--d-str)}
+.mul-chip.rel{background:var(--d-rel-soft);color:var(--d-rel)}
+.mul-chip.infl{background:var(--d-infl-soft);color:var(--d-infl)}
+.mul-chip.exec{background:var(--d-exec-soft);color:var(--d-exec)}
+.mul-x{font-family:var(--font-script);font-size:28px;color:var(--main);font-weight:700}
+.mul-ttl{font-family:var(--font-serif);font-size:21px;font-weight:500;margin-bottom:10px;letter-spacing:.04em;color:var(--accent-deep)}
+.mul-desc{font-size:13.5px;line-height:2;color:var(--text-sub);margin-bottom:14px}
+.mul-hint{padding:14px 18px;background:linear-gradient(135deg,#FDF2F8,#F4E4F0);border-radius:10px;font-size:12.5px;line-height:1.85;color:var(--main-deep);font-weight:500}
+.mul-hint i{margin-right:6px}
+
+/* ========== Blind spots ========== */
+.blind{background:var(--bg-soft)}
+.blind-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:30px}
+.blind-card{padding:26px 28px;background:#fff;border-radius:14px;border:1px solid var(--line);border-top:4px solid var(--sub-deep);transition:all .3s}
+.blind-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(217,162,110,.15)}
+.blind-card h4{font-family:var(--font-serif);font-size:17px;font-weight:500;margin-bottom:10px;color:var(--sub-deep);letter-spacing:.02em}
+.blind-card h4 i{margin-right:8px;color:var(--sub)}
+.blind-card p{font-size:13px;line-height:1.95;color:var(--text-sub)}
+.blind-card p em{font-style:normal;color:var(--main-deep);font-weight:500}
+
+/* ========== Closing ========== */
+.closing{background:linear-gradient(135deg,#FDF2F8 0%,#F4E4F0 45%,#E9D8E9 100%);text-align:center;padding:140px 24px;position:relative;overflow:hidden}
+.closing .bubbles{opacity:.5}
+.closing-inner{position:relative;z-index:5;max-width:760px;margin:0 auto}
+.closing-script{font-family:var(--font-script);font-size:clamp(44px,7vw,68px);background:var(--rainbow);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:14px}
+.closing-title{font-family:var(--font-serif);font-size:clamp(22px,3.5vw,30px);font-weight:500;line-height:1.7;margin-bottom:28px;letter-spacing:.04em}
+.closing-body{font-size:14.5px;line-height:2.1;color:var(--text);margin-bottom:36px}
+.closing-tags{display:inline-flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.closing-tag{padding:10px 22px;background:#fff;border-radius:999px;font-size:12.5px;color:var(--main-deep);border:1px solid var(--main);letter-spacing:.04em;font-weight:500}
+
+/* ========== Footer ========== */
+.footer{padding:40px 24px;background:#fff;border-top:1px solid var(--line);text-align:center}
+.footer p{font-size:12px;color:var(--text-sub);letter-spacing:.1em;line-height:2}
+.footer .mini{font-family:var(--font-en);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;margin-top:8px;color:var(--text-sub)}
+.footer a{color:var(--main-deep);text-decoration:underline;text-underline-offset:3px}
+
+/* ========== Responsive ========== */
+@media (max-width: 860px){
+  section{padding:70px 20px}
+  .domain-grid{grid-template-columns:repeat(2,1fr)}
+  .mul-grid,.blind-grid{grid-template-columns:1fr}
+  .strength-card{grid-template-columns:1fr;padding:24px 22px;gap:14px}
+  .s-rank{text-align:left;display:flex;align-items:baseline;gap:14px}
+  .s-rank-num{font-size:48px}
+  .s-rank-label{margin-top:0}
+}
+@media (max-width: 520px){
+  .hero-title{font-size:24px}
+  .hero-script{font-size:40px}
+  .sec-title{font-size:23px}
+  .meta-chip{font-size:11px;padding:6px 14px}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+  <span class="sparkle">✦</span>
+  <span class="sparkle">✧</span>
+  <span class="sparkle">✦</span>
+  <span class="sparkle">✧</span>
+  <span class="sparkle">✦</span>
+
+  <div class="hero-inner">
+    <p class="hero-label">Strengths × Profile — Draft</p>
+    <h1 class="hero-script">Onoko's Manual</h1>
+    <p class="hero-title">おの子さんって、<br><span class="accent">こんな人かもしれません。</span></p>
+    <p class="hero-sub">
+      ストレングスファインダー34の結果とリベシティプロフィールから読み解く、<br>
+      おの子さんの「トリセツ（仮）」🌸<br>
+      ワクワクする資質たちを、かわいく並べてみました。
+    </p>
+    <div class="hero-meta">
+      <span class="meta-chip"><i class="fas fa-dna"></i>CliftonStrengths 34 / 04-09-2026</span>
+      <span class="meta-chip"><i class="fas fa-location-dot"></i>福岡 × 薬剤師 × 副業クリエイター</span>
+      <span class="meta-chip"><i class="fas fa-heart"></i>「毎日めっちゃ楽しく生きてます！」</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DOMAIN MAP ========== -->
+<section class="domain">
+  <div class="inner">
+    <p class="sec-label">4 Domains Balance</p>
+    <h2 class="sec-title"><span class="script">your colors</span>資質の"色合い"を見てみると</h2>
+    <p class="sec-desc">
+      ギャラップが定義する4つの領域で、おの子さんのTOP10がどう分布しているか可視化してみました。<br>
+      <strong style="color:var(--d-rel);">人間関係構築力がダントツ</strong>で、TOP5の中に3つ入っています✨
+    </p>
+
+    <div class="domain-grid">
+      <div class="domain-card rel highlight">
+        <div class="domain-num">5</div>
+        <div class="domain-name">人間関係構築力</div>
+        <div class="domain-en">Relationship Building</div>
+        <div class="domain-tops">共感性 / 成長促進 / ポジティブ<br>親密性 / 適応性</div>
+        <div class="domain-badge">✨ ダントツ1位</div>
+      </div>
+      <div class="domain-card str">
+        <div class="domain-num">2</div>
+        <div class="domain-name">戦略的思考力</div>
+        <div class="domain-en">Strategic Thinking</div>
+        <div class="domain-tops">未来志向（1位!）<br>着想</div>
+      </div>
+      <div class="domain-card exec">
+        <div class="domain-num">2</div>
+        <div class="domain-name">実行力</div>
+        <div class="domain-en">Executing</div>
+        <div class="domain-tops">達成欲 / 目標志向</div>
+      </div>
+      <div class="domain-card infl">
+        <div class="domain-num">1</div>
+        <div class="domain-name">影響力</div>
+        <div class="domain-en">Influencing</div>
+        <div class="domain-tops">最上志向（3位!）</div>
+      </div>
+    </div>
+
+    <div class="insight">
+      <h4>この並びから見えること</h4>
+      <p>
+        <strong style="color:var(--d-rel);">「人を深く理解して、育てて、温かく巻き込む」チカラ</strong>が軸。そこに<strong style="color:var(--d-str);">「未来を鮮やかに描く戦略」</strong>と<strong style="color:var(--d-exec);">「絶対やり遂げる実行力」</strong>がピタッと乗っかる構成になっています。
+        これ、<strong style="color:var(--main-deep);">"理想の未来を描いて、最高の仲間と一緒に育てていく"タイプの起業家・コミュニティリーダーの黄金比率</strong>かも…🌟
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TOP5 ========== -->
+<section class="top5">
+  <div class="inner">
+    <p class="sec-label">TOP 5 Strengths</p>
+    <h2 class="sec-title"><span class="script">the core five</span>TOP5を1つずつ、のぞいてみよう</h2>
+    <p class="sec-desc">各資質の「特徴」と「おの子さんのプロフィールに紐づけるとどう効いていそうか」を並べてみました。<br>ワクワクしながら読んでもらえたら嬉しいです💡</p>
+
+    <div class="strength-list">
+
+      <!-- 1. 未来志向 -->
+      <div class="strength-card d-str">
+        <div class="s-rank">
+          <div class="s-rank-num">01</div>
+          <div class="s-rank-label">Futuristic</div>
+        </div>
+        <div class="s-body">
+          <h3>未来志向</h3>
+          <p class="s-en">Futuristic</p>
+          <span class="s-tag d-str">戦略的思考力</span>
+          <p class="s-catch">🔮 数年先の理想像を、鮮やかに"映像"で思い描ける人。</p>
+          <p class="s-desc">
+            「あの頃こうなってたらいいな」ではなく「こうなってる」と未来を詳細に描ける資質。周りにビジョンを語ることで、みんなを元気にするエネルギーになるタイプです。<br>
+            無意識に数か月・数年先の計画を練っているので、「先読みの人」って言われることが多いかも。
+          </p>
+          <div class="s-link">
+            <div class="s-link-ttl"><i class="fas fa-sparkles"></i>おの子さんらしさ…かも？</div>
+            <p>BGMチャンネル①→②→③→属人性チャンネルっていう <strong>「段階的に広げていく副業ロードマップ」</strong> がまさに未来志向の使い方！「副業で本業超えする」という大きなビジョンに向かって、着実に布石を打っている感じがします✨</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 共感性 -->
+      <div class="strength-card d-rel">
+        <div class="s-rank">
+          <div class="s-rank-num">02</div>
+          <div class="s-rank-label">Empathy</div>
+        </div>
+        <div class="s-body">
+          <h3>共感性</h3>
+          <p class="s-en">Empathy</p>
+          <span class="s-tag d-rel">人間関係構築力</span>
+          <p class="s-catch">💗 相手の気持ちを、自分のことのように察する。</p>
+          <p class="s-desc">
+            言葉にならない空気や表情から、人の感情をそっと読み取れる才能。「気づかいのできる親切な人」と思われやすく、人から自然と悩みを打ち明けられるタイプかもしれません。<br>
+            感情面のレーダーが常に動いてる感じ、って言うと分かりやすいかも。
+          </p>
+          <div class="s-link">
+            <div class="s-link-ttl"><i class="fas fa-sparkles"></i>おの子さんらしさ…かも？</div>
+            <p>薬剤師として患者さんの不安に寄り添える強さ、そして<strong>レシピInstagramで2.5万フォロワーに届く"温度感"</strong>もこの資質から。「見てる人の気持ちが想像できる発信」ができるから、伸びるんじゃないかな…と。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 最上志向 -->
+      <div class="strength-card d-infl">
+        <div class="s-rank">
+          <div class="s-rank-num">03</div>
+          <div class="s-rank-label">Maximizer</div>
+        </div>
+        <div class="s-body">
+          <h3>最上志向</h3>
+          <p class="s-en">Maximizer</p>
+          <span class="s-tag d-infl">影響力</span>
+          <p class="s-catch">⭐️「どうしたらもっと良くできる？」を常に問う。</p>
+          <p class="s-desc">
+            「妥当」では満足できず、卓越性を追い求める資質。平均点でOKな世界観じゃなくて、「最高」にしたい人。ゲーム・コンテスト・トーナメントで力を発揮しやすいタイプでもあります。<br>
+            「十分良い」より「最高に良い」に燃える感じ、分かります…？
+          </p>
+          <div class="s-link">
+            <div class="s-link-ttl"><i class="fas fa-sparkles"></i>おの子さんらしさ…かも？</div>
+            <p><strong>1年半かけてInstagram万アカ達成</strong>、<strong>BGMチャンネル①②を12時間差で同日収益化</strong>。これ、最上志向じゃないとたどり着けない"仕上がり"です🎯 「ジャンルを色々変えて試行錯誤しながら」って記述からも、"納得いくまで磨く"スタンスが見えます。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. 成長促進 -->
+      <div class="strength-card d-rel">
+        <div class="s-rank">
+          <div class="s-rank-num">04</div>
+          <div class="s-rank-label">Developer</div>
+        </div>
+        <div class="s-body">
+          <h3>成長促進</h3>
+          <p class="s-en">Developer</p>
+          <span class="s-tag d-rel">人間関係構築力</span>
+          <p class="s-catch">🌱 他者の小さな伸びしろを見逃さない、名コーチの資質。</p>
+          <p class="s-desc">
+            誰かが成長する姿を見ると心から嬉しくなるタイプ。小さな進歩の兆しを見つけて「そこ良かったよ」と具体的に伝えられる人。<br>
+            教師・コーチ・マネージャーとの相性が非常に良い資質、とギャラップも言っています。
+          </p>
+          <div class="s-link">
+            <div class="s-link-ttl"><i class="fas fa-sparkles"></i>おの子さんらしさ…かも？</div>
+            <p>将来、もし<strong>副業スクールやコーチング・オンラインコミュニティ運営</strong>に進む道があれば、この資質は最大の武器になりそう✨ 属人性チャンネル開始にしても、「自分の経験で誰かを伸ばす」方向は相性◎。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. ポジティブ -->
+      <div class="strength-card d-rel">
+        <div class="s-rank">
+          <div class="s-rank-num">05</div>
+          <div class="s-rank-label">Positivity</div>
+        </div>
+        <div class="s-body">
+          <h3>ポジティブ</h3>
+          <p class="s-en">Positivity</p>
+          <span class="s-tag d-rel">人間関係構築力</span>
+          <p class="s-catch">☀️ 人から人へ"伝播する熱意"を持っている。</p>
+          <p class="s-desc">
+            生まれつき明るく、他の人に活気を吹き込める資質。周囲が落ち込んだときに頼られがち。楽観的でユーモアを味方にできる人。<br>
+            お祝い・イベントを企画するのも得意な傾向があります🎉
+          </p>
+          <div class="s-link">
+            <div class="s-link-ttl"><i class="fas fa-sparkles"></i>おの子さんらしさ…かも？</div>
+            <p>自己紹介の<strong>「毎日めっちゃ楽しく生きてます！！！」</strong>、これもう、ポジティブ資質そのものです☀️ 挑戦→失敗→次、を明るく回せるのも、この資質があってこそ。副業で複数ジャンル試せた原動力、ここにあるかも。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6-10 おまけ枠 -->
+      <div class="strength-card d-exec">
+        <div class="s-rank">
+          <div class="s-rank-num">06</div>
+          <div class="s-rank-label">Achiever</div>
+        </div>
+        <div class="s-body">
+          <h3>達成欲</h3>
+          <p class="s-en">Achiever</p>
+          <span class="s-tag d-exec">実行力</span>
+          <p class="s-catch">🔥 働き者＆スタミナの塊。"多忙で生産的"に幸せを感じる。</p>
+          <p class="s-desc">タスクを完了することに強い満足感を得るタイプ。生まれつきの強さ・エネルギー・パワーが、一生懸命に物事を成し遂げる原動力になります。</p>
+          <div class="s-link">
+            <div class="s-link-ttl"><i class="fas fa-sparkles"></i>つまり…</div>
+            <p>薬剤師×BGM①②③×属人性チャンネル×Instagramの<strong>"同時走行"</strong>を可能にしているエンジン、これです💪 多くの人は1つでも回らないけど、おの子さんは複数走らせられるタイプ。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="strength-card d-rel">
+        <div class="s-rank">
+          <div class="s-rank-num">07</div>
+          <div class="s-rank-label">Relator</div>
+        </div>
+        <div class="s-body">
+          <h3>親密性</h3>
+          <p class="s-en">Relator</p>
+          <span class="s-tag d-rel">人間関係構築力</span>
+          <p class="s-catch">🤝 広く浅く、より"狭く深く"。本物の1on1を築く人。</p>
+          <p class="s-desc">誠実で意義のある1対1の人間関係を自然に作れる資質。長続きする親密な関係を築き、相手に信頼と自信を育ててあげられるタイプ。</p>
+          <div class="s-link">
+            <div class="s-link-ttl"><i class="fas fa-sparkles"></i>つまり…</div>
+            <p>リベ大入会のきっかけが<strong>パートナーからの紹介</strong>だったこと、パートナーと価値観を共有できていること、これも親密性の才能かも。企業コラボも"深く長く"のスタンスが活きそう✨</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="strength-card d-exec">
+        <div class="s-rank">
+          <div class="s-rank-num">08</div>
+          <div class="s-rank-label">Focus</div>
+        </div>
+        <div class="s-body">
+          <h3>目標志向</h3>
+          <p class="s-en">Focus</p>
+          <span class="s-tag d-exec">実行力</span>
+          <p class="s-catch">🎯 優先順位つけて、道から逸れずに進める。</p>
+          <p class="s-desc">方向を定めて、それに従い、無駄なことは避けて全体的な目標を追い続ける。効率的に働く力が高い資質です。</p>
+          <div class="s-link">
+            <div class="s-link-ttl"><i class="fas fa-sparkles"></i>つまり…</div>
+            <p>「収益化」「万アカ」「本業超え」と<strong>明確な目標</strong>を掲げて走り続けられているのは、目標志向があるから。達成欲（6位）とのタッグで、<strong>決めたことは絶対終わらせる</strong>タイプです。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="strength-card d-rel">
+        <div class="s-rank">
+          <div class="s-rank-num">09</div>
+          <div class="s-rank-label">Adaptability</div>
+        </div>
+        <div class="s-body">
+          <h3>適応性</h3>
+          <p class="s-en">Adaptability</p>
+          <span class="s-tag d-rel">人間関係構築力</span>
+          <p class="s-catch">🌊 流れにまかせて、状況に柔軟に対応できる。</p>
+          <p class="s-desc">他の人なら混乱したり躊躇するような変化・予想外の出来事にも、迅速に適応できる資質。人を安心させる力があります。</p>
+          <div class="s-link">
+            <div class="s-link-ttl"><i class="fas fa-sparkles"></i>つまり…</div>
+            <p>派遣&フリーランス薬剤師という<strong>「日によって現場が変わる」働き方</strong>に馴染めているのも、Instagramで<strong>副業→暮らし→レシピと柔軟にジャンル変更</strong>できたのも、適応性のおかげ。旅行好き（渡航歴10カ国）とも相性抜群🌏</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="strength-card d-str">
+        <div class="s-rank">
+          <div class="s-rank-num">10</div>
+          <div class="s-rank-label">Ideation</div>
+        </div>
+        <div class="s-body">
+          <h3>着想</h3>
+          <p class="s-en">Ideation</p>
+          <span class="s-tag d-str">戦略的思考力</span>
+          <p class="s-catch">💡 他の人には見えない"関連性"を見つけるのが好き。</p>
+          <p class="s-desc">アイデアに魅力を感じ、異なる視点から物事を見るのが好きな資質。ブレストでパワフルで独創的な力を発揮します。</p>
+          <div class="s-link">
+            <div class="s-link-ttl"><i class="fas fa-sparkles"></i>つまり…</div>
+            <p>BUYMA→古着転売→動画編集→BGM→属人性と<strong>次々と切り口を変えて試せる</strong>のは、着想のおかげ。未来志向（1位）と組み合わさって<strong>「先を見た新しい切り口」</strong>を生み出せるタイプ✨</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== MULTIPLIERS ========== -->
+<section class="multiply">
+  <div class="inner">
+    <p class="sec-label">Strength Combinations</p>
+    <h2 class="sec-title"><span class="script">magic mix</span>掛け算で、こうなってるかも？</h2>
+    <p class="sec-desc">資質は単体よりも"掛け算"で輝きます。おの子さんの上位資質で、特に相性のいい組み合わせを4つピックアップ💕</p>
+
+    <div class="mul-grid">
+
+      <div class="mul-card">
+        <div class="mul-recipe">
+          <span class="mul-chip str">①未来志向</span>
+          <span class="mul-x">×</span>
+          <span class="mul-chip infl">③最上志向</span>
+          <span class="mul-x">×</span>
+          <span class="mul-chip exec">⑥達成欲</span>
+        </div>
+        <h3 class="mul-ttl">🚀 起業家エンジンの三種の神器</h3>
+        <p class="mul-desc">理想の未来を描く力 → 妥協せず最高まで磨く志向 → 必ずやり遂げるスタミナ。この3つが揃うと「ビジョン→執着→完遂」のループが回り続けて、目標達成率が段違いに上がります。</p>
+        <div class="mul-hint"><i class="fas fa-crown"></i>BGM①②同日収益化・1年半で万アカ達成は、まさにこの掛け算の成果物かも。</div>
+      </div>
+
+      <div class="mul-card">
+        <div class="mul-recipe">
+          <span class="mul-chip rel">②共感性</span>
+          <span class="mul-x">×</span>
+          <span class="mul-chip rel">④成長促進</span>
+          <span class="mul-x">×</span>
+          <span class="mul-chip rel">⑤ポジティブ</span>
+        </div>
+        <h3 class="mul-ttl">🌸 最強の"人を育てる3枚看板"</h3>
+        <p class="mul-desc">人間関係構築力のTOP3が全部揃う奇跡の配置。<strong>相手を理解→可能性を見抜く→明るく励ます</strong>の流れが自然にできるので、コーチング・スクール運営・コミュニティ運営は天職レベル。</p>
+        <div class="mul-hint"><i class="fas fa-seedling"></i>将来、副業を教える立場・メンター業の道が開かれたら、本領発揮しそうです✨</div>
+      </div>
+
+      <div class="mul-card">
+        <div class="mul-recipe">
+          <span class="mul-chip rel">⑦親密性</span>
+          <span class="mul-x">×</span>
+          <span class="mul-chip rel">⑨適応性</span>
+        </div>
+        <h3 class="mul-ttl">💗 オンラインでも"深く繋がる"人</h3>
+        <p class="mul-desc">狭く深く繋がりたい親密性と、流れに身を任せられる適応性の組み合わせ。一見矛盾しそうだけど、「相手のペースに合わせながら、本物の関係を築く」っていう柔らかさになります。</p>
+        <div class="mul-hint"><i class="fas fa-comments"></i>2.5万フォロワーと"距離感の良い"関係が作れるのは、この組み合わせの賜物かも。</div>
+      </div>
+
+      <div class="mul-card">
+        <div class="mul-recipe">
+          <span class="mul-chip str">⑩着想</span>
+          <span class="mul-x">×</span>
+          <span class="mul-chip str">①未来志向</span>
+        </div>
+        <h3 class="mul-ttl">✨ 新しい切り口で未来を描く発信力</h3>
+        <p class="mul-desc">「他の人が気づいてない関連性」を見つける着想と、「将来こうなってる」を描く未来志向。この2つがくっつくと、<strong>"まだ誰もやってない角度で、少し先の需要を取りに行く"</strong>という、最強の発信クリエイター資質になります。</p>
+        <div class="mul-hint"><i class="fas fa-lightbulb"></i>属人性チャンネルでどんな切り口を見せてくれるのか、今からワクワクします🎬</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== BLIND SPOTS ========== -->
+<section class="blind">
+  <div class="inner">
+    <p class="sec-label">Blind Spots — with love</p>
+    <h2 class="sec-title"><span class="script">soft alerts</span>ちょっとだけ、気をつけたい盲点も🥺</h2>
+    <p class="sec-desc">強みは使い方次第で疲労や摩擦にもなります。優しめのアラートを4つだけ、お守り代わりに💐</p>
+
+    <div class="blind-grid">
+
+      <div class="blind-card">
+        <h4><i class="fas fa-hourglass-half"></i>未来志向×達成欲の裏側</h4>
+        <p>未来を見据えて突っ走るおの子さんだからこそ、<em>「今この瞬間」を味わいきれない</em>ことがあるかも。旅行・バレー観戦・ハイキュー読む時間は、"先送りせず今"楽しむのが大事💗 生産性の外にある"余白"も、ちゃんと資産です。</p>
+      </div>
+
+      <div class="blind-card">
+        <h4><i class="fas fa-battery-three-quarters"></i>共感性の裏側</h4>
+        <p>人の感情を自分のことのように察する力は素敵だけど、<em>他人の感情を浴び続けると疲弊しやすい</em>という盲点も。1日の終わりに「感情を言葉にしない時間」「1人の静かな時間」を意識的に作るの、かなり効きます🛁</p>
+      </div>
+
+      <div class="blind-card">
+        <h4><i class="fas fa-star-half-stroke"></i>最上志向の裏側</h4>
+        <p>卓越性を追求するあまり、<em>「十分良い」を受け入れにくい</em>時があるかも。納得いくまで磨くのは才能だけど、「80点で出す→出してから磨く」の方がスピード上がる場面もあります。特にSNS発信は完璧より"継続"が勝ちの世界🌱</p>
+      </div>
+
+      <div class="blind-card">
+        <h4><i class="fas fa-pen-fancy"></i>コミュニケーション（31位）のカバー戦略</h4>
+        <p>言語化・話術が上位ではないので、<em>「長文ブログ・ポッドキャスト」より「ビジュアル・レシピ・BGM」の方が相性が良い</em>タイプ。実際、<em>Instagram（視覚）×YouTube BGM（音）</em>で伸びてるのは直感的に"自分に合う戦略"を選べている証拠です💡 属人性チャンネルも、"顔と空気感"で魅せる方向が吉かも。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== CLOSING ========== -->
+<section class="closing">
+  <div class="bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+  <div class="closing-inner">
+    <p class="closing-script">For Onoko</p>
+    <h2 class="closing-title">おの子さんは"最高の仲間と<br>最高の未来を育てる人"<br>かもしれません🌟</h2>
+    <p class="closing-body">
+      ビジョンを鮮やかに描き（未来志向）、<br>
+      相手の気持ちをまるごと察して（共感性）、<br>
+      妥協せず最高まで磨き（最上志向）、<br>
+      小さな成長を見逃さず（成長促進）、<br>
+      明るく熱意を伝播させる（ポジティブ）。<br><br>
+      その全部を、絶対にやり遂げる達成欲と目標志向が支えてる。<br>
+      …これ、<strong>"副業を育てながら、同じ道を歩む仲間も育てる"</strong>って未来が、とてもよく似合う配置です💐
+    </p>
+    <div class="closing-tags">
+      <span class="closing-tag">🌸 仮の取説、楽しんでいただけたら嬉しいです</span>
+      <span class="closing-tag">💡 あくまで資質の読み解きで、答え合わせはご本人から</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <p>This is a draft "manual" created with love. All strengths insights are based on CliftonStrengths® 34 profile.</p>
+  <p class="mini">made with 🌸 — <a href="index.html">back to portfolio</a></p>
+</footer>
+
+</body>
+</html>
