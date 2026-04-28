@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTubeアフィリエイト 自動リサーチ PoC ─ Phase 1 報告書</title>
+<meta name="description" content="9工程のうち①〜⑥をAIが走り切るかの実証実験。要件定義・実装フロー・結果サマリーを一枚で報告。コード内完結・人力3〜5日→AI 2.5時間。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --color-primary:#2C5F4B;
+  --color-primary-light:#3d7a62;
+  --color-primary-dark:#1e4434;
+  --color-accent:#C4915E;
+  --color-accent-light:#d6a87a;
+  --color-youtube:#C8372A;
+  --color-affil:#8B4A9A;
+  --color-ai-blue:#4F7FD4;
+  --color-human:#D68A3C;
+  --color-bg:#F4EFE6;
+  --color-bg-deep:#EAE2D1;
+  --color-paper:#FBF8F2;
+  --color-ink:#1a1a1a;
+  --color-muted:#6b6658;
+  --color-line:rgba(44,95,75,0.15);
+  --color-danger:#b04e3a;
+  --color-grade-a:#3d7a62;
+  --color-grade-b:#D68A3C;
+  --color-grade-c:#b04e3a;
+  --serif:"Noto Serif JP",serif;
+  --sans:"Noto Sans JP",sans-serif;
+  --en:"Cormorant Garamond","Inter",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:var(--sans);color:var(--color-ink);background:var(--color-bg);line-height:1.85;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(251,248,242,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--color-line)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.nav-brand{font-family:var(--serif);font-weight:700;font-size:15px;color:var(--color-primary)}
+.nav-brand em{font-family:var(--en);font-style:normal;color:var(--color-affil);letter-spacing:.04em}
+.nav-back{font-family:var(--en);font-size:13px;color:var(--color-muted);letter-spacing:.05em;display:inline-flex;align-items:center;gap:8px;transition:color .3s}
+.nav-back:hover{color:var(--color-primary)}
+
+/* HERO */
+.hero{padding:140px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(139,74,154,.08),transparent 70%)}
+.hero::after{content:"";position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(196,145,94,.08),transparent 70%)}
+.hero-tag{display:inline-block;font-family:var(--en);font-size:13px;letter-spacing:.25em;color:var(--color-affil);padding:6px 18px;border:1px solid var(--color-affil);border-radius:99px;margin-bottom:28px;text-transform:uppercase;position:relative}
+.hero-breadcrumb{display:inline-flex;align-items:center;gap:10px;font-family:var(--en);font-size:12px;color:var(--color-muted);margin-bottom:18px;position:relative;letter-spacing:.1em;flex-wrap:wrap;justify-content:center}
+.hero-breadcrumb a{color:var(--color-accent);transition:color .3s}
+.hero-breadcrumb a:hover{color:var(--color-primary-dark)}
+.hero h1{font-family:var(--serif);font-size:clamp(28px,4.5vw,46px);font-weight:900;line-height:1.45;letter-spacing:.02em;color:var(--color-primary-dark);margin-bottom:24px;position:relative}
+.hero h1 em{font-style:normal;color:var(--color-affil)}
+.hero-sub{max-width:720px;margin:0 auto;font-size:15.5px;line-height:2;color:var(--color-muted);position:relative}
+.hero-spec{display:flex;justify-content:center;gap:32px;margin-top:40px;padding:20px 0;border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);max-width:760px;margin-left:auto;margin-right:auto;position:relative;flex-wrap:wrap}
+.hero-spec-item{font-size:13px;color:var(--color-muted)}
+.hero-spec-item strong{display:block;font-family:var(--en);font-size:20px;color:var(--color-primary-dark);margin-bottom:4px;letter-spacing:.04em}
+
+/* HERO BIG NUMBERS */
+.hero-numbers{display:flex;justify-content:center;gap:40px;margin-top:40px;flex-wrap:wrap;position:relative}
+.hn-item{text-align:center}
+.hn-num{display:block;font-family:var(--en);font-size:clamp(36px,6vw,56px);font-weight:600;color:var(--color-affil);line-height:1;letter-spacing:-.02em}
+.hn-label{display:block;font-size:12px;color:var(--color-muted);margin-top:8px;letter-spacing:.05em}
+
+/* SECTION */
+.sec{padding:88px 24px;position:relative}
+.sec-inner{max-width:1100px;margin:0 auto}
+.sec-label{display:block;text-align:center;font-family:var(--en);font-size:13px;letter-spacing:.3em;color:var(--color-accent);margin-bottom:14px;text-transform:uppercase}
+.sec-title{font-family:var(--serif);font-size:clamp(24px,3.5vw,38px);font-weight:900;text-align:center;color:var(--color-primary-dark);line-height:1.5;margin-bottom:16px}
+.sec-title em{font-style:normal;color:var(--color-affil)}
+.sec-sub{text-align:center;font-size:14.5px;line-height:2;color:var(--color-muted);max-width:680px;margin:0 auto 56px}
+
+/* WHY (要件定義) */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+@media(max-width:720px){.why-grid{grid-template-columns:1fr}}
+.why-box{background:var(--color-paper);border:1px solid var(--color-line);border-radius:14px;padding:28px 28px;position:relative}
+.why-box-label{font-family:var(--en);font-size:11px;letter-spacing:.2em;color:var(--color-accent);text-transform:uppercase;margin-bottom:10px}
+.why-box h3{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--color-primary-dark);margin-bottom:14px;line-height:1.6}
+.why-box p{font-size:13.5px;color:var(--color-ink);line-height:1.95}
+.why-box .why-quote{font-style:italic;color:var(--color-affil);padding-left:14px;border-left:3px solid var(--color-affil);margin-top:14px;font-size:13px;line-height:1.85}
+
+/* 9 STEPS PROCESS */
+.process-wrap{background:var(--color-bg-deep);border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);padding:88px 24px}
+.process-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:8px;margin-top:32px}
+@media(max-width:900px){.process-grid{grid-template-columns:repeat(3,1fr)}}
+.proc-step{background:#fff;border-radius:8px;padding:14px 8px;text-align:center;font-size:11px;border:2px solid transparent;line-height:1.5;position:relative}
+.proc-step.active{border-color:var(--color-primary);background:var(--color-paper);box-shadow:0 4px 12px rgba(44,95,75,.12)}
+.proc-step.future{opacity:.5;border-style:dashed;border-color:var(--color-muted)}
+.proc-step-num{display:block;font-family:var(--en);font-size:24px;font-weight:600;color:var(--color-primary);margin-bottom:6px}
+.proc-step.future .proc-step-num{color:var(--color-muted)}
+.proc-step-label{font-size:11px;font-weight:700;color:var(--color-primary-dark);display:block}
+.proc-step.future .proc-step-label{color:var(--color-muted)}
+
+.process-divider{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:32px;flex-wrap:wrap;padding:14px 20px;background:#fff;border-radius:10px;font-size:12.5px;color:var(--color-muted);border:1px dashed var(--color-line)}
+.process-divider strong{color:var(--color-primary-dark);font-size:13px}
+
+/* GOAL */
+.goal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:32px}
+@media(max-width:900px){.goal-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.goal-grid{grid-template-columns:1fr}}
+.goal-card{background:var(--color-paper);border:1px solid var(--color-line);border-radius:12px;padding:24px 22px;text-align:left;position:relative;transition:transform .3s}
+.goal-card:hover{transform:translateY(-3px)}
+.goal-num{font-family:var(--en);font-size:34px;font-weight:600;color:var(--color-affil);line-height:1;margin-bottom:12px;letter-spacing:-.02em}
+.goal-card h4{font-family:var(--serif);font-size:15.5px;font-weight:700;color:var(--color-primary-dark);margin-bottom:10px;line-height:1.6}
+.goal-card p{font-size:12.5px;color:var(--color-muted);line-height:1.85}
+
+/* TIMELINE (実装フロー) */
+.timeline-wrap{padding:88px 24px}
+.timeline{display:flex;flex-direction:column;gap:14px;margin-top:32px;position:relative;max-width:980px;margin-left:auto;margin-right:auto}
+.tl-item{display:grid;grid-template-columns:60px 1fr;gap:20px;align-items:start;padding:22px 24px;background:var(--color-paper);border-radius:12px;border-left:4px solid var(--color-primary);position:relative;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:transform .3s}
+.tl-item:hover{transform:translateX(3px)}
+.tl-item.bridge{border-left-color:var(--color-accent);background:#FBF3E8}
+.tl-item.cross{border-left-color:var(--color-affil);background:#F8EFFB}
+.tl-num{font-family:var(--en);font-size:32px;font-weight:600;line-height:1;color:var(--color-primary);letter-spacing:-.02em;text-align:center}
+.tl-item.bridge .tl-num{color:var(--color-accent)}
+.tl-item.cross .tl-num{color:var(--color-affil)}
+.tl-body h4{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--color-primary-dark);margin-bottom:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;line-height:1.5}
+.tl-body p{font-size:13px;color:var(--color-ink);line-height:1.8;margin-bottom:8px}
+.tl-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.tl-chip{font-size:11px;padding:4px 11px;border-radius:99px;background:#fff;color:var(--color-primary-dark);border:1px solid var(--color-line);font-family:var(--en);letter-spacing:.03em;display:inline-flex;align-items:center;gap:5px}
+.tl-chip i{font-size:10px;color:var(--color-accent)}
+.tl-chip.time{background:var(--color-primary);color:#fff;border-color:var(--color-primary)}
+.tl-chip.time i{color:#fff}
+.tl-grade{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:3px 10px;border-radius:4px;color:#fff;font-family:var(--en);text-transform:uppercase}
+.tl-grade.a{background:var(--color-grade-a)}
+.tl-grade.b{background:var(--color-grade-b)}
+.tl-grade.c{background:var(--color-grade-c)}
+@media(max-width:680px){
+  .tl-item{grid-template-columns:1fr;padding:20px 22px}
+  .tl-num{font-size:24px;text-align:left}
+}
+
+.tl-summary{margin-top:32px;text-align:center;padding:28px 24px;background:linear-gradient(135deg,rgba(139,74,154,.08),rgba(196,145,94,.08));border-radius:14px;border:1px solid var(--color-line)}
+.tl-summary-num{font-family:var(--en);font-size:clamp(36px,5vw,48px);font-weight:600;color:var(--color-affil);line-height:1;display:block;margin-bottom:10px;letter-spacing:-.02em}
+.tl-summary-label{font-size:14px;color:var(--color-primary-dark);font-weight:700}
+.tl-summary-sub{font-size:12.5px;color:var(--color-muted);margin-top:8px}
+
+/* TOOLS DESIGN (道具設計) */
+.tools-wrap{background:var(--color-bg-deep);border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);padding:88px 24px}
+.tools-split{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+@media(max-width:720px){.tools-split{grid-template-columns:1fr}}
+.tool-col{background:#fff;border-radius:14px;padding:32px 30px;border-top:4px solid var(--color-primary)}
+.tool-col.python{border-top-color:var(--color-ai-blue)}
+.tool-col.claude{border-top-color:var(--color-affil)}
+.tool-col-label{display:inline-block;font-family:var(--en);font-size:11px;letter-spacing:.2em;color:#fff;padding:4px 12px;border-radius:4px;margin-bottom:14px;text-transform:uppercase}
+.tool-col.python .tool-col-label{background:var(--color-ai-blue)}
+.tool-col.claude .tool-col-label{background:var(--color-affil)}
+.tool-col h3{font-family:var(--serif);font-size:19px;font-weight:700;color:var(--color-primary-dark);margin-bottom:16px;line-height:1.5}
+.tool-col p.tool-desc{font-size:13px;color:var(--color-ink);line-height:1.85;margin-bottom:14px}
+.tool-col ul{list-style:none;padding:0}
+.tool-col li{padding:8px 0 8px 22px;position:relative;font-size:12.5px;line-height:1.7;border-bottom:1px dashed var(--color-line)}
+.tool-col li:last-child{border-bottom:none}
+.tool-col li::before{content:"";position:absolute;left:0;top:14px;width:10px;height:10px;border-radius:50%}
+.tool-col.python li::before{background:var(--color-ai-blue)}
+.tool-col.claude li::before{background:var(--color-affil)}
+
+.tools-cross{margin-top:24px;background:var(--color-paper);border:1px solid var(--color-line);border-radius:12px;padding:24px 28px;text-align:center}
+.tools-cross h4{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--color-primary-dark);margin-bottom:10px}
+.tools-cross p{font-size:13px;color:var(--color-ink);line-height:1.85}
+
+.tools-key{margin-top:32px;background:var(--color-primary);color:#fff;border-radius:14px;padding:32px 32px;text-align:center}
+.tools-key span{display:inline-block;font-family:var(--en);font-size:11px;letter-spacing:.2em;background:var(--color-accent);color:#fff;padding:4px 12px;border-radius:4px;margin-bottom:14px;text-transform:uppercase}
+.tools-key h3{font-family:var(--serif);font-size:clamp(20px,3vw,28px);font-weight:700;line-height:1.6;margin-bottom:8px}
+.tools-key h3 em{font-style:normal;color:var(--color-accent)}
+.tools-key p{font-size:13.5px;line-height:1.95;opacity:.9;max-width:680px;margin:0 auto}
+
+/* RESULT SUMMARY */
+.result-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
+@media(max-width:900px){.result-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.result-grid{grid-template-columns:1fr}}
+.result-card{background:var(--color-paper);border:1px solid var(--color-line);border-radius:12px;padding:24px 20px;text-align:center}
+.result-num{display:block;font-family:var(--en);font-size:clamp(28px,4vw,38px);font-weight:600;color:var(--color-primary);line-height:1;margin-bottom:10px;letter-spacing:-.02em}
+.result-num.affil{color:var(--color-affil)}
+.result-num.accent{color:var(--color-accent)}
+.result-label{font-size:11px;color:var(--color-muted);letter-spacing:.05em;line-height:1.6}
+.result-label strong{display:block;font-size:13px;color:var(--color-primary-dark);margin-bottom:4px}
+
+.result-deliv{margin-top:32px;background:var(--color-paper);border:1px solid var(--color-line);border-radius:14px;padding:32px 32px}
+.result-deliv h3{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--color-primary-dark);margin-bottom:18px;text-align:center}
+.deliv-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:720px){.deliv-list{grid-template-columns:1fr}}
+.deliv-item{padding:18px 20px;background:var(--color-bg);border-radius:10px;border-left:3px solid var(--color-affil)}
+.deliv-item h5{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--color-primary-dark);margin-bottom:6px}
+.deliv-item p{font-size:12px;color:var(--color-muted);line-height:1.7}
+
+/* GRADES (工程別精度+本番強化) */
+.grades-table{margin-top:32px;background:var(--color-paper);border-radius:14px;border:1px solid var(--color-line);overflow:hidden}
+.grades-row{display:grid;grid-template-columns:80px 100px 1fr;gap:16px;padding:18px 24px;align-items:center;border-bottom:1px solid var(--color-line);font-size:13px;line-height:1.7}
+.grades-row:last-child{border-bottom:none}
+.grades-row.head{background:var(--color-primary);color:#fff;font-family:var(--en);font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:600}
+.grades-step{font-family:var(--en);font-size:18px;font-weight:600;color:var(--color-primary-dark);text-align:center}
+.grades-row.head .grades-step{color:#fff;font-size:11px}
+.grades-grade{text-align:center}
+.grades-grade .tl-grade{font-size:11px;padding:4px 12px}
+.grades-action{color:var(--color-ink);font-size:13px;line-height:1.85}
+.grades-action strong{color:var(--color-primary-dark)}
+@media(max-width:680px){
+  .grades-row{grid-template-columns:60px 80px 1fr;gap:10px;padding:14px 16px;font-size:12px}
+  .grades-step{font-size:14px}
+}
+
+/* CONCLUSION */
+.conclusion-wrap{background:var(--color-bg-deep);padding:88px 24px;border-top:1px solid var(--color-line)}
+.concl-main{max-width:760px;margin:0 auto;text-align:center;padding:40px 36px;background:linear-gradient(135deg,var(--color-primary),var(--color-primary-dark));color:#fff;border-radius:18px;box-shadow:0 8px 24px rgba(44,95,75,.2)}
+.concl-tag{display:inline-block;font-family:var(--en);font-size:11px;letter-spacing:.2em;background:var(--color-accent);color:#fff;padding:5px 14px;border-radius:99px;margin-bottom:18px;text-transform:uppercase}
+.concl-main h2{font-family:var(--serif);font-size:clamp(22px,3.5vw,32px);font-weight:900;line-height:1.55;margin-bottom:16px}
+.concl-main h2 em{font-style:normal;color:var(--color-accent)}
+.concl-main p{font-size:14.5px;line-height:2;opacity:.95;max-width:620px;margin:0 auto}
+
+.next-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1000px;margin-left:auto;margin-right:auto}
+@media(max-width:720px){.next-grid{grid-template-columns:1fr}}
+.next-card{background:#fff;border-radius:12px;padding:24px 22px;border-top:4px solid var(--color-primary)}
+.next-card.phase2{border-top-color:var(--color-accent)}
+.next-card.phase3{border-top-color:var(--color-affil)}
+.next-card-label{display:inline-block;font-family:var(--en);font-size:10.5px;letter-spacing:.18em;color:#fff;padding:4px 11px;border-radius:4px;margin-bottom:10px;background:var(--color-primary)}
+.next-card.phase2 .next-card-label{background:var(--color-accent)}
+.next-card.phase3 .next-card-label{background:var(--color-affil)}
+.next-card h4{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--color-primary-dark);margin-bottom:10px;line-height:1.55}
+.next-card p{font-size:12.5px;color:var(--color-muted);line-height:1.85}
+.next-card ul{margin-top:8px;list-style:none;padding:0}
+.next-card li{padding:3px 0 3px 16px;position:relative;font-size:12px;color:var(--color-ink);line-height:1.7}
+.next-card li::before{content:"→";position:absolute;left:0;color:var(--color-accent);font-weight:700}
+
+/* QUESTIONS */
+.q-wrap{padding:88px 24px;background:var(--color-bg)}
+.q-list{display:flex;flex-direction:column;gap:14px;margin-top:32px;max-width:900px;margin-left:auto;margin-right:auto}
+.q-item{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:22px 26px;background:var(--color-paper);border-radius:12px;border-left:4px solid var(--color-affil);align-items:start}
+.q-num{font-family:var(--en);font-size:28px;font-weight:600;color:var(--color-affil);line-height:1;letter-spacing:-.02em}
+.q-text{font-size:14px;color:var(--color-ink);line-height:1.85}
+.q-text strong{color:var(--color-primary-dark)}
+.q-item.highlight{background:linear-gradient(135deg,rgba(139,74,154,.06),rgba(196,145,94,.06));border-left-color:var(--color-accent)}
+.q-item.highlight .q-num{color:var(--color-accent)}
+
+/* CLOSING */
+.closing{padding:92px 24px;text-align:center;background:var(--color-primary);color:#fff;position:relative;overflow:hidden}
+.closing::before{content:"";position:absolute;top:-150px;right:-150px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(196,145,94,.15),transparent 70%)}
+.closing h2{font-family:var(--serif);font-size:clamp(22px,3.2vw,32px);font-weight:700;line-height:1.7;margin-bottom:20px;position:relative}
+.closing h2 em{font-style:normal;color:var(--color-accent)}
+.closing p{font-size:14.5px;line-height:2;max-width:680px;margin:0 auto 30px;opacity:.92;position:relative}
+
+.footer{padding:40px 24px;text-align:center;font-size:12px;color:var(--color-muted);font-family:var(--en);letter-spacing:.1em}
+
+@media(max-width:720px){
+  .nav-inner{padding:14px 20px}
+  .hero{padding:120px 20px 60px}
+  .sec{padding:68px 20px}
+  .timeline-wrap{padding:68px 20px}
+  .process-wrap,.tools-wrap,.conclusion-wrap,.q-wrap{padding:68px 20px}
+  .closing{padding:72px 20px}
+  .why-box,.tool-col{padding:24px 22px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">Phase 1 <em>Report.</em></div>
+    <a href="ai-youtube-support.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to AI × YouTube Main</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-breadcrumb">
+    <a href="./">Portfolio</a> / <a href="ai-youtube-support.html">AI × YouTube</a> / <a href="ai-youtube-affiliate-case.html">Affiliate Case</a> / <span style="color:var(--color-affil)">Phase 1 Report</span>
+  </div>
+  <span class="hero-tag">Phase 1 Research Report</span>
+  <h1>
+    9工程のうち <em>①〜⑥</em> を、<br>
+    AI が走り切れるか？
+  </h1>
+  <p class="hero-sub">
+    YouTubeアフィリエイトの9工程のうち、上流の①〜⑥を<br>
+    <strong>「コード内で完結」</strong>させて全自動で走らせる実証実験。<br>
+    要件定義 → 実装フロー → 結果サマリーを、1枚にまとめた報告書です。
+  </p>
+  <div class="hero-spec">
+    <div class="hero-spec-item"><strong>仮ジャンル</strong>育毛剤</div>
+    <div class="hero-spec-item"><strong>実装日</strong>2026.04.19</div>
+    <div class="hero-spec-item"><strong>報告日</strong>2026.04.28</div>
+    <div class="hero-spec-item"><strong>収益モデル</strong>アフィリエイト</div>
+  </div>
+  <div class="hero-numbers">
+    <div class="hn-item">
+      <span class="hn-num">2.5h</span>
+      <span class="hn-label">総稼働時間</span>
+    </div>
+    <div class="hn-item">
+      <span class="hn-num">¥0</span>
+      <span class="hn-label">今回コスト</span>
+    </div>
+    <div class="hn-item">
+      <span class="hn-num">20-30×</span>
+      <span class="hn-label">時短率（人力比）</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY (要件定義) -->
+<section class="sec">
+  <div class="sec-inner">
+    <span class="sec-label">Section 1 ─ Requirements</span>
+    <h2 class="sec-title">なぜ <em>このリサーチ</em> を走らせたか</h2>
+    <p class="sec-sub">
+      クライアント様が抱える「広告収益依存からの脱却」という課題に対して、<br>
+      AIで上流リサーチを自動化できれば、複数ジャンル展開が現実的になる。<br>
+      その仮説を検証するための、最小単位の実証実験です。
+    </p>
+
+    <div class="why-grid">
+      <div class="why-box">
+        <div class="why-box-label">Background</div>
+        <h3>クライアント様の課題</h3>
+        <p>
+          YouTube広告収益はアルゴリズム変更・ジャンル規制で一夜にして消えるリスクがある。<br>
+          さらにAI量産動画の急増で、ジャンル全体が規制対象になる流れも顕在化。<br>
+          だから「広告に依存しない収益＝アフィリエイト動画」を <strong>複数ジャンルで同時展開</strong> したい。
+        </p>
+        <div class="why-quote">
+          「分析と要因抽出からの規格 ─ ここがどう出せるか。」<br>
+          ─ クライアント様、Kickoff MTGより
+        </div>
+      </div>
+
+      <div class="why-box">
+        <div class="why-box-label">Hypothesis</div>
+        <h3>検証したかった仮説</h3>
+        <p>
+          人力でやれば1ジャンル <strong>3〜5日</strong>（ディレクター1人工）かかるリサーチを、<br>
+          AIで <strong>半日〜1日に短縮</strong> できれば、月10〜20ジャンル展開が現実になる。<br>
+          そのために、9工程フローのうち上流 <strong>①〜⑥をコード内で完結</strong> させて自動化できるか、<br>
+          仮ジャンル「育毛剤」で1回回してみる。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 STEPS PROCESS -->
+<section class="process-wrap">
+  <div class="sec-inner">
+    <span class="sec-label">Section 2 ─ Scope</span>
+    <h2 class="sec-title">検証範囲：9工程のうち <em>①〜⑥</em></h2>
+    <p class="sec-sub">
+      クライアント様が提示した9工程フロー。今回 Phase 1 で検証したのは <strong>①〜⑥（上流リサーチ系）</strong>。<br>
+      ⑦動画生成以降は精度面のハードルが高く（業界相場：AI動画の使用可能率は20本中1本程度）、Phase 2範囲として保留しています。
+    </p>
+
+    <div class="process-grid">
+      <div class="proc-step active">
+        <span class="proc-step-num">①</span>
+        <span class="proc-step-label">商品設定</span>
+      </div>
+      <div class="proc-step active">
+        <span class="proc-step-num">②</span>
+        <span class="proc-step-label">ペルソナ設計</span>
+      </div>
+      <div class="proc-step active">
+        <span class="proc-step-num">③</span>
+        <span class="proc-step-label">キーワード設定</span>
+      </div>
+      <div class="proc-step active">
+        <span class="proc-step-num">④</span>
+        <span class="proc-step-label">動画検索</span>
+      </div>
+      <div class="proc-step active">
+        <span class="proc-step-num">⑤</span>
+        <span class="proc-step-label">動画分析</span>
+      </div>
+      <div class="proc-step active">
+        <span class="proc-step-num">⑥</span>
+        <span class="proc-step-label">ヒット要素抽出</span>
+      </div>
+      <div class="proc-step future">
+        <span class="proc-step-num">⑦</span>
+        <span class="proc-step-label">動画生成</span>
+      </div>
+      <div class="proc-step future">
+        <span class="proc-step-num">⑧</span>
+        <span class="proc-step-label">配信設定</span>
+      </div>
+      <div class="proc-step future">
+        <span class="proc-step-num">⑨</span>
+        <span class="proc-step-label">結果分析</span>
+      </div>
+    </div>
+
+    <div class="process-divider">
+      <i class="fas fa-info-circle" style="color:var(--color-accent)"></i>
+      <span><strong>Phase 1（今回）</strong>：①〜⑥のAI自動化／<strong>Phase 2（次回）</strong>：⑦〜⑨は精度確認しながら段階的に</span>
+    </div>
+  </div>
+</section>
+
+<!-- GOAL (検証ゴール4軸) -->
+<section class="sec">
+  <div class="sec-inner">
+    <span class="sec-label">Section 3 ─ Goals</span>
+    <h2 class="sec-title">検証ゴール（<em>4軸</em>で評価）</h2>
+    <p class="sec-sub">
+      「動いた」だけでは判定にならない。今回の Phase 1 では以下4軸で評価し、<br>
+      クライアント様が「これなら使える」と判断できる水準を目指しました。
+    </p>
+
+    <div class="goal-grid">
+      <div class="goal-card">
+        <div class="goal-num">01</div>
+        <h4>コード内で完結するか</h4>
+        <p>①〜⑥が手動介入ゼロで走り切るか。途中で人が手を入れないと進まない箇所がないか。</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-num">02</div>
+        <h4>規格として取り出せるか</h4>
+        <p>クライアント様の最重要要望「分析と要因抽出からの規格化」。AIが20テンプレ＋台本まで落とせるか。</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-num">03</div>
+        <h4>明日から動ける水準か</h4>
+        <p>ディレクター・編集者が成果物を手に取って、追加の調査なしに動画制作に着手できる粒度か。</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-num">04</div>
+        <h4>再現性とコスト</h4>
+        <p>別ジャンルでも同じ仕組みで走るか。1ジャンル数千円以内で月10〜20ジャンル展開が現実的か。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE 実装フロー -->
+<section class="timeline-wrap">
+  <div class="sec-inner">
+    <span class="sec-label">Section 4 ─ Implementation</span>
+    <h2 class="sec-title">実装フロー：<em>4/19実装の8ステップ</em></h2>
+    <p class="sec-sub">
+      実装担当はクライアントAI開発チーム（CDO）。Python と Claude Code（AIコーディング環境）を組み合わせて、<br>
+      ①〜⑥を時系列で順に走らせました。各ステップに <strong>道具・出力・所要時間・精度</strong> を併記しています。<br>
+      <span style="display:inline-block;margin-top:10px;padding:5px 11px;background:#fff;border-radius:99px;font-size:11.5px;font-family:var(--en);letter-spacing:.05em;color:var(--color-primary-dark);border:1px solid var(--color-line)">🟢 A 本番水準 / 🟡 B 骨格使える / 🟠 C 改善余地</span>
+    </p>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-num">01</div>
+        <div class="tl-body">
+          <h4>③ キーワード設定 <span class="tl-grade c">C</span></h4>
+          <p>クライアント様が選定した6キーワード（育毛剤おすすめ／効果／薄毛30代／AGA体験／つむじ薄い／ミノキシジルレビュー）を AI が検証。検索ノイズになりそうな関連ワードも洗い出し。</p>
+          <div class="tl-meta">
+            <span class="tl-chip"><i class="fas fa-toolbox"></i>Claude Code</span>
+            <span class="tl-chip"><i class="fas fa-file-alt"></i>2,499字レポート</span>
+            <span class="tl-chip time"><i class="far fa-clock"></i>5分</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-num">02</div>
+        <div class="tl-body">
+          <h4>① 商品設定 <span class="tl-grade c">C</span></h4>
+          <p>育毛剤ジャンルの市場規模・広告主の報酬相場・薬機法など法規制を AI が調査・レポート化。骨子ベースで、本番では一次データの裏取りを追加予定。</p>
+          <div class="tl-meta">
+            <span class="tl-chip"><i class="fas fa-toolbox"></i>Claude Code</span>
+            <span class="tl-chip"><i class="fas fa-file-alt"></i>3,735字レポート</span>
+            <span class="tl-chip time"><i class="far fa-clock"></i>5分</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-num">03</div>
+        <div class="tl-body">
+          <h4>② ペルソナ設計 <span class="tl-grade b">B</span></h4>
+          <p>「30代男性・薄毛を気にし始めた人」を仮ペルソナに、5段階購買シーケンス（悩み発見→情報収集→商品検討→初回購入→継続判断）で人物像を設計。</p>
+          <div class="tl-meta">
+            <span class="tl-chip"><i class="fas fa-toolbox"></i>Claude Code</span>
+            <span class="tl-chip"><i class="fas fa-file-alt"></i>5,894字シート</span>
+            <span class="tl-chip time"><i class="far fa-clock"></i>10分</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-num">04</div>
+        <div class="tl-body">
+          <h4>④ 動画検索・収集 <span class="tl-grade a">A</span></h4>
+          <p><strong>Python + YouTube Data API v3</strong>（YouTube公式の動画情報取得API）で 51動画／44チャンネル分のデータを一括取得。タイトル・再生数・いいね・コメ・尺・URL・概要欄など <strong>13項目</strong> を構造化。</p>
+          <div class="tl-meta">
+            <span class="tl-chip"><i class="fab fa-python"></i>Python</span>
+            <span class="tl-chip"><i class="fab fa-youtube" style="color:var(--color-youtube)"></i>YouTube Data API v3</span>
+            <span class="tl-chip"><i class="fas fa-database"></i>602units消費（無料枠の6%）</span>
+            <span class="tl-chip time"><i class="far fa-clock"></i>30秒</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item bridge">
+        <div class="tl-num">05</div>
+        <div class="tl-body">
+          <h4>字幕取得（⑤の前段） <span class="tl-grade a">A</span></h4>
+          <p><strong>youtube-transcript-api</strong>（YouTube字幕を機械的に取得するライブラリ）で Top10動画の字幕を自動取得。10本／10本すべて成功。</p>
+          <div class="tl-meta">
+            <span class="tl-chip"><i class="fab fa-python"></i>youtube-transcript-api</span>
+            <span class="tl-chip"><i class="fas fa-closed-captioning"></i>字幕5,610字</span>
+            <span class="tl-chip time"><i class="far fa-clock"></i>数分</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-num">06</div>
+        <div class="tl-body">
+          <h4>⑤ 動画分析 <span class="tl-grade b">B</span></h4>
+          <p>字幕＋タイトル＋統計データを Claude Code に投入し、Top10動画を <strong>4類型化</strong>：A自虐エンタメ／B専門家解説／C商品比較／D変身実例（＋❌ジャンル外）。アフィリ相性は B＋C が◎。</p>
+          <div class="tl-meta">
+            <span class="tl-chip"><i class="fas fa-toolbox"></i>Claude Code</span>
+            <span class="tl-chip"><i class="fas fa-layer-group"></i>4類型化</span>
+            <span class="tl-chip time"><i class="far fa-clock"></i>15分</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-num">07</div>
+        <div class="tl-body">
+          <h4>⑥ ヒット要素抽出 <span class="tl-grade a">A</span></h4>
+          <p>Top10動画の共通する「勝ちパターン」を抽出。<strong>20テンプレ</strong>（タイトル5型＋フック5型＋構成4型＋CTA6手法）と、<strong>1本作るならレシピ</strong>（ペルソナ→タイトル→15秒つかみ→本編3セクション→CTA→収益シナリオ）を生成。</p>
+          <div class="tl-meta">
+            <span class="tl-chip"><i class="fas fa-toolbox"></i>Claude Code</span>
+            <span class="tl-chip"><i class="fas fa-file-alt"></i>11,644字</span>
+            <span class="tl-chip"><i class="fas fa-stamp"></i>20テンプレ＋台本1本</span>
+            <span class="tl-chip time"><i class="far fa-clock"></i>20分</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item cross">
+        <div class="tl-num">08</div>
+        <div class="tl-body">
+          <h4>クロス検証 <span class="tl-grade a">─</span></h4>
+          <p><strong>Groq llama-3.3-70b</strong>（爆速の別系統 AI モデル）で Claude Code の分析結果の妥当性をチェック。Claude（深い分析）× Groq（高速比較）の二段構えで精度を担保。</p>
+          <div class="tl-meta">
+            <span class="tl-chip"><i class="fas fa-bolt"></i>Groq llama-3.3-70b</span>
+            <span class="tl-chip"><i class="fas fa-check-double"></i>2系統クロス検証</span>
+            <span class="tl-chip time"><i class="far fa-clock"></i>数分</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tl-summary">
+      <span class="tl-summary-num">2.5時間 / ¥0 / 20〜30倍時短</span>
+      <span class="tl-summary-label">総稼働時間（初回・非効率込み）／コスト（全部無料枠内）／人力換算3〜5日比</span>
+      <p class="tl-summary-sub">本番想定コスト：1ジャンル ¥1,500〜3,000（Gemini動画解析＋Claude Deep Research＋字幕含む）</p>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS DESIGN -->
+<section class="tools-wrap">
+  <div class="sec-inner">
+    <span class="sec-label">Section 5 ─ Tool Design</span>
+    <h2 class="sec-title">道具設計：<em>コード内完結</em>のメカニズム</h2>
+    <p class="sec-sub">
+      クライアント様の懸念「AIで作っても、運用できるエンジニアがいないと動かせない」への回答は、<br>
+      <strong>「Pythonで自動化済」</strong> と <strong>「Claude Codeが都度生成」</strong> の役割分担にあります。
+    </p>
+
+    <div class="tools-split">
+      <div class="tool-col python">
+        <span class="tool-col-label">Layer 1</span>
+        <h3>Python で自動化済（再利用可能なスクリプト）</h3>
+        <p class="tool-desc">
+          一度書いたら、ジャンルが変わっても <strong>そのまま使える</strong> 部分。<br>
+          スクリプトとして固定されており、API キーと検索ワードを差し替えるだけで動きます。
+        </p>
+        <ul>
+          <li>YouTube Data API v3 の呼び出し</li>
+          <li>字幕の自動取得（youtube-transcript-api）</li>
+          <li>取得データの整形・構造化（13項目に分解）</li>
+          <li>スプレッドシートへの書き出し（Sheets API）</li>
+          <li>共有権限の自動設定（Drive API）</li>
+        </ul>
+      </div>
+
+      <div class="tool-col claude">
+        <span class="tool-col-label">Layer 2</span>
+        <h3>Claude Code が都度生成（実行ごとに新規）</h3>
+        <p class="tool-desc">
+          ジャンルやターゲットが変われば、出力内容も変わるべき部分。<br>
+          AI が <strong>毎回新しく書き起こす</strong> から、テンプレ流用感が出ない。
+        </p>
+        <ul>
+          <li>商品市場・ペルソナ・キーワードの調査レポート</li>
+          <li>動画の構造分析と類型化（4類型）</li>
+          <li>勝ちパターンの抽出（20テンプレ）</li>
+          <li>1本台本の生成（ペルソナ起点で逆算）</li>
+          <li>収益シナリオの試算</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tools-cross">
+      <h4>🔄 クロス検証ペア（精度担保）</h4>
+      <p>
+        <strong>Claude Code</strong>（深い分析・文脈理解）× <strong>Groq llama-3.3-70b</strong>（爆速・別系統モデル）の2軸で結果を突き合わせ、AIの「もっともらしいだけの嘘」を排除します。
+      </p>
+    </div>
+
+    <div class="tools-key">
+      <span>Key Message</span>
+      <h3>全部 <em>コード内</em> で完結。<br>クライアント様が手で動かす作業はゼロ。</h3>
+      <p>
+        ジャンルを指定して走らせれば、レポート＋テンプレ＋台本まで一気通貫で出力されます。<br>
+        スクレイピングではなく公式APIの規約遵守ベース。安心して継続運用できる構造です。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULT SUMMARY -->
+<section class="sec">
+  <div class="sec-inner">
+    <span class="sec-label">Section 6 ─ Results</span>
+    <h2 class="sec-title">結果サマリー（<em>数字</em>で見える化）</h2>
+    <p class="sec-sub">
+      仮ジャンル「育毛剤」で実際に走らせた結果。一次データの取得量・分析量・成果物の粒度・コストを数字で示します。
+    </p>
+
+    <div class="result-grid">
+      <div class="result-card">
+        <span class="result-num">51</span>
+        <span class="result-label"><strong>動画</strong>取得（44チャンネル分）</span>
+      </div>
+      <div class="result-card">
+        <span class="result-num accent">4,900万</span>
+        <span class="result-label"><strong>合計再生数</strong>49,027,802回</span>
+      </div>
+      <div class="result-card">
+        <span class="result-num affil">29,382</span>
+        <span class="result-label"><strong>文字数</strong>レポート＋分析＋台本</span>
+      </div>
+      <div class="result-card">
+        <span class="result-num">2.5h</span>
+        <span class="result-label"><strong>総稼働時間</strong>初回・非効率込み</span>
+      </div>
+    </div>
+
+    <div class="result-deliv">
+      <h3>📦 主要成果物（クライアント様共有スプシ・8タブ構成）</h3>
+      <div class="deliv-list">
+        <div class="deliv-item">
+          <h5>🌟 ②勝ち規格カタログ</h5>
+          <p>タイトル5型＋フック5型＋構成4型＋CTA6手法 ＝ <strong>20テンプレ</strong>。動画ごとの再現可能なパターンとして横展開可能。</p>
+        </div>
+        <div class="deliv-item">
+          <h5>🌟 ③1本作るならレシピ</h5>
+          <p>30代男性薄毛初期向け／タイトル3案／15秒つかみ台本／本編3セクション×タイムコード／CTA設計／収益シナリオ <strong>¥3,000〜¥225,000/本</strong></p>
+        </div>
+        <div class="deliv-item">
+          <h5>📊 ④動画51本ネタ帳＋⓪-2 全44チャンネルリスト</h5>
+          <p>Top10合計再生数 <strong>2,700万回</strong>／いいね41万件／コメ6,400件。Shorts率9/10＝育毛剤ジャンルはShorts主戦場。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRADES (工程別精度+本番強化) -->
+<section class="sec" style="background:var(--color-bg-deep);border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line)">
+  <div class="sec-inner">
+    <span class="sec-label">Section 7 ─ Grading & Roadmap</span>
+    <h2 class="sec-title">工程別の <em>精度判定</em> と本番版で何を追加するか</h2>
+    <p class="sec-sub">
+      Phase 1（今回）の出力を3段階で正直に評価。本番版で何を追加すれば🟢A まで持っていけるかも併記しています。<br>
+      <strong>盛らない・隠さない</strong>。本番運用に向けたロードマップとして使える透明性を担保しました。
+    </p>
+
+    <div class="grades-table">
+      <div class="grades-row head">
+        <div class="grades-step">工程</div>
+        <div class="grades-grade">Phase 1</div>
+        <div class="grades-action">本番版で追加すること</div>
+      </div>
+      <div class="grades-row">
+        <div class="grades-step">①</div>
+        <div class="grades-grade"><span class="tl-grade c">C</span></div>
+        <div class="grades-action"><strong>3種AI検索クロス</strong>（Claude / Gemini / Perplexity）で市場・報酬・法規制を多角的に裏取り</div>
+      </div>
+      <div class="grades-row">
+        <div class="grades-step">②</div>
+        <div class="grades-grade"><span class="tl-grade b">B</span></div>
+        <div class="grades-action"><strong>X(旧Twitter)・YouTubeコメントから実ユーザー語彙を収集</strong>してAIに学習させ、ペルソナの「リアルな口調」を再現</div>
+      </div>
+      <div class="grades-row">
+        <div class="grades-step">③</div>
+        <div class="grades-grade"><span class="tl-grade c">C</span></div>
+        <div class="grades-action"><strong>YouTube検索候補機能＋Google検索トレンド</strong>から30〜50キーワードを自動生成</div>
+      </div>
+      <div class="grades-row">
+        <div class="grades-step">④</div>
+        <div class="grades-grade"><span class="tl-grade a">A</span></div>
+        <div class="grades-action">関係ない動画（まつ毛PR・眉メイク等のジャンル外）を <strong>LLMフィルタで自動排除</strong>する仕組みを追加</div>
+      </div>
+      <div class="grades-row">
+        <div class="grades-step">⑤</div>
+        <div class="grades-grade"><span class="tl-grade b">B</span></div>
+        <div class="grades-action"><strong>Gemini動画AI</strong>で映像を直接解析＋コメント感情分析＋サムネ画像分析を追加（Phase 1は字幕のみ）</div>
+      </div>
+      <div class="grades-row">
+        <div class="grades-step">⑥</div>
+        <div class="grades-grade"><span class="tl-grade a">A</span></div>
+        <div class="grades-action"><strong>Pythonプログラム化</strong>して、別ジャンルでも同じ仕組みで自動抽出できるよう汎用化</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION + NEXT -->
+<section class="conclusion-wrap">
+  <div class="sec-inner">
+    <span class="sec-label">Section 8 ─ Conclusion</span>
+    <h2 class="sec-title">結論と<em>次の一手</em></h2>
+
+    <div class="concl-main">
+      <span class="concl-tag">Verdict</span>
+      <h2>YouTubeアフィリエイト 自動リサーチは <em>「走った」</em>。</h2>
+      <p>
+        ①〜⑥フル自動完走・コード内完結・成果物29,382字＋20テンプレ＋台本1本。<br>
+        Phase 1の合格条件はすべて達成。<br>
+        <strong>本ジャンル指定をいただければ、24時間以内に同仕組みで再走行可能</strong>です。
+      </p>
+    </div>
+
+    <div class="next-grid">
+      <div class="next-card">
+        <span class="next-card-label">Phase 1 残り</span>
+        <h4>本ジャンル再走行 → 2ジャンル比較</h4>
+        <p>育毛剤は仮サンプル。クライアント様の本ジャンルで同仕組みを走らせ、再現性を比較検証します。</p>
+        <ul>
+          <li>本ジャンル指定の受領</li>
+          <li>24時間以内に再走行</li>
+          <li>育毛剤との比較レビュー</li>
+          <li>Phase 1 完了判定</li>
+        </ul>
+      </div>
+
+      <div class="next-card phase2">
+        <span class="next-card-label">Phase 2</span>
+        <h4>⑦動画生成・⑧配信・⑨結果分析</h4>
+        <p>動画生成は精度ハードルが高いため、まず台本生成までは確実に走らせて、動画化は研究を継続します。</p>
+        <ul>
+          <li>⑦ Gemini／Kling／Runway 研究中</li>
+          <li>⑧ スプシ連携＋YouTube API予約投稿</li>
+          <li>⑨ 自社チャンネルに⑤手法を適用</li>
+          <li>20本中1本問題への着手</li>
+        </ul>
+      </div>
+
+      <div class="next-card phase3">
+        <span class="next-card-label">Phase 3</span>
+        <h4>Persona Pipeline System として商品化</h4>
+        <p>クライアント様での実証を踏まえて、横展開可能な月額モデルへ。第1号事例として対外ブランド化（要本人承諾）。</p>
+        <ul>
+          <li>YouTube運営者向け 月額¥20-30万</li>
+          <li>中小企業オウンド向け 月額¥50万</li>
+          <li>大手事業部向け 月額¥100万〜</li>
+          <li>第1号事例化（要承諾）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUESTIONS -->
+<section class="q-wrap">
+  <div class="sec-inner">
+    <span class="sec-label">Section 9 ─ For Confirmation</span>
+    <h2 class="sec-title">クライアント様への<em>判定お願い</em>（5項目）</h2>
+    <p class="sec-sub">
+      Phase 1 の評価をいただくための質問です。スプレッドシート末尾と同じ内容を再掲しています。<br>
+      ⑤の本ジャンル再走行に進めるかの判定材料にさせてください。
+    </p>
+
+    <div class="q-list">
+      <div class="q-item">
+        <span class="q-num">01</span>
+        <p class="q-text">④の取得量（<strong>51動画・44チャンネルを約30秒で取得</strong>）は期待通りでしたでしょうか？</p>
+      </div>
+      <div class="q-item">
+        <span class="q-num">02</span>
+        <p class="q-text">⑥のテンプレ20個＋1本台本（タブ②③）は、<strong>ディレクター／編集者が明日から動ける水準</strong>でしたでしょうか？</p>
+      </div>
+      <div class="q-item">
+        <span class="q-num">03</span>
+        <p class="q-text">⑤の分析で<strong>『映像・コメント感情・サムネ画像』が未対応</strong>の点は、本番実装で解消できれば問題ないでしょうか？</p>
+      </div>
+      <div class="q-item">
+        <span class="q-num">04</span>
+        <p class="q-text">①②③の精度を上げる方針（3種AI検索／実ユーザー語彙収集／検索候補API連携）は、方向性としていかがでしょうか？</p>
+      </div>
+      <div class="q-item highlight">
+        <span class="q-num">05</span>
+        <p class="q-text"><strong>本ジャンル（育毛剤は仮）を指定いただいて再走行 → 同じ仕組みで比較できる状態で進めて</strong>OK でしょうか？ ─ ここが Phase 1 完了の最重要判定です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <h2>
+    <em>「分析と要因抽出からの規格」</em><br>
+    ─ ご要望に対する Phase 1 の答えがここにあります。
+  </h2>
+  <p>
+    本日のMTGでは、本報告書をベースに <strong>「データの取り方／中身／ここからどう展開できるか」</strong> を順序立てて共有させてください。<br>
+    ご質問・違和感・追加で見たい数字、なんでもその場で投げてください。<br>
+    Phase 1の合格判定をいただければ、本ジャンルで即再走行に入ります。
+  </p>
+</section>
+
+<footer class="footer">
+  Phase 1 Report ─ AI × YouTube Affiliate Research<br>
+  Implementation: 2026.04.19 / Reported: 2026.04.28
+</footer>
+
+</body>
+</html>
