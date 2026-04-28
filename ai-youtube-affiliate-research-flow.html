@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YouTubeアフィリエイト 自動リサーチ PoC ─ Phase 1 報告書</title>
-<meta name="description" content="9工程のうち①〜⑥をAIが走り切るかの実証実験。要件定義・実装フロー・結果サマリーを一枚で報告。コード内完結・人力3〜5日→AI 2.5時間。">
+<title>YouTubeアフィリエイト 自動リサーチ 実証実験 ─ フェーズ1 報告書</title>
+<meta name="description" content="9工程のうち①〜⑥をAIが走り切るかの実証実験。要件定義・実装の流れ・結果まとめを一枚で報告。コードの中で完結・人力3〜5日→AI 2.5時間。">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
@@ -260,17 +260,17 @@ a{color:inherit;text-decoration:none}
 
 <nav class="nav">
   <div class="nav-inner">
-    <div class="nav-brand">Phase 1 <em>Report.</em></div>
-    <a href="ai-youtube-support.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to AI × YouTube Main</a>
+    <div class="nav-brand">フェーズ1 <em>報告書</em></div>
+    <a href="ai-youtube-support.html" class="nav-back"><i class="fas fa-arrow-left"></i> AI × YouTubeトップへ戻る</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-breadcrumb">
-    <a href="./">Portfolio</a> / <a href="ai-youtube-support.html">AI × YouTube</a> / <a href="ai-youtube-affiliate-case.html">Affiliate Case</a> / <span style="color:var(--color-affil)">Phase 1 Report</span>
+    <a href="./">ポートフォリオ</a> / <a href="ai-youtube-support.html">AI × YouTube</a> / <a href="ai-youtube-affiliate-case.html">育毛剤事例</a> / <span style="color:var(--color-affil)">フェーズ1 報告書</span>
   </div>
-  <span class="hero-tag">Phase 1 Research Report</span>
+  <span class="hero-tag">フェーズ1 リサーチ報告書</span>
   <h1>
     9工程のうち <em>①〜⑥</em> を、<br>
     AI が走り切れるか？
@@ -305,7 +305,7 @@ a{color:inherit;text-decoration:none}
 <!-- WHY (要件定義) -->
 <section class="sec">
   <div class="sec-inner">
-    <span class="sec-label">Section 1 ─ Requirements</span>
+    <span class="sec-label">① 要件定義</span>
     <h2 class="sec-title">なぜ <em>このリサーチ</em> を走らせたか</h2>
     <p class="sec-sub">
       クライアント様が抱える「広告収益依存からの脱却」という課題に対して、<br>
@@ -315,7 +315,7 @@ a{color:inherit;text-decoration:none}
 
     <div class="why-grid">
       <div class="why-box">
-        <div class="why-box-label">Background</div>
+        <div class="why-box-label">背景</div>
         <h3>クライアント様の課題</h3>
         <p>
           YouTube広告収益はアルゴリズム変更・ジャンル規制で一夜にして消えるリスクがある。<br>
@@ -329,7 +329,7 @@ a{color:inherit;text-decoration:none}
       </div>
 
       <div class="why-box">
-        <div class="why-box-label">Hypothesis</div>
+        <div class="why-box-label">仮説</div>
         <h3>検証したかった仮説</h3>
         <p>
           人力でやれば1ジャンル <strong>3〜5日</strong>（ディレクター1人工）かかるリサーチを、<br>
@@ -345,11 +345,11 @@ a{color:inherit;text-decoration:none}
 <!-- 9 STEPS PROCESS -->
 <section class="process-wrap">
   <div class="sec-inner">
-    <span class="sec-label">Section 2 ─ Scope</span>
+    <span class="sec-label">② 検証範囲</span>
     <h2 class="sec-title">検証範囲：9工程のうち <em>①〜⑥</em></h2>
     <p class="sec-sub">
-      クライアント様が提示した9工程フロー。今回 Phase 1 で検証したのは <strong>①〜⑥（上流リサーチ系）</strong>。<br>
-      ⑦動画生成以降は精度面のハードルが高く（業界相場：AI動画の使用可能率は20本中1本程度）、Phase 2範囲として保留しています。
+      クライアント様が提示した9工程フロー。今回フェーズ1で検証したのは <strong>①〜⑥（上流リサーチ系）</strong>。<br>
+      ⑦動画生成以降は精度面のハードルが高く（業界相場：AI動画の使用可能率は20本中1本程度）、フェーズ2の範囲として保留しています。
     </p>
 
     <div class="process-grid">
@@ -393,7 +393,7 @@ a{color:inherit;text-decoration:none}
 
     <div class="process-divider">
       <i class="fas fa-info-circle" style="color:var(--color-accent)"></i>
-      <span><strong>Phase 1（今回）</strong>：①〜⑥のAI自動化／<strong>Phase 2（次回）</strong>：⑦〜⑨は精度確認しながら段階的に</span>
+      <span><strong>フェーズ1（今回）</strong>：①〜⑥のAI自動化／<strong>フェーズ2（次回）</strong>：⑦〜⑨は精度確認しながら段階的に</span>
     </div>
   </div>
 </section>
@@ -401,10 +401,10 @@ a{color:inherit;text-decoration:none}
 <!-- GOAL (検証ゴール4軸) -->
 <section class="sec">
   <div class="sec-inner">
-    <span class="sec-label">Section 3 ─ Goals</span>
-    <h2 class="sec-title">検証ゴール（<em>4軸</em>で評価）</h2>
+    <span class="sec-label">③ 検証目標</span>
+    <h2 class="sec-title">検証目標（<em>4軸</em>で評価）</h2>
     <p class="sec-sub">
-      「動いた」だけでは判定にならない。今回の Phase 1 では以下4軸で評価し、<br>
+      「動いた」だけでは判定にならない。今回のフェーズ1では以下4軸で評価し、<br>
       クライアント様が「これなら使える」と判断できる水準を目指しました。
     </p>
 
@@ -436,8 +436,8 @@ a{color:inherit;text-decoration:none}
 <!-- TIMELINE 実装フロー -->
 <section class="timeline-wrap">
   <div class="sec-inner">
-    <span class="sec-label">Section 4 ─ Implementation</span>
-    <h2 class="sec-title">実装フロー：<em>4/19実装の8ステップ</em></h2>
+    <span class="sec-label">④ 実装の流れ</span>
+    <h2 class="sec-title">実装の流れ：<em>4月19日に走らせた8つの手順</em></h2>
     <p class="sec-sub">
       実装担当はクライアントAI開発チーム（CDO）。Python と Claude Code（AIコーディング環境）を組み合わせて、<br>
       ①〜⑥を時系列で順に走らせました。各ステップに <strong>道具・出力・所要時間・精度</strong> を併記しています。<br>
@@ -565,17 +565,17 @@ a{color:inherit;text-decoration:none}
 <!-- TOOLS DESIGN -->
 <section class="tools-wrap">
   <div class="sec-inner">
-    <span class="sec-label">Section 5 ─ Tool Design</span>
-    <h2 class="sec-title">道具設計：<em>コード内完結</em>のメカニズム</h2>
+    <span class="sec-label">⑤ 道具の設計</span>
+    <h2 class="sec-title">道具の設計：<em>コードの中で完結</em>させる仕組み</h2>
     <p class="sec-sub">
-      クライアント様の懸念「AIで作っても、運用できるエンジニアがいないと動かせない」への回答は、<br>
-      <strong>「Pythonで自動化済」</strong> と <strong>「Claude Codeが都度生成」</strong> の役割分担にあります。
+      クライアント様の懸念「AIで作っても、運用できる技術者がいないと動かせない」への回答は、<br>
+      <strong>「Pythonで自動化済の部分」</strong> と <strong>「Claude Codeがその場で書く部分」</strong> の役割分担にあります。
     </p>
 
     <div class="tools-split">
       <div class="tool-col python">
-        <span class="tool-col-label">Layer 1</span>
-        <h3>Python で自動化済（再利用可能なスクリプト）</h3>
+        <span class="tool-col-label">土台の層</span>
+        <h3>Pythonで自動化済（一度書いたら使い回せる部分）</h3>
         <p class="tool-desc">
           一度書いたら、ジャンルが変わっても <strong>そのまま使える</strong> 部分。<br>
           スクリプトとして固定されており、API キーと検索ワードを差し替えるだけで動きます。
@@ -590,8 +590,8 @@ a{color:inherit;text-decoration:none}
       </div>
 
       <div class="tool-col claude">
-        <span class="tool-col-label">Layer 2</span>
-        <h3>Claude Code が都度生成（実行ごとに新規）</h3>
+        <span class="tool-col-label">その都度の層</span>
+        <h3>Claude Codeがその場で書く（実行ごとに新規）</h3>
         <p class="tool-desc">
           ジャンルやターゲットが変われば、出力内容も変わるべき部分。<br>
           AI が <strong>毎回新しく書き起こす</strong> から、テンプレ流用感が出ない。
@@ -607,18 +607,18 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <div class="tools-cross">
-      <h4>🔄 クロス検証ペア（精度担保）</h4>
+      <h4>🔄 ふたつのAIで突き合わせて精度を担保</h4>
       <p>
-        <strong>Claude Code</strong>（深い分析・文脈理解）× <strong>Groq llama-3.3-70b</strong>（爆速・別系統モデル）の2軸で結果を突き合わせ、AIの「もっともらしいだけの嘘」を排除します。
+        <strong>Claude Code</strong>（深い分析・文脈理解）× <strong>Groq llama-3.3-70b</strong>（爆速・別系統のAIモデル）の2軸で結果を突き合わせ、AIの「もっともらしいだけの嘘」を排除します。
       </p>
     </div>
 
     <div class="tools-key">
-      <span>Key Message</span>
-      <h3>全部 <em>コード内</em> で完結。<br>クライアント様が手で動かす作業はゼロ。</h3>
+      <span>ここがポイント</span>
+      <h3>全部 <em>コードの中</em> で完結。<br>クライアント様が手を動かす作業はゼロ。</h3>
       <p>
         ジャンルを指定して走らせれば、レポート＋テンプレ＋台本まで一気通貫で出力されます。<br>
-        スクレイピングではなく公式APIの規約遵守ベース。安心して継続運用できる構造です。
+        画面操作で集めるのではなく、公式APIで規約に沿って取得しているので、安心して継続運用できる構造です。
       </p>
     </div>
   </div>
@@ -627,8 +627,8 @@ a{color:inherit;text-decoration:none}
 <!-- RESULT SUMMARY -->
 <section class="sec">
   <div class="sec-inner">
-    <span class="sec-label">Section 6 ─ Results</span>
-    <h2 class="sec-title">結果サマリー（<em>数字</em>で見える化）</h2>
+    <span class="sec-label">⑥ 結果まとめ</span>
+    <h2 class="sec-title">結果まとめ（<em>数字</em>で見える化）</h2>
     <p class="sec-sub">
       仮ジャンル「育毛剤」で実際に走らせた結果。一次データの取得量・分析量・成果物の粒度・コストを数字で示します。
     </p>
@@ -675,17 +675,17 @@ a{color:inherit;text-decoration:none}
 <!-- GRADES (工程別精度+本番強化) -->
 <section class="sec" style="background:var(--color-bg-deep);border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line)">
   <div class="sec-inner">
-    <span class="sec-label">Section 7 ─ Grading & Roadmap</span>
+    <span class="sec-label">⑦ 精度評価と次の一歩</span>
     <h2 class="sec-title">工程別の <em>精度判定</em> と本番版で何を追加するか</h2>
     <p class="sec-sub">
-      Phase 1（今回）の出力を3段階で正直に評価。本番版で何を追加すれば🟢A まで持っていけるかも併記しています。<br>
-      <strong>盛らない・隠さない</strong>。本番運用に向けたロードマップとして使える透明性を担保しました。
+      フェーズ1（今回）の出力を3段階で正直に評価。本番版で何を追加すれば🟢A まで持っていけるかも併記しています。<br>
+      <strong>盛らない・隠さない</strong>。本番運用に向けた工程表として使える透明性を担保しました。
     </p>
 
     <div class="grades-table">
       <div class="grades-row head">
         <div class="grades-step">工程</div>
-        <div class="grades-grade">Phase 1</div>
+        <div class="grades-grade">フェーズ1</div>
         <div class="grades-action">本番版で追加すること</div>
       </div>
       <div class="grades-row">
@@ -711,7 +711,7 @@ a{color:inherit;text-decoration:none}
       <div class="grades-row">
         <div class="grades-step">⑤</div>
         <div class="grades-grade"><span class="tl-grade b">B</span></div>
-        <div class="grades-action"><strong>Gemini動画AI</strong>で映像を直接解析＋コメント感情分析＋サムネ画像分析を追加（Phase 1は字幕のみ）</div>
+        <div class="grades-action"><strong>Gemini動画AI</strong>で映像を直接解析＋コメント感情分析＋サムネ画像分析を追加（フェーズ1は字幕のみ）</div>
       </div>
       <div class="grades-row">
         <div class="grades-step">⑥</div>
@@ -725,53 +725,53 @@ a{color:inherit;text-decoration:none}
 <!-- CONCLUSION + NEXT -->
 <section class="conclusion-wrap">
   <div class="sec-inner">
-    <span class="sec-label">Section 8 ─ Conclusion</span>
-    <h2 class="sec-title">結論と<em>次の一手</em></h2>
+    <span class="sec-label">⑧ 結論と次の一歩</span>
+    <h2 class="sec-title">結論と<em>次の一歩</em></h2>
 
     <div class="concl-main">
-      <span class="concl-tag">Verdict</span>
+      <span class="concl-tag">判定</span>
       <h2>YouTubeアフィリエイト 自動リサーチは <em>「走った」</em>。</h2>
       <p>
-        ①〜⑥フル自動完走・コード内完結・成果物29,382字＋20テンプレ＋台本1本。<br>
-        Phase 1の合格条件はすべて達成。<br>
-        <strong>本ジャンル指定をいただければ、24時間以内に同仕組みで再走行可能</strong>です。
+        ①〜⑥すべて自動で完走・コードの中で完結・成果物29,382字＋20の型＋台本1本。<br>
+        フェーズ1の合格条件はすべて達成。<br>
+        <strong>本ジャンルを指定いただければ、24時間以内に同じ仕組みで再走行可能</strong>です。
       </p>
     </div>
 
     <div class="next-grid">
       <div class="next-card">
-        <span class="next-card-label">Phase 1 残り</span>
+        <span class="next-card-label">フェーズ1の残り</span>
         <h4>本ジャンル再走行 → 2ジャンル比較</h4>
-        <p>育毛剤は仮サンプル。クライアント様の本ジャンルで同仕組みを走らせ、再現性を比較検証します。</p>
+        <p>育毛剤は仮のサンプル。クライアント様の本ジャンルで同じ仕組みを走らせ、再現できるかを比較します。</p>
         <ul>
           <li>本ジャンル指定の受領</li>
           <li>24時間以内に再走行</li>
           <li>育毛剤との比較レビュー</li>
-          <li>Phase 1 完了判定</li>
+          <li>フェーズ1 完了判定</li>
         </ul>
       </div>
 
       <div class="next-card phase2">
-        <span class="next-card-label">Phase 2</span>
+        <span class="next-card-label">フェーズ2</span>
         <h4>⑦動画生成・⑧配信・⑨結果分析</h4>
-        <p>動画生成は精度ハードルが高いため、まず台本生成までは確実に走らせて、動画化は研究を継続します。</p>
+        <p>動画生成は精度の壁が高いため、まず台本生成までは確実に走らせて、動画化は研究を継続します。</p>
         <ul>
           <li>⑦ Gemini／Kling／Runway 研究中</li>
-          <li>⑧ スプシ連携＋YouTube API予約投稿</li>
-          <li>⑨ 自社チャンネルに⑤手法を適用</li>
-          <li>20本中1本問題への着手</li>
+          <li>⑧ スプレッドシート連携＋YouTube予約投稿</li>
+          <li>⑨ 自社チャンネルに⑤の手法を適用</li>
+          <li>「20本中1本」問題への着手</li>
         </ul>
       </div>
 
       <div class="next-card phase3">
-        <span class="next-card-label">Phase 3</span>
-        <h4>Persona Pipeline System として商品化</h4>
-        <p>クライアント様での実証を踏まえて、横展開可能な月額モデルへ。第1号事例として対外ブランド化（要本人承諾）。</p>
+        <span class="next-card-label">フェーズ3</span>
+        <h4>仕組みごと商品化（伴走パートナー型）</h4>
+        <p>クライアント様での実証を踏まえて、横展開可能な月額モデルへ。第1号事例として対外でも紹介させていただく予定（要本人承諾）。</p>
         <ul>
           <li>YouTube運営者向け 月額¥20-30万</li>
-          <li>中小企業オウンド向け 月額¥50万</li>
+          <li>中小企業のオウンドメディア向け 月額¥50万</li>
           <li>大手事業部向け 月額¥100万〜</li>
-          <li>第1号事例化（要承諾）</li>
+          <li>第1号事例として紹介（要承諾）</li>
         </ul>
       </div>
     </div>
@@ -781,10 +781,10 @@ a{color:inherit;text-decoration:none}
 <!-- QUESTIONS -->
 <section class="q-wrap">
   <div class="sec-inner">
-    <span class="sec-label">Section 9 ─ For Confirmation</span>
-    <h2 class="sec-title">クライアント様への<em>判定お願い</em>（5項目）</h2>
+    <span class="sec-label">⑨ ご確認のお願い</span>
+    <h2 class="sec-title">クライアント様への<em>ご確認のお願い</em>（5項目）</h2>
     <p class="sec-sub">
-      Phase 1 の評価をいただくための質問です。スプレッドシート末尾と同じ内容を再掲しています。<br>
+      フェーズ1の評価をいただくための質問です。スプレッドシート末尾と同じ内容を再掲しています。<br>
       ⑤の本ジャンル再走行に進めるかの判定材料にさせてください。
     </p>
 
@@ -807,7 +807,7 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="q-item highlight">
         <span class="q-num">05</span>
-        <p class="q-text"><strong>本ジャンル（育毛剤は仮）を指定いただいて再走行 → 同じ仕組みで比較できる状態で進めて</strong>OK でしょうか？ ─ ここが Phase 1 完了の最重要判定です。</p>
+        <p class="q-text"><strong>本ジャンル（育毛剤は仮）を指定いただいて再走行 → 同じ仕組みで比較できる状態で進めて</strong>OK でしょうか？ ─ ここが フェーズ1 完了の最重要判定です。</p>
       </div>
     </div>
   </div>
@@ -817,18 +817,18 @@ a{color:inherit;text-decoration:none}
 <section class="closing">
   <h2>
     <em>「分析と要因抽出からの規格」</em><br>
-    ─ ご要望に対する Phase 1 の答えがここにあります。
+    ─ ご要望に対する フェーズ1 の答えがここにあります。
   </h2>
   <p>
-    本日のMTGでは、本報告書をベースに <strong>「データの取り方／中身／ここからどう展開できるか」</strong> を順序立てて共有させてください。<br>
+    本日のミーティングでは、本報告書をもとに <strong>「データの取り方／中身／ここからどう展開できるか」</strong> を順序立てて共有させてください。<br>
     ご質問・違和感・追加で見たい数字、なんでもその場で投げてください。<br>
-    Phase 1の合格判定をいただければ、本ジャンルで即再走行に入ります。
+    フェーズ1の合格判定をいただければ、本ジャンルで即再走行に入ります。
   </p>
 </section>
 
 <footer class="footer">
-  Phase 1 Report ─ AI × YouTube Affiliate Research<br>
-  Implementation: 2026.04.19 / Reported: 2026.04.28
+  フェーズ1 報告書 ─ YouTubeアフィリエイト 自動リサーチ<br>
+  実装：2026年4月19日 ／ 報告：2026年4月28日
 </footer>
 
 </body>
