@@ -226,6 +226,36 @@ a{color:inherit;text-decoration:none}
 .next-card li{padding:3px 0 3px 16px;position:relative;font-size:12px;color:var(--color-ink);line-height:1.7}
 .next-card li::before{content:"→";position:absolute;left:0;color:var(--color-accent);font-weight:700}
 
+/* SMALL STEPS */
+.step-cards{display:flex;flex-direction:column;gap:18px;margin-top:36px;max-width:980px;margin-left:auto;margin-right:auto}
+.step-card{display:grid;grid-template-columns:90px 1fr;gap:26px;padding:28px 30px;background:var(--color-paper);border-radius:14px;border-left:5px solid var(--color-primary);box-shadow:0 2px 10px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s;align-items:start}
+.step-card:hover{transform:translateX(3px);box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.step-card.now{border-left-color:var(--color-affil);background:linear-gradient(135deg,rgba(139,74,154,.06),var(--color-paper))}
+.step-card.test{border-left-color:var(--color-accent)}
+.step-card.business{border-left-color:var(--color-primary-dark);background:linear-gradient(135deg,rgba(44,95,75,.06),var(--color-paper))}
+.step-num-block{text-align:center}
+.step-num-badge{font-family:var(--en);font-size:38px;font-weight:600;color:var(--color-primary);line-height:1;display:block;letter-spacing:-.02em}
+.step-card.now .step-num-badge{color:var(--color-affil)}
+.step-card.test .step-num-badge{color:var(--color-accent)}
+.step-card.business .step-num-badge{color:var(--color-primary-dark)}
+.step-period{font-family:var(--en);font-size:10.5px;color:var(--color-muted);letter-spacing:.05em;margin-top:6px;display:block;line-height:1.5}
+.step-content h4{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--color-primary-dark);margin-bottom:10px;line-height:1.55}
+.step-content > p{font-size:13.5px;color:var(--color-ink);line-height:1.9;margin-bottom:14px}
+.step-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media(max-width:680px){.step-detail-grid{grid-template-columns:1fr}}
+.step-detail{padding:14px 16px;background:#fff;border-radius:8px;border-left:3px solid var(--color-line)}
+.step-detail h5{font-size:11px;font-weight:700;color:var(--color-muted);letter-spacing:.05em;margin-bottom:6px}
+.step-detail p{font-size:12.5px;color:var(--color-ink);line-height:1.75}
+.step-detail.judge{border-left-color:var(--color-accent);background:#FBF3E8}
+.step-detail.judge h5{color:var(--color-accent)}
+
+@media(max-width:680px){
+  .step-card{grid-template-columns:1fr;padding:22px 20px;gap:6px}
+  .step-num-block{text-align:left}
+  .step-num-badge{font-size:28px}
+  .step-period{margin-top:2px}
+}
+
 /* QUESTIONS */
 .q-wrap{padding:88px 24px;background:var(--color-bg)}
 .q-list{display:flex;flex-direction:column;gap:14px;margin-top:32px;max-width:900px;margin-left:auto;margin-right:auto}
@@ -738,42 +768,162 @@ a{color:inherit;text-decoration:none}
       </p>
     </div>
 
-    <div class="next-grid">
-      <div class="next-card">
-        <span class="next-card-label">フェーズ1の残り</span>
-        <h4>本ジャンル再走行 → 2ジャンル比較</h4>
-        <p>育毛剤は仮のサンプル。クライアント様の本ジャンルで同じ仕組みを走らせ、再現できるかを比較します。</p>
-        <ul>
-          <li>本ジャンル指定の受領</li>
-          <li>24時間以内に再走行</li>
-          <li>育毛剤との比較レビュー</li>
-          <li>フェーズ1 完了判定</li>
-        </ul>
+    <div style="margin-top:28px;text-align:center;padding:18px 24px;background:rgba(196,145,94,.08);border-radius:10px;max-width:760px;margin-left:auto;margin-right:auto;border:1px dashed var(--color-accent)">
+      <p style="font-size:13.5px;color:var(--color-primary-dark);line-height:1.85">
+        <strong style="color:var(--color-accent)">▼ ここからの運用は、いきなり大きく動かさず<em style="font-style:normal">小さく試して育てる</em>提案です。</strong><br>
+        次のセクションでスモールステップでの運用案を共有させてください。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SMALL STEPS 運用案 -->
+<section class="sec">
+  <div class="sec-inner">
+    <span class="sec-label">⑨ スモールステップ運用案</span>
+    <h2 class="sec-title">ここからの運用：<em>小さく試して、確かめながら育てる</em></h2>
+    <p class="sec-sub">
+      「成果が出るかは、やってみないと分からない」部分が必ず残ります。<br>
+      だからいきなり大きく動かさず、<strong>最小単位で試して→実際の数字で確かめて→次に進む</strong>運用を提案します。<br>
+      各ステップに <strong>期間・やること・出てくるもの・次に進む判定ポイント</strong> を置いています。
+    </p>
+
+    <div class="step-cards">
+
+      <div class="step-card now">
+        <div class="step-num-block">
+          <span class="step-num-badge">0</span>
+          <span class="step-period">本日<br>21:00〜</span>
+        </div>
+        <div class="step-content">
+          <h4>今夜の進捗ミーティング ─ 報告書を一緒に見て、感想と判定をいただく</h4>
+          <p>本報告書とサンプル成果物スプレッドシートを画面共有しながら、<strong>「データの取り方／中身／ここからどう展開できるか」</strong> を順序立てて共有します。違和感・追加で見たい数字、なんでも投げてください。</p>
+          <div class="step-detail-grid">
+            <div class="step-detail">
+              <h5>📦 出てくるもの</h5>
+              <p>判定5項目への回答／本ジャンルの方向性／追加で深掘りしたい論点</p>
+            </div>
+            <div class="step-detail judge">
+              <h5>🚦 次に進む判定</h5>
+              <p>「ステップ1（本ジャンル再走行）に進めて OK」のサイン</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="next-card phase2">
-        <span class="next-card-label">フェーズ2</span>
-        <h4>⑦動画生成・⑧配信・⑨結果分析</h4>
-        <p>動画生成は精度の壁が高いため、まず台本生成までは確実に走らせて、動画化は研究を継続します。</p>
-        <ul>
-          <li>⑦ Gemini／Kling／Runway 研究中</li>
-          <li>⑧ スプレッドシート連携＋YouTube予約投稿</li>
-          <li>⑨ 自社チャンネルに⑤の手法を適用</li>
-          <li>「20本中1本」問題への着手</li>
-        </ul>
+      <div class="step-card">
+        <div class="step-num-block">
+          <span class="step-num-badge">1</span>
+          <span class="step-period">来週<br>1日で完走</span>
+        </div>
+        <div class="step-content">
+          <h4>本ジャンルで1本だけ再走行 ─ 「再現性ある？」を確かめる</h4>
+          <p>クライアント様から指定いただいた本ジャンルで、同じ仕組みを <strong>24時間以内に走らせ直し</strong>。育毛剤と並べて比較して、別ジャンルでも同精度が出るかを確かめます。</p>
+          <div class="step-detail-grid">
+            <div class="step-detail">
+              <h5>📦 出てくるもの</h5>
+              <p>本ジャンル版の20の型＋台本＋スプレッドシート8タブ／育毛剤との比較レビュー</p>
+            </div>
+            <div class="step-detail judge">
+              <h5>🚦 次に進む判定</h5>
+              <p>「育毛剤と同レベルの粒度で出てる」＝再現性アリの確認</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="next-card phase3">
-        <span class="next-card-label">フェーズ3</span>
-        <h4>仕組みごと商品化（伴走パートナー型）</h4>
-        <p>クライアント様での実証を踏まえて、横展開可能な月額モデルへ。第1号事例として対外でも紹介させていただく予定（要本人承諾）。</p>
-        <ul>
-          <li>YouTube運営者向け 月額¥20-30万</li>
-          <li>中小企業のオウンドメディア向け 月額¥50万</li>
-          <li>大手事業部向け 月額¥100万〜</li>
-          <li>第1号事例として紹介（要承諾）</li>
-        </ul>
+      <div class="step-card test">
+        <div class="step-num-block">
+          <span class="step-num-badge">2</span>
+          <span class="step-period">2週間<br>以内</span>
+        </div>
+        <div class="step-content">
+          <h4>実際の動画を1本だけ作って公開 ─ 「明日から動ける」と「本当に売れる」の検証</h4>
+          <p>出力された <strong>1本作るならレシピ</strong> をクライアント様のディレクター・編集者の方にお渡しして、<strong>動画1本だけ</strong> 実装→アフィリリンク貼って公開していただきます。再生数・コメント・アフィリ報酬の実データを取りに行きます。</p>
+          <div class="step-detail-grid">
+            <div class="step-detail">
+              <h5>📦 出てくるもの</h5>
+              <p>動画1本／再生数・コメント数・アフィリリンクのクリック率・成約数の実データ</p>
+            </div>
+            <div class="step-detail judge">
+              <h5>🚦 次に進む判定</h5>
+              <p>「テンプレ通りに動画作れた」＋「想定通りの数字が出た」の両方を確認</p>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <div class="step-card test">
+        <div class="step-num-block">
+          <span class="step-num-badge">3</span>
+          <span class="step-period">並行<br>1〜2ヶ月</span>
+        </div>
+        <div class="step-content">
+          <h4>本番版へアップデート ─ 精度を🟢A まで持っていく</h4>
+          <p>ステップ1〜2の検証と並行して、本番運用に耐える精度に仕上げます。⑤映像解析（Gemini動画AI）の追加、①②③の精度を🟠C・🟡Bから🟢A へ、⑥の汎用化（再現性のあるスキル本番版）まで。</p>
+          <div class="step-detail-grid">
+            <div class="step-detail">
+              <h5>📦 出てくるもの</h5>
+              <p>本番版スキル（1ジャンル30分で完走できる仕組み）／コスト¥1,500〜3,000/ジャンルへ着地</p>
+            </div>
+            <div class="step-detail judge">
+              <h5>🚦 次に進む判定</h5>
+              <p>「ジャンル指定したら30分で全部出てくる」状態の確認</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card test">
+        <div class="step-num-block">
+          <span class="step-num-badge">4</span>
+          <span class="step-period">3〜6ヶ月<br>月1〜2本</span>
+        </div>
+        <div class="step-content">
+          <h4>月1〜2ジャンルで小さく運用しながら学習 ─ 当たるパターンを見つける</h4>
+          <p>いきなり月10ジャンル展開ではなく、まず <strong>月1〜2ジャンル</strong> で小さく回しながらデータを蓄積。「どのタイトル型が当たるか」「どのCTA型が成約率高いか」「どのジャンルが向いてるか」を実数字で見つけにいきます。</p>
+          <div class="step-detail-grid">
+            <div class="step-detail">
+              <h5>📦 出てくるもの</h5>
+              <p>3〜6ヶ月分の運用データ／勝ちパターンの絞り込み／月の収益見通し</p>
+            </div>
+            <div class="step-detail judge">
+              <h5>🚦 次に進む判定</h5>
+              <p>「単月で広告収益依存じゃない収益が出始めた」の確認</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card business">
+        <div class="step-num-block">
+          <span class="step-num-badge">5</span>
+          <span class="step-period">6ヶ月以降<br>事業化</span>
+        </div>
+        <div class="step-content">
+          <h4>仕組みごと事業化 ─ 伴走パートナーとして横展開</h4>
+          <p>クライアント様で実証された仕組みを、<strong>横展開可能な月額モデル</strong> へ。クライアント様は第1号事例として外部紹介させていただきつつ（要本人承諾）、月10〜20ジャンル並走の本格運用フェーズに入ります。</p>
+          <div class="step-detail-grid">
+            <div class="step-detail">
+              <h5>📦 出てくるもの</h5>
+              <p>YouTube運営者向け月額¥20-30万／中小企業のオウンドメディア向け月額¥50万／大手事業部向け月額¥100万〜</p>
+            </div>
+            <div class="step-detail judge">
+              <h5>🚦 次に進む判定</h5>
+              <p>クライアント様自身が事業として乗るか／別軸で並走するか／あるいは両方</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:36px;padding:24px 28px;background:var(--color-primary);color:#fff;border-radius:14px;max-width:780px;margin-left:auto;margin-right:auto;text-align:center">
+      <p style="font-size:14px;line-height:1.95">
+        💡 <strong>各ステップの間に必ず「判定ポイント」を置く</strong> ので、<br>
+        やってみて違和感があれば、その場で立ち止まって方向転換できます。<br>
+        <strong style="color:var(--color-accent)">最初から大きな契約を結ぶ運用ではありません。</strong>
+      </p>
     </div>
   </div>
 </section>
@@ -781,7 +931,7 @@ a{color:inherit;text-decoration:none}
 <!-- QUESTIONS -->
 <section class="q-wrap">
   <div class="sec-inner">
-    <span class="sec-label">⑨ ご確認のお願い</span>
+    <span class="sec-label">⑩ ご確認のお願い</span>
     <h2 class="sec-title">クライアント様への<em>ご確認のお願い</em>（5項目）</h2>
     <p class="sec-sub">
       フェーズ1の評価をいただくための質問です。スプレッドシート末尾と同じ内容を再掲しています。<br>
