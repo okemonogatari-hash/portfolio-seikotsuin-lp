@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>irodori カレンダー被り管理 モックアップ</title>
+<style>
+  :root{
+    --bg:#f7f5f2;
+    --ink:#2a2a2a;
+    --sub:#7a7a7a;
+    --line:#d9d4cc;
+    --card:#ffffff;
+    --warn:#d64545;
+    --warn-bg:#fdecec;
+    --ok:#3a8a5f;
+    --ok-bg:#e8f4ec;
+    --soft:#fff6da;
+    --accent:#c8533a;
+    --chatwork:#f2b200;
+    --zoom:#4a8cf7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    padding:40px 20px;
+  }
+  .container{max-width:1100px;margin:0 auto}
+  header{text-align:center;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+  h1{font-size:28px;font-weight:600;letter-spacing:0.04em;margin-bottom:8px}
+  .lead{color:var(--sub);font-size:14px}
+  .section-title{
+    font-size:18px;
+    font-weight:600;
+    margin:40px 0 16px;
+    padding-left:12px;
+    border-left:4px solid var(--accent);
+  }
+  .meta{color:var(--sub);font-size:12px;margin-bottom:12px}
+
+  /* フロー図 */
+  .flow{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:20px 16px;
+    margin-bottom:32px;
+    flex-wrap:wrap;
+  }
+  .flow-step{
+    flex:1;
+    min-width:140px;
+    text-align:center;
+    padding:12px;
+  }
+  .flow-step .icon{font-size:24px;margin-bottom:6px}
+  .flow-step .label{font-size:13px;font-weight:600}
+  .flow-step .desc{font-size:11px;color:var(--sub);margin-top:4px}
+  .flow-arrow{color:var(--sub);font-size:18px}
+
+  /* スプシ風 */
+  .sheet-wrap{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    margin-bottom:12px;
+  }
+  .sheet-head{
+    background:#34a853;
+    color:#fff;
+    padding:10px 16px;
+    font-size:13px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .sheet-head .tabs{font-size:11px;opacity:0.9}
+  table.sheet{
+    width:100%;
+    border-collapse:collapse;
+    font-size:12px;
+  }
+  table.sheet th,table.sheet td{
+    border:1px solid #e3e1dc;
+    padding:6px 8px;
+    text-align:left;
+    vertical-align:top;
+  }
+  table.sheet th{
+    background:#f0ede7;
+    font-weight:600;
+    font-size:11px;
+    color:var(--sub);
+  }
+  table.sheet th.time{width:70px;text-align:center}
+  table.sheet td.time{text-align:center;color:var(--sub);font-weight:600;background:#fafaf7}
+  .slot{
+    display:block;
+    font-size:11px;
+    padding:3px 5px;
+    border-radius:3px;
+    margin-bottom:2px;
+    line-height:1.3;
+  }
+  .slot.free{color:#b0b0b0}
+  .slot.ok{background:#e8f0fe;color:#1a5fb4;border-left:2px solid #4a8cf7}
+  .slot.warn{background:var(--warn-bg);color:var(--warn);border-left:2px solid var(--warn);font-weight:600}
+  .warn-badge{
+    display:inline-block;
+    font-size:9px;
+    background:var(--warn);
+    color:#fff;
+    padding:1px 4px;
+    border-radius:2px;
+    margin-left:3px;
+    vertical-align:middle;
+  }
+  .legend{
+    display:flex;
+    gap:18px;
+    font-size:11px;
+    color:var(--sub);
+    padding:8px 16px;
+    background:#fafaf7;
+    border-top:1px solid #e3e1dc;
+  }
+  .legend-item{display:flex;align-items:center;gap:6px}
+  .legend-dot{width:10px;height:10px;border-radius:2px}
+
+  /* Chatwork風 */
+  .cw-wrap{
+    background:#e8eaec;
+    border-radius:8px;
+    padding:16px;
+    max-width:640px;
+    margin:0 auto;
+  }
+  .cw-room-head{
+    background:#2b3b4e;
+    color:#fff;
+    padding:10px 14px;
+    border-radius:6px 6px 0 0;
+    font-size:13px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .cw-room-head .chip{
+    font-size:10px;
+    background:#3a4f66;
+    padding:2px 6px;
+    border-radius:3px;
+    font-weight:400;
+  }
+  .cw-msg{
+    background:#fff;
+    padding:14px 16px;
+    border-left:4px solid var(--chatwork);
+    font-size:13px;
+  }
+  .cw-sender{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:8px;
+  }
+  .cw-avatar{
+    width:30px;height:30px;
+    background:linear-gradient(135deg,#f2b200,#e59400);
+    border-radius:4px;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:700;font-size:13px;
+  }
+  .cw-name{font-weight:600;font-size:13px}
+  .cw-time{font-size:11px;color:var(--sub)}
+  .cw-body{
+    background:#fdf9f0;
+    padding:12px;
+    border-radius:4px;
+    font-family:"SF Mono",Menlo,monospace;
+    font-size:12px;
+    line-height:1.7;
+    white-space:pre-wrap;
+  }
+  .cw-body .ttl{color:var(--warn);font-weight:700}
+  .cw-body .ok-ttl{color:var(--ok);font-weight:700}
+  .cw-body .mention{background:#fff3cd;padding:1px 4px;border-radius:2px;color:#8a6d00;font-weight:600}
+  .cw-body .link{color:#4a8cf7;text-decoration:underline}
+
+  /* 大きいコールアウト */
+  .big-callout{
+    display:flex;
+    gap:24px;
+    align-items:flex-start;
+    background:linear-gradient(135deg,#fff9ec 0%,#fef0e4 100%);
+    border:2px solid var(--accent);
+    border-radius:14px;
+    padding:32px;
+    margin-bottom:40px;
+    box-shadow:0 4px 20px rgba(200,83,58,0.1);
+  }
+  .callout-mark{
+    font-size:48px;
+    flex-shrink:0;
+    line-height:1;
+  }
+  .callout-tag{
+    display:inline-block;
+    font-size:11px;
+    background:var(--accent);
+    color:#fff;
+    padding:4px 14px;
+    border-radius:20px;
+    margin-bottom:14px;
+    font-weight:600;
+    letter-spacing:0.08em;
+  }
+  .callout-title{
+    font-size:26px;
+    font-weight:700;
+    line-height:1.5;
+    color:var(--ink);
+    margin-bottom:14px;
+    letter-spacing:0.02em;
+  }
+  .callout-title .hl{
+    background:linear-gradient(transparent 65%,#ffe4b0 65%);
+    padding:0 2px;
+  }
+  .callout-sub{
+    font-size:14px;
+    line-height:1.9;
+    color:var(--ink);
+    opacity:0.88;
+  }
+  .callout-points{
+    display:flex;
+    gap:8px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+  .callout-chip{
+    font-size:12px;
+    background:#fff;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    padding:6px 12px;
+    border-radius:20px;
+    font-weight:600;
+  }
+  @media (max-width:720px){
+    .big-callout{flex-direction:column;padding:24px}
+    .callout-title{font-size:20px}
+  }
+
+  /* いま困ってる／こう変える */
+  .pain-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-bottom:32px;
+  }
+  .pain-card,.solution-card{
+    padding:22px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:var(--card);
+  }
+  .pain-card{border-top:4px solid var(--warn)}
+  .solution-card{border-top:4px solid var(--ok)}
+  .pain-card h3,.solution-card h3{
+    font-size:15px;
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .pain-card h3{color:var(--warn)}
+  .solution-card h3{color:var(--ok)}
+  .pain-card ul,.solution-card ul{list-style:none}
+  .pain-card li,.solution-card li{
+    font-size:13px;
+    padding:8px 0 8px 26px;
+    position:relative;
+    line-height:1.7;
+    border-bottom:1px dashed #eee;
+  }
+  .pain-card li:last-child,.solution-card li:last-child{border-bottom:none}
+  .pain-card li::before{content:"😫";position:absolute;left:0;top:8px;font-size:14px}
+  .solution-card li::before{content:"✨";position:absolute;left:0;top:8px;font-size:14px}
+
+  /* 必要なもの */
+  .need-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-bottom:16px;
+  }
+  .need-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px;
+  }
+  .need-num{
+    display:inline-block;
+    width:32px;height:32px;
+    background:var(--accent);
+    color:#fff;
+    border-radius:50%;
+    line-height:32px;
+    font-weight:700;
+    font-size:15px;
+    text-align:center;
+    margin-bottom:12px;
+  }
+  .need-card h4{
+    font-size:15px;
+    margin-bottom:10px;
+    color:var(--ink);
+    line-height:1.5;
+  }
+  .need-desc{
+    font-size:12px;
+    color:var(--sub);
+    line-height:1.8;
+  }
+  .who{
+    margin-top:12px;
+    padding-top:10px;
+    border-top:1px dashed #eee;
+    font-size:11px;
+    color:var(--accent);
+    font-weight:600;
+  }
+
+  /* タイムライン */
+  .timeline{
+    position:relative;
+    padding-left:32px;
+    margin-bottom:8px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:10px;top:8px;bottom:8px;
+    width:2px;
+    background:var(--line);
+  }
+  .tl-item{
+    position:relative;
+    padding:16px 20px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    margin-bottom:14px;
+  }
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:-28px;top:20px;
+    width:14px;height:14px;
+    border-radius:50%;
+    background:var(--accent);
+    border:3px solid var(--bg);
+  }
+  .tl-item.done::before{background:var(--ok)}
+  .tl-date{
+    font-size:11px;
+    color:var(--accent);
+    font-weight:700;
+    margin-bottom:4px;
+    letter-spacing:0.05em;
+  }
+  .tl-item.done .tl-date{color:var(--ok)}
+  .tl-title{font-size:15px;font-weight:600;margin-bottom:6px}
+  .tl-desc{font-size:13px;color:var(--sub);line-height:1.8}
+
+  @media (max-width:720px){
+    .pain-grid,.need-grid{grid-template-columns:1fr}
+  }
+
+  /* Note */
+  .note{
+    background:var(--soft);
+    border-left:4px solid var(--chatwork);
+    padding:14px 18px;
+    margin-top:24px;
+    border-radius:4px;
+    font-size:13px;
+    line-height:1.7;
+  }
+  .note strong{color:var(--accent)}
+  .footer{
+    text-align:center;
+    color:var(--sub);
+    font-size:11px;
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>irodori スケジュール管理・Zoom被り検知 <span style="color:var(--sub);font-size:16px">イメージ画面</span></h1>
+    <p class="lead">毎朝7:30に自動で動いて、Zoom被りを朝礼の前にお知らせしてくれる仕組みのイメージです</p>
+  </header>
+
+  <!-- 大きいコールアウト（一番伝えたいこと） -->
+  <section class="big-callout">
+    <div class="callout-mark">📋</div>
+    <div class="callout-body">
+      <div class="callout-tag">このツールで作りたいもの</div>
+      <h2 class="callout-title">
+        この画面1つで、<br>
+        <span class="hl">今日のZoomのぜんぶが分かる「板」</span>を作りたい
+      </h2>
+      <p class="callout-sub">
+        誰が・何時に・Zoom①／Zoom②のどっちを使うのか。<br>
+        それぞれのZoomリンクは何か。被ってないか。<br>
+        その全部を<strong>この1枚の画面</strong>から見えるようにして、<br>
+        毎日の「どっちのZoomだっけ？」「被ってない？」の迷いをゼロにします。
+      </p>
+      <div class="callout-points">
+        <span class="callout-chip">📅 誰がいつ何を使うか</span>
+        <span class="callout-chip">🔗 Zoomリンクもここに</span>
+        <span class="callout-chip">🚨 被りは自動でお知らせ</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- いま困ってること -->
+  <h2 class="section-title">いま、こんなことで困ってます</h2>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <h3>😫 今のirodoriの困りごと</h3>
+      <ul>
+        <li>Zoom①（小川さん）／Zoom②（小山さん）のどっちを誰が使ってるか分からない</li>
+        <li>参加する側も「これどっちのZoomだっけ？」って毎回迷う</li>
+        <li>朝礼で目視チェックしないと被ってるか分からない</li>
+        <li>永井さんが毎朝ログインしてリンクを発行する手作業がある</li>
+        <li>たまに被って商談中に事故りそうになる</li>
+      </ul>
+    </div>
+    <div class="solution-card">
+      <h3>✨ これを、こう変えたい</h3>
+      <ul>
+        <li>1つの画面を見れば今日のZoom①/②の使われ方が全部見える</li>
+        <li>Zoomのリンクもその画面に全部並んでるから迷わない</li>
+        <li>被りがあれば朝礼の前にChatworkで自動でお知らせ</li>
+        <li>将来的には「空いてる方のZoom」で自動でリンクまで発行</li>
+        <li>永井さんの手作業をゼロにする</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 全体フロー -->
+  <h2 class="section-title">ざっくりした仕組み</h2>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="icon">📅</div>
+      <div class="label">Googleカレンダー</div>
+      <div class="desc">メンバー全員分</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="icon">⚙️</div>
+      <div class="label">自動チェックの仕組み</div>
+      <div class="desc">毎朝7:30に動く</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="icon">📊</div>
+      <div class="label">運行管理スプシ</div>
+      <div class="desc">1日分ビュー自動生成</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="icon">💬</div>
+      <div class="label">Chatwork自動お知らせ</div>
+      <div class="desc">被りあれば朝礼前に通知</div>
+    </div>
+  </div>
+
+  <!-- スプシ -->
+  <h2 class="section-title">① 運行管理スプシ（自動生成ビュー）</h2>
+  <p class="meta">シート名: <code>2026-04-20_月</code> ／ 毎朝7:30に当日シートが生成される</p>
+
+  <div class="sheet-wrap">
+    <div class="sheet-head">
+      <div>📊 irodori_schedule_dashboard.xlsx</div>
+      <div class="tabs">2026-04-20 | 2026-04-19 | 2026-04-18 | ＋</div>
+    </div>
+    <table class="sheet">
+      <thead>
+        <tr>
+          <th class="time">時間</th>
+          <th>小川菜緒</th>
+          <th>錫谷詩菜</th>
+          <th>小山真奈</th>
+          <th>上野</th>
+          <th>飯田</th>
+          <th>荒内</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="time">9:00</td>
+          <td><span class="slot ok">SNS投稿 9-10</span></td>
+          <td><span class="slot ok">【BNI】 8-9</span></td>
+          <td><span class="slot ok">【Prv.】 8-9</span></td>
+          <td><span class="slot free">—</span></td>
+          <td><span class="slot free">—</span></td>
+          <td><span class="slot ok">社内会議 8-9</span></td>
+        </tr>
+        <tr>
+          <td class="time">10:00</td>
+          <td><span class="slot warn">ZOOM② IRODORI<span class="warn-badge">被</span></span></td>
+          <td><span class="slot ok">対応可能 10-17:30</span></td>
+          <td><span class="slot warn">【IRODORI】タク消化<span class="warn-badge">被</span></span></td>
+          <td><span class="slot ok">IRODORI外 10:30-17</span></td>
+          <td><span class="slot ok">かいさんシー 10-10:30</span></td>
+          <td><span class="slot warn">ZOOM② IRODORI<span class="warn-badge">被</span></span></td>
+        </tr>
+        <tr>
+          <td class="time">11:00</td>
+          <td><span class="slot ok">補助金面談 10:30-15</span></td>
+          <td><span class="slot ok">対応可能</span></td>
+          <td><span class="slot ok">もく会 11-</span></td>
+          <td><span class="slot ok">IRODORI外</span></td>
+          <td><span class="slot free">—</span></td>
+          <td><span class="slot free">—</span></td>
+        </tr>
+        <tr>
+          <td class="time">12:00</td>
+          <td><span class="slot ok">ZOOM② 家事代行計画 12-</span></td>
+          <td><span class="slot ok">対応可能</span></td>
+          <td><span class="slot warn">ZOOM② 未来描く 12-<span class="warn-badge">被</span></span></td>
+          <td><span class="slot ok">IRODORI外</span></td>
+          <td><span class="slot free">—</span></td>
+          <td><span class="slot free">—</span></td>
+        </tr>
+        <tr>
+          <td class="time">13:00</td>
+          <td><span class="slot ok">松戸駅 銀行解約 13:30-15</span></td>
+          <td><span class="slot ok">対応可能</span></td>
+          <td><span class="slot warn">zoom② Indeed 13-<span class="warn-badge">被</span></span></td>
+          <td><span class="slot ok">IRODORI外</span></td>
+          <td><span class="slot free">—</span></td>
+          <td><span class="slot free">—</span></td>
+        </tr>
+        <tr>
+          <td class="time">14:00</td>
+          <td><span class="slot ok">銀行解約つづき</span></td>
+          <td><span class="slot ok">対応可能</span></td>
+          <td><span class="slot ok">zoom② Indeed</span></td>
+          <td><span class="slot ok">IRODORI外</span></td>
+          <td><span class="slot free">—</span></td>
+          <td><span class="slot free">—</span></td>
+        </tr>
+        <tr>
+          <td class="time">15:00</td>
+          <td><span class="slot ok">prv 6/3 zoom① 15-</span></td>
+          <td><span class="slot ok">対応可能</span></td>
+          <td><span class="slot ok">【IRODORI】志 15:30-</span></td>
+          <td><span class="slot ok">IRODORI外</span></td>
+          <td><span class="slot free">—</span></td>
+          <td><span class="slot free">—</span></td>
+        </tr>
+        <tr>
+          <td class="time">16:00</td>
+          <td><span class="slot free">—</span></td>
+          <td><span class="slot ok">対応可能</span></td>
+          <td><span class="slot ok">zoom① 石井さん 16-17</span></td>
+          <td><span class="slot ok">IRODORI外</span></td>
+          <td><span class="slot free">—</span></td>
+          <td><span class="slot free">—</span></td>
+        </tr>
+        <tr>
+          <td class="time">17:00</td>
+          <td><span class="slot ok">日報 17-</span></td>
+          <td><span class="slot ok">対応可能 -17:30</span></td>
+          <td><span class="slot ok">【Prv.】雛奈 17:30-18:30</span></td>
+          <td><span class="slot ok">IRODORI外MTG 17-18:30</span></td>
+          <td><span class="slot free">—</span></td>
+          <td><span class="slot free">—</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-dot" style="background:#e8f0fe;border:1px solid #4a8cf7"></span>通常予定</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--warn-bg);border:1px solid var(--warn)"></span>被り検知</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#fff"></span>空き</div>
+      <div class="legend-item" style="margin-left:auto">自動更新: 2026-04-20 07:30</div>
+    </div>
+  </div>
+
+  <!-- Chatwork -->
+  <h2 class="section-title">② Chatwork 被り警告通知</h2>
+  <p class="meta">送信先: irodoriチーム朝礼ルーム ／ 朝礼開始10分前に自動投稿</p>
+
+  <div class="cw-wrap">
+    <div class="cw-room-head">
+      <span>💬 【内部】irodoriチーム朝礼</span>
+      <span class="chip">8名</span>
+    </div>
+    <div class="cw-msg">
+      <div class="cw-sender">
+        <div class="cw-avatar">BOT</div>
+        <div>
+          <div class="cw-name">irodori_schedule_bot</div>
+          <div class="cw-time">2026-04-20 07:30</div>
+        </div>
+      </div>
+      <div class="cw-body"><span class="ttl">🔴 本日のスケジュール被り警報（2026-04-20）</span>
+
+<span class="mention">[To:all]</span> おはようございます！本日以下の被りが検知されています。
+
+━━━━━━━━━━━━━━━━━━━
+<span class="ttl">■ 10:00-11:00 ZOOM②同時利用</span>
+ ・小川菜緒さん → IRODORI商談
+ ・荒内さん → IRODORI外MTG
+ ※ZOOM回線②が2枠競合。どちらか①へ振替要検討。
+
+<span class="ttl">■ 12:00-13:00 同一メンバー重複</span>
+ ・小山真奈さん → 「未来描くすてき会」 と
+              「zoom② Indeed」 が連続で隙間ゼロ
+ ※移動時間考慮で5分ズラし推奨。
+
+<span class="ttl">■ 13:00-15:00 ZOOM②連続使用</span>
+ ・小山真奈さん（Indeed）→ 小川菜緒さん（松戸駅 外出）に
+   バトン渡し後、ZOOM②空き確認OK ✅
+━━━━━━━━━━━━━━━━━━━
+
+<span class="ok-ttl">✅ 本日の対応優先度</span>
+ 1. 10:00の ZOOM② 被り（菜緒さん・荒内さん）を朝礼で調整
+ 2. 真奈さんの12:00→13:00の連続予定を確認
+
+詳細 → <span class="link">https://docs.google.com/spreadsheets/d/xxx/2026-04-20_月</span></div>
+    </div>
+  </div>
+
+  <!-- 必要な3つのこと -->
+  <h2 class="section-title">そのために、こんな準備が必要です</h2>
+  <p class="meta">この仕組みを作るために、3つの準備をお願いしたいです 🙏</p>
+  <div class="need-grid">
+    <div class="need-card">
+      <div class="need-num">1</div>
+      <h4>Zoomの2つのアカウントに<br>入らせてもらう</h4>
+      <div class="need-desc">
+        Zoom①（小川さん）とZoom②（小山さん）のアカウントに入って、「いつ・誰が・このZoomを使うMTGを作ったか」を自動で読み取れるようにしたいです。<br><br>
+        ※ミーティングの中身や録画を見るわけではなく、「予定だけ」を見せてもらう範囲です。
+      </div>
+      <div class="who">→ 小川さん・小山さんにお願い</div>
+    </div>
+    <div class="need-card">
+      <div class="need-num">2</div>
+      <h4>みんなのカレンダーを<br>見られるようにしてもらう</h4>
+      <div class="need-desc">
+        irodoriメンバー全員のGoogleカレンダーを「見るだけ」の権限で共有してもらえると、誰が何時にどの予定を持ってるかをまとめて把握できます。<br><br>
+        ※予定の追加や削除はできない、読み取り専用の共有です。
+      </div>
+      <div class="who">→ irodoriメンバー全員にお願い</div>
+    </div>
+    <div class="need-card">
+      <div class="need-num">3</div>
+      <h4>Chatworkに<br>自動でお知らせする設定</h4>
+      <div class="need-desc">
+        被りが見つかった時に、朝礼ルームへ自動でお知らせが流れるようにします。<br><br>
+        ※おけもん側で準備できる部分なので、irodoriメンバーへのお願いは特にありません。
+      </div>
+      <div class="who">→ おけもん側で準備</div>
+    </div>
+  </div>
+
+  <!-- タイムライン -->
+  <h2 class="section-title">これからの流れ</h2>
+  <p class="meta">ざっくりこんなスケジュールで進めていきたいです</p>
+  <div class="timeline">
+    <div class="tl-item done">
+      <div class="tl-date">4/20（今日）</div>
+      <div class="tl-title">✅ イメージ画面を作って共有</div>
+      <div class="tl-desc">このページを作ってirodoriチームに見てもらい、やりたいことの方向性を揃える。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">今週（4/21〜4/27）</div>
+      <div class="tl-title">📋 準備（3つのお願いごと）</div>
+      <div class="tl-desc">
+        ・Zoom①／Zoom②へのアクセス<br>
+        ・irodoriメンバーのカレンダー共有<br>
+        ・Chatwork自動お知らせの下準備<br>
+        この3つが揃ったら、作り始められます。
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">来週（4/28〜5/4）</div>
+      <div class="tl-title">🧪 試しに動かしてみる</div>
+      <div class="tl-desc">
+        まずは一部メンバーで「被り検知→Chatworkにお知らせ」をテスト運用。
+        問題なければ徐々に対象を広げて、全員で本番運用スタート。
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">その後</div>
+      <div class="tl-title">🚀 Zoomリンク自動発行まで広げる</div>
+      <div class="tl-desc">
+        見える化が安定してきたら、次は「空いてるZoomを自動で選んでリンクを発行する」機能まで作っていきたいです。ここまでできれば永井さんの手作業がまるごとゼロになります。
+      </div>
+    </div>
+  </div>
+
+  <!-- Note -->
+  <div class="note">
+    <strong>💡 大事にしたいポイント</strong><br><br>
+    ・スプシ画面はあくまで「今日の状況を目で見て分かる地図」。<br>
+    ・本当に効くのはChatworkの自動お知らせ。朝礼の前に「ここ被ってますよ」が勝手に流れてくるから、朝の目視チェックがまるごと無くなります。<br>
+    ・最終ゴールは「画面を見れば今日のZoom運用がぜんぶ完結する」状態。永井さんの手作業をゼロにするのが一番大きな狙いです。
+  </div>
+
+  <div class="footer">
+    irodori スケジュール管理・Zoom被り検知 イメージ画面 v0.2 ／ 2026-04-20 更新
+  </div>
+
+</div>
+</body>
+</html>
