@@ -3,1415 +3,730 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IRODORIの理念 | 縁ある方々を魅力的に彩る</title>
-<meta name="description" content="愛・感謝・お節介精神で、超・一流、超・提案型の左腕パートナーとして最大限の貢献を行い、縁ある方々を魅力的に彩る。IRODORIの理念・ビジョン・バリュー。">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<title>IRODORIの理念 — 縁ある方々を魅力的に彩る</title>
+<meta name="description" content="株式会社IRODORI のフィロソフィー。愛・感謝・お節介を軸に、超・提案型の左腕パートナーへ。理念・ビジョン・バリュー・コアバリュー（7か条）を1ページにまとめました。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-:root {
-  --color-primary: #C8635F;
-  --color-primary-deep: #A84E4A;
-  --color-accent: #D89A68;
-  --color-accent-deep: #B47A4B;
-  --color-bg: #FDF7F0;
-  --color-bg-warm: #FAEEDE;
-  --color-white: #FFFFFF;
-  --color-text: #2A2A2E;
-  --color-text-mid: #5A5A5E;
-  --color-text-light: #8A8A8E;
-  --color-border: #EDE3D6;
-  --color-rose-tint: #FCEFE9;
-  --color-peach-tint: #FDE9D6;
-  --font-serif: 'Noto Serif JP', serif;
-  --font-sans: 'Noto Sans JP', sans-serif;
-  --font-inter: 'Inter', sans-serif;
-  --shadow-soft: 0 8px 32px rgba(168, 78, 74, 0.06);
-  --shadow-mid: 0 16px 48px rgba(168, 78, 74, 0.10);
-}
+  :root{
+    --bg:#FFF7F0;
+    --bg-soft:#FCEEE3;
+    --bg-deep:#F9E4D2;
+    --text:#2A2A2A;
+    --text-sub:#666;
+    --pink:#E8807E;
+    --pink-deep:#DD5757;
+    --orange:#F4B556;
+    --orange-deep:#E89A2F;
+    --green:#5FAA5F;
+    --blue:#4A8FCA;
+    --navy:#3B5C7A;
+    --navy-soft:#7A99B8;
+    --card:#FFFFFF;
+    --shadow:0 4px 20px rgba(0,0,0,0.04);
+    --shadow-strong:0 8px 30px rgba(0,0,0,0.06);
+    --radius:18px;
+    --radius-lg:28px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans JP',-apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic UI',sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;}
 
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-sans);
-  background: var(--color-bg);
-  color: var(--color-text);
-  line-height: 1.8;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-a { text-decoration: none; color: inherit; }
-img { max-width: 100%; display: block; }
+  /* ====== 共通レイアウト ====== */
+  .section{
+    position:relative;
+    padding:90px 24px;
+    overflow:hidden;
+  }
+  .section + .section{border-top:1px solid rgba(0,0,0,0.04);}
+  .container{
+    max-width:1080px;
+    margin:0 auto;
+    position:relative;
+    z-index:2;
+  }
+  .section-title{
+    font-size:clamp(28px,4vw,40px);
+    font-weight:900;
+    letter-spacing:0.01em;
+    margin-bottom:8px;
+    line-height:1.3;
+  }
+  .section-title::after{
+    content:"";
+    display:block;
+    width:64px;
+    height:4px;
+    background:var(--pink);
+    border-radius:2px;
+    margin-top:14px;
+  }
+  .section-title.navy::after{background:var(--navy);}
+  .section-lead{
+    font-size:clamp(15px,1.6vw,17px);
+    color:var(--text-sub);
+    margin-top:24px;
+    margin-bottom:48px;
+  }
 
-.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-.container-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  /* 装飾の丸（背景） */
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(0.5px);
+    opacity:0.55;
+    pointer-events:none;
+    z-index:1;
+  }
+  .blob.pink{background:#FBDDD0;}
+  .blob.peach{background:#FCE7D5;}
+  .blob.gray{background:#E8E8E8;opacity:0.5;}
 
-.en-label {
-  font-family: var(--font-inter);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  display: block;
-  margin-bottom: 16px;
-}
+  /* ====== ヒーロー ====== */
+  .hero{
+    background:linear-gradient(135deg,#FFF1E5 0%,#FFE4D2 100%);
+    padding:120px 24px 110px;
+    text-align:center;
+  }
+  .hero .blob.b1{width:340px;height:340px;top:-100px;left:-80px;background:#FBDDD0;}
+  .hero .blob.b2{width:240px;height:240px;top:60px;right:-60px;background:#FCE7D5;}
+  .hero .blob.b3{width:180px;height:180px;bottom:-40px;left:40%;background:#FAD4C2;opacity:0.5;}
+  .hero-card{
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+    border-radius:var(--radius-lg);
+    padding:60px 40px;
+    max-width:880px;
+    margin:0 auto;
+    box-shadow:var(--shadow-strong);
+    position:relative;
+  }
+  .hero-icons{
+    display:flex;
+    gap:18px;
+    justify-content:center;
+    margin-bottom:18px;
+    font-size:34px;
+  }
+  .hero-tag{
+    color:var(--pink-deep);
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:0.05em;
+    margin-bottom:18px;
+  }
+  .hero-title{
+    font-size:clamp(40px,7vw,72px);
+    font-weight:900;
+    letter-spacing:0.02em;
+    line-height:1.2;
+    margin-bottom:22px;
+  }
+  .hero-sub{
+    font-size:clamp(15px,1.8vw,19px);
+    color:var(--text-sub);
+    line-height:1.8;
+  }
+  .hero-bar{
+    width:64px;
+    height:4px;
+    background:var(--orange);
+    border-radius:2px;
+    margin:36px auto 0;
+  }
 
-.section-title {
-  font-family: var(--font-serif);
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 700;
-  color: var(--color-text);
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-  position: relative;
-  padding-bottom: 24px;
-  margin-bottom: 48px;
-}
-.section-title::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background: var(--color-primary);
-  transition: width 0.8s ease 0.2s;
-}
-.section-title.center { text-align: center; }
-.section-title.center::after { left: 50%; transform: translateX(-50%); }
-.fade-in.is-visible .section-title::after { width: 48px; }
+  /* ====== 3カードグリッド ====== */
+  .grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .grid-2{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+  }
+  .grid-5{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+  }
+  .card{
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:36px 28px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+  }
+  .card-bar{
+    position:absolute;
+    top:0;left:0;right:0;
+    height:5px;
+  }
+  .card-bar.pink{background:var(--pink);}
+  .card-bar.orange{background:var(--orange);}
+  .card-bar.red{background:var(--pink-deep);}
+  .card-bar.green{background:var(--green);}
+  .card-bar.blue{background:var(--blue);}
+  .card-icon{
+    width:64px;height:64px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 18px;
+    font-size:30px;
+  }
+  .card-icon.pink{background:#FBDDD8;color:var(--pink-deep);}
+  .card-icon.orange{background:#FCE5C7;color:var(--orange-deep);}
+  .card-icon.red{background:#FBD0CB;color:var(--pink-deep);}
+  .card-icon.green{background:#D8ECD8;color:var(--green);}
+  .card-icon.blue{background:#D6E5F2;color:var(--blue);}
+  .card-title{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:14px;
+    line-height:1.5;
+  }
+  .card-text{
+    font-size:14px;
+    color:var(--text-sub);
+    line-height:1.8;
+  }
+  .card-text b{color:var(--pink-deep);font-weight:700;}
+  .card-text b.orange{color:var(--orange-deep);}
 
-.section-lead {
-  font-size: 15px;
-  color: var(--color-text-mid);
-  line-height: 2;
-  margin-bottom: 64px;
-  max-width: 680px;
-}
-.section-lead.center { margin-left: auto; margin-right: auto; text-align: center; }
+  /* ====== 警告ボックス ====== */
+  .alert{
+    background:#FBE4E2;
+    border:1px solid #F2BFBA;
+    border-radius:var(--radius);
+    padding:24px 28px;
+    margin-top:36px;
+  }
+  .alert-title{
+    color:var(--pink-deep);
+    font-weight:700;
+    margin-bottom:8px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .alert-text{
+    color:var(--text-sub);
+    font-size:14px;
+    padding-left:30px;
+  }
 
-/* ========== HEADER ========== */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 20px 0;
-  background: rgba(253, 247, 240, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s, padding 0.3s;
-}
-.header.scrolled {
-  padding: 14px 0;
-  border-bottom-color: var(--color-border);
-}
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.brand {
-  font-family: var(--font-serif);
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  color: var(--color-text);
-}
-.brand span { color: var(--color-primary); }
-.nav {
-  display: flex;
-  gap: 36px;
-  align-items: center;
-}
-.nav a {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--color-text-mid);
-  transition: color 0.3s;
-  position: relative;
-}
-.nav a:hover { color: var(--color-primary); }
-.nav-cta {
-  padding: 10px 22px;
-  background: var(--color-primary);
-  color: var(--color-white) !important;
-  border-radius: 100px;
-  font-weight: 600 !important;
-  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-}
-.nav-cta:hover {
-  background: var(--color-primary-deep);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(200, 99, 95, 0.3);
-}
-.nav-toggle { display: none; background: none; border: none; font-size: 22px; color: var(--color-text); cursor: pointer; }
+  /* ====== 理念定義セクション ====== */
+  .def-grid{
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    gap:30px;
+    align-items:stretch;
+  }
+  .def-left{display:flex;flex-direction:column;gap:24px;}
+  .def-card{
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:28px 32px;
+    box-shadow:var(--shadow);
+    position:relative;
+    border-left:5px solid var(--pink);
+  }
+  .def-card.orange{border-left-color:var(--orange);}
+  .def-label{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:12px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .def-label .ico{color:var(--pink);}
+  .def-card.orange .def-label .ico{color:var(--orange);}
+  .def-text{font-size:14px;color:var(--text-sub);line-height:1.9;}
+  .def-text b{color:var(--pink-deep);}
+  .def-note{font-size:12px;color:#999;margin-top:10px;}
 
-/* ========== HERO ========== */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 120px 24px 80px;
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 15% 30%, var(--color-peach-tint) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 70%, var(--color-rose-tint) 0%, transparent 50%),
-    linear-gradient(180deg, #FEF9F4 0%, #FDF1E6 100%);
-  z-index: -2;
-}
-.hero-shape {
-  position: absolute;
-  border-radius: 50%;
-  z-index: -1;
-  opacity: 0.5;
-  filter: blur(40px);
-}
-.hero-shape.s1 { width: 500px; height: 500px; background: #FBCCBC; top: -100px; left: -150px; animation: float 12s ease-in-out infinite; }
-.hero-shape.s2 { width: 400px; height: 400px; background: #F8D9B8; bottom: -100px; right: -100px; animation: float 15s ease-in-out infinite reverse; }
+  .principle{
+    background:var(--card);
+    border:2px solid var(--pink);
+    border-radius:var(--radius);
+    padding:42px 36px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+  }
+  .principle-star{
+    width:60px;height:60px;border-radius:50%;
+    background:var(--pink);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:28px;margin-bottom:18px;
+  }
+  .principle-title{
+    color:var(--pink-deep);
+    font-weight:700;
+    font-size:20px;
+    margin-bottom:24px;
+    padding-bottom:18px;
+    border-bottom:1px solid #F0DBD8;
+    width:100%;
+  }
+  .principle-body{
+    font-size:clamp(15px,1.6vw,18px);
+    line-height:2;
+    font-weight:500;
+  }
+  .principle-body em{font-style:normal;color:var(--pink-deep);font-weight:700;}
 
-@keyframes float {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(40px, -40px); }
-}
+  /* ====== ピラミッド ====== */
+  .pyramid-section{background:#F4F6F9;}
+  .pyramid-section .section-title::after{background:var(--navy);}
+  .pyramid-wrap{
+    display:grid;
+    grid-template-columns:1fr 420px 1fr;
+    gap:30px;
+    align-items:center;
+    margin-top:30px;
+  }
+  .pyramid-side{display:flex;flex-direction:column;gap:50px;}
+  .pyramid-side.left{text-align:right;align-items:flex-end;}
+  .pyramid-side.right{text-align:left;align-items:flex-start;}
+  .pyramid-row h4{font-size:16px;font-weight:700;margin-bottom:4px;}
+  .pyramid-row p{font-size:13px;color:var(--text-sub);}
+  .pyramid-side.right .label{font-weight:700;color:var(--navy);font-size:14px;margin:6px 0;}
+  .pyramid-side.right .arrow{font-size:22px;color:var(--navy-soft);}
+  .pyramid-svg{width:100%;height:auto;}
 
-.hero-content {
-  position: relative;
-  text-align: center;
-  max-width: 920px;
-}
-.hero-icons {
-  display: flex;
-  justify-content: center;
-  gap: 28px;
-  margin-bottom: 32px;
-  opacity: 0;
-  animation: heroFadeIn 1s 0.2s both;
-}
-.hero-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  color: var(--color-white);
-  box-shadow: 0 8px 24px rgba(200, 99, 95, 0.18);
-}
-.hero-icon.i1 { background: linear-gradient(135deg, #D89A68, #C87F4D); }
-.hero-icon.i2 { background: linear-gradient(135deg, #E88582, #C8635F); }
-.hero-icon.i3 { background: linear-gradient(135deg, #F5B582, #E89A65); }
+  /* ====== Value 5本柱 ====== */
+  .value-intro{
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:38px 30px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    border-top:5px solid var(--pink);
+    margin-bottom:30px;
+  }
+  .value-intro-icon{
+    width:64px;height:64px;border-radius:50%;
+    background:#FBD0CB;color:var(--pink-deep);
+    display:flex;align-items:center;justify-content:center;
+    font-size:28px;margin:0 auto 18px;
+  }
+  .value-intro p{font-size:16px;line-height:2;}
+  .value-intro p b{color:var(--pink-deep);}
+  .small-card{
+    background:var(--card);
+    border-radius:14px;
+    padding:24px 14px;
+    box-shadow:var(--shadow);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .small-card-bar{
+    position:absolute;top:0;left:0;right:0;height:4px;
+  }
+  .small-icon{
+    width:46px;height:46px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 12px;font-size:22px;
+  }
+  .small-icon.yellow{background:#FCEFD5;color:var(--orange-deep);}
+  .small-icon.orange{background:#FCE5C7;color:var(--orange-deep);}
+  .small-icon.green{background:#D8ECD8;color:var(--green);}
+  .small-icon.blue{background:#D6E5F2;color:var(--blue);}
+  .small-icon.red{background:#FBD0CB;color:var(--pink-deep);}
+  .small-card-title{font-size:13px;font-weight:700;line-height:1.5;}
+  .next-pill{
+    margin-top:30px;
+    background:#FFF1E0;
+    border:1px dashed #F4B556;
+    color:var(--orange-deep);
+    border-radius:999px;
+    padding:14px 28px;
+    text-align:center;
+    font-size:14px;
+    font-weight:700;
+    display:inline-block;
+  }
+  .next-wrap{text-align:center;}
 
-.hero-tag {
-  display: inline-block;
-  font-family: var(--font-serif);
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--color-primary);
-  letter-spacing: 0.12em;
-  margin-bottom: 24px;
-  opacity: 0;
-  animation: heroFadeIn 0.9s 0.4s both;
-}
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(42px, 7vw, 84px);
-  font-weight: 900;
-  line-height: 1.3;
-  letter-spacing: 0.04em;
-  color: var(--color-text);
-  margin-bottom: 28px;
-  opacity: 0;
-  animation: heroSlideUp 1s 0.5s both;
-}
-.hero-title .accent { color: var(--color-primary); }
-.hero-sub {
-  font-size: clamp(15px, 1.6vw, 18px);
-  color: var(--color-text-mid);
-  line-height: 2;
-  letter-spacing: 0.05em;
-  margin-bottom: 48px;
-  opacity: 0;
-  animation: heroFadeIn 0.9s 0.8s both;
-}
-.hero-divider {
-  width: 1px;
-  height: 48px;
-  background: var(--color-accent);
-  margin: 0 auto;
-  opacity: 0;
-  animation: heroFadeIn 0.9s 1.0s both;
-}
-.hero-scroll {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-inter);
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  color: var(--color-text-light);
-  writing-mode: vertical-rl;
-  opacity: 0;
-  animation: heroFadeIn 1s 1.5s both;
-}
-.hero-scroll::after {
-  content: '';
-  display: block;
-  width: 1px;
-  height: 40px;
-  background: var(--color-text-light);
-  margin: 12px auto 0;
-  animation: scrollBar 2s ease-in-out infinite;
-}
-@keyframes scrollBar {
-  0% { transform: scaleY(0); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  51% { transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
-}
+  /* 5つの価値の柱 詳細カード */
+  .pillar{
+    background:var(--card);
+    border-radius:14px;
+    padding:36px 22px 32px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+  }
+  .pillar-bar{position:absolute;top:0;left:0;right:0;height:5px;}
+  .pillar-icon{
+    width:62px;height:62px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 18px;font-size:28px;
+  }
+  .pillar h4{font-size:16px;font-weight:700;line-height:1.5;margin-bottom:18px;}
+  .pillar p{font-size:13px;color:var(--text-sub);line-height:1.9;}
 
-@keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes heroSlideUp {
-  from { opacity: 0; transform: translateY(32px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+  /* ====== Core Values 一覧 ====== */
+  .corevalue-intro{
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:32px 36px;
+    box-shadow:var(--shadow);
+    border-left:5px solid var(--pink);
+    margin-bottom:36px;
+  }
+  .corevalue-intro p{font-size:15px;line-height:2;}
+  .corevalue-intro b{color:var(--pink-deep);}
+  .cv-list{display:flex;flex-direction:column;gap:14px;}
+  .cv-item{
+    background:var(--card);
+    border-radius:999px;
+    padding:18px 30px;
+    box-shadow:var(--shadow);
+    display:flex;align-items:center;gap:18px;
+    font-size:15px;
+    font-weight:500;
+  }
+  .cv-num{font-weight:700;color:var(--text);}
+  .cv-emoji{font-size:24px;}
+  .cv-item b{color:var(--pink-deep);font-weight:700;}
+  .cv-item b.orange{color:var(--orange-deep);}
+  .cv-item b.blue{color:var(--blue);}
+  .cv-item b.red{color:#C04545;}
+  .cv-item b.green{color:#3F8A3F;}
 
-/* ========== SECTION COMMON ========== */
-section {
-  padding: 120px 0;
-  position: relative;
-}
+  /* ====== Core Value 詳細 ====== */
+  .cv-section{padding:80px 24px;}
+  .cv-section:nth-child(even){background:var(--bg-soft);}
+  .cv-header{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:32px;
+  }
+  .cv-icon-big{
+    width:72px;height:72px;border-radius:18px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:34px;color:#fff;flex-shrink:0;
+  }
+  .cv-icon-big.pink{background:var(--pink);}
+  .cv-icon-big.orange{background:var(--orange);}
+  .cv-icon-big.peach{background:#F4A285;}
+  .cv-icon-big.coral{background:#F08C7A;}
+  .cv-icon-big.blue{background:var(--blue);}
+  .cv-icon-big.deeppink{background:var(--pink-deep);}
+  .cv-icon-big.red{background:#D85A5A;}
+  .cv-eyebrow{color:var(--pink-deep);font-weight:700;font-size:14px;letter-spacing:0.05em;}
+  .cv-title{font-size:clamp(22px,3vw,30px);font-weight:900;line-height:1.4;}
+  .cv-title b{color:var(--pink-deep);}
+  .cv-pillars{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-bottom:30px;
+  }
+  .cv-pillar{
+    background:var(--card);
+    border-radius:14px;
+    padding:24px 22px;
+    box-shadow:var(--shadow);
+    position:relative;overflow:hidden;
+  }
+  .cv-pillar-bar{position:absolute;top:0;left:0;right:0;height:4px;}
+  .cv-pillar-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .cv-pillar-ico{
+    width:36px;height:36px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;
+  }
+  .cv-pillar-text{font-weight:700;font-size:15px;line-height:1.6;}
+  .cv-pillar-text b{color:var(--pink-deep);}
+  .cv-pillar-text b.orange{color:var(--orange-deep);}
+  .cv-pillar-text b.blue{color:var(--blue);}
+  .cv-pillar-sub{font-size:12px;color:var(--text-sub);margin-top:6px;line-height:1.7;}
 
-/* ========== WHY (なぜ理念) ========== */
-.why {
-  background: var(--color-white);
-}
-.why-head { text-align: center; margin-bottom: 72px; }
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-bottom: 56px;
-}
-.why-card {
-  background: var(--color-bg);
-  border-radius: 20px;
-  padding: 48px 32px;
-  text-align: center;
-  border: 1px solid var(--color-border);
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-}
-.why-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-mid);
-  border-color: var(--color-accent);
-}
-.why-card-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-white);
-  font-size: 28px;
-  margin: 0 auto 24px;
-  box-shadow: 0 10px 30px rgba(200, 99, 95, 0.25);
-}
-.why-card h3 {
-  font-family: var(--font-serif);
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  letter-spacing: 0.03em;
-}
-.why-card p {
-  font-size: 14px;
-  color: var(--color-text-mid);
-  line-height: 1.9;
-}
-.why-card p strong { color: var(--color-primary); font-weight: 700; }
+  .dodont{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  .do-box,.dont-box{
+    border-radius:14px;
+    padding:24px 26px;
+  }
+  .do-box{background:#EAF7EA;border:1px solid #C5E5C5;}
+  .dont-box{background:#FBE4E2;border:1px solid #F2BFBA;}
+  .dodont-head{display:flex;align-items:center;gap:8px;font-weight:700;margin-bottom:14px;}
+  .do-box .dodont-head{color:var(--green);}
+  .dont-box .dodont-head{color:var(--pink-deep);}
+  .dodont-mark{
+    width:24px;height:24px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;color:#fff;font-weight:700;
+  }
+  .do-box .dodont-mark{background:var(--green);}
+  .dont-box .dodont-mark{background:var(--pink-deep);}
+  .dodont-sub{font-size:11px;color:var(--text-sub);margin-left:auto;}
+  .dodont ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .dodont li{font-size:14px;line-height:1.7;color:var(--text);}
 
-.why-alert {
-  background: linear-gradient(135deg, #FDE4DE, #FDEFE4);
-  border-left: 4px solid var(--color-primary);
-  border-radius: 12px;
-  padding: 28px 36px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.why-alert-icon {
-  width: 48px; height: 48px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--color-primary);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--color-white);
-  font-size: 20px;
-}
-.why-alert-body h4 {
-  font-family: var(--font-serif);
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--color-primary-deep);
-  margin-bottom: 6px;
-}
-.why-alert-body p {
-  font-size: 14px;
-  color: var(--color-text-mid);
-  line-height: 1.8;
-}
+  /* ====== まとめ ====== */
+  .conclude{
+    background:linear-gradient(135deg,#FFF1E5 0%,#FFE4D2 100%);
+    text-align:center;
+  }
+  .conclude .blob.b1{width:280px;height:280px;top:-60px;right:-40px;background:#FBDDD0;}
+  .conclude .blob.b2{width:200px;height:200px;bottom:-40px;left:-30px;background:#FCE7D5;}
+  .conclude-eyebrow{display:flex;align-items:center;justify-content:flex-start;gap:14px;margin-bottom:32px;}
+  .conclude-eyebrow .ico{
+    width:50px;height:50px;border-radius:14px;background:var(--pink);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:24px;
+  }
+  .conclude-eyebrow span{font-size:18px;font-weight:700;}
+  .conclude-msg{
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:44px 36px;
+    box-shadow:var(--shadow-strong);
+    margin-bottom:36px;
+  }
+  .conclude-msg p{
+    font-size:clamp(22px,3vw,32px);
+    font-weight:900;
+    color:var(--pink-deep);
+    line-height:1.5;
+  }
 
-/* ========== PHILOSOPHY ========== */
-.philosophy {
-  position: relative;
-  background:
-    linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-warm) 100%);
-  overflow: hidden;
-}
-.philosophy::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1600&q=80&auto=format') center/cover;
-  opacity: 0.08;
-  z-index: 0;
-}
-.philosophy-inner {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-}
-.philosophy-box {
-  background: var(--color-white);
-  border-radius: 24px;
-  padding: 80px 56px;
-  max-width: 840px;
-  margin: 0 auto;
-  box-shadow: var(--shadow-mid);
-  border: 1px solid var(--color-border);
-  position: relative;
-}
-.philosophy-box::before {
-  content: '"';
-  position: absolute;
-  top: 16px; left: 32px;
-  font-family: var(--font-serif);
-  font-size: 120px;
-  line-height: 1;
-  color: var(--color-accent);
-  opacity: 0.3;
-}
-.philosophy-mark {
-  display: inline-block;
-  font-family: var(--font-inter);
-  font-size: 11px;
-  letter-spacing: 0.4em;
-  color: var(--color-primary);
-  margin-bottom: 16px;
-  padding: 6px 18px;
-  border: 1px solid var(--color-primary);
-  border-radius: 100px;
-}
-.philosophy-heading {
-  font-family: var(--font-serif);
-  font-size: clamp(22px, 3vw, 30px);
-  font-weight: 700;
-  margin-bottom: 48px;
-  letter-spacing: 0.05em;
-}
-.philosophy-text {
-  font-family: var(--font-serif);
-  font-size: clamp(20px, 2.4vw, 28px);
-  font-weight: 500;
-  line-height: 2.1;
-  letter-spacing: 0.08em;
-  color: var(--color-text);
-}
-.philosophy-text .hl {
-  color: var(--color-primary);
-  font-weight: 700;
-}
-.philosophy-text .sep {
-  display: block;
-  width: 40px;
-  height: 1px;
-  background: var(--color-accent);
-  margin: 24px auto;
-}
+  /* ====== フッター ====== */
+  footer{
+    background:#2A2A2A;
+    color:#F8E8DC;
+    text-align:center;
+    padding:50px 24px;
+    font-size:13px;
+    line-height:2;
+  }
+  footer b{color:#F4B556;font-weight:700;}
 
-/* ========== PHOTO DIVIDER ========== */
-.photo-divider {
-  height: 280px;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  position: relative;
-}
-.photo-divider::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(200, 99, 95, 0.35), rgba(216, 154, 104, 0.35));
-}
-.photo-divider-text {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-serif);
-  font-size: clamp(20px, 2.4vw, 26px);
-  color: var(--color-white);
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-align: center;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.25);
-  padding: 0 24px;
-}
-.pd-1 { background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=1600&q=80&auto=format'); }
-.pd-2 { background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1600&q=80&auto=format'); }
-.pd-3 { background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1600&q=80&auto=format'); }
-
-/* ========== VISION MEMBER ========== */
-.vision-member { background: var(--color-white); }
-.vision-member-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  position: relative;
-}
-.vision-arrow {
-  position: absolute;
-  top: 80px;
-  font-size: 20px;
-  color: var(--color-accent);
-  z-index: 2;
-}
-.vision-arrow.a1 { left: 33.33%; transform: translateX(-50%); }
-.vision-arrow.a2 { left: 66.66%; transform: translateX(-50%); }
-
-.vision-card {
-  background: var(--color-bg);
-  border-radius: 20px;
-  padding: 56px 32px;
-  text-align: center;
-  border-top: 3px solid var(--color-accent);
-  transition: transform 0.4s, box-shadow 0.4s;
-  position: relative;
-}
-.vision-card:nth-child(5) { border-top-color: var(--color-primary); }
-.vision-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-mid);
-}
-.vision-card-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: var(--color-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  margin: 0 auto 28px;
-  box-shadow: 0 10px 30px rgba(216, 154, 104, 0.15);
-}
-.vision-card:nth-child(1) .vision-card-icon { color: var(--color-accent); }
-.vision-card:nth-child(3) .vision-card-icon { color: var(--color-accent-deep); }
-.vision-card:nth-child(5) .vision-card-icon { color: var(--color-primary); }
-.vision-card h3 {
-  font-family: var(--font-serif);
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-.vision-card p {
-  font-size: 14px;
-  color: var(--color-text-mid);
-  line-height: 1.9;
-}
-.vision-card p strong { color: var(--color-primary); font-weight: 700; }
-
-/* ========== VISION CLIENT ========== */
-.vision-client {
-  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-warm) 100%);
-}
-.vc-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-.vc-card {
-  background: var(--color-white);
-  border-radius: 20px;
-  padding: 48px 40px;
-  border-top: 4px solid var(--color-primary);
-  transition: transform 0.4s, box-shadow 0.4s;
-  box-shadow: var(--shadow-soft);
-}
-.vc-card:nth-child(2) { border-top-color: var(--color-accent); }
-.vc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-mid); }
-
-.vc-card-head {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 28px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--color-border);
-}
-.vc-card-icon {
-  width: 52px; height: 52px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-white);
-  font-size: 22px;
-}
-.vc-card:nth-child(1) .vc-card-icon { background: var(--color-primary); }
-.vc-card:nth-child(2) .vc-card-icon { background: var(--color-accent); }
-.vc-card-title {
-  font-family: var(--font-serif);
-  font-size: 22px;
-  font-weight: 700;
-}
-.vc-card-sub {
-  font-family: var(--font-inter);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: var(--color-text-light);
-  margin-left: auto;
-}
-.vc-list {
-  list-style: none;
-  padding: 0;
-}
-.vc-list li {
-  position: relative;
-  padding: 14px 0 14px 32px;
-  border-bottom: 1px dashed var(--color-border);
-  font-size: 15px;
-  color: var(--color-text);
-  line-height: 1.8;
-}
-.vc-list li:last-child { border-bottom: none; }
-.vc-list li::before {
-  content: '';
-  position: absolute;
-  left: 6px; top: 24px;
-  width: 8px; height: 8px;
-  background: var(--color-primary);
-  border-radius: 50%;
-}
-.vc-card:nth-child(2) .vc-list li::before { background: var(--color-accent); }
-.vc-list-hl {
-  font-weight: 700;
-  color: var(--color-primary);
-}
-.vc-card:nth-child(2) .vc-list-hl { color: var(--color-accent-deep); }
-.vc-list-note {
-  display: block;
-  font-size: 13px;
-  color: var(--color-text-mid);
-  margin-top: 4px;
-  font-weight: 400;
-}
-
-/* ========== 5 VALUES ========== */
-.values-5 { background: var(--color-white); }
-.v5-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-}
-.v5-card {
-  background: var(--color-bg);
-  border-radius: 16px;
-  padding: 40px 24px;
-  text-align: center;
-  border-top: 3px solid var(--v5-c, var(--color-primary));
-  transition: transform 0.4s, box-shadow 0.4s;
-}
-.v5-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-mid);
-}
-.v5-num {
-  font-family: var(--font-inter);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--v5-c, var(--color-primary));
-  letter-spacing: 0.1em;
-  margin-bottom: 16px;
-}
-.v5-icon {
-  width: 64px; height: 64px;
-  border-radius: 50%;
-  background: var(--color-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  color: var(--v5-c, var(--color-primary));
-  margin: 0 auto 24px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-}
-.v5-title {
-  font-family: var(--font-serif);
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.6;
-  margin-bottom: 16px;
-  min-height: 54px;
-}
-.v5-desc {
-  font-size: 13px;
-  color: var(--color-text-mid);
-  line-height: 1.9;
-  text-align: left;
-}
-
-/* ========== 7 CORE VALUES ========== */
-.core-values {
-  background: linear-gradient(180deg, var(--color-bg-warm) 0%, var(--color-bg) 100%);
-  position: relative;
-}
-.cv-intro {
-  background: var(--color-white);
-  border-left: 4px solid var(--color-primary);
-  padding: 28px 36px;
-  border-radius: 12px;
-  max-width: 880px;
-  margin: 0 auto 64px;
-  font-size: 15px;
-  line-height: 2;
-  color: var(--color-text-mid);
-}
-.cv-intro strong { color: var(--color-primary); font-weight: 700; }
-
-.cv-list {
-  max-width: 960px;
-  margin: 0 auto;
-  display: grid;
-  gap: 28px;
-}
-.cv-item {
-  background: var(--color-white);
-  border-radius: 20px;
-  padding: 48px;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid var(--color-border);
-  transition: transform 0.4s, box-shadow 0.4s;
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 32px;
-  align-items: start;
-}
-.cv-item:hover {
-  transform: translateX(4px);
-  box-shadow: var(--shadow-mid);
-}
-.cv-badge {
-  width: 72px; height: 72px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--cv-c1, #C8635F), var(--cv-c2, #A84E4A));
-  color: var(--color-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  position: relative;
-  box-shadow: 0 10px 30px rgba(200, 99, 95, 0.2);
-}
-.cv-badge-num {
-  position: absolute;
-  top: -8px; right: -8px;
-  width: 28px; height: 28px;
-  background: var(--color-white);
-  color: var(--cv-c1, var(--color-primary));
-  font-family: var(--font-inter);
-  font-size: 13px;
-  font-weight: 700;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid var(--cv-c1, var(--color-primary));
-}
-.cv-body { min-width: 0; }
-.cv-title {
-  font-family: var(--font-serif);
-  font-size: clamp(20px, 2.2vw, 24px);
-  font-weight: 700;
-  line-height: 1.5;
-  margin-bottom: 24px;
-  color: var(--color-text);
-}
-.cv-title .hl { color: var(--cv-c1, var(--color-primary)); }
-
-.cv-pillars {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 28px;
-}
-.cv-pillar {
-  background: var(--color-bg);
-  padding: 20px;
-  border-radius: 12px;
-  border-top: 2px solid var(--cv-c1, var(--color-primary));
-}
-.cv-pillar h4 {
-  font-family: var(--font-serif);
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--cv-c1, var(--color-primary));
-  margin-bottom: 6px;
-  line-height: 1.5;
-}
-.cv-pillar p {
-  font-size: 13px;
-  color: var(--color-text-mid);
-  line-height: 1.8;
-}
-
-.cv-dodont {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.cv-do, .cv-dont {
-  padding: 20px 24px;
-  border-radius: 12px;
-  font-size: 13px;
-}
-.cv-do {
-  background: #E9F5ED;
-  border-left: 3px solid #3FAE5C;
-}
-.cv-dont {
-  background: #FCECEC;
-  border-left: 3px solid #D55252;
-}
-.cv-do-title, .cv-dont-title {
-  font-weight: 700;
-  font-size: 13px;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.cv-do-title { color: #2A8D45; }
-.cv-dont-title { color: #B13838; }
-.cv-dodont ul { list-style: none; padding: 0; }
-.cv-dodont ul li {
-  position: relative;
-  padding: 4px 0 4px 16px;
-  line-height: 1.8;
-  color: var(--color-text-mid);
-}
-.cv-dodont ul li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 14px;
-  width: 6px; height: 6px;
-  border-radius: 50%;
-}
-.cv-do ul li::before { background: #3FAE5C; }
-.cv-dont ul li::before { background: #D55252; }
-
-/* ========== PYRAMID ========== */
-.pyramid {
-  background: var(--color-white);
-}
-.pyramid-wrap {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 64px;
-  align-items: center;
-}
-.pyramid-text-list {
-  display: grid;
-  gap: 24px;
-}
-.pyramid-text-item {
-  padding: 20px 28px;
-  background: var(--color-bg);
-  border-radius: 12px;
-  border-left: 4px solid var(--color-primary);
-}
-.pyramid-text-item:nth-child(1) { border-left-color: #7A8EA8; }
-.pyramid-text-item:nth-child(2) { border-left-color: #5B7593; }
-.pyramid-text-item:nth-child(3) { border-left-color: #4A658A; }
-.pyramid-text-item:nth-child(4) { border-left-color: #345079; }
-.pyramid-text-item h4 {
-  font-family: var(--font-serif);
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-.pyramid-text-item p {
-  font-size: 13px;
-  color: var(--color-text-mid);
-  font-family: var(--font-inter);
-  letter-spacing: 0.03em;
-}
-.pyramid-visual {
-  position: relative;
-  max-width: 400px;
-  margin: 0 auto;
-  aspect-ratio: 1 / 0.95;
-}
-.pyramid-layer {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--color-white);
-  font-family: var(--font-serif);
-  font-weight: 700;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  transition: transform 0.4s;
-}
-.pyramid-layer:hover { transform: translateX(-50%) translateY(-4px); }
-.pyramid-layer .layer-en {
-  font-family: var(--font-inter);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.3em;
-  opacity: 0.8;
-  margin-top: 2px;
-}
-.pl-1 {
-  top: 0; width: 26%;
-  aspect-ratio: 1 / 1.1;
-  background: #2C4767;
-  clip-path: polygon(50% 0, 100% 100%, 0 100%);
-  font-size: 11px;
-  padding-top: 40%;
-}
-.pl-1 .label-main { font-size: 12px; }
-.pl-2 {
-  top: 28%; width: 52%;
-  height: 20%;
-  background: #345079;
-  clip-path: polygon(25% 0, 75% 0, 100% 100%, 0% 100%);
-  font-size: 18px;
-}
-.pl-3 {
-  top: 50%; width: 76%;
-  height: 22%;
-  background: #4A658A;
-  clip-path: polygon(16% 0, 84% 0, 100% 100%, 0% 100%);
-  font-size: 18px;
-}
-.pl-4 {
-  top: 74%; width: 100%;
-  height: 24%;
-  background: #7A8EA8;
-  clip-path: polygon(13% 0, 87% 0, 100% 100%, 0% 100%);
-  font-size: 18px;
-}
-.pyramid-side-label {
-  position: absolute;
-  right: -16px;
-  font-family: var(--font-inter);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: var(--color-text-light);
-}
-.psl-1 { top: 14%; }
-.psl-2 { top: 70%; }
-
-/* ========== CLOSING ========== */
-.closing {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, #FEECE4, #FCE3E0);
-  padding: 140px 0;
-}
-.closing::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 15% 85%, rgba(245, 168, 108, 0.4), transparent 40%),
-    radial-gradient(circle at 85% 15%, rgba(242, 139, 139, 0.4), transparent 40%);
-}
-.closing-inner {
-  position: relative;
-  text-align: center;
-  max-width: 840px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-.closing-mark {
-  font-family: var(--font-inter);
-  font-size: 11px;
-  letter-spacing: 0.4em;
-  color: var(--color-primary);
-  margin-bottom: 24px;
-  display: inline-block;
-  padding: 8px 20px;
-  background: var(--color-white);
-  border-radius: 100px;
-  box-shadow: var(--shadow-soft);
-}
-.closing-heading {
-  font-family: var(--font-serif);
-  font-size: clamp(30px, 5vw, 48px);
-  font-weight: 900;
-  line-height: 1.6;
-  letter-spacing: 0.06em;
-  margin-bottom: 56px;
-  color: var(--color-text);
-}
-.closing-heading .accent { color: var(--color-primary); }
-.closing-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 56px;
-}
-.closing-card {
-  background: var(--color-white);
-  padding: 36px 24px;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.4s, box-shadow 0.4s;
-}
-.closing-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-mid);
-}
-.closing-card-icon {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: var(--color-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  font-size: 24px;
-}
-.closing-card:nth-child(1) .closing-card-icon { color: #8FB588; }
-.closing-card:nth-child(2) .closing-card-icon { color: var(--color-primary); }
-.closing-card:nth-child(3) .closing-card-icon { color: #7594BA; }
-.closing-card p {
-  font-family: var(--font-serif);
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.8;
-  color: var(--color-text);
-}
-
-/* ========== CTA ========== */
-.cta {
-  padding: 120px 24px;
-  background: linear-gradient(135deg, var(--color-primary), #D07A5E);
-  text-align: center;
-  color: var(--color-white);
-  position: relative;
-  overflow: hidden;
-}
-.cta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08), transparent 40%);
-}
-.cta-inner { position: relative; max-width: 720px; margin: 0 auto; }
-.cta-tag {
-  font-family: var(--font-inter);
-  font-size: 11px;
-  letter-spacing: 0.4em;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 24px;
-  display: inline-block;
-}
-.cta-heading {
-  font-family: var(--font-serif);
-  font-size: clamp(28px, 4vw, 42px);
-  font-weight: 900;
-  line-height: 1.5;
-  margin-bottom: 24px;
-  letter-spacing: 0.04em;
-}
-.cta-sub {
-  font-size: 15px;
-  line-height: 2;
-  opacity: 0.95;
-  margin-bottom: 40px;
-}
-.cta-btns {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 40px;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.cta-btn.primary {
-  background: var(--color-white);
-  color: var(--color-primary);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-}
-.cta-btn.primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 40px rgba(0,0,0,0.2);
-}
-.cta-btn.secondary {
-  background: transparent;
-  border: 1.5px solid rgba(255,255,255,0.6);
-  color: var(--color-white);
-}
-.cta-btn.secondary:hover {
-  background: rgba(255,255,255,0.1);
-  transform: translateY(-2px);
-}
-
-/* ========== FOOTER ========== */
-.footer {
-  background: #1E1A1A;
-  color: rgba(255,255,255,0.7);
-  padding: 64px 24px 32px;
-}
-.footer-inner {
-  max-width: 1120px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 48px;
-  padding-bottom: 48px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-.footer-brand {
-  font-family: var(--font-serif);
-  font-size: 24px;
-  font-weight: 900;
-  color: var(--color-white);
-  letter-spacing: 0.15em;
-  margin-bottom: 16px;
-}
-.footer-brand span { color: var(--color-primary); }
-.footer-desc {
-  font-size: 13px;
-  line-height: 2;
-  color: rgba(255,255,255,0.55);
-}
-.footer-col h5 {
-  font-family: var(--font-inter);
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  color: var(--color-white);
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-.footer-col ul { list-style: none; padding: 0; }
-.footer-col ul li { margin-bottom: 12px; }
-.footer-col ul li a {
-  font-size: 13px;
-  color: rgba(255,255,255,0.55);
-  transition: color 0.3s;
-}
-.footer-col ul li a:hover { color: var(--color-primary); }
-.footer-copy {
-  max-width: 1120px;
-  margin: 32px auto 0;
-  text-align: center;
-  font-family: var(--font-inter);
-  font-size: 12px;
-  color: rgba(255,255,255,0.4);
-  letter-spacing: 0.1em;
-}
-
-/* ========== ANIMATIONS ========== */
-.fade-in, .fade-in-left, .fade-in-right, .stagger > * {
-  opacity: 0;
-  transition: opacity 0.9s ease, transform 0.9s ease;
-}
-.fade-in { transform: translateY(32px); }
-.fade-in-left { transform: translateX(-40px); }
-.fade-in-right { transform: translateX(40px); }
-.stagger > * { transform: translateY(24px); }
-
-.fade-in.is-visible,
-.fade-in-left.is-visible,
-.fade-in-right.is-visible {
-  opacity: 1;
-  transform: translate(0, 0);
-}
-.stagger.is-visible > * { opacity: 1; transform: translateY(0); }
-.stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
-.stagger.is-visible > *:nth-child(2) { transition-delay: 0.15s; }
-.stagger.is-visible > *:nth-child(3) { transition-delay: 0.25s; }
-.stagger.is-visible > *:nth-child(4) { transition-delay: 0.35s; }
-.stagger.is-visible > *:nth-child(5) { transition-delay: 0.45s; }
-.stagger.is-visible > *:nth-child(6) { transition-delay: 0.55s; }
-.stagger.is-visible > *:nth-child(7) { transition-delay: 0.65s; }
-
-/* ========== RESPONSIVE ========== */
-@media (max-width: 960px) {
-  section { padding: 80px 0; }
-  .why-grid, .vision-member-grid, .closing-3 { grid-template-columns: 1fr; }
-  .vision-arrow { display: none; }
-  .v5-grid { grid-template-columns: repeat(2, 1fr); }
-  .v5-title { min-height: auto; }
-  .vc-grid { grid-template-columns: 1fr; }
-  .cv-item { grid-template-columns: 1fr; gap: 24px; padding: 36px 28px; }
-  .cv-badge { margin: 0 auto; }
-  .cv-pillars { grid-template-columns: 1fr; }
-  .cv-dodont { grid-template-columns: 1fr; }
-  .pyramid-wrap { grid-template-columns: 1fr; gap: 40px; }
-  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-  .philosophy-box { padding: 56px 28px; }
-  .photo-divider { background-attachment: scroll; }
-}
-
-@media (max-width: 640px) {
-  .nav { display: none; }
-  .nav-toggle { display: block; }
-  .v5-grid { grid-template-columns: 1fr; }
-  .hero-icons { gap: 16px; }
-  .hero-icon { width: 44px; height: 44px; font-size: 18px; }
-  .hero-scroll { display: none; }
-  .philosophy-box { padding: 40px 20px; }
-  .philosophy-text { font-size: 17px; line-height: 2; }
-  .closing-heading { font-size: 26px; }
-  .cta-btns { flex-direction: column; }
-  .cta-btn { width: 100%; justify-content: center; }
-}
+  /* ====== レスポンシブ ====== */
+  @media (max-width:880px){
+    .grid-3,.grid-5{grid-template-columns:1fr;}
+    .grid-2,.def-grid,.dodont,.cv-pillars{grid-template-columns:1fr;}
+    .pyramid-wrap{grid-template-columns:1fr;}
+    .pyramid-side.left,.pyramid-side.right{text-align:center;align-items:center;}
+    .hero-card{padding:42px 24px;}
+    .section{padding:64px 20px;}
+    .cv-section{padding:60px 20px;}
+    .cv-header{flex-direction:column;text-align:center;align-items:center;}
+  }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header" id="header">
-  <div class="container header-inner">
-    <a href="#top" class="brand">IRO<span>DORI</span></a>
-    <nav class="nav">
-      <a href="#philosophy">理念</a>
-      <a href="#vision">ビジョン</a>
-      <a href="#values">バリュー</a>
-      <a href="#core">コアバリュー</a>
-      <a href="#contact" class="nav-cta">Contact</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero" id="top">
-  <div class="hero-bg"></div>
-  <div class="hero-shape s1"></div>
-  <div class="hero-shape s2"></div>
-
-  <div class="hero-content">
+<!-- ===== HERO ===== -->
+<section class="section hero">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="hero-card">
     <div class="hero-icons">
-      <div class="hero-icon i1"><i class="fas fa-hands-holding-heart"></i></div>
-      <div class="hero-icon i2"><i class="fas fa-heart"></i></div>
-      <div class="hero-icon i3"><i class="fas fa-face-smile-beam"></i></div>
+      <span>🤝</span><span>❤️</span><span>😊</span>
     </div>
-    <p class="hero-tag">縁ある方々を魅力的に彩る</p>
-    <h1 class="hero-title">IRODORI の<br><span class="accent">理念</span></h1>
-    <p class="hero-sub">
-      愛・感謝・おせっかいを軸に、<br>
-      超・提案型の<strong style="color:var(--color-primary);">左腕パートナー</strong>へ
-    </p>
-    <div class="hero-divider"></div>
+    <div class="hero-tag">縁ある方々を魅力的に彩る</div>
+    <h1 class="hero-title">IRODORIの理念</h1>
+    <p class="hero-sub">愛・感謝・おせっかいを軸に、超・提案型の左腕パートナーへ</p>
+    <div class="hero-bar"></div>
   </div>
-
-  <div class="hero-scroll">SCROLL</div>
 </section>
 
-<!-- WHY -->
-<section class="why" id="why">
+<!-- ===== なぜ理念・ビジョンが大事か ===== -->
+<section class="section">
+  <div class="blob pink" style="width:240px;height:240px;top:-60px;right:-80px;"></div>
+  <div class="blob peach" style="width:180px;height:180px;bottom:-40px;left:-50px;"></div>
   <div class="container">
-    <div class="why-head fade-in">
-      <span class="en-label">Why Philosophy</span>
-      <h2 class="section-title center">なぜ理念・ビジョンが大事か</h2>
-      <p class="section-lead center">
-        個人の挑戦・成長がつながり、<br>
-        組織で新しい景色を見にいくために。
-      </p>
-    </div>
+    <h2 class="section-title">なぜ理念・ビジョンが大事か</h2>
+    <p class="section-lead">個人の挑戦・成長がつながり、組織で新しい景色を見にいくために</p>
 
-    <div class="why-grid stagger">
-      <div class="why-card">
-        <div class="why-card-icon"><i class="fas fa-people-group"></i></div>
-        <h3>組織の一体感</h3>
-        <p>チーム全体が同じ方向を向くための<strong>共通言語</strong>をつくる。</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-bar orange"></div>
+        <div class="card-icon orange">👥</div>
+        <h3 class="card-title">組織の一体感</h3>
+        <p class="card-text">チーム全体が同じ方向を向くための<b>共通言語</b>をつくる</p>
       </div>
-      <div class="why-card">
-        <div class="why-card-icon"><i class="fas fa-seedling"></i></div>
-        <h3>文化の定義・育成</h3>
-        <p>「IRODORIらしさ」という<strong>カルチャー</strong>を明確にし、育てていく。</p>
+      <div class="card">
+        <div class="card-bar orange"></div>
+        <div class="card-icon orange">🌱</div>
+        <h3 class="card-title">文化の定義・育成</h3>
+        <p class="card-text">「IRODORIらしさ」という<b>カルチャー</b>を明確にし、育てていく</p>
       </div>
-      <div class="why-card">
-        <div class="why-card-icon"><i class="fas fa-compass"></i></div>
-        <h3>判断と行動の軸</h3>
-        <p>迷ったときに立ち返る<strong>「軸（理念）」</strong>と、目指す<strong>「未来（ビジョン）」</strong>。</p>
+      <div class="card">
+        <div class="card-bar pink"></div>
+        <div class="card-icon pink">🧭</div>
+        <h3 class="card-title">判断と行動の軸</h3>
+        <p class="card-text">迷ったときに立ち返る<b>「軸（理念）」</b>と、目指す<b>「未来（ビジョン）」</b></p>
       </div>
     </div>
 
-    <div class="why-alert fade-in">
-      <div class="why-alert-icon"><i class="fas fa-triangle-exclamation"></i></div>
-      <div class="why-alert-body">
-        <h4>こんな行動は「IRODORIらしくない」</h4>
-        <p>冷たい対応・事務的な対応・クライアントを悪者にする・言われたことしかやらない</p>
-      </div>
+    <div class="alert">
+      <div class="alert-title">⚠️ こんな行動は「IRODORIらしくない」</div>
+      <p class="alert-text">冷たい対応 ・ 事務的な対応 ・ クライアントを悪者にする ・ 言われたことしかやらない</p>
     </div>
   </div>
 </section>
 
-<!-- PHILOSOPHY -->
-<section class="philosophy" id="philosophy">
-  <div class="container philosophy-inner">
-    <div class="fade-in" style="margin-bottom: 56px;">
-      <span class="en-label" style="text-align:center;">Our Philosophy</span>
-      <h2 class="section-title center" style="margin-bottom: 16px;">理念</h2>
-      <p class="section-lead center">
-        組織が何のために存在し、どんな姿勢で価値提供するのか。<br>
-        意思決定や行動に迷いや不安が出たときに、立ち返るための軸。
-      </p>
-    </div>
-
-    <div class="philosophy-box fade-in">
-      <span class="philosophy-mark">IRODORI PHILOSOPHY</span>
-      <p class="philosophy-text">
-        <span class="hl">愛・感謝・お節介</span>精神で、<br>
-        <span class="hl">超・一流、超・提案型</span>の<br>
-        <span class="hl">左腕パートナー</span>として
-        <span class="sep"></span>
-        最大限の貢献を行い、<br>
-        <span class="hl">縁ある方々を魅力的に彩る</span>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- PHOTO DIVIDER -->
-<div class="photo-divider pd-1">
-  <div class="photo-divider-text">一人ひとりが、もっと輝ける場所へ。</div>
-</div>
-
-<!-- VISION MEMBER -->
-<section class="vision-member" id="vision">
+<!-- ===== 理念とビジョンの定義 ===== -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="blob pink" style="width:280px;height:280px;top:-80px;left:-100px;"></div>
   <div class="container">
-    <div class="fade-in" style="text-align: center; margin-bottom: 72px;">
-      <span class="en-label">Vision for Members</span>
-      <h2 class="section-title center">働く人が<br class="sp-only">いきいきと輝ける未来へ</h2>
-      <p class="section-lead center">
-        IRODORIに関わるメンバーが、自分らしくあり続けられる。<br>
-        それが私たちの目指す姿です。
-      </p>
-    </div>
-
-    <div class="vision-member-grid stagger">
-      <div class="vision-card">
-        <div class="vision-card-icon"><i class="fas fa-house-heart"></i></div>
-        <h3>自分らしい働き方</h3>
-        <p>パパママが社畜から解放され、<strong>在宅ワーク</strong>で自分らしく生き生き暮らせる未来を作る。</p>
-      </div>
-      <div class="vision-arrow a1"><i class="fas fa-chevron-right"></i></div>
-
-      <div class="vision-card">
-        <div class="vision-card-icon"><i class="fas fa-star"></i></div>
-        <h3>得意に全集中</h3>
-        <p>どんな方でも、自分の得意を生かして働ける。弱みは人に任せ、<strong>得意なことに全集中</strong>してスキルを伸ばす。</p>
-      </div>
-      <div class="vision-arrow a2"><i class="fas fa-chevron-right"></i></div>
-
-      <div class="vision-card">
-        <div class="vision-card-icon"><i class="fas fa-heart"></i></div>
-        <h3>温かいチーム</h3>
-        <p>子どもの体調不良などがあった時に、チームで<strong>助け合い支え合える温かい場所</strong>を作りたい。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PHOTO DIVIDER -->
-<div class="photo-divider pd-2">
-  <div class="photo-divider-text">クライアントの、一番の応援団であり続けたい。</div>
-</div>
-
-<!-- VISION CLIENT -->
-<section class="vision-client">
-  <div class="container">
-    <div class="fade-in" style="text-align: center; margin-bottom: 72px;">
-      <span class="en-label">Vision for Clients</span>
-      <h2 class="section-title center">クライアントへのビジョン</h2>
-      <p class="section-lead center">
-        単なる代行ではなく、あなたの事業を本気で勝たせたい。<br>
-        「左腕パートナー」として伴走する、IRODORIの約束です。
-      </p>
-    </div>
-
-    <div class="vc-grid">
-      <div class="vc-card fade-in-left">
-        <div class="vc-card-head">
-          <div class="vc-card-icon"><i class="fas fa-gift"></i></div>
-          <div>
-            <div class="vc-card-title">提供する価値</div>
-          </div>
-          <span class="vc-card-sub">Mission</span>
+    <h2 class="section-title">理念とビジョンの定義</h2>
+    <div class="def-grid" style="margin-top:40px;">
+      <div class="def-left">
+        <div class="def-card">
+          <div class="def-label"><span class="ico">💡</span>理念とは</div>
+          <p class="def-text">組織が何のために存在し、どんな姿勢で価値提供するのかを示す<b>変わらない（ブレない）軸</b>。意思決定や行動に迷いや不安が出たときに、立ち返って考えるための<b>判断基準</b>になります。</p>
+          <p class="def-note">※ 理念とミッションは同じ意味で使われます</p>
         </div>
-        <ul class="vc-list">
-          <li><span class="vc-list-hl">圧倒的な提案力とヒアリング力</span></li>
-          <li><span class="vc-list-hl">目的から逆算した最適な戦略設計</span></li>
-          <li><span class="vc-list-hl">プロ品質の文章と画像</span>で、強みや魅力を最大限に引き出し、「成果」につなげる</li>
-          <li><span class="vc-list-hl">単なる代行ではなく左腕パートナーとして伴走</span></li>
+        <div class="def-card orange">
+          <div class="def-label"><span class="ico">🎯</span>ビジョンとは</div>
+          <p class="def-text">「IRODORIが関わることで、<b style="color:var(--orange-deep);">どんな未来を実現したいか</b>」、目指す先を示すもの。</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-star">⭐</div>
+        <div class="principle-title">IRODORI理念</div>
+        <p class="principle-body">
+          <em>愛・感謝・お節介</em>精神で、<br>
+          超・一流、超・提案型の<br>
+          左腕パートナーとして<br><br>
+          最大限の貢献を行い、<br>
+          縁ある方々を魅力的に彩る
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 関係性ピラミッド ===== -->
+<section class="section pyramid-section">
+  <div class="container">
+    <h2 class="section-title navy">理念・ビジョン・バリューの関係性</h2>
+    <div class="pyramid-wrap">
+      <div class="pyramid-side left">
+        <div class="pyramid-row">
+          <h4>企業・組織の存在意義</h4>
+          <p>・・なぜ社会に存在するのか</p>
+        </div>
+        <div class="pyramid-row">
+          <h4>企業・組織が果たす使命や責務</h4>
+          <p>・・なにを達成すべきか</p>
+        </div>
+        <div class="pyramid-row">
+          <h4>企業・組織が目指す未来像</h4>
+          <p>・・どこを目指すか</p>
+        </div>
+        <div class="pyramid-row">
+          <h4>具体的な行動指針・行動基準</h4>
+          <p>・・どのような行動を取るべきか</p>
+        </div>
+      </div>
+
+      <svg class="pyramid-svg" viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg">
+        <!-- 4段ピラミッド -->
+        <polygon points="210,10 240,80 180,80" fill="#1F4068"/>
+        <polygon points="180,80 240,80 280,180 140,180" fill="#365F91"/>
+        <polygon points="140,180 280,180 330,280 90,280" fill="#5180B0"/>
+        <polygon points="90,280 330,280 380,370 40,370" fill="#7DA8C9"/>
+        <text x="210" y="60" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">パーパス</text>
+        <text x="210" y="74" text-anchor="middle" fill="#fff" font-size="8">縁ある方々を</text>
+        <text x="210" y="84" text-anchor="middle" fill="#fff" font-size="8">魅力的に彩る</text>
+        <text x="210" y="140" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">ミッション</text>
+        <text x="210" y="240" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">ビジョン</text>
+        <text x="210" y="335" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">バリュー</text>
+      </svg>
+
+      <div class="pyramid-side right">
+        <div class="label">経営理念</div>
+        <div class="arrow">↑</div>
+        <div style="height:50px;"></div>
+        <div class="arrow">↓</div>
+        <div class="label">企業理念</div>
+        <div class="arrow">↑</div>
+        <div style="height:50px;"></div>
+        <div class="arrow">↓</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ビジョン（対メンバー） ===== -->
+<section class="section">
+  <div class="blob peach" style="width:240px;height:240px;top:-60px;right:-60px;"></div>
+  <div class="container">
+    <h2 class="section-title">ビジョン（対メンバー）</h2>
+    <p class="section-lead">働く人がいきいきと輝ける未来へ</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-bar orange"></div>
+        <div class="card-icon orange">🏠</div>
+        <h3 class="card-title">自分らしい働き方</h3>
+        <p class="card-text">パパママが社畜から解放され、<b class="orange">在宅ワーク</b>で自分らしく生き生き暮らせる未来を作る</p>
+      </div>
+      <div class="card">
+        <div class="card-bar orange"></div>
+        <div class="card-icon orange">⭐</div>
+        <h3 class="card-title">得意に全集中</h3>
+        <p class="card-text">どんな方でも、自分の得意を生かして働ける。弱みは人に任せ、<b class="orange">得意なことに全集中</b>してスキルを伸ばす</p>
+      </div>
+      <div class="card">
+        <div class="card-bar pink"></div>
+        <div class="card-icon pink">💗</div>
+        <h3 class="card-title">温かいチーム</h3>
+        <p class="card-text">子供の体調不良などがあった時に、チームで<b>助け合い支え合える温かい場所</b>を作りたい</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ビジョン（対クライアント） ===== -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="blob pink" style="width:260px;height:260px;bottom:-80px;right:-80px;"></div>
+  <div class="container">
+    <h2 class="section-title">ビジョン（対クライアント）</h2>
+
+    <div class="grid-2" style="margin-top:40px;">
+      <div class="def-card">
+        <div class="def-label"><span class="ico">🎁</span>提供する価値 <span style="color:#999;font-size:13px;font-weight:500;">(Mission)</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:12px;">
+          <li style="font-size:14px;color:var(--text);">圧倒的な提案力とヒアリング力</li>
+          <li style="font-size:14px;color:var(--text);">目的から逆算した最適な戦略設計</li>
+          <li style="font-size:14px;color:var(--text);">プロ品質の文章と画像で、強みや魅力を最大限に引き出し、「成果」につなげる</li>
+          <li style="font-size:14px;color:var(--text);">単なる代行ではなく左腕パートナーとして伴走</li>
         </ul>
       </div>
-
-      <div class="vc-card fade-in-right">
-        <div class="vc-card-head">
-          <div class="vc-card-icon"><i class="fas fa-flag"></i></div>
-          <div>
-            <div class="vc-card-title">目指す姿</div>
-          </div>
-          <span class="vc-card-sub">Vision</span>
-        </div>
-        <ul class="vc-list">
+      <div class="def-card orange">
+        <div class="def-label"><span class="ico">🚩</span>目指す姿 <span style="color:#999;font-size:13px;font-weight:500;">(Vision)</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:18px;margin-top:12px;">
           <li>
-            <span class="vc-list-hl">クライアントの1番の応援団</span>
-            <span class="vc-list-note">意図や想いを汲み取り、勝たせる</span>
+            <div style="font-weight:700;color:var(--orange-deep);font-size:15px;margin-bottom:4px;">クライアントの1番の応援団</div>
+            <div style="font-size:13px;color:var(--text-sub);">（意図や想いを汲み取り、勝たせる）</div>
           </li>
           <li>
-            <span class="vc-list-hl">事業を加速させる伴走型パートナー</span>
-            <span class="vc-list-note">タイパ・成約率を高め、コア業務に集中できる環境を整える</span>
+            <div style="font-weight:700;color:var(--orange-deep);font-size:15px;margin-bottom:4px;">事業を加速させる伴走型パートナー</div>
+            <div style="font-size:13px;color:var(--text-sub);">（タイパ・成約率を高め、コア業務に集中できる環境を整える）</div>
           </li>
         </ul>
       </div>
@@ -1419,547 +734,602 @@ section {
   </div>
 </section>
 
-<!-- 5 VALUES -->
-<section class="values-5" id="values">
+<!-- ===== バリュー(Value)とは ===== -->
+<section class="section">
+  <div class="blob peach" style="width:200px;height:200px;top:80px;right:-40px;"></div>
   <div class="container">
-    <div class="fade-in" style="text-align: center; margin-bottom: 72px;">
-      <span class="en-label">Our Value</span>
-      <h2 class="section-title center">クライアントに提供する<br class="sp-only">5つの価値の柱</h2>
-      <p class="section-lead center">
-        バリューとは、IRODORIがクライアントに提供する具体的な価値のこと。<br>
-        理念やビジョンを実現するために、実際にどのような価値を届けるのかを明確にしたものです。
-      </p>
+    <h2 class="section-title">バリュー（Value）とは</h2>
+
+    <div class="value-intro" style="margin-top:40px;">
+      <div class="value-intro-icon">💎</div>
+      <p>バリューとは、IRODORIが<b>クライアントに提供する具体的な価値</b>のこと。<br>理念やビジョンを実現するために、<br>実際にどのような価値を届けるのかを明確にしたものです。</p>
     </div>
 
-    <div class="v5-grid stagger">
-      <div class="v5-card" style="--v5-c: #E89C5C;">
-        <div class="v5-num">VALUE 01</div>
-        <div class="v5-icon"><i class="fas fa-lightbulb"></i></div>
-        <h3 class="v5-title">気づきをもたらす<br>外の視点</h3>
-        <p class="v5-desc">客観性やプロ目線で、自社では気づかない魅力や課題を発見し提供します。</p>
+    <div class="grid-5">
+      <div class="small-card">
+        <div class="small-card-bar" style="background:var(--orange);"></div>
+        <div class="small-icon yellow">💡</div>
+        <div class="small-card-title">① 気づきをもたらす<br>外の視点</div>
       </div>
-      <div class="v5-card" style="--v5-c: #D89A68;">
-        <div class="v5-num">VALUE 02</div>
-        <div class="v5-icon"><i class="fas fa-clock"></i></div>
-        <h3 class="v5-title">やるべきことに集中できる時間を創出</h3>
-        <p class="v5-desc">ドラえもんのように、クライアントの時間を生み出し、やるべきことに集中できる環境を実現します。</p>
+      <div class="small-card">
+        <div class="small-card-bar" style="background:var(--orange-deep);"></div>
+        <div class="small-icon orange">⏰</div>
+        <div class="small-card-title">② やるべきことに集中<br>できる時間を創出</div>
       </div>
-      <div class="v5-card" style="--v5-c: #78AC6B;">
-        <div class="v5-num">VALUE 03</div>
-        <div class="v5-icon"><i class="fas fa-leaf"></i></div>
-        <h3 class="v5-title">社会にやさしい<br>仕組みづくり</h3>
-        <p class="v5-desc">子育て中の優秀な人材を活用し、企業の人件費も軽減する、社会にやさしい仕組みです。</p>
+      <div class="small-card">
+        <div class="small-card-bar" style="background:var(--green);"></div>
+        <div class="small-icon green">🌿</div>
+        <div class="small-card-title">③ 社会にやさしい<br>仕組みづくり</div>
       </div>
-      <div class="v5-card" style="--v5-c: #6B8AB5;">
-        <div class="v5-num">VALUE 04</div>
-        <div class="v5-icon"><i class="fas fa-rocket"></i></div>
-        <h3 class="v5-title">"最初からプロに頼む"を当たり前に</h3>
-        <p class="v5-desc">手探りで進める無駄をなくし、プロの力で最短距離での目標達成を支援します。</p>
+      <div class="small-card">
+        <div class="small-card-bar" style="background:var(--blue);"></div>
+        <div class="small-icon blue">🚀</div>
+        <div class="small-card-title">④ "最初からプロに<br>頼む"を当たり前に</div>
       </div>
-      <div class="v5-card" style="--v5-c: #C8635F;">
-        <div class="v5-num">VALUE 05</div>
-        <div class="v5-icon"><i class="fas fa-file-lines"></i></div>
-        <h3 class="v5-title">"想い"を伝わる<br>カタチに</h3>
-        <p class="v5-desc">デザイン、ライティング、事務経理など、各分野のプロの力であなたの魅力を彩ります。</p>
+      <div class="small-card">
+        <div class="small-card-bar" style="background:var(--pink-deep);"></div>
+        <div class="small-icon red">📄</div>
+        <div class="small-card-title">⑤ "想い"を伝わる<br>カタチに</div>
+      </div>
+    </div>
+
+    <div class="next-wrap">
+      <div class="next-pill">次のセクションで、これら5つの価値の柱を詳しくご紹介します ➔</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5つの価値の柱（詳細） ===== -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <h2 class="section-title">クライアントに提供する5つの価値の柱 <span style="font-size:18px;font-weight:500;color:#999;">(Value)</span></h2>
+
+    <div class="grid-5" style="margin-top:40px;">
+      <div class="pillar">
+        <div class="pillar-bar" style="background:var(--pink-deep);"></div>
+        <div class="pillar-icon" style="background:#FBD0CB;color:var(--pink-deep);">💡</div>
+        <h4>気づきをもたらす<br>外の視点</h4>
+        <p>客観性やプロ目線で、自社では気づかない魅力や課題を発見し提供します。</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bar" style="background:var(--orange);"></div>
+        <div class="pillar-icon" style="background:#FCEFD5;color:var(--orange-deep);">⏰</div>
+        <h4>やるべきことに集中できる<br>時間を創出</h4>
+        <p>ドラえもんのように、クライアントの時間を生み出し、やるべきことに集中できる環境を実現します。</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bar" style="background:var(--orange-deep);"></div>
+        <div class="pillar-icon" style="background:#FCE5C7;color:var(--orange-deep);">🌱</div>
+        <h4>社会にやさしい<br>仕組みづくり</h4>
+        <p>子育て中の優秀な人材を活用し、企業の人件費も軽減する、社会にやさしい仕組みです。</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bar" style="background:var(--green);"></div>
+        <div class="pillar-icon" style="background:#D8ECD8;color:var(--green);">🚀</div>
+        <h4>"最初からプロに頼む"を<br>当たり前に</h4>
+        <p>手探りで進める無駄をなくし、プロの力で最短距離での目標達成を支援します。</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bar" style="background:var(--blue);"></div>
+        <div class="pillar-icon" style="background:#D6E5F2;color:var(--blue);">📄</div>
+        <h4>"想い"を伝わる<br>カタチに</h4>
+        <p>デザイン、ライティング、事務経理など、各分野のプロの力であなたの魅力を彩ります。素晴らしいサービスを広げるお手伝いをします。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PHOTO DIVIDER -->
-<div class="photo-divider pd-3">
-  <div class="photo-divider-text">日々の判断が、文化になる。</div>
-</div>
-
-<!-- CORE VALUES -->
-<section class="core-values" id="core">
+<!-- ===== コアバリュー(Core Values)とは ===== -->
+<section class="section">
+  <div class="blob pink" style="width:260px;height:260px;top:-60px;right:-80px;"></div>
   <div class="container">
-    <div class="fade-in" style="text-align: center; margin-bottom: 48px;">
-      <span class="en-label">Core Values</span>
-      <h2 class="section-title center">7つのコアバリュー</h2>
-    </div>
+    <h2 class="section-title">コアバリュー <span style="font-size:18px;font-weight:500;color:#999;">(Core Values)</span> とは</h2>
 
-    <div class="cv-intro fade-in">
-      コアバリューとは、<strong>IRODORIのメンバー全員が大切にする行動指針・価値観</strong>のこと。<br>
-      日々の判断や行動の基準となり、チームの文化を形成します。
+    <div class="corevalue-intro" style="margin-top:40px;">
+      <p>コアバリューとは、<b>IRODORIのメンバー全員が大切にする行動指針・価値観</b>のこと。<br>日々の判断や行動の基準となり、チームの文化を形成します。</p>
     </div>
 
     <div class="cv-list">
-
-      <!-- CV 1 -->
-      <div class="cv-item fade-in-left" style="--cv-c1: #E06963; --cv-c2: #B94742;">
-        <div class="cv-badge">
-          <i class="fas fa-heart"></i>
-          <span class="cv-badge-num">1</span>
-        </div>
-        <div class="cv-body">
-          <h3 class="cv-title">縁ある人々に最上級の<span class="hl">愛情と思いやり</span>を持って接す</h3>
-          <div class="cv-pillars">
-            <div class="cv-pillar">
-              <h4><i class="fas fa-fire"></i> 相手目線</h4>
-              <p>押し付けではなく、動機(想い)を聴きながら相手目線で寄りそう</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-bullhorn"></i> クライアントは推し！</h4>
-              <p>愛を言葉と行動で示す</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-scale-balanced"></i> 小善は大悪に似たり</h4>
-              <p>表面的な優しさだけで本質を逸らさない</p>
-            </div>
-          </div>
-          <div class="cv-dodont">
-            <div class="cv-do">
-              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
-              <ul>
-                <li>助け合い</li>
-                <li>相手理解を優先</li>
-                <li>必要な厳しい提言も愛</li>
-              </ul>
-            </div>
-            <div class="cv-dont">
-              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
-              <ul>
-                <li>事務的</li>
-                <li>自己本位</li>
-                <li>形だけの親切</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CV 2 -->
-      <div class="cv-item fade-in-left" style="--cv-c1: #E28B6B; --cv-c2: #B96B49;">
-        <div class="cv-badge">
-          <i class="fas fa-hands-praying"></i>
-          <span class="cv-badge-num">2</span>
-        </div>
-        <div class="cv-body">
-          <h3 class="cv-title">これまでの人生・今起きている出来事の、<span class="hl">全ての物事に感謝</span>をする</h3>
-          <div class="cv-pillars">
-            <div class="cv-pillar">
-              <h4><i class="fas fa-handshake-angle"></i> 一期一会と利他の精神</h4>
-              <p>一つひとつの出会いを大切に</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-user-check"></i> 原因自分論</h4>
-              <p>起きた出来事の責任を自分に置く</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-eye"></i> 「これだけある」の視点</h4>
-              <p>「これしかない」ではなく前向きに捉え直す</p>
-            </div>
-          </div>
-          <div class="cv-dodont">
-            <div class="cv-do">
-              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
-              <ul>
-                <li>1メッセージに、1ありがとうを添える意識！</li>
-                <li>指摘は期待の裏返し（クレームはギフト）</li>
-                <li>違いは間違いじゃない！柔軟に受け止める</li>
-              </ul>
-            </div>
-            <div class="cv-dont">
-              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
-              <ul>
-                <li>協力を当たり前とみなす</li>
-                <li>感謝を忘れる</li>
-                <li>他責思考・他社/他者否定・言い訳</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CV 3 -->
-      <div class="cv-item fade-in-left" style="--cv-c1: #E8A168; --cv-c2: #B8784A;">
-        <div class="cv-badge">
-          <i class="fas fa-gift"></i>
-          <span class="cv-badge-num">3</span>
-        </div>
-        <div class="cv-body">
-          <h3 class="cv-title">真心を込めて、相手の気持ちに立ち、常に<span class="hl">先回りで気配り</span>を行う</h3>
-          <div class="cv-pillars">
-            <div class="cv-pillar">
-              <h4><i class="fas fa-star"></i> そこまでやる？がスタンダード</h4>
-              <p>期待を超える気配りを当たり前にする</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-hand-holding-heart"></i> 配慮はしても遠慮はしない</h4>
-              <p>相手のために必要なことは言い切る</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-flag"></i> 相手の1番の応援団</h4>
-              <p>勝たせるために全力で支える</p>
-            </div>
-          </div>
-          <div class="cv-dodont">
-            <div class="cv-do">
-              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
-              <ul>
-                <li>すみません→ありがとうに変える</li>
-                <li>共感したうえでの提案</li>
-                <li>倒れたら支える！人として当たり前の助け合い</li>
-              </ul>
-            </div>
-            <div class="cv-dont">
-              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
-              <ul>
-                <li>過剰に気を遣いすぎて疲弊</li>
-                <li>押し付けがましい</li>
-                <li>自分本位</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CV 4 -->
-      <div class="cv-item fade-in-left" style="--cv-c1: #D86A66; --cv-c2: #B04A46;">
-        <div class="cv-badge">
-          <i class="fas fa-face-smile-beam"></i>
-          <span class="cv-badge-num">4</span>
-        </div>
-        <div class="cv-body">
-          <h3 class="cv-title">常に<span class="hl">ご機嫌かつ笑顔</span>で周りを明るく照らす</h3>
-          <div class="cv-pillars">
-            <div class="cv-pillar">
-              <h4><i class="fas fa-sun"></i> ニコ・キビ・ハキ</h4>
-              <p>いつもニコニコ笑顔で、キビキビと動き、ハキハキと受け答えする</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-tower-broadcast"></i> 同じ波動の人が集まる</h4>
-              <p>ポジティブなエネルギーの人の周りにはポジティブな人が集まる</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-brain"></i> 解釈は無数</h4>
-              <p>事実は1つだが、解釈は無数。自分の捉え方次第</p>
-            </div>
-          </div>
-          <div class="cv-dodont">
-            <div class="cv-do">
-              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
-              <ul>
-                <li>自分から挨拶</li>
-                <li>ポジティブな言葉選び</li>
-                <li>笑顔を先出し</li>
-              </ul>
-            </div>
-            <div class="cv-dont">
-              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
-              <ul>
-                <li>感傷的な悩み</li>
-                <li>過去への固執</li>
-                <li>ネガティブな態度</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CV 5 -->
-      <div class="cv-item fade-in-left" style="--cv-c1: #6B8AB5; --cv-c2: #4E6B93;">
-        <div class="cv-badge">
-          <i class="fas fa-shield-halved"></i>
-          <span class="cv-badge-num">5</span>
-        </div>
-        <div class="cv-body">
-          <h3 class="cv-title">ごまかしや言い訳はせず、時間や約束など決めたことを<span class="hl">誠実に守る</span></h3>
-          <div class="cv-pillars">
-            <div class="cv-pillar">
-              <h4><i class="fas fa-handshake-simple"></i> 嘘をつかない</h4>
-              <p>事実に対してまっすぐ向き合う</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-comments"></i> 先回りコミュニケーション</h4>
-              <p>聞かれる前に共有・確認する</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-scale-balanced"></i> 動機善なりや、私心なかりしか</h4>
-              <p>動機と目的を常に問い直す</p>
-            </div>
-          </div>
-          <div class="cv-dodont">
-            <div class="cv-do">
-              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
-              <ul>
-                <li>言行一致</li>
-                <li>誠実な謝罪→改善</li>
-                <li>約束を守る</li>
-                <li>愚痴や不平不満だけでなく、一緒に改善策を考える</li>
-              </ul>
-            </div>
-            <div class="cv-dont">
-              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
-              <ul>
-                <li>値引き前提</li>
-                <li>安請け合い</li>
-                <li>雑な仕事</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CV 6 -->
-      <div class="cv-item fade-in-left" style="--cv-c1: #E06963; --cv-c2: #B84F4A;">
-        <div class="cv-badge">
-          <i class="fas fa-fire-flame-curved"></i>
-          <span class="cv-badge-num">6</span>
-        </div>
-        <div class="cv-body">
-          <h3 class="cv-title">仕事に<span class="hl">熱い情熱</span>を持ち、誰よりも本気で取り組む</h3>
-          <div class="cv-pillars">
-            <div class="cv-pillar">
-              <h4><i class="fas fa-medal"></i> プロの誇り</h4>
-              <p>どんな仕事にも誇りを持って取り組む</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-fire"></i> 自燃する</h4>
-              <p>人に言われたからではなく、自分から仕事の面白さやワクワクを見つける</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-battery-three-quarters"></i> 持続可能な熱量</h4>
-              <p>燃え尽きず、長く走り続ける</p>
-            </div>
-          </div>
-          <div class="cv-dodont">
-            <div class="cv-do">
-              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
-              <ul>
-                <li>小さな仕事にも心を込める</li>
-                <li>仕事を楽しむ</li>
-                <li>最高を追求</li>
-              </ul>
-            </div>
-            <div class="cv-dont">
-              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
-              <ul>
-                <li>不燃性</li>
-                <li>空回り</li>
-                <li>遠慮しすぎ</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CV 7 -->
-      <div class="cv-item fade-in-left" style="--cv-c1: #E06963; --cv-c2: #B94742;">
-        <div class="cv-badge">
-          <i class="fas fa-arrow-trend-up"></i>
-          <span class="cv-badge-num">7</span>
-        </div>
-        <div class="cv-body">
-          <h3 class="cv-title">常に<span class="hl">学び続け</span>、高みを目指して<span class="hl">挑戦し続ける</span></h3>
-          <div class="cv-pillars">
-            <div class="cv-pillar">
-              <h4><i class="fas fa-chart-line"></i> 現状維持は退化の始まり</h4>
-              <p>立ち止まった瞬間に後退していることを知る</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-lightbulb"></i> GoodはGreatの敵</h4>
-              <p>「そこそこ」に満足しない</p>
-            </div>
-            <div class="cv-pillar">
-              <h4><i class="fas fa-bolt"></i> 完璧は無い。常に改善</h4>
-              <p>今日の最高を、明日さらに超えていく</p>
-            </div>
-          </div>
-          <div class="cv-dodont">
-            <div class="cv-do">
-              <div class="cv-do-title"><i class="fas fa-circle-check"></i> Do 実践すること</div>
-              <ul>
-                <li>優先順位の明確化</li>
-                <li>ライバルは他人ではなく、自分</li>
-                <li>学んだことをすぐ実践</li>
-              </ul>
-            </div>
-            <div class="cv-dont">
-              <div class="cv-dont-title"><i class="fas fa-circle-xmark"></i> Don't 避けること</div>
-              <ul>
-                <li>「駆け出しなので」は使わない（クライアントにとって私たちはプロ）</li>
-                <li>「なんとなくいい感じ」で満足</li>
-                <li>学んだだけで実践しない</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <div class="cv-item"><span class="cv-num">①</span><span class="cv-emoji">❤️</span>縁ある人々に最上級の<b>愛情と思いやり</b>を持って接す</div>
+      <div class="cv-item"><span class="cv-num">②</span><span class="cv-emoji">🙏</span>これまでの人生・今起きている出来事の、<b>全ての物事に感謝</b>をする</div>
+      <div class="cv-item"><span class="cv-num">③</span><span class="cv-emoji">🎁</span>真心を込めて、相手の気持ちに立ち、常に<b class="orange">先回りで気配り</b>を行う</div>
+      <div class="cv-item"><span class="cv-num">④</span><span class="cv-emoji">😊</span>常に<b>ご機嫌かつ笑顔</b>で周りを明るく照らす</div>
+      <div class="cv-item"><span class="cv-num">⑤</span><span class="cv-emoji">🛡️</span>ごまかしや言い訳はせず、時間や約束など決めたことを<b class="blue">誠実に守る</b></div>
+      <div class="cv-item"><span class="cv-num">⑥</span><span class="cv-emoji">🔥</span>仕事に<b>熱い情熱</b>を持ち、誰よりも<b>本気</b>で取り組む</div>
+      <div class="cv-item"><span class="cv-num">⑦</span><span class="cv-emoji">📈</span>常に<b>学び続け</b>、高みを目指して<b>挑戦し続ける</b></div>
     </div>
   </div>
 </section>
 
-<!-- PYRAMID -->
-<section class="pyramid">
+<!-- ===== Core Value 1 ===== -->
+<section class="cv-section">
   <div class="container">
-    <div class="fade-in" style="text-align: center; margin-bottom: 72px;">
-      <span class="en-label">Structure</span>
-      <h2 class="section-title center">理念・ビジョン・バリューの関係性</h2>
-      <p class="section-lead center">
-        パーパスを頂点に、ミッション・ビジョン・バリューが積み重なる。<br>
-        すべてが一貫してはじめて、IRODORIらしい行動が生まれます。
-      </p>
-    </div>
-
-    <div class="pyramid-wrap">
-      <div class="pyramid-text-list fade-in-left">
-        <div class="pyramid-text-item">
-          <h4>企業・組織の存在意義</h4>
-          <p>PURPOSE — なぜ社会に存在するのか</p>
-        </div>
-        <div class="pyramid-text-item">
-          <h4>果たす使命や責務</h4>
-          <p>MISSION — なにを達成すべきか</p>
-        </div>
-        <div class="pyramid-text-item">
-          <h4>目指す未来像</h4>
-          <p>VISION — どこを目指すか</p>
-        </div>
-        <div class="pyramid-text-item">
-          <h4>具体的な行動指針</h4>
-          <p>VALUE — どのような行動を取るべきか</p>
-        </div>
-      </div>
-
-      <div class="pyramid-visual fade-in-right">
-        <div class="pyramid-side-label psl-1">経営理念 ↑</div>
-        <div class="pyramid-side-label psl-2">企業理念 ↓</div>
-
-        <div class="pyramid-layer pl-1">
-          <span class="label-main">PURPOSE</span>
-          <span class="layer-en">縁ある方々を<br>魅力的に彩る</span>
-        </div>
-        <div class="pyramid-layer pl-2">ミッション</div>
-        <div class="pyramid-layer pl-3">ビジョン</div>
-        <div class="pyramid-layer pl-4">バリュー</div>
+    <div class="cv-header">
+      <div class="cv-icon-big pink">❤️</div>
+      <div>
+        <div class="cv-eyebrow">Core Value 1</div>
+        <h3 class="cv-title">縁ある人々に最上級の<b>愛情と思いやり</b>を持って接す</h3>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- CLOSING -->
-<section class="closing">
-  <div class="closing-inner">
-    <div class="fade-in">
-      <span class="closing-mark">Our Promise</span>
-      <h2 class="closing-heading">
-        「まず<span class="accent">IRODORI</span>に<br>相談しよう」と<br>
-        思われる存在へ
-      </h2>
+    <div class="cv-pillars">
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--pink-deep);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FBD0CB;color:var(--pink-deep);">🔥</div>
+        </div>
+        <div class="cv-pillar-text">押し付けではなく、<br>動機(想い)を聴きながら<br>相手目線で寄りそう</div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--orange);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FCE5C7;color:var(--orange-deep);">📣</div>
+        </div>
+        <div class="cv-pillar-text">クライアントは推し！<br>愛を言葉と行動で示す</div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--orange);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FCE5C7;color:var(--orange-deep);">⚖️</div>
+        </div>
+        <div class="cv-pillar-text"><a href="#" style="color:var(--orange-deep);text-decoration:underline;">小善は大悪に<br>似たり</a></div>
+      </div>
     </div>
 
-    <div class="closing-3 stagger">
-      <div class="closing-card">
-        <div class="closing-card-icon"><i class="fas fa-seedling"></i></div>
-        <p>価値が正しく届き<br>成果が広がる未来を共創</p>
+    <div class="dodont">
+      <div class="do-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✓</div>
+          <span>Do</span>
+          <span class="dodont-sub">実践すること</span>
+        </div>
+        <ul>
+          <li>助け合い</li>
+          <li>相手理解を優先</li>
+          <li>必要な厳しい提言も愛</li>
+        </ul>
       </div>
-      <div class="closing-card">
-        <div class="closing-card-icon"><i class="fas fa-hourglass-half"></i></div>
-        <p>時間・信頼・健康は<br>失ったら戻らない</p>
-      </div>
-      <div class="closing-card">
-        <div class="closing-card-icon"><i class="fas fa-book-open"></i></div>
-        <p>理念と行動を結ぶ<br>フィロソフィー運用へ</p>
+      <div class="dont-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✕</div>
+          <span>Don't</span>
+          <span class="dodont-sub">避けること</span>
+        </div>
+        <ul>
+          <li>事務的</li>
+          <li>自己本位</li>
+          <li>形だけの親切</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta" id="contact">
-  <div class="cta-inner fade-in">
-    <span class="cta-tag">Get in Touch</span>
-    <h2 class="cta-heading">
-      あなたの事業を<br>
-      "左腕" で加速させたい。
-    </h2>
-    <p class="cta-sub">
-      IRODORIの理念に共感いただけた方、<br>
-      クライアントとして、メンバーとして、お気軽にご相談ください。
-    </p>
-    <div class="cta-btns">
-      <a href="#" class="cta-btn primary">
-        <i class="fas fa-paper-plane"></i>
-        お問い合わせ
-      </a>
-      <a href="#" class="cta-btn secondary">
-        <i class="fas fa-user-plus"></i>
-        採用・一緒に働く
-      </a>
+<!-- ===== Core Value 2 ===== -->
+<section class="cv-section">
+  <div class="container">
+    <div class="cv-header">
+      <div class="cv-icon-big coral">🙏</div>
+      <div>
+        <div class="cv-eyebrow">Core Value 2</div>
+        <h3 class="cv-title">これまでの人生・今起きている出来事の、<b>全ての物事に感謝</b>をする</h3>
+      </div>
+    </div>
+
+    <div class="cv-pillars">
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--pink-deep);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FBD0CB;color:var(--pink-deep);">🤝</div>
+        </div>
+        <div class="cv-pillar-text">一期一会と<br><b>利他の精神</b></div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--orange);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FCE5C7;color:var(--orange-deep);">👤</div>
+        </div>
+        <div class="cv-pillar-text"><a href="#" style="color:var(--orange-deep);text-decoration:underline;">原因自分論</a></div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--orange);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FCE5C7;color:var(--orange-deep);">👁️</div>
+        </div>
+        <div class="cv-pillar-text">「これしかない」から<br>「これだけある」の<br><b class="orange">前向きな視点へ</b></div>
+      </div>
+    </div>
+
+    <div class="dodont">
+      <div class="do-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✓</div>
+          <span>Do</span>
+          <span class="dodont-sub">実践すること</span>
+        </div>
+        <ul>
+          <li>1メッセージに、1ありがとうを添える意識！</li>
+          <li>指摘は期待の裏返し（クレームはギフト）</li>
+          <li>違いは間違いじゃない！柔軟に受け止める</li>
+        </ul>
+      </div>
+      <div class="dont-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✕</div>
+          <span>Don't</span>
+          <span class="dodont-sub">避けること</span>
+        </div>
+        <ul>
+          <li>協力を当たり前とみなす</li>
+          <li>感謝を忘れる</li>
+          <li>他責思考・他社/他者否定・言い訳</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">IRO<span>DORI</span></div>
-      <p class="footer-desc">
-        愛・感謝・おせっかいを軸に、<br>
-        縁ある方々を魅力的に彩る<br>
-        左腕パートナーです。
-      </p>
+<!-- ===== Core Value 3 ===== -->
+<section class="cv-section">
+  <div class="container">
+    <div class="cv-header">
+      <div class="cv-icon-big orange">🎁</div>
+      <div>
+        <div class="cv-eyebrow">Core Value 3</div>
+        <h3 class="cv-title">真心を込めて、相手の気持ちに立ち、常に<b style="color:var(--orange-deep);">先回りで気配り</b>を行う</h3>
+      </div>
     </div>
-    <div class="footer-col">
-      <h5>Philosophy</h5>
-      <ul>
-        <li><a href="#philosophy">理念</a></li>
-        <li><a href="#vision">ビジョン</a></li>
-        <li><a href="#values">バリュー</a></li>
-        <li><a href="#core">コアバリュー</a></li>
-      </ul>
+
+    <div class="cv-pillars">
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--pink-deep);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FBD0CB;color:var(--pink-deep);">⭐</div>
+        </div>
+        <div class="cv-pillar-text">そこまでやる？が<br><b>スタンダード</b></div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--orange);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FCE5C7;color:var(--orange-deep);">💛</div>
+        </div>
+        <div class="cv-pillar-text">配慮はしても<br><b style="color:#F0857A;">遠慮はしない</b></div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--orange);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FCE5C7;color:var(--orange-deep);">🚩</div>
+        </div>
+        <div class="cv-pillar-text">相手の1番の<br><b class="orange">応援団</b></div>
+      </div>
     </div>
-    <div class="footer-col">
-      <h5>Connect</h5>
-      <ul>
-        <li><a href="#contact">お問い合わせ</a></li>
-        <li><a href="#contact">採用情報</a></li>
-        <li><a href="#">サービス一覧</a></li>
-      </ul>
+
+    <div class="dodont">
+      <div class="do-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✓</div>
+          <span>Do</span>
+          <span class="dodont-sub">実践すること</span>
+        </div>
+        <ul>
+          <li>すみません→ありがとうに変える</li>
+          <li>共感したうえでの提案</li>
+          <li>倒れたら支える！人として当たり前の助け合い</li>
+        </ul>
+      </div>
+      <div class="dont-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✕</div>
+          <span>Don't</span>
+          <span class="dodont-sub">避けること</span>
+        </div>
+        <ul>
+          <li>過剰に気を遣いすぎて疲弊</li>
+          <li>押し付けがましい</li>
+          <li>自分本位</li>
+        </ul>
+      </div>
     </div>
   </div>
-  <p class="footer-copy">&copy; IRODORI. All Rights Reserved.</p>
+</section>
+
+<!-- ===== Core Value 4 ===== -->
+<section class="cv-section">
+  <div class="container">
+    <div class="cv-header">
+      <div class="cv-icon-big peach">😊</div>
+      <div>
+        <div class="cv-eyebrow">Core Value 4</div>
+        <h3 class="cv-title">常に<b>ご機嫌かつ笑顔</b>で周りを明るく照らす</h3>
+      </div>
+    </div>
+
+    <div class="cv-pillars">
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--pink-deep);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FBD0CB;color:var(--pink-deep);">🌸</div>
+        </div>
+        <div class="cv-pillar-text"><b>ニコ・キビ・ハキ</b></div>
+        <div class="cv-pillar-sub">いつもニコニコ笑顔で、キビキビと動き、ハキハキと受け答えする</div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--orange);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FCE5C7;color:var(--orange-deep);">💪</div>
+        </div>
+        <div class="cv-pillar-text">ポジティブなエネルギーの人の周りには<br><b class="orange">ポジティブな人が集まる</b></div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--orange);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FCE5C7;color:var(--orange-deep);">🍊</div>
+        </div>
+        <div class="cv-pillar-text">事実は1つだが、<b class="orange">解釈は無数</b><br>自分の捉え方次第</div>
+      </div>
+    </div>
+
+    <div class="dodont">
+      <div class="do-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✓</div>
+          <span>Do</span>
+          <span class="dodont-sub">実践すること</span>
+        </div>
+        <ul>
+          <li>自分から挨拶</li>
+          <li>ポジティブな言葉選び</li>
+          <li>笑顔を先出し</li>
+        </ul>
+      </div>
+      <div class="dont-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✕</div>
+          <span>Don't</span>
+          <span class="dodont-sub">避けること</span>
+        </div>
+        <ul>
+          <li>感傷的な悩み</li>
+          <li>過去への固執</li>
+          <li>ネガティブな態度</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Core Value 5 ===== -->
+<section class="cv-section">
+  <div class="container">
+    <div class="cv-header">
+      <div class="cv-icon-big blue">🛡️</div>
+      <div>
+        <div class="cv-eyebrow">Core Value 5</div>
+        <h3 class="cv-title">ごまかしや言い訳はせず、時間や約束など決めたことを<b style="color:var(--blue);">誠実に守る</b></h3>
+      </div>
+    </div>
+
+    <div class="cv-pillars">
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--blue);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#D6E5F2;color:var(--blue);">🤝</div>
+        </div>
+        <div class="cv-pillar-text">嘘をつかない</div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--blue);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#D6E5F2;color:var(--blue);">💬</div>
+        </div>
+        <div class="cv-pillar-text">先回り<br><b class="blue">コミュニケーション</b></div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--blue);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#D6E5F2;color:var(--blue);">⚖️</div>
+        </div>
+        <div class="cv-pillar-text"><a href="#" style="color:var(--blue);text-decoration:underline;">動機善なりや<br>私心なかりしか</a></div>
+      </div>
+    </div>
+
+    <div class="dodont">
+      <div class="do-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✓</div>
+          <span>Do</span>
+          <span class="dodont-sub">実践すること</span>
+        </div>
+        <ul>
+          <li>言行一致</li>
+          <li>誠実な謝罪→改善</li>
+          <li>約束を守る</li>
+          <li>愚痴や不平不満だけでなく、一緒に改善策を考える</li>
+        </ul>
+      </div>
+      <div class="dont-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✕</div>
+          <span>Don't</span>
+          <span class="dodont-sub">避けること</span>
+        </div>
+        <ul>
+          <li>値引き前提</li>
+          <li>安請け合い</li>
+          <li>雑な仕事</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Core Value 6 ===== -->
+<section class="cv-section">
+  <div class="container">
+    <div class="cv-header">
+      <div class="cv-icon-big deeppink">🔥</div>
+      <div>
+        <div class="cv-eyebrow">Core Value 6</div>
+        <h3 class="cv-title">仕事に<b>熱い情熱</b>を持ち、誰よりも<b>本気</b>で取り組む</h3>
+      </div>
+    </div>
+
+    <div class="cv-pillars">
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--pink-deep);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FBD0CB;color:var(--pink-deep);">🏆</div>
+        </div>
+        <div class="cv-pillar-text">プロの<b>誇り</b></div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--orange);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FCE5C7;color:var(--orange-deep);">👍</div>
+        </div>
+        <div class="cv-pillar-text">人に言われたからではなく、<br><b class="orange">自分から仕事の面白さやワクワクを見つける</b></div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--orange);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FCE5C7;color:var(--orange-deep);">🔋</div>
+        </div>
+        <div class="cv-pillar-text">持続可能な<br><b class="orange">熱量</b></div>
+      </div>
+    </div>
+
+    <div class="dodont">
+      <div class="do-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✓</div>
+          <span>Do</span>
+          <span class="dodont-sub">実践すること</span>
+        </div>
+        <ul>
+          <li>小さな仕事にも心を込める</li>
+          <li>仕事を楽しむ</li>
+          <li>最高を追求</li>
+        </ul>
+      </div>
+      <div class="dont-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✕</div>
+          <span>Don't</span>
+          <span class="dodont-sub">避けること</span>
+        </div>
+        <ul>
+          <li>不燃性</li>
+          <li>空回り</li>
+          <li>遠慮しすぎ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Core Value 7 ===== -->
+<section class="cv-section">
+  <div class="container">
+    <div class="cv-header">
+      <div class="cv-icon-big red">📈</div>
+      <div>
+        <div class="cv-eyebrow">Core Value 7</div>
+        <h3 class="cv-title">常に<b>学び続け</b>、高みを目指して<b>挑戦し続ける</b></h3>
+      </div>
+    </div>
+
+    <div class="cv-pillars">
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--pink-deep);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FBD0CB;color:var(--pink-deep);">📊</div>
+        </div>
+        <div class="cv-pillar-text">現状維持は<b>退化の始まり</b></div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--orange);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FCE5C7;color:var(--orange-deep);">💡</div>
+        </div>
+        <div class="cv-pillar-text">Goodは<b class="orange">Greatの敵</b></div>
+      </div>
+      <div class="cv-pillar">
+        <div class="cv-pillar-bar" style="background:var(--orange);"></div>
+        <div class="cv-pillar-head">
+          <div class="cv-pillar-ico" style="background:#FCE5C7;color:var(--orange-deep);">⚡</div>
+        </div>
+        <div class="cv-pillar-text">完璧は無い<br><b class="orange">常に改善・改良</b></div>
+      </div>
+    </div>
+
+    <div class="dodont">
+      <div class="do-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✓</div>
+          <span>Do</span>
+          <span class="dodont-sub">実践すること</span>
+        </div>
+        <ul>
+          <li>優先順位の明確化</li>
+          <li>ライバルは他人ではなく、自分</li>
+          <li>学んだことをすぐ実践</li>
+        </ul>
+      </div>
+      <div class="dont-box">
+        <div class="dodont-head">
+          <div class="dodont-mark">✕</div>
+          <span>Don't</span>
+          <span class="dodont-sub">避けること</span>
+        </div>
+        <ul>
+          <li>「駆け出しなので」は使わない<br>（クライアントにとって私たちはプロ）</li>
+          <li>「なんとなくいい感じ」で満足</li>
+          <li>学んだだけで実践しない</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== まとめ ===== -->
+<section class="section conclude">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="container">
+    <div class="conclude-eyebrow" style="justify-content:center;">
+      <div class="ico">🤝</div>
+      <span>まとめ ｜ "かかりつけパートナー" として</span>
+    </div>
+
+    <div class="conclude-msg">
+      <p>「まずIRODORIに相談しよう」と思われる存在へ</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-bar orange"></div>
+        <div class="card-icon orange">🌱</div>
+        <p class="card-text" style="font-weight:700;color:var(--text);">価値が正しく届き<br>成果が広がる未来を共創</p>
+      </div>
+      <div class="card">
+        <div class="card-bar pink"></div>
+        <div class="card-icon pink">⏳</div>
+        <p class="card-text" style="font-weight:700;color:var(--text);">時間・信頼・健康は<br>失ったら戻らない</p>
+      </div>
+      <div class="card">
+        <div class="card-bar blue"></div>
+        <div class="card-icon blue">📖</div>
+        <p class="card-text" style="font-weight:700;color:var(--text);">理念と行動を結ぶ<br>フィロソフィー運用へ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><b>株式会社IRODORI</b></p>
+  <p>縁ある方々を魅力的に彩る</p>
+  <p style="margin-top:14px;font-size:11px;color:#999;">© IRODORI Inc.</p>
 </footer>
-
-<script>
-// Header scroll
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 40) header.classList.add('scrolled');
-  else header.classList.remove('scrolled');
-});
-
-// IntersectionObserver for animations
-const animEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger');
-const animObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('is-visible');
-      animObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
-animEls.forEach(el => {
-  const r = el.getBoundingClientRect();
-  if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
-  else animObs.observe(el);
-});
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-</script>
 
 </body>
 </html>
