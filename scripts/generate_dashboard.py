@@ -366,6 +366,35 @@ def render_html(today, day_list, generated_at):
     # 既存HTMLからCSSを抽出して流用するか、ハードコードするか。
     # ここでは安全に既存HTMLからCSSを読み出す（無ければハードコード）。
     css = _load_css()
+    # 「お願い」ボックス用の追加CSS
+    css += (
+        ".request-box{background:linear-gradient(135deg,#fef3f2 0%,#fde2e0 100%);"
+        "border:3px solid #d64545;border-radius:14px;padding:28px 32px;"
+        "margin-bottom:32px;box-shadow:0 4px 16px rgba(214,69,69,0.15)}"
+        ".request-tag{display:inline-block;background:#d64545;color:#fff;font-size:13px;"
+        "padding:5px 16px;border-radius:20px;margin-bottom:14px;font-weight:700;letter-spacing:0.05em}"
+        ".request-title{font-size:22px;font-weight:700;line-height:1.55;color:#2a2a2a;margin-bottom:14px}"
+        ".request-title .hl{background:linear-gradient(transparent 65%,#ffd7c2 65%);padding:0 4px;color:#c8533a}"
+        ".request-sub{font-size:14px;line-height:1.9;color:#2a2a2a;margin-bottom:18px}"
+        ".request-sub strong{color:#d64545}"
+        ".request-examples{display:flex;flex-direction:column;gap:8px;"
+        "background:#fff;border-radius:10px;padding:16px 20px;border:1px solid #f0d4d2}"
+        ".ex-row{font-size:13px;line-height:1.7}"
+        ".ex-row .lbl{display:inline-block;width:22px;font-weight:700}"
+        ".ex-row.bad{color:#999}"
+        ".ex-row.bad .lbl{color:#d64545}"
+        ".ex-row.good{color:#1d6c3f;font-weight:600}"
+        ".ex-row.good .lbl{color:#3a8a5f}"
+        ".feedback-box{background:linear-gradient(135deg,#e8f4ff 0%,#d6e9fc 100%);"
+        "border:2px solid #4a8cf7;border-radius:14px;padding:22px 28px;"
+        "margin-bottom:32px;box-shadow:0 4px 14px rgba(74,140,247,0.12)}"
+        ".feedback-tag{display:inline-block;background:#4a8cf7;color:#fff;font-size:12px;"
+        "padding:4px 14px;border-radius:18px;margin-bottom:12px;font-weight:700;letter-spacing:0.05em}"
+        ".feedback-title{font-size:18px;font-weight:700;color:#2a2a2a;margin-bottom:10px;line-height:1.55}"
+        ".feedback-title strong{color:#1a5fb4}"
+        ".feedback-sub{font-size:13.5px;line-height:1.9;color:#2a2a2a}"
+        ".feedback-sub strong{color:#1a5fb4}"
+    )
 
     summary_html = render_summary(today, day_list)
     cards_html = "".join(render_day_card(dd, today) for dd in day_list)
@@ -402,6 +431,33 @@ def render_html(today, day_list, generated_at):
 <span class="callout-chip">🚨 被りは赤色でお知らせ</span>
 </div>
 </div>
+</section>
+
+<section class="request-box">
+<div class="request-tag">🙏 みなさんへの お願い（重要）</div>
+<h2 class="request-title">
+Zoom会議のタイトルに、<span class="hl">作った方（担当PM）の名前</span>を必ず入れてください
+</h2>
+<p class="request-sub">
+このダッシュボードは <strong>Zoom会議の「タイトル」から担当者を読み取って</strong>表示しています。<br>
+タイトルに作った方の名前が無いと、<strong>誰の予定か分からず、被り検知の精度も大きく下がります。</strong><br>
+すでに登録済みの予定も、可能な範囲で<strong>タイトルへの追記</strong>をお願いいたします🙇‍♀️
+</p>
+<div class="request-examples">
+<div class="ex-row bad"><span class="lbl">❌</span> 「1on1ミーティング」 ／ 「打ち合わせ」 ／ 「定例MTG」</div>
+<div class="ex-row good"><span class="lbl">⭕</span> 「1on1ミーティング（PM:小山）」 ／ 「石井さん 作業打合せ（永井使用）」 ／ 「BNI 1to1（担当：菜緒）」</div>
+</div>
+</section>
+
+<section class="feedback-box">
+<div class="feedback-tag">🔍 違和感・間違いを見つけたら</div>
+<h2 class="feedback-title">「あれ？これおかしいかも」と思ったら、<strong>おけもんまでお気軽に</strong></h2>
+<p class="feedback-sub">
+このダッシュボードは Zoom API から自動で取得していますが、<strong>100%の精度ではない可能性があります</strong>。<br>
+「予定が抜けてる」「時刻がズレてる」「被り検知がおかしい」「担当PM名が拾えてない」など、<br>
+違和感・間違いがあれば、Chatworkで <strong>おけもん（三又謙次郎）</strong> まで一言いただけると助かります🙇‍♀️<br>
+皆さんからの違和感報告で精度を上げていきます！
+</p>
 </section>
 
 {summary_html}
