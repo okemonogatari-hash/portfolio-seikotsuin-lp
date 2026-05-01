@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>梅田で日本酒を愉しむ。— 厳選5軒 —</title>
+<meta name="description" content="大阪・梅田で日本酒が美味しい厳選5店。専門店から隠れ家、立ち飲みまで、シーンで選ぶ一献ガイド。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --sumi:#2c2825;
+    --washi:#f5efe4;
+    --washi-deep:#ebe2cf;
+    --shu:#a23b2c;
+    --shu-deep:#7a2a1f;
+    --kin:#c8a96a;
+    --usu:#8a7e6a;
+    --line:rgba(26,26,26,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+    color:var(--ink);
+    background:var(--washi);
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(162,59,44,0.04), transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(200,169,106,0.05), transparent 40%);
+    pointer-events:none;z-index:0;
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    min-height:88vh;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    padding:80px 24px 60px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, var(--washi) 0%, var(--washi-deep) 100%);
+    z-index:0;
+  }
+  .hero::after{
+    content:"酒";
+    position:absolute;
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(280px,50vw,520px);
+    color:rgba(162,59,44,0.06);
+    font-weight:800;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    z-index:0;
+    line-height:1;
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:1;max-width:780px}
+  .hero-eyebrow{
+    font-family:"Shippori Mincho",serif;
+    color:var(--shu);
+    letter-spacing:0.4em;
+    font-size:13px;
+    margin-bottom:24px;
+    padding-left:0.4em;
+  }
+  .hero h1{
+    font-family:"Shippori Mincho",serif;
+    font-weight:800;
+    font-size:clamp(40px,7vw,76px);
+    line-height:1.3;
+    color:var(--sumi);
+    margin-bottom:28px;
+    letter-spacing:0.05em;
+  }
+  .hero h1 .accent{color:var(--shu);position:relative;display:inline-block}
+  .hero h1 .accent::after{
+    content:"";
+    position:absolute;left:50%;bottom:-6px;
+    width:8px;height:8px;border-radius:50%;
+    background:var(--shu);
+    transform:translateX(-50%);
+  }
+  .hero-lead{
+    font-size:16px;
+    color:var(--usu);
+    line-height:2;
+    margin-bottom:40px;
+    font-weight:400;
+  }
+  .hero-meta{
+    display:inline-flex;gap:32px;
+    font-size:12px;color:var(--usu);
+    letter-spacing:0.2em;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:14px 32px;
+  }
+  .hero-meta span::before{content:"・";color:var(--shu);margin-right:6px}
+
+  /* ===== Section header ===== */
+  .section{
+    position:relative;z-index:1;
+    padding:100px 24px;
+    max-width:1080px;margin:0 auto;
+  }
+  .sec-header{text-align:center;margin-bottom:72px}
+  .sec-num{
+    font-family:"Shippori Mincho",serif;
+    color:var(--kin);
+    font-size:14px;letter-spacing:0.3em;
+    margin-bottom:12px;
+  }
+  .sec-title{
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(28px,4vw,40px);
+    color:var(--sumi);
+    font-weight:600;
+    letter-spacing:0.08em;
+  }
+  .sec-title::after{
+    content:"";display:block;
+    width:40px;height:2px;
+    background:var(--shu);
+    margin:20px auto 0;
+  }
+
+  /* ===== Shop card ===== */
+  .shops{display:flex;flex-direction:column;gap:64px}
+  .shop{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:40px;
+    background:#fff;
+    padding:48px 48px;
+    border-radius:2px;
+    border:1px solid var(--line);
+    box-shadow:0 20px 60px -30px rgba(26,26,26,0.15);
+    position:relative;
+    transition:transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .shop:hover{
+    transform:translateY(-4px);
+    box-shadow:0 30px 80px -30px rgba(162,59,44,0.25);
+  }
+  .shop-num-block{
+    border-right:1px solid var(--line);
+    padding-right:32px;
+    text-align:center;
+  }
+  .shop-num-label{
+    font-size:10px;letter-spacing:0.3em;
+    color:var(--usu);
+    margin-bottom:8px;
+  }
+  .shop-num{
+    font-family:"Shippori Mincho",serif;
+    font-size:64px;font-weight:800;
+    color:var(--shu);
+    line-height:1;
+  }
+  .shop-tag{
+    display:inline-block;
+    margin-top:16px;
+    font-size:10px;
+    letter-spacing:0.2em;
+    background:var(--washi-deep);
+    color:var(--sumi);
+    padding:5px 10px;
+    border-radius:2px;
+  }
+  .shop-body h3{
+    font-family:"Shippori Mincho",serif;
+    font-size:30px;
+    font-weight:800;
+    color:var(--sumi);
+    margin-bottom:8px;
+    letter-spacing:0.04em;
+  }
+  .shop-sub{
+    font-size:13px;
+    color:var(--shu);
+    letter-spacing:0.15em;
+    margin-bottom:24px;
+    font-family:"Shippori Mincho",serif;
+  }
+  .shop-desc{
+    color:#3d3935;
+    line-height:2;
+    font-size:15px;
+    margin-bottom:28px;
+  }
+  .shop-points{
+    display:flex;flex-wrap:wrap;gap:8px;
+    margin-bottom:28px;
+  }
+  .point{
+    font-size:12px;
+    background:rgba(162,59,44,0.08);
+    color:var(--shu-deep);
+    padding:6px 12px;
+    border-radius:20px;
+    letter-spacing:0.05em;
+  }
+  .shop-info{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:8px 16px;
+    padding-top:24px;
+    border-top:1px dashed var(--line);
+    font-size:13px;
+    color:var(--usu);
+  }
+  .shop-info dt{
+    font-family:"Shippori Mincho",serif;
+    color:var(--shu);
+    font-weight:600;
+    letter-spacing:0.1em;
+  }
+  .shop-info dd{color:#3d3935}
+
+  /* ===== Footer ===== */
+  .footer{
+    text-align:center;
+    padding:80px 24px 60px;
+    background:var(--sumi);
+    color:var(--washi);
+    position:relative;z-index:1;
+  }
+  .footer-mark{
+    font-family:"Shippori Mincho",serif;
+    font-size:32px;
+    color:var(--kin);
+    margin-bottom:20px;
+    letter-spacing:0.4em;
+  }
+  .footer-text{
+    font-size:13px;
+    color:rgba(245,239,228,0.7);
+    line-height:2;
+    letter-spacing:0.1em;
+    max-width:520px;
+    margin:0 auto 24px;
+  }
+  .footer-note{
+    font-size:11px;
+    color:rgba(245,239,228,0.4);
+    letter-spacing:0.15em;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 720px){
+    .section{padding:60px 20px}
+    .shop{
+      grid-template-columns:1fr;
+      gap:24px;
+      padding:32px 24px;
+    }
+    .shop-num-block{
+      border-right:none;
+      border-bottom:1px solid var(--line);
+      padding:0 0 24px;
+      display:flex;align-items:center;justify-content:center;gap:20px;
+    }
+    .shop-num-label{margin:0}
+    .shop-num{font-size:48px}
+    .shop-tag{margin-top:0}
+    .shop-body h3{font-size:24px}
+    .hero-meta{gap:16px;padding:12px 20px;font-size:11px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">UMEDA SAKE GUIDE</div>
+    <h1>梅田で<span class="accent">一献</span>、<br>愉しむ夜。</h1>
+    <p class="hero-lead">
+      地下街の賑わいを抜けた先に、<br>
+      静かに杯を傾けられる場所がある。<br>
+      梅田で愉しむ、選りすぐりの五軒。
+    </p>
+    <div class="hero-meta">
+      <span>厳選5軒</span>
+      <span>2026年版</span>
+      <span>大阪・梅田</span>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="sec-header">
+    <div class="sec-num">SELECTED 5 SHOPS</div>
+    <h2 class="sec-title">今宵、訪れたい五軒</h2>
+  </div>
+
+  <div class="shops">
+
+    <article class="shop">
+      <div class="shop-num-block">
+        <div class="shop-num-label">No.</div>
+        <div class="shop-num">01</div>
+        <span class="shop-tag">専門店</span>
+      </div>
+      <div class="shop-body">
+        <h3>浅野日本酒店 UMEDA</h3>
+        <div class="shop-sub">— 約150種の純米酒、その全てに出会える店 —</div>
+        <p class="shop-desc">
+          太融寺エリアにひっそりと佇む、知る人ぞ知る日本酒専門店。大阪地酒を中心に約150種の純米酒が並び、ほぼ全ての銘柄が試飲可能という贅沢。店内奥のバースペースで、酒肴と共に飲み比べを愉しめる、まさに日本酒好きの聖地。
+        </p>
+        <div class="shop-points">
+          <span class="point">約150種類</span>
+          <span class="point">ほぼ全銘柄試飲OK</span>
+          <span class="point">大阪地酒充実</span>
+        </div>
+        <dl class="shop-info">
+          <dt>エリア</dt><dd>太融寺町</dd>
+          <dt>シーン</dt><dd>日本酒をじっくり選びたい夜に</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="shop">
+      <div class="shop-num-block">
+        <div class="shop-num-label">No.</div>
+        <div class="shop-num">02</div>
+        <span class="shop-tag">隠れ家</span>
+      </div>
+      <div class="shop-body">
+        <h3>梅田日本酒 みずどり</h3>
+        <div class="shop-sub">— 完全予約制、お初天神の灯りの奥に —</div>
+        <p class="shop-desc">
+          お初天神の喧騒からふっと抜けた先にある、完全予約制の隠れ家。LINE公式アカウント経由のみで席が取れるという、知る人ぞ知る一軒。静かに腰を落ち着けて、こだわりの一献と向き合いたい大人の夜にどうぞ。
+        </p>
+        <div class="shop-points">
+          <span class="point">完全予約制</span>
+          <span class="point">LINE予約限定</span>
+          <span class="point">大人の隠れ家</span>
+        </div>
+        <dl class="shop-info">
+          <dt>エリア</dt><dd>お初天神近く</dd>
+          <dt>シーン</dt><dd>静かに語り合いたいデートに</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="shop">
+      <div class="shop-num-block">
+        <div class="shop-num-label">No.</div>
+        <div class="shop-num">03</div>
+        <span class="shop-tag">バル</span>
+      </div>
+      <div class="shop-body">
+        <h3>日本酒バル さわら ウメキタフロア</h3>
+        <div class="shop-sub">— 日本酒と蕎麦、洗練された出会い —</div>
+        <p class="shop-desc">
+          グランフロント大阪・ウメキタフロア内、洗練された大人の空間。日本酒と蕎麦という、どちらも引き立て合う組み合わせを軸に、落ち着いた時間が流れる。仕事帰りにふらりと、待ち合わせにも使いやすい使い勝手の良さ。
+        </p>
+        <div class="shop-points">
+          <span class="point">グランフロント</span>
+          <span class="point">日本酒×蕎麦</span>
+          <span class="point">アクセス◎</span>
+        </div>
+        <dl class="shop-info">
+          <dt>エリア</dt><dd>グランフロント大阪</dd>
+          <dt>シーン</dt><dd>仕事帰り・待ち合わせに</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="shop">
+      <div class="shop-num-block">
+        <div class="shop-num-label">No.</div>
+        <div class="shop-num">04</div>
+        <span class="shop-tag">立ち飲み</span>
+      </div>
+      <div class="shop-body">
+        <h3>徳田酒店 西梅田店</h3>
+        <div class="shop-sub">— 明治創業、酒屋直営の本気の立ち呑み —</div>
+        <p class="shop-desc">
+          明治創業の老舗酒屋が手がける、コスパ抜群の立ち飲み。酒屋直営ならではの仕入れの良さで、上質な日本酒を気軽に一杯から愉しめる。仕事帰りのサクッと一杯から、はしご酒の起点まで、梅田呑みの定番として外せない一軒。
+        </p>
+        <div class="shop-points">
+          <span class="point">立ち飲み</span>
+          <span class="point">酒屋直営</span>
+          <span class="point">コスパ抜群</span>
+        </div>
+        <dl class="shop-info">
+          <dt>エリア</dt><dd>西梅田</dd>
+          <dt>シーン</dt><dd>サクッと一杯・はしご酒に</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="shop">
+      <div class="shop-num-block">
+        <div class="shop-num-label">No.</div>
+        <div class="shop-num">05</div>
+        <span class="shop-tag">日本酒バル</span>
+      </div>
+      <div class="shop-body">
+        <h3>日本酒バル ほのか 梅田本店</h3>
+        <div class="shop-sub">— 全国から集めた銘酒、その日の気分で選ぶ —</div>
+        <p class="shop-desc">
+          全国の蔵元から厳選した日本酒が揃う、梅田の人気日本酒バル。和の温かみある店内で、料理とのペアリングを楽しみながら、その日の気分でお酒を選べる自由さが嬉しい。一人でも、グループでも居心地の良い空間。
+        </p>
+        <div class="shop-points">
+          <span class="point">全国の銘酒</span>
+          <span class="point">ペアリング◎</span>
+          <span class="point">一人飲みOK</span>
+        </div>
+        <dl class="shop-info">
+          <dt>エリア</dt><dd>梅田中心部</dd>
+          <dt>シーン</dt><dd>気分で銘柄を選びたい夜に</dd>
+        </dl>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-mark">献</div>
+  <p class="footer-text">
+    お酒は、二十歳になってから。<br>
+    今宵もどうぞ、よい一献を。
+  </p>
+  <p class="footer-note">UMEDA SAKE GUIDE 2026 / Selected 5 Shops</p>
+</footer>
+
+</body>
+</html>

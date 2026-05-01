@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>やこさまへ ｜ 今日のMTGまとめ＋あなた仕様の使い方提案 2026-04-20</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBF7EE;
+  --paper-2:#F4EFE2;
+  --ink:#1F1A16;
+  --ink-2:#4A4038;
+  --ink-3:#857566;
+  --line:#E4DAC5;
+  --gold:#B08642;
+  --gold-soft:#F5E9D0;
+  --matcha:#5C6B4A;
+  --matcha-soft:#E3E8D8;
+  --beni:#A8443F;
+  --beni-soft:#F3DEDA;
+  --sumi:#2B2621;
+  /* strength colors */
+  --s-exec:#7B3FB8;
+  --s-exec-soft:#EDE0F7;
+  --s-infl:#E0823A;
+  --s-infl-soft:#FBE8D4;
+  --s-rel:#2E7FCF;
+  --s-rel-soft:#DBEAF8;
+  --s-str:#5C9960;
+  --s-str-soft:#DCEBDD;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans JP',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.9;
+  font-size:15px;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(176,134,66,.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(92,107,74,.04) 0%, transparent 50%);
+}
+.serif{font-family:'Shippori Mincho','Noto Serif JP',serif}
+
+.sheet{
+  max-width:760px;margin:0 auto;
+  padding:56px 40px;
+  position:relative;
+}
+@media(max-width:640px){.sheet{padding:40px 24px}}
+
+/* ===== COVER ===== */
+.cover{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:2px;
+  padding:56px 40px 48px;
+  margin-bottom:48px;
+  position:relative;
+  box-shadow:0 1px 0 rgba(176,134,66,.15);
+}
+.cover::before{
+  content:"";position:absolute;top:14px;left:14px;right:14px;bottom:14px;
+  border:1px solid var(--line);
+  pointer-events:none;
+  opacity:.5;
+}
+.cover .stamp{
+  position:absolute;top:28px;right:36px;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:68px;height:68px;
+  border:1.5px solid var(--beni);
+  border-radius:50%;
+  color:var(--beni);
+  font-size:10px;font-weight:900;letter-spacing:.15em;
+  transform:rotate(-6deg);
+  font-family:'Shippori Mincho',serif;
+  line-height:1.2;text-align:center;
+  background:rgba(168,68,63,.04);
+}
+.cover .to{
+  font-family:'Shippori Mincho',serif;
+  font-size:13px;color:var(--gold);letter-spacing:.3em;
+  margin-bottom:12px;font-weight:700;
+}
+.cover h1{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(26px,4.5vw,38px);
+  font-weight:700;line-height:1.5;
+  margin-bottom:20px;
+  letter-spacing:.02em;color:var(--sumi);
+}
+.cover h1 .mini{
+  display:block;font-size:.58em;color:var(--ink-3);
+  font-weight:500;margin-top:6px;letter-spacing:.05em;
+}
+.cover .lead{
+  font-size:14px;color:var(--ink-2);
+  line-height:2;max-width:540px;
+  padding:16px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  margin:20px 0 24px;
+}
+.cover .meta-line{
+  display:flex;flex-wrap:wrap;gap:20px;
+  font-size:12px;color:var(--ink-3);
+  font-family:'Shippori Mincho',serif;
+  letter-spacing:.08em;
+}
+.cover .meta-line span strong{
+  color:var(--ink);font-weight:700;margin-right:8px;
+}
+
+/* ===== SECTION ===== */
+section{margin-bottom:56px}
+.sec-head{
+  margin-bottom:28px;
+  display:flex;align-items:flex-end;gap:16px;
+  border-bottom:1px solid var(--line);padding-bottom:14px;
+}
+.sec-head .num{
+  font-family:'Shippori Mincho',serif;
+  font-size:44px;font-weight:700;color:var(--gold);
+  line-height:1;letter-spacing:0;
+}
+.sec-head .ttl{flex:1}
+.sec-head .kanji{
+  font-family:'Shippori Mincho',serif;
+  font-size:11px;color:var(--gold);letter-spacing:.2em;
+  margin-bottom:4px;font-weight:700;
+}
+.sec-head h2{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(20px,3.5vw,24px);
+  font-weight:700;color:var(--sumi);
+  letter-spacing:.02em;
+}
+
+/* 1. Minutes */
+.minutes-block{
+  background:var(--paper-2);
+  border-radius:4px;
+  padding:28px 30px;position:relative;
+}
+.minutes-block::before{
+  content:"📝";position:absolute;top:-18px;left:24px;
+  font-size:22px;background:var(--paper);padding:4px 10px;
+  border-radius:30px;border:1px solid var(--line);
+}
+.minutes-list{list-style:none;padding:0}
+.minutes-list li{
+  padding:14px 0 14px 28px;
+  border-bottom:1px dashed var(--line);
+  position:relative;font-size:14.5px;
+  line-height:1.8;color:var(--ink-2);
+}
+.minutes-list li:last-child{border-bottom:none;padding-bottom:0}
+.minutes-list li::before{
+  content:"";position:absolute;left:4px;top:22px;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 0 3px var(--gold-soft);
+}
+.minutes-list .kw{
+  font-weight:700;color:var(--ink);
+  display:block;margin-bottom:2px;
+  font-family:'Shippori Mincho',serif;
+  font-size:13px;letter-spacing:.05em;
+}
+.note-paper{
+  background:#FFFBF0;
+  border:1px solid var(--gold-soft);
+  border-left:3px solid var(--gold);
+  padding:18px 22px;margin-top:16px;
+  font-size:13.5px;color:var(--ink-2);
+  border-radius:2px;position:relative;
+}
+.note-paper .label{
+  display:inline-block;font-size:11px;font-weight:700;
+  color:var(--gold);letter-spacing:.15em;margin-bottom:6px;
+  font-family:'Shippori Mincho',serif;
+}
+
+/* 2. Profile */
+.profile-list{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+}
+@media(max-width:600px){.profile-list{grid-template-columns:1fr}}
+.p-item{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:16px 18px;position:relative;
+}
+.p-item .k{
+  font-size:11px;color:var(--gold);letter-spacing:.12em;
+  font-family:'Shippori Mincho',serif;font-weight:700;
+  margin-bottom:4px;
+}
+.p-item .v{
+  font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;
+}
+.p-item .s{
+  font-size:12px;color:var(--ink-3);
+  margin-top:4px;line-height:1.6;
+}
+.hitokoto{
+  margin-top:20px;padding:20px 24px;
+  background:var(--matcha-soft);
+  border-radius:3px;position:relative;
+  border-left:3px solid var(--matcha);
+}
+.hitokoto .mark{
+  display:inline-block;
+  font-family:'Shippori Mincho',serif;
+  font-size:11px;color:var(--matcha);
+  letter-spacing:.15em;font-weight:700;margin-bottom:6px;
+}
+.hitokoto p{
+  font-family:'Shippori Mincho',serif;
+  font-size:16px;color:var(--sumi);
+  line-height:1.8;font-weight:500;
+}
+.hitokoto strong{
+  background:linear-gradient(transparent 60%,rgba(176,134,66,.25) 60%);
+  font-weight:700;
+}
+
+/* ===== STRENGTHS ===== */
+.str-intro{
+  display:flex;flex-wrap:wrap;gap:24px;
+  margin-bottom:24px;align-items:flex-start;
+}
+.str-legend{
+  display:grid;grid-template-columns:repeat(2,auto);gap:6px 14px;
+  font-size:11.5px;color:var(--ink-2);
+  margin-top:10px;
+}
+.str-legend .leg{display:flex;align-items:center;gap:6px}
+.str-legend .sw{
+  width:10px;height:10px;border-radius:2px;
+  display:inline-block;
+}
+.sw.exec{background:var(--s-exec)}
+.sw.infl{background:var(--s-infl)}
+.sw.rel{background:var(--s-rel)}
+.sw.str{background:var(--s-str)}
+
+.top10{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:6px;
+}
+@media(max-width:720px){.top10{grid-template-columns:repeat(2,1fr)}}
+.str-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:14px 12px 14px;position:relative;
+  overflow:hidden;
+}
+.str-card::before{
+  content:"";position:absolute;top:0;left:0;
+  width:100%;height:3px;
+}
+.str-card.exec::before{background:var(--s-exec)}
+.str-card.infl::before{background:var(--s-infl)}
+.str-card.rel::before{background:var(--s-rel)}
+.str-card.str::before{background:var(--s-str)}
+.str-card .rank{
+  font-family:'Shippori Mincho',serif;
+  font-size:10px;font-weight:700;letter-spacing:.15em;
+  color:var(--ink-3);margin-bottom:4px;
+}
+.str-card .name{
+  font-family:'Shippori Mincho',serif;
+  font-size:15px;font-weight:700;
+  color:var(--sumi);line-height:1.3;
+  margin-bottom:4px;
+}
+.str-card .cat{
+  font-size:10px;letter-spacing:.05em;font-weight:700;
+}
+.str-card.exec .cat{color:var(--s-exec)}
+.str-card.infl .cat{color:var(--s-infl)}
+.str-card.rel .cat{color:var(--s-rel)}
+.str-card.str .cat{color:var(--s-str)}
+
+.diag-box{
+  margin-top:20px;
+  background:linear-gradient(135deg,var(--s-str-soft) 0%,var(--s-exec-soft) 100%);
+  border-radius:4px;padding:24px 26px;
+  border:1px solid var(--line);position:relative;
+}
+.diag-box::before{
+  content:"診";
+  position:absolute;top:-12px;left:20px;
+  background:var(--sumi);color:#FDE68A;
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;
+}
+.diag-box h4{
+  font-family:'Shippori Mincho',serif;
+  font-size:17px;font-weight:700;color:var(--sumi);
+  margin-bottom:10px;line-height:1.6;
+}
+.diag-box p{
+  font-size:14px;color:var(--ink-2);
+  line-height:1.9;
+}
+.diag-box strong{
+  background:linear-gradient(transparent 60%,rgba(123,63,184,.2) 60%);
+  font-weight:700;
+}
+
+/* strength proposals */
+.s-prop{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:22px 24px;margin-bottom:12px;
+  position:relative;
+  border-left:4px solid var(--gold);
+}
+.s-prop.e{border-left-color:var(--s-exec)}
+.s-prop.s{border-left-color:var(--s-str)}
+.s-prop.i{border-left-color:var(--s-infl)}
+.s-prop.r{border-left-color:var(--s-rel)}
+.s-prop .tag-strength{
+  display:inline-block;font-size:10px;font-weight:700;
+  letter-spacing:.1em;padding:2px 8px;border-radius:2px;
+  margin-right:6px;margin-bottom:6px;
+  font-family:'Shippori Mincho',serif;
+}
+.tag-e{background:var(--s-exec-soft);color:var(--s-exec)}
+.tag-s{background:var(--s-str-soft);color:var(--s-str)}
+.tag-i{background:var(--s-infl-soft);color:var(--s-infl)}
+.tag-r{background:var(--s-rel-soft);color:var(--s-rel)}
+.s-prop h4{
+  font-family:'Shippori Mincho',serif;
+  font-size:16px;font-weight:700;color:var(--sumi);
+  line-height:1.5;margin-bottom:8px;
+}
+.s-prop .b{font-size:13.5px;color:var(--ink-2);line-height:1.9}
+
+/* 3. Proposals */
+.prop-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:24px 26px;margin-bottom:14px;position:relative;
+}
+.prop-card .head{
+  display:flex;align-items:flex-start;gap:14px;margin-bottom:10px;
+}
+.prop-card .no{
+  font-family:'Shippori Mincho',serif;
+  font-size:13px;color:var(--paper);
+  background:var(--gold);
+  min-width:32px;height:32px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-weight:700;flex-shrink:0;
+}
+.prop-card.c2 .no{background:var(--beni)}
+.prop-card.c3 .no{background:var(--matcha)}
+.prop-card.c4 .no{background:var(--sumi)}
+.prop-card.c5 .no{background:#8B6F47}
+.prop-card.c6 .no{background:#6B7A5A}
+.prop-card h3{
+  font-family:'Shippori Mincho',serif;
+  font-size:17px;font-weight:700;line-height:1.5;
+  color:var(--sumi);flex:1;
+}
+.prop-card .body{
+  padding-left:46px;color:var(--ink-2);
+  font-size:14px;line-height:1.9;
+}
+.prop-card .compare{
+  display:grid;grid-template-columns:1fr auto 1fr;gap:12px;
+  align-items:stretch;margin-top:14px;margin-left:46px;
+}
+@media(max-width:600px){
+  .prop-card .compare{grid-template-columns:1fr;gap:6px}
+  .prop-card .arrow{display:none}
+}
+.compare-box{
+  background:var(--paper-2);padding:12px 14px;
+  border-radius:2px;font-size:13px;color:var(--ink-2);line-height:1.7;
+}
+.compare-box.to{background:var(--gold-soft);color:var(--sumi)}
+.compare-box .t{
+  display:block;font-family:'Shippori Mincho',serif;
+  font-size:11px;font-weight:700;letter-spacing:.15em;
+  margin-bottom:4px;color:var(--ink-3);
+}
+.compare-box.to .t{color:var(--gold)}
+.arrow{
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:20px;
+  font-family:'Shippori Mincho',serif;
+}
+.prop-strength{
+  margin-left:46px;margin-top:10px;
+  display:flex;flex-wrap:wrap;gap:6px;
+  font-size:11px;
+}
+.prop-strength .kw{
+  color:var(--ink-3);font-family:'Shippori Mincho',serif;
+  letter-spacing:.1em;font-weight:700;margin-right:4px;
+}
+
+.fusen{
+  position:absolute;top:-8px;right:14px;
+  background:var(--beni);color:#fff;
+  padding:3px 10px;font-size:10px;
+  font-family:'Shippori Mincho',serif;
+  letter-spacing:.1em;transform:rotate(2deg);font-weight:700;
+}
+
+/* ===== BAKAMONO ===== */
+.bakamono-wrap{
+  background:
+    repeating-linear-gradient(45deg,var(--beni-soft) 0,var(--beni-soft) 10px,#FFF6F5 10px,#FFF6F5 20px);
+  border:2px dashed var(--beni);
+  border-radius:6px;
+  padding:28px 26px;position:relative;
+}
+.bakamono-head{
+  text-align:center;margin-bottom:20px;position:relative;
+}
+.bakamono-head .flag{
+  display:inline-block;background:var(--beni);color:#FFF6F5;
+  padding:4px 16px;font-family:'Shippori Mincho',serif;
+  font-size:11px;letter-spacing:.2em;
+  transform:rotate(-1deg);font-weight:700;
+  margin-bottom:8px;
+}
+.bakamono-head h3{
+  font-family:'Shippori Mincho',serif;
+  font-size:22px;color:var(--sumi);font-weight:700;
+  line-height:1.5;
+}
+.bakamono-head .sub{
+  font-size:13px;color:var(--ink-2);margin-top:6px;
+}
+.baka-card{
+  background:var(--paper);
+  border:1px solid var(--beni-soft);
+  border-radius:3px;padding:18px 20px;
+  margin-bottom:10px;position:relative;
+}
+.baka-card .bno{
+  position:absolute;top:-10px;left:14px;
+  background:var(--beni);color:#fff;
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Shippori Mincho',serif;
+  font-size:14px;font-weight:700;
+}
+.baka-card h4{
+  font-family:'Shippori Mincho',serif;
+  font-size:15px;font-weight:700;
+  color:var(--sumi);margin:6px 0 8px 20px;line-height:1.5;
+}
+.baka-card .body{
+  font-size:13.5px;color:var(--ink-2);
+  line-height:1.85;margin-left:20px;
+}
+.baka-card .maybe{
+  margin-left:20px;margin-top:8px;font-size:11.5px;
+  color:var(--beni);font-family:'Shippori Mincho',serif;
+  font-weight:700;
+}
+.bakamono-foot{
+  text-align:center;margin-top:16px;
+  font-size:12px;color:var(--ink-2);
+  background:rgba(255,255,255,.7);
+  padding:10px;border-radius:3px;
+  border:1px dashed var(--beni);
+}
+
+/* 4. Behind */
+.behind-wrap{
+  background:linear-gradient(135deg,var(--gold-soft) 0%,#FFF3D9 100%);
+  border:1px solid var(--gold);
+  border-radius:4px;padding:32px 30px;
+  position:relative;overflow:hidden;
+}
+.behind-wrap::before{
+  content:"営";position:absolute;top:-20px;right:-10px;
+  font-family:'Shippori Mincho',serif;
+  font-size:160px;color:rgba(176,134,66,.1);
+  line-height:1;font-weight:900;
+}
+.behind-head{
+  text-align:center;margin-bottom:20px;position:relative;z-index:1;
+}
+.behind-head .mark{
+  display:inline-block;
+  background:var(--sumi);color:#FDE68A;
+  font-family:'Shippori Mincho',serif;
+  font-size:11px;letter-spacing:.2em;
+  padding:4px 14px;border-radius:30px;
+  margin-bottom:10px;font-weight:700;
+}
+.behind-head h3{
+  font-family:'Shippori Mincho',serif;
+  font-size:22px;color:var(--sumi);
+  font-weight:700;line-height:1.5;
+}
+.behind-head .sub{
+  font-size:13px;color:var(--ink-2);margin-top:6px;
+}
+.team-row{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;position:relative;z-index:1;
+}
+@media(max-width:600px){.team-row{grid-template-columns:1fr}}
+.mem{
+  background:rgba(255,255,255,.85);
+  border-radius:4px;padding:18px 16px;
+  text-align:center;position:relative;
+}
+.mem .em{font-size:28px;line-height:1;margin-bottom:6px}
+.mem .n{
+  font-family:'Shippori Mincho',serif;
+  font-size:14px;font-weight:700;color:var(--sumi);margin-bottom:2px;
+}
+.mem .r{
+  font-size:10px;color:var(--ink-3);
+  letter-spacing:.1em;margin-bottom:10px;font-weight:700;
+}
+.mem .c{
+  font-size:12px;color:var(--ink-2);line-height:1.7;
+  background:var(--paper);padding:8px 10px;border-radius:3px;text-align:left;
+}
+.biz-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
+  margin-top:16px;position:relative;z-index:1;
+}
+@media(max-width:600px){.biz-stats{grid-template-columns:repeat(2,1fr)}}
+.bs{
+  background:rgba(255,255,255,.85);
+  border-radius:3px;padding:12px 8px;text-align:center;
+}
+.bs .n{
+  font-family:'Shippori Mincho',serif;
+  font-size:20px;font-weight:700;color:var(--sumi);
+  line-height:1;margin-bottom:3px;
+}
+.bs .n small{font-size:11px;margin-left:2px}
+.bs .l{font-size:10px;color:var(--ink-2);font-weight:700;letter-spacing:.05em}
+.nt-note{
+  margin-top:16px;padding:12px 16px;
+  background:rgba(255,255,255,.7);
+  border-radius:3px;font-size:12px;color:var(--ink-2);
+  line-height:1.7;position:relative;z-index:1;
+  border-left:2px solid var(--beni);
+}
+.nt-note strong{color:var(--beni);font-family:'Shippori Mincho',serif}
+
+/* 5. End */
+.end-box{
+  background:var(--sumi);color:#FBF7EE;
+  padding:36px 32px;border-radius:3px;text-align:center;position:relative;
+}
+.end-box::before{
+  content:"";position:absolute;top:10px;left:10px;right:10px;bottom:10px;
+  border:1px solid rgba(251,247,238,.15);pointer-events:none;
+}
+.end-box .cal{
+  display:inline-block;
+  font-family:'Shippori Mincho',serif;
+  font-size:11px;letter-spacing:.3em;
+  color:#D4A574;margin-bottom:10px;font-weight:700;
+}
+.end-box h3{
+  font-family:'Shippori Mincho',serif;
+  font-size:22px;font-weight:700;
+  margin-bottom:14px;line-height:1.6;
+}
+.end-box p{
+  font-size:13.5px;color:#D6CFBF;line-height:1.9;
+  max-width:520px;margin:0 auto;
+}
+
+footer{
+  padding:36px 20px 48px;text-align:center;
+  font-size:11px;color:var(--ink-3);
+  font-family:'Shippori Mincho',serif;letter-spacing:.1em;
+}
+footer strong{color:var(--ink);font-weight:700}
+
+/* tsukkomi bubble */
+.fukidashi{
+  position:relative;background:#fff;
+  border:1px solid var(--line);
+  padding:10px 14px;border-radius:10px;
+  font-size:12.5px;color:var(--ink-2);
+  margin:14px 0 14px 46px;display:inline-block;
+  max-width:calc(100% - 60px);
+}
+.fukidashi::before{
+  content:"";position:absolute;top:-6px;left:20px;
+  width:12px;height:12px;background:#fff;
+  border-top:1px solid var(--line);border-left:1px solid var(--line);
+  transform:rotate(45deg);
+}
+.fukidashi .who{
+  font-family:'Shippori Mincho',serif;
+  font-weight:700;color:var(--beni);
+  font-size:11px;letter-spacing:.1em;margin-right:6px;
+}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="stamp">おけもん<br>カンパニー</div>
+    <div class="to">TO ｜ やこ さま</div>
+    <h1>
+      今日のMTG かんたんまとめ<br>
+      ＋ やこさま仕様の使い方、<br>ぜんぶ詰めました
+      <span class="mini">ちょっと真面目、ちょっとおふざけ、手紙みたいな提案書</span>
+    </h1>
+    <p class="lead">
+      本日はお時間いただきありがとうございました。<br>
+      「AI議事録、気になる」と仰っていたので、<br>
+      <strong style="color:var(--gold)">この資料じたいをAIで作ってみました</strong>。<br>
+      おまけで頂いたストレングス結果も読み込んで、やこさま専用の使い方も組み立てています🕊
+    </p>
+    <div class="meta-line">
+      <span><strong>日付</strong>2026年4月20日</span>
+      <span><strong>差出人</strong>おけもん / はるか / まな / あおい</span>
+      <span><strong>次回</strong>5月1日（木）</span>
+    </div>
+  </div>
+
+  <!-- 1. MINUTES -->
+  <section>
+    <div class="sec-head">
+      <div class="num">壱</div>
+      <div class="ttl">
+        <div class="kanji">其ノ一 ｜ 議事録</div>
+        <h2>今日のMTG、さくっとまとめ</h2>
+      </div>
+    </div>
+
+    <div class="minutes-block">
+      <ul class="minutes-list">
+        <li><span class="kw">お話しした時間</span>46分ほど。お互いの近況＋AI導入のご相談。</li>
+        <li><span class="kw">やこさまの今</span>4月から同僚さんのご異動で業務量がグッと増え、土日もお仕事中。そんな中で「忙しいからこそAIをちゃんと入れたい」と。</li>
+        <li><span class="kw">やってみせた実演</span>福利厚生制度の見直し（カフェテリアプラン導入）を題材に、AIが企画書を書く → スライドに起こすまでを10分で実演。</li>
+        <li><span class="kw">やこさまのご決断</span>「今夜就業後に Claude Code を入れる」と即決🎉</li>
+        <li><span class="kw">宿題</span>音声入力アプリ「AquaVoice」のWindows版があるか調べる。あればこちらから1ヶ月無料コードをお渡しします。</li>
+        <li><span class="kw">次回</span>5月1日（木）。入れてみたつまずきや「これ自動化できる？」の答え合わせを一緒にやりましょう。</li>
+      </ul>
+    </div>
+    <div class="note-paper">
+      <div class="label">遊び的じっけん</div>
+      この議事録、AIの議事録ツール（Circleback）が全部書き起こしたものを、<strong>別のAI（Claude）が要点だけ抜き出して整えて</strong>います。ご興味の"AI議事録"ってこんな感じです。
+    </div>
+  </section>
+
+  <!-- 2. PROFILE -->
+  <section>
+    <div class="sec-head">
+      <div class="num">弐</div>
+      <div class="ttl">
+        <div class="kanji">其ノ二 ｜ 勝手に人物理解</div>
+        <h2>やこさまを勝手にプロファイル</h2>
+      </div>
+    </div>
+
+    <div class="profile-list">
+      <div class="p-item"><div class="k">部署</div><div class="v">人事部門・福利厚生課</div><div class="s">所属長の補佐というお立場</div></div>
+      <div class="p-item"><div class="k">チーム</div><div class="v">5名体制</div><div class="s">4名＋別チームから引き込み中1名</div></div>
+      <div class="p-item"><div class="k">いまの働き方</div><div class="v">土日も稼働</div><div class="s">4月から業務集中、余裕なし</div></div>
+      <div class="p-item"><div class="k">仕事の動き方</div><div class="v">自分で提案して動く型</div><div class="s">「今じゃないと乗れない」鮮度の人</div></div>
+      <div class="p-item"><div class="k">今お使いのAI</div><div class="v">ChatGPT中心</div><div class="s">社内のCopilotは精度に不満</div></div>
+      <div class="p-item"><div class="k">いまのホットな議題</div><div class="v">カフェテリアプラン導入</div><div class="s">利用率40％・予算赤字を打開したい</div></div>
+    </div>
+
+    <div class="hitokoto">
+      <span class="mark">◆ ひとこと</span>
+      <p>
+        やこさまは<strong>「降ってくる仕事をこなす人」ではなく、自分で課題を見つけて動く人」</strong>。<br>
+        だからAIは<strong>"作業代わり"より"考える速度を上げる相棒"</strong>として使っていただきたい。そっちのほうが、絶対に楽しいです。
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. STRENGTHS -->
+  <section>
+    <div class="sec-head">
+      <div class="num">参</div>
+      <div class="ttl">
+        <div class="kanji">其ノ三 ｜ ストレングス診断</div>
+        <h2>やこさまの資質から読む、相性のいい使い方</h2>
+      </div>
+    </div>
+
+    <div class="str-intro">
+      <div style="flex:1;min-width:260px">
+        <p style="font-size:14px;color:var(--ink-2);line-height:2">
+          いただいたクリフトン・ストレングスのTOP10を拝見しました。<br>
+          結論から言うと、やこさまは<strong style="background:linear-gradient(transparent 60%,var(--s-str-soft) 60%)">「戦略で先を読み、実行でやりきる人」</strong>です。
+        </p>
+        <div class="str-legend">
+          <div class="leg"><span class="sw exec"></span>実行力</div>
+          <div class="leg"><span class="sw infl"></span>影響力</div>
+          <div class="leg"><span class="sw rel"></span>人間関係構築</div>
+          <div class="leg"><span class="sw str"></span>戦略的思考</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top10">
+      <div class="str-card exec"><div class="rank">一位</div><div class="name">達成欲</div><div class="cat">実行力</div></div>
+      <div class="str-card str"><div class="rank">二位</div><div class="name">戦略性</div><div class="cat">戦略的思考</div></div>
+      <div class="str-card str"><div class="rank">三位</div><div class="name">学習欲</div><div class="cat">戦略的思考</div></div>
+      <div class="str-card exec"><div class="rank">四位</div><div class="name">目標志向</div><div class="cat">実行力</div></div>
+      <div class="str-card exec"><div class="rank">五位</div><div class="name">規律性</div><div class="cat">実行力</div></div>
+      <div class="str-card exec"><div class="rank">六位</div><div class="name">責任感</div><div class="cat">実行力</div></div>
+      <div class="str-card str"><div class="rank">七位</div><div class="name">着想</div><div class="cat">戦略的思考</div></div>
+      <div class="str-card infl"><div class="rank">八位</div><div class="name">ポジティブ</div><div class="cat">影響力</div></div>
+      <div class="str-card str"><div class="rank">九位</div><div class="name">未来志向</div><div class="cat">戦略的思考</div></div>
+      <div class="str-card rel"><div class="rank">十位</div><div class="name">親密性</div><div class="cat">人間関係</div></div>
+    </div>
+
+    <div class="diag-box">
+      <h4>✦ 診断：やこさまは<br>「戦略的思考 × 実行力」の二刀流タイプです</h4>
+      <p>
+        TOP10のうち <strong>戦略的思考が4つ（戦略性・学習欲・着想・未来志向）</strong>、<strong>実行力が4つ（達成欲・目標志向・規律性・責任感）</strong>。思考と実装が同じ人の中で往復できる、珍しいタイプです。<br><br>
+        AIを入れる上での意味は明確で、<strong>AIに向いているのは"戦略を練るパートナー"と"実行を速くする筋肉"の両方</strong>です。逆に「決断を代わりに下してくれるAI」は要りません。それはやこさまご自身がやりたい部分なので。
+      </p>
+    </div>
+
+    <!-- strength-based tips -->
+    <div style="margin-top:24px">
+      <div class="s-prop e">
+        <span class="tag-strength tag-e">達成欲</span>
+        <span class="tag-strength tag-e">目標志向</span>
+        <h4>"完了した！"の快感をAIで量産する</h4>
+        <div class="b">
+          AIにタスクリストを食べさせて、終わったものをチェック → 残タスクだけ見える化、を週次で回す。達成欲タイプは「何を終えたか」が可視化されるとガソリンになります。<br>
+          さらに金曜夕方、AIに「今週私、何を成し遂げましたか？」と聞く習慣を。気持ちの回復速度が変わります。
+        </div>
+      </div>
+
+      <div class="s-prop s">
+        <span class="tag-strength tag-s">戦略性</span>
+        <span class="tag-strength tag-s">未来志向</span>
+        <h4>"選択肢ぜんぶ並べて"はAIの独壇場</h4>
+        <div class="b">
+          カフェテリアプラン導入のような選択肢多めの題材で、AIに「考えられるシナリオ全部列挙して、コスト／効果／リスクで比較して」と振ると、10分で10パターン出てきます。<br>
+          戦略性の人は"並んだ中から選ぶ"作業が得意なので、AIに並べる仕事だけ任せれば脳のリソースをそのまま温存できます。
+        </div>
+      </div>
+
+      <div class="s-prop s">
+        <span class="tag-strength tag-s">学習欲</span>
+        <span class="tag-strength tag-s">着想</span>
+        <h4>毎日1個、"新しい技"を試す習慣</h4>
+        <div class="b">
+          学習欲＆着想の人は「新しい使い方を見つけたい」欲が強い。毎朝5分、AIに「今日試せる小技1つ教えて」と振って、実務で1個だけ試す。1ヶ月で30個ストックが貯まります。<br>
+          貯まった小技集は、そのまま社内AI研修の教材になります（→ この後の提案「四」参照）。
+        </div>
+      </div>
+
+      <div class="s-prop e">
+        <span class="tag-strength tag-e">規律性</span>
+        <span class="tag-strength tag-e">責任感</span>
+        <h4>ルーティンを"AIに預ける"不安を、AIとの二人三脚で解く</h4>
+        <div class="b">
+          規律性・責任感の人は「人に任せるのが怖い」場面があると思います。AIも最初は同じ。<br>
+          なのでおすすめは、<strong>毎月の定型作業をまずAIと"並走"させる</strong>こと。1ヶ月だけAIにやらせて、結果を人が検算。問題なければ2ヶ月目から完全に任せる。段階的に手離れできます。
+        </div>
+      </div>
+
+      <div class="s-prop i">
+        <span class="tag-strength tag-i">ポジティブ</span>
+        <h4>周りを巻き込む資料はAIに"楽しく"書かせる</h4>
+        <div class="b">
+          ポジティブの人が作る資料は、本人の明るさが滲み出るのが価値。そこをAIに真似させます。<br>
+          プロンプトに「文章のトーンは前向きで、読んだ人が"ちょっとやってみたい"と思える感じで」と一言入れるだけで、AIの出力トーンが変わります。やこさまの声が乗った企画書になります。
+        </div>
+      </div>
+
+      <div class="s-prop r">
+        <span class="tag-strength tag-r">親密性</span>
+        <h4>5人チームの"誰に何がハマるか"をAIに相談する</h4>
+        <div class="b">
+          親密性の人は、深く関わる少数の人を大事にします。チーム5人の好み・得意・苦手をAIに共有しておくと、<br>
+          「これ誰に振るのがベスト？」「この資料、〇〇さんに説明するならどう書く？」の即答が返ってきます。チームを活かす参謀として使えます。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PROPOSALS (real 6) -->
+  <section>
+    <div class="sec-head">
+      <div class="num">肆</div>
+      <div class="ttl">
+        <div class="kanji">其ノ四 ｜ 真面目なご提案</div>
+        <h2>こんな使い方、ハマりそうです</h2>
+      </div>
+    </div>
+
+    <div class="prop-card c1">
+      <span class="fusen">★ 本命</span>
+      <div class="head">
+        <span class="no">一</span>
+        <h3>福利厚生の「使われてない問題」をAIで解く</h3>
+      </div>
+      <div class="body">
+        利用ログを読ませて「使われてる／使われてない」を可視化 → 現行とカフェテリアプランの違いを役員向け／従業員向けの2パターンで企画書化 → 想定される質問30本も先回りで用意。今日のデモの"実務版"です。
+      </div>
+      <div class="compare">
+        <div class="compare-box"><span class="t">いま</span>Excelでフィルタ→集計→スライドに転記で1週間仕事</div>
+        <div class="arrow">→</div>
+        <div class="compare-box to"><span class="t">これから</span>データを渡して指示1回→当日中に分析・資料・Q&A集が揃う</div>
+      </div>
+      <div class="prop-strength"><span class="kw">◆ 効く資質</span><span class="tag-strength tag-e">達成欲</span><span class="tag-strength tag-s">戦略性</span></div>
+    </div>
+
+    <div class="prop-card c2">
+      <div class="head">
+        <span class="no">二</span>
+        <h3>業者さんの提案書を"分解してマネする"</h3>
+      </div>
+      <div class="body">
+        やこさまが「業者さんのスライド分かりやすい＝AI使ってるかも」と気づかれた、あの伏線の回収案。業者さんの資料をAIに読ませて、見出しの組み方・図解の型・色使いのパターンを分解 → 自分の資料に応用すれば、社内に"分かりやすい資料の人"が誕生します。
+      </div>
+      <div class="fukidashi"><span class="who">まな</span>この気づき、筋めっちゃ良いので拾わせていただきました！</div>
+      <div class="prop-strength"><span class="kw">◆ 効く資質</span><span class="tag-strength tag-s">学習欲</span><span class="tag-strength tag-s">着想</span></div>
+    </div>
+
+    <div class="prop-card c3">
+      <div class="head">
+        <span class="no">三</span>
+        <h3>毎月の Excel 抽出作業を"自動実行"に</h3>
+      </div>
+      <div class="body">
+        「毎月この条件で対象者を抜き出して、スプシに転記する」みたいな定型作業をAIに仕込む → 月初に勝手に走って結果をチャットで通知、まで可能です。気付けば月2〜3時間がまるごと浮きます。
+      </div>
+      <div class="prop-strength"><span class="kw">◆ 効く資質</span><span class="tag-strength tag-e">規律性</span><span class="tag-strength tag-e">責任感</span></div>
+    </div>
+
+    <div class="prop-card c4">
+      <div class="head">
+        <span class="no">四</span>
+        <h3>AI研修を"補助金付き"で社内導入する</h3>
+      </div>
+      <div class="body">
+        研修費30万円×国の負担7割の制度があります（10時間くらいのカリキュラムでOK）。人事部門のやこさまがチーム5名分から起案する流れが自然で、<strong>「会社にAIを持ち込んだ人」</strong>というポジションまで取れる設計です。講師はこちらが担当します。
+      </div>
+      <div class="prop-strength"><span class="kw">◆ 効く資質</span><span class="tag-strength tag-s">未来志向</span><span class="tag-strength tag-i">ポジティブ</span></div>
+    </div>
+
+    <div class="prop-card c5">
+      <div class="head">
+        <span class="no">五</span>
+        <h3>音声入力「AquaVoice」をお試し</h3>
+      </div>
+      <div class="body">
+        思ったことを喋るだけで、そのまま文章になるアプリです。Windows版があるか確認して、あれば1ヶ月無料コードをお渡しします。土日稼働中に湧いたアイデアを取りこぼさないための、地味にデカい相棒。
+      </div>
+      <div class="prop-strength"><span class="kw">◆ 効く資質</span><span class="tag-strength tag-s">着想</span><span class="tag-strength tag-e">達成欲</span></div>
+    </div>
+
+    <div class="prop-card c6">
+      <div class="head">
+        <span class="no">六</span>
+        <h3>月1の"相談タイム"でAIを育てていく</h3>
+      </div>
+      <div class="body">
+        30分くらい（15分お仕事＋15分雑談くらい）の気楽な枠で、月1お話ししませんか。続けるうちに<strong>やこさま専用のAI環境</strong>（あなたの文脈・好み・社内事情を覚えたAI）が勝手に育っていきます。ここがおそらく一番、長期で効いてきます。
+      </div>
+      <div class="fukidashi"><span class="who">はるか</span>5/1からまずは1回、気軽に試してみてください🕊</div>
+      <div class="prop-strength"><span class="kw">◆ 効く資質</span><span class="tag-strength tag-r">親密性</span><span class="tag-strength tag-s">未来志向</span></div>
+    </div>
+  </section>
+
+  <!-- 5. BAKAMONO -->
+  <section>
+    <div class="sec-head">
+      <div class="num">伍</div>
+      <div class="ttl">
+        <div class="kanji">其ノ五 ｜ ここから遊び枠</div>
+        <h2>怒られる覚悟で、馬鹿者の提案</h2>
+      </div>
+    </div>
+
+    <div class="bakamono-wrap">
+      <div class="bakamono-head">
+        <div class="flag">※ 真面目な提案は前ページまで</div>
+        <h3>こっから先は、<br>うちの営業が調子に乗った結果です🤣</h3>
+        <div class="sub">でも、やこさまの資質ならたぶん楽しめるはず……という賭け。</div>
+      </div>
+
+      <div class="baka-card">
+        <div class="bno">一</div>
+        <h4>「今週の私、何を成し遂げた？」を聞くためだけのAI</h4>
+        <div class="body">
+          毎週金曜、AIに業務日報（または自分の感覚でOK）を放り込む → AIが「今週のやこさまの殊勲賞TOP3」を勝手に褒めてくれる。達成欲タイプへのご褒美装置。ちなみに褒め方は選べます（関西弁・犬キャラ・学長・執事等）。
+        </div>
+        <div class="maybe">◆ 馬鹿者度：★★★☆☆ ／ 続けると意外に自己肯定感があがる</div>
+      </div>
+
+      <div class="baka-card">
+        <div class="bno">二</div>
+        <h4>「企画書、先に上司の反応シミュレーション」AI</h4>
+        <div class="body">
+          上司の性格・口癖・過去のツッコミパターンをAIに共有 → 企画書を出す前に「この上司だったらどこで引っかかるか」を予告させる。本番前に壁打ち1回かませるだけで、戻し率が激減する疑似人格プロンプト。<br>
+          ※ ご本人の個人情報はAIに渡さず、あくまで"反応の傾向"だけで。
+        </div>
+        <div class="maybe">◆ 馬鹿者度：★★★★☆ ／ 悪用厳禁。でもめちゃくちゃ効きます</div>
+      </div>
+
+      <div class="baka-card">
+        <div class="bno">三</div>
+        <h4>「もう無理！」ボタン</h4>
+        <div class="body">
+          土日稼働中、心が折れそうになったらAIに「もう無理」とだけ送る → 「今週のあなたはこれを成し遂げた」「今日はここまででよい理由」「明日の一番小さな一歩」の3点セットが返ってくる。<br>
+          責任感の人に必要なのは、実は"止まっていい理由"をくれる装置だったりします。
+        </div>
+        <div class="maybe">◆ 馬鹿者度：★★☆☆☆ ／ これだけ真面目に効く</div>
+      </div>
+
+      <div class="bakamono-foot">
+        怒られそうなら、このページまるっと燃やしてください🔥（※紙じゃないので燃えません）
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. BEHIND -->
+  <section>
+    <div class="sec-head">
+      <div class="num">陸</div>
+      <div class="ttl">
+        <div class="kanji">其ノ六 ｜ こっそり舞台裏</div>
+        <h2>弊社営業部、総力を挙げて作りました</h2>
+      </div>
+    </div>
+
+    <div class="behind-wrap">
+      <div class="behind-head">
+        <span class="mark">BEHIND THE SCENES</span>
+        <h3>……と言いたいところ、<br>ほぼAIが夜なべで作っています🤣</h3>
+        <div class="sub">MTG終わって約90分でここまで到達。舞台裏をちょい公開。</div>
+      </div>
+
+      <div class="team-row">
+        <div class="mem">
+          <div class="em">🎤</div>
+          <div class="n">はるか</div>
+          <div class="r">ディレクション</div>
+          <div class="c">「やこさん、鮮度の人。5/1までに絶対仕込みきる。ストレングスも届いたから、それに乗せよ」</div>
+        </div>
+        <div class="mem">
+          <div class="em">🏃‍♀️</div>
+          <div class="n">まな</div>
+          <div class="r">クライアント理解</div>
+          <div class="c">「戦略的思考×実行力の二刀流！これAIとの相性神です、営業部沸いてます！」</div>
+        </div>
+        <div class="mem">
+          <div class="em">🐱</div>
+          <div class="n">あおい</div>
+          <div class="r">制作・公開担当</div>
+          <div class="c">「……紙っぽく組んだ。資質ごとに配色、遊びは赤枠に隔離、真面目は金茶で。公開済み」</div>
+        </div>
+      </div>
+
+      <div class="biz-stats">
+        <div class="bs"><div class="n">46<small>分</small></div><div class="l">MTG時間</div></div>
+        <div class="bs"><div class="n">120<small>分</small></div><div class="l">資料化まで</div></div>
+        <div class="bs"><div class="n">9<small>本</small></div><div class="l">ご提案＋遊び</div></div>
+        <div class="bs"><div class="n">0<small>円</small></div><div class="l">制作費</div></div>
+      </div>
+
+      <div class="nt-note">
+        <strong>余談：</strong>この資料づくりのフロー自体（AI議事録 → AI要約 → ストレングス診断反映 → AI提案書 → Web公開）、そのまま1本のサービスになりそうな手応えを感じています。もし「これ、自分ちの会議でも欲しい」と思われたら、5/1にお話ししましょう。
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. END -->
+  <section>
+    <div class="end-box">
+      <span class="cal">2026 ／ 05 ／ 01（木）</span>
+      <h3>5月1日、たのしみにしています🕊</h3>
+      <p>
+        それまでに、やこさまのカフェテリアプラン検討に寄せたダミーデータを仕込んでおきます。<br>
+        当日は「自分の会社だったら……」がリアルにイメージできる状態でお待ちしますね。<br>
+        <br>
+        馬鹿者の提案3つのうち、気になったものがあれば当日試してみましょう。本気で動きます。
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    Written with ❤ by <strong>おけもんカンパニー</strong><br>
+    2026-04-20 ／ For やこ さま ／ AI議事録 × ストレングス × 手紙のような提案書
+  </footer>
+
+</div>
+
+</body>
+</html>

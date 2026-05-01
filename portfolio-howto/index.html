@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netlifyポートフォリオサイト 作り方ガイド | OKEMON.LAB</title>
+<meta name="description" content="Netlifyに溜まった作品たちを、ライブプレビュー付きの作品集サイトとして公開する手順書。所要時間10分。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0b;
+    --bg-elev:#131316;
+    --bg-card:#1a1a1e;
+    --bg-code:#0d0d10;
+    --border:rgba(255,255,255,0.08);
+    --border-strong:rgba(255,255,255,0.16);
+    --text:#f4f4f5;
+    --text-dim:#a1a1aa;
+    --text-mute:#71717a;
+    --accent:#a3e635;
+    --accent-cyan:#22d3ee;
+    --accent-soft:rgba(163,230,53,0.12);
+    --warn:#fbbf24;
+    --gradient:linear-gradient(135deg,#a3e635 0%,#22d3ee 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Manrope","Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.8;
+    overflow-x:hidden;
+    font-feature-settings:"palt";
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(163,230,53,0.08), transparent 40%),
+      radial-gradient(circle at 85% 100%, rgba(34,211,238,0.06), transparent 40%);
+    pointer-events:none;z-index:0;
+  }
+
+  /* Nav */
+  .nav{
+    position:fixed;top:0;left:0;right:0;
+    z-index:100;
+    padding:18px 32px;
+    background:rgba(10,10,11,0.7);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .nav-brand{
+    font-family:"JetBrains Mono",monospace;
+    font-weight:500;font-size:13px;
+    letter-spacing:0.05em;
+    display:flex;align-items:center;gap:10px;
+    color:var(--text);
+    text-decoration:none;
+  }
+  .nav-brand .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 12px var(--accent);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+  .nav-back{
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;color:var(--text-dim);
+    letter-spacing:0.1em;
+    text-decoration:none;
+    border:1px solid var(--border);
+    padding:6px 12px;border-radius:6px;
+    transition:all 0.2s;
+  }
+  .nav-back:hover{
+    color:var(--accent);
+    border-color:var(--accent);
+  }
+
+  /* Hero */
+  .hero{
+    position:relative;z-index:1;
+    padding:140px 32px 80px;
+    max-width:880px;margin:0 auto;
+  }
+  .hero-tag{
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;
+    color:var(--accent);
+    letter-spacing:0.2em;
+    margin-bottom:24px;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .hero-tag::before{content:"";width:24px;height:1px;background:var(--accent)}
+  .hero h1{
+    font-size:clamp(36px,5.5vw,60px);
+    font-weight:700;line-height:1.15;
+    letter-spacing:-0.02em;
+    margin-bottom:24px;
+  }
+  .hero h1 .gradient{
+    background:var(--gradient);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-style:italic;
+  }
+  .hero-lead{
+    font-size:17px;color:var(--text-dim);
+    line-height:1.8;margin-bottom:32px;
+    max-width:680px;
+  }
+  .hero-meta{
+    display:flex;gap:24px;flex-wrap:wrap;
+    padding:16px 20px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    font-size:13px;
+  }
+  .hero-meta-item{display:flex;align-items:center;gap:8px}
+  .hero-meta-item .ico{color:var(--accent);font-size:14px}
+  .hero-meta-item .label{color:var(--text-mute);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:0.1em}
+  .hero-meta-item .val{color:var(--text)}
+
+  /* Content */
+  .content{
+    position:relative;z-index:1;
+    max-width:880px;margin:0 auto;
+    padding:40px 32px 80px;
+  }
+  h2{
+    font-size:28px;font-weight:700;
+    margin:60px 0 24px;
+    letter-spacing:-0.01em;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--border);
+    display:flex;align-items:center;gap:14px;
+  }
+  h2 .h2num{
+    font-family:"JetBrains Mono",monospace;
+    color:var(--accent);
+    font-size:16px;
+    background:var(--accent-soft);
+    padding:4px 10px;
+    border-radius:6px;
+    border:1px solid rgba(163,230,53,0.3);
+  }
+  h3{
+    font-size:18px;font-weight:600;
+    margin:32px 0 12px;
+    color:var(--text);
+    letter-spacing:-0.01em;
+  }
+  h3::before{
+    content:"▸ ";color:var(--accent);
+  }
+  p{
+    color:var(--text-dim);
+    margin-bottom:16px;
+    font-size:15px;
+  }
+  strong{color:var(--text);font-weight:600}
+  a{color:var(--accent-cyan);text-decoration:none;border-bottom:1px solid rgba(34,211,238,0.3);transition:all 0.2s}
+  a:hover{border-color:var(--accent-cyan)}
+
+  ul,ol{margin:0 0 16px 0;padding-left:24px}
+  li{color:var(--text-dim);margin-bottom:8px;font-size:15px}
+  li strong{color:var(--text)}
+
+  code{
+    font-family:"JetBrains Mono",monospace;
+    background:var(--bg-elev);
+    color:var(--accent);
+    padding:2px 6px;
+    border-radius:4px;
+    font-size:0.88em;
+    border:1px solid var(--border);
+  }
+  pre{
+    background:var(--bg-code);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:20px 22px;
+    overflow-x:auto;
+    margin:16px 0 24px;
+    position:relative;
+  }
+  pre::before{
+    content:attr(data-lang);
+    position:absolute;top:8px;right:12px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:10px;
+    color:var(--text-mute);
+    letter-spacing:0.15em;
+  }
+  pre code{
+    background:transparent;
+    color:var(--text);
+    padding:0;border:none;
+    font-size:13px;
+    line-height:1.7;
+  }
+
+  /* Step block */
+  .step{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:28px;
+    margin:24px 0;
+    position:relative;
+  }
+  .step-head{
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:18px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--border);
+  }
+  .step-num{
+    font-family:"JetBrains Mono",monospace;
+    font-size:13px;font-weight:600;
+    color:var(--bg);
+    background:var(--accent);
+    width:32px;height:32px;
+    border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .step-title{
+    font-size:20px;font-weight:600;
+    color:var(--text);
+    letter-spacing:-0.01em;
+  }
+  .step-time{
+    margin-left:auto;
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;color:var(--text-mute);
+    letter-spacing:0.1em;
+  }
+
+  /* Flow diagram */
+  .flow{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:32px 24px;
+    margin:24px 0;
+    text-align:center;
+  }
+  .flow-step{
+    display:inline-block;
+    background:var(--bg-elev);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:14px 20px;
+    margin:6px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:12px;
+    color:var(--text);
+    letter-spacing:0.05em;
+  }
+  .flow-step.accent{
+    border-color:var(--accent);
+    color:var(--accent);
+    background:var(--accent-soft);
+  }
+  .flow-arrow{
+    display:inline-block;
+    color:var(--text-mute);
+    margin:0 4px;
+    font-size:14px;
+  }
+
+  /* Table */
+  .table-wrap{
+    overflow-x:auto;
+    margin:16px 0 24px;
+    border:1px solid var(--border);
+    border-radius:10px;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+  }
+  th{
+    background:var(--bg-elev);
+    color:var(--text);
+    text-align:left;
+    padding:14px 16px;
+    font-weight:600;
+    font-size:13px;
+    border-bottom:1px solid var(--border);
+  }
+  td{
+    padding:14px 16px;
+    border-bottom:1px solid var(--border);
+    color:var(--text-dim);
+    vertical-align:top;
+  }
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:rgba(255,255,255,0.02)}
+
+  /* Callout */
+  .callout{
+    border-left:3px solid var(--accent);
+    background:var(--accent-soft);
+    padding:16px 20px;
+    margin:20px 0;
+    border-radius:0 10px 10px 0;
+    font-size:14px;
+  }
+  .callout.warn{
+    border-color:var(--warn);
+    background:rgba(251,191,36,0.08);
+  }
+  .callout strong{color:var(--accent)}
+  .callout.warn strong{color:var(--warn)}
+
+  /* CTA */
+  .cta{
+    background:linear-gradient(135deg,rgba(163,230,53,0.1) 0%,rgba(34,211,238,0.05) 100%);
+    border:1px solid var(--border-strong);
+    border-radius:16px;
+    padding:40px 32px;
+    text-align:center;
+    margin:60px 0 0;
+  }
+  .cta h2{
+    border:none;padding:0;margin:0 0 16px;
+    justify-content:center;
+    font-size:24px;
+  }
+  .cta p{margin-bottom:24px}
+  .cta-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--accent);
+    color:var(--bg) !important;
+    border-bottom:none !important;
+    padding:14px 28px;
+    border-radius:8px;
+    font-weight:600;
+    font-family:"JetBrains Mono",monospace;
+    letter-spacing:0.1em;
+    font-size:13px;
+    transition:transform 0.2s;
+  }
+  .cta-btn:hover{transform:translateY(-2px)}
+
+  /* Footer */
+  .footer{
+    position:relative;z-index:1;
+    border-top:1px solid var(--border);
+    padding:50px 32px;
+    text-align:center;
+  }
+  .footer-brand{
+    font-family:"JetBrains Mono",monospace;
+    color:var(--accent);
+    font-size:13px;
+    letter-spacing:0.2em;
+    margin-bottom:12px;
+  }
+  .footer-text{
+    color:var(--text-dim);
+    font-size:13px;
+    margin-bottom:8px;
+  }
+  .footer-note{
+    color:var(--text-mute);
+    font-family:"JetBrains Mono",monospace;
+    font-size:10px;
+    letter-spacing:0.15em;
+    margin-top:20px;
+  }
+
+  @media (max-width:680px){
+    .nav{padding:14px 18px}
+    .hero{padding:110px 20px 60px}
+    .content{padding:20px 20px 60px}
+    h2{font-size:22px;margin:40px 0 20px}
+    .step{padding:22px 18px}
+    .step-time{display:none}
+    pre{padding:16px}
+    pre code{font-size:12px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="https://okemon-portfolio.netlify.app/"><span class="dot"></span>OKEMON.LAB</a>
+  <a class="nav-back" href="https://okemon-portfolio.netlify.app/">← BACK TO PORTFOLIO</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">HOW-TO GUIDE — 2026</div>
+  <h1>
+    Netlifyで、自分の<br>
+    <span class="gradient">作品集</span>を作ろう。
+  </h1>
+  <p class="hero-lead">
+    Netlifyに溜まってきた作品を、<strong>ライブプレビュー付きの作品集サイト</strong>にまとめる手順書。スクショ不要、本物のサイトがそのままサムネに。AIエージェントに任せて10分で公開。
+  </p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="ico">⏱</span>
+      <span class="label">TIME</span>
+      <span class="val">約10分</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="ico">📊</span>
+      <span class="label">LEVEL</span>
+      <span class="val">初級〜中級</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="ico">💰</span>
+      <span class="label">COST</span>
+      <span class="val">無料</span>
+    </div>
+  </div>
+</section>
+
+<main class="content">
+
+  <h2><span class="h2num">01</span>これは何？</h2>
+  <p>Netlifyに自分が作ったサイトが何個か溜まってきた人向け。それらを <strong>1ページの作品集</strong> として並べて、いつでも誰かに見せられる状態にする手順書。</p>
+
+  <h3>特徴</h3>
+  <ul>
+    <li>各カードに <strong>本物のサイトのライブプレビュー</strong> が小さく映る（スクショじゃない・常に最新）</li>
+    <li><strong>クリックで実物に飛べる</strong></li>
+    <li>新しい作品を作るたびに <strong>追記すれば自動でポートフォリオが育つ</strong></li>
+  </ul>
+
+  <h2><span class="h2num">02</span>前提（最初に1回だけ）</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>必要なもの</th><th>補足</th></tr></thead>
+      <tbody>
+        <tr><td>Netlifyアカウント</td><td>無料プランでOK</td></tr>
+        <tr><td>Claude（or他のAIエージェント）+ Netlify MCP接続</td><td>コネクタから「Netlify」を有効化</td></tr>
+        <tr><td>既にNetlifyにデプロイした作品が複数あること</td><td>1〜2個でも作れるけど、5個以上あると映える</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <strong>💡 Tips：</strong> Netlify MCPの繋ぎ方が分からなければ、Claudeに「Netlify MCP繋ぎたい」と聞けばコネクタ画面まで案内される。
+  </div>
+
+  <h2><span class="h2num">03</span>全体の流れ（5ステップ）</h2>
+  <div class="flow">
+    <div class="flow-step">① 既存サイト一覧取得</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step">② 中身確認</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step">③ HTML作成</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step">④ プロジェクト作成</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step accent">⑤ デプロイ ✨</div>
+  </div>
+  <p style="text-align:center;color:var(--text-mute);font-family:'JetBrains Mono',monospace;font-size:13px;">所要時間：約10分（5サイトぐらいなら）</p>
+
+  <h2><span class="h2num">04</span>ステップ詳細</h2>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div class="step-title">既存サイト一覧を取得</div>
+      <div class="step-time">~ 1 min</div>
+    </div>
+    <p>Claudeに頼む：</p>
+    <pre data-lang="PROMPT"><code>「Netlifyにある自分のサイト一覧を出して」</code></pre>
+    <p>裏ではこういうMCPコールが走る：</p>
+    <pre data-lang="MCP"><code>netlify-project-services-reader / get-projects</code></pre>
+    <p>返ってくるもの：</p>
+    <ul>
+      <li><code>name</code> — サイト名</li>
+      <li><code>urls.primarySiteUrl</code> — 公開URL</li>
+      <li><code>site_id</code> — UUID（後で使う）</li>
+      <li><code>currentDeploy.state</code> — 稼働中かどうか</li>
+    </ul>
+    <div class="callout warn">
+      <strong>⚠️ 注意：</strong> 自動命名のサイト（<code>cosmic-brioche-xxxx</code> みたいなランダム名）も混ざる。中身を確認して載せるか判断。
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div class="step-title">各サイトの中身を確認</div>
+      <div class="step-time">~ 2 min</div>
+    </div>
+    <p>各サイトのURLを WebFetch で並列取得して、タイトル・概要を抽出してもらう。</p>
+    <pre data-lang="PROMPT"><code>「このURL全部見て、各サイトのタイトルと
+何のサイトか教えて」
+（URL一覧を渡す）</code></pre>
+    <p>これで各カードに書く「タイトル」「説明文」「カテゴリタグ」の素材が揃う。</p>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div class="step-title">ポートフォリオHTML作成</div>
+      <div class="step-time">~ 3 min</div>
+    </div>
+    <h3>構造のキモ：iframeライブプレビュー</h3>
+    <pre data-lang="HTML"><code>&lt;div class="preview"&gt;
+  &lt;iframe
+    src="https://your-site.netlify.app/"
+    loading="lazy"
+    sandbox="allow-same-origin"
+    style="width:1440px;height:900px;
+           transform:scale(0.25);
+           transform-origin:0 0;
+           border:0;
+           pointer-events:none;"&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+    <p>ポイント：</p>
+    <ul>
+      <li><code>width:1440px</code> で <strong>PC幅でレンダリング</strong>（モバイル幅だと崩れて見えるサイトもあるため）</li>
+      <li><code>transform:scale(0.25)</code> で <strong>1/4サイズに縮小</strong> → サムネ風に</li>
+      <li><code>pointer-events:none</code> で <strong>iframe内をクリック不可に</strong> → カード全体のリンクが優先される</li>
+      <li><code>loading="lazy"</code> で <strong>画面に入ってからロード</strong> → 初期表示が軽い</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div class="step-title">Netlifyに新規プロジェクト作成</div>
+      <div class="step-time">~ 1 min</div>
+    </div>
+    <p>Claudeに頼む：</p>
+    <pre data-lang="PROMPT"><code>「ポートフォリオサイトを `あなたの名前-portfolio` で
+新規作成して」</code></pre>
+    <p>裏で走る処理：</p>
+    <pre data-lang="MCP"><code>netlify-project-services-updater / create-new-project
+  params: { name: "your-name-portfolio" }</code></pre>
+    <h3>命名規則（ここ大事）</h3>
+    <ul>
+      <li><code>^[a-z0-9-]+$</code>（小文字英数とハイフンのみ）</li>
+      <li>既存と被らない名前</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div class="step-title">デプロイ</div>
+      <div class="step-time">~ 3 min</div>
+    </div>
+    <p>Claudeに頼む：</p>
+    <pre data-lang="PROMPT"><code>「これをNetlifyに公開して」</code></pre>
+    <p>裏で走る処理：</p>
+    <ol>
+      <li><code>deploy-site</code> でデプロイ用のnpxコマンド取得</li>
+      <li>ターミナルで <code>npx -y @netlify/mcp@latest --site-id XXX</code> 実行</li>
+      <li><code>Deploy is ready!</code> が出たら完成 ✨</li>
+    </ol>
+    <p>公開URL：</p>
+    <pre data-lang="URL"><code>https://your-name-portfolio.netlify.app/</code></pre>
+    <p>これで永続URL発行・自分のアカウント配下に正規所属。</p>
+  </div>
+
+  <h2><span class="h2num">05</span>ハマりどころ</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>症状</th><th>原因</th><th>対処</th></tr></thead>
+      <tbody>
+        <tr><td>iframeプレビューが真っ黒</td><td><code>X-Frame-Options: DENY</code></td><td>そのカードだけスクショ画像に差し替える</td></tr>
+        <tr><td>iframeのモバイル表示が崩れる</td><td>PC幅レンダリング前提</td><td>気になればmediaQueryで調整</td></tr>
+        <tr><td>プロジェクト名が取れない</td><td>既存と被ってる</td><td>末尾に <code>-2</code> <code>-v2</code> 等付ける</td></tr>
+        <tr><td>デプロイが404</td><td>ファイル名が違う</td><td>必ず <code>index.html</code> に</td></tr>
+        <tr><td>重い</td><td>iframe多数同時ロード</td><td><code>loading="lazy"</code> 必須</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2><span class="h2num">06</span>アップデート運用</h2>
+  <p>新しい作品を作ったら：</p>
+  <ol>
+    <li>Claudeに「ポートフォリオに追加して」と言うだけ</li>
+    <li>既存HTMLに新カードを追記</li>
+    <li>同じプロジェクト名で再デプロイ（上書きされる）</li>
+  </ol>
+  <pre data-lang="PROMPT"><code>「okemon-portfolio に新しい作品を追加して、
+再デプロイして」</code></pre>
+
+  <h2><span class="h2num">07</span>デザインの裏側</h2>
+  <p>「シンプルだけどプロっぽく見える」設計の要素：</p>
+  <ul>
+    <li><strong>ダークモード</strong>（<code>#0a0a0b</code>）+ ライムグリーン差し色（<code>#a3e635</code>）</li>
+    <li><strong>JetBrains Mono</strong> でモノスペース・テック感</li>
+    <li><strong>Manrope</strong> で本文・モダンサンセリフ</li>
+    <li><strong>ホバーでカード浮上</strong> + iframe微拡大</li>
+    <li><strong>LIVE バッジ</strong> + パルスアニメーション</li>
+    <li><strong>グラデーションテキスト</strong> で見出しに動き</li>
+  </ul>
+
+  <div class="cta">
+    <h2>実例をのぞいてみる</h2>
+    <p>このガイドの通りに作った実物がこちら ↓</p>
+    <a class="cta-btn" href="https://okemon-portfolio.netlify.app/" target="_blank">VISIT OKEMON.LAB →</a>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-brand">OKEMON.LAB</div>
+  <p class="footer-text">
+    AIと一緒に、楽しく作る。<br>
+    このガイドも、Claudeと一緒に作りました。
+  </p>
+  <p class="footer-note">© 2026 OKEMON COMPANY · BUILT WITH CLAUDE</p>
+</footer>
+
+</body>
+</html>
