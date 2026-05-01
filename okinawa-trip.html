@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沖縄 3泊4日 — 碧と珊瑚の旅路</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --color-ocean: #0E4D64;
+  --color-ocean-light: #1A7A8A;
+  --color-coral: #E07A5F;
+  --color-coral-light: #F2A68D;
+  --color-sand: #F4F1EB;
+  --color-sand-dark: #E8E2D8;
+  --color-white: #FFFFFF;
+  --color-text: #2C3E50;
+  --color-text-light: #6B7B8D;
+  --color-gold: #C9A96E;
+  --font-serif: 'Playfair Display', 'Noto Serif JP', serif;
+  --font-sans: 'Noto Sans JP', sans-serif;
+  --font-label: 'Inter', sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-sand);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+.header.scrolled {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  padding: 14px 40px;
+}
+.header-logo {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: 3px;
+  transition: color 0.4s;
+}
+.header.scrolled .header-logo { color: var(--color-ocean); }
+.header-nav { display: flex; gap: 32px; list-style: none; }
+.header-nav a {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  transition: all 0.3s;
+  position: relative;
+}
+.header.scrolled .header-nav a { color: var(--color-text-light); }
+.header-nav a:hover { color: var(--color-coral); }
+.header-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--color-coral);
+  transition: width 0.3s;
+}
+.header-nav a:hover::after { width: 100%; }
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=1920&q=80') center/cover;
+  transform: scale(1.05);
+  animation: heroZoom 20s ease-in-out infinite alternate;
+}
+@keyframes heroZoom {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.15); }
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(14,77,100,0.3) 0%,
+    rgba(14,77,100,0.15) 40%,
+    rgba(14,77,100,0.5) 100%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 800px;
+  padding: 0 24px;
+}
+.hero-label {
+  font-family: var(--font-label);
+  font-size: 0.8rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeIn 0.8s 0.3s both;
+}
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: slideUp 1s 0.5s both;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--color-coral-light);
+}
+.hero-sub {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeIn 0.8s 0.8s both;
+}
+.hero-scroll {
+  opacity: 0;
+  animation: fadeIn 0.8s 1.2s both;
+}
+.hero-scroll a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-family: var(--font-label);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.hero-scroll a:hover { color: #fff; }
+.scroll-line {
+  width: 1px; height: 48px;
+  background: rgba(255,255,255,0.4);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%; left: 0;
+  width: 100%; height: 100%;
+  background: #fff;
+  animation: scrollDown 2s ease-in-out infinite;
+}
+@keyframes scrollDown {
+  0% { top: -100%; }
+  50% { top: 100%; }
+  100% { top: 100%; }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.stagger.is-visible > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.stagger.is-visible > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.stagger.is-visible > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.stagger.is-visible > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+
+/* ===== INTRO ===== */
+.intro {
+  padding: 120px 24px;
+  text-align: center;
+  background: var(--color-white);
+}
+.intro-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.section-label {
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--color-ocean-light);
+  margin-bottom: 20px;
+}
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 32px;
+  color: var(--color-ocean);
+  position: relative;
+  display: inline-block;
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 1px;
+  background: var(--color-coral);
+  margin: 16px auto 0;
+  transition: width 0.8s ease 0.3s;
+}
+.fade-in.is-visible .section-title::after {
+  width: 60px;
+}
+.intro-text {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  line-height: 2.2;
+  font-weight: 300;
+}
+
+/* ===== OVERVIEW ===== */
+.overview {
+  padding: 100px 24px;
+  background: var(--color-sand);
+}
+.overview-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.overview-card {
+  background: var(--color-white);
+  padding: 40px 28px;
+  text-align: center;
+  border-radius: 2px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.overview-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(14,77,100,0.08);
+}
+.overview-icon {
+  width: 48px; height: 48px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ocean-light);
+  font-size: 1.4rem;
+}
+.overview-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--color-ocean);
+}
+.overview-card p {
+  font-size: 0.82rem;
+  color: var(--color-text-light);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* ===== PHOTO DIVIDER ===== */
+.photo-divider {
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+.photo-divider-bg {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.photo-divider-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(14,77,100,0.2) 0%,
+    rgba(14,77,100,0.4) 100%
+  );
+}
+.photo-divider-text {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+.photo-divider-text .quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 400;
+  font-style: italic;
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+/* ===== DAY SECTION ===== */
+.day-section {
+  padding: 120px 24px;
+}
+.day-section:nth-child(even) {
+  background: var(--color-white);
+}
+.day-section:nth-child(odd) {
+  background: var(--color-sand);
+}
+.day-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.day-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.day-number {
+  font-family: var(--font-label);
+  font-size: 0.65rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--color-coral);
+  margin-bottom: 16px;
+}
+.day-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 400;
+  color: var(--color-ocean);
+  margin-bottom: 12px;
+}
+.day-subtitle {
+  font-size: 0.88rem;
+  color: var(--color-text-light);
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* ===== SPOT ===== */
+.spot {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.spot:last-child { margin-bottom: 0; }
+.spot.reverse { direction: rtl; }
+.spot.reverse > * { direction: ltr; }
+.spot-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  border-radius: 2px;
+}
+.spot-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.spot-image:hover img {
+  transform: scale(1.04);
+}
+.spot-image-label {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  font-family: var(--font-label);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(14,77,100,0.7);
+  padding: 6px 14px;
+  backdrop-filter: blur(4px);
+}
+.spot-content {
+  padding: 20px 0;
+}
+.spot-time {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  color: var(--color-coral);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.spot-time i { font-size: 0.68rem; }
+.spot-name {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-ocean);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.spot-name-en {
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--color-text-light);
+  margin-bottom: 20px;
+}
+.spot-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  line-height: 2;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.spot-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--color-ocean-light);
+  border: 1px solid rgba(14,77,100,0.2);
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-right: 8px;
+}
+.spot-tag i { font-size: 0.65rem; }
+
+/* ===== FOOD HIGHLIGHT ===== */
+.food-section {
+  padding: 120px 24px;
+  background: var(--color-ocean);
+  color: #fff;
+}
+.food-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.food-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.food-header .section-label { color: var(--color-coral-light); }
+.food-header .section-title { color: #fff; }
+.food-header .section-title::after { background: var(--color-coral-light); }
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.food-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+}
+.food-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.food-card:hover img { transform: scale(1.06); }
+.food-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 50%);
+}
+.food-card-content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 28px;
+}
+.food-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.food-card-desc {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.75);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ===== ISLAND SECTION ===== */
+.island-section {
+  padding: 120px 24px;
+  background: var(--color-white);
+}
+.island-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.island-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.island-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+.island-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  aspect-ratio: 16/10;
+}
+.island-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.island-card:hover img { transform: scale(1.04); }
+.island-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(14,77,100,0.6) 0%, transparent 60%);
+}
+.island-card-content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 32px;
+  color: #fff;
+}
+.island-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.island-card-name-en {
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 12px;
+}
+.island-card-desc {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* ===== PACKING / TIPS ===== */
+.tips-section {
+  padding: 120px 24px;
+  background: var(--color-sand);
+}
+.tips-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.tips-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.tip-item {
+  display: flex;
+  gap: 20px;
+  padding: 28px;
+  background: var(--color-white);
+  border-radius: 2px;
+  transition: transform 0.3s;
+}
+.tip-item:hover { transform: translateY(-2px); }
+.tip-icon {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ocean-light);
+  font-size: 1.1rem;
+}
+.tip-content h4 {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-ocean);
+  margin-bottom: 6px;
+}
+.tip-content p {
+  font-size: 0.82rem;
+  color: var(--color-text-light);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* ===== BUDGET ===== */
+.budget-section {
+  padding: 100px 24px;
+  background: var(--color-white);
+}
+.budget-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.budget-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.budget-table tr {
+  border-bottom: 1px solid var(--color-sand-dark);
+}
+.budget-table td {
+  padding: 18px 12px;
+  font-size: 0.9rem;
+}
+.budget-table td:first-child {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  color: var(--color-ocean);
+  width: 40%;
+}
+.budget-table td:nth-child(2) {
+  color: var(--color-text-light);
+  font-weight: 300;
+}
+.budget-table td:last-child {
+  text-align: right;
+  font-family: var(--font-label);
+  font-weight: 600;
+  color: var(--color-text);
+}
+.budget-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--color-ocean);
+  color: #fff;
+}
+.budget-total-label {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.budget-total-amount {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* ===== TIMELINE ===== */
+.timeline-section {
+  padding: 120px 24px;
+  background: var(--color-sand);
+}
+.timeline-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.timeline-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.timeline {
+  position: relative;
+  padding-left: 60px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px; top: 0; bottom: 0;
+  width: 1px;
+  background: var(--color-ocean-light);
+  opacity: 0.3;
+}
+.timeline-day {
+  margin-bottom: 48px;
+}
+.timeline-day:last-child { margin-bottom: 0; }
+.timeline-day-label {
+  position: relative;
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-coral);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.timeline-day-label::before {
+  content: '';
+  position: absolute;
+  left: -48px; top: 50%;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--color-coral);
+  transform: translateY(-50%);
+}
+.timeline-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  padding: 12px 0;
+}
+.timeline-time {
+  flex-shrink: 0;
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  color: var(--color-ocean-light);
+  width: 50px;
+  padding-top: 2px;
+}
+.timeline-content {
+  font-size: 0.88rem;
+  color: var(--color-text);
+  font-weight: 400;
+}
+.timeline-content small {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-text-light);
+  font-weight: 300;
+  margin-top: 2px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  padding: 80px 24px;
+  background: var(--color-ocean);
+  text-align: center;
+  color: rgba(255,255,255,0.6);
+}
+.footer-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 12px;
+  font-weight: 400;
+  font-style: italic;
+}
+.footer-sub {
+  font-size: 0.82rem;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+.footer-line {
+  width: 40px;
+  height: 1px;
+  background: var(--color-coral);
+  margin: 0 auto 40px;
+}
+.footer-credit {
+  font-family: var(--font-label);
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .header-nav { display: none; }
+  .overview-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .spot { grid-template-columns: 1fr; gap: 32px; }
+  .spot.reverse { direction: ltr; }
+  .food-grid { grid-template-columns: 1fr; }
+  .island-grid { grid-template-columns: 1fr; }
+  .tips-grid { grid-template-columns: 1fr; }
+  .photo-divider { height: 280px; background-attachment: scroll !important; }
+  .photo-divider-bg { background-attachment: scroll; }
+}
+
+@media (max-width: 480px) {
+  .overview-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-logo">OKINAWA JOURNEY</div>
+  <nav>
+    <ul class="header-nav">
+      <li><a href="#intro">About</a></li>
+      <li><a href="#day1">Day 1</a></li>
+      <li><a href="#day2">Day 2</a></li>
+      <li><a href="#day3">Day 3</a></li>
+      <li><a href="#day4">Day 4</a></li>
+      <li><a href="#food">Cuisine</a></li>
+      <li><a href="#budget">Budget</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-label">3 Nights & 4 Days in Paradise</p>
+    <h1 class="hero-title">碧と珊瑚の<em>旅路</em></h1>
+    <p class="hero-sub">沖縄 — 絶景・美食・離島を巡る、最高の3泊4日</p>
+    <div class="hero-scroll">
+      <a href="#intro">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro" id="intro">
+  <div class="intro-inner fade-in">
+    <p class="section-label">Introduction</p>
+    <h2 class="section-title">この旅について</h2>
+    <p class="intro-text">
+      エメラルドグリーンの海、白い砂浜、珊瑚礁の離島。<br>
+      地元食材を活かした至高のグルメ、心に残る夕日。<br><br>
+      この旅は「全部入り」の贅沢プラン。<br>
+      本島の絶景スポットから離島のビーチまで、<br>
+      3泊4日で沖縄の魅力をまるごと体験する旅路です。
+    </p>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="overview">
+  <div class="overview-grid stagger">
+    <div class="overview-card">
+      <div class="overview-icon"><i class="fa-solid fa-calendar-days"></i></div>
+      <h3>3泊4日</h3>
+      <p>余裕を持った<br>ゆったりプラン</p>
+    </div>
+    <div class="overview-card">
+      <div class="overview-icon"><i class="fa-solid fa-water"></i></div>
+      <h3>離島2つ</h3>
+      <p>慶良間諸島 &<br>古宇利島を制覇</p>
+    </div>
+    <div class="overview-card">
+      <div class="overview-icon"><i class="fa-solid fa-utensils"></i></div>
+      <h3>美食三昧</h3>
+      <p>沖縄そばから<br>フレンチまで</p>
+    </div>
+    <div class="overview-card">
+      <div class="overview-icon"><i class="fa-solid fa-camera"></i></div>
+      <h3>絶景10選</h3>
+      <p>SNS映え必至の<br>フォトスポット</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO DIVIDER 1 -->
+<div class="photo-divider">
+  <div class="photo-divider-bg" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80')"></div>
+  <div class="photo-divider-overlay"></div>
+  <div class="photo-divider-text fade-in">
+    <p class="quote">"旅の始まりは、いつだって<br>空港を出た瞬間の潮風から"</p>
+  </div>
+</div>
+
+<!-- DAY 1 -->
+<section class="day-section" id="day1">
+  <div class="day-inner">
+    <div class="day-header fade-in">
+      <p class="day-number">Day 01 — Arrival</p>
+      <h2 class="day-title">南国の風に迎えられて</h2>
+      <p class="day-subtitle">那覇〜南部エリアの絶景とローカルグルメ</p>
+    </div>
+
+    <div class="spot fade-in-left">
+      <div class="spot-image">
+        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" alt="瀬長島ウミカジテラス">
+        <span class="spot-image-label">Scenery</span>
+      </div>
+      <div class="spot-content">
+        <p class="spot-time"><i class="fa-regular fa-clock"></i> 14:00</p>
+        <h3 class="spot-name">瀬長島ウミカジテラス</h3>
+        <p class="spot-name-en">Senagajima Umikaji Terrace</p>
+        <p class="spot-desc">
+          那覇空港からわずか15分。白亜の階段状テラスに並ぶカフェやショップ。
+          地中海のサントリーニ島を思わせる景観の中、到着後最初の一杯を。
+          目の前に広がる東シナ海と、離着陸する飛行機の組み合わせは唯一無二。
+        </p>
+        <span class="spot-tag"><i class="fa-solid fa-location-dot"></i> 豊見城市</span>
+        <span class="spot-tag"><i class="fa-solid fa-sun"></i> サンセット推奨</span>
+      </div>
+    </div>
+
+    <div class="spot reverse fade-in-right">
+      <div class="spot-image">
+        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80" alt="沖縄そば">
+        <span class="spot-image-label">Cuisine</span>
+      </div>
+      <div class="spot-content">
+        <p class="spot-time"><i class="fa-regular fa-clock"></i> 16:00</p>
+        <h3 class="spot-name">首里そば</h3>
+        <p class="spot-name-en">Shuri Soba</p>
+        <p class="spot-desc">
+          首里城近くの路地裏にある名店。かつおと豚骨の透き通ったスープに、
+          手もみ麺のもちもち食感。売り切れ次第閉店の超人気店。
+          地元民に愛される、到着日の「本物の沖縄」との出会い。
+        </p>
+        <span class="spot-tag"><i class="fa-solid fa-location-dot"></i> 那覇市首里</span>
+        <span class="spot-tag"><i class="fa-solid fa-star"></i> 食べログ百名店</span>
+      </div>
+    </div>
+
+    <div class="spot fade-in-left">
+      <div class="spot-image">
+        <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80" alt="国際通り">
+        <span class="spot-image-label">Night</span>
+      </div>
+      <div class="spot-content">
+        <p class="spot-time"><i class="fa-regular fa-clock"></i> 19:00</p>
+        <h3 class="spot-name">国際通り〜栄町市場</h3>
+        <p class="spot-name-en">Kokusai Street & Sakaemachi</p>
+        <p class="spot-desc">
+          観光客で賑わう国際通りから一本裏に入れば、
+          地元の常連だけが知る栄町市場のディープな夜。
+          泡盛片手に島豆腐チャンプルーをつまむ、沖縄の夜の始まり。
+        </p>
+        <span class="spot-tag"><i class="fa-solid fa-location-dot"></i> 那覇市</span>
+        <span class="spot-tag"><i class="fa-solid fa-moon"></i> ナイトスポット</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO DIVIDER 2 -->
+<div class="photo-divider">
+  <div class="photo-divider-bg" style="background-image: url('https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=1920&q=80')"></div>
+  <div class="photo-divider-overlay"></div>
+  <div class="photo-divider-text fade-in">
+    <p class="quote">"島の海は、毎時間<br>違う色をしている"</p>
+  </div>
+</div>
+
+<!-- DAY 2 -->
+<section class="day-section" id="day2">
+  <div class="day-inner">
+    <div class="day-header fade-in">
+      <p class="day-number">Day 02 — Island Hopping</p>
+      <h2 class="day-title">慶良間ブルーに溶ける</h2>
+      <p class="day-subtitle">世界屈指の透明度を誇る、慶良間諸島日帰りツアー</p>
+    </div>
+
+    <div class="spot fade-in-left">
+      <div class="spot-image">
+        <img src="https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?w=800&q=80" alt="慶良間諸島">
+        <span class="spot-image-label">Island</span>
+      </div>
+      <div class="spot-content">
+        <p class="spot-time"><i class="fa-regular fa-clock"></i> 09:00</p>
+        <h3 class="spot-name">座間味島</h3>
+        <p class="spot-name-en">Zamami Island — Kerama</p>
+        <p class="spot-desc">
+          那覇・泊港から高速船で約50分。到着した瞬間、
+          海の透明度に声を失う。「ケラマブルー」と呼ばれる
+          その碧は、世界中のダイバーが憧れる色。
+          古座間味ビーチでのシュノーケリングは必須。
+        </p>
+        <span class="spot-tag"><i class="fa-solid fa-ship"></i> 高速船50分</span>
+        <span class="spot-tag"><i class="fa-solid fa-fish"></i> シュノーケリング</span>
+      </div>
+    </div>
+
+    <div class="spot reverse fade-in-right">
+      <div class="spot-image">
+        <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=800&q=80" alt="海亀">
+        <span class="spot-image-label">Experience</span>
+      </div>
+      <div class="spot-content">
+        <p class="spot-time"><i class="fa-regular fa-clock"></i> 11:00</p>
+        <h3 class="spot-name">ウミガメと泳ぐ</h3>
+        <p class="spot-name-en">Swimming with Sea Turtles</p>
+        <p class="spot-desc">
+          座間味の海にはウミガメが多く生息。
+          透明度50mの海で、すぐ目の前を悠々と泳ぐ姿は
+          一生忘れられない体験に。
+          ガイド付きツアーなら高確率で遭遇できる。
+        </p>
+        <span class="spot-tag"><i class="fa-solid fa-certificate"></i> 遭遇率95%</span>
+        <span class="spot-tag"><i class="fa-solid fa-water"></i> 透明度50m</span>
+      </div>
+    </div>
+
+    <div class="spot fade-in-left">
+      <div class="spot-image">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="島料理">
+        <span class="spot-image-label">Dinner</span>
+      </div>
+      <div class="spot-content">
+        <p class="spot-time"><i class="fa-regular fa-clock"></i> 19:30</p>
+        <h3 class="spot-name">泡盛と島料理の夜</h3>
+        <p class="spot-name-en">Awamori & Island Cuisine</p>
+        <p class="spot-desc">
+          那覇に戻って、離島の余韻に浸りながらの夕食。
+          グルクンの唐揚げ、ラフテー、海ぶどう。
+          古酒（クース）の甘い香りが、最高の一日を締めくくる。
+        </p>
+        <span class="spot-tag"><i class="fa-solid fa-wine-glass"></i> 泡盛</span>
+        <span class="spot-tag"><i class="fa-solid fa-star"></i> 島料理</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOD SECTION -->
+<section class="food-section" id="food">
+  <div class="food-inner">
+    <div class="food-header fade-in">
+      <p class="section-label">Okinawa Cuisine</p>
+      <h2 class="section-title">沖縄の美食</h2>
+    </div>
+    <div class="food-grid stagger">
+      <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80" alt="沖縄そば">
+        <div class="food-card-overlay"></div>
+        <div class="food-card-content">
+          <h3 class="food-card-name">沖縄そば</h3>
+          <p class="food-card-desc">かつお出汁と豚骨の黄金スープ。島の魂が詰まった一杯</p>
+        </div>
+      </div>
+      <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&q=80" alt="アグー豚">
+        <div class="food-card-overlay"></div>
+        <div class="food-card-content">
+          <h3 class="food-card-name">アグー豚しゃぶしゃぶ</h3>
+          <p class="food-card-desc">幻の在来豚。甘い脂身がとろける至福のひと皿</p>
+        </div>
+      </div>
+      <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1563612116625-3012372fccce?w=600&q=80" alt="海ぶどう">
+        <div class="food-card-overlay"></div>
+        <div class="food-card-content">
+          <h3 class="food-card-name">海ぶどう & 島魚</h3>
+          <p class="food-card-desc">プチプチ食感の海ぶどうと新鮮な近海魚のお造り</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 3 -->
+<section class="day-section" id="day3">
+  <div class="day-inner">
+    <div class="day-header fade-in">
+      <p class="day-number">Day 03 — North</p>
+      <h2 class="day-title">北部の碧と古宇利の橋</h2>
+      <p class="day-subtitle">美ら海水族館〜古宇利島、沖縄本島の絶景ドライブ</p>
+    </div>
+
+    <div class="spot fade-in-left">
+      <div class="spot-image">
+        <img src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=800&q=80" alt="美ら海水族館">
+        <span class="spot-image-label">Aquarium</span>
+      </div>
+      <div class="spot-content">
+        <p class="spot-time"><i class="fa-regular fa-clock"></i> 09:30</p>
+        <h3 class="spot-name">美ら海水族館</h3>
+        <p class="spot-name-en">Churaumi Aquarium</p>
+        <p class="spot-desc">
+          世界最大級の水槽「黒潮の海」。
+          8mのジンベエザメが悠々と泳ぐ姿は圧巻。
+          水族館を出たら、エメラルドビーチで
+          伊江島を望む絶景ランチ。
+        </p>
+        <span class="spot-tag"><i class="fa-solid fa-location-dot"></i> 本部町</span>
+        <span class="spot-tag"><i class="fa-solid fa-fish-fins"></i> ジンベエザメ</span>
+      </div>
+    </div>
+
+    <div class="spot reverse fade-in-right">
+      <div class="spot-image">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="古宇利大橋">
+        <span class="spot-image-label">Bridge</span>
+      </div>
+      <div class="spot-content">
+        <p class="spot-time"><i class="fa-regular fa-clock"></i> 14:00</p>
+        <h3 class="spot-name">古宇利島</h3>
+        <p class="spot-name-en">Kouri Island</p>
+        <p class="spot-desc">
+          全長1,960mの古宇利大橋を渡る瞬間、
+          左右に広がるエメラルドグリーンの海に息を呑む。
+          ハートロックでの記念撮影と、
+          島のウニ丼は北部ドライブのハイライト。
+        </p>
+        <span class="spot-tag"><i class="fa-solid fa-bridge"></i> 絶景ドライブ</span>
+        <span class="spot-tag"><i class="fa-solid fa-heart"></i> ハートロック</span>
+      </div>
+    </div>
+
+    <div class="spot fade-in-left">
+      <div class="spot-image">
+        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80" alt="万座毛">
+        <span class="spot-image-label">Cliff</span>
+      </div>
+      <div class="spot-content">
+        <p class="spot-time"><i class="fa-regular fa-clock"></i> 17:00</p>
+        <h3 class="spot-name">万座毛の夕日</h3>
+        <p class="spot-name-en">Cape Manzamo Sunset</p>
+        <p class="spot-desc">
+          象の鼻のような奇岩と、東シナ海に沈む夕日。
+          断崖絶壁から眺めるサンセットは、
+          沖縄で最も美しい瞬間のひとつ。
+          帰路のディナーはアグー豚のしゃぶしゃぶで。
+        </p>
+        <span class="spot-tag"><i class="fa-solid fa-location-dot"></i> 恩納村</span>
+        <span class="spot-tag"><i class="fa-solid fa-sun"></i> サンセット</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO DIVIDER 3 -->
+<div class="photo-divider">
+  <div class="photo-divider-bg" style="background-image: url('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1920&q=80')"></div>
+  <div class="photo-divider-overlay"></div>
+  <div class="photo-divider-text fade-in">
+    <p class="quote">"最後の朝は、<br>一番ゆっくり目覚めたい"</p>
+  </div>
+</div>
+
+<!-- DAY 4 -->
+<section class="day-section" id="day4">
+  <div class="day-inner">
+    <div class="day-header fade-in">
+      <p class="day-number">Day 04 — Last Morning</p>
+      <h2 class="day-title">名残を惜しむ最終日</h2>
+      <p class="day-subtitle">やちむん通り散策と、最後の沖縄グルメ</p>
+    </div>
+
+    <div class="spot fade-in-left">
+      <div class="spot-image">
+        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80" alt="やちむん">
+        <span class="spot-image-label">Culture</span>
+      </div>
+      <div class="spot-content">
+        <p class="spot-time"><i class="fa-regular fa-clock"></i> 09:00</p>
+        <h3 class="spot-name">壺屋やちむん通り</h3>
+        <p class="spot-name-en">Tsuboya Yachimun Street</p>
+        <p class="spot-desc">
+          300年以上の歴史を持つ焼き物の里。
+          石畳の道に並ぶ工房やギャラリーで、
+          お気に入りの一皿を見つける。
+          旅の思い出を形に残す、大人の土産探し。
+        </p>
+        <span class="spot-tag"><i class="fa-solid fa-palette"></i> 伝統工芸</span>
+        <span class="spot-tag"><i class="fa-solid fa-mug-hot"></i> カフェ併設</span>
+      </div>
+    </div>
+
+    <div class="spot reverse fade-in-right">
+      <div class="spot-image">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="ランチ">
+        <span class="spot-image-label">Last Meal</span>
+      </div>
+      <div class="spot-content">
+        <p class="spot-time"><i class="fa-regular fa-clock"></i> 11:30</p>
+        <h3 class="spot-name">最後のごちそう</h3>
+        <p class="spot-name-en">Farewell Lunch</p>
+        <p class="spot-desc">
+          タコライス発祥の地・金武町のキングタコス、
+          あるいはステーキ88で〆のステーキ。
+          沖縄は「ステーキで〆る」文化。
+          最後の一口まで、島の味を楽しみ尽くす。
+        </p>
+        <span class="spot-tag"><i class="fa-solid fa-utensils"></i> タコライス</span>
+        <span class="spot-tag"><i class="fa-solid fa-plane-departure"></i> 空港へ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ISLAND SECTION -->
+<section class="island-section" id="islands">
+  <div class="island-inner">
+    <div class="island-header fade-in">
+      <p class="section-label">Remote Islands</p>
+      <h2 class="section-title">訪れる島々</h2>
+    </div>
+    <div class="island-grid stagger">
+      <div class="island-card">
+        <img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80" alt="座間味島">
+        <div class="island-card-overlay"></div>
+        <div class="island-card-content">
+          <h3 class="island-card-name">座間味島</h3>
+          <p class="island-card-name-en">ZAMAMI ISLAND</p>
+          <p class="island-card-desc">透明度50mの「ケラマブルー」。ウミガメと泳ぐ夢のような海</p>
+        </div>
+      </div>
+      <div class="island-card">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="古宇利島">
+        <div class="island-card-overlay"></div>
+        <div class="island-card-content">
+          <h3 class="island-card-name">古宇利島</h3>
+          <p class="island-card-name-en">KOURI ISLAND</p>
+          <p class="island-card-desc">恋の島伝説が残る、エメラルドの海に浮かぶ小島</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="timeline-inner">
+    <div class="timeline-header fade-in">
+      <p class="section-label">Schedule</p>
+      <h2 class="section-title">全日程タイムライン</h2>
+    </div>
+    <div class="timeline fade-in">
+      <div class="timeline-day">
+        <p class="timeline-day-label">Day 1 — 到着日</p>
+        <div class="timeline-item">
+          <span class="timeline-time">12:00</span>
+          <div class="timeline-content">那覇空港到着 → レンタカー受取<small>ゆいレール+レンタカーどちらでもOK</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">14:00</span>
+          <div class="timeline-content">瀬長島ウミカジテラス<small>到着後のカフェタイム＆写真撮影</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">16:00</span>
+          <div class="timeline-content">首里そば<small>首里城エリアで遅めの昼食</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">17:30</span>
+          <div class="timeline-content">ホテルチェックイン<small>那覇市内 or 北谷エリア</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">19:00</span>
+          <div class="timeline-content">栄町市場で夕食 & 泡盛<small>地元民御用達のディープスポット</small></div>
+        </div>
+      </div>
+
+      <div class="timeline-day">
+        <p class="timeline-day-label">Day 2 — 離島</p>
+        <div class="timeline-item">
+          <span class="timeline-time">07:30</span>
+          <div class="timeline-content">泊港から高速船で座間味島へ<small>クイーンざまみ 約50分</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">09:00</span>
+          <div class="timeline-content">古座間味ビーチでシュノーケリング<small>ウミガメ遭遇ツアー参加</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">12:00</span>
+          <div class="timeline-content">島のパーラーでランチ<small>島魚のフライ定食など</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">14:00</span>
+          <div class="timeline-content">阿真ビーチでまったり<small>静かなビーチで島時間</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">16:00</span>
+          <div class="timeline-content">高速船で那覇へ帰還</div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">19:30</span>
+          <div class="timeline-content">泡盛BAR & 島料理ディナー<small>グルクン唐揚げ・ラフテー・海ぶどう</small></div>
+        </div>
+      </div>
+
+      <div class="timeline-day">
+        <p class="timeline-day-label">Day 3 — 北部ドライブ</p>
+        <div class="timeline-item">
+          <span class="timeline-time">08:30</span>
+          <div class="timeline-content">レンタカーで北上開始<small>海沿いの58号線ドライブ</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">09:30</span>
+          <div class="timeline-content">美ら海水族館<small>ジンベエザメの黒潮の海</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">12:00</span>
+          <div class="timeline-content">備瀬のフクギ並木でランチ<small>木漏れ日の中を散歩</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">14:00</span>
+          <div class="timeline-content">古宇利大橋 → ハートロック<small>ウニ丼もぜひ</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">17:00</span>
+          <div class="timeline-content">万座毛でサンセット<small>象の鼻岩と夕日の共演</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">19:00</span>
+          <div class="timeline-content">恩納村でアグー豚しゃぶしゃぶ<small>北部の〆は最高級ブランド豚</small></div>
+        </div>
+      </div>
+
+      <div class="timeline-day">
+        <p class="timeline-day-label">Day 4 — 最終日</p>
+        <div class="timeline-item">
+          <span class="timeline-time">09:00</span>
+          <div class="timeline-content">壺屋やちむん通り散策<small>お土産の焼き物探し</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">11:30</span>
+          <div class="timeline-content">〆のステーキ or タコライス<small>沖縄流「〆ステーキ」文化を体験</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">13:00</span>
+          <div class="timeline-content">レンタカー返却 → 那覇空港<small>DFS免税店でラストショッピング</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">15:00</span>
+          <div class="timeline-content">那覇空港出発<small>また来よう、この島に</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="tips-section">
+  <div class="tips-inner">
+    <div class="tips-header fade-in">
+      <p class="section-label">Travel Tips</p>
+      <h2 class="section-title">旅のヒント</h2>
+    </div>
+    <div class="tips-grid stagger">
+      <div class="tip-item">
+        <div class="tip-icon"><i class="fa-solid fa-car"></i></div>
+        <div class="tip-content">
+          <h4>レンタカーは必須</h4>
+          <p>北部ドライブは車がないと回れない。2日目は那覇泊なら不要。3日目からの1.5日間レンタルが最もコスパ◎</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon"><i class="fa-solid fa-ship"></i></div>
+        <div class="tip-content">
+          <h4>座間味の高速船は予約必須</h4>
+          <p>ハイシーズンは1ヶ月前に満席。予約開始と同時に押さえよう。2便目（10:00発）でもOK</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon"><i class="fa-solid fa-sun"></i></div>
+        <div class="tip-content">
+          <h4>日焼け対策を万全に</h4>
+          <p>沖縄の紫外線は本州の1.5倍。ラッシュガード・SPF50+は必携。サンゴに優しい日焼け止めを選ぼう</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon"><i class="fa-solid fa-cloud-sun"></i></div>
+        <div class="tip-content">
+          <h4>ベストシーズンは6〜7月上旬</h4>
+          <p>梅雨明け直後が狙い目。台風シーズン前で海も穏やか。5月下旬もアリ</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUDGET -->
+<section class="budget-section" id="budget">
+  <div class="budget-inner">
+    <div class="budget-header fade-in">
+      <p class="section-label">Budget</p>
+      <h2 class="section-title">旅の予算目安</h2>
+    </div>
+    <div class="fade-in">
+      <table class="budget-table">
+        <tr>
+          <td>航空券</td>
+          <td>関西 ↔ 那覇（LCC早割）</td>
+          <td>¥15,000〜</td>
+        </tr>
+        <tr>
+          <td>宿泊（3泊）</td>
+          <td>ビジネスホテル〜リゾート</td>
+          <td>¥24,000〜</td>
+        </tr>
+        <tr>
+          <td>レンタカー（1.5日）</td>
+          <td>コンパクトカー + ガソリン</td>
+          <td>¥8,000〜</td>
+        </tr>
+        <tr>
+          <td>座間味高速船</td>
+          <td>往復 + シュノーケルツアー</td>
+          <td>¥10,000〜</td>
+        </tr>
+        <tr>
+          <td>美ら海水族館</td>
+          <td>入館料</td>
+          <td>¥2,180</td>
+        </tr>
+        <tr>
+          <td>食事（4日分）</td>
+          <td>ランチ〜ディナー × 4日</td>
+          <td>¥20,000〜</td>
+        </tr>
+        <tr>
+          <td>お土産・雑費</td>
+          <td>やちむん・泡盛・その他</td>
+          <td>¥10,000〜</td>
+        </tr>
+      </table>
+      <div class="budget-total">
+        <span class="budget-total-label">Estimated Total</span>
+        <span class="budget-total-amount">¥89,180〜</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <h3 class="footer-title">Let the journey begin.</h3>
+  <p class="footer-sub">沖縄が、待っている。</p>
+  <div class="footer-line"></div>
+  <p class="footer-credit">OKINAWA 3N4D TRAVEL PLAN — DESIGNED WITH LOVE</p>
+</footer>
+
+<script>
+// Header scroll effect
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Scroll animations
+const animEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger');
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      animObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+animEls.forEach(el => {
+  const r = el.getBoundingClientRect();
+  if (r.top < window.innerHeight && r.bottom > 0) {
+    el.classList.add('is-visible');
+  } else {
+    animObs.observe(el);
+  }
+});
+</script>
+
+</body>
+</html>
