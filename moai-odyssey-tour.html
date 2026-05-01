@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一億円の夢 ✦ 究極のラパ・ヌイ モアイ島プライベートツアー</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Noto+Serif+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f5d470;
+      --gold-dark: #a08c2a;
+      --navy: #060614;
+      --navy-mid: #0d0d2b;
+      --cyan: #00d4ff;
+      --cyan-soft: #7eeef8;
+      --white: #f8f5ef;
+      --glass: rgba(255,255,255,0.05);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Noto Serif JP', serif;
+      overflow-x: hidden;
+    }
+
+    /* =========================================
+       PARTICLES（星空エフェクト）
+    ========================================= */
+    #particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(6,6,20,0.3) 0%, rgba(6,6,20,0.6) 60%, rgba(6,6,20,1) 100%),
+        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=85&fit=crop') center/cover no-repeat;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      padding: 8px 24px;
+      margin-bottom: 32px;
+      animation: fadeInDown 1s ease;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 1;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 40%, var(--gold-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.6rem);
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      color: rgba(248,245,239,0.85);
+      margin-bottom: 12px;
+      animation: fadeInUp 1.4s ease;
+    }
+
+    .hero-jp {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 48px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .hero-price {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      color: var(--gold);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 8px;
+      margin-bottom: 48px;
+      animation: fadeInUp 1.8s ease;
+      text-shadow: 0 0 30px rgba(212,175,55,0.5);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(248,245,239,0.5);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, rgba(212,175,55,0.8), transparent);
+      margin-top: 8px;
+    }
+
+    /* =========================================
+       SECTIONS COMMON
+    ========================================= */
+    section { position: relative; z-index: 2; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    /* =========================================
+       INTRO
+    ========================================= */
+    .intro {
+      padding: 120px 0;
+      background: linear-gradient(to bottom, var(--navy), #0a0a20);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .intro-text p {
+      font-size: 1.1rem;
+      line-height: 2;
+      color: rgba(248,245,239,0.8);
+      margin-bottom: 20px;
+    }
+
+    .intro-text p strong {
+      color: var(--gold);
+    }
+
+    .intro-img {
+      position: relative;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .intro-img img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .intro-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(212,175,55,0.3);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .intro-img-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 32px 24px 24px;
+      background: linear-gradient(to top, rgba(6,6,20,0.9), transparent);
+      font-size: 0.85rem;
+      color: rgba(248,245,239,0.7);
+      letter-spacing: 0.05em;
+      z-index: 2;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 60px;
+      border-top: 1px solid rgba(212,175,55,0.2);
+      padding-top: 60px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(248,245,239,0.6);
+      letter-spacing: 0.1em;
+    }
+
+    /* =========================================
+       SPOTS（絶景スポット）
+    ========================================= */
+    .spots {
+      padding: 120px 0;
+      background: var(--navy-mid);
+    }
+
+    .spots-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .spots-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .spot-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .spot-card img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .spot-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .spot-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6,6,20,0.95) 0%, rgba(6,6,20,0.3) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px 32px;
+      transition: background 0.4s ease;
+    }
+
+    .spot-card:hover .spot-overlay {
+      background: linear-gradient(to top, rgba(6,6,20,0.98) 0%, rgba(6,6,20,0.5) 60%, rgba(6,6,20,0.1) 100%);
+    }
+
+    .spot-num {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .spot-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .spot-name-jp {
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .spot-desc {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: rgba(248,245,239,0.7);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s ease;
+    }
+
+    .spot-card:hover .spot-desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================
+       EXPERIENCES
+    ========================================= */
+    .experiences {
+      padding: 120px 0;
+      background: linear-gradient(180deg, #0a0a20 0%, var(--navy) 100%);
+    }
+
+    .exp-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .exp-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 500px;
+    }
+
+    .exp-item:nth-child(even) .exp-img-wrap { order: -1; }
+
+    .exp-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exp-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .exp-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(6,6,20,0.2);
+    }
+
+    .exp-content {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--navy-mid);
+    }
+
+    .exp-icon {
+      font-size: 2.5rem;
+      margin-bottom: 24px;
+    }
+
+    .exp-content p {
+      font-size: 1rem;
+      line-height: 2;
+      color: rgba(248,245,239,0.75);
+      margin-bottom: 16px;
+    }
+
+    .exp-tag {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 6px 16px;
+      border: 1px solid rgba(212,175,55,0.4);
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+    }
+
+    /* =========================================
+       HOTEL
+    ========================================= */
+    .hotel {
+      padding: 120px 0;
+      background: var(--navy);
+    }
+
+    .hotel-wrap {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hotel-imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .hotel-img-main {
+      grid-column: 1 / -1;
+    }
+
+    .hotel-imgs img {
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hotel-img-main img { height: 300px; }
+    .hotel-imgs .hotel-img-sub img { height: 180px; }
+
+    .hotel-content .section-title {
+      margin-bottom: 20px;
+    }
+
+    .hotel-content p {
+      font-size: 1rem;
+      line-height: 2;
+      color: rgba(248,245,239,0.75);
+      margin-bottom: 20px;
+    }
+
+    .hotel-features {
+      list-style: none;
+      margin: 24px 0 32px;
+    }
+
+    .hotel-features li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+      font-size: 0.95rem;
+      color: rgba(248,245,239,0.8);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hotel-features li::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* =========================================
+       SCHEDULE
+    ========================================= */
+    .schedule {
+      padding: 120px 0;
+      background: var(--navy-mid);
+    }
+
+    .schedule-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold) 10%, var(--gold) 90%, transparent);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .timeline-item:nth-child(even) .timeline-day {
+      grid-column: 1;
+      grid-row: 1;
+      text-align: right;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 12px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(212,175,55,0.6);
+      z-index: 1;
+    }
+
+    .timeline-day {
+      padding-top: 10px;
+    }
+
+    .day-num {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .day-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: rgba(248,245,239,0.5);
+    }
+
+    .timeline-content {
+      background: var(--glass);
+      border: 1px solid rgba(212,175,55,0.15);
+      padding: 28px 32px;
+    }
+
+    .timeline-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+
+    .timeline-content p {
+      font-size: 0.9rem;
+      line-height: 1.9;
+      color: rgba(248,245,239,0.65);
+    }
+
+    /* =========================================
+       LINKS（実際のリンク集）
+    ========================================= */
+    .links {
+      padding: 100px 0;
+      background: var(--navy);
+    }
+
+    .links-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .link-card {
+      background: var(--glass);
+      border: 1px solid rgba(212,175,55,0.2);
+      padding: 36px 28px;
+      text-decoration: none;
+      color: var(--white);
+      display: block;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(212,175,55,0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .link-card:hover::before { opacity: 1; }
+
+    .link-card:hover {
+      border-color: rgba(212,175,55,0.5);
+      transform: translateY(-4px);
+    }
+
+    .link-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .link-category {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .link-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .link-desc {
+      font-size: 0.85rem;
+      color: rgba(248,245,239,0.55);
+      line-height: 1.7;
+    }
+
+    .link-arrow {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+    }
+
+    /* =========================================
+       STARRY SECTION（天の川）
+    ========================================= */
+    .starry {
+      position: relative;
+      height: 600px;
+      overflow: hidden;
+    }
+
+    .starry-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(6,6,20,0.7), rgba(6,6,20,0.5), rgba(6,6,20,0.8)),
+        url('https://images.unsplash.com/photo-1464802686167-b939a6910659?w=1920&q=85&fit=crop') center/cover no-repeat;
+    }
+
+    .starry-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 32px;
+    }
+
+    .starry-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+
+    .starry-content p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      line-height: 2;
+      color: rgba(248,245,239,0.8);
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(212,175,55,0.15);
+      padding: 60px 0 40px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      letter-spacing: 0.3em;
+      margin-bottom: 8px;
+    }
+
+    .footer-tagline {
+      font-size: 0.8rem;
+      color: rgba(248,245,239,0.4);
+      letter-spacing: 0.2em;
+      margin-bottom: 40px;
+    }
+
+    .footer-note {
+      font-size: 0.75rem;
+      color: rgba(248,245,239,0.3);
+      line-height: 1.8;
+    }
+
+    /* =========================================
+       ANIMATIONS
+    ========================================= */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .fade-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+    @media (max-width: 900px) {
+      .intro-grid,
+      .hotel-wrap,
+      .exp-item,
+      .exp-item:nth-child(even) .exp-img-wrap {
+        grid-template-columns: 1fr;
+        order: unset;
+      }
+      .exp-item:nth-child(even) .exp-img-wrap { order: 0; }
+      .spots-grid { grid-template-columns: 1fr; }
+      .links-grid { grid-template-columns: 1fr 1fr; }
+      .stats-row { grid-template-columns: 1fr; gap: 20px; }
+      .timeline::before { left: 20px; }
+      .timeline-item { grid-template-columns: 1fr; padding-left: 50px; }
+      .timeline-dot { left: 20px; }
+      .timeline-item:nth-child(even) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-day { grid-column: 1; grid-row: auto; text-align: left; }
+    }
+
+    @media (max-width: 600px) {
+      .links-grid { grid-template-columns: 1fr; }
+      .hotel-imgs { grid-template-columns: 1fr; }
+      .hotel-img-main { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ★ 星パーティクル -->
+<canvas id="particles"></canvas>
+
+<!-- ============== HERO ============== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">PRIVATE LUXURY EXPEDITION</div>
+    <h1 class="hero-title">MOAI</h1>
+    <p class="hero-subtitle">RAPA NUI · EASTER ISLAND</p>
+    <p class="hero-jp">一億円で行く、究極の神秘の旅へ</p>
+    <div class="hero-price">¥100,000,000 Premium Package</div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+
+<!-- ============== INTRO ============== -->
+<section class="intro">
+  <div class="section-inner">
+    <div class="intro-grid">
+      <div class="intro-text fade-in-left">
+        <span class="section-label">About Rapa Nui</span>
+        <h2 class="section-title">地球上で最も<br>孤立した<em>聖地</em></h2>
+        <p>
+          南太平洋の真っただ中、最寄りの陸地から<strong>3,700km</strong>離れた絶海の孤島——
+          それがラパ・ヌイ（イースター島）。
+          古代ポリネシア人が火山の溶岩から刻み上げた<strong>約900体のモアイ像</strong>が、
+          今も黙して海の彼方を見つめる。
+        </p>
+        <p>
+          世界遺産に登録されたラノ・ヌイ国立公園の神秘を、
+          <strong>プライベートジェット</strong>と<strong>専属ガイド</strong>で、
+          世界で最も贅沢な形で体験する。
+          これは旅行ではない。一生に一度の"巡礼"だ。
+        </p>
+        <p>
+          夜明けのアフ・トンガリキで朝日を浴びるモアイ、
+          満天の星空の下で聴くラパ・ヌイの古謡、
+          プライベートビーチでのシャンパン——すべてがあなただけのために整えられる。
+        </p>
+      </div>
+      <div class="intro-img fade-in-right">
+        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=900&q=85&fit=crop" alt="イースター島 モアイ像">
+        <div class="intro-img-caption">📍 Ahu Tongariki — 15体のモアイが一列に並ぶ、島最大の祭壇</div>
+      </div>
+    </div>
+
+    <div class="stats-row fade-in">
+      <div class="stat">
+        <span class="stat-num">900体</span>
+        <span class="stat-label">島に残るモアイ像の数</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3,700km</span>
+        <span class="stat-label">最寄りの陸地との距離</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1000年</span>
+        <span class="stat-label">モアイが刻まれた歴史</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== STARRY ============== -->
+<div class="starry">
+  <div class="starry-bg"></div>
+  <div class="starry-content">
+    <h2 class="fade-in">世界で最も星が美しい島<br>天の川が、<em style="color:var(--gold)">モアイの頭上</em>に降り注ぐ</h2>
+    <p class="fade-in">光害ゼロの孤島だから見える、46億光年の宇宙。<br>専属天文学者と夜の儀式——モアイと星と、あなただけの夜。</p>
+  </div>
+</div>
+
+
+<!-- ============== SPOTS ============== -->
+<section class="spots">
+  <div class="section-inner">
+    <div class="spots-header fade-in">
+      <span class="section-label">Must-See Locations</span>
+      <h2 class="section-title">島の<em>絶景スポット</em>3選</h2>
+    </div>
+  </div>
+  <div class="spots-grid">
+
+    <div class="spot-card fade-in">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=85&fit=crop&crop=center" alt="アフ・トンガリキ">
+      <div class="spot-overlay">
+        <div class="spot-num">SPOT 01</div>
+        <h3 class="spot-name">Ahu Tongariki</h3>
+        <div class="spot-name-jp">アフ・トンガリキ</div>
+        <p class="spot-desc">島最大の祭壇に15体のモアイが立ち並ぶ。夜明けに朝日を背に黒く浮かびあがるシルエットは、地球で最も壮大な光景のひとつ。プライベートで朝日鑑賞＋シャンパン朝食付き。</p>
+      </div>
+    </div>
+
+    <div class="spot-card fade-in">
+      <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=700&q=85&fit=crop" alt="ラノ・ララク">
+      <div class="spot-overlay">
+        <div class="spot-num">SPOT 02</div>
+        <h3 class="spot-name">Rano Raraku</h3>
+        <div class="spot-name-jp">ラノ・ララク（モアイの工場）</div>
+        <p class="spot-desc">島にある約900体のモアイのうち約4割が眠る「製造工場」。未完成のまま地面に埋まるモアイ像群は、作られた当時のまま時間が止まったような神秘空間。専属ガイドによる解説付き。</p>
+      </div>
+    </div>
+
+    <div class="spot-card fade-in">
+      <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=700&q=85&fit=crop" alt="オロンゴ岬">
+      <div class="spot-overlay">
+        <div class="spot-num">SPOT 03</div>
+        <h3 class="spot-name">Orongo & Rano Kau</h3>
+        <div class="spot-name-jp">オロンゴ岬＆ラノ・カウ火口湖</div>
+        <p class="spot-desc">「鳥人儀式」が行われた崖の上の聖地。直径1.5kmの火口湖と断崖の先に広がる太平洋——ここでサンセットシャンパンが、この旅最高の瞬間を演出する。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============== EXPERIENCES ============== -->
+<section class="experiences">
+  <div class="section-inner">
+    <div class="exp-header fade-in">
+      <span class="section-label">Exclusive Experiences</span>
+      <h2 class="section-title">一億円だから<em>できること</em></h2>
+    </div>
+  </div>
+
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-img-wrap fade-in-left">
+        <img src="https://images.unsplash.com/photo-1540962351926-a9f14b1f6d4f?w=900&q=85&fit=crop" alt="プライベートジェット">
+      </div>
+      <div class="exp-content fade-in-right">
+        <div class="exp-icon">✈️</div>
+        <span class="section-label">Experience 01</span>
+        <h2 class="section-title">プライベートジェットで<br>直行する<em>贅沢</em></h2>
+        <p>東京→サンティアゴ→イースター島をすべてプライベートジェットで移動。エコノミーの行列も乗り継ぎ疲れも無縁。シェフが機内で本格コース料理を提供し、到着したときにはすでにリゾート気分全開。</p>
+        <p>フルフラットシートで睡眠をとり、南太平洋の絶景を眼下に見下ろしながら、地球の果てへと向かう非日常。</p>
+        <span class="exp-tag">PRIVATE JET · FULL COURSE IN FLIGHT</span>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-img-wrap fade-in-right">
+        <img src="https://images.unsplash.com/photo-1559494007-9f5847c49d94?w=900&q=85&fit=crop" alt="プライベートビーチ">
+      </div>
+      <div class="exp-content fade-in-left">
+        <div class="exp-icon">🏖️</div>
+        <span class="section-label">Experience 02</span>
+        <h2 class="section-title">プライベートビーチで<br><em>シャンパン</em>ランチ</h2>
+        <p>アナケナビーチを丸ごと貸し切り。赤いヤシの木の影で、波の音だけを聞きながら地元の食材を活かしたガストロノミーランチ。目の前にはモアイ像が2体並んで見守っている。</p>
+        <p>ターコイズブルーの海でシュノーケリングを楽しんだあとは、スパミストを受けながら夕日が沈むのを待つ——完璧すぎる一日。</p>
+        <span class="exp-tag">PRIVATE BEACH · GASTRONOMY · SPA</span>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-img-wrap fade-in-left">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=85&fit=crop" alt="サンセット">
+      </div>
+      <div class="exp-content fade-in-right">
+        <div class="exp-icon">🌌</div>
+        <span class="section-label">Experience 03</span>
+        <h2 class="section-title">モアイと星空<br>専属天文学者の<em>夜</em></h2>
+        <p>地球上で最も光害がない場所のひとつ、イースター島の夜空は圧倒的だ。天の川がくっきりと見え、南十字星が輝き、流れ星が当たり前のように飛ぶ。</p>
+        <p>現地の天文学者とともに、モアイ像の足元で星座を辿りながら、ラパ・ヌイの古代人が宇宙をどう見ていたかを語り合う——時空を超えた体験。</p>
+        <span class="exp-tag">PRIVATE ASTRONOMER · MOAI AT NIGHT</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============== HOTEL ============== -->
+<section class="hotel">
+  <div class="section-inner">
+    <div class="hotel-wrap">
+      <div class="hotel-imgs fade-in-left">
+        <div class="hotel-img-main">
+          <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=900&q=85&fit=crop" alt="エクスプロラ ラパヌイ">
+        </div>
+        <div class="hotel-img-sub">
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=500&q=85&fit=crop" alt="ホテル室内">
+        </div>
+        <div class="hotel-img-sub">
+          <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=500&q=85&fit=crop" alt="ホテルプール">
+        </div>
+      </div>
+      <div class="hotel-content fade-in-right">
+        <span class="section-label">Accommodation</span>
+        <h2 class="section-title"><em>Explora</em><br>Rapa Nui</h2>
+        <p>
+          島で最も評価の高い5つ星ホテル「エクスプロラ ラパ・ヌイ」。30室すべてが海を望み、
+          ハイドロマッサージバス、屋外プール、スパ完備。
+          専属トレッキングガイド付きで、毎日異なる探検ルートが用意される。
+        </p>
+        <ul class="hotel-features">
+          <li>海が見えるスイートルーム（プライベートテラス付き）</li>
+          <li>全食事込み（地元食材を活かしたガストロノミー）</li>
+          <li>専属探検ガイド・天文学者・文化学者が常駐</li>
+          <li>屋外プール・ジャクジー・スパ使い放題</li>
+          <li>島内の移動はすべてプライベートカー</li>
+        </ul>
+        <a href="https://www.explora.com/easter-island/" target="_blank" rel="noopener" style="text-decoration:none;">
+          <span class="exp-tag" style="cursor:pointer; border-color:var(--gold); color:var(--gold);">🔗 公式サイトを見る → Explora Rapa Nui</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== SCHEDULE ============== -->
+<section class="schedule">
+  <div class="section-inner">
+    <div class="schedule-header fade-in">
+      <span class="section-label">7-Day Itinerary</span>
+      <h2 class="section-title">夢の<em>7日間</em>スケジュール</h2>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-day">
+          <span class="day-num">01</span>
+          <span class="day-label">DAY · 出発</span>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>🛫 東京 → サンティアゴ</h3>
+          <p>プライベートジェットで東京発。機内で専属シェフのフルコース。南米チリ・サンティアゴの5つ星ホテルで1泊。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-content">
+          <h3>✈️ サンティアゴ → イースター島</h3>
+          <p>チャーター便でイースター島へ。到着後、Explora Rapa Nui にチェックイン。夕刻、オロンゴ岬でサンセット＋シャンパン。</p>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-day" style="text-align:right;">
+          <span class="day-num">02</span>
+          <span class="day-label">DAY · 到着</span>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-day">
+          <span class="day-num">03</span>
+          <span class="day-label">DAY · 夜明け</span>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>🌅 アフ・トンガリキ 朝日ツアー</h3>
+          <p>日の出前にプライベート移動。15体のモアイが朝日に照らされる瞬間を独占。帰ってから朝食&スパ。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-content">
+          <h3>🗿 ラノ・ララク 探検＆ラパヌイ文化体験</h3>
+          <p>専属考古学者と「モアイ工場」を探検。午後は地元アーティストによるラパヌイ彫刻体験ワークショップ。</p>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-day" style="text-align:right;">
+          <span class="day-num">04</span>
+          <span class="day-label">DAY · 探検</span>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-day">
+          <span class="day-num">05</span>
+          <span class="day-label">DAY · 海と空</span>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>🏖️ アナケナビーチ 貸切＆ヘリツアー</h3>
+          <p>島全体をヘリコプターで空撮遊覧。午後はビーチを丸ごと貸し切り、シュノーケリング＆ガストロノミーランチ。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-content">
+          <h3>🌌 星空ナイト＆ラパヌイ伝統ディナー</h3>
+          <p>専属天文学者と夜の野外天文観察。地元ミュージシャンによる演奏と伝統料理のスペシャルディナー。</p>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-day" style="text-align:right;">
+          <span class="day-num">06</span>
+          <span class="day-label">DAY · 星夜</span>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-day">
+          <span class="day-num">07</span>
+          <span class="day-label">DAY · 帰路</span>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>🛬 イースター島 → 東京</h3>
+          <p>朝、最後のモアイ巡礼。プライベートジェットで帰国の途へ。一生忘れられない7日間が、幕を閉じる。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== LINKS ============== -->
+<section class="links">
+  <div class="section-inner">
+    <div class="links-header fade-in">
+      <span class="section-label">Useful Links</span>
+      <h2 class="section-title">旅の準備に<em>使えるリンク</em></h2>
+    </div>
+
+    <div class="links-grid">
+
+      <a href="https://www.aterratravel.com/easter-island" target="_blank" rel="noopener" class="link-card fade-in">
+        <span class="link-icon">🗿</span>
+        <span class="link-category">LUXURY TOUR</span>
+        <div class="link-name">Aterra Travel</div>
+        <div class="link-desc">イースター島専門の高級ツアーオペレーター。モアイ考古学ツアーの第一人者。完全カスタムプラン対応。</div>
+        <span class="link-arrow">VIEW SITE →</span>
+      </a>
+
+      <a href="https://www.jacadatravel.com/latin-america/chile/easter-island/" target="_blank" rel="noopener" class="link-card fade-in">
+        <span class="link-icon">✈️</span>
+        <span class="link-category">BESPOKE TRAVEL</span>
+        <div class="link-name">Jacada Travel</div>
+        <div class="link-desc">世界最高峰のビスポークトラベル。イースター島のプライベートラグジュアリーツアーを完全オーダーメイドで。</div>
+        <span class="link-arrow">VIEW SITE →</span>
+      </a>
+
+      <a href="https://www.explora.com/easter-island/" target="_blank" rel="noopener" class="link-card fade-in">
+        <span class="link-icon">🏨</span>
+        <span class="link-category">LUXURY HOTEL</span>
+        <div class="link-name">Explora Rapa Nui</div>
+        <div class="link-desc">イースター島で最高評価の5つ星エコリゾート。海が見えるスイート・専属ガイド・全食事込み。</div>
+        <span class="link-arrow">VIEW SITE →</span>
+      </a>
+
+      <a href="https://www.rapanuinationalpark.com/en/" target="_blank" rel="noopener" class="link-card fade-in">
+        <span class="link-icon">🌿</span>
+        <span class="link-category">OFFICIAL PARK</span>
+        <div class="link-name">Rapa Nui National Park</div>
+        <div class="link-desc">ラパ・ヌイ国立公園公式サイト。世界遺産の詳細情報・モアイの分布図・入場料などの最新情報。</div>
+        <span class="link-arrow">VIEW SITE →</span>
+      </a>
+
+      <a href="https://www.easterisland.travel/" target="_blank" rel="noopener" class="link-card fade-in">
+        <span class="link-icon">🌊</span>
+        <span class="link-category">TRAVEL GUIDE</span>
+        <div class="link-name">Easter Island Travel</div>
+        <div class="link-desc">イースター島観光の総合情報サイト。観光スポット・ベストシーズン・現地アクティビティを網羅。</div>
+        <span class="link-arrow">VIEW SITE →</span>
+      </a>
+
+      <a href="https://www.his-j.com/theme/world-heritage/latin-america/chile/rapa-nui/" target="_blank" rel="noopener" class="link-card fade-in">
+        <span class="link-icon">🇯🇵</span>
+        <span class="link-category">JAPAN TOUR</span>
+        <div class="link-name">HIS イースター島ツアー</div>
+        <div class="link-desc">日本語で安心の旅行代理店HISのイースター島・モアイ世界遺産ツアー。日本発着の旅程を確認できる。</div>
+        <span class="link-arrow">VIEW SITE →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== FINAL STARRY ============== -->
+<div class="starry">
+  <div class="starry-bg" style="background-image: linear-gradient(to bottom, rgba(6,6,20,0.6), rgba(6,6,20,0.5), rgba(6,6,20,0.8)), url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1920&q=85&fit=crop');"></div>
+  <div class="starry-content">
+    <h2 class="fade-in" style="color:var(--gold);">「一億円で、何をする？」</h2>
+    <p class="fade-in" style="font-size:1.3rem; margin-top:16px;">モアイ像の前に立ち、地球の孤独を感じながら、<br>あなたは何を思うだろう。</p>
+    <p class="fade-in" style="margin-top:24px; color:rgba(248,245,239,0.6);">それを確かめに行く旅が、一億円の価値がある。</p>
+  </div>
+</div>
+
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="footer-logo">MOAI ODYSSEY</div>
+  <div class="footer-tagline">RAPA NUI ULTIMATE PRIVATE EXPERIENCE · ¥100,000,000</div>
+  <p class="footer-note">
+    写真提供: Unsplash / 情報参考: Explora Rapa Nui, Aterra Travel, Rapa Nui National Park<br>
+    リンク先は外部サイトです。料金・内容は各社にお問い合わせください。
+  </p>
+</footer>
+
+
+<script>
+  /* ==============================
+     星パーティクル
+  ============================== */
+  (function() {
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function initStars() {
+      stars = [];
+      const count = Math.floor((canvas.width * canvas.height) / 6000);
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.5 + 0.2,
+          o: Math.random() * 0.7 + 0.1,
+          speed: Math.random() * 0.3 + 0.05,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+    }
+
+    let t = 0;
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      t += 0.01;
+      stars.forEach(s => {
+        const alpha = s.o * (0.6 + 0.4 * Math.sin(t * s.speed + s.phase));
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(212,175,55,${alpha})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', () => { resize(); initStars(); });
+    resize();
+    initStars();
+    draw();
+  })();
+
+  /* ==============================
+     スクロールアニメーション
+  ============================== */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
