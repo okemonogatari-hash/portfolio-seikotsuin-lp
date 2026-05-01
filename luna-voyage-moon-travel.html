@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUNA VOYAGE | 月への旅 — 7日間プレミアム宇宙旅行</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Noto+Serif+JP:wght@200;300;400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8D5A0;
+      --deep-space: #030510;
+      --nebula-blue: #0A1628;
+      --accent-blue: #4A9FFF;
+      --moon-white: #F0EDE8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--deep-space);
+      color: var(--moon-white);
+      font-family: 'Noto Serif JP', serif;
+      overflow-x: hidden;
+    }
+
+    /* ===== STAR CANVAS ===== */
+    #starCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: linear-gradient(to bottom, rgba(3,5,16,0.9), transparent);
+      backdrop-filter: blur(2px);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: rgba(240,237,232,0.7);
+      text-decoration: none;
+      transition: color 0.3s;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1920&q=80&fit=crop');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.05);
+      transition: transform 0.5s ease;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(3,5,16,0.3) 0%, rgba(3,5,16,0.85) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 40px;
+    }
+    .hero-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 1s 0.5s forwards;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 1s 0.8s forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      font-weight: 200;
+      letter-spacing: 0.15em;
+      color: rgba(240,237,232,0.75);
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 1s 1.1s forwards;
+    }
+    .hero-cta {
+      display: inline-block;
+      padding: 18px 56px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.4s;
+      opacity: 0;
+      animation: fadeUp 1s 1.4s forwards;
+    }
+    .hero-cta:hover {
+      background: var(--gold);
+      color: var(--deep-space);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 1s 2s forwards;
+    }
+    .hero-scroll span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: rgba(240,237,232,0.4);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+
+    /* ===== INTRO ===== */
+    .intro {
+      position: relative;
+      z-index: 2;
+      padding: 120px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .intro-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 32px;
+      color: var(--moon-white);
+    }
+    .intro-text h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .intro-text p {
+      font-size: 1rem;
+      line-height: 2;
+      color: rgba(240,237,232,0.7);
+      margin-bottom: 16px;
+    }
+    .intro-image {
+      position: relative;
+    }
+    .intro-image img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .intro-image::before {
+      content: '';
+      position: absolute;
+      inset: -16px 16px 16px -16px;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 2px;
+      z-index: -1;
+    }
+    .gold-line {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 32px;
+    }
+
+    /* ===== STATS ===== */
+    .stats {
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(135deg, rgba(10,22,40,0.9), rgba(20,10,50,0.9));
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+    .stat-item {}
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: rgba(240,237,232,0.5);
+      text-transform: uppercase;
+    }
+
+    /* ===== MOON IMAGE SECTION ===== */
+    .moon-section {
+      position: relative;
+      z-index: 2;
+      height: 80vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .moon-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1614728263952-84ea256f9679?w=1920&q=80&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+    .moon-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(3,5,16,0.6), rgba(3,5,16,0.4), rgba(3,5,16,0.7));
+    }
+    .moon-text {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+      padding: 0 40px;
+    }
+    .moon-text blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--moon-white);
+      margin-bottom: 24px;
+    }
+    .moon-text cite {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-style: normal;
+    }
+
+    /* ===== ITINERARY ===== */
+    .itinerary {
+      position: relative;
+      z-index: 2;
+      padding: 120px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      color: var(--moon-white);
+    }
+    .timeline {
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.4), rgba(201,168,76,0.4), transparent);
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      gap: 0;
+      margin-bottom: 60px;
+      align-items: center;
+    }
+    .timeline-item:nth-child(even) .timeline-content { grid-column: 3; grid-row: 1; }
+    .timeline-item:nth-child(even) .timeline-empty { grid-column: 1; grid-row: 1; }
+    .timeline-dot {
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .dot-outer {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--deep-space);
+    }
+    .dot-inner {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .timeline-day {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-align: center;
+    }
+    .timeline-content {
+      padding: 32px 40px;
+      background: linear-gradient(135deg, rgba(10,22,40,0.6), rgba(20,10,50,0.4));
+      border: 1px solid rgba(201,168,76,0.15);
+      backdrop-filter: blur(10px);
+    }
+    .timeline-empty { }
+    .timeline-content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+    .timeline-content p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: rgba(240,237,232,0.65);
+    }
+    .timeline-content .highlight {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 4px 16px;
+      border: 1px solid rgba(201,168,76,0.4);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery {
+      position: relative;
+      z-index: 2;
+      padding: 80px 0;
+      overflow: hidden;
+    }
+    .gallery-track {
+      display: flex;
+      gap: 20px;
+      animation: galleryScroll 30s linear infinite;
+      width: max-content;
+    }
+    .gallery-track:hover { animation-play-state: paused; }
+    .gallery-item {
+      width: 360px;
+      height: 240px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* ===== PARTNERS ===== */
+    .partners {
+      position: relative;
+      z-index: 2;
+      padding: 120px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 60px;
+    }
+    .partner-card {
+      padding: 40px 32px;
+      background: linear-gradient(135deg, rgba(10,22,40,0.8), rgba(20,10,50,0.5));
+      border: 1px solid rgba(201,168,76,0.2);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s;
+      text-decoration: none;
+      display: block;
+    }
+    .partner-card:hover {
+      border-color: rgba(201,168,76,0.6);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .partner-icon {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .partner-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+    .partner-card p {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: rgba(240,237,232,0.55);
+      margin-bottom: 20px;
+    }
+    .partner-link {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .partner-link::after {
+      content: '→';
+      transition: transform 0.3s;
+    }
+    .partner-card:hover .partner-link::after { transform: translateX(4px); }
+
+    /* ===== VIEW FROM MOON ===== */
+    .view-section {
+      position: relative;
+      z-index: 2;
+      height: 80vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .view-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1614314107768-6018061b5b72?w=1920&q=80&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+    .view-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(3,5,16,0.9) 0%, rgba(3,5,16,0.3) 60%, rgba(3,5,16,0.1) 100%);
+    }
+    .view-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 80px;
+      max-width: 600px;
+    }
+    .view-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .view-content h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .view-content p {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: rgba(240,237,232,0.7);
+    }
+
+    /* ===== EXPERIENCE CARDS ===== */
+    .experiences {
+      position: relative;
+      z-index: 2;
+      padding: 120px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+    .exp-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+    .exp-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+    .exp-item:hover img { transform: scale(1.05); }
+    .exp-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(3,5,16,0.9), transparent);
+      display: flex;
+      align-items: flex-end;
+      padding: 32px;
+    }
+    .exp-info h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--moon-white);
+      margin-bottom: 8px;
+    }
+    .exp-info p {
+      font-size: 0.8rem;
+      color: rgba(240,237,232,0.6);
+      letter-spacing: 0.1em;
+    }
+    .exp-item.large {
+      grid-column: span 2;
+    }
+
+    /* ===== PRICING ===== */
+    .pricing {
+      position: relative;
+      z-index: 2;
+      padding: 120px 60px;
+      background: linear-gradient(135deg, rgba(10,22,40,0.95), rgba(20,10,50,0.95));
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .pricing-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .price-display {
+      text-align: center;
+      padding: 60px;
+      border: 1px solid rgba(201,168,76,0.3);
+      margin: 60px 0;
+      position: relative;
+    }
+    .price-display::before {
+      content: '✦';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--nebula-blue);
+      padding: 0 16px;
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+    .price-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300;
+      color: var(--moon-white);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .price-sub {
+      font-size: 0.85rem;
+      color: rgba(240,237,232,0.4);
+      letter-spacing: 0.15em;
+    }
+    .inclusions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 40px 0;
+    }
+    .inclusion-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: rgba(240,237,232,0.7);
+    }
+    .inclusion-item::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    /* ===== PARTNERS LOGOS SECTION ===== */
+    .real-partners {
+      position: relative;
+      z-index: 2;
+      padding: 80px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .rp-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+    .rp-card {
+      padding: 32px 24px;
+      border: 1px solid rgba(201,168,76,0.15);
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s;
+      background: linear-gradient(135deg, rgba(10,22,40,0.5), rgba(20,10,50,0.3));
+    }
+    .rp-card:hover {
+      border-color: rgba(201,168,76,0.5);
+      transform: translateY(-4px);
+    }
+    .rp-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    .rp-desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: rgba(240,237,232,0.4);
+      text-transform: uppercase;
+    }
+
+    /* ===== BOOKING ===== */
+    .booking {
+      position: relative;
+      z-index: 2;
+      height: 70vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .booking-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=1920&q=80&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+    .booking-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(3,5,16,0.5), rgba(3,5,16,0.9));
+    }
+    .booking-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 700px;
+      padding: 0 40px;
+    }
+    .booking-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+    .booking-content p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(240,237,232,0.65);
+      margin-bottom: 48px;
+    }
+    .booking-btns {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+    .btn-gold {
+      padding: 18px 48px;
+      background: var(--gold);
+      color: var(--deep-space);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-outline {
+      padding: 18px 48px;
+      border: 1px solid rgba(240,237,232,0.4);
+      color: rgba(240,237,232,0.8);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      position: relative;
+      z-index: 2;
+      padding: 60px;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+    }
+    footer p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: rgba(240,237,232,0.3);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    @keyframes galleryScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* ===== REVEAL ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== SHOOTING STAR ===== */
+    .shooting-star {
+      position: fixed;
+      width: 200px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, white, transparent);
+      opacity: 0;
+      transform: rotate(-30deg);
+      z-index: 1;
+      animation: shoot 4s linear infinite;
+    }
+    @keyframes shoot {
+      0% { opacity: 0; transform: translateX(-200px) translateY(-200px) rotate(-30deg); }
+      10% { opacity: 1; }
+      40% { opacity: 0; transform: translateX(100vw) translateY(100vh) rotate(-30deg); }
+      100% { opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .intro { grid-template-columns: 1fr; padding: 80px 24px; }
+      .stats { grid-template-columns: repeat(2, 1fr); padding: 40px 24px; }
+      .timeline::before { display: none; }
+      .timeline-item { grid-template-columns: 1fr; }
+      .timeline-dot { display: none; }
+      .timeline-content { padding: 24px; }
+      .partner-grid { grid-template-columns: 1fr; }
+      .rp-grid { grid-template-columns: repeat(2, 1fr); }
+      .exp-grid { grid-template-columns: 1fr; }
+      .exp-item.large { grid-column: span 1; }
+      .inclusions { grid-template-columns: 1fr; }
+      .booking-btns { flex-direction: column; align-items: center; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+      .itinerary, .partners, .experiences, .real-partners { padding: 80px 24px; }
+      .pricing { padding: 80px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Star Canvas -->
+  <canvas id="starCanvas"></canvas>
+
+  <!-- Shooting Stars -->
+  <div class="shooting-star" style="top:20%;left:10%;animation-delay:1s;animation-duration:5s;"></div>
+  <div class="shooting-star" style="top:50%;left:30%;animation-delay:3.5s;animation-duration:4s;"></div>
+  <div class="shooting-star" style="top:10%;left:60%;animation-delay:6s;animation-duration:6s;"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="nav-logo">LUNA VOYAGE</a>
+    <ul class="nav-links">
+      <li><a href="#itinerary">旅程</a></li>
+      <li><a href="#experiences">体験</a></li>
+      <li><a href="#partners">パートナー</a></li>
+      <li><a href="#pricing">料金</a></li>
+      <li><a href="#booking">予約</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-label">The World's Most Exclusive Journey</p>
+      <h1 class="hero-title">月へ、<em>旅立つ</em></h1>
+      <p class="hero-subtitle">7日間のプレミアム宇宙旅行 ― 地球から38万kmの奇跡を、あなたに。</p>
+      <a href="#itinerary" class="hero-cta">旅程を見る</a>
+    </div>
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="intro">
+    <div class="intro-text reveal">
+      <div class="gold-line"></div>
+      <h2>人類が夢見た<br>その場所へ、<em>ともに</em></h2>
+      <p>1969年、アポロ11号が月面に着陸してから半世紀。テクノロジーの革新は、その夢をついに民間の手に届く場所まで引き寄せました。</p>
+      <p>LUNA VOYAGEは、SpaceX Starshipと最先端の宇宙テクノロジーを用いて、地球の衛星・月への7日間の旅をご提供します。月の裏側から眺める満地球、宇宙空間での無重力体験、そして一生に一度の宇宙遊泳——すべてが、この旅に詰まっています。</p>
+    </div>
+    <div class="intro-image reveal">
+      <img src="https://images.unsplash.com/photo-1505506874110-6a7a69069a08?w=800&q=80&fit=crop" alt="宇宙飛行士と地球">
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats reveal">
+    <div class="stat-item">
+      <div class="stat-number">7</div>
+      <div class="stat-label">Days in Space</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">384,400</div>
+      <div class="stat-label">KM to the Moon</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Lunar Orbits</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Once in a Lifetime</div>
+    </div>
+  </div>
+
+  <!-- Moon Quote -->
+  <section class="moon-section">
+    <div class="moon-bg"></div>
+    <div class="moon-overlay"></div>
+    <div class="moon-text">
+      <blockquote>"ここから見た地球は、青く輝く宝石だった。あの瞬間を、あなたにも。"</blockquote>
+      <cite>— 月面から / 384,400km 彼方より</cite>
+    </div>
+  </section>
+
+  <!-- Itinerary -->
+  <section class="itinerary" id="itinerary">
+    <div class="section-header reveal">
+      <p class="section-label">Day by Day Journey</p>
+      <h2 class="section-title">7日間の旅程</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-content">
+          <h3>🚀 Day 1 — 出発の朝</h3>
+          <p>ケネディ宇宙センター（またはSpaceX Boca Chica）から打ち上げ。SpaceX Starshipに乗り込み、地球の大気を突き破る約9分間のカウントダウン。打ち上げの轟音と加速Gを体感しながら、宇宙空間へ。</p>
+          <span class="highlight">LAUNCH DAY</span>
+        </div>
+        <div class="timeline-dot">
+          <div class="dot-outer"><div class="dot-inner"></div></div>
+          <div class="timeline-day">DAY 1</div>
+        </div>
+        <div class="timeline-empty"></div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-empty"></div>
+        <div class="timeline-dot">
+          <div class="dot-outer"><div class="dot-inner"></div></div>
+          <div class="timeline-day">DAY 2-3</div>
+        </div>
+        <div class="timeline-content">
+          <h3>🌌 Day 2-3 — 宇宙遊泳体験</h3>
+          <p>地球と月の中間地点。完全な無重力状態の中、機外宇宙遊泳（EVA）を体験。宇宙服を身にまとい、360°の宇宙空間へ——眼下には青い地球、頭上には満天の星。</p>
+          <span class="highlight">SPACEWALK EVA</span>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-content">
+          <h3>🌕 Day 4 — 月周回軌道へ</h3>
+          <p>いよいよ月の重力圏へ突入。月面上空100kmの低軌道から、アポロ着陸跡地（静かの海）、クレーターの絶景を眼前に望む。月の裏側では地球も太陽も見えない——宇宙の孤独と静寂を、体で感じる。</p>
+          <span class="highlight">LUNAR ORBIT</span>
+        </div>
+        <div class="timeline-dot">
+          <div class="dot-outer"><div class="dot-inner"></div></div>
+          <div class="timeline-day">DAY 4</div>
+        </div>
+        <div class="timeline-empty"></div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-empty"></div>
+        <div class="timeline-dot">
+          <div class="dot-outer"><div class="dot-inner"></div></div>
+          <div class="timeline-day">DAY 5</div>
+        </div>
+        <div class="timeline-content">
+          <h3>🌍 Day 5 — 満地球を見上げる</h3>
+          <p>月の表側軌道から眺める「満地球（Full Earth）」。青・白・緑・茶色に輝く地球が、漆黒の宇宙空間に浮かぶ——アポロ宇宙飛行士だけが見てきたその光景を、あなたも目に焼き付けて。</p>
+          <span class="highlight">EARTHRISE VIEW</span>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-content">
+          <h3>✨ Day 6 — 最後の宇宙の夜</h3>
+          <p>帰路へ。地球への自由落下が始まる中、最後の宇宙の夜を過ごす。銀河のグラデーション、無数の星々、そして遠ざかる月——この景色をカメラに、心に刻む時間。</p>
+          <span class="highlight">RETURN JOURNEY</span>
+        </div>
+        <div class="timeline-dot">
+          <div class="dot-outer"><div class="dot-inner"></div></div>
+          <div class="timeline-day">DAY 6</div>
+        </div>
+        <div class="timeline-empty"></div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-empty"></div>
+        <div class="timeline-dot">
+          <div class="dot-outer"><div class="dot-inner"></div></div>
+          <div class="timeline-day">DAY 7</div>
+        </div>
+        <div class="timeline-content">
+          <h3>🏠 Day 7 — 地球帰還</h3>
+          <p>大気圏再突入。オレンジ色のプラズマが機体を包む数分間を越え、パラシュート降下。太平洋上での着水とともに、7日間の宇宙旅行が完結。二度と同じ目で夕日を見ることはない——変わってしまった自分を、迎えに来た地球で感じて。</p>
+          <span class="highlight">SPLASHDOWN</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Strip -->
+  <section class="gallery">
+    <div class="gallery-track" id="galleryTrack">
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1614728894747-a83421789f10?w=720&q=80&fit=crop" alt="月面クレーター"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1451186859696-371d9477be93?w=720&q=80&fit=crop" alt="宇宙から見た地球"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=720&q=80&fit=crop" alt="星空"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=720&q=80&fit=crop" alt="銀河"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1537420327992-d6e192287183?w=720&q=80&fit=crop" alt="月"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1608178398319-48f814d0750c?w=720&q=80&fit=crop" alt="地球と月"></div>
+      <!-- duplicate for seamless loop -->
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1614728894747-a83421789f10?w=720&q=80&fit=crop" alt="月面クレーター"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1451186859696-371d9477be93?w=720&q=80&fit=crop" alt="宇宙から見た地球"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=720&q=80&fit=crop" alt="星空"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=720&q=80&fit=crop" alt="銀河"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1537420327992-d6e192287183?w=720&q=80&fit=crop" alt="月"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1608178398319-48f814d0750c?w=720&q=80&fit=crop" alt="地球と月"></div>
+    </div>
+  </section>
+
+  <!-- View from Moon -->
+  <section class="view-section" id="experiences">
+    <div class="view-bg"></div>
+    <div class="view-overlay"></div>
+    <div class="view-content">
+      <div class="gold-line"></div>
+      <h2>月から見た<br><em>地球の美しさ</em></h2>
+      <p>38万kmの彼方から見る地球は、テニスボールほどの大きさ。でもその青い輝きは、あらゆる言葉を超えて、人の心を震わせる。この景色を見た宇宙飛行士たちは口を揃えて言う——「人生観が変わった」と。</p>
+    </div>
+  </section>
+
+  <!-- Experiences Grid -->
+  <section class="experiences">
+    <div class="section-header reveal">
+      <p class="section-label">Exclusive Experiences</p>
+      <h2 class="section-title">宇宙でしか できないこと</h2>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-item large reveal">
+        <img src="https://images.unsplash.com/photo-1578615437406-511cafe4a5c7?w=1440&q=80&fit=crop" alt="宇宙遊泳">
+        <div class="exp-overlay">
+          <div class="exp-info">
+            <h3>宇宙遊泳（EVA）</h3>
+            <p>宇宙服を着て、何も無い宇宙空間へ。命綱1本で浮かぶ、究極の体験。</p>
+          </div>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <img src="https://images.unsplash.com/photo-1532798369041-b33eb576ef16?w=720&q=80&fit=crop" alt="無重力">
+        <div class="exp-overlay">
+          <div class="exp-info">
+            <h3>完全無重力体験</h3>
+            <p>地球の重力から解放された感覚。浮き、転び、笑う——宇宙だけの自由。</p>
+          </div>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <img src="https://images.unsplash.com/photo-1574015974293-817f0ebebb74?w=720&q=80&fit=crop" alt="天体観測">
+        <div class="exp-overlay">
+          <div class="exp-info">
+            <h3>大気なしの星空</h3>
+            <p>大気のない宇宙で見る星々は、まばたきもしない。数千億の星々が、ただそこにある。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="partners" id="partners">
+    <div class="section-header reveal">
+      <p class="section-label">Mission Partners</p>
+      <h2 class="section-title">パートナー企業</h2>
+    </div>
+    <div class="partner-grid">
+      <a href="https://www.spacex.com/" target="_blank" class="partner-card reveal">
+        <div class="partner-icon">🚀</div>
+        <h3>SpaceX</h3>
+        <p>イーロン・マスク率いるSpaceXのStarship。完全再利用型ロケットで宇宙輸送コストを革命的に削減。dearMoonプロジェクトで月旅行を先駆けた技術を提供。</p>
+        <span class="partner-link">spacex.com を見る</span>
+      </a>
+      <a href="https://www.axiomspace.com/" target="_blank" class="partner-card reveal">
+        <div class="partner-icon">🛸</div>
+        <h3>Axiom Space</h3>
+        <p>世界初の民間宇宙ステーション建設を進めるAxiom Space。ISS滞在でのトレーニングプログラム（55M$/14日間）で宇宙旅行者をサポート。</p>
+        <span class="partner-link">axiomspace.com を見る</span>
+      </a>
+      <a href="https://www.blueorigin.com/" target="_blank" class="partner-card reveal">
+        <div class="partner-icon">🌑</div>
+        <h3>Blue Origin</h3>
+        <p>ジェフ・ベゾスが設立した宇宙企業。New ShephardでのSuborbital体験、そしてNew Glennで深宇宙を目指す——宇宙旅行の入口を開く。</p>
+        <span class="partner-link">blueorigin.com を見る</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Real Partners / Resources -->
+  <section class="real-partners">
+    <div class="section-header reveal">
+      <p class="section-label">Information Resources</p>
+      <h2 class="section-title">もっと深く知る</h2>
+    </div>
+    <div class="rp-grid">
+      <a href="https://moon.nasa.gov/" target="_blank" class="rp-card reveal">
+        <div class="rp-name">NASA Moon</div>
+        <div class="rp-desc">月の科学・探査情報</div>
+      </a>
+      <a href="https://science.nasa.gov/moon/galleries/" target="_blank" class="rp-card reveal">
+        <div class="rp-name">NASA Gallery</div>
+        <div class="rp-desc">公式月面フォトギャラリー</div>
+      </a>
+      <a href="https://en.wikipedia.org/wiki/Tourism_on_the_Moon" target="_blank" class="rp-card reveal">
+        <div class="rp-name">月観光Wikipedia</div>
+        <div class="rp-desc">月旅行の最新動向</div>
+      </a>
+      <a href="https://spacevoyageventures.com/lunar-tourism-2/" target="_blank" class="rp-card reveal">
+        <div class="rp-name">Lunar Tourism</div>
+        <div class="rp-desc">宇宙旅行トレンド情報</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-inner">
+      <div class="section-header reveal">
+        <p class="section-label">Investment</p>
+        <h2 class="section-title">料金プラン</h2>
+      </div>
+      <div class="price-display reveal">
+        <p class="price-label">7-Day Lunar Journey · Per Person</p>
+        <div class="price-amount">¥ 15,000,000,000</div>
+        <p class="price-sub">150億円〜（ファーストクラス・完全カスタマイズプラン）</p>
+      </div>
+      <div class="inclusions reveal">
+        <div class="inclusion-item">SpaceX Starship フルチャーター（専用機）</div>
+        <div class="inclusion-item">NASA認定宇宙飛行士トレーニング（6ヶ月前〜）</div>
+        <div class="inclusion-item">宇宙遊泳（EVA）フルサポート</div>
+        <div class="inclusion-item">月周回軌道2周（約48時間）</div>
+        <div class="inclusion-item">プライベートラウンジ付き宇宙船キャビン</div>
+        <div class="inclusion-item">高精度宇宙写真撮影サービス</div>
+        <div class="inclusion-item">帰還後メディカルサポート（30日間）</div>
+        <div class="inclusion-item">旅行ドキュメンタリー映像（4K）制作</div>
+        <div class="inclusion-item">打ち上げ前夜：専用ホテルスイート宿泊</div>
+        <div class="inclusion-item">月面認定証・記念品セット</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking CTA -->
+  <section class="booking" id="booking">
+    <div class="booking-bg"></div>
+    <div class="booking-overlay"></div>
+    <div class="booking-content">
+      <div class="gold-line" style="margin: 0 auto 32px;"></div>
+      <h2>さあ、月へ。</h2>
+      <p>人類の夢だったあの場所へ——今、その扉は開いている。予算は問題ない。あとは、決断するだけ。</p>
+      <div class="booking-btns">
+        <a href="https://www.spacex.com/" target="_blank" class="btn-gold">SpaceXに問い合わせる</a>
+        <a href="https://www.axiomspace.com/" target="_blank" class="btn-outline">Axiom Spaceを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span class="footer-logo">LUNA VOYAGE</span>
+    <p>© 2026 LUNA VOYAGE — Premium Lunar Travel Experience</p>
+    <p>Powered by SpaceX Starship Technology</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // ===== STAR FIELD =====
+    const canvas = document.getElementById('starCanvas');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+      stars = [];
+      const count = Math.floor((canvas.width * canvas.height) / 2000);
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.5,
+          alpha: Math.random(),
+          speed: Math.random() * 0.003 + 0.001,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+    }
+
+    function animateStars(t) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(s => {
+        s.phase += s.speed;
+        const a = 0.3 + 0.7 * Math.abs(Math.sin(s.phase));
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${a})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(animateStars);
+    }
+
+    resizeCanvas();
+    createStars();
+    animateStars();
+    window.addEventListener('resize', () => { resizeCanvas(); createStars(); });
+
+    // ===== PARALLAX HERO =====
+    const heroBg = document.getElementById('heroBg');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (heroBg) heroBg.style.transform = `scale(1.05) translateY(${y * 0.3}px)`;
+    });
+
+    // ===== REVEAL ON SCROLL =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ===== SMOOTH SCROLL =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // ===== NUMBER COUNT UP =====
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const el = e.target;
+          const target = el.textContent.replace(/,/g, '');
+          if (!isNaN(target)) {
+            const num = parseInt(target);
+            let current = 0;
+            const step = num / 60;
+            const timer = setInterval(() => {
+              current += step;
+              if (current >= num) {
+                el.textContent = num.toLocaleString();
+                clearInterval(timer);
+              } else {
+                el.textContent = Math.floor(current).toLocaleString();
+              }
+            }, 16);
+          }
+          statObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    statNumbers.forEach(n => statObserver.observe(n));
+  </script>
+</body>
+</html>

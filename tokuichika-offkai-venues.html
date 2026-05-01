@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>徳一家 5/10 オフ会 会場比較</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    background: #f5f0eb;
+    color: #333;
+    padding: 24px 16px;
+  }
+  .header { text-align: center; margin-bottom: 32px; }
+  .header h1 { font-size: 22px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
+  .header p { font-size: 13px; color: #888; }
+
+  .event-info {
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .event-info .tag {
+    background: #f0ece7;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: #555;
+  }
+  .event-info .tag strong { color: #333; }
+
+  /* ===== 懸念セクション（重め） ===== */
+  .risk-box {
+    background: #fff0f0;
+    border: 2px solid #d94040;
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .risk-box h3 {
+    font-size: 15px;
+    color: #b01a1a;
+    margin-bottom: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .risk-item {
+    background: #fff;
+    border-left: 4px solid #d94040;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .risk-item:last-child { margin-bottom: 0; }
+  .risk-item strong { color: #b01a1a; }
+  .risk-item .risk-title { font-weight: 700; color: #1a1a1a; margin-bottom: 4px; font-size: 13px; }
+
+  /* ===== カード ===== */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border: 2px solid transparent;
+    transition: transform 0.2s;
+    position: relative;
+  }
+  .card:hover { transform: translateY(-3px); }
+  .card.recommended { border-color: #e87c5a; }
+  .card.alt-recommend { border-color: #4c8de8; }
+  .card.unavailable { border-color: #ddd; opacity: 0.65; }
+
+  .card-header {
+    padding: 16px 20px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .rank { font-size: 22px; line-height: 1; }
+  .card-title h2 { font-size: 16px; font-weight: 700; color: #1a1a1a; }
+  .card-title .subtitle { font-size: 12px; color: #999; margin-top: 2px; }
+
+  .badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .badge.recommend { background: #e87c5a; color: #fff; }
+  .badge.alt { background: #4c8de8; color: #fff; }
+  .badge.ng { background: #e05c5c; color: #fff; }
+
+  .card-body { padding: 0 20px 16px; }
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid #f0ece7;
+    font-size: 13px;
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-label { color: #999; font-size: 12px; }
+  .stat-value { font-weight: 600; color: #333; text-align: right; }
+  .stat-value.big { font-size: 18px; color: #e87c5a; }
+  .stat-value.cheapest { font-size: 18px; color: #2d8c55; }
+  .stat-value.good { color: #4caf7d; }
+  .stat-value.warn { color: #e89a3c; }
+  .stat-value.bad { color: #e05c5c; }
+
+  .breakdown {
+    background: #faf8f5;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 11px;
+    color: #888;
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+
+  .pill {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 3px 9px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .pill.ok { background: #e6f7ee; color: #2e7d52; }
+  .pill.ng { background: #fdecea; color: #c0323a; }
+  .pill.check { background: #fff8e1; color: #b07d20; }
+  .pill.home { background: #e8f0ff; color: #3a5cc9; }
+  .pill.office { background: #f0f0f0; color: #666; }
+  .pill.food { background: #fff3e0; color: #e65100; }
+
+  /* メリデリ */
+  .merit-demerit {
+    margin: 10px 20px 16px;
+  }
+  .merit-demerit-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .merit-box, .demerit-box {
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .merit-box { background: #e9f7ef; border: 1px solid #b2dfce; }
+  .demerit-box { background: #fdecea; border: 1px solid #f5b7b1; }
+  .merit-box .md-title { color: #1e8449; font-weight: 700; margin-bottom: 4px; }
+  .demerit-box .md-title { color: #c0392b; font-weight: 700; margin-bottom: 4px; }
+  .merit-box ul, .demerit-box ul { padding-left: 16px; }
+  .merit-box li, .demerit-box li { margin-bottom: 2px; }
+
+  .card-footer {
+    padding: 12px 20px;
+    background: #faf8f5;
+    border-top: 1px solid #f0ece7;
+  }
+  .card-footer a {
+    display: block;
+    text-align: center;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    padding: 9px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.15s;
+  }
+  .card-footer a:hover { background: #555; }
+  .card.recommended .card-footer a { background: #e87c5a; }
+  .card.recommended .card-footer a:hover { background: #d06645; }
+  .card.alt-recommend .card-footer a { background: #4c8de8; }
+  .card.alt-recommend .card-footer a:hover { background: #3a6fb0; }
+  .card.unavailable .card-footer a { background: #aaa; cursor: not-allowed; pointer-events: none; }
+
+  /* 比較まとめ */
+  .compare-note {
+    background: #f0f7ff;
+    border: 1.5px solid #90bce0;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #2a4a6a;
+  }
+  .compare-note h3 { font-size: 14px; color: #1a3a6a; margin-bottom: 8px; font-weight: 700; }
+
+  /* 推薦ボックス */
+  .recommend-box {
+    background: linear-gradient(135deg, #fff5f1 0%, #fff 100%);
+    border: 1.5px solid #e87c5a;
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .recommend-box h3 { font-size: 15px; color: #c45835; margin-bottom: 12px; font-weight: 700; }
+  .recommend-box .reason-list { list-style: none; padding: 0; }
+  .recommend-box .reason-list li {
+    padding: 5px 0 5px 20px;
+    font-size: 13px;
+    color: #444;
+    position: relative;
+  }
+  .recommend-box .reason-list li::before {
+    content: "✓";
+    color: #e87c5a;
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+
+  /* 次のアクション */
+  .next-actions {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+  .next-actions h3 { font-size: 14px; font-weight: 700; margin-bottom: 12px; color: #1a1a1a; }
+  .action-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0ece7;
+    font-size: 13px;
+  }
+  .action-item:last-child { border-bottom: none; }
+  .action-num {
+    background: #e87c5a;
+    color: #fff;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .action-text { color: #444; line-height: 1.5; }
+  .action-text strong { color: #1a1a1a; }
+
+  /* 友達メッセージ */
+  .message-box {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 28px;
+  }
+  .message-box h3 { font-size: 14px; font-weight: 700; margin-bottom: 14px; color: #1a1a1a; }
+  .message-content {
+    background: #f0f7e6;
+    border: 1.5px solid #8bc34a;
+    border-radius: 12px;
+    padding: 16px 18px;
+    font-size: 13px;
+    line-height: 1.9;
+    white-space: pre-wrap;
+    color: #2a3a1a;
+  }
+  .copy-btn {
+    margin-top: 10px;
+    background: #555;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .copy-btn:hover { background: #333; }
+
+  .stars { color: #f5c842; }
+  .footer { text-align: center; margin-top: 28px; font-size: 12px; color: #bbb; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🎉 徳一家 5/10 オフ会 会場比較</h1>
+  <p>作成: おけもりカンパニー リサーチ担当 ／ 2026-04-17 ／ 実費・空き確認済み（最終更新）</p>
+</div>
+
+<div class="event-info">
+  <div class="tag">📅 <strong>5月10日（日）</strong> 13:00〜16:00（3h）</div>
+  <div class="tag">👥 <strong>7〜8名</strong>（主催2名込み）</div>
+  <div class="tag">📍 <strong>大阪・新大阪 or 梅田エリア</strong></div>
+  <div class="tag">🍕 <strong>ランチ会スタイル</strong></div>
+</div>
+
+<!-- 🔴 懸念事項（重め） -->
+<div class="risk-box">
+  <h3>🚨 予約前に全員で確認してほしい懸念点</h3>
+
+  <div class="risk-item">
+    <div class="risk-title">① 人数ブレのリスク</div>
+    「参加する！」のリアクションが7件でも、実際に来る人数は直前まで確定しない。<br>
+    <strong>レンスペ（Biz・candle）は会場費固定</strong>なので人数が減っても金額は変わらない → 1人あたりの費用が増える。<br>
+    <strong>べらぼうや（お店）は人数×¥2,980</strong>なので、直前キャンセルが出ると「誰が払うか問題」が発生する。
+  </div>
+
+  <div class="risk-item">
+    <div class="risk-title">② 直前キャンセルのリスク</div>
+    <strong>【レンスペ：Biz・candle】</strong> キャンセルポリシーが厳しい。<br>
+    → 今日（4/17）予約すると即 <strong>30%のキャンセル料が確定</strong>（Biz¥2,079 / candle¥2,581）<br>
+    → <strong>4/26（14日前）以降は100%不返金</strong>。日程・人数の変更も不可。<br><br>
+    <strong>【べらぼうや】</strong> 前日までは無料キャンセル可。ただし<br>
+    → <strong>当日0時以降のキャンセルは1名あたりコース料金100%（¥2,980/人）が発生</strong><br>
+    → 当日ドタキャンが1人でも出ると、誰かが肩代わりするか全員で按分することになる。
+  </div>
+
+  <div class="risk-item">
+    <div class="risk-title">③ 費用回収リスク</div>
+    参加者からの費用回収方法を事前に決めておくこと。<br>
+    特に<strong>レンスペ系は会場費の先払い</strong>が発生するため、後から回収できなかった場合の損失は主催側が被ることになる。<br>
+    <strong>べらぼうやは当日精算</strong>のため回収リスクは低いが、ドタキャン分は要注意。
+  </div>
+</div>
+
+<!-- カード -->
+<div class="cards">
+
+  <!-- Biz新大阪 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="rank">🏢</div>
+      <div class="card-title">
+        <h2>Biz新大阪</h2>
+        <div class="subtitle">スペースマーケット ／ レンスペ</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="stat-row">
+        <span class="stat-label">🟢 5/10空き</span>
+        <span class="stat-value good">✅ 確認済み</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">駅・徒歩</span>
+        <span class="stat-value good">新大阪駅 1分</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">実費（4時間）</span>
+        <span class="stat-value cheapest">¥6,930 最安</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">7人割り勘</span>
+        <span class="stat-value">約 ¥990/人</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">飲酒</span>
+        <span class="stat-value"><span class="pill check">要確認 ⚠️</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">食事</span>
+        <span class="stat-value"><span class="pill food">持込 自前で準備</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">キャンセル</span>
+        <span class="stat-value bad" style="font-size:11px;">予約成立30% → 4/26〜100%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">評価</span>
+        <span class="stat-value"><span class="stars">★★★★★</span> 4.8（60件）</span>
+      </div>
+    </div>
+    <div class="merit-demerit">
+      <div class="merit-demerit-row">
+        <div class="merit-box">
+          <div class="md-title">✅ メリット</div>
+          <ul>
+            <li>新大阪駅1分・迷わない</li>
+            <li>最安値¥6,930</li>
+            <li>60㎡・最大30名でゆったり</li>
+            <li>食事は好きなものを持ち込める</li>
+            <li>モニター・ホワイトボード完備</li>
+          </ul>
+        </div>
+        <div class="demerit-box">
+          <div class="md-title">❌ デメリット</div>
+          <ul>
+            <li>会議室感が残る</li>
+            <li>飲酒可否が不明（16時以降¥11,000オプション）</li>
+            <li>食事は自分たちで手配・後片付けが必要</li>
+            <li>キャンセル厳しい（即30%）</li>
+            <li>人数減っても会場費は固定</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="https://spacemarket.com/spaces/qi0lucrffjai5qd8/" target="_blank">🔗 Spacemarketで見る</a>
+    </div>
+  </div>
+
+  <!-- candle新大阪 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="rank">🕯️</div>
+      <div class="card-title">
+        <h2>candle新大阪</h2>
+        <div class="subtitle">スペースマーケット ／ レンスペ</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="stat-row">
+        <span class="stat-label">🟢 5/10空き</span>
+        <span class="stat-value good">✅ 確認済み</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">駅・徒歩</span>
+        <span class="stat-value warn">西中島南方 1分（新大阪7分）</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">実費（4時間）</span>
+        <span class="stat-value big">¥8,604</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">7人割り勘</span>
+        <span class="stat-value">約 ¥1,230/人</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">飲酒</span>
+        <span class="stat-value"><span class="pill ok">可 ✓</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">食事</span>
+        <span class="stat-value"><span class="pill food">持込 自前で準備</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">キャンセル</span>
+        <span class="stat-value bad" style="font-size:11px;">予約成立30% → 4/26〜100%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">設備</span>
+        <span class="stat-value" style="font-size:11px;">50型TV・ゲーム機・ボドゲ・調理器具</span>
+      </div>
+    </div>
+    <div class="merit-demerit">
+      <div class="merit-demerit-row">
+        <div class="merit-box">
+          <div class="md-title">✅ メリット</div>
+          <ul>
+            <li>おうちスペース感・オフ会向き</li>
+            <li>飲酒OK</li>
+            <li>ゲーム機・ボドゲ・50型TV完備</li>
+            <li>調理器具あり・料理もできる</li>
+            <li>最大25名でゆったり</li>
+          </ul>
+        </div>
+        <div class="demerit-box">
+          <div class="md-title">❌ デメリット</div>
+          <ul>
+            <li>Bizより+¥1,674 高い</li>
+            <li>新大阪から7分かかる</li>
+            <li>食事は自前で手配・後片付けが必要</li>
+            <li>キャンセル厳しい（即30%）</li>
+            <li>人数減っても会場費は固定</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="https://www.spacemarket.com/spaces/marble_nishinakazima/" target="_blank">🔗 Spacemarketで見る</a>
+    </div>
+  </div>
+
+  <!-- べらぼうや梅田本店（推薦） -->
+  <div class="card recommended">
+    <div class="badge recommend">まな推薦 ✨</div>
+    <div class="card-header">
+      <div class="rank">🍖</div>
+      <div class="card-title">
+        <h2>べらぼうや 梅田本店</h2>
+        <div class="subtitle">ホットペッパー ／ お店（居酒屋）</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="stat-row">
+        <span class="stat-label">🟢 13:00〜16:00</span>
+        <span class="stat-value good">✅ 日曜3時間プラン対応</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">駅・徒歩</span>
+        <span class="stat-value good">梅田駅 4分</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">コース料金</span>
+        <span class="stat-value cheapest">¥2,980/人（税込）</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">7人合計</span>
+        <span class="stat-value">¥20,860</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">内容</span>
+        <span class="stat-value"><span class="pill food">食べ放題＋飲み放題 3h</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">個室</span>
+        <span class="stat-value"><span class="pill ok">完全個室 ✓</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">キャンセル</span>
+        <span class="stat-value good" style="font-size:11px;">✅ 前日まで無料（当日0時〜100%）</span>
+      </div>
+    </div>
+    <div class="merit-demerit">
+      <div class="merit-demerit-row">
+        <div class="merit-box">
+          <div class="md-title">✅ メリット</div>
+          <ul>
+            <li>食べ飲み放題込みで¥2,980 — 最安</li>
+            <li>前日まで無料キャンセル可</li>
+            <li>準備ゼロ・当日楽しむだけ</li>
+            <li>梅田駅4分・全国から来やすい</li>
+            <li>完全個室・最大130名対応</li>
+            <li>当日精算で費用回収リスク低</li>
+          </ul>
+        </div>
+        <div class="demerit-box">
+          <div class="md-title">❌ デメリット</div>
+          <ul>
+            <li>飲み放題が全員強制（飲まなくても¥2,980）</li>
+            <li>居酒屋系で「ランチ会」感は薄い</li>
+            <li>当日ドタキャンは1人¥2,980が発生</li>
+            <li>人数変動がそのまま費用に影響</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="https://www.hotpepper.jp/strJ003450827/" target="_blank">🔗 ホットペッパーで見る</a>
+    </div>
+  </div>
+
+  <!-- marble（使用不可）-->
+  <div class="card unavailable">
+    <div class="badge ng">❌ 使用不可</div>
+    <div class="card-header">
+      <div class="rank">🥈</div>
+      <div class="card-title">
+        <h2>marble新大阪</h2>
+        <div class="subtitle">スペースマーケット（参考）</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="stat-row">
+        <span class="stat-label">🔴 5/10空き</span>
+        <span class="stat-value bad">❌ 12〜19時 予約済み</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">備考</span>
+        <span class="stat-value bad" style="font-size:11px;">5/10 希望時間帯は利用不可</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="https://www.spacemarket.com/spaces/d617bnddj3buoetb/" target="_blank">🔗 参考リンク</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- 比較まとめ -->
+<div class="compare-note">
+  <h3>💰 費用感まとめ（7人参加の場合）</h3>
+  <p>
+    🏢 Biz新大阪（レンスペ）→ 会場費 <strong>¥6,930</strong> ＋ 食費別途（1人¥3,000なら合計¥27,930）<br>
+    🕯️ candle新大阪（レンスペ）→ 会場費 <strong>¥8,604</strong> ＋ 食費別途（1人¥3,000なら合計¥29,604）<br>
+    🍖 べらぼうや梅田（お店）→ <strong>¥2,980/人 × 7人 = ¥20,860</strong>（飲食すべて込み・準備ゼロ）
+  </p>
+</div>
+
+<!-- まな推薦 -->
+<div class="recommend-box">
+  <h3>🧡 おけもりカンパニー リサーチ担当 の推薦理由</h3>
+  <ul class="reason-list">
+    <li>1人¥2,980で食べ飲み放題3時間込み — レンスペ＋食費より断然安い</li>
+    <li>キャンセルが前日まで無料 — 人数確定前でも先に予約できる安心感</li>
+    <li>準備がゼロ — ピザ手配・持ち込み・後片付け不要</li>
+    <li>梅田駅4分 — 全国から来るメンバーに優しいアクセス</li>
+    <li>当日精算なので主催側の立替リスクも少ない</li>
+  </ul>
+  <p style="margin-top:12px; font-size:12px; color:#888;">
+    ※ 飲み放題を使いたくない人もコース料金¥2,980は発生します。<br>
+    ※ 「レンスペで自分たちだけの空間にしたい」ならcandleが次点候補。
+  </p>
+</div>
+
+<!-- 次のアクション -->
+<div class="next-actions">
+  <h3>📋 次のアクション</h3>
+  <div class="action-item">
+    <div class="action-num">1</div>
+    <div class="action-text"><strong>おけちゃん最終判断</strong> → べらぼうや（お店・安い・楽）or candle/Biz（レンスペ・空間自由）？</div>
+  </div>
+  <div class="action-item">
+    <div class="action-num">2</div>
+    <div class="action-text"><strong>参加者に告知・締め切り設定</strong> → 4/25（土）を目安に人数確定</div>
+  </div>
+  <div class="action-item">
+    <div class="action-num">3</div>
+    <div class="action-text">
+      <strong>べらぼうや選択の場合</strong> → ホットペッパーでネット予約（前日まで無料なので早めでもOK）<br>
+      <strong>レンスペ選択の場合</strong> → 人数確定後4/25までに予約（4/26以降は100%不返金）
+    </div>
+  </div>
+  <div class="action-item">
+    <div class="action-num">4</div>
+    <div class="action-text"><strong>Biz新大阪を選ぶ場合</strong> → 飲酒可否を事前に確認（16時以降オプション¥11,000の有無）</div>
+  </div>
+</div>
+
+<!-- 友達への報告メッセージ -->
+<div class="message-box">
+  <h3>💬 友達への告知メッセージ（コピー用）</h3>
+  <div class="message-content" id="msgContent">🎉 5/10（日）徳一家オフ会 開催します！
+
+📅 日時：5月10日（日）13:00〜16:00
+📍 場所：大阪・梅田 or 新大阪エリア（詳細は確定後お知らせ）
+👥 人数：現在7〜8名予定
+
+---
+
+🍖【べらぼうや 梅田本店】が有力候補です
+
+✅ 梅田駅4分の完全個室
+✅ 食べ飲み放題3時間 ¥2,980/人（税込）
+✅ 13:00〜16:00 でぴったり収まる
+
+---
+
+⚠️ お願いがあります
+
+キャンセルポリシーの関係で、参加人数を早めに確定したいです。
+
+【締め切り：4月25日（土）まで】
+参加できる方は「参加！」とリアクションかメッセージください🙌
+
+・直前（当日）のキャンセルはコース料金¥2,980が発生してしまいます
+・欠席の場合は前日までにご連絡をお願いします🙏
+・人数によって会場が変わる可能性があります
+
+みなさんに会えるの楽しみにしてます！🔥
+おけちゃん・むらさきさん</div>
+  <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('msgContent').innerText).then(()=>{ this.textContent='✅ コピーしました！'; setTimeout(()=>{ this.textContent='📋 メッセージをコピー'; }, 2000); })">📋 メッセージをコピー</button>
+</div>
+
+<div class="footer">おけもりカンパニー リサーチ担当 作成 ／ 2026-04-17 ／ 最終更新：べらぼうや追加・メリデリ・懸念点追記</div>
+
+</body>
+</html>
