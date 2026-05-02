@@ -1,0 +1,62 @@
+name: Zoom Daily Brief & Dashboard Update
+
+on:
+  schedule:
+    # 毎日 16:00 JST (= UTC 07:00) に実行
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+    inputs:
+      skip_post:
+        description: 'true ならChatwork投稿をスキップ（テスト用）'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate dashboard HTML
+        env:
+          ZOOM_ACCOUNT_ID: ${{ secrets.ZOOM_ACCOUNT_ID }}
+          ZOOM_CLIENT_ID: ${{ secrets.ZOOM_CLIENT_ID }}
+          ZOOM_CLIENT_SECRET: ${{ secrets.ZOOM_CLIENT_SECRET }}
+          TZ: Asia/Tokyo
+        run: python3 scripts/generate_dashboard.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add irodori-zoom-dashboard.html
+          if git diff --cached --quiet; then
+            echo "差分なし → commitスキップ"
+          else
+            STAMP=$(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M JST')
+            git commit -m "auto: Zoomダッシュボード更新 ($STAMP)"
+            git push
+            echo "✅ push完了"
+          fi
+
+      - name: Post brief to Chatwork
+        if: ${{ github.event.inputs.skip_post != 'true' }}
+        env:
+          ZOOM_ACCOUNT_ID: ${{ secrets.ZOOM_ACCOUNT_ID }}
+          ZOOM_CLIENT_ID: ${{ secrets.ZOOM_CLIENT_ID }}
+          ZOOM_CLIENT_SECRET: ${{ secrets.ZOOM_CLIENT_SECRET }}
+          CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
+          CHATWORK_ROOM_ID: ${{ secrets.CHATWORK_ROOM_ID }}
+          TZ: Asia/Tokyo
+        run: python3 scripts/post_brief.py
