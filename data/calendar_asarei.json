@@ -1,0 +1,56 @@
+{
+  "_comment": "irodori朝礼イベントのスナップショット。Zoom APIでrecurring meeting occurrenceが返ってこない問題のfallback。なっつんカレンダー（naaa.gwgw@gmail.com）から朝礼イベントだけ抽出して保存。Calendar変更があれば再取得して上書き更新する運用。",
+  "_source": "Google Calendar API (naaa.gwgw@gmail.com / q='朝礼')",
+  "_fetched_at": "2026-05-07T08:50:00+09:00",
+  "events": [
+    {
+      "id": "calendar:lqfotv85937rj6knvvneikd8kv_20260507T010000Z",
+      "topic": "ZOOM②IRODORI 朝礼",
+      "start_time": "2026-05-07T10:00:00+09:00",
+      "duration": 30,
+      "type": 8
+    },
+    {
+      "id": "calendar:lqfotv85937rj6knvvneikd8kv_20260508T010000Z",
+      "topic": "ZOOM②IRODORI 朝礼",
+      "start_time": "2026-05-08T10:00:00+09:00",
+      "duration": 30,
+      "type": 8
+    },
+    {
+      "id": "calendar:lqfotv85937rj6knvvneikd8kv_20260511T010000Z",
+      "topic": "ZOOM②IRODORI 朝礼",
+      "start_time": "2026-05-11T10:00:00+09:00",
+      "duration": 30,
+      "type": 8
+    },
+    {
+      "id": "calendar:lqfotv85937rj6knvvneikd8kv_20260512T010000Z",
+      "topic": "ZOOM②IRODORI 朝礼",
+      "start_time": "2026-05-12T10:00:00+09:00",
+      "duration": 30,
+      "type": 8
+    },
+    {
+      "id": "calendar:dtjcq0guna6g0k7mnbnlhe352o_20260513T023000Z",
+      "topic": "朝礼",
+      "start_time": "2026-05-13T11:30:00+09:00",
+      "duration": 30,
+      "type": 8
+    },
+    {
+      "id": "calendar:lqfotv85937rj6knvvneikd8kv_20260514T010000Z",
+      "topic": "ZOOM②IRODORI 朝礼",
+      "start_time": "2026-05-14T10:00:00+09:00",
+      "duration": 30,
+      "type": 8
+    },
+    {
+      "id": "calendar:lqfotv85937rj6knvvneikd8kv_20260515T010000Z",
+      "topic": "ZOOM②IRODORI 朝礼",
+      "start_time": "2026-05-15T10:00:00+09:00",
+      "duration": 30,
+      "type": 8
+    }
+  ]
+}

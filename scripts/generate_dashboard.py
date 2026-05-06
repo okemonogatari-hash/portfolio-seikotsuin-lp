@@ -21,6 +21,10 @@ JST = timezone(timedelta(hours=9))
 HOST_NAEO = "5jeFf8S-TWC2zwtYGtLxLg"
 HOST_KOYAMA = "aAUji7r9QqWo-9JSS5yEFA"
 
+# Google Calendar 補完取得（Zoom APIで漏れる定期会議＝朝礼を補う）
+NAEO_CALENDAR_ID = "naaa.gwgw@gmail.com"
+ASAREI_KEYWORDS = ("朝礼",)
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 OUT_PATH = REPO_ROOT / "irodori-zoom-dashboard.html"
 
@@ -51,6 +55,104 @@ def fetch_meetings(token, user_id, meeting_type):
 def parse_jst(start_time):
     s = start_time.replace("Z", "+00:00")
     return datetime.fromisoformat(s).astimezone(JST)
+
+
+# ────────── Google Calendar API（朝礼補完） ──────────
+
+ASAREI_JSON_PATH = REPO_ROOT / "data" / "calendar_asarei.json"
+
+
+def _load_asarei_from_json():
+    """data/calendar_asarei.json から朝礼イベントを読む（MCP事前取得スナップショット）。
+    GitHub Actions環境のようにCalendar API認証が無い環境でも朝礼を表示するためのfallback。"""
+    if not ASAREI_JSON_PATH.exists():
+        return []
+    try:
+        data = json.loads(ASAREI_JSON_PATH.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"⚠️ calendar_asarei.json読み込み失敗: {e}")
+        return []
+    return data.get("events", [])
+
+
+def fetch_asarei_from_calendar():
+    """なっつんカレンダーから朝礼イベントを取得して Zoom API互換の形に整形して返す。
+    Zoom API（upcoming_meetings）では朝礼の各occurrenceが返ってこないため、
+    Calendar側から拾い上げて Z② 表示に合流させる。
+    認証が通らない環境では data/calendar_asarei.json のスナップショットへフォールバック。"""
+    try:
+        from google.oauth2.credentials import Credentials
+        from google.auth.transport.requests import Request
+        from googleapiclient.discovery import build
+        sdk_ok = True
+    except ImportError:
+        sdk_ok = False
+
+    token_env = os.environ.get("GOOGLE_TOKEN_JSON")
+    token_path = Path(os.path.expanduser("~/Documents/google_sync/token.json"))
+
+    if sdk_ok and (token_env or token_path.exists()):
+        try:
+            if token_env:
+                creds = Credentials.from_authorized_user_info(json.loads(token_env))
+            else:
+                creds = Credentials.from_authorized_user_file(str(token_path))
+            if creds.expired and creds.refresh_token:
+                creds.refresh(Request())
+            svc = build("calendar", "v3", credentials=creds, cache_discovery=False)
+            today = datetime.now(JST).replace(hour=0, minute=0, second=0, microsecond=0)
+            end = today + timedelta(days=10)
+            res = svc.events().list(
+                calendarId=NAEO_CALENDAR_ID,
+                timeMin=today.isoformat(),
+                timeMax=end.isoformat(),
+                singleEvents=True,
+                orderBy="startTime",
+                q="朝礼",
+                maxResults=200,
+            ).execute()
+            items = res.get("items", [])
+            out = []
+            for ev in items:
+                summary = ev.get("summary", "") or ""
+                if not any(k in summary for k in ASAREI_KEYWORDS):
+                    continue
+                start_dt = ev.get("start", {}).get("dateTime")
+                end_dt = ev.get("end", {}).get("dateTime")
+                if not start_dt or not end_dt:
+                    continue
+                try:
+                    st = datetime.fromisoformat(start_dt)
+                    et = datetime.fromisoformat(end_dt)
+                except ValueError:
+                    continue
+                duration = max(0, int((et - st).total_seconds() // 60))
+                out.append({
+                    "id": f"calendar:{ev.get('id')}",
+                    "topic": summary,
+                    "start_time": start_dt,
+                    "duration": duration,
+                    "type": 8,
+                })
+            print(f"📥 Calendar API 朝礼取得: {len(out)}件（live）")
+            return out
+        except Exception as e:
+            print(f"⚠️ Calendar live取得失敗 ({e}) → JSONスナップショットへfallback")
+
+    # fallback: data/calendar_asarei.json
+    snapshot = _load_asarei_from_json()
+    today = datetime.now(JST).replace(hour=0, minute=0, second=0, microsecond=0)
+    end = today + timedelta(days=10)
+    filtered = []
+    for ev in snapshot:
+        try:
+            st = datetime.fromisoformat(ev["start_time"]).astimezone(JST)
+        except Exception:
+            continue
+        if today <= st < end:
+            filtered.append(ev)
+    print(f"📥 朝礼JSONスナップショット使用: {len(filtered)}件（{ASAREI_JSON_PATH.name}）")
+    return filtered
 
 
 def normalize(meetings, host_label):
@@ -524,8 +626,11 @@ def main():
     koyama_scheduled = fetch_meetings(token, HOST_KOYAMA, "upcoming_meetings")
     koyama_past = fetch_meetings(token, HOST_KOYAMA, "previous_meetings")
 
+    # なっつんCalendarから朝礼を補完（Zoom APIで漏れる定期会議のキャッチアップ）
+    asarei = fetch_asarei_from_calendar()
+
     z1 = normalize(naeo_scheduled + naeo_past, "Z①")
-    z2 = normalize(koyama_scheduled + koyama_past, "Z②")
+    z2 = normalize(koyama_scheduled + koyama_past + asarei, "Z②")
 
     raw_counts = {
         "z1_scheduled": len(naeo_scheduled),
