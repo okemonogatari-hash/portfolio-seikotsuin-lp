@@ -521,7 +521,7 @@ def render_html(today, day_list, generated_at):
 <section class="updated-banner">
 <div class="ub-line">📅 <span class="ub-time">最終更新：{generated_at.strftime("%Y-%m-%d %H:%M")} JST</span></div>
 <div class="ub-line">🔄 自動更新：毎日 <strong>16:00（JST）</strong> に動きます（土日は更新おやすみ）</div>
-<div class="ub-warn">⚠️ この画面は <strong>リアルタイム反映ではありません</strong>。最後に動いた時点の情報を表示しています。最新の予定を確認したい時はZoom画面を直接見てね</div>
+<div class="ub-warn">⚠️ この画面は <strong>リアルタイム反映ではありません</strong>。最後に動いた時点の情報を表示しています</div>
 </section>
 
 <section class="big-callout">
