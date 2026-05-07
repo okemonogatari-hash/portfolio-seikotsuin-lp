@@ -58,6 +58,21 @@ def load_asarei_snapshot():
         return []
 
 
+def is_off_day(date_obj):
+    """土日 or 日本祝日 ならTrueを返す。投稿skipの判定に使う。
+    jpholidayが入っていない環境では祝日判定をskipして土日のみ判定。"""
+    if date_obj.weekday() >= 5:
+        return True, f"{date_obj} は{'土' if date_obj.weekday()==5 else '日'}曜日"
+    try:
+        import jpholiday
+        if jpholiday.is_holiday(date_obj):
+            holiday_name = jpholiday.is_holiday_name(date_obj) or "祝日"
+            return True, f"{date_obj} は日本祝日（{holiday_name}）"
+    except ImportError:
+        print("⚠️ jpholiday未インストール → 祝日判定skip（土日のみ判定）")
+    return False, ""
+
+
 def parse_jst(start_time):
     return datetime.fromisoformat(start_time.replace("Z", "+00:00")).astimezone(JST)
 
@@ -177,6 +192,12 @@ def main():
 
     print(f"⏱ 実行時刻 (JST): {now.strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"📅 対象日: {target}")
+
+    # 翌日が土日祝ならChatwork投稿はskip（dashboardの再生成は別step、こちらは投稿のみ）
+    off, reason = is_off_day(target)
+    if off and "--force" not in sys.argv:
+        print(f"🟡 翌日は休日（{reason}）→ Chatwork投稿をskipします")
+        return
 
     token = get_token()
     print("📥 Zoom会議取得中...")
