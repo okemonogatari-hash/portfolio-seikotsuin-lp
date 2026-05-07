@@ -120,9 +120,19 @@ def fmt_time(m):
 
 def build_message(target, z1, z2, generated_at):
     weekday = "月火水木金土日"[target.weekday()]
+    today = generated_at.date()
+    if target == today:
+        head_prefix = "📅 今日"
+        when_label = "当日"
+    elif target == today + timedelta(days=1):
+        head_prefix = "📅 明日"
+        when_label = "前日"
+    else:
+        head_prefix = f"📅 {target.strftime('%-m/%d')}"
+        when_label = "生成"
     lines = [
-        f"📅 明日（{target.strftime('%Y-%m-%d')} {weekday}）のZoom枠ブリーフ",
-        f"（前日{generated_at.strftime('%H:%M')}時点・自動生成）",
+        f"{head_prefix}（{target.strftime('%Y-%m-%d')} {weekday}）のZoom枠ブリーフ",
+        f"（{when_label}{generated_at.strftime('%H:%M')}時点・自動生成）",
         "",
     ]
 
@@ -188,10 +198,25 @@ def post_to_chatwork(token, room_id, message):
 
 def main():
     now = datetime.now(JST)
-    target = (now + timedelta(days=1)).date()
+
+    # 対象日の判定ルール（2026-05-07確立）
+    # - 引数 --today / --tomorrow があればそれを優先
+    # - 引数なしの場合：実行時刻16時以降は翌日ぶん（定時運用）／16時より前は当日ぶん（朝の手動運用）
+    if "--today" in sys.argv:
+        target = now.date()
+        rule = "明示指定（--today）"
+    elif "--tomorrow" in sys.argv:
+        target = (now + timedelta(days=1)).date()
+        rule = "明示指定（--tomorrow）"
+    elif now.hour >= 16:
+        target = (now + timedelta(days=1)).date()
+        rule = "16時以降→翌日ぶん（定時運用）"
+    else:
+        target = now.date()
+        rule = "16時より前→当日ぶん（朝の手動運用）"
 
     print(f"⏱ 実行時刻 (JST): {now.strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"📅 対象日: {target}")
+    print(f"📅 対象日: {target}（判定: {rule}）")
 
     # 翌日が土日祝ならChatwork投稿はskip（dashboardの再生成は別step、こちらは投稿のみ）
     off, reason = is_off_day(target)
