@@ -496,6 +496,12 @@ def render_html(today, day_list, generated_at):
         ".feedback-title strong{color:#1a5fb4}"
         ".feedback-sub{font-size:13.5px;line-height:1.9;color:#2a2a2a}"
         ".feedback-sub strong{color:#1a5fb4}"
+        ".updated-banner{background:#fffbe6;border:2px solid #f5c518;border-radius:12px;"
+        "padding:14px 20px;margin:0 0 24px;display:flex;flex-direction:column;gap:6px;"
+        "box-shadow:0 2px 8px rgba(245,197,24,0.15)}"
+        ".updated-banner .ub-line{font-size:14px;line-height:1.7;color:#5a4a00}"
+        ".updated-banner .ub-time{font-weight:700;font-size:16px;color:#8a6500}"
+        ".updated-banner .ub-warn{font-size:12.5px;color:#a06700;font-weight:600}"
     )
 
     summary_html = render_summary(today, day_list)
@@ -511,6 +517,12 @@ def render_html(today, day_list, generated_at):
 <h1>irodori Zoom運行管理ボード</h1>
 <p class="lead">Zoom①／Zoom② の予約状況がここに自動で並びます（v0.3 ためし版）</p>
 </header>
+
+<section class="updated-banner">
+<div class="ub-line">📅 <span class="ub-time">最終更新：{generated_at.strftime("%Y-%m-%d %H:%M")} JST</span></div>
+<div class="ub-line">🔄 自動更新：毎日 <strong>16:00（JST）</strong> に動きます（土日は更新おやすみ）</div>
+<div class="ub-warn">⚠️ この画面は <strong>リアルタイム反映ではありません</strong>。最後に動いた時点の情報を表示しています。最新の予定を確認したい時はZoom画面を直接見てね</div>
+</section>
 
 <section class="big-callout">
 <div class="callout-mark">📋</div>
