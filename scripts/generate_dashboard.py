@@ -57,6 +57,24 @@ def parse_jst(start_time):
     return datetime.fromisoformat(s).astimezone(JST)
 
 
+def auto_zoom_prefix(topic, host_label):
+    """タイトルにZoom番号（①or②）が無ければAIが先頭に自動補完。
+    補完の場合は🤖印で『AIが自動で付けた』と一目でわかるようにする。
+    既にタイトルにZ①/ZOOM②等の表記があればそのまま返す。"""
+    num_map = {"Z①": "①", "Z②": "②"}
+    num = num_map.get(host_label, "")
+    if not num:
+        return topic
+    keywords = [
+        f"Z{num}", f"ZOOM{num}", f"Zoom{num}",
+        f"z{num}", f"zoom{num}",
+        f"ｚ{num}", f"ＺＯＯＭ{num}", f"Ｚｏｏｍ{num}",
+    ]
+    if any(k in topic for k in keywords):
+        return topic
+    return f"🤖[{host_label}] {topic}"
+
+
 # ────────── Google Calendar API（朝礼補完） ──────────
 
 ASAREI_JSON_PATH = REPO_ROOT / "data" / "calendar_asarei.json"
@@ -312,7 +330,7 @@ def html_escape(s):
 
 def render_slot(m, css_class):
     recurring = ' <span class="recurring">🔁定期</span>' if m["type"] in (8, 3) else ""
-    topic = html_escape(m["topic"])
+    topic = html_escape(auto_zoom_prefix(m["topic"], m["host"]))
     return (
         f'<span class="slot {css_class}">'
         f'{m["start"].strftime("%H:%M")}-{m["end"].strftime("%H:%M")} {topic}'

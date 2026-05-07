@@ -77,6 +77,23 @@ def parse_jst(start_time):
     return datetime.fromisoformat(start_time.replace("Z", "+00:00")).astimezone(JST)
 
 
+def auto_zoom_prefix(topic, host_label):
+    """タイトルにZoom番号（①or②）が無ければAIが先頭に自動補完。
+    補完の場合は🤖印で『AIが自動で付けた』と一目でわかるようにする。"""
+    num_map = {"Z①": "①", "Z②": "②"}
+    num = num_map.get(host_label, "")
+    if not num:
+        return topic
+    keywords = [
+        f"Z{num}", f"ZOOM{num}", f"Zoom{num}",
+        f"z{num}", f"zoom{num}",
+        f"ｚ{num}", f"ＺＯＯＭ{num}", f"Ｚｏｏｍ{num}",
+    ]
+    if any(k in topic for k in keywords):
+        return topic
+    return f"🤖[{host_label}] {topic}"
+
+
 def filter_target_date(meetings, target_date):
     out = []
     seen = set()
@@ -139,7 +156,7 @@ def build_message(target, z1, z2, generated_at):
     lines.append("【Z①(菜緒さん枠)】")
     if z1:
         for m in z1:
-            lines.append(f"・{fmt_time(m)}　{m['topic']}")
+            lines.append(f"・{fmt_time(m)}　{auto_zoom_prefix(m['topic'], 'Z①')}")
     else:
         lines.append("　なし")
     lines.append("")
@@ -147,7 +164,7 @@ def build_message(target, z1, z2, generated_at):
     lines.append("【Z②(小山さん枠)】")
     if z2:
         for m in z2:
-            lines.append(f"・{fmt_time(m)}　{m['topic']}")
+            lines.append(f"・{fmt_time(m)}　{auto_zoom_prefix(m['topic'], 'Z②')}")
     else:
         lines.append("　なし")
     lines.append("")
