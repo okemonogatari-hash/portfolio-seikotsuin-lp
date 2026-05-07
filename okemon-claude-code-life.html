@@ -691,6 +691,185 @@
     letter-spacing: 0.02em;
   }
 
+  /* ===== Q&A ===== */
+  .qa-section {
+    background: linear-gradient(180deg, var(--bg) 0%, #f1ece2 100%);
+    padding: 110px 24px 100px;
+  }
+  .qa-meta {
+    text-align: center;
+    margin-bottom: 56px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    font-family: "Inter", sans-serif;
+    text-transform: uppercase;
+  }
+  .qa-list {
+    max-width: 880px;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+  }
+  .qa-item {
+    background: var(--paper);
+    border-radius: 4px;
+    border-left: 3px solid var(--accent);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+  .qa-item[open] {
+    box-shadow: var(--shadow-strong);
+  }
+  .qa-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 26px 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    transition: background 0.3s;
+  }
+  .qa-item summary::-webkit-details-marker { display: none; }
+  .qa-item summary:hover { background: var(--accent-soft); }
+  .qa-item summary .q-mark {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font-family: "Noto Serif JP", serif;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .qa-item summary .q-meta {
+    flex: 1;
+  }
+  .qa-item summary .q-author {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .qa-item summary .q-title {
+    font-family: "Noto Serif JP", serif;
+    font-size: 16.5px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.55;
+    letter-spacing: 0.02em;
+  }
+  .qa-item summary .q-toggle {
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 14px;
+    transition: transform 0.3s;
+    margin-top: 8px;
+  }
+  .qa-item[open] summary .q-toggle {
+    transform: rotate(180deg);
+  }
+
+  .qa-body {
+    padding: 0 28px 32px 82px;
+    border-top: 1px dashed var(--line);
+    margin-top: -1px;
+  }
+  .qa-body .qa-block {
+    padding: 22px 0 18px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .qa-body .qa-block:last-child { border-bottom: none; }
+  .qa-body .qa-q {
+    color: var(--ink);
+    font-size: 14.5px;
+    line-height: 1.85;
+    margin-bottom: 14px;
+    padding-left: 22px;
+    position: relative;
+  }
+  .qa-body .qa-q::before {
+    content: 'Q';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: "Noto Serif JP", serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .qa-body .qa-a {
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 2;
+    padding-left: 22px;
+    position: relative;
+  }
+  .qa-body .qa-a::before {
+    content: 'A';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: "Noto Serif JP", serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--accent);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .qa-body .qa-a strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .qa-body .qa-block-title {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .qa-foot {
+    text-align: center;
+    margin-top: 48px;
+    color: var(--ink-soft);
+    font-family: "Noto Serif JP", serif;
+    font-size: 14.5px;
+    line-height: 2;
+    letter-spacing: 0.04em;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .qa-foot em {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+  }
+  @media (max-width: 860px) {
+    .qa-item summary { padding: 22px 20px; gap: 14px; }
+    .qa-body { padding: 0 20px 28px 56px; }
+  }
+
   /* ===== HONESTY ===== */
   .honesty-section {
     background: linear-gradient(180deg, var(--bg) 0%, #f5f0e6 100%);
@@ -1332,10 +1511,224 @@
   </p>
 </section>
 
+<!-- ===== Q&A (PRE-EVENT) ===== -->
+<section class="content-block qa-section fade-in">
+  <div class="section-head">
+    <span class="label-en">06 — Q&A · May 7, 2026</span>
+    <h2 class="section-title">事前にいただいた質問、お答えします。</h2>
+    <p class="section-lead">
+      2026年5月7日 21時のオフ会向けに集まった事前質問。<br>
+      おけちゃん × リベの先輩フリーランサー、二人なりの回答を残しておきます。
+    </p>
+    <div class="qa-meta">— PRE-EVENT FAQ FROM 6 PARTICIPANTS —</div>
+  </div>
+
+  <div class="qa-list stagger">
+
+    <!-- Q1 -->
+    <details class="qa-item">
+      <summary>
+        <span class="q-mark">1</span>
+        <div class="q-meta">
+          <div class="q-author">From トリコットさん</div>
+          <div class="q-title">CLAUDE.mdの保存場所と、Claude Code vs Codexについて</div>
+        </div>
+        <i class="fa-solid fa-chevron-down q-toggle"></i>
+      </summary>
+      <div class="qa-body">
+
+        <div class="qa-block">
+          <div class="qa-block-title">① CLAUDE.md の保存場所と作業フォルダ</div>
+          <div class="qa-q">学長の呪文が <code>~/.claude/CLAUDE.md</code> に作成されたまま、作業は <code>Desktop/Claude Code/</code> 配下のフォルダで進めようとしています。この使い方で問題ないですか？</div>
+          <div class="qa-a"><strong>はい、両立OKです。</strong>そのまま安心して使えます。<code>~/.claude/CLAUDE.md</code> は<strong>全プロジェクト共通の設定ファイル</strong>（学長の呪文を入れる場所）で、各プロジェクトフォルダの中にPJ専用の <code>CLAUDE.md</code> を置くと「全体ルール ＋ そのPJ固有ルール」の二段構えになります。当日、画面共有しながらフォルダ構成も見せますね（本名が出る箇所はダミーに置き換える形で大丈夫です）。</div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-block-title">② Claude Code vs Codex（非エンジニア向け）</div>
+          <div class="qa-q">非エンジニアにはCodexの方が扱いやすいのでは？と気になっています。</div>
+          <div class="qa-a">「<strong>どちらが上下</strong>」じゃなく「<strong>特徴の違い</strong>」で見るのがおすすめです。当日、Codex経験のあるリベの先輩と一緒に深掘りします。おけちゃん側はClaude Code軸＋Codex併用派で、それぞれの「向いてる場面」を実例ベースでお話しします。</div>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- Q2 -->
+    <details class="qa-item">
+      <summary>
+        <span class="q-mark">2</span>
+        <div class="q-meta">
+          <div class="q-author">From ねこ貴族さん</div>
+          <div class="q-title">ClaudeCodeから他のAI（ChatGPT等）に指示する方法</div>
+        </div>
+        <i class="fa-solid fa-chevron-down q-toggle"></i>
+      </summary>
+      <div class="qa-body">
+
+        <div class="qa-block">
+          <div class="qa-q">学長がライブで仰っていた「ClaudeCodeから他のAIに指示して作業してもらう」というのが、具体的にどうやるのか分からなくて。</div>
+          <div class="qa-a">現状の現実解は、ざっくり<strong>2ルートあります</strong>：<br>
+          ・<strong>MCP連携</strong>：Claude Codeに「他のAI/ツール」と話せるアダプター（MCPサーバー）を繋ぐ方式。<br>
+          ・<strong>API直叩き</strong>：Claude Code から Bash 経由で Groq・Gemini・OpenAI 等のAPIを直接叩いて、別AIに作業を任せる方式。<br><br>
+          おけちゃん側では「<strong>大量テキストの要約は Groq に投げる</strong>」みたいな運用をスキル化して使っています。当日、その「Groq要約スキル」が動いてる様子を画面でお見せします。</div>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- Q3 -->
+    <details class="qa-item">
+      <summary>
+        <span class="q-mark">3</span>
+        <div class="q-meta">
+          <div class="q-author">From レイジさん</div>
+          <div class="q-title">音声入力／マネーフォワード連携／WordPressセキュリティ（3問）</div>
+        </div>
+        <i class="fa-solid fa-chevron-down q-toggle"></i>
+      </summary>
+      <div class="qa-body">
+
+        <div class="qa-block">
+          <div class="qa-block-title">① 音声入力（Aqua Voice）</div>
+          <div class="qa-q">普段Claude Codeへの指示に音声入力を使うが、エンターキーを押さないと送信されないのが地味にストレス。Aqua Voiceで解決される？</div>
+          <div class="qa-a"><strong>Aqua Voiceには自動送信機能があります</strong>（設定でEnter送信を有効化可能）。当日、リベの先輩の使用感も交えてシェアします。おけちゃん側はちょうど検討中の領域なので、レイジさんの実感も聞きたいです🙏</div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-block-title">② マネーフォワード連携のセキュリティ</div>
+          <div class="qa-q">毎月の仕訳作業をClaudeに任せたいが、会計データが怖くて試せていません。連携はしてる？セキュリティ面はどう考える？</div>
+          <div class="qa-a"><strong>マネフォ公式のMCPはまだない</strong>のが現状です。一番安全なのは「<strong>CSVエクスポート → ローカルでClaude Codeに処理させる</strong>」運用。API経由でやるなら必ず<strong>READ権限のみ＋テスト用環境で試運転</strong>から。当日、リベの先輩に連携実績があるか聞いてみます。</div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-block-title">③ ClaudeにWordPressを触らせるセキュリティ対策</div>
+          <div class="qa-q">クライアントワークでWordPress作業を任せたい。気をつけるポイントは？作業後のID/PW変更でOK？</div>
+          <div class="qa-a">ID/PW変更は<strong>最低ライン</strong>。それに加えて、<br>
+          ・<strong>作業用サブアカウントを発行</strong>（管理者じゃなく「編集者」権限）→終わったら即削除<br>
+          ・<strong>作業前に必ずスナップショット</strong>（バックアップ）を取る<br>
+          ・<strong>本番DBには直接触らせず</strong>、ステージング環境で検証してから本番反映<br>
+          このあたりが定番セットです。当日、もう少し具体的に話せると思います。</div>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- Q4 -->
+    <details class="qa-item">
+      <summary>
+        <span class="q-mark">4</span>
+        <div class="q-meta">
+          <div class="q-author">From けいしさん</div>
+          <div class="q-title">ディスパッチ機能／呪文 Sonnet vs Opus／Mac+Windows並行（3問）</div>
+        </div>
+        <i class="fa-solid fa-chevron-down q-toggle"></i>
+      </summary>
+      <div class="qa-body">
+
+        <div class="qa-block">
+          <div class="qa-block-title">① iPhoneアプリのディスパッチ機能</div>
+          <div class="qa-q">iPhoneのClaudeアプリからディスパッチで指示を出すと、Claude Coworkが実行する、という認識で合ってますか？</div>
+          <div class="qa-a"><strong>その認識でOKです。</strong>ディスパッチ＝モバイル側で指示 → クラウド側のCoworkが実行する仕組みです。手元のスマホは「リモコン」、実際の作業はクラウドで動く、というイメージで合ってます。</div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-block-title">② 学長マガジン紹介の「クロコの呪文」</div>
+          <div class="qa-q">現在Sonnet 4.6使用中。あの呪文はSonnetだと効果が薄い？外部公開コンテンツの時はOpusに切り替える必要ある？</div>
+          <div class="qa-a"><strong>Sonnetでも効きますが、Opusの方が呪文の意図を深く汲む</strong>傾向があります。使い分けの目安は：<br>
+          ・<strong>日常作業・軽めのタスク</strong> → Sonnetで十分<br>
+          ・<strong>発信物・LP・外部公開コンテンツ・重要な意思決定</strong> → Opusに切り替え推奨<br>
+          コスト次第ですが「ここぞ」の時はOpusがおすすめです。</div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-block-title">③ Mac＋Windows 複数端末・会社での活用</div>
+          <div class="qa-q">個人用Macで使ってるアカウントを、勤務先のWindows PCでも使いたい。アカウント分けるべき？並行使用は可能？</div>
+          <div class="qa-a"><strong>同一アカウントで並行使用OKです。</strong>有料プランの契約は1つで両端末から使えます。同時に作業しても、それぞれ別チャットで動くので衝突しません。<br><br>
+          会社PCで使う時の注意点だけ：<br>
+          ・<strong>会社のセキュリティポリシー</strong>（外部AI利用の可否）を必ず事前確認<br>
+          ・<strong>業務データの取り扱い</strong>はチームの規定に従って<br>
+          ・<strong>履歴の保存場所</strong>がローカルになることを把握しておく<br>
+          このあたりが押さえどころです。</div>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- Q5 -->
+    <details class="qa-item">
+      <summary>
+        <span class="q-mark">5</span>
+        <div class="q-meta">
+          <div class="q-author">From りょうさん（初参加）</div>
+          <div class="q-title">ホームページ制作中、写真の差し替えがうまくいきません</div>
+        </div>
+        <i class="fa-solid fa-chevron-down q-toggle"></i>
+      </summary>
+      <div class="qa-body">
+
+        <div class="qa-block">
+          <div class="qa-q">クロコでホームページを制作していますが、指示通り行っても、写真の差し替えができません。</div>
+          <div class="qa-a">あるあるです🙏 多くの場合、原因は<strong>2つのパスのズレ</strong>です：<br>
+          ・HTML側の <code>&lt;img src="..."&gt;</code> に書かれているパス<br>
+          ・実際の画像ファイルが置かれている場所<br><br>
+
+          <strong>うまく動かす指示の出し方のコツ：</strong><br>
+          ・「<strong>○○.htmlの△行目の画像を、images/new-photo.jpgに差し替えて</strong>」のように<strong>ファイル名と場所を明示</strong>する<br>
+          ・先に「<strong>img タグを全部教えて</strong>」と聞いて、現状のパスを把握してから指示する<br>
+          ・うまくいかない時は「<strong>差し替え後のHTMLを表示して</strong>」と頼んで、Claudeに自己点検させる<br><br>
+
+          当日、<strong>画面共有しながら一緒にやれば一発で解決します。</strong>具体例を持って当日いらしてください、その場で動かします💪</div>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- Q6 -->
+    <details class="qa-item">
+      <summary>
+        <span class="q-mark">6</span>
+        <div class="q-meta">
+          <div class="q-author">From お名前未記入の方</div>
+          <div class="q-title">ClaudeCowork/CodeでアプリのAPI連携、20ドルプランの仕組みは？</div>
+        </div>
+        <i class="fa-solid fa-chevron-down q-toggle"></i>
+      </summary>
+      <div class="qa-body">
+
+        <div class="qa-block">
+          <div class="qa-q">アプリ制作時にAPI連携の欄が出てきます。20ドルプランの仕組みがピンと来ていません。プリペイドのように事前チャージするイメージでOK？10個未満のAPI連携で月20ドル乗り切れますか？</div>
+          <div class="qa-a"><strong>整理すると話が見えやすくなります：</strong><br><br>
+
+          ① <strong>「PROプラン」と「Anthropic API」は別物</strong>。<br>
+          ・<strong>Claude PRO</strong>（月20ドル）＝ Claude.ai/Claude Code を使うサブスク料金<br>
+          ・<strong>Anthropic API</strong> ＝ アプリの中からClaudeを呼び出す時に使う、<strong>従量課金</strong>の別契約<br><br>
+
+          ② <strong>API側の「20ドル」は事前チャージのイメージで合ってます。</strong><br>
+          ・クレジットを先に20ドル分購入 → 使った分だけ減っていく仕組み<br>
+          ・1回の呼び出しごとに「入力トークン数 × 単価 ＋ 出力トークン数 × 単価」で課金<br><br>
+
+          ③ <strong>10個未満のAPI連携で月20ドル乗り切れるか？</strong><br>
+          ・<strong>「1日にどれくらい呼び出すか」次第</strong>です<br>
+          ・例：1日数十回・短い処理なら20ドルで月持つことも普通に可能<br>
+          ・例：画像を毎回大量に送る・出力が長文 → すぐ枯渇する可能性<br><br>
+
+          <strong>おすすめの始め方：</strong>まず20ドルチャージして、<strong>使用ダッシュボードで「1日いくら減ってるか」を1週間観察</strong>。それで月の必要額の感覚がつかめます。当日もう少し具体的に話せます。</div>
+        </div>
+
+      </div>
+    </details>
+
+  </div>
+
+  <p class="qa-foot fade-in">
+    <em>当日はこの回答をスタートラインに、もっと深く・もっとリアルに話していきます。</em><br>
+    質問してくださった6名のみなさん、ありがとうございました🙏
+  </p>
+</section>
+
 <!-- ===== HONESTY (REAL TALK) ===== -->
 <section class="content-block honesty-section fade-in">
   <div class="section-head">
-    <span class="label-en">06 — Real Talk</span>
+    <span class="label-en">07 — Real Talk</span>
     <h2 class="section-title">ありのまま、こうです。</h2>
     <p class="section-lead">
       盛らずに書きます。<br>
@@ -1393,7 +1786,7 @@
 <!-- ===== CONCLUSION ===== -->
 <section class="conclusion fade-in">
   <div class="inner">
-    <span class="label-en">07 — What changed</span>
+    <span class="label-en">08 — What changed</span>
     <h2>結局、暮らしが <em>こう</em> 変わりました。</h2>
     <ul class="stagger">
       <li><i class="fa-solid fa-circle"></i><span><strong>話すだけ。</strong>AIが全部やってくれる、が日常になった。</span></li>
