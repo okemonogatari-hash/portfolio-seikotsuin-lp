@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Codeで、こんな暮らしになりました｜おけもんカンパニー</title>
+<meta name="description" content="コードを書かない私が、Claude Codeとどう仕事を回しているか。AIスキル62本／HTML公開物87件／コーチング取説38人分。話すだけでAIが全部やってくれる、2ヶ月の記録。">
+<meta property="og:title" content="Claude Codeで、こんな暮らしになりました">
+<meta property="og:description" content="話すだけでAIが全部やる。コードを書かない人の、AI活用2ヶ月の記録。">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  :root {
+    --ink: #1a1f2e;
+    --ink-soft: #2c3344;
+    --muted: #6b7280;
+    --line: rgba(26,31,46,0.08);
+    --bg: #faf8f4;
+    --paper: #ffffff;
+    --accent: #c8893a;       /* warm gold */
+    --accent-soft: rgba(200,137,58,0.08);
+    --primary: #1a1f2e;      /* deep ink */
+    --primary-soft: rgba(26,31,46,0.05);
+    --shadow: 0 12px 40px rgba(26,31,46,0.06);
+    --shadow-strong: 0 24px 60px rgba(26,31,46,0.12);
+    --max: 1080px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Sans JP", -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+
+  .label-en {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(250,248,244,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+    transition: padding 0.3s;
+  }
+  .site-header .inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    font-family: "Noto Serif JP", serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .brand .dot {
+    color: var(--accent);
+  }
+  .nav-cta {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 8px 18px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background:
+      linear-gradient(135deg, rgba(26,31,46,0.78), rgba(26,31,46,0.62)),
+      url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=2000&q=80') center/cover;
+    color: #fff;
+    padding: 120px 24px 80px;
+  }
+  .hero .inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    width: 100%;
+  }
+  .hero-label {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: heroFadeIn 0.8s 0.15s both;
+  }
+  .hero-label .accent { color: #e8b66c; }
+  .hero h1 {
+    font-size: clamp(32px, 5.6vw, 64px);
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+    margin-bottom: 28px;
+    animation: heroSlideUp 0.9s 0.3s both;
+  }
+  .hero h1 .accent {
+    color: #e8b66c;
+    font-style: italic;
+  }
+  .hero-sub {
+    font-size: clamp(14px, 1.6vw, 18px);
+    color: rgba(255,255,255,0.85);
+    line-height: 1.95;
+    max-width: 680px;
+    margin-bottom: 48px;
+    animation: heroSlideUp 0.9s 0.5s both;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    animation: heroSlideUp 0.9s 0.7s both;
+  }
+  .hero-meta-item {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    color: rgba(255,255,255,0.65);
+  }
+  .hero-meta-item strong {
+    display: block;
+    font-family: "Noto Serif JP", serif;
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.6);
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    animation: heroFadeIn 0.8s 1s both, scrollBounce 2s 1.2s infinite;
+  }
+
+  @keyframes heroFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes heroSlideUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ===== TRUST BAR ===== */
+  .trust-bar {
+    background: var(--paper);
+    padding: 56px 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .trust-grid {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+  .trust-item .num {
+    font-family: "Noto Serif JP", serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .trust-item .num .small {
+    font-size: 0.5em;
+    color: var(--accent);
+    margin-left: 4px;
+  }
+  .trust-item .label {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .trust-item .label-jp {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ===== SECTION (common) ===== */
+  section.content-block {
+    padding: 100px 24px 80px;
+  }
+  .section-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 64px;
+  }
+  .section-title {
+    font-size: clamp(26px, 3.2vw, 38px);
+    color: var(--ink);
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+  }
+  .section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.6s ease 0.2s;
+    transform: translateX(-50%);
+  }
+  .fade-in.is-visible .section-title::after {
+    width: 48px;
+  }
+  .section-lead {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 2;
+    margin-top: 28px;
+  }
+
+  /* ===== SECTION 1: VAULT ===== */
+  .vault-section {
+    background: var(--paper);
+  }
+  .vault-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .vault-text h2 {
+    font-size: clamp(24px, 2.8vw, 34px);
+    margin-bottom: 28px;
+    color: var(--ink);
+  }
+  .vault-text p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 24px;
+  }
+  .vault-points {
+    list-style: none;
+    border-left: 2px solid var(--accent);
+    padding: 6px 0 6px 24px;
+  }
+  .vault-points li {
+    margin-bottom: 18px;
+    color: var(--ink);
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+  .vault-points li:last-child { margin-bottom: 0; }
+  .vault-points li strong {
+    color: var(--accent);
+    font-family: "Noto Serif JP", serif;
+    font-weight: 500;
+    margin-right: 6px;
+  }
+  .vault-visual {
+    aspect-ratio: 4/5;
+    background: linear-gradient(160deg, rgba(200,137,58,0.18), rgba(26,31,46,0.55)),
+      url('https://images.unsplash.com/photo-1517842645767-c639042777db?w=1000&q=80') center/cover;
+    border-radius: 4px;
+    box-shadow: var(--shadow-strong);
+    position: relative;
+  }
+  .vault-visual::after {
+    content: 'VAULT × CLAUDE CODE';
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* ===== DIVIDER ===== */
+  .photo-divider {
+    height: 220px;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+  }
+  .photo-divider::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26,31,46,0.7), rgba(200,137,58,0.4));
+  }
+  .photo-divider .quote {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: "Noto Serif JP", serif;
+    font-size: clamp(16px, 2vw, 22px);
+    text-align: center;
+    padding: 0 32px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  /* ===== SECTION 2: TEAM ===== */
+  .team-section {
+    background: var(--bg);
+  }
+  .team-intro {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 56px;
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 2;
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .team-card {
+    background: var(--paper);
+    padding: 36px 28px;
+    transition: background 0.3s;
+  }
+  .team-card:hover { background: var(--accent-soft); }
+  .team-card .role-en {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .team-card h4 {
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+  }
+  .team-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.85;
+  }
+  .team-flow {
+    margin-top: 56px;
+    background: var(--paper);
+    padding: 40px;
+    border-radius: 4px;
+    border-left: 3px solid var(--accent);
+    max-width: var(--max);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .team-flow h4 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .team-flow p {
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 2;
+  }
+  .team-flow code {
+    font-family: "Inter", monospace;
+    background: var(--primary-soft);
+    color: var(--ink);
+    padding: 2px 8px;
+    font-size: 12px;
+    border-radius: 3px;
+  }
+
+  /* ===== SECTION 3: AUTOMATION ===== */
+  .auto-section {
+    background: var(--paper);
+  }
+  .auto-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    max-width: var(--max);
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+  .auto-item {
+    padding: 32px 28px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    transition: background 0.3s;
+  }
+  .auto-item:hover {
+    background: var(--accent-soft);
+  }
+  .auto-item .icon-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .auto-item .icon-circle {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-soft);
+    color: var(--ink);
+    border-radius: 50%;
+    font-size: 16px;
+  }
+  .auto-item h4 {
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.5;
+    flex: 1;
+  }
+  .auto-item p {
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.85;
+    padding-left: 58px;
+  }
+  .auto-item .self-note {
+    display: inline-block;
+    margin-left: 8px;
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 2px 8px;
+    border-radius: 999px;
+    vertical-align: middle;
+  }
+
+  /* ===== SECTION 4: CLIENT ===== */
+  .client-section {
+    background: var(--bg);
+  }
+  .client-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .client-card {
+    background: var(--paper);
+    padding: 40px 36px;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .client-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-strong);
+  }
+  .client-card .num {
+    font-family: "Noto Serif JP", serif;
+    font-size: 56px;
+    color: var(--accent);
+    line-height: 1;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .client-card .num-unit {
+    font-size: 14px;
+    color: var(--muted);
+    font-family: "Inter", sans-serif;
+    margin-left: 4px;
+    letter-spacing: 0.06em;
+  }
+  .client-card h4 {
+    font-size: 19px;
+    color: var(--ink);
+    margin-bottom: 14px;
+    line-height: 1.55;
+  }
+  .client-card p {
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    line-height: 1.95;
+  }
+
+  /* ===== EVENTS ===== */
+  .events-section {
+    background: var(--paper);
+    padding: 110px 24px 100px;
+  }
+  .events-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    max-width: var(--max);
+    margin: 0 auto 72px;
+  }
+  .events-stats > div {
+    background: var(--paper);
+    padding: 36px 24px;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  .events-stats > div:hover {
+    background: var(--accent-soft);
+  }
+  .events-stats > div strong {
+    display: block;
+    font-family: "Noto Serif JP", serif;
+    font-size: clamp(28px, 3.4vw, 42px);
+    color: var(--ink);
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    margin-bottom: 8px;
+  }
+  .events-stats > div strong .small {
+    font-size: 0.5em;
+    color: var(--accent);
+    margin-left: 4px;
+  }
+  .events-stats > div p {
+    font-size: 12.5px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    line-height: 1.6;
+  }
+  .events-h3 {
+    text-align: center;
+    font-size: clamp(18px, 2vw, 22px);
+    color: var(--ink);
+    margin-bottom: 36px;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+  .events-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: var(--max);
+    margin: 0 auto 60px;
+  }
+  .hi-card {
+    background: linear-gradient(180deg, var(--paper) 0%, var(--bg) 100%);
+    padding: 32px 26px 28px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  }
+  .hi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent);
+  }
+  .hi-card .emoji {
+    display: block;
+    font-size: 38px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .hi-card h4 {
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+  .hi-card p {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.85;
+  }
+  .events-keywords {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 36px 28px;
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 2.1;
+  }
+  .events-keywords em {
+    display: inline-block;
+    color: var(--accent);
+    font-style: italic;
+    font-family: "Noto Serif JP", serif;
+    margin: 0 4px;
+    font-weight: 500;
+  }
+  .events-foot {
+    text-align: center;
+    margin-top: 48px;
+    color: var(--muted);
+    font-size: 13px;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .events-foot strong {
+    color: var(--ink);
+    font-family: "Noto Serif JP", serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+
+  /* ===== HONESTY ===== */
+  .honesty-section {
+    background: linear-gradient(180deg, var(--bg) 0%, #f5f0e6 100%);
+    padding: 110px 24px 100px;
+  }
+  .honesty-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .honesty-card {
+    background: var(--paper);
+    border-radius: 4px;
+    padding: 36px 28px 32px;
+    border-top: 3px solid var(--accent);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+  .honesty-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-strong);
+  }
+  .honesty-card.col-now { border-top-color: #6fa893; }
+  .honesty-card.col-issue { border-top-color: #c87a4a; }
+  .honesty-card.col-future { border-top-color: #c89e3a; }
+  .honesty-card .col-mark {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .honesty-card.col-now .col-mark { color: #6fa893; }
+  .honesty-card.col-issue .col-mark { color: #c87a4a; }
+  .honesty-card.col-future .col-mark { color: #c89e3a; }
+  .honesty-card h4 {
+    font-size: 19px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .honesty-card .col-jp {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 22px;
+    letter-spacing: 0.04em;
+  }
+  .honesty-card ul {
+    list-style: none;
+  }
+  .honesty-card ul li {
+    position: relative;
+    padding: 10px 0 10px 22px;
+    border-bottom: 1px dashed var(--line);
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    line-height: 1.85;
+  }
+  .honesty-card ul li:last-child { border-bottom: none; }
+  .honesty-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .honesty-card.col-now ul li::before { background: #6fa893; }
+  .honesty-card.col-issue ul li::before { background: #c87a4a; }
+  .honesty-card.col-future ul li::before { background: #c89e3a; }
+  .honesty-note {
+    text-align: center;
+    margin-top: 56px;
+    color: var(--ink-soft);
+    font-family: "Noto Serif JP", serif;
+    font-size: 15px;
+    line-height: 1.95;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .honesty-note em {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  /* ===== CONCLUSION ===== */
+  .conclusion {
+    background: var(--ink);
+    color: rgba(255,255,255,0.92);
+    padding: 110px 24px;
+  }
+  .conclusion .inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .conclusion .label-en {
+    color: #e8b66c;
+  }
+  .conclusion h2 {
+    font-size: clamp(26px, 3.4vw, 40px);
+    color: #fff;
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+  .conclusion h2 em {
+    color: #e8b66c;
+    font-style: italic;
+  }
+  .conclusion ul {
+    list-style: none;
+    margin: 36px auto 48px;
+    max-width: 560px;
+    text-align: left;
+  }
+  .conclusion ul li {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.85);
+    font-size: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .conclusion ul li i {
+    color: #e8b66c;
+    font-size: 12px;
+    margin-top: 7px;
+  }
+  .conclusion ul li:last-child { border-bottom: none; }
+  .conclusion ul li strong {
+    color: #fff;
+    font-family: "Noto Serif JP", serif;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .conclusion .closing {
+    font-family: "Noto Serif JP", serif;
+    font-size: clamp(20px, 2.4vw, 30px);
+    color: #fff;
+    line-height: 1.65;
+    margin-top: 48px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--paper);
+    padding: 72px 24px 40px;
+    border-top: 1px solid var(--line);
+  }
+  footer .inner {
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  footer .ft-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  footer h4 {
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  footer p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.95;
+    margin-bottom: 18px;
+  }
+  footer .ft-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    transition: color 0.3s;
+  }
+  footer .ft-link:last-of-type { border-bottom: none; }
+  footer .ft-link:hover {
+    color: var(--accent);
+  }
+  footer .ft-link i {
+    color: var(--accent);
+    font-size: 12px;
+  }
+  footer .ft-meta {
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 11.5px;
+    line-height: 1.85;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 0.06em;
+  }
+  footer .ft-meta .self-made {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+  }
+
+  /* ===== ANIMATION ===== */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-in-left {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .fade-in-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .fade-in-right {
+    opacity: 0;
+    transform: translateX(32px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .fade-in-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .stagger.is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+  .stagger.is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+  .stagger.is-visible > *:nth-child(3) { transition-delay: 0.19s; }
+  .stagger.is-visible > *:nth-child(4) { transition-delay: 0.26s; }
+  .stagger.is-visible > *:nth-child(5) { transition-delay: 0.33s; }
+  .stagger.is-visible > *:nth-child(6) { transition-delay: 0.4s; }
+  .stagger.is-visible > *:nth-child(7) { transition-delay: 0.47s; }
+  .stagger.is-visible > *:nth-child(8) { transition-delay: 0.54s; }
+  .stagger.is-visible > *:nth-child(9) { transition-delay: 0.61s; }
+  .stagger.is-visible > *:nth-child(10) { transition-delay: 0.68s; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 860px) {
+    .hero { padding: 110px 20px 60px; }
+    .hero-meta { gap: 20px; }
+    .hero-meta-item strong { font-size: 22px; }
+    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .vault-grid { grid-template-columns: 1fr; gap: 40px; }
+    .vault-visual { max-width: 360px; margin: 0 auto; }
+    .team-grid { grid-template-columns: 1fr; }
+    .auto-grid { grid-template-columns: 1fr; }
+    .client-grid { grid-template-columns: 1fr; }
+    footer .ft-grid { grid-template-columns: 1fr; gap: 32px; }
+    .photo-divider {
+      height: 180px;
+      background-attachment: scroll;
+    }
+    section.content-block { padding: 72px 20px 60px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a href="#top" class="brand">おけもん<span class="dot">.</span>カンパニー</a>
+    <a href="#footer" class="nav-cta">虎の巻を見る</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="inner">
+    <div class="hero-label">A.I. <span class="accent">×</span> CLAUDE CODE — 2 MONTHS REPORT</div>
+    <h1>
+      Claude Codeで、<br>
+      <span class="accent">こんな暮らし</span>になりました。
+    </h1>
+    <p class="hero-sub">
+      コードを書かない私が、Claude Code と一緒にどう仕事を回しているか。<br>
+      会社まで建てちゃった2ヶ月の、ぜんぶ実話の記録です。
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <strong>62</strong>
+        AI Skills
+      </div>
+      <div class="hero-meta-item">
+        <strong>87</strong>
+        Web Pages Published
+      </div>
+      <div class="hero-meta-item">
+        <strong>38</strong>
+        Coaching Manuals
+      </div>
+      <div class="hero-meta-item">
+        <strong>30</strong>
+        Active Projects
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL ↓</div>
+</section>
+
+<!-- ===== TRUST BAR ===== -->
+<section class="trust-bar fade-in">
+  <div class="trust-grid stagger">
+    <div class="trust-item">
+      <div class="num">62<span class="small">本</span></div>
+      <div class="label">SKILLS</div>
+      <div class="label-jp">自動化スキル</div>
+    </div>
+    <div class="trust-item">
+      <div class="num">87<span class="small">件</span></div>
+      <div class="label">PAGES</div>
+      <div class="label-jp">HTML公開物</div>
+    </div>
+    <div class="trust-item">
+      <div class="num">38<span class="small">人</span></div>
+      <div class="label">CLIENTS</div>
+      <div class="label-jp">取説ナレッジ化</div>
+    </div>
+    <div class="trust-item">
+      <div class="num">30<span class="small">件</span></div>
+      <div class="label">PROJECTS</div>
+      <div class="label-jp">並行運用中</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 1: VAULT ===== -->
+<section class="content-block vault-section fade-in">
+  <div class="vault-grid">
+    <div class="vault-text fade-in-left">
+      <span class="label-en">01 — Single Source of Truth</span>
+      <h2>私の脳内、まるごと<br>AIに見せてます。</h2>
+      <p>
+        仕事のメモ・記録・指示書、すべて1つのフォルダ（Obsidian Vault）に集約。
+        Claude Code がそのフォルダを直接読み書きできるから、AIが「私の脳内」をいつでも見れる状態になりました。
+      </p>
+      <ul class="vault-points">
+        <li><strong>01</strong>すべての仕事ログを Markdown で一元化（プレーンテキストの安心感）</li>
+        <li><strong>02</strong>双方向リンクで、知識が網状につながる（Obsidian機能）</li>
+        <li><strong>03</strong>過去の AI との会話まで全文検索（cchist という自作ツール）</li>
+        <li><strong>04</strong>「どこに何を書いたか」を覚えなくていい暮らし</li>
+      </ul>
+    </div>
+    <div class="vault-visual fade-in-right"></div>
+  </div>
+</section>
+
+<!-- ===== DIVIDER 1 ===== -->
+<div class="photo-divider" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=1800&q=80');">
+  <div class="quote">「忘れる前提で、仕組みを設計する。」</div>
+</div>
+
+<!-- ===== SECTION 2: TEAM ===== -->
+<section class="content-block team-section fade-in">
+  <div class="section-head">
+    <span class="label-en">02 — A Company of AIs</span>
+    <h2 class="section-title">AIに役職を分けてもらった。</h2>
+    <p class="team-intro">
+      ひとり社長なのに、6人の専属AIに任せて回してます。<br>
+      それぞれ性格・口調・担当領域が違うから、私は「話す」だけ。
+    </p>
+  </div>
+
+  <div class="team-grid stagger">
+    <div class="team-card">
+      <div class="role-en">CEO</div>
+      <h4>全体の司令塔担当</h4>
+      <p>会話の入口。すべての話を受けて、適切な担当に振り分け、結果を集約して報告する。</p>
+    </div>
+    <div class="team-card">
+      <div class="role-en">CDO — DATA</div>
+      <h4>技術・自動化担当</h4>
+      <p>システム設計、ツール開発、自動化スクリプト。寡黙な職人タイプ。</p>
+    </div>
+    <div class="team-card">
+      <div class="role-en">CSO — SALES</div>
+      <h4>営業・顧客対応担当</h4>
+      <p>業務委託案件・クライアント対応。動きが速いおっちょこちょい行動派。</p>
+    </div>
+    <div class="team-card">
+      <div class="role-en">CMO — MARKETING</div>
+      <h4>発信・ブランディング担当</h4>
+      <p>コラム執筆、SNS運用、ノウハウ図書館投稿。場を明るくするムードメーカー。</p>
+    </div>
+    <div class="team-card">
+      <div class="role-en">CPO — PRODUCT</div>
+      <h4>商品・コーチング担当</h4>
+      <p>セッション設計、取説制作、イベント企画。穏やかな傾聴者。</p>
+    </div>
+    <div class="team-card">
+      <div class="role-en">CFO — FINANCE</div>
+      <h4>経理・お金担当</h4>
+      <p>請求書、確定申告、家計収支表。数字の鬼で、ちょっとツンデレ。</p>
+    </div>
+  </div>
+
+  <div class="team-flow fade-in">
+    <h4>＋ サブAIたち（タスク管理、図解、SNS実行、外部監査…）</h4>
+    <p>
+      各AIの性格と責務は、<code>commands/*.md</code> という設定ファイルで定義してあります。<br>
+      最近 <strong>「CEO経由フロー」</strong> を確立して、<em>「これ誰の担当？」を私が考えなくていい</em> 暮らしになりました。
+    </p>
+  </div>
+</section>
+
+<!-- ===== DIVIDER 2 ===== -->
+<div class="photo-divider" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1800&q=80');">
+  <div class="quote">「話すだけで、AIが全部やる。」</div>
+</div>
+
+<!-- ===== SECTION 3: AUTOMATION ===== -->
+<section class="content-block auto-section fade-in">
+  <div class="section-head">
+    <span class="label-en">03 — Automation Showcase</span>
+    <h2 class="section-title">普段これ全部、AIに任せてます。</h2>
+    <p class="section-lead">
+      <strong>自動化スキル：62本。</strong> ぜんぶ Claude Code 経由で、話しかけるだけで動きます。
+    </p>
+  </div>
+
+  <div class="auto-grid stagger">
+    <div class="auto-item">
+      <div class="icon-row">
+        <span class="icon-circle"><i class="fa-solid fa-circle-play"></i></span>
+        <h4>YouTube動画 → 要約と活用事例リスト</h4>
+      </div>
+      <p>1時間の動画を5分でまとめ。学長ライブは毎日12時に自動文字起こし＋要約まで完走。</p>
+    </div>
+    <div class="auto-item">
+      <div class="icon-row">
+        <span class="icon-circle"><i class="fa-solid fa-microphone-lines"></i></span>
+        <h4>Zoom録画 → 議事録 + AI化候補抽出</h4>
+      </div>
+      <p>会議の文字起こしから「ここAIで効率化できる」候補を自動抽出。営業武器になります。</p>
+    </div>
+    <div class="auto-item">
+      <div class="icon-row">
+        <span class="icon-circle"><i class="fa-solid fa-file-lines"></i></span>
+        <h4>お客さん用のHTML取説を自動生成</h4>
+      </div>
+      <p>コーチングセッション後、その日のうちに取説LPを公開。録画も埋め込み済み。</p>
+    </div>
+    <div class="auto-item">
+      <div class="icon-row">
+        <span class="icon-circle"><i class="fa-solid fa-paintbrush"></i></span>
+        <h4>LP（ホームページ）をAIだけで作る<span class="self-note">↑ THIS PAGE</span></h4>
+      </div>
+      <p>業種を伝えるだけで、プロ品質のLPを1ファイルで完成。このページもそうやって作りました。</p>
+    </div>
+    <div class="auto-item">
+      <div class="icon-row">
+        <span class="icon-circle"><i class="fa-solid fa-receipt"></i></span>
+        <h4>月次の請求書PDF → 1コマンド完結</h4>
+      </div>
+      <p>請求金額の集計、PDF生成、提出まで自動。来月以降は <code>1コマンド</code>で全部終わります。</p>
+    </div>
+    <div class="auto-item">
+      <div class="icon-row">
+        <span class="icon-circle"><i class="fa-solid fa-chart-line"></i></span>
+        <h4>業務委託先の朝礼ダッシュボード</h4>
+      </div>
+      <p>GitHub Actions × Zoom API × cron の合わせ技で、毎日自動投稿される運用に。</p>
+    </div>
+    <div class="auto-item">
+      <div class="icon-row">
+        <span class="icon-circle"><i class="fa-solid fa-book-open"></i></span>
+        <h4>ノウハウ図書館の自動リサーチ</h4>
+      </div>
+      <p>テーマ別に活用事例DBを構築。発信ネタ・提案資料の弾切れがなくなりました。</p>
+    </div>
+    <div class="auto-item">
+      <div class="icon-row">
+        <span class="icon-circle"><i class="fa-solid fa-calculator"></i></span>
+        <h4>経理サポート（家計収支表まで自動）</h4>
+      </div>
+      <p>銀行取引履歴を放り込めば仕訳完了。確定申告も補助金申請の下書きも、AIが先に動きます。</p>
+    </div>
+    <div class="auto-item">
+      <div class="icon-row">
+        <span class="icon-circle"><i class="fa-solid fa-clock-rotate-left"></i></span>
+        <h4>セッション間の記憶を全文検索で復元</h4>
+      </div>
+      <p>「あれ、いつ話したっけ？」を5秒で取り戻す。<code>cchist</code> ツールで過去の会話を直接検索。</p>
+    </div>
+    <div class="auto-item">
+      <div class="icon-row">
+        <span class="icon-circle"><i class="fa-solid fa-list-check"></i></span>
+        <h4>タスク管理ダッシュボード（ADHD向け）</h4>
+      </div>
+      <p>分類は AI が自動判定。「今これ1つだけやろう」を提案してくれる、選択麻痺ゼロの設計。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: CLIENT ===== -->
+<section class="content-block client-section fade-in">
+  <div class="section-head">
+    <span class="label-en">04 — In Real Client Work</span>
+    <h2 class="section-title">お客さんにも、ぜんぶAI。</h2>
+    <p class="section-lead">
+      自分の暮らしだけじゃなく、クライアントワークでも全面活用してます。
+    </p>
+  </div>
+
+  <div class="client-grid stagger">
+    <div class="client-card">
+      <div class="num">38<span class="num-unit">人分</span></div>
+      <h4>コーチング取説をHTMLで量産</h4>
+      <p>過去のクライアント全員分の取説を、並列処理（Agent 6体同時）で一気にナレッジ化。1人ずつ手作業で作っていた頃には戻れません。</p>
+    </div>
+    <div class="client-card">
+      <div class="num">1<span class="num-unit">号案件</span></div>
+      <h4>業務棚卸し相談（試運転中）</h4>
+      <p>業務委託案件で得たノウハウをパッケージ化。「お客さんの業務をAIで楽にする」相談メニューが進行中です。</p>
+    </div>
+    <div class="client-card">
+      <div class="num">∞<span class="num-unit">時間圧縮</span></div>
+      <h4>セッション振り返りもAI</h4>
+      <p>YouTube限定公開×HTML埋め込みで、お客さんが何度でも振り返れる資料に。「コーチングを資産化する」運用を確立。</p>
+    </div>
+    <div class="client-card">
+      <div class="num">2<span class="num-unit">人 共著</span></div>
+      <h4>リベの先輩フリーランサーと共同で初心者ガイド執筆中</h4>
+      <p>Claude Code初心者向けの虎の巻を、リベシティの先輩フリーランサーと共同編集中。GitHub上で2人で育てています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EVENTS (LIVE & REAL) ===== -->
+<section class="content-block events-section fade-in">
+  <div class="section-head">
+    <span class="label-en">05 — Live & Real</span>
+    <h2 class="section-title">画面の外でも、会いに行ってます。</h2>
+    <p class="section-lead">
+      AIで自動化、と言いつつ。<br>
+      <strong>27回</strong>のオフ会を主催して、<strong>のべ100名超</strong>の方と直接会ってきました。
+    </p>
+  </div>
+
+  <div class="events-stats stagger">
+    <div>
+      <strong>27<span class="small">回</span></strong>
+      <p>主催オフ会・勉強会</p>
+    </div>
+    <div>
+      <strong>100<span class="small">名超</span></strong>
+      <p>のべ参加者数</p>
+    </div>
+    <div>
+      <strong>60<span class="small">%</span></strong>
+      <p>4月は30日中18日 開催</p>
+    </div>
+    <div>
+      <strong>2<span class="small">連戦</span></strong>
+      <p>朝・午後・夜のハシゴ開催</p>
+    </div>
+  </div>
+
+  <h3 class="events-h3 fade-in">— 名場面アーカイブ —</h3>
+
+  <div class="events-highlights stagger">
+    <div class="hi-card">
+      <span class="emoji">🥐</span>
+      <h4>三宮の朝カフェ回</h4>
+      <p>会場の雰囲気を変えて、美味しい料理とドリンクと一緒に開いた朝活オフ会。</p>
+    </div>
+    <div class="hi-card">
+      <span class="emoji">👴</span>
+      <h4>ご家族で参加してくれた回</h4>
+      <p>年配の方がお孫さんと一緒に来てくれた、開く会で雰囲気がガラッと変わる典型回。</p>
+    </div>
+    <div class="hi-card">
+      <span class="emoji">👏</span>
+      <h4>再挑戦の拍手回</h4>
+      <p>前回挫折→もう一度戻ってきてくれた方を、全員で拍手で迎えた温かい回。</p>
+    </div>
+    <div class="hi-card">
+      <span class="emoji">🍊</span>
+      <h4>遠征組が来てくれた回</h4>
+      <p>他県からわざわざ会いに来てくれた方・仲間を呼び戻してくれた方が集った回。</p>
+    </div>
+    <div class="hi-card">
+      <span class="emoji">☔</span>
+      <h4>雨ニモマケズ回</h4>
+      <p>大雨の中でも超初心者向けに集まってくれた、優しさで満ちた1日。</p>
+    </div>
+    <div class="hi-card">
+      <span class="emoji">🌸</span>
+      <h4>5月初日・連戦回</h4>
+      <p>午前と午後で別の方々と。「最初の一歩突破」を一緒に乗り越えた連戦の日。</p>
+    </div>
+  </div>
+
+  <p class="events-keywords fade-in">
+    毎回の振り返りに、必ず出てくるワード：<br>
+    <em>「人によってつまずくポイントが違う」</em>・<em>「急遽開催」</em>・<em>「ワイワイ」</em>・<em>「優しい」</em>・<em>「拍手しあう」</em>・<em>「笑顔」</em>
+  </p>
+
+  <p class="events-foot fade-in">
+    <strong>"AIで完結する暮らし"</strong>と並行して、<br>
+    <strong>"会いに行く"</strong> も全力でやってます。
+  </p>
+</section>
+
+<!-- ===== HONESTY (REAL TALK) ===== -->
+<section class="content-block honesty-section fade-in">
+  <div class="section-head">
+    <span class="label-en">06 — Real Talk</span>
+    <h2 class="section-title">ありのまま、こうです。</h2>
+    <p class="section-lead">
+      盛らずに書きます。<br>
+      できてること、まだ全然ダメなこと、ワクワクしてること。
+    </p>
+  </div>
+
+  <div class="honesty-grid stagger">
+    <div class="honesty-card col-now">
+      <div class="col-mark">— What works</div>
+      <h4>🌱 できてるところ</h4>
+      <p class="col-jp">手応えが出てきたゾーン</p>
+      <ul>
+        <li>「話すだけ」でAIが業務を回してくれる日常が、ちゃんと毎日動いてる</li>
+        <li>62本の自動化スキルが、それぞれ単独で動く形に整った</li>
+        <li>過去の会話・記録を5秒で取り戻す仕組みが機能してる（cchist）</li>
+        <li>クライアント案件にもAIをそのまま投入できるようになった</li>
+        <li>業務委託先でも「AI担当者」として認識されはじめてる</li>
+      </ul>
+    </div>
+
+    <div class="honesty-card col-issue">
+      <div class="col-mark">— What's hard</div>
+      <h4>🌀 これからの課題</h4>
+      <p class="col-jp">まだ全然できてないこと</p>
+      <ul>
+        <li>「重要な仕事ほど動けない」癖、まだ完全には抜けてない（ADHD あるある）</li>
+        <li>完璧主義の発作で「ちゃんと整えてから」になりがち</li>
+        <li>AIの司令塔役が1箇所に集中する設計、改善の余地あり</li>
+        <li>触った変更を別フォルダにも反映する仕組み、まだ手動</li>
+        <li>商品の値付けと営業の型が、まだ自分の中で固まってない</li>
+      </ul>
+    </div>
+
+    <div class="honesty-card col-future">
+      <div class="col-mark">— What's exciting</div>
+      <h4>🚀 ワクワクするところ</h4>
+      <p class="col-jp">これから挑みたいこと</p>
+      <ul>
+        <li>業務棚卸し相談メニューを本格スタート（試運転1号案件 進行中）</li>
+        <li>AI×ホームページ制作の新事業、リベの先輩フリーランサーと構想中</li>
+        <li>「忘れる前提」哲学を、もっと尖らせていきたい</li>
+        <li>AIが進化していく未来へ、コンテキストを蓄積し続ける</li>
+        <li>同じように「AIで暮らしを変えたい」人と仲間になっていきたい</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="honesty-note fade-in">
+    完璧じゃないからこそ、AIと一緒にやってる。<br>
+    <em>盛らない実例集</em>として、誰かの参考になったら嬉しいです。
+  </p>
+</section>
+
+<!-- ===== CONCLUSION ===== -->
+<section class="conclusion fade-in">
+  <div class="inner">
+    <span class="label-en">07 — What changed</span>
+    <h2>結局、暮らしが <em>こう</em> 変わりました。</h2>
+    <ul class="stagger">
+      <li><i class="fa-solid fa-circle"></i><span><strong>話すだけ。</strong>AIが全部やってくれる、が日常になった。</span></li>
+      <li><i class="fa-solid fa-circle"></i><span><strong>覚えなくていい。</strong>記録もタスクも、AIが勝手に残してくれる。</span></li>
+      <li><i class="fa-solid fa-circle"></i><span><strong>忘れる前提で設計。</strong>5秒で取り戻せる仕組みがある。</span></li>
+      <li><i class="fa-solid fa-circle"></i><span><strong>頭が空く。</strong>判断と「会いに行く」だけが残った。</span></li>
+      <li><i class="fa-solid fa-circle"></i><span><strong>そして、楽しい。</strong>AIと一緒に夢を叶えていく感覚。</span></li>
+    </ul>
+    <p class="closing">
+      コードを書かなくても、ここまで来れる。<br>
+      Claude Codeとの暮らし、めちゃくちゃ気に入ってます。
+    </p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="footer">
+  <div class="inner">
+    <div class="ft-grid">
+      <div class="fade-in-left">
+        <h4>Claude Code、これから始める方へ</h4>
+        <p>共同編集している「Claude Code 初心者虎の巻」を公開中です。<br>
+        最初の一歩・呪文集・実例集まで、無料で読めます。</p>
+        <a href="https://okemonogatari-hash.github.io/claude-code-beginner-guide/" class="ft-link" target="_blank" rel="noopener">
+          <i class="fa-solid fa-book-bookmark"></i> Claude Code 初心者虎の巻を読む
+        </a>
+        <a href="https://github.com/okemonogatari-hash/claude-code-beginner-guide" class="ft-link" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i> GitHub リポジトリ（共同編集 OK）
+        </a>
+      </div>
+      <div class="fade-in-right">
+        <h4>もっと話したい方へ</h4>
+        <p>リベシティのClaude Code初心者向けチャットで、日々のQ&Aや雑談やってます。共同管理人が温かく迎えます。</p>
+        <a href="https://libecity.com/room_list?room_id=m74BCueTGd0wL6uxHCCZ" class="ft-link" target="_blank" rel="noopener">
+          <i class="fa-solid fa-comments"></i> 初心者向けチャットへ
+        </a>
+      </div>
+    </div>
+    <div class="ft-meta">
+      おけもんカンパニー｜Built with Claude Code in 2026<br>
+      <span class="self-made">— THIS PAGE WAS ALSO MADE BY CLAUDE CODE —</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    const animEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger, .trust-bar');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    animEls.forEach(function(el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('is-visible');
+      } else {
+        observer.observe(el);
+      }
+    });
+
+    // Smooth header on scroll
+    const header = document.querySelector('.site-header');
+    let lastScroll = 0;
+    window.addEventListener('scroll', function() {
+      const cur = window.pageYOffset;
+      if (cur > 80) header.style.boxShadow = '0 4px 20px rgba(26,31,46,0.06)';
+      else header.style.boxShadow = 'none';
+      lastScroll = cur;
+    });
+  })();
+</script>
+
+</body>
+</html>
