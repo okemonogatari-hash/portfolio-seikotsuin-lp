@@ -18,11 +18,13 @@ import json
 import urllib.request
 import urllib.parse
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 JST = timezone(timedelta(hours=9))
 HOST_NAEO = "5jeFf8S-TWC2zwtYGtLxLg"
 HOST_KOYAMA = "aAUji7r9QqWo-9JSS5yEFA"
 DASHBOARD_URL = "https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/irodori-zoom-dashboard.html"
+ASAREI_JSON_PATH = Path(__file__).resolve().parent.parent / "data" / "calendar_asarei.json"
 
 
 def get_token():
@@ -42,6 +44,18 @@ def fetch_meetings(token, user_id):
     req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
     with urllib.request.urlopen(req) as r:
         return json.loads(r.read()).get("meetings", [])
+
+
+def load_asarei_snapshot():
+    """data/calendar_asarei.json から朝礼イベントを読み込む（Zoom APIで漏れる定期予定の補完）。
+    Calendar API live取得はGitHub Actions環境では認証情報がないため、リポジトリ同梱のJSONを使う。"""
+    if not ASAREI_JSON_PATH.exists():
+        return []
+    try:
+        return json.loads(ASAREI_JSON_PATH.read_text(encoding="utf-8")).get("events", [])
+    except Exception as e:
+        print(f"⚠️ calendar_asarei.json読み込み失敗: {e}")
+        return []
 
 
 def parse_jst(start_time):
@@ -169,8 +183,11 @@ def main():
     naeo = fetch_meetings(token, HOST_NAEO)
     koyama = fetch_meetings(token, HOST_KOYAMA)
 
+    asarei = load_asarei_snapshot()
+    print(f"📥 朝礼補完JSON: {len(asarei)}件")
+
     z1 = filter_target_date(naeo, target)
-    z2 = filter_target_date(koyama, target)
+    z2 = filter_target_date(koyama + asarei, target)
     print(f"📊 取得結果: Z① {len(z1)}件 / Z② {len(z2)}件")
 
     message = build_message(target, z1, z2, now)
