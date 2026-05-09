@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI業務棚卸し相談｜人を増やす前に、AIで業務を整理する — おけもん</title>
+<meta name="description" content="人を増やす前に、いまの事務作業をAI目線で棚卸し。医療・福祉・士業など、現場の不安・抵抗感がわかる非エンジニアのAI伴走者。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --primary:#1A1A2E; --accent:#0f6e8c; --accent-soft:#3da3c4;
+  --text:#2D2D2D; --text-light:#6B6B6B; --bg:#FAFAF8; --card:#FFFFFF;
+  --border:#E8E5E0; --warm:#fff5e6;
+  --serif:'Noto Serif JP',serif; --sans:'Noto Sans JP',sans-serif; --inter:'Inter',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.8}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+.container{max-width:880px;margin:0 auto;padding:0 24px}
+
+.demo-banner{background:linear-gradient(90deg,#fff5e6,#ffe9c9);color:#7a4f00;padding:10px 16px;text-align:center;font-size:12px;letter-spacing:.05em;border-bottom:1px solid rgba(184,146,106,.3)}
+.demo-banner strong{font-weight:700}
+
+header.hero{padding:80px 0 64px;text-align:center;background:linear-gradient(180deg,#fff,#f0f7fa)}
+.hero .eyebrow{font-family:var(--inter);font-size:12px;letter-spacing:.3em;color:var(--accent);font-weight:600;margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-size:clamp(28px,5vw,42px);font-weight:700;line-height:1.5;margin-bottom:20px;color:var(--primary)}
+.hero h1 .accent{color:var(--accent)}
+.hero .lead{font-size:16px;color:var(--text-light);max-width:640px;margin:0 auto 32px;line-height:2}
+.hero .cta{display:inline-block;padding:16px 40px;background:var(--primary);color:#fff;font-weight:600;border-radius:4px;letter-spacing:.05em;transition:transform .2s,box-shadow .2s;margin-top:8px}
+.hero .cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,26,46,.2)}
+
+section{padding:72px 0}
+section.alt{background:#fff}
+.section-eyebrow{font-family:var(--inter);font-size:11px;letter-spacing:.3em;color:var(--accent);text-align:center;font-weight:600;margin-bottom:16px}
+.section-title{font-family:var(--serif);font-size:clamp(22px,3.5vw,30px);font-weight:700;text-align:center;margin-bottom:40px;color:var(--primary);line-height:1.5}
+
+/* PROBLEM */
+.problem-box{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:36px 32px;max-width:720px;margin:0 auto}
+.problem-box ul{list-style:none}
+.problem-box li{padding:14px 0 14px 32px;border-bottom:1px solid var(--border);font-size:15px;color:var(--text);position:relative}
+.problem-box li:last-child{border-bottom:none}
+.problem-box li::before{content:"⚠";position:absolute;left:4px;color:var(--accent);font-size:18px}
+
+/* WHAT */
+.what-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:32px}
+.what-card{background:var(--card);padding:32px 28px;border:1px solid var(--border);border-radius:6px}
+.what-card .icon{font-size:28px;color:var(--accent);margin-bottom:16px}
+.what-card h3{font-family:var(--serif);font-size:18px;margin-bottom:12px;color:var(--primary);font-weight:700}
+.what-card p{font-size:14px;color:var(--text-light);line-height:1.9}
+
+/* DELIVERABLES */
+.deliverables{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:36px 32px;max-width:720px;margin:32px auto 0}
+.deliverable-item{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid var(--border)}
+.deliverable-item:last-child{border-bottom:none}
+.deliverable-item .num{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700}
+.deliverable-item h4{font-family:var(--serif);font-size:15px;color:var(--primary);margin-bottom:4px;font-weight:700}
+.deliverable-item p{font-size:13px;color:var(--text-light);line-height:1.8}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:32px}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:36px 30px;display:flex;flex-direction:column;position:relative}
+.price-card.featured{border:2px solid var(--accent);box-shadow:0 12px 36px rgba(15,110,140,.15)}
+.price-card.featured::before{content:"入口商品";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-family:var(--inter);font-size:11px;letter-spacing:.2em;padding:6px 18px;border-radius:20px;font-weight:600}
+.price-card h3{font-family:var(--serif);font-size:18px;color:var(--primary);margin-bottom:8px;font-weight:700}
+.price-card .desc{font-size:13px;color:var(--text-light);margin-bottom:20px;min-height:42px}
+.price-card .price{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--primary);margin-bottom:6px;letter-spacing:.02em}
+.price-card .price-unit{font-size:13px;color:var(--text-light);font-weight:400;margin-left:4px}
+.price-card .note{font-size:11px;color:var(--accent);margin-bottom:24px;font-family:var(--inter);font-weight:500;letter-spacing:.05em}
+.price-card ul{list-style:none;flex-grow:1;margin-bottom:24px}
+.price-card ul li{padding:8px 0;font-size:13px;color:var(--text);border-bottom:1px solid var(--border);position:relative;padding-left:22px}
+.price-card ul li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+.price-card .btn{padding:14px;background:var(--primary);color:#fff;font-weight:600;text-align:center;border-radius:4px;letter-spacing:.05em;transition:transform .2s,box-shadow .2s;font-family:var(--inter);font-size:13px}
+.price-card.featured .btn{background:var(--accent)}
+.price-card .btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.15)}
+
+/* GUARDRAIL */
+.guardrail{background:linear-gradient(135deg,#fff8e1,#fff3c4);border-radius:6px;padding:32px;max-width:720px;margin:32px auto 0;border:1px solid #ffe082}
+.guardrail h3{font-family:var(--serif);font-size:17px;margin-bottom:14px;color:#7a4f00;font-weight:700}
+.guardrail h3::before{content:"⚖ "}
+.guardrail-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:14px}
+.guardrail-cols div h4{font-family:var(--serif);font-size:14px;margin-bottom:8px}
+.guardrail-cols .ok h4{color:#1b5e20}
+.guardrail-cols .ng h4{color:#c62828}
+.guardrail-cols ul{list-style:none;font-size:13px}
+.guardrail-cols ul li{padding:4px 0 4px 20px;position:relative;color:var(--text)}
+.guardrail-cols .ok ul li::before{content:"○";position:absolute;left:0;color:#1b5e20;font-weight:700}
+.guardrail-cols .ng ul li::before{content:"×";position:absolute;left:0;color:#c62828;font-weight:700}
+@media(max-width:520px){.guardrail-cols{grid-template-columns:1fr}}
+
+/* FOR */
+.for-list{max-width:680px;margin:32px auto 0;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:32px}
+.for-list ul{list-style:none}
+.for-list li{padding:10px 0 10px 28px;font-size:14px;color:var(--text);position:relative;line-height:1.8}
+.for-list li::before{content:"▸";position:absolute;left:6px;color:var(--accent);font-weight:700}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:32px}
+.why-card{background:var(--card);padding:28px 22px;border:1px solid var(--border);border-radius:6px;text-align:center}
+.why-card .num{font-family:var(--inter);font-size:11px;letter-spacing:.3em;color:var(--accent);font-weight:600;margin-bottom:8px}
+.why-card h3{font-family:var(--serif);font-size:16px;color:var(--primary);margin-bottom:10px;font-weight:700}
+.why-card p{font-size:13px;color:var(--text-light);line-height:1.8}
+
+/* CONTACT */
+.contact-section{background:linear-gradient(135deg,var(--primary),#2d2d4a);color:#fff;text-align:center;padding:80px 0}
+.contact-section h2{font-family:var(--serif);font-size:clamp(22px,3.5vw,30px);font-weight:700;margin-bottom:20px;color:#fff}
+.contact-section p{color:rgba(255,255,255,.85);font-size:15px;max-width:560px;margin:0 auto 32px;line-height:2}
+.contact-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.contact-btn{padding:14px 32px;background:var(--accent);color:#fff;font-weight:600;border-radius:4px;letter-spacing:.05em;font-family:var(--inter);font-size:13px;transition:transform .2s,box-shadow .2s}
+.contact-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(15,110,140,.4)}
+.contact-btn.outline{background:transparent;border:1px solid rgba(255,255,255,.4)}
+
+footer{background:#0F0F1F;color:#999;padding:40px 0;text-align:center;font-size:12px;letter-spacing:.05em}
+footer a{color:var(--accent-soft);font-family:var(--inter)}
+footer .links{margin-top:16px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+
+@media(max-width:640px){
+  header.hero{padding:60px 0 48px}
+  section{padding:56px 0}
+  .price-card{padding:30px 24px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  ⚠ <strong>このページはモックです</strong>｜価格・申込導線は最終確定前の叩き台。お問い合わせはDMでお願いします。
+</div>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">AI BUSINESS CONSULTATION</div>
+    <h1>人を増やす前に、<br><span class="accent">AIで業務を棚卸し</span>しませんか？</h1>
+    <p class="lead">事務員を増員するか迷っている小規模事業者・医療・福祉・士業の方へ。<br>「人がやるべき仕事」と「AIで軽くできる仕事」を分けるところから始めます。</p>
+    <a href="#contact" class="cta">業務棚卸し相談を申し込む（モック）</a>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">PROBLEM</div>
+    <h2 class="section-title">こんなお悩み、ありませんか？</h2>
+    <div class="problem-box">
+      <ul>
+        <li>事務員を増員したいが、本当に必要か判断できない</li>
+        <li>「AI使えば楽になる」と聞くが、何から始めればいいか分からない</li>
+        <li>エンジニア向けの説明は専門用語が多くて遠く感じる</li>
+        <li>個人情報・カルテなど、AIに触らせていいものか不安</li>
+        <li>AI導入の補助金があると聞いたが、自社が対象か分からない</li>
+        <li>過去ITツールを導入しても、結局誰も使わず形骸化した</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <div class="section-eyebrow">VALUE</div>
+    <h2 class="section-title">提供する価値</h2>
+    <div class="what-grid">
+      <div class="what-card">
+        <div class="icon"><i class="fa-solid fa-list-check"></i></div>
+        <h3>業務の棚卸し</h3>
+        <p>現場の事務作業を1つずつ並べて、「人がやるべき仕事」と「AIで軽くできる仕事」に分けます。判断軸を持ち帰っていただきます。</p>
+      </div>
+      <div class="what-card">
+        <div class="icon"><i class="fa-solid fa-flask"></i></div>
+        <h3>小さく試せるPoC案</h3>
+        <p>いきなり全面導入ではなく、まず1つだけ「これならすぐ試せる」案を提案。失敗してもダメージのない範囲で。</p>
+      </div>
+      <div class="what-card">
+        <div class="icon"><i class="fa-solid fa-handshake"></i></div>
+        <h3>現場目線の翻訳</h3>
+        <p>エンジニアではなく介護現場16年の経験者が対応。AIの可能性を「現場の言葉」に翻訳します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">DELIVERABLES</div>
+    <h2 class="section-title">入口商品「業務棚卸し相談 60〜90分」の成果物</h2>
+    <div class="deliverables">
+      <div class="deliverable-item">
+        <div class="num">1</div>
+        <div class="body">
+          <h4>業務棚卸しメモ 1枚</h4>
+          <p>「人がやるべき仕事」「AIで軽くできる仕事」の2分類で、現場業務を整理した1枚のシート。判断材料として持ち帰り可能。</p>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="num">2</div>
+        <div class="body">
+          <h4>AIで試せる候補 3〜5個</h4>
+          <p>業界・職場の状況に合わせて「今すぐ試せそうな小さなAI活用案」を3〜5個提示。優先順位もつけてお渡しします。</p>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="num">3</div>
+        <div class="body">
+          <h4>次に試すPoC（小さい実験）1つ</h4>
+          <p>提案候補の中から「最初の一歩」として最適な1つを選定。誰が・いつ・どう試すかまで具体化します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <div class="section-eyebrow">PRICING</div>
+    <h2 class="section-title">料金プラン（叩き台）</h2>
+    <div class="pricing-grid">
+      <div class="price-card featured">
+        <h3>業務棚卸し相談</h3>
+        <p class="desc">まずはここから。60〜90分の入口商品</p>
+        <div class="price">¥30,000<span class="price-unit">/ 60〜90分</span></div>
+        <div class="note">※ モニター価格 ¥5,000 → 後続契約時に全額返金</div>
+        <ul>
+          <li>Zoom or 訪問</li>
+          <li>業務棚卸しメモ 1枚</li>
+          <li>AIで試せる候補 3〜5個</li>
+          <li>次に試すPoC 1つ</li>
+        </ul>
+        <a href="#contact" class="btn">申し込む</a>
+      </div>
+      <div class="price-card">
+        <h3>PoC試作伴走</h3>
+        <p class="desc">棚卸しで決めたPoCを実際に試作・伴走</p>
+        <div class="price">¥150,000<span class="price-unit">/ 1案件</span></div>
+        <div class="note">※ Claude Code等で1案件試作・伴走</div>
+        <ul>
+          <li>1案件の実装サポート</li>
+          <li>業務効率化の効果測定</li>
+          <li>運用マニュアル制作</li>
+          <li>30日メールサポート</li>
+        </ul>
+        <a href="#contact" class="btn">申し込む</a>
+      </div>
+      <div class="price-card">
+        <h3>3ヶ月伴走</h3>
+        <p class="desc">継続的にAI導入を進めたい方向け</p>
+        <div class="price">¥100,000<span class="price-unit">/ 月</span></div>
+        <div class="note">※ 月1回の棚卸しレビュー＋PoC追加</div>
+        <ul>
+          <li>月1回の業務棚卸しレビュー</li>
+          <li>新規PoCの追加（月1案件目安）</li>
+          <li>チームAI研修（半日）月1回</li>
+          <li>LINE/DM随時質問対応</li>
+        </ul>
+        <a href="#contact" class="btn">申し込む</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--text-light)">＋ オプション：AI研修（半日）¥80,000〜／補助金活用支援（成果報酬20%）</p>
+    <p style="text-align:center;margin-top:8px;font-size:12px;color:var(--text-light)">※ 価格はモック（叩き台）。最終確定前のため、変更の可能性があります。</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">SAFETY</div>
+    <h2 class="section-title">扱う範囲のガイドライン</h2>
+    <div class="guardrail">
+      <h3>「最悪止まっても業務影響が小さいか？」が判断軸</h3>
+      <p style="font-size:13px;color:var(--text-light);margin-bottom:14px;line-height:1.9">学長ライブの実例を踏まえ、現場が本当に困らない範囲のみ扱います。ミッションクリティカルな領域には踏み込みません。</p>
+      <div class="guardrail-cols">
+        <div class="ok">
+          <h4>○ お受けする範囲</h4>
+          <ul>
+            <li>軽量HP・LP制作</li>
+            <li>チラシ・販促物</li>
+            <li>SNS発信支援</li>
+            <li>事務作業の自動化</li>
+            <li>会議録・要約</li>
+          </ul>
+        </div>
+        <div class="ng">
+          <h4>× お受けしない範囲</h4>
+          <ul>
+            <li>顧客管理・カルテ</li>
+            <li>モバイルオーダー</li>
+            <li>決済システム</li>
+            <li>個人情報を持つDB</li>
+            <li>業務停止リスクの高い領域</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <div class="section-eyebrow">FOR YOU</div>
+    <h2 class="section-title">こんな方におすすめ</h2>
+    <div class="for-list">
+      <ul>
+        <li>事務員・バックオフィス人員を増やすか迷っている小規模事業者</li>
+        <li>医療・福祉・士業・教育など、事務作業と個人情報配慮が重い現場</li>
+        <li>決裁者本人 or 決裁者に提案したい現場リーダー</li>
+        <li>「AIは気になるが、エンジニア向け説明だと遠く感じる」方</li>
+        <li>過去にITツールを入れたが、結局誰も使わず形骸化した経験のある方</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">WHY US</div>
+    <h2 class="section-title">なぜ「おけもん」に頼むのか</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="num">01</div>
+        <h3>介護現場16年</h3>
+        <p>福祉・医療現場の不安・抵抗感を体感的に理解。「現場が本当に困らない範囲」が分かります。</p>
+      </div>
+      <div class="why-card">
+        <div class="num">02</div>
+        <h3>非エンジニア</h3>
+        <p>コードを書かずにAIを使い倒している立場。「専門用語」じゃなく「現場の言葉」で翻訳します。</p>
+      </div>
+      <div class="why-card">
+        <div class="num">03</div>
+        <h3>AI実践者</h3>
+        <p>11人のAIキャラクターでカンパニーを実装し、毎日AIで運用中。実例ベースで提案できます。</p>
+      </div>
+      <div class="why-card">
+        <div class="num">04</div>
+        <h3>オフ会100名超</h3>
+        <p>延べ100名以上のリアル接点でAI普及活動。現場のリアルな悩み・抵抗感に向き合ってきました。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <h2>まずは無料15分相談から</h2>
+    <p>「うちの場合どうなる？」をまず15分Zoomでお聞きします。<br>業務棚卸し相談を申し込むかどうか、その後で決めていただいてOKです。<br>無理な営業はしません。</p>
+    <div class="contact-buttons">
+      <a href="https://x.com/okemonogatari" target="_blank" class="contact-btn">X DM で連絡（モック）</a>
+      <a href="mailto:okemonogatari@gmail.com" class="contact-btn outline">メールで連絡</a>
+    </div>
+    <p style="margin-top:24px;font-size:12px;opacity:.7">※ 申込フォームは現在準備中。当面はDM・メールでお問い合わせください。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>okemon — AI Business Consultation</p>
+    <div class="links">
+      <a href="index.html">ポートフォリオ TOP</a>
+      <a href="coaching.html">コーチング相談</a>
+      <a href="okemon-claude-code-life.html">おけもんのAI日常</a>
+    </div>
+    <p style="margin-top:16px;opacity:.6">© 2026 okemon. このページはモック版です。</p>
+  </div>
+</footer>
+
+</body>
+</html>
