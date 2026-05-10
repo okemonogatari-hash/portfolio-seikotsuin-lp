@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プカリ司法書士法人｜静かに、誠実に。あなたの暮らしの傍らに。</title>
+<meta name="description" content="相続・登記・成年後見・会社設立。プカリ司法書士法人は、暮らしと事業のこれからを静かに整える司法書士事務所です。">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/jpeg" href="assets/01.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Maru+Gothic:wght@500;700;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-ink:#1a1f2e;
+  --c-ink-soft:#384055;
+  --c-paper:#fbf7ec;
+  --c-paper-deep:#f4eed9;
+  --c-line:#e2dac1;
+  --c-blue:#1f3b7e;
+  --c-blue-deep:#15275a;
+  --c-blue-soft:#3c5fa8;
+  --c-blue-pale:#dbe5f5;
+  --c-yellow:#f4d35e;
+  --c-yellow-deep:#e6b836;
+  --c-yellow-pale:#fef3c2;
+  --c-mute:#8a8270;
+  --serif:'Shippori Mincho B1','Noto Serif JP',serif;
+  --sans:'Noto Sans JP',sans-serif;
+  --rounded:'Zen Maru Gothic','Noto Sans JP',sans-serif;
+  --num:'Inter',sans-serif;
+}
+*{box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--c-paper); color:var(--c-ink);
+  font-family:var(--sans); font-weight:400; line-height:1.95; letter-spacing:0.02em;
+  overflow-x:hidden;
+}
+img{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+button{font-family:inherit; cursor:pointer;}
+
+/* === Cursor light (subtle) === */
+.cursor-light{
+  position:fixed; top:0; left:0; width:520px; height:520px; pointer-events:none;
+  background:radial-gradient(circle, rgba(244,211,94,0.16) 0%, rgba(244,211,94,0) 60%);
+  transform:translate(-50%,-50%); z-index:1; transition:opacity 0.4s; opacity:0;
+}
+@media (max-width:900px){.cursor-light{display:none;}}
+
+/* === Header === */
+.header{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:18px 0; background:rgba(248,245,238,0.82);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  transition:padding 0.3s, background 0.3s, border-color 0.3s;
+  border-bottom:1px solid transparent;
+}
+.header.is-scrolled{padding:12px 0; border-bottom-color:var(--c-line);}
+.header-inner{
+  width:min(1240px,calc(100% - 56px)); margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+}
+.brand{display:flex; align-items:center; gap:14px; transition:transform 0.4s ease;}
+.brand:hover{transform:translateY(-2px);}
+.brand-logo{
+  height:42px; width:auto; display:block;
+  mix-blend-mode:multiply;
+}
+.brand-name{display:flex; flex-direction:column; line-height:1.15;}
+.brand-name span{font-size:10px; color:var(--c-mute); font-family:var(--num); letter-spacing:0.22em; font-weight:500;}
+@media (max-width:600px){.brand-name{display:none;}}
+.nav{display:flex; gap:30px; font-size:13px; font-weight:500;}
+.nav a{position:relative; padding:8px 0; transition:color 0.3s;}
+.nav a::after{
+  content:''; position:absolute; bottom:0; left:0; right:0; height:1px;
+  background:var(--c-blue); transform:scaleX(0); transform-origin:right;
+  transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.nav a:hover{color:var(--c-blue-deep);}
+.nav a:hover::after{transform:scaleX(1); transform-origin:left;}
+.header-cta{
+  display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:500;
+  padding:10px 20px; border:1px solid var(--c-ink); border-radius:999px;
+  transition:background 0.3s, color 0.3s;
+}
+.header-cta:hover{background:var(--c-ink); color:var(--c-paper);}
+.header-cta::before{content:''; width:6px; height:6px; border-radius:50%; background:var(--c-yellow);}
+@media (max-width:900px){
+  .nav{display:none;}
+  .header-inner{gap:16px;}
+}
+
+/* === Hero === */
+.hero{
+  position:relative; min-height:92vh; padding:160px 0 100px;
+  display:grid; place-items:center; overflow:hidden;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(244,211,94,0.18) 0%, transparent 36%),
+    radial-gradient(circle at 88% 70%, rgba(31,59,126,0.10) 0%, transparent 40%),
+    linear-gradient(170deg, #fef9e8 0%, #fbf7ec 50%, #f4eed9 100%);
+}
+/* 薄敷きの背景イメージ（書類＋ペン・透過） */
+.hero-bg-img{
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=2400&q=85');
+  background-size:cover; background-position:center;
+  filter:sepia(0.45) brightness(1.18) saturate(0.55) contrast(0.92);
+  opacity:0.22; mix-blend-mode:multiply;
+  animation:heroSlowZoom 24s ease-in-out infinite alternate;
+}
+@keyframes heroSlowZoom{0%{transform:scale(1.02);}100%{transform:scale(1.10);}}
+.hero-bg-img::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(251,247,236,0.25) 0%, rgba(251,247,236,0.6) 65%, rgba(251,247,236,0.95) 100%);
+}
+.hero-grid{
+  position:relative; z-index:2;
+  width:min(1240px,calc(100% - 56px)); margin:0 auto;
+  display:grid; grid-template-columns:minmax(220px, 320px) 1fr; gap:64px; align-items:center;
+}
+.hero-logo-wrap{
+  position:relative; display:flex; align-items:center; justify-content:center;
+  padding:24px; min-height:340px;
+}
+.hero-logo{
+  width:auto; height:auto; max-width:180px; max-height:300px; display:block;
+  position:relative; z-index:3;
+  filter:drop-shadow(0 10px 28px rgba(31,59,126,0.18));
+  mix-blend-mode:multiply;
+  animation:logoFloat 6s ease-in-out infinite;
+}
+@keyframes logoFloat{
+  0%,100%{transform:translateY(0) rotate(-0.5deg);}
+  50%{transform:translateY(-12px) rotate(0.5deg);}
+}
+/* ぷかぷか浮遊バブル */
+.bubble{
+  position:absolute; border-radius:50%; pointer-events:none; z-index:1;
+}
+.bubble-1{
+  width:240px; height:240px; left:-30px; top:20px;
+  background:radial-gradient(circle at 30% 30%, rgba(244,211,94,0.55), rgba(244,211,94,0.05) 65%);
+  animation:bubbleA 9s ease-in-out infinite;
+}
+.bubble-2{
+  width:140px; height:140px; right:0; top:50%;
+  background:radial-gradient(circle at 35% 30%, rgba(31,59,126,0.20), rgba(31,59,126,0.02) 60%);
+  animation:bubbleB 11s ease-in-out infinite;
+}
+.bubble-3{
+  width:80px; height:80px; left:30%; bottom:30px;
+  background:radial-gradient(circle at 30% 30%, rgba(244,211,94,0.7), rgba(244,211,94,0.1) 60%);
+  animation:bubbleC 7s ease-in-out infinite;
+}
+.bubble-4{
+  width:50px; height:50px; right:20%; top:80px;
+  background:radial-gradient(circle at 30% 30%, rgba(60,95,168,0.45), rgba(60,95,168,0.02) 60%);
+  animation:bubbleA 8s ease-in-out infinite 1s;
+}
+@keyframes bubbleA{0%,100%{transform:translate(0,0);}50%{transform:translate(18px,-22px);}}
+@keyframes bubbleB{0%,100%{transform:translate(0,0);}50%{transform:translate(-22px,15px);}}
+@keyframes bubbleC{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(12px,-30px) scale(1.08);}}
+/* ドット模様（ロゴモチーフ・背景全体に） */
+.hero-dots{
+  position:absolute; inset:0; z-index:0; pointer-events:none; opacity:0.6;
+  background-image:
+    radial-gradient(circle, rgba(244,211,94,0.6) 1.2px, transparent 1.6px),
+    radial-gradient(circle, rgba(31,59,126,0.18) 1px, transparent 1.4px);
+  background-size:60px 60px, 60px 60px;
+  background-position:0 0, 30px 30px;
+}
+.hero-content{display:flex; flex-direction:column; gap:32px; max-width:680px; position:relative; z-index:3;}
+.hero-eyebrow{
+  display:inline-flex; align-items:center; gap:14px; font-family:var(--num); font-size:11px;
+  letter-spacing:0.32em; color:var(--c-blue-deep); font-weight:500; text-transform:uppercase;
+}
+.hero-eyebrow::before{content:''; width:32px; height:1px; background:var(--c-blue-deep);}
+.hero-h1{
+  font-family:var(--serif); font-size:clamp(30px, 4.4vw, 60px); font-weight:700;
+  line-height:1.45; letter-spacing:0.04em; margin:0; color:var(--c-ink);
+}
+.hero-h1 .nowrap{white-space:nowrap;}
+.hero-h1 .accent{color:var(--c-blue-deep); position:relative;}
+.hero-h1 .accent::after{
+  content:''; position:absolute; left:0; right:0; bottom:-8px; height:1px;
+  background:var(--c-yellow); transform:scaleX(0); transform-origin:left;
+  animation:lineDraw 1.6s 0.8s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+}
+@keyframes lineDraw{to{transform:scaleX(1);}}
+.hero-h1 .sub{
+  display:block; font-size:0.42em; font-weight:500; color:var(--c-blue-deep);
+  letter-spacing:0.18em; margin-top:18px;
+}
+.hero-lead{font-size:15px; line-height:2.1; color:var(--c-ink-soft); margin:0; max-width:540px;}
+.hero-actions{display:flex; gap:16px; align-items:center; flex-wrap:wrap;}
+.btn-primary{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:18px 32px; background:var(--c-blue); color:#fff;
+  font-size:13px; font-weight:500; letter-spacing:0.1em; border-radius:999px;
+  border:0; transition:background 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow:0 6px 20px rgba(31,59,126,0.25);
+  position:relative; overflow:hidden;
+}
+.btn-primary::before{
+  content:''; position:absolute; top:50%; left:14px; width:8px; height:8px;
+  border-radius:50%; background:var(--c-yellow); transform:translateY(-50%);
+  box-shadow:0 0 0 3px rgba(244,211,94,0.3);
+  animation:btnDot 2s ease-in-out infinite;
+}
+@keyframes btnDot{0%,100%{box-shadow:0 0 0 3px rgba(244,211,94,0.3);}50%{box-shadow:0 0 0 6px rgba(244,211,94,0);}}
+.btn-primary{padding-left:38px;}
+.btn-primary:hover{background:var(--c-blue-deep); transform:translateY(-3px); box-shadow:0 10px 28px rgba(31,59,126,0.32);}
+.btn-primary svg{width:14px; height:14px;}
+.btn-ghost{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:18px 0; color:var(--c-ink); font-size:13px; font-weight:500; letter-spacing:0.1em;
+  border-bottom:1px solid var(--c-ink); transition:gap 0.3s;
+}
+.btn-ghost:hover{gap:14px;}
+@media (max-width:900px){
+  .hero{padding:120px 0 60px; min-height:auto;}
+  .hero-grid{grid-template-columns:1fr; gap:24px;}
+  .hero-logo-wrap{padding:20px; order:-1;}
+  .hero-logo{max-width:220px;}
+  .bubble-1{width:140px; height:140px;}
+  .bubble-2{width:80px; height:80px;}
+}
+
+/* === Section common === */
+.section{padding:140px 0; position:relative;}
+.section-inner{width:min(1240px,calc(100% - 56px)); margin:0 auto;}
+.section-eyebrow{
+  display:inline-flex; align-items:center; gap:14px;
+  font-family:var(--num); font-size:11px; letter-spacing:0.32em; text-transform:uppercase;
+  color:var(--c-blue-deep); font-weight:500; margin-bottom:24px;
+}
+.section-eyebrow::before{content:''; width:32px; height:1px; background:var(--c-blue-deep);}
+.section-h2{
+  font-family:var(--serif); font-size:clamp(30px,3.4vw,46px); font-weight:700;
+  line-height:1.5; letter-spacing:0.04em; margin:0 0 28px; color:var(--c-ink);
+}
+.section-lead{font-size:15px; line-height:2.1; color:var(--c-ink-soft); margin:0 0 60px; max-width:680px;}
+@media (max-width:900px){.section{padding:96px 0;}}
+
+/* === Statement (warm teal bg) === */
+.statement{
+  background:linear-gradient(160deg, var(--c-blue-deep) 0%, #2a4d96 60%, var(--c-blue-soft) 100%);
+  color:#fbf6e9; padding:140px 0; position:relative; overflow:hidden;
+}
+.statement::before{
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 18% 30%, rgba(251,246,233,0.08) 0%, transparent 45%),
+             radial-gradient(circle at 82% 80%, rgba(244,211,94,0.18) 0%, transparent 50%);
+  pointer-events:none;
+}
+.statement-inner{
+  position:relative; z-index:2;
+  width:min(1100px,calc(100% - 56px)); margin:0 auto;
+  font-family:var(--serif); font-size:clamp(22px,2.4vw,34px); font-weight:500;
+  line-height:2.2; letter-spacing:0.06em; color:#fbf6e9;
+}
+.statement-inner .br{display:block; height:0.6em;}
+.statement-inner em{font-style:normal; color:var(--c-yellow); position:relative; font-weight:700;}
+.statement-inner em::after{
+  content:''; position:absolute; left:0; right:0; bottom:-4px; height:1px; background:rgba(251,233,216,0.6);
+}
+.statement-mark{
+  font-family:var(--serif); font-size:140px; line-height:0.8; color:rgba(251,246,233,0.4);
+  margin-bottom:24px; font-weight:700;
+}
+@media (max-width:900px){.statement{padding:96px 0;}}
+
+/* === Services === */
+.services{background:var(--c-paper);}
+.service-list{display:flex; flex-direction:column;}
+.service-row{
+  display:grid; grid-template-columns:80px 1fr auto; gap:32px; align-items:center;
+  padding:36px 0; border-top:1px solid var(--c-line); transition:padding 0.4s, background 0.4s;
+  cursor:default;
+}
+.service-row:last-child{border-bottom:1px solid var(--c-line);}
+.service-row:hover{padding-left:16px;}
+.service-num{
+  font-family:var(--num); font-size:13px; font-weight:300; color:var(--c-mute); letter-spacing:0.1em;
+}
+.service-title{display:flex; flex-direction:column; gap:6px;}
+.service-title-en{
+  font-family:var(--num); font-size:11px; letter-spacing:0.32em; text-transform:uppercase; color:var(--c-blue-deep);
+  font-weight:500;
+}
+.service-title-jp{
+  font-family:var(--serif); font-size:clamp(22px,2.2vw,30px); font-weight:700;
+  letter-spacing:0.04em;
+}
+.service-desc{
+  font-size:13px; color:var(--c-ink-soft); margin-top:8px; line-height:1.9; max-width:560px;
+}
+.service-arrow{
+  width:48px; height:48px; border-radius:50%; border:1px solid var(--c-line);
+  display:grid; place-items:center; transition:background 0.3s, border-color 0.3s;
+}
+.service-row:hover .service-arrow{background:var(--c-blue); border-color:var(--c-blue);}
+.service-row:hover .service-arrow svg{stroke:#fff;}
+.service-arrow svg{width:14px; height:14px; stroke:var(--c-ink); transition:stroke 0.3s;}
+@media (max-width:900px){
+  .service-row{grid-template-columns:48px 1fr; gap:18px; padding:28px 0;}
+  .service-arrow{display:none;}
+}
+
+/* === Numbers === */
+.numbers{background:var(--c-paper-deep); padding:120px 0;}
+.numbers-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:48px;
+}
+.num-cell{display:flex; flex-direction:column; gap:8px; border-left:1px solid var(--c-line); padding-left:24px;}
+.num-label-en{
+  font-family:var(--num); font-size:10px; letter-spacing:0.32em; text-transform:uppercase;
+  color:var(--c-blue-deep); font-weight:500;
+}
+.num-value{
+  font-family:var(--num); font-size:clamp(40px,5vw,68px); font-weight:300;
+  line-height:1; letter-spacing:-0.02em; color:var(--c-ink);
+  display:flex; align-items:baseline; gap:6px;
+}
+.num-value sup{font-size:0.4em; font-weight:400; color:var(--c-mute); letter-spacing:0.05em;}
+.num-label-jp{font-size:13px; color:var(--c-ink-soft); margin-top:4px;}
+@media (max-width:900px){
+  .numbers-grid{grid-template-columns:repeat(2,1fr); gap:32px;}
+}
+
+/* === Representative === */
+.rep{background:var(--c-paper);}
+.rep-grid{display:grid; grid-template-columns:1fr 1.4fr; gap:80px; align-items:start;}
+.rep-photo{
+  position:relative; aspect-ratio:3/4; overflow:hidden; background:var(--c-paper-deep);
+  border:1px solid var(--c-line);
+}
+.rep-photo-img{
+  position:absolute; inset:0; background-image:url('https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1200&q=85');
+  background-size:cover; background-position:center; filter:grayscale(0.3) sepia(0.18) brightness(1.04);
+  transform:scale(1.02);
+}
+.rep-caption{
+  position:absolute; bottom:24px; left:24px; right:24px; color:#fff; z-index:2;
+  font-family:var(--num); font-size:10px; letter-spacing:0.28em; text-transform:uppercase;
+}
+.rep-photo::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.35) 100%); z-index:1;
+}
+.rep-content{padding-top:24px;}
+.rep-name{
+  font-family:var(--serif); font-size:clamp(24px,2.6vw,32px); font-weight:700;
+  margin:0 0 8px; letter-spacing:0.06em;
+}
+.rep-name span{font-size:0.5em; font-weight:400; color:var(--c-mute); letter-spacing:0.16em; margin-left:14px;}
+.rep-role{font-size:12px; color:var(--c-blue-deep); letter-spacing:0.18em; margin-bottom:32px; font-weight:500;}
+.rep-text p{font-size:14px; line-height:2.1; color:var(--c-ink-soft); margin:0 0 1.4em;}
+.rep-text p:first-child::first-letter{
+  font-family:var(--serif); font-size:3.6em; float:left; line-height:0.9; padding:8px 12px 0 0;
+  color:var(--c-blue-deep); font-weight:700;
+}
+.rep-sign{
+  margin-top:40px; padding-top:24px; border-top:1px solid var(--c-line);
+  display:flex; align-items:center; gap:16px; font-family:var(--num); font-size:11px;
+  color:var(--c-mute); letter-spacing:0.2em;
+}
+@media (max-width:900px){
+  .rep-grid{grid-template-columns:1fr; gap:40px;}
+  .rep-photo{max-width:340px;}
+}
+
+/* === Flow === */
+.flow{background:var(--c-paper-deep);}
+.flow-list{position:relative; padding-left:48px;}
+.flow-list::before{
+  content:''; position:absolute; left:14px; top:8px; bottom:8px; width:1px; background:var(--c-line);
+}
+.flow-step{
+  position:relative; padding:32px 0 32px 40px;
+}
+.flow-step::before{
+  content:''; position:absolute; left:-39px; top:42px;
+  width:13px; height:13px; border-radius:50%; background:var(--c-paper-deep);
+  border:1px solid var(--c-blue-deep); transition:background 0.3s;
+}
+.flow-step.is-visible::before{background:var(--c-blue-deep);}
+.flow-step-num{
+  font-family:var(--num); font-size:11px; letter-spacing:0.28em; color:var(--c-blue-deep);
+  font-weight:500; text-transform:uppercase;
+}
+.flow-step-title{
+  font-family:var(--serif); font-size:clamp(20px,2vw,26px); font-weight:700;
+  margin:8px 0 12px; letter-spacing:0.04em;
+}
+.flow-step-desc{font-size:13px; color:var(--c-ink-soft); line-height:2; margin:0; max-width:560px;}
+
+/* === Pricing === */
+.pricing{background:var(--c-paper);}
+.price-table{
+  width:100%; border-collapse:collapse; margin-top:24px;
+}
+.price-table th, .price-table td{
+  padding:24px 8px; border-bottom:1px solid var(--c-line); text-align:left; font-size:14px;
+}
+.price-table th{
+  font-family:var(--serif); font-weight:700; color:var(--c-ink); width:38%; letter-spacing:0.06em;
+}
+.price-table td{color:var(--c-ink-soft);}
+.price-table tr:first-child th, .price-table tr:first-child td{border-top:1px solid var(--c-line);}
+.price-table .price{font-family:var(--num); font-weight:500; color:var(--c-ink);}
+.price-note{margin-top:24px; font-size:12px; color:var(--c-mute);}
+
+/* === Voice === */
+.voice{background:var(--c-paper-deep); padding:140px 0;}
+.voice-inner{width:min(900px,calc(100% - 56px)); margin:0 auto; text-align:center;}
+.voice-mark{
+  font-family:var(--serif); font-size:140px; line-height:0.6; color:var(--c-blue); opacity:0.4;
+  margin-bottom:8px; font-weight:700;
+}
+.voice-quote{
+  font-family:var(--serif); font-size:clamp(20px,2.2vw,28px); font-weight:500;
+  line-height:2.2; letter-spacing:0.06em; color:var(--c-ink); margin:0 0 40px;
+}
+.voice-author{
+  font-size:13px; color:var(--c-mute); letter-spacing:0.16em;
+}
+.voice-author strong{color:var(--c-ink); font-weight:500;}
+@media (max-width:900px){.voice{padding:96px 0;}}
+
+/* === News === */
+.news{background:var(--c-paper);}
+.news-list{display:flex; flex-direction:column;}
+.news-item{
+  display:grid; grid-template-columns:120px 100px 1fr auto; gap:24px; align-items:center;
+  padding:24px 0; border-top:1px solid var(--c-line); transition:padding 0.4s;
+}
+.news-item:last-child{border-bottom:1px solid var(--c-line);}
+.news-item:hover{padding-left:12px;}
+.news-date{font-family:var(--num); font-size:12px; color:var(--c-mute); letter-spacing:0.1em;}
+.news-tag{
+  font-size:10px; letter-spacing:0.2em; padding:5px 10px; border:1px solid var(--c-line);
+  color:var(--c-ink-soft); text-align:center; text-transform:uppercase; font-family:var(--num); font-weight:500;
+}
+.news-title{font-size:14px; color:var(--c-ink); line-height:1.7;}
+.news-arrow{font-family:var(--num); font-size:18px; color:var(--c-blue-deep);}
+@media (max-width:900px){
+  .news-item{grid-template-columns:90px 1fr; gap:12px;}
+  .news-tag, .news-arrow{display:none;}
+  .news-title{grid-column:1/-1;}
+}
+
+/* === Access === */
+.access{background:var(--c-paper-deep);}
+.access-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:64px; align-items:center;}
+.access-map{
+  position:relative; aspect-ratio:4/3; background:#e0d8c4; border:1px solid var(--c-line);
+  overflow:hidden;
+}
+.access-map iframe{width:100%; height:100%; border:0; filter:grayscale(0.6) sepia(0.05);}
+.access-info dl{margin:0; display:grid; grid-template-columns:auto 1fr; gap:14px 28px; font-size:14px;}
+.access-info dt{
+  font-family:var(--num); font-size:10px; letter-spacing:0.28em; text-transform:uppercase;
+  color:var(--c-blue-deep); font-weight:500; padding-top:6px;
+}
+.access-info dd{margin:0; line-height:2; color:var(--c-ink-soft);}
+.access-info dd strong{color:var(--c-ink); font-weight:500;}
+@media (max-width:900px){.access-grid{grid-template-columns:1fr; gap:32px;}}
+
+/* === FAQ === */
+.faq{background:var(--c-paper);}
+.faq-list{display:flex; flex-direction:column;}
+.faq-item{border-top:1px solid var(--c-line);}
+.faq-item:last-child{border-bottom:1px solid var(--c-line);}
+.faq-q{
+  display:flex; align-items:flex-start; gap:24px; padding:28px 0;
+  font-family:var(--serif); font-size:16px; font-weight:500; letter-spacing:0.04em;
+  cursor:pointer; transition:padding 0.3s;
+}
+.faq-q::before{
+  content:'Q.'; font-family:var(--num); font-size:13px; color:var(--c-blue-deep);
+  letter-spacing:0.1em; padding-top:2px; font-weight:500;
+}
+.faq-q:hover{padding-left:8px;}
+.faq-toggle{
+  margin-left:auto; width:14px; height:14px; position:relative; flex-shrink:0;
+}
+.faq-toggle::before, .faq-toggle::after{
+  content:''; position:absolute; left:0; top:50%; width:14px; height:1px; background:var(--c-ink);
+  transition:transform 0.3s;
+}
+.faq-toggle::after{transform:rotate(90deg);}
+.faq-item.is-open .faq-toggle::after{transform:rotate(0);}
+.faq-a{
+  display:grid; grid-template-rows:0fr; transition:grid-template-rows 0.4s ease;
+}
+.faq-a-inner{overflow:hidden;}
+.faq-item.is-open .faq-a{grid-template-rows:1fr;}
+.faq-a p{
+  margin:0; padding:0 0 28px 36px; font-size:14px; line-height:2.1; color:var(--c-ink-soft);
+}
+
+/* === CTA === */
+.cta{
+  background:linear-gradient(135deg, #f3eddd 0%, #fbf6e9 60%, #f7eedb 100%);
+  color:var(--c-ink); padding:140px 0; text-align:center; position:relative; overflow:hidden;
+  border-top:1px solid var(--c-line); border-bottom:1px solid var(--c-line);
+}
+.cta::before{
+  content:'PUKARI'; position:absolute; bottom:-40px; right:-20px;
+  font-family:var(--num); font-size:clamp(140px, 22vw, 320px); font-weight:300;
+  color:rgba(31,59,126,0.08); letter-spacing:0.1em; line-height:0.8; pointer-events:none;
+}
+.cta::after{
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 20% 30%, rgba(244,211,94,0.16) 0%, transparent 45%);
+  pointer-events:none;
+}
+.cta-inner{position:relative; z-index:2; width:min(900px,calc(100% - 56px)); margin:0 auto;}
+.cta-eyebrow{
+  display:inline-flex; align-items:center; gap:14px;
+  font-family:var(--num); font-size:11px; letter-spacing:0.32em; text-transform:uppercase;
+  color:var(--c-blue-deep); font-weight:500; margin-bottom:28px;
+}
+.cta-eyebrow::before{content:''; width:32px; height:1px; background:var(--c-blue-deep);}
+.cta-h2{
+  font-family:var(--serif); font-size:clamp(28px,3.6vw,52px); font-weight:700;
+  line-height:1.6; letter-spacing:0.06em; margin:0 0 32px; color:var(--c-ink);
+}
+.cta-lead{font-size:15px; line-height:2.1; color:var(--c-ink-soft); margin:0 0 48px;}
+.cta-actions{display:flex; gap:32px; justify-content:center; flex-wrap:wrap; align-items:center;}
+.cta-tel{font-family:var(--num); font-size:32px; font-weight:300; letter-spacing:0.06em; color:var(--c-ink);}
+.cta-tel small{display:block; font-size:11px; letter-spacing:0.28em; color:var(--c-mute); margin-bottom:6px;}
+@media (max-width:900px){.cta{padding:96px 0;}}
+
+/* === Footer === */
+.footer{background:var(--c-paper-deep); color:var(--c-mute); padding:48px 0;}
+.footer-inner{
+  width:min(1240px,calc(100% - 56px)); margin:0 auto;
+  display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; font-size:11px; letter-spacing:0.16em;
+}
+.footer a{transition:color 0.3s;}
+.footer a:hover{color:var(--c-ink);}
+
+/* === Reveal animations === */
+.reveal{opacity:0; transform:translateY(28px); transition:opacity 1s cubic-bezier(0.25,0.46,0.45,0.94), transform 1s cubic-bezier(0.25,0.46,0.45,0.94);}
+.reveal.is-visible{opacity:1; transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
+.reveal-delay-4{transition-delay:0.4s;}
+
+.split-char{display:inline-block; opacity:0; transform:translateY(20px); transition:opacity 0.6s, transform 0.6s;}
+.split-char.is-visible{opacity:1; transform:translateY(0);}
+
+/* === Side stamp (vertical kanji) === */
+.side-stamp{
+  position:fixed; left:24px; top:50%; transform:translateY(-50%); z-index:50;
+  writing-mode:vertical-rl; font-family:var(--serif); font-size:11px;
+  letter-spacing:0.4em; color:var(--c-ink); opacity:0.6; pointer-events:none;
+}
+@media (max-width:1200px){.side-stamp{display:none;}}
+</style>
+</head>
+<body>
+
+<div class="cursor-light" aria-hidden="true"></div>
+<div class="side-stamp">PUKARI&nbsp;&nbsp;司法書士法人</div>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="#top" class="brand">
+      <img class="brand-logo" src="assets/02.jpg" alt="プカリ司法書士法人">
+      <span class="brand-name">
+        <span>PUKARI LEGAL OFFICE</span>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="#services">業務内容</a>
+      <a href="#numbers">私たちのこと</a>
+      <a href="#rep">代表のごあいさつ</a>
+      <a href="#flow">ご相談の流れ</a>
+      <a href="#pricing">料金</a>
+      <a href="#access">事務所案内</a>
+    </nav>
+    <a href="#cta" class="header-cta">初回相談 ご予約</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg-img"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-grid">
+    <div class="hero-logo-wrap">
+      <span class="bubble bubble-1"></span>
+      <span class="bubble bubble-2"></span>
+      <span class="bubble bubble-3"></span>
+      <span class="bubble bubble-4"></span>
+      <img class="hero-logo" src="assets/03.jpg" alt="プカリ司法書士法人">
+    </div>
+    <div class="hero-content">
+      <span class="hero-eyebrow reveal">PUKARI&nbsp;&nbsp;LEGAL&nbsp;&nbsp;OFFICE</span>
+      <h1 class="hero-h1 reveal reveal-delay-1">
+        <span class="nowrap">ぷかりと浮かぶ、</span><br>
+        <span class="nowrap"><span class="accent">安心</span>を、あなたへ。</span>
+        <span class="sub">— 暮らしと事業の、これからを整える司法書士事務所。</span>
+      </h1>
+      <p class="hero-lead reveal reveal-delay-2">
+        相続のこと。家のこと。会社のこと。<br>
+        日々の暮らしには、ふと立ち止まって、書類を整える時間が訪れます。<br>
+        プカリ司法書士法人は、その時間を、静かに、確実に、傍で支える事務所です。
+      </p>
+      <div class="hero-actions reveal reveal-delay-3">
+        <a href="#cta" class="btn-primary">
+          初回相談を予約する
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#services" class="btn-ghost">業務内容を見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="statement">
+  <div class="statement-inner reveal">
+    <div class="statement-mark">“</div>
+    法律のことばは、ときに遠く感じられます。<br>
+    <span class="br"></span>
+    けれど、<em>暮らしのすぐ隣</em>に、それはあります。<br>
+    <span class="br"></span>
+    相続も、登記も、会社のことも。<br>
+    あなたの「これから」を整える、<em>静かな仕事</em>です。
+  </div>
+</section>
+
+<section class="section services" id="services">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal">SERVICES&nbsp;&nbsp;業務内容</span>
+    <h2 class="section-h2 reveal reveal-delay-1">扱う領域は、<br>暮らしと事業の、節目に。</h2>
+    <p class="section-lead reveal reveal-delay-2">
+      ご相続、不動産の登記、成年後見、会社・法人の手続き。<br>
+      どれも、人生や事業に必ず訪れる「節目」のための仕事です。一つずつ、丁寧に。
+    </p>
+    <div class="service-list">
+      <a href="#cta" class="service-row reveal">
+        <div class="service-num">01</div>
+        <div class="service-title">
+          <span class="service-title-en">Inheritance</span>
+          <span class="service-title-jp">相続・遺言</span>
+          <span class="service-desc">遺産の調査から、遺産分割協議書、相続登記まで。家族が穏やかに次へ進めるよう、書類と段取りを整えます。</span>
+        </div>
+        <div class="service-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="#cta" class="service-row reveal">
+        <div class="service-num">02</div>
+        <div class="service-title">
+          <span class="service-title-en">Real Estate</span>
+          <span class="service-title-jp">不動産登記</span>
+          <span class="service-desc">売買・贈与・抵当権抹消など、不動産にまつわる権利の登記。ご家族の大切な資産を、確実に名義へ反映します。</span>
+        </div>
+        <div class="service-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="#cta" class="service-row reveal">
+        <div class="service-num">03</div>
+        <div class="service-title">
+          <span class="service-title-en">Guardianship</span>
+          <span class="service-title-jp">成年後見</span>
+          <span class="service-desc">ご本人の意思を尊重しつつ、財産管理や身上監護を支える仕組み。ご家族と並走しながら、丁寧に進めます。</span>
+        </div>
+        <div class="service-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="#cta" class="service-row reveal">
+        <div class="service-num">04</div>
+        <div class="service-title">
+          <span class="service-title-en">Corporate</span>
+          <span class="service-title-jp">会社・法人手続き</span>
+          <span class="service-desc">設立、役員変更、本店移転、定款変更、解散・清算。事業の節目に必要な登記を、きちんと支えます。</span>
+        </div>
+        <div class="service-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="#cta" class="service-row reveal">
+        <div class="service-num">05</div>
+        <div class="service-title">
+          <span class="service-title-en">Trust</span>
+          <span class="service-title-jp">家族信託</span>
+          <span class="service-desc">将来の判断能力に備えて、家族の中で資産を託し合う仕組みづくり。ご家族の合意形成からご一緒します。</span>
+        </div>
+        <div class="service-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="#cta" class="service-row reveal">
+        <div class="service-num">06</div>
+        <div class="service-title">
+          <span class="service-title-en">Consultation</span>
+          <span class="service-title-jp">無料初回相談</span>
+          <span class="service-desc">「何から相談していいかわからない」も、まずはお話しください。書類が出てくる前から、整理のお手伝いができます。</span>
+        </div>
+        <div class="service-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section numbers" id="numbers">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal">NUMBERS&nbsp;&nbsp;数字でみるプカリ</span>
+    <h2 class="section-h2 reveal reveal-delay-1">小さな事務所の、<br>確かな積み重ね。</h2>
+    <div class="numbers-grid" style="margin-top:60px;">
+      <div class="num-cell reveal">
+        <span class="num-label-en">Consultation</span>
+        <span class="num-value"><span class="count" data-target="1500">0</span><sup>件 +</sup></span>
+        <span class="num-label-jp">これまでのご相談実績</span>
+      </div>
+      <div class="num-cell reveal reveal-delay-1">
+        <span class="num-label-en">Years</span>
+        <span class="num-value"><span class="count" data-target="18">0</span><sup>年</sup></span>
+        <span class="num-label-jp">代表の実務歴</span>
+      </div>
+      <div class="num-cell reveal reveal-delay-2">
+        <span class="num-label-en">Fields</span>
+        <span class="num-value"><span class="count" data-target="6">0</span><sup>領域</sup></span>
+        <span class="num-label-jp">対応する業務領域</span>
+      </div>
+      <div class="num-cell reveal reveal-delay-3">
+        <span class="num-label-en">Free</span>
+        <span class="num-value"><span class="count" data-target="0">0</span><sup>円</sup></span>
+        <span class="num-label-jp">初回ご相談料</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section rep" id="rep">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal">REPRESENTATIVE&nbsp;&nbsp;代表のごあいさつ</span>
+    <div class="rep-grid">
+      <div class="rep-photo reveal">
+        <div class="rep-photo-img"></div>
+        <span class="rep-caption">代表 司法書士・議員</span>
+      </div>
+      <div class="rep-content reveal reveal-delay-1">
+        <h3 class="rep-name">山田 太郎<span>YAMADA TARO</span></h3>
+        <div class="rep-role">代表 / 司法書士・議員</div>
+        <div class="rep-text">
+          <p>司法書士という仕事は、表に出ることの少ない仕事です。けれど、相続の場面でも、不動産の名義の場面でも、会社の節目でも、誰かが書類を整え、登記簿に静かに刻むことで、その後の暮らしや事業が前に進みます。</p>
+          <p>議員としての活動を通じて、地域のさまざまな声に触れる機会をいただいてきました。制度のことばと、暮らしのことばの間にある距離を、少しでも近くするのが、私の願いです。</p>
+          <p>「何から聞いていいかわからない」というところから、どうぞお話しください。まずはお話を伺い、必要な書類と段取りを、ご一緒に整えていきます。</p>
+        </div>
+        <div class="rep-sign">
+          PUKARI&nbsp;LEGAL&nbsp;OFFICE&nbsp;&nbsp;/&nbsp;&nbsp;REPRESENTATIVE
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section flow" id="flow">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal">FLOW&nbsp;&nbsp;ご相談の流れ</span>
+    <h2 class="section-h2 reveal reveal-delay-1">はじめての方へ、<br>静かに整えていきます。</h2>
+    <div class="flow-list" style="margin-top:60px;">
+      <div class="flow-step reveal">
+        <span class="flow-step-num">STEP 01</span>
+        <h3 class="flow-step-title">お問い合わせ</h3>
+        <p class="flow-step-desc">お電話・フォームから、ご相談内容を簡単にお知らせください。「何の話か整理できていない」状態でも結構です。</p>
+      </div>
+      <div class="flow-step reveal">
+        <span class="flow-step-num">STEP 02</span>
+        <h3 class="flow-step-title">初回ご相談（無料・60分）</h3>
+        <p class="flow-step-desc">事務所、またはオンラインで、お話を伺います。状況を整理し、必要な書類・進め方の見通しをお伝えします。</p>
+      </div>
+      <div class="flow-step reveal">
+        <span class="flow-step-num">STEP 03</span>
+        <h3 class="flow-step-title">お見積もり・ご契約</h3>
+        <p class="flow-step-desc">お話を踏まえて、ご依頼いただく業務の範囲とお見積もりをご提示します。納得いただけてから、ご契約へ。</p>
+      </div>
+      <div class="flow-step reveal">
+        <span class="flow-step-num">STEP 04</span>
+        <h3 class="flow-step-title">業務の進行・完了</h3>
+        <p class="flow-step-desc">必要な調査・書類作成・登記申請を進めます。途中経過は適宜ご報告し、完了後は書類一式をお渡しします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pricing" id="pricing">
+  <div class="section-inner" style="max-width:920px;">
+    <span class="section-eyebrow reveal">PRICING&nbsp;&nbsp;料金のめやす</span>
+    <h2 class="section-h2 reveal reveal-delay-1">透明な料金で、<br>はじめてでも、安心して。</h2>
+    <p class="section-lead reveal reveal-delay-2">
+      ご相談内容によって難易度・分量が変わるため、正式なお見積もりは初回相談ののち、書面でお出しします。<br>
+      下記は一般的なご相談における目安です。
+    </p>
+    <table class="price-table reveal">
+      <tr><th>初回ご相談（60分）</th><td class="price">¥0</td></tr>
+      <tr><th>相続登記（不動産1件）</th><td class="price">¥66,000 〜</td></tr>
+      <tr><th>遺産分割協議書 作成</th><td class="price">¥55,000 〜</td></tr>
+      <tr><th>会社設立登記（株式会社）</th><td class="price">¥110,000 〜</td></tr>
+      <tr><th>役員変更登記</th><td class="price">¥33,000 〜</td></tr>
+      <tr><th>家族信託 設計サポート</th><td class="price">¥330,000 〜</td></tr>
+    </table>
+    <p class="price-note reveal">※ 表示はすべて税込です。実費（登録免許税、印紙代、郵送費等）は別途必要となります。</p>
+  </div>
+</section>
+
+<section class="voice">
+  <div class="voice-inner">
+    <div class="voice-mark reveal">“</div>
+    <p class="voice-quote reveal reveal-delay-1">
+      何から手をつけていいかわからない、<br>
+      その状態のままで相談に伺いました。<br>
+      話を聞いてもらううちに、ひとつずつ、<br>
+      順番が見えてきたのが、不思議でした。
+    </p>
+    <div class="voice-author reveal reveal-delay-2">
+      ＿ ご相談者 <strong>K.S 様</strong>（相続登記をご依頼）
+    </div>
+  </div>
+</section>
+
+<section class="section news" id="news">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal">NEWS&nbsp;&nbsp;お知らせ・コラム</span>
+    <h2 class="section-h2 reveal reveal-delay-1">最近の、<br>事務所からの言葉。</h2>
+    <p class="section-lead reveal reveal-delay-2">
+      日々の業務のなかで考えていること、相続・登記まわりの制度の話などを、コラムとしてお届けしています。
+    </p>
+    <div class="news-list">
+      <a href="#" class="news-item reveal">
+        <span class="news-date">2026.05.07</span>
+        <span class="news-tag">Column</span>
+        <span class="news-title">相続登記の義務化、これからご家族で確認しておきたいこと。</span>
+        <span class="news-arrow">→</span>
+      </a>
+      <a href="#" class="news-item reveal">
+        <span class="news-date">2026.04.21</span>
+        <span class="news-tag">Notice</span>
+        <span class="news-title">ゴールデンウィーク中の営業日についてのお知らせ。</span>
+        <span class="news-arrow">→</span>
+      </a>
+      <a href="#" class="news-item reveal">
+        <span class="news-date">2026.04.03</span>
+        <span class="news-tag">Column</span>
+        <span class="news-title">「家族信託」って何ですか、というご質問に、静かに答える。</span>
+        <span class="news-arrow">→</span>
+      </a>
+      <a href="#" class="news-item reveal">
+        <span class="news-date">2026.03.15</span>
+        <span class="news-tag">Notice</span>
+        <span class="news-title">プカリ司法書士法人 開業のご挨拶。</span>
+        <span class="news-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section access" id="access">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal">ACCESS&nbsp;&nbsp;事務所案内</span>
+    <h2 class="section-h2 reveal reveal-delay-1">どうぞ、<br>お訪ねください。</h2>
+    <div class="access-grid" style="margin-top:60px;">
+      <div class="access-map reveal">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=135.49%2C34.69%2C135.51%2C34.71&layer=mapnik" loading="lazy"></iframe>
+      </div>
+      <div class="access-info reveal reveal-delay-1">
+        <dl>
+          <dt>Office</dt><dd><strong>プカリ司法書士法人</strong></dd>
+          <dt>Address</dt><dd>〒000-0000<br>大阪府〇〇市〇〇区〇〇1-2-3<br>〇〇ビル 4F</dd>
+          <dt>Hours</dt><dd>平日 9:00 – 18:00<br>※ 土日祝 / 時間外 ご予約にて対応</dd>
+          <dt>Tel</dt><dd><strong style="font-family:var(--num); font-size:18px; letter-spacing:0.04em;">06-0000-0000</strong></dd>
+          <dt>Email</dt><dd>info@pukari-legal.example.jp</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section faq">
+  <div class="section-inner" style="max-width:920px;">
+    <span class="section-eyebrow reveal">FAQ&nbsp;&nbsp;よくあるご質問</span>
+    <h2 class="section-h2 reveal reveal-delay-1">はじめての方の、<br>よくあるご質問。</h2>
+    <div class="faq-list" style="margin-top:40px;">
+      <div class="faq-item">
+        <div class="faq-q">初回相談は本当に無料ですか？<span class="faq-toggle"></span></div>
+        <div class="faq-a"><div class="faq-a-inner"><p>はい、初回60分のご相談は無料です。お話を伺い、必要な手続きの見通しと、お見積もりの目安をお伝えします。そのままご依頼に進まれない場合でも、料金はいただきません。</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">相談の前に、書類は揃えておくべきでしょうか？<span class="faq-toggle"></span></div>
+        <div class="faq-a"><div class="faq-a-inner"><p>「揃っていない状態」でのご相談で結構です。お話を伺いながら、必要な書類とその取得方法をご一緒に整理します。すでに手元にある書類があれば、お持ちいただくとスムーズです。</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">遠方に住んでいるのですが、対応いただけますか？<span class="faq-toggle"></span></div>
+        <div class="faq-a"><div class="faq-a-inner"><p>はい、オンライン（Zoom等）でのご相談、郵送・電子署名による書類のやり取りに対応しております。全国どちらからでもご相談ください。</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">弁護士・税理士との連携は可能ですか？<span class="faq-toggle"></span></div>
+        <div class="faq-a"><div class="faq-a-inner"><p>はい。ご相談内容に応じて、提携する弁護士・税理士・行政書士をご紹介し、必要に応じて連携しながら進めます。窓口はプカリ司法書士法人で一本化することができます。</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">議員活動と業務の両立はどのようにしていますか？<span class="faq-toggle"></span></div>
+        <div class="faq-a"><div class="faq-a-inner"><p>議会日程と司法書士業務のスケジュールを明確に分けたうえで、ご依頼の業務に支障が出ないよう運営しています。緊急時には事務所スタッフ・提携司法書士が対応いたします。</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <div class="cta-inner">
+    <span class="cta-eyebrow reveal">CONTACT&nbsp;&nbsp;ご相談予約</span>
+    <h2 class="cta-h2 reveal reveal-delay-1">
+      まずは、お話を<br>聞かせてください。
+    </h2>
+    <p class="cta-lead reveal reveal-delay-2">
+      ご相談内容が整っていなくても、構いません。<br>
+      お電話、またはフォームから、まずはお気軽にお問い合わせください。
+    </p>
+    <div class="cta-actions reveal reveal-delay-3">
+      <div class="cta-tel">
+        <small>TEL&nbsp;&nbsp;受付 平日 9:00 – 18:00</small>
+        06-0000-0000
+      </div>
+      <a href="#" class="btn-primary">
+        フォームから予約
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© 2026 PUKARI LEGAL OFFICE. ALL RIGHTS RESERVED.</span>
+    <span><a href="#">プライバシーポリシー</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="#">特定商取引法表記</a></span>
+  </div>
+</footer>
+
+<script>
+// === Reveal on scroll ===
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('is-visible'); revealObs.unobserve(e.target); }
+  });
+}, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+revealEls.forEach(el=>revealObs.observe(el));
+
+// === Flow step pulse ===
+document.querySelectorAll('.flow-step').forEach(el=>{
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); obs.unobserve(e.target); } });
+  }, { threshold:0.5 });
+  obs.observe(el);
+});
+
+// === Number count up ===
+const countEls = document.querySelectorAll('.count');
+const countObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseInt(el.dataset.target,10);
+    const dur = 1600;
+    const start = performance.now();
+    const step = (now)=>{
+      const p = Math.min(1,(now-start)/dur);
+      const eased = 1 - Math.pow(1-p, 3);
+      el.textContent = Math.floor(eased*target).toLocaleString();
+      if(p<1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString();
+    };
+    requestAnimationFrame(step);
+    countObs.unobserve(el);
+  });
+}, { threshold:0.6 });
+countEls.forEach(el=>countObs.observe(el));
+
+// === Header scroll ===
+const header = document.getElementById('header');
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 24) header.classList.add('is-scrolled');
+  else header.classList.remove('is-scrolled');
+}, { passive:true });
+
+// === Hero parallax ===
+const heroBg = document.getElementById('heroBg');
+window.addEventListener('scroll', ()=>{
+  const y = window.scrollY;
+  if(y < window.innerHeight && heroBg){
+    heroBg.style.transform = `translate3d(0, ${y*0.25}px, 0) scale(1.05)`;
+  }
+}, { passive:true });
+
+// === Cursor light ===
+const cursor = document.querySelector('.cursor-light');
+let cursorVisible = false;
+window.addEventListener('mousemove', (e)=>{
+  if(!cursorVisible){ cursor.style.opacity = '1'; cursorVisible = true; }
+  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%,-50%)`;
+});
+window.addEventListener('mouseleave', ()=>{ cursor.style.opacity = '0'; cursorVisible = false; });
+
+// === FAQ accordion ===
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click', ()=>{
+    q.parentElement.classList.toggle('is-open');
+  });
+});
+</script>
+
+</body>
+</html>
