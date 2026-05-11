@@ -172,12 +172,9 @@ def build_message(target, z1, z2, generated_at):
     lines.append("---")
     lines.append("🔍 検知結果")
     found = False
-    overlaps = detect_cross_overlaps(z1, z2)
-    if overlaps:
-        found = True
-        lines.append("⚠️ Z①/Z② 同時刻使用：")
-        for a, b in overlaps:
-            lines.append(f"　・{fmt_time(a)} Z①「{a['topic']}」 × Z②「{b['topic']}」")
+    # Z①Z②間の同時刻使用は設計上問題ない（別ルーム・別ホスト）ため検知対象外
+    # 2026-05-12 おけちゃん指示／小川さん5/12朝フィードバック「ここはアナウンスしなくて良いのかな」
+    # detect_cross_overlaps() 関数自体は将来の参照用に残置
 
     for label, ms in [("Z①", z1), ("Z②", z2)]:
         gaps = detect_short_gap(ms)
