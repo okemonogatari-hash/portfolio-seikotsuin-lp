@@ -1,66 +1,60 @@
 #!/usr/bin/env python3
 """
-PMチャットへ翌日のZoom枠ブリーフを自動投稿するスクリプト（GitHub Actions cron用）
-- Zoom APIから明日のZ①Z②会議を取得
-- 被り検知（同時刻使用 / 15分未満連続）
-- Chatwork API直叩きでPMチャットに投稿
+PMチャットへ翌日のZoom運行表（画像）を自動投稿するスクリプト（GitHub Actions cron用）
+- generate_dashboard.py が生成した irodori-zoom-tomorrow.html を Chrome headless でスクショ
+- Chatwork API /rooms/{room_id}/files へPOST（curl経由・multipart/form-data）
 
 環境変数:
-  ZOOM_ACCOUNT_ID / ZOOM_CLIENT_ID / ZOOM_CLIENT_SECRET
   CHATWORK_API_TOKEN / CHATWORK_ROOM_ID
+
 オプション:
-  --dry-run  Chatwork投稿をスキップして本文だけ出力
+  --dry-run     Chatwork投稿をスキップしてメッセージと画像生成だけ
+  --force       土日祝でも投稿
+  --today       実行時刻に関係なく今日ぶん（旧運用：朝の手動運用）
+  --tomorrow    実行時刻に関係なく翌日ぶん（夕方の手動運用）
+  --room <id>   CHATWORK_ROOM_ID を上書き（テスト用：マイチャット等）
 """
 import os
 import sys
-import base64
-import json
-import urllib.request
-import urllib.parse
+import subprocess
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 JST = timezone(timedelta(hours=9))
-HOST_NAEO = "5jeFf8S-TWC2zwtYGtLxLg"
-HOST_KOYAMA = "aAUji7r9QqWo-9JSS5yEFA"
+REPO_ROOT = Path(__file__).resolve().parent.parent
+TOMORROW_HTML = REPO_ROOT / "irodori-zoom-tomorrow.html"
+SCREENSHOT_PATH = Path("/tmp/zoom_tomorrow.png")
 DASHBOARD_URL = "https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/irodori-zoom-dashboard.html"
-ASAREI_JSON_PATH = Path(__file__).resolve().parent.parent / "data" / "calendar_asarei.json"
+WEEKDAY_JP = "月火水木金土日"
 
 
-def get_token():
-    account_id = os.environ["ZOOM_ACCOUNT_ID"]
-    client_id = os.environ["ZOOM_CLIENT_ID"]
-    client_secret = os.environ["ZOOM_CLIENT_SECRET"]
-    auth = base64.b64encode(f"{client_id}:{client_secret}".encode()).decode()
-    req = urllib.request.Request(
-        f"https://zoom.us/oauth/token?grant_type=account_credentials&account_id={account_id}",
-        method="POST", headers={"Authorization": f"Basic {auth}"})
-    with urllib.request.urlopen(req) as r:
-        return json.loads(r.read())["access_token"]
-
-
-def fetch_meetings(token, user_id):
-    url = f"https://api.zoom.us/v2/users/{user_id}/meetings?type=upcoming_meetings&page_size=300"
-    req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
-    with urllib.request.urlopen(req) as r:
-        return json.loads(r.read()).get("meetings", [])
-
-
-def load_asarei_snapshot():
-    """data/calendar_asarei.json から朝礼イベントを読み込む（Zoom APIで漏れる定期予定の補完）。
-    Calendar API live取得はGitHub Actions環境では認証情報がないため、リポジトリ同梱のJSONを使う。"""
-    if not ASAREI_JSON_PATH.exists():
-        return []
-    try:
-        return json.loads(ASAREI_JSON_PATH.read_text(encoding="utf-8")).get("events", [])
-    except Exception as e:
-        print(f"⚠️ calendar_asarei.json読み込み失敗: {e}")
-        return []
+def find_chrome():
+    """Mac / Linux 環境別に Chrome / Chromium のパスを返す"""
+    candidates = [
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        "/usr/bin/google-chrome",
+        "/usr/bin/google-chrome-stable",
+        "/usr/bin/chromium-browser",
+        "/usr/bin/chromium",
+    ]
+    for c in candidates:
+        if Path(c).exists():
+            return c
+    for name in ("google-chrome", "chromium", "chrome"):
+        try:
+            result = subprocess.run(
+                ["which", name], capture_output=True, text=True, check=True
+            )
+            path = result.stdout.strip()
+            if path:
+                return path
+        except subprocess.CalledProcessError:
+            pass
+    raise RuntimeError("Chrome/Chromium not found in PATH or common locations")
 
 
 def is_off_day(date_obj):
-    """土日 or 日本祝日 ならTrueを返す。投稿skipの判定に使う。
-    jpholidayが入っていない環境では祝日判定をskipして土日のみ判定。"""
+    """土日 or 日本祝日 ならTrue＋理由文字列を返す"""
     if date_obj.weekday() >= 5:
         return True, f"{date_obj} は{'土' if date_obj.weekday()==5 else '日'}曜日"
     try:
@@ -73,185 +67,98 @@ def is_off_day(date_obj):
     return False, ""
 
 
-def parse_jst(start_time):
-    return datetime.fromisoformat(start_time.replace("Z", "+00:00")).astimezone(JST)
-
-
-def auto_zoom_prefix(topic, host_label):
-    """タイトルにZoom番号（①or②）が無ければAIが先頭に自動補完。
-    補完の場合は🤖印で『AIが自動で付けた』と一目でわかるようにする。"""
-    num_map = {"Z①": "①", "Z②": "②"}
-    num = num_map.get(host_label, "")
-    if not num:
-        return topic
-    keywords = [
-        f"Z{num}", f"ZOOM{num}", f"Zoom{num}",
-        f"z{num}", f"zoom{num}",
-        f"ｚ{num}", f"ＺＯＯＭ{num}", f"Ｚｏｏｍ{num}",
+def screenshot_html(html_path: Path, output_path: Path):
+    """Chrome headless で HTML を 1100x900 PNG に書き出す"""
+    chrome = find_chrome()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    if output_path.exists():
+        output_path.unlink()
+    cmd = [
+        chrome,
+        "--headless",
+        "--disable-gpu",
+        "--no-sandbox",
+        f"--screenshot={output_path}",
+        "--window-size=1100,900",
+        "--hide-scrollbars",
+        "--virtual-time-budget=2000",
+        f"file://{html_path.resolve()}",
     ]
-    if any(k in topic for k in keywords):
-        return topic
-    return f"🤖[{host_label}] {topic}"
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if not output_path.exists():
+        print("--- Chrome stderr ---")
+        print(result.stderr)
+        raise RuntimeError(f"スクショ生成失敗: {output_path}")
+    return output_path
 
 
-def filter_target_date(meetings, target_date):
-    out = []
-    seen = set()
-    for m in meetings:
-        if not m.get("start_time"):
-            continue
-        key = (m.get("id"), m["start_time"])
-        if key in seen:
-            continue
-        seen.add(key)
-        st = parse_jst(m["start_time"])
-        if st.date() == target_date:
-            m["_jst_start"] = st
-            m["_jst_end"] = st + timedelta(minutes=m.get("duration", 0))
-            out.append(m)
-    out.sort(key=lambda x: x["_jst_start"])
-    return out
-
-
-def detect_cross_overlaps(z1, z2):
-    overlaps = []
-    for a in z1:
-        for b in z2:
-            if a["_jst_start"] < b["_jst_end"] and b["_jst_start"] < a["_jst_end"]:
-                overlaps.append((a, b))
-    return overlaps
-
-
-def detect_short_gap(meetings, threshold_min=15):
-    issues = []
-    for i in range(len(meetings) - 1):
-        gap = (meetings[i + 1]["_jst_start"] - meetings[i]["_jst_end"]).total_seconds() / 60
-        if 0 <= gap < threshold_min:
-            issues.append((meetings[i], meetings[i + 1], int(gap)))
-    return issues
-
-
-def fmt_time(m):
-    return f"{m['_jst_start'].strftime('%H:%M')}-{m['_jst_end'].strftime('%H:%M')}"
-
-
-def build_message(target, z1, z2, generated_at):
-    weekday = "月火水木金土日"[target.weekday()]
-    today = generated_at.date()
-    if target == today:
-        head_prefix = "📅 今日"
-        when_label = "当日"
-    elif target == today + timedelta(days=1):
-        head_prefix = "📅 明日"
-        when_label = "前日"
-    else:
-        head_prefix = f"📅 {target.strftime('%-m/%d')}"
-        when_label = "生成"
-    lines = [
-        f"{head_prefix}（{target.strftime('%Y-%m-%d')} {weekday}）のZoom枠ブリーフ",
-        f"（{when_label}{generated_at.strftime('%H:%M')}時点・自動生成）",
-        "",
+def post_image_to_chatwork(token: str, room_id: str, image_path: Path, message: str):
+    """curl で multipart/form-data POST"""
+    cmd = [
+        "curl", "-s", "-X", "POST",
+        f"https://api.chatwork.com/v2/rooms/{room_id}/files",
+        "-H", f"X-ChatWorkToken: {token}",
+        "-F", f"file=@{image_path}",
+        "-F", f"message={message}",
     ]
-
-    lines.append("【Z①(菜緒さん枠)】")
-    if z1:
-        for m in z1:
-            lines.append(f"・{fmt_time(m)}　{auto_zoom_prefix(m['topic'], 'Z①')}")
-    else:
-        lines.append("　なし")
-    lines.append("")
-
-    lines.append("【Z②(小山さん枠)】")
-    if z2:
-        for m in z2:
-            lines.append(f"・{fmt_time(m)}　{auto_zoom_prefix(m['topic'], 'Z②')}")
-    else:
-        lines.append("　なし")
-    lines.append("")
-
-    lines.append("---")
-    lines.append("🔍 検知結果")
-    found = False
-    # Z①Z②間の同時刻使用は設計上問題ない（別ルーム・別ホスト）ため検知対象外
-    # 2026-05-12 おけちゃん指示／小川さん5/12朝フィードバック「ここはアナウンスしなくて良いのかな」
-    # detect_cross_overlaps() 関数自体は将来の参照用に残置
-
-    for label, ms in [("Z①", z1), ("Z②", z2)]:
-        gaps = detect_short_gap(ms)
-        if gaps:
-            found = True
-            lines.append(f"⚠️ {label} 15分未満連続：")
-            for prev, nxt, gap in gaps:
-                lines.append(
-                    f"　・{prev['_jst_end'].strftime('%H:%M')}「{prev['topic']}」"
-                    f"→{gap}分→{nxt['_jst_start'].strftime('%H:%M')}「{nxt['topic']}」"
-                )
-
-    if not found:
-        lines.append("✅ 被り・隙間なし")
-
-    lines.append("")
-    lines.append("---")
-    lines.append("📊 詳細はダッシュボードでも見られます")
-    lines.append(f"→ {DASHBOARD_URL}")
-    lines.append("")
-    lines.append("※ 違和感・間違いがあれば おけもん（三又謙次郎）までお気軽にご報告ください🙏")
-
-    return "\n".join(lines)
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode != 0:
+        raise RuntimeError(f"curl failed: {result.stderr}")
+    return result.stdout
 
 
-def post_to_chatwork(token, room_id, message):
-    data = urllib.parse.urlencode({"body": message}).encode("utf-8")
-    req = urllib.request.Request(
-        f"https://api.chatwork.com/v2/rooms/{room_id}/messages",
-        data=data, method="POST",
-        headers={"X-ChatWorkToken": token})
-    with urllib.request.urlopen(req) as r:
-        return json.loads(r.read())
+def resolve_target(now: datetime) -> tuple:
+    """対象日（投稿対象の運行表の日付）を決定する"""
+    if "--today" in sys.argv:
+        return now.date(), "明示指定（--today）"
+    if "--tomorrow" in sys.argv:
+        return (now + timedelta(days=1)).date(), "明示指定（--tomorrow）"
+    if now.hour >= 16:
+        return (now + timedelta(days=1)).date(), "16時以降→翌日ぶん（定時運用）"
+    return now.date(), "16時より前→当日ぶん（朝の手動運用）"
+
+
+def resolve_room_id() -> str:
+    """--room <id> で上書き可。無ければCHATWORK_ROOM_IDを使う"""
+    if "--room" in sys.argv:
+        idx = sys.argv.index("--room")
+        if idx + 1 < len(sys.argv):
+            return sys.argv[idx + 1]
+    return os.environ["CHATWORK_ROOM_ID"]
 
 
 def main():
     now = datetime.now(JST)
-
-    # 対象日の判定ルール（2026-05-07確立）
-    # - 引数 --today / --tomorrow があればそれを優先
-    # - 引数なしの場合：実行時刻16時以降は翌日ぶん（定時運用）／16時より前は当日ぶん（朝の手動運用）
-    if "--today" in sys.argv:
-        target = now.date()
-        rule = "明示指定（--today）"
-    elif "--tomorrow" in sys.argv:
-        target = (now + timedelta(days=1)).date()
-        rule = "明示指定（--tomorrow）"
-    elif now.hour >= 16:
-        target = (now + timedelta(days=1)).date()
-        rule = "16時以降→翌日ぶん（定時運用）"
-    else:
-        target = now.date()
-        rule = "16時より前→当日ぶん（朝の手動運用）"
-
+    target, rule = resolve_target(now)
     print(f"⏱ 実行時刻 (JST): {now.strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"📅 対象日: {target}（判定: {rule}）")
 
-    # 翌日が土日祝ならChatwork投稿はskip（dashboardの再生成は別step、こちらは投稿のみ）
     off, reason = is_off_day(target)
     if off and "--force" not in sys.argv:
-        print(f"🟡 翌日は休日（{reason}）→ Chatwork投稿をskipします")
+        print(f"🟡 対象日は休日（{reason}）→ 投稿スキップ")
         return
 
-    token = get_token()
-    print("📥 Zoom会議取得中...")
-    naeo = fetch_meetings(token, HOST_NAEO)
-    koyama = fetch_meetings(token, HOST_KOYAMA)
+    if not TOMORROW_HTML.exists():
+        print(f"❌ {TOMORROW_HTML} が存在しません。先に generate_dashboard.py を実行してください")
+        sys.exit(1)
 
-    asarei = load_asarei_snapshot()
-    print(f"📥 朝礼補完JSON: {len(asarei)}件")
+    print(f"📸 Chromeでスクショ生成中: {SCREENSHOT_PATH}")
+    screenshot_html(TOMORROW_HTML, SCREENSHOT_PATH)
+    size_kb = SCREENSHOT_PATH.stat().st_size / 1024
+    print(f"✅ スクショ生成: {size_kb:.1f} KB")
 
-    z1 = filter_target_date(naeo, target)
-    z2 = filter_target_date(koyama + asarei, target)
-    print(f"📊 取得結果: Z① {len(z1)}件 / Z② {len(z2)}件")
+    weekday = WEEKDAY_JP[target.weekday()]
+    when_label = "明日" if target == now.date() + timedelta(days=1) else (
+        "今日" if target == now.date() else target.strftime("%-m/%d")
+    )
+    message = (
+        f"📅 {when_label}（{target.strftime('%Y-%m-%d')} {weekday}）のZoom運行表\n"
+        f"（{now.strftime('%Y-%m-%d %H:%M')} JST 時点 ・ 自動生成）\n\n"
+        f"詳細・他の日も見るなら → {DASHBOARD_URL}\n"
+        f"※ 違和感・間違いがあれば おけもん（三又謙次郎）まで🙏"
+    )
 
-    message = build_message(target, z1, z2, now)
-    print("\n--- 投稿内容プレビュー ---")
+    print("\n--- メッセージプレビュー ---")
     print(message)
     print("--- ここまで ---\n")
 
@@ -259,12 +166,11 @@ def main():
         print("🟡 --dry-run モード：Chatwork投稿はスキップしました")
         return
 
-    cw_token = os.environ["CHATWORK_API_TOKEN"]
-    cw_room = int(os.environ["CHATWORK_ROOM_ID"])
-
-    print(f"📮 Chatwork投稿中（room_id={cw_room}）...")
-    res = post_to_chatwork(cw_token, cw_room, message)
-    print(f"✅ 投稿完了 message_id={res.get('message_id')}")
+    token = os.environ["CHATWORK_API_TOKEN"]
+    room_id = resolve_room_id()
+    print(f"📮 Chatwork投稿中（room_id={room_id}）...")
+    res = post_image_to_chatwork(token, room_id, SCREENSHOT_PATH, message)
+    print(f"✅ 投稿完了: {res}")
 
 
 if __name__ == "__main__":

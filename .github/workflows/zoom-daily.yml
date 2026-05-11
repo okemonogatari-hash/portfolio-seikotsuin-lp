@@ -10,6 +10,14 @@ on:
         description: 'true ならChatwork投稿をスキップ（テスト用）'
         required: false
         default: 'false'
+      room_id_override:
+        description: '投稿先 room_id 上書き（テスト用・空ならsecrets.CHATWORK_ROOM_ID）'
+        required: false
+        default: ''
+      target_mode:
+        description: '対象日（auto / today / tomorrow）'
+        required: false
+        default: 'auto'
 
 permissions:
   contents: write
@@ -28,6 +36,14 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install Python deps
+        run: pip install jpholiday
+
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
       - name: Generate dashboard HTML
         env:
           ZOOM_ACCOUNT_ID: ${{ secrets.ZOOM_ACCOUNT_ID }}
@@ -40,7 +56,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add irodori-zoom-dashboard.html
+          git add irodori-zoom-dashboard.html irodori-zoom-tomorrow.html
           if git diff --cached --quiet; then
             echo "差分なし → commitスキップ"
           else
@@ -50,13 +66,20 @@ jobs:
             echo "✅ push完了"
           fi
 
-      - name: Post brief to Chatwork
+      - name: Post brief image to Chatwork
         if: ${{ github.event.inputs.skip_post != 'true' }}
         env:
-          ZOOM_ACCOUNT_ID: ${{ secrets.ZOOM_ACCOUNT_ID }}
-          ZOOM_CLIENT_ID: ${{ secrets.ZOOM_CLIENT_ID }}
-          ZOOM_CLIENT_SECRET: ${{ secrets.ZOOM_CLIENT_SECRET }}
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
           CHATWORK_ROOM_ID: ${{ secrets.CHATWORK_ROOM_ID }}
           TZ: Asia/Tokyo
-        run: python3 scripts/post_brief.py
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.room_id_override }}" ]; then
+            ARGS="$ARGS --room ${{ github.event.inputs.room_id_override }}"
+          fi
+          if [ "${{ github.event.inputs.target_mode }}" = "today" ]; then
+            ARGS="$ARGS --today"
+          elif [ "${{ github.event.inputs.target_mode }}" = "tomorrow" ]; then
+            ARGS="$ARGS --tomorrow"
+          fi
+          python3 scripts/post_brief.py $ARGS

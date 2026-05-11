@@ -27,6 +27,7 @@ ASAREI_KEYWORDS = ("朝礼",)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 OUT_PATH = REPO_ROOT / "irodori-zoom-dashboard.html"
+OUT_TOMORROW_PATH = REPO_ROOT / "irodori-zoom-tomorrow.html"
 
 WEEKDAY_JP = "月火水木金土日"
 
@@ -631,6 +632,36 @@ def _load_css():
     return text[start + len("<style>"):end]
 
 
+def render_tomorrow_html(target_date, day_data, generated_at):
+    """明日のday-card 1枚だけのシンプルHTMLを生成（Chatwork投稿スクショ用）。
+    1100x900 程度に収まるよう、余計なセクションは全部削る。"""
+    css = _load_css()
+    card_html = render_day_card(day_data, generated_at.date())
+    weekday = WEEKDAY_JP[target_date.weekday()]
+    return f"""<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>明日のZoom運行表 {target_date.isoformat()}</title>
+<style>{css}
+body{{padding:24px 20px}}
+.container{{max-width:1060px}}
+.tomorrow-head{{text-align:center;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d9d4cc}}
+.tomorrow-head h1{{font-size:24px;font-weight:700;letter-spacing:0.03em;margin-bottom:6px;color:#2a2a2a}}
+.tomorrow-head .ts{{font-size:13px;color:#7a7a7a}}
+.tomorrow-foot{{margin-top:14px;text-align:center;font-size:11.5px;color:#7a7a7a;line-height:1.7}}
+</style></head><body>
+<div class="container">
+<div class="tomorrow-head">
+<h1>📅 明日（{target_date.strftime("%Y-%m-%d")} {weekday}）のZoom運行表</h1>
+<div class="ts">{generated_at.strftime("%Y-%m-%d %H:%M")} JST 時点</div>
+</div>
+{card_html}
+<div class="tomorrow-foot">
+詳細・他の日も見るなら → irodori-zoom-dashboard.html ／ 違和感あれば おけもん（三又謙次郎）まで🙏
+</div>
+</div></body></html>
+"""
+
+
 # ────────── main ──────────
 
 def main():
@@ -679,6 +710,20 @@ def main():
     html = render_html(today, day_list, now)
     OUT_PATH.write_text(html, encoding="utf-8")
     print(f"\n✅ 生成完了: {OUT_PATH}")
+
+    # 明日（投稿対象日）専用のシンプルHTML（Chatworkスクショ投稿用）
+    # 実行時刻16時以降は翌日ぶん、それより前は当日ぶん（post_brief.py側の判定と整合）
+    if now.hour >= 16:
+        target_date = today + timedelta(days=1)
+    else:
+        target_date = today
+    target_day_data = next((d for d in day_list if d["date"] == target_date), None)
+    if target_day_data is not None:
+        tomorrow_html = render_tomorrow_html(target_date, target_day_data, now)
+        OUT_TOMORROW_PATH.write_text(tomorrow_html, encoding="utf-8")
+        print(f"✅ 明日専用HTML生成: {OUT_TOMORROW_PATH} (対象: {target_date})")
+    else:
+        print(f"⚠️ 対象日 {target_date} のday_dataが見つからずtomorrow.html生成skip")
 
     # 📋 日付別会議件数（消失検知の手がかり）
     print("\n📋 日付別会議件数（参考）")
