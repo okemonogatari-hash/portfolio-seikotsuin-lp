@@ -521,6 +521,12 @@ def render_html(today, day_list, generated_at):
         ".updated-banner .ub-line{font-size:14px;line-height:1.7;color:#5a4a00}"
         ".updated-banner .ub-time{font-weight:700;font-size:16px;color:#8a6500}"
         ".updated-banner .ub-warn{font-size:12.5px;color:#a06700;font-weight:600}"
+        ".nav-button-wrap{text-align:center;margin:0 0 24px}"
+        ".nav-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;"
+        "background:#c8533a;color:#fff;border-radius:28px;text-decoration:none;"
+        "font-size:14.5px;font-weight:700;letter-spacing:0.02em;"
+        "box-shadow:0 3px 10px rgba(200,83,58,0.25);transition:all .15s}"
+        ".nav-button:hover{background:#a04230;transform:translateY(-1px);box-shadow:0 4px 14px rgba(200,83,58,0.35)}"
     )
 
     summary_html = render_summary(today, day_list)
@@ -542,6 +548,10 @@ def render_html(today, day_list, generated_at):
 <div class="ub-line">🔄 自動更新：毎日 <strong>16:00（JST）</strong> に動きます（土日は更新おやすみ）</div>
 <div class="ub-warn">⚠️ この画面は <strong>リアルタイム反映ではありません</strong>。最後に動いた時点の情報を表示しています</div>
 </section>
+
+<div class="nav-button-wrap">
+<a href="irodori-zoom-yotei-rule.html" class="nav-button">📘 Zoom予定の作り方ルールはこちら →</a>
+</div>
 
 <section class="big-callout">
 <div class="callout-mark">📋</div>
