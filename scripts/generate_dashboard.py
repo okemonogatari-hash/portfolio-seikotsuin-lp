@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 irodori Zoom運行管理ダッシュボード 自動生成スクリプト
-- Zoom APIから菜緒さん（Z①）/ 小山さん（Z②）の会議一覧を取得
+- Zoom APIから小川さん（Z①）/ 小山さん（Z②）の会議一覧を取得
 - 過去5日 + 今日 + 未来7日の範囲で日付別カード生成
 - 被り検知（時間帯重複） / 短い隙間（15分未満）検出
 - HTMLファイルを完全再生成 → ../irodori-zoom-dashboard.html
@@ -429,7 +429,7 @@ def render_day_card(day_data, today):
         f'<div class="day-card{past_class}">'
         f'<div class="day-head"><div class="date">{d.strftime("%Y-%m-%d")} ({WEEKDAY_JP[d.weekday()]})</div>{badge}</div>'
         + "".join(alerts)
-        + '<table class="sheet"><thead><tr><th class="time">時間</th><th>Zoom①（菜緒さん側）</th><th>Zoom②（小山さん側）</th></tr></thead>'
+        + '<table class="sheet"><thead><tr><th class="time">時間</th><th>Zoom①（小川さん側）</th><th>Zoom②（小山さん側）</th></tr></thead>'
         + f'<tbody>{"".join(rows)}</tbody></table>'
         + legend
         + '</div>'
@@ -478,7 +478,7 @@ def render_summary(today, day_list):
         '<div class="sb-head"><span class="sb-icon">🚦</span>運行状況サマリ</div>'
         f'<div class="today-panel">{today_html}</div>'
         '<table class="week-table">'
-        '<thead><tr><th>日付</th><th>Zoom①（菜緒さん側）</th><th>Zoom②（小山さん側）</th></tr></thead>'
+        '<thead><tr><th>日付</th><th>Zoom①（小川さん側）</th><th>Zoom②（小山さん側）</th></tr></thead>'
         f'<tbody>{"".join(rows)}</tbody></table></section>'
     )
 
@@ -578,7 +578,7 @@ Zoom会議のタイトルに、<span class="hl">作った方（担当PM）の名
 </p>
 <div class="request-examples">
 <div class="ex-row bad"><span class="lbl">❌</span> 「1on1ミーティング」 ／ 「打ち合わせ」 ／ 「定例MTG」</div>
-<div class="ex-row good"><span class="lbl">⭕</span> 「1on1ミーティング（PM:小山）」 ／ 「石井さん 作業打合せ（永井使用）」 ／ 「BNI 1to1（担当：菜緒）」</div>
+<div class="ex-row good"><span class="lbl">⭕</span> 「1on1ミーティング（PM:小山）」 ／ 「石井さん 作業打合せ（永井使用）」 ／ 「BNI 1to1（担当：小川）」</div>
 </div>
 </section>
 
@@ -679,7 +679,7 @@ def main():
 
     # upcoming_meetings は定期会議の各occurrenceまで展開してくれる正しいタイプ
     # scheduled だと type=8 の親レコードしか取れず、各回が抜け落ちる
-    print("📥 Zoom会議取得中（菜緒さん）...")
+    print("📥 Zoom会議取得中（小川さん）...")
     naeo_scheduled = fetch_meetings(token, HOST_NAEO, "upcoming_meetings")
     naeo_past = fetch_meetings(token, HOST_NAEO, "previous_meetings")
 
@@ -699,8 +699,8 @@ def main():
         "z2_scheduled": len(koyama_scheduled),
         "z2_past": len(koyama_past),
     }
-    print(f"📊 過去会議: 菜緒 {raw_counts['z1_past']}件 / 小山 {raw_counts['z2_past']}件")
-    print(f"📊 今後会議: 菜緒 {raw_counts['z1_scheduled']}件 / 小山 {raw_counts['z2_scheduled']}件")
+    print(f"📊 過去会議: 小川 {raw_counts['z1_past']}件 / 小山 {raw_counts['z2_past']}件")
+    print(f"📊 今後会議: 小川 {raw_counts['z1_scheduled']}件 / 小山 {raw_counts['z2_scheduled']}件")
 
     # 🔍 セルフチェック（致命的問題があればここでexit）
     validate(z1, z2, today, raw_counts)
