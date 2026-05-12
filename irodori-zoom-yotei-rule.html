@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zoom予定の作り方ルール — irodori運行ダッシュボード</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;background:#f7f5f2;color:#2a2a2a;line-height:1.7;padding:40px 20px}
+.container{max-width:880px;margin:0 auto}
+header{text-align:center;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid #d9d4cc}
+h1{font-size:26px;font-weight:700;letter-spacing:0.03em;margin-bottom:10px}
+.lead{color:#7a7a7a;font-size:14px;line-height:1.8}
+.purpose{background:linear-gradient(135deg,#fff9ec 0%,#fef0e4 100%);border:2px solid #c8533a;border-radius:14px;padding:24px 28px;margin-bottom:36px;box-shadow:0 4px 18px rgba(200,83,58,0.1)}
+.purpose .tag{display:inline-block;background:#c8533a;color:#fff;font-size:12px;padding:4px 14px;border-radius:18px;margin-bottom:12px;font-weight:600;letter-spacing:0.05em}
+.purpose h2{font-size:20px;font-weight:700;line-height:1.55;margin-bottom:10px}
+.purpose p{font-size:14.5px;line-height:1.9}
+.section-title{font-size:20px;font-weight:700;margin:36px 0 14px;padding-left:14px;border-left:5px solid #c8533a;letter-spacing:0.02em}
+.section-title.ok{border-left-color:#3a8a5f}
+.section-title.ng{border-left-color:#d64545}
+.section-title.tokushu{border-left-color:#d9a000}
+.section-title.taisetsu{border-left-color:#1a5fb4}
+.pattern{background:#fff;border:1px solid #d9d4cc;border-radius:10px;padding:18px 22px;margin-bottom:14px}
+.pattern.ok{border-left:5px solid #3a8a5f;background:linear-gradient(90deg,#f3fcf6 0%,#fff 100%)}
+.pattern.ng{border-left:5px solid #d64545;background:linear-gradient(90deg,#fff5f5 0%,#fff 100%)}
+.pattern.tokushu{border-left:5px solid #d9a000;background:linear-gradient(90deg,#fffbe8 0%,#fff 100%)}
+.pattern-title{font-size:16px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.pattern-title .mark{font-size:22px;line-height:1}
+.pattern-body{font-size:14.5px;line-height:1.85;color:#3a3a3a}
+.pattern-body strong{color:#2a2a2a}
+.example{background:#f5f3ef;border-radius:8px;padding:12px 16px;margin-top:10px;font-size:13.5px;line-height:1.85;color:#5a5a5a;border-left:3px solid #c8c4ba}
+.example-label{display:inline-block;font-size:11px;font-weight:700;color:#7a7a7a;margin-bottom:4px;letter-spacing:0.08em}
+.result{margin-top:8px;font-weight:600;font-size:13.5px}
+.result.go{color:#1d6c3f}
+.result.no{color:#a02020}
+.result.warn{color:#8a6500}
+.taisetsu-box{background:linear-gradient(135deg,#e8f4ff 0%,#d6e9fc 100%);border:2px solid #4a8cf7;border-radius:14px;padding:24px 28px;margin:30px 0;box-shadow:0 4px 14px rgba(74,140,247,0.12)}
+.taisetsu-box .tag{display:inline-block;background:#4a8cf7;color:#fff;font-size:12px;padding:4px 14px;border-radius:18px;margin-bottom:14px;font-weight:700;letter-spacing:0.05em}
+.taisetsu-box h3{font-size:19px;font-weight:700;color:#1a3d6f;margin-bottom:12px;line-height:1.55}
+.taisetsu-box p{font-size:14.5px;line-height:1.9;color:#2a3a4a}
+.taisetsu-box .hl{background:#fff3a0;padding:0 4px;font-weight:700}
+.footer{margin-top:50px;padding-top:24px;border-top:1px solid #d9d4cc;text-align:center;font-size:13px;color:#7a7a7a;line-height:1.85}
+.footer a{color:#c8533a;text-decoration:none}
+.summary-table{width:100%;border-collapse:collapse;margin-top:14px;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #d9d4cc;font-size:13.5px}
+.summary-table th,.summary-table td{padding:10px 14px;text-align:left;border-bottom:1px solid #ece8e0}
+.summary-table th{background:#f3eee5;font-weight:700;color:#4a4a4a}
+.summary-table tr:last-child td{border-bottom:none}
+.summary-table .yes{color:#1d6c3f;font-weight:700}
+.summary-table .no{color:#a02020;font-weight:700}
+.summary-table .warn{color:#8a6500;font-weight:700}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+<h1>📘 Zoom予定の作り方ルール</h1>
+<p class="lead">これは irodori Zoom運行ダッシュボードに、皆さんのMTG予定を正しく表示させるための<br>「Zoomの予定の作り方」をまとめた取扱説明書です</p>
+</header>
+
+<section class="purpose">
+<div class="tag">🎯 なんのため？</div>
+<h2>会議の被り・時間ギリギリ・誰がどこで何をしてるか分からない問題を防ぐため</h2>
+<p>
+Zoomの利用状況をダッシュボードで見える化して、PMさんもオン秘書さんも<br>
+「**今日のZoom①②、誰がどこでMTGしてるか**」が一目で分かる状態を作りたい、というのが目的です🌱
+</p>
+</section>
+
+<h2 class="section-title ok">○ こうしてもらえると助かる使い方</h2>
+
+<div class="pattern ok">
+<div class="pattern-title"><span class="mark">①</span> 単発のMTGの場合</div>
+<div class="pattern-body">
+<strong>Zoom上で新しく予定を作ってください。</strong>
+<div class="example">
+<span class="example-label">例</span><br>
+・5/20 10:00〜11:00<br>
+・タイトル「A社 初回MTG」
+</div>
+<div class="result go">→ ダッシュボードに自動で表示されます ✅</div>
+</div>
+</div>
+
+<div class="pattern ok">
+<div class="pattern-title"><span class="mark">②</span> 定例のMTGの場合</div>
+<div class="pattern-body">
+<strong>Zoom上で「繰り返し予定」として作ってください。</strong>必ず<strong>終わりの日</strong>を入れてください。
+<div class="example">
+<span class="example-label">例</span><br>
+・毎週金曜 10:00〜11:00<br>
+・タイトル「富田さん 定例MTG」<br>
+・<strong>終わりの日：7/31まで</strong>
+</div>
+<div class="result go">→ 7/31までの各回が、ダッシュボードに自動で並びます ✅</div>
+</div>
+</div>
+
+<div class="pattern ok">
+<div class="pattern-title"><span class="mark">③</span> 祝日や休みがある場合</div>
+<div class="pattern-body">
+<strong>その日の回だけ削除してください。</strong>（繰り返し設定の中の、特定の1回だけ消せます）
+<div class="example">
+<span class="example-label">例</span><br>
+・5/3が祝日 → その回だけ削除
+</div>
+<div class="result go">→ ダッシュボードからもその日だけ消えます ✅</div>
+</div>
+</div>
+
+<div class="pattern ok">
+<div class="pattern-title"><span class="mark">④</span> 日程変更がある場合</div>
+<div class="pattern-body">
+<strong>その回だけ日時を変更してください。</strong>（繰り返し設定の中の、特定の1回だけ動かせます）
+<div class="example">
+<span class="example-label">例</span><br>
+・金曜10:00予定 → 今週だけ木曜14:00に変更
+</div>
+<div class="result go">→ 変更後の日時でダッシュボードに表示されます ✅</div>
+</div>
+</div>
+
+<h2 class="section-title ng">× こうすると見えなくなります</h2>
+
+<div class="pattern ng">
+<div class="pattern-title"><span class="mark">①</span> 昔のZoomの入口URLをそのまま使う</div>
+<div class="pattern-body">
+<strong>「前に使ったURLで入ってください」と案内するパターン。</strong>
+<div class="example">
+<span class="example-label">何が起きる？</span><br>
+実際に会議はできても、Zoom上に「新しい予定」として登録されてないため、<br>
+ダッシュボードに<strong>表示されません</strong>
+</div>
+<div class="result no">→ ダッシュボードからは見えない ❌</div>
+</div>
+</div>
+
+<div class="pattern ng">
+<div class="pattern-title"><span class="mark">②</span> Zoom予定を作らず、Googleカレンダーだけに入口URLを貼る</div>
+<div class="pattern-body">
+<strong>GoogleカレンダーにZoomのURLだけ貼って終わり、というパターン。</strong>
+<div class="example">
+<span class="example-label">何が起きる？</span><br>
+Zoom側の予約表に載っていないので、<br>
+ダッシュボードからは「会議室の利用予定」として拾えません
+</div>
+<div class="result no">→ ダッシュボードからは見えない ❌</div>
+</div>
+</div>
+
+<div class="pattern ng">
+<div class="pattern-title"><span class="mark">③</span> 終わった定例のURLを、5月以降もそのまま使う</div>
+<div class="pattern-body">
+<strong>「4/30で終わる」って設定の定例を、5月以降もそのまま使い回すパターン。</strong>
+<div class="example">
+<span class="example-label">何が起きる？</span><br>
+Zoom上では「次の予定」として登録されてないので、<br>
+ダッシュボードからは<strong>5月以降の回が表示されません</strong>
+</div>
+<div class="result no">→ ダッシュボードからは見えない ❌（富田あけみさんMTGの 5/12 トラブルがこれでした）</div>
+</div>
+</div>
+
+<div class="pattern ng">
+<div class="pattern-title"><span class="mark">④</span> 祝日なのにZoom予定を残したまま</div>
+<div class="pattern-body">
+<strong>実際は休みなのに、Zoom上の予定を削除していないパターン。</strong>
+<div class="example">
+<span class="example-label">何が起きる？</span><br>
+ダッシュボード上では「会議あり」と表示され続けます<br>
+（他のPMさんが「あれ、今日この時間使えないの？」と勘違いする原因になります）
+</div>
+<div class="result no">→ 実態と違うのに「会議あり」表示 ⚠️</div>
+</div>
+</div>
+
+<h2 class="section-title tokushu">△ 朝礼みたいな特殊運用について</h2>
+
+<div class="pattern tokushu">
+<div class="pattern-title"><span class="mark">⑤</span> 朝礼など「終わりなしの定例・URL使い回し」型</div>
+<div class="pattern-body">
+朝礼のように、<strong>「同じURLを毎日使い続ける」「終わりの日を決めない」</strong>運用は、<br>
+Zoom側の仕組み上、ダッシュボードから直接は拾えません。
+<div class="example">
+<span class="example-label">今どう取り扱われてるか</span><br>
+朝礼については、現状 <strong>菜緒さんのGoogleカレンダー</strong> から「朝礼」というキーワードで自動取得することで補完しています🌱<br>
+だからダッシュボードには毎日 ZOOM② 10:00-10:30 朝礼 として並んでいます。
+</div>
+<div class="result warn">→ Zoom側からは見えないが、カレンダー経由で補完されている ⚠️</div>
+<div class="example" style="margin-top:14px">
+<span class="example-label">他のPMさんも同じような運用がある場合</span><br>
+皆さんの Googleカレンダー閲覧権限をおけもん（三又謙次郎）が貰えれば、<br>
+同じ仕組みで補完取得できます🙏（現在、菜緒さんが他PMの皆さんにお声がけ中）
+</div>
+</div>
+</div>
+
+<h2 class="section-title taisetsu">💡 一番大事な考え方</h2>
+
+<div class="taisetsu-box">
+<div class="tag">🌱 ココが本質です</div>
+<h3>Zoomの入口URLが「使えるかどうか」ではなく、<br>Zoom上に <span class="hl">「次の予定」として登録されているかどうか</span> が大事です</h3>
+<p>
+ダッシュボードは、<br>
+「実際に入れるURL」を見に行っているのではなく、<br>
+<strong>「Zoomの予約表に載っている予定」</strong>を見に行きます。
+</p>
+<p style="margin-top:12px">
+だから、たとえ「いつも使ってるURLがそこにある」「実際に入れば会議はできる」状態でも、<br>
+Zoom上で<strong>新しい予定として登録されてなければ</strong>、ダッシュボードからは見えません。
+</p>
+</div>
+
+<h2 class="section-title">📋 まとめ早見表</h2>
+
+<table class="summary-table">
+<thead>
+<tr><th>パターン</th><th>Zoom上に予定登録</th><th>ダッシュボード表示</th></tr>
+</thead>
+<tbody>
+<tr><td>毎回新しく予定を作る</td><td>✅ あり</td><td class="yes">○ 見える</td></tr>
+<tr><td>終わる日を決めた繰り返し（〜7/31まで等）</td><td>✅ あり</td><td class="yes">○ 終わる日まで見える</td></tr>
+<tr><td>祝日の回だけ削除した繰り返し</td><td>✅ あり（祝日除く）</td><td class="yes">○ 祝日以外見える</td></tr>
+<tr><td>その回だけ日時変更した繰り返し</td><td>✅ あり（変更反映）</td><td class="yes">○ 変更後の日時で見える</td></tr>
+<tr><td>昔のURLをそのまま使い回し</td><td>❌ なし</td><td class="no">× 見えない</td></tr>
+<tr><td>Zoom予定なし・カレンダーにURLだけ</td><td>❌ なし</td><td class="no">× 見えない</td></tr>
+<tr><td>終わった定例のURLを継続使用</td><td>❌ なし</td><td class="no">× 見えない</td></tr>
+<tr><td>朝礼など「終わりなし・URL使い回し」</td><td>❌ なし</td><td class="warn">△ カレンダー経由で補完中</td></tr>
+</tbody>
+</table>
+
+<div class="footer">
+📡 このダッシュボードは Zoom と Googleカレンダー から自動で予定を取ってきて表示しています<br>
+違和感・間違いを見つけたら、Chatwork で <strong>おけもん（三又謙次郎）</strong> までお気軽にご連絡ください🙏<br>
+<br>
+<a href="irodori-zoom-dashboard.html">← ダッシュボードに戻る</a>
+</div>
+
+</div>
+</body>
+</html>
