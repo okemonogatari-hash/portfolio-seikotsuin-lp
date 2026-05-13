@@ -262,6 +262,141 @@ section { margin-bottom: 40px; }
 }
 .member-mini .stats-mini strong { color: #e76f51; }
 
+/* 状態タイル（深い個別カード） */
+.status-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 8px;
+}
+.status-card {
+  background: white;
+  border-radius: 14px;
+  border-left: 5px solid;
+  padding: 18px 22px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+}
+.status-card.s-pink { border-left-color: #e76f51; }
+.status-card.s-blue { border-left-color: #2a9d8f; }
+.status-card.s-green { border-left-color: #76c1b3; }
+.status-card.s-yellow { border-left-color: #e9c46a; }
+.status-card.s-orange { border-left-color: #f4a261; }
+.status-card.s-purple { border-left-color: #d896c4; }
+.status-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #eee;
+}
+.status-card-head h4 { font-size: 16px; color: #264653; margin: 0; }
+.status-card-head .tag {
+  font-size: 11px;
+  background: #f4f4f4;
+  color: #666;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.status-card-head .tag.t-done { background: #e8f5f1; color: #2a9d8f; }
+.status-card-head .tag.t-ongoing { background: #fef3ec; color: #e9c46a; }
+.status-card-head .tag.t-warn { background: #fbe9e6; color: #d62828; }
+.status-card-head .tag.t-coming { background: #f3eaf7; color: #9b59b6; }
+.status-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px;
+  padding: 6px 0;
+  align-items: flex-start;
+  font-size: 13px;
+}
+.status-row .label {
+  color: #2a9d8f;
+  font-weight: 600;
+  font-size: 12px;
+}
+.status-row .value { color: #4a4a4a; line-height: 1.6; }
+.status-row .value .item-strong { color: #264653; font-weight: 600; }
+.status-row .value.muted { color: #aaa; }
+.status-row .value .pill {
+  display: inline-block;
+  background: #fef3ec;
+  color: #e76f51;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin-right: 6px;
+}
+.status-row .value .pill.ok { background: #e8f5f1; color: #2a9d8f; }
+.status-row .value .pill.wait { background: #fef9e6; color: #b78c0c; }
+.status-row .value .pill.unknown { background: #f4f4f4; color: #999; }
+
+/* 役割棲み分けマップ */
+.role-map {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 10px;
+}
+.role-card {
+  background: linear-gradient(135deg, #fef9f5, #fff);
+  border-radius: 14px;
+  padding: 20px;
+  border-top: 4px solid;
+}
+.role-card.r-recruit { border-top-color: #d896c4; }
+.role-card.r-onboard { border-top-color: #e9c46a; }
+.role-card.r-orient { border-top-color: #e76f51; }
+.role-card.r-ojt { border-top-color: #2a9d8f; }
+.role-card h4 { font-size: 15px; color: #264653; margin-bottom: 4px; }
+.role-card .role-owner { font-size: 12px; color: #2a9d8f; font-weight: 600; margin-bottom: 10px; }
+.role-card .role-section {
+  font-size: 12px;
+  color: #4a4a4a;
+  margin-bottom: 8px;
+  padding-left: 8px;
+  border-left: 2px solid #f0f0f0;
+}
+.role-card .role-section strong { color: #264653; display: block; margin-bottom: 2px; }
+
+/* これがあれば充実 ロードマップ */
+.wishlist-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 80px;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 16px;
+  background: #fafbfd;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border-left: 3px solid #2a9d8f;
+}
+.wishlist-row .source-tag {
+  background: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  color: #2a9d8f;
+}
+.wishlist-row .wishlist-text { font-size: 13px; color: #4a4a4a; line-height: 1.6; }
+.wishlist-row .wishlist-text strong { color: #264653; }
+.wishlist-row .priority {
+  background: white;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  color: #e76f51;
+}
+.wishlist-row.p-low { border-left-color: #e9c46a; }
+.wishlist-row.p-low .priority { color: #b78c0c; }
+
 /* 共通傾向（圧縮） */
 .trend-row {
   display: flex;
@@ -590,70 +725,369 @@ footer {
   </div>
 </section>
 
-<!-- 個別メンバーカード（圧縮） -->
+<!-- 個別メンバー状態タイル -->
 <section>
   <div class="section-header">
     <div class="icon">👤</div>
-    <h2>個別メンバーの今</h2>
+    <h2>みんなの状態（今ココ）</h2>
   </div>
   <div class="section-body">
-    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">最近入った方を上に表示。詳しいつまずきは <a href="./irodori-onboarding-stumble-202605.html" style="color:#2a9d8f; font-weight:600;">つまずき詳細ページ →</a></p>
-    <div class="member-grid">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">個別Chatworkグループから取得した直近の状態。<strong>「次の予定／提出物／担当ライン／直近の動き／温度感」</strong>を多次元で見える化。<a href="./irodori-onboarding-stumble-202605.html" style="color:#2a9d8f; font-weight:600;">つまずき詳細ページ →</a></p>
 
-      <div class="member-mini m-purple">
-        <h4>🌼 森岡 美香さん <span class="tag t-ongoing">ガイド進行中・1日目</span></h4>
-        <div class="intro">東京都／在宅3年目／他社で<strong>採用アシスタント</strong>として稼働中／元webライター（歯科医院向け）／小4・小2のママ／「IRODORIの理念に非常に共感」</div>
-        <div class="stats-mini">
-          <span>進捗 推定2/19</span>
-          <span>つまずき <strong>0件</strong></span>
+    <div class="status-grid">
+
+      <!-- 森岡さん -->
+      <div class="status-card s-purple">
+        <div class="status-card-head">
+          <h4>🌼 森岡 美香さん</h4>
+          <span class="tag t-warn">面談未予約・連絡待ち</span>
+        </div>
+        <div class="status-row">
+          <span class="label">📅 次の予定</span>
+          <span class="value muted">未予約（チャット開設のみ・5/11）</span>
+        </div>
+        <div class="status-row">
+          <span class="label">📋 提出物</span>
+          <span class="value">
+            <span class="pill ok">契約締結済（5/11）</span>
+            <span class="pill ok">IRODORIメール</span>
+            <span class="pill wait">ガイド着手前</span>
+            <span class="pill unknown">自己紹介シート 不明</span>
+          </span>
+        </div>
+        <div class="status-row">
+          <span class="label">🤝 担当ライン</span>
+          <span class="value">オンボ＝<span class="item-strong">泉田さん</span>／コアメンバー（小川・小山・飯田・おけもん）見守り</span>
+        </div>
+        <div class="status-row">
+          <span class="label">⏱ 直近の動き</span>
+          <span class="value">5/11 19:11 本人 [toall]挨拶投稿／5/11 19:08 「グループチャット作成ありがとうございます」のみ、<strong>以降3日間動き無し</strong></span>
+        </div>
+        <div class="status-row">
+          <span class="label">🌡 今の温度感</span>
+          <span class="value">挨拶以降のアクション無し。連絡が空いている状態なのでフォロー余地あり</span>
         </div>
       </div>
 
-      <div class="member-mini m-orange">
-        <h4>🌷 小泉 滋さん <span class="tag t-ongoing">ガイド進行中・2日目</span></h4>
-        <div class="intro">神奈川県横浜市／元会社員・販促/広告/イベント/Webシステム/マニュアル執筆経験／「何が向いてるかまだ自分でも分かってない」と素直に発信</div>
-        <div class="stats-mini">
-          <span>進捗 推定4/19</span>
-          <span>つまずき <strong>0件</strong></span>
+      <!-- 小泉さん -->
+      <div class="status-card s-orange">
+        <div class="status-card-head">
+          <h4>🌷 小泉 滋さん</h4>
+          <span class="tag t-coming">明日 5/14 16:30 小川面談</span>
+        </div>
+        <div class="status-row">
+          <span class="label">📅 次の予定</span>
+          <span class="value"><span class="item-strong">5/14（木）16:30〜17:00</span> 小川代表との初回面談（5/13予約済）</span>
+        </div>
+        <div class="status-row">
+          <span class="label">📋 提出物</span>
+          <span class="value">
+            <span class="pill ok">契約締結済（5/10）</span>
+            <span class="pill ok">IRODORIメール</span>
+            <span class="pill ok">自己紹介シート 提出済</span>
+            <span class="pill ok">ガイド3番まで</span>
+          </span>
+        </div>
+        <div class="status-row">
+          <span class="label">🤝 担当ライン</span>
+          <span class="value">オンボ＝<span class="item-strong">泉田さん</span>／面談＝<span class="item-strong">小川さん</span>／コアメンバー見守り</span>
+        </div>
+        <div class="status-row">
+          <span class="label">⏱ 直近の動き</span>
+          <span class="value">5/13 02:45「3番自己紹介シート提出、5/14面談予約」／5/12 14:42 Facebook仕事用アカ取得完了／5/10〜13 毎日着実に進行</span>
+        </div>
+        <div class="status-row">
+          <span class="label">🌡 今の温度感</span>
+          <span class="value">Facebook新規登録のつまずきを自力で乗り越え、毎日着実に進行。面談予約まで自走できている</span>
         </div>
       </div>
 
-      <div class="member-mini m-yellow">
-        <h4>🌳 木本 恵さん（めめシエンタ）<span class="tag t-ongoing">ガイド進行中・3日目</span></h4>
-        <div class="intro">大分県／個人事業主／<strong>資金調達サポート・補助金/融資申請支援が専門</strong>／金融事務・債権管理・法務関連の実務経験豊富</div>
-        <div class="stats-mini">
-          <span>進捗 推定6/19</span>
-          <span>つまずき <strong>0件</strong></span>
+      <!-- 木本さん -->
+      <div class="status-card s-yellow">
+        <div class="status-card-head">
+          <h4>🌳 木本 恵さん（めめシエンタ）</h4>
+          <span class="tag t-coming">5/15 13:30 初回面談</span>
+        </div>
+        <div class="status-row">
+          <span class="label">📅 次の予定</span>
+          <span class="value"><span class="item-strong">5/15（金）13:30</span> 初回面談（5/13予約済）<br><span style="font-size:11px; color:#d62828;">⚠ 採用CWで小川さん「MTG連続しまくり→リスケしても？」と発言（5/13 23:13）</span></span>
+        </div>
+        <div class="status-row">
+          <span class="label">📋 提出物</span>
+          <span class="value">
+            <span class="pill ok">契約締結済（5/10）</span>
+            <span class="pill ok">IRODORIメール</span>
+            <span class="pill wait">ガイド4・5番対応中</span>
+            <span class="pill unknown">自己紹介シート 不明</span>
+          </span>
+        </div>
+        <div class="status-row">
+          <span class="label">🤝 担当ライン</span>
+          <span class="value">オンボ＝<span class="item-strong">泉田さん</span>／面談＝<span class="item-strong">小川さん</span>／コアメンバー見守り</span>
+        </div>
+        <div class="status-row">
+          <span class="label">⏱ 直近の動き</span>
+          <span class="value">5/13 02:22「5/15 13:30初回面談予約」／5/10 19:30「順に進めます」／チャット内のやり取りは合計7件のみで序盤</span>
+        </div>
+        <div class="status-row">
+          <span class="label">🌡 今の温度感</span>
+          <span class="value">5/10 立ち上げ→5/15 面談まで序盤フェーズ。<strong>MTG過密がアラート</strong>（リスケ検討要）</span>
         </div>
       </div>
 
-      <div class="member-mini m-pink">
-        <h4>🌸 池田 里歩さん <span class="tag t-done">本日オリエン済</span></h4>
-        <div class="intro">愛知県／完全在宅2年目／元コンサル・採用コーディネーター経験／本日永井さん引継ぎ秘書OJTスタート／「よく質問する」と自己申告</div>
-        <div class="stats-mini">
-          <span>進捗 19/19 完了</span>
-          <span>つまずき <strong>8件</strong></span>
+      <!-- 池田さん -->
+      <div class="status-card s-pink">
+        <div class="status-card-head">
+          <h4>🌸 池田 里歩さん</h4>
+          <span class="tag t-done">5/13 オリエン済・実務並行中</span>
+        </div>
+        <div class="status-row">
+          <span class="label">📅 次の予定</span>
+          <span class="value">永井さん引継ぎMTG連日／<span class="item-strong">永井さん〜5/19退職</span>→以降秘書業務全面引継ぎ</span>
+        </div>
+        <div class="status-row">
+          <span class="label">📋 提出物</span>
+          <span class="value">
+            <span class="pill ok">スタートアップガイドほぼ完了（5/8）</span>
+            <span class="pill ok">Notion個人ページ</span>
+            <span class="pill ok">公式LINE登録</span>
+            <span class="pill ok">1on1シート着手</span>
+          </span>
+        </div>
+        <div class="status-row">
+          <span class="label">🤝 担当ライン</span>
+          <span class="value">オンボ＝<span class="item-strong">泉田さん</span>／業務引継ぎ＝<span class="item-strong">永井さん</span>（〜5/19）／配属＝<strong>小川さん・小山さんの秘書</strong></span>
+        </div>
+        <div class="status-row">
+          <span class="label">⏱ 直近の動き</span>
+          <span class="value">5/13 08:41 メール報告→個人ページタスク化／5/13 06:40 ほしななこ様エントリーシート報告／5/13 17:00 オリエン実施</span>
+        </div>
+        <div class="status-row">
+          <span class="label">🌡 今の温度感</span>
+          <span class="value">オリエン前から実務（メール報告・1on1シート・MTGリマインド）に投入。<strong>永井さん退職との引継ぎが急ピッチ</strong>。表記名「5/14対応遅れます⚠️」</span>
         </div>
       </div>
 
-      <div class="member-mini m-blue">
-        <h4>📝 山下 絢子さん <span class="tag t-done">オリエン済・実務段階</span></h4>
-        <div class="intro">東京都／ライター枠・副業勤務／<strong>2026年12月末退職予定／不妊治療・フェムケア領域に進みたい</strong>／GW中タスク3件爆速納品</div>
-        <div class="stats-mini">
-          <span>進捗 19/19 完了</span>
-          <span>つまずき <strong>4件</strong></span>
+      <!-- 山下さん -->
+      <div class="status-card s-blue">
+        <div class="status-card-head">
+          <h4>📝 山下 絢子さん</h4>
+          <span class="tag t-done">オリエン済（4/21）・ライティング段階</span>
+        </div>
+        <div class="status-row">
+          <span class="label">📅 次の予定</span>
+          <span class="value">定例MTGなし／内部資料アップデート（gensparkで）／メルマガ分析準備</span>
+        </div>
+        <div class="status-row">
+          <span class="label">📋 提出物</span>
+          <span class="value">
+            <span class="pill ok">契約締結済（4/8）</span>
+            <span class="pill ok">Gmail・Notion・公式LINE</span>
+            <span class="pill ok">自己紹介・目標シート（4/19小川確認）</span>
+            <span class="pill ok">作業管理表5月タブ</span>
+          </span>
+        </div>
+        <div class="status-row">
+          <span class="label">🤝 担当ライン</span>
+          <span class="value">オンボ＝<span class="item-strong">永井さん</span>／実務指示＝<span class="item-strong">小川さん・泉田さん</span>／オリエン＝<strong>おけもん</strong></span>
+        </div>
+        <div class="status-row">
+          <span class="label">⏱ 直近の動き</span>
+          <span class="value">5/13 21:50 ベンチマーク2社メルマガ登録依頼／5/13 朝 小川さんから事業ストーリー長文共有／5/11 内部資料アップデート依頼</span>
+        </div>
+        <div class="status-row">
+          <span class="label">🌡 今の温度感</span>
+          <span class="value">4/27 小川さん確認後「積極的に質問」方針転換、GW中タスク3件納品。会社員兼務で平日返信遅め（表記名「5/12〜15返信遅」）</span>
         </div>
       </div>
 
-      <div class="member-mini m-green">
-        <h4>🌱 錫谷 詩菜さん <span class="tag t-done">オリエン済・現役稼働</span></h4>
-        <div class="intro">大阪府／水曜定休／LINE・HP・らせった堂のクライアント案件で稼働中／OJTでの詰まりが頻発している代表事例</div>
-        <div class="stats-mini">
-          <span>進捗 19/19 完了</span>
-          <span>つまずき <strong>7件</strong></span>
+      <!-- 錫谷さん -->
+      <div class="status-card s-green">
+        <div class="status-card-head">
+          <h4>🌱 錫谷 詩菜さん</h4>
+          <span class="tag t-done">オリエン済・実務育成中</span>
+        </div>
+        <div class="status-row">
+          <span class="label">📅 次の予定</span>
+          <span class="value">PowerPoint練習（無料30日・1ヶ月）／LINEリッチメニュー継続／<strong>小川さんとの1on1未実施</strong></span>
+        </div>
+        <div class="status-row">
+          <span class="label">📋 提出物</span>
+          <span class="value">
+            <span class="pill ok">契約締結済</span>
+            <span class="pill ok">IRODORIメール</span>
+            <span class="pill ok">自己紹介シート（泉田さん「書いてもらってる」）</span>
+            <span class="pill ok">HP掲載写真・紹介文</span>
+          </span>
+        </div>
+        <div class="status-row">
+          <span class="label">🤝 担当ライン</span>
+          <span class="value">オンボ＝<span class="item-strong">小川さん・泉田さん</span>／永井さん（カレンダー・Notion）／飯田さん（カレンダー権限）</span>
+        </div>
+        <div class="status-row">
+          <span class="label">⏱ 直近の動き</span>
+          <span class="value">5/13 永井「対応不可とMTG枠分けて」「水曜定休を表示名に」→反映済／5/12 全員のGoogleカレンダー見えない→飯田さん復旧／5/9 1on1シート作成質問</span>
+        </div>
+        <div class="status-row">
+          <span class="label">🌡 今の温度感</span>
+          <span class="value">複数ツール（カレンダー・PowerPoint・Zoom権限・1on1シート）で詰まり頻発、その都度永井・小川・飯田が個別フォロー。LINEリッチメニューCanva作業は「80点」評価</span>
         </div>
       </div>
 
+    </div>
+
+    <div style="margin-top:18px; padding:14px 18px; background:#fef9f5; border-radius:10px; font-size:12px; color:#6b6b6b;">
+      💡 状態の出所：各メンバーの<strong>個別Chatworkグループ</strong>から取得（2026-05-14時点）。「📅次の予定」「📋提出物」「🤝担当」「⏱直近の動き」「🌡温度感」の5次元で整理。<strong>性格特性は書かず事実ベース</strong>。
+    </div>
+  </div>
+</section>
+
+<!-- 役割の棲み分けマップ -->
+<section>
+  <div class="section-header">
+    <div class="icon">🗺</div>
+    <h2>役割の棲み分け（誰が何を話す／見る／渡す）</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">「採用面談・オンボーディング・オリエン・OJT」がそれぞれ別の担当でカバーされているけれど、<strong>守備範囲がまだ整理しきれていない</strong>状態。ここで一度言語化して、重複・抜けが見える形に。</p>
+
+    <div class="role-map">
+
+      <div class="role-card r-recruit">
+        <h4>📥 採用面談</h4>
+        <div class="role-owner">担当：なっつん</div>
+        <div class="role-section">
+          <strong>何を話す</strong>
+          スキルマッチ・契約意思の確認・人物理解・「やりたい働き方」のすり合わせ
+        </div>
+        <div class="role-section">
+          <strong>何を見る</strong>
+          応募エントリーシート・経歴・希望稼働時間
+        </div>
+        <div class="role-section">
+          <strong>何を渡す</strong>
+          採否判断後の契約案内・採用CWへの招待
+        </div>
+      </div>
+
+      <div class="role-card r-onboard">
+        <h4>🛠 オンボーディング（19項目ガイド）</h4>
+        <div class="role-owner">担当：泉田さん</div>
+        <div class="role-section">
+          <strong>何を話す</strong>
+          ツール導入手順（Notion・Gmail・Chatwork・公式LINE・Messenger・カレンダー）・最初のつまずきフォロー
+        </div>
+        <div class="role-section">
+          <strong>何を見る</strong>
+          スタートアップガイド19項目の進捗・自己紹介シート提出
+        </div>
+        <div class="role-section">
+          <strong>何を渡す</strong>
+          IRODORIメール・各種アカウント・ガイド最終ステップでオリエン誘導
+        </div>
+      </div>
+
+      <div class="role-card r-orient">
+        <h4>🎤 オリエンテーション（ガイドStep19）</h4>
+        <div class="role-owner">担当：おけもん</div>
+        <div class="role-section">
+          <strong>何を話す</strong>
+          IRODORIの理念・カンパニーの世界観・期待値合わせ・「橋をつなぐ場」としての時間
+        </div>
+        <div class="role-section">
+          <strong>何を見る</strong>
+          オンボフェーズで出てきた質問・本人の関心領域
+        </div>
+        <div class="role-section">
+          <strong>何を渡す</strong>
+          ここまでで詰まった話の整理・改善議論への素材化
+        </div>
+      </div>
+
+      <div class="role-card r-ojt">
+        <h4>🌱 OJT・実務</h4>
+        <div class="role-owner">担当：永井さん・配属先PM（小川／小山等）</div>
+        <div class="role-section">
+          <strong>何を話す</strong>
+          現場の案件・タスク管理・1on1シート・実務ツール（PowerPoint・Canva・gensparkなど）
+        </div>
+        <div class="role-section">
+          <strong>何を見る</strong>
+          作業管理表・案件進捗・実務での詰まり
+        </div>
+        <div class="role-section">
+          <strong>何を渡す</strong>
+          配属案件のキャッチアップ・先輩秘書からの引継ぎ
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:20px; padding:16px 20px; background:#fef9f5; border-radius:12px; font-size:13px; line-height:1.8;">
+      💭 <strong>議論したいポイント</strong>
+      <ul style="margin-top:8px; padding-left:20px; color:#4a4a4a; font-size:13px;">
+        <li>初回面談（小川さんとの面談）は「採用面談」と別物の <strong>5つ目の枠</strong> として置くべき？（木本・小泉が今ここ）</li>
+        <li>自己紹介シートの中身を「誰が見るか」が曖昧（オンボのみ？コアメンバー全員？）</li>
+        <li>オリエンとOJTの境界 = どこまでが「IRODORI共通」、どこから「配属先の話」</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- これがあればもっと充実 ロードマップ -->
+<section>
+  <div class="section-header">
+    <div class="icon">💡</div>
+    <h2>これがあればもっと充実するよ（情報拡張候補）</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">今は<strong>Chatworkメッセージのみ</strong>から状態を作っています。下記のデータが取れるようになると、ダッシュボードの解像度が一段上がります。<strong>泉田さん等と相談して決めていく前提</strong>のロードマップ。</p>
+
+    <div class="wishlist-row">
+      <span class="source-tag" style="color:#9b59b6;">📚 Notion</span>
+      <div class="wishlist-text"><strong>スタートアップガイド19項目の進捗</strong> ── 誰がStep何まで来てるか、自己紹介シート提出有無、目標シート記入状況を直接取得できる。今は「Chatworkの本人発言から推測」止まり</div>
+      <span class="priority">優先 高</span>
+    </div>
+
+    <div class="wishlist-row">
+      <span class="source-tag" style="color:#e76f51;">📅 Googleカレンダー</span>
+      <div class="wishlist-text"><strong>メンバー別の予定数・MTG密度</strong> ── 「木本さんMTG連続しまくり」のような<strong>負荷状況アラート</strong>が事前検知できる。今は採用CWの人間の指摘で気付く</div>
+      <span class="priority">優先 高</span>
+    </div>
+
+    <div class="wishlist-row">
+      <span class="source-tag" style="color:#2a9d8f;">📚 Notion</span>
+      <div class="wishlist-text"><strong>初回面談スケジュール一覧</strong> ── 小川さん・なっつん・おけもんとの面談予定がメンバー横断で見える。今は各個別CW散らばり</div>
+      <span class="priority">優先 高</span>
+    </div>
+
+    <div class="wishlist-row p-low">
+      <span class="source-tag" style="color:#f4a261;">🎬 解説動画</span>
+      <div class="wishlist-text"><strong>IRODORI独自部分の解説動画ストック</strong> ── 5/13泉田さん「YouTubeでこの動画みてね方式」＋おけもん「Notion説明動画」案。各メンバーカードから「該当動画」を呼び出せる形に</div>
+      <span class="priority">優先 中</span>
+    </div>
+
+    <div class="wishlist-row p-low">
+      <span class="source-tag" style="color:#9b59b6;">📚 Notion</span>
+      <div class="wishlist-text"><strong>1on1シートの共有範囲</strong> ── コアメンバー（小川・小山・飯田・おけもん）で誰が誰の1on1シート見てるかが見えるとフォロー漏れ防げる（錫谷さんで小川さん「1on1未実施で目標把握できてない」発言あり）</div>
+      <span class="priority">優先 中</span>
+    </div>
+
+    <div class="wishlist-row p-low">
+      <span class="source-tag" style="color:#76c1b3;">📊 作業管理表</span>
+      <div class="wishlist-text"><strong>配属案件・タスク数</strong> ── 山下さん（メルマガ・内部資料）、池田さん（小川秘書）、錫谷さん（らせった堂）など実務段階の人の<strong>抱え量</strong>が見える</div>
+      <span class="priority">優先 中</span>
+    </div>
+
+    <div class="wishlist-row p-low">
+      <span class="source-tag" style="color:#d896c4;">💬 Chatwork採用</span>
+      <div class="wishlist-text"><strong>採用パイプライン（応募〜面談〜採否）のステータス自動同期</strong> ── 今は手動更新。<a href="./irodori-onboarding-recruitment-202605.html" style="color:#2a9d8f; font-weight:600;">採用パイプラインページ</a>と本ダッシュボードを連動できると◎</div>
+      <span class="priority">優先 中</span>
+    </div>
+
+    <div style="margin-top:18px; padding:14px 18px; background:#e8f5f1; border-radius:10px; font-size:13px; line-height:1.8; color:#264653;">
+      🌱 <strong>次の一歩の進め方（案）</strong><br>
+      Notion側の構造（どこに何があるか）を泉田さんと相談 → 取得可能な項目を1つずつ繋いでいく。<strong>一気に全部やらない、痒いところから1つずつ</strong>。
     </div>
   </div>
 </section>
