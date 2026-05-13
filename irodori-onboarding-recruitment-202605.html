@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow">
+<title>採用パイプライン - 2026-05</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', sans-serif;
+  background: linear-gradient(135deg, #fef9f5 0%, #fef3ec 50%, #faf5fd 100%);
+  color: #2c2c2c;
+  line-height: 1.7;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  color: #2a9d8f;
+  padding: 8px 18px;
+  border-radius: 22px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 36px 32px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 6px;
+  background: linear-gradient(90deg, #e9c46a, #f4a261, #e76f51, #2a9d8f);
+}
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2a9d8f;
+  margin-bottom: 6px;
+}
+h1 {
+  font-size: 22px;
+  color: #264653;
+  margin-bottom: 10px;
+}
+.subtitle { color: #6b6b6b; font-size: 13px; }
+.meta {
+  display: inline-block;
+  background: #e8f5f1;
+  color: #2a9d8f;
+  padding: 6px 16px;
+  border-radius: 18px;
+  font-size: 12px;
+  margin-top: 12px;
+  font-weight: 500;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.stat-card {
+  background: white;
+  padding: 18px 12px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.stat-card .num {
+  font-size: 30px;
+  font-weight: 700;
+  display: block;
+  line-height: 1.2;
+}
+.stat-card .label { font-size: 11px; color: #6b6b6b; }
+.stat-card.s1 .num { color: #999; }
+.stat-card.s2 .num { color: #e9c46a; }
+.stat-card.s3 .num { color: #f4a261; }
+.stat-card.s4 .num { color: #e76f51; }
+.stat-card.s5 .num { color: #2a9d8f; }
+
+section { margin-bottom: 32px; }
+.section-header {
+  background: white;
+  padding: 18px 26px;
+  border-radius: 14px 14px 0 0;
+  border-bottom: 3px solid #2a9d8f;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.section-header h2 { color: #264653; font-size: 17px; }
+.section-header .icon {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, #2a9d8f, #76c1b3);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.section-body {
+  background: white;
+  padding: 24px;
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+/* カンバンパイプライン */
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.pipe-col {
+  background: #fafbfd;
+  border-radius: 12px;
+  padding: 14px 12px;
+  min-height: 220px;
+}
+.pipe-col h4 {
+  text-align: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid;
+  font-size: 12px;
+  font-weight: 600;
+}
+.pipe-col.c1 h4 { color: #999; border-color: #ccc; }
+.pipe-col.c2 h4 { color: #e9c46a; border-color: #e9c46a; }
+.pipe-col.c3 h4 { color: #f4a261; border-color: #f4a261; }
+.pipe-col.c4 h4 { color: #e76f51; border-color: #e76f51; }
+.pipe-col.c5 h4 { color: #2a9d8f; border-color: #2a9d8f; }
+.pipe-card {
+  background: white;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.pipe-card .name { font-weight: 600; color: #264653; font-size: 13px; }
+.pipe-card .meta-text { font-size: 10px; color: #888; display: block; margin-top: 3px; line-height: 1.5; }
+.pipe-card .tag-mini {
+  display: inline-block;
+  font-size: 9px;
+  background: #fef3ec;
+  color: #e76f51;
+  padding: 2px 6px;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+/* 候補者カード */
+.candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.cand-card {
+  background: white;
+  padding: 18px 20px;
+  border-radius: 12px;
+  border-left: 4px solid;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+.cand-card.applying { border-left-color: #e9c46a; }
+.cand-card.interviewing { border-left-color: #f4a261; }
+.cand-card.judging { border-left-color: #e76f51; }
+.cand-card.contracted { border-left-color: #2a9d8f; }
+.cand-card.rejected { border-left-color: #999; opacity: 0.7; }
+.cand-card h4 {
+  font-size: 15px;
+  color: #264653;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cand-card .tag {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.cand-card.applying .tag { background: #fff8e8; color: #e9c46a; }
+.cand-card.interviewing .tag { background: #fff5ec; color: #f4a261; }
+.cand-card.judging .tag { background: #fef3ec; color: #e76f51; }
+.cand-card.contracted .tag { background: #e8f5f1; color: #2a9d8f; }
+.cand-card.rejected .tag { background: #f4f4f4; color: #999; }
+.cand-card .detail {
+  font-size: 12px;
+  color: #6b6b6b;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+.cand-card .next-step {
+  font-size: 11px;
+  background: #fafafa;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: #4a4a4a;
+}
+.cand-card .next-step strong { color: #2a9d8f; }
+
+/* 直近のうごき */
+.move-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px dashed #eee;
+}
+.move-row:last-child { border-bottom: none; }
+.move-date {
+  font-size: 12px;
+  color: #2a9d8f;
+  font-weight: 600;
+  min-width: 90px;
+}
+.move-text { font-size: 13px; color: #4a4a4a; }
+.move-text strong { color: #264653; }
+
+/* フロー図 */
+.flow-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.flow-step {
+  flex: 1;
+  min-width: 110px;
+  padding: 10px 8px;
+  background: #fafbfd;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 11px;
+  color: #4a4a4a;
+  border: 2px solid #eee;
+}
+.flow-step.active {
+  background: #e8f5f1;
+  border-color: #2a9d8f;
+  color: #264653;
+  font-weight: 600;
+}
+.flow-arrow { color: #2a9d8f; font-size: 14px; flex-shrink: 0; }
+
+footer {
+  text-align: center;
+  margin-top: 36px;
+  padding: 20px;
+  color: #999;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .pipeline { grid-template-columns: repeat(2, 1fr); }
+  .stats-row { grid-template-columns: repeat(3, 1fr); }
+  .candidate-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  body { padding: 20px 12px; }
+  .section-body { padding: 18px; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  h1 { font-size: 19px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="./irodori-onboarding-report-202605.html" class="back-link">← ダッシュボードに戻る</a>
+
+<header>
+  <div class="logo">🌱 irodori</div>
+  <h1>📥 採用パイプライン</h1>
+  <p class="subtitle">応募 → 面談 → 採否判断 → 契約締結 → 入会の流れと、いま誰がどこにいるか</p>
+  <div class="meta">📅 2026-05-14 時点</div>
+</header>
+
+<!-- 統計 -->
+<div class="stats-row">
+  <div class="stat-card s1">
+    <span class="num">2</span>
+    <span class="label">応募・検討中</span>
+  </div>
+  <div class="stat-card s2">
+    <span class="num">1</span>
+    <span class="label">面談予定／実施済</span>
+  </div>
+  <div class="stat-card s3">
+    <span class="num">0</span>
+    <span class="label">採否判断中</span>
+  </div>
+  <div class="stat-card s4">
+    <span class="num">0</span>
+    <span class="label">契約締結待ち</span>
+  </div>
+  <div class="stat-card s5">
+    <span class="num">4</span>
+    <span class="label">入会済（直近1ヶ月）</span>
+  </div>
+</div>
+
+<!-- フロー全体図 -->
+<section>
+  <div class="section-header">
+    <div class="icon">🗺</div>
+    <h2>採用フロー全体図</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:8px;">irodoriで合意されている公式の採用ステップ（3/24なっつんMTG）。各候補者はこの流れのどこかにいる。</p>
+    <div class="flow-line">
+      <div class="flow-step">① 応募<br>（indeed/LINE）</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">② 応募フォーム<br>登録</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">③ 課題3点<br>＋エントリーシート</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">④ チェックリスト<br>採点</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⑤ 最終面談<br>（なっつん・くう）</div>
+    </div>
+    <div class="flow-line">
+      <div class="flow-step">⑥ 合格通知</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⑦ 契約書締結</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step active">⑧ スタートアップ<br>ガイド19項目</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⑨ おけもん<br>オリエン（最終）</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⑩ 現場配属</div>
+    </div>
+  </div>
+</section>
+
+<!-- カンバンパイプライン -->
+<section>
+  <div class="section-header">
+    <div class="icon">📋</div>
+    <h2>いま誰がどこにいるか</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">採用Chatworkでの直近1ヶ月の動きから抽出。応募〜入会まで一目で見えるように。</p>
+    <div class="pipeline">
+
+      <div class="pipe-col c1">
+        <h4>📨 応募・検討中</h4>
+        <div class="pipe-card">
+          <span class="name">融資/補助金サポート希望者</span>
+          <span class="meta-text">なっつん→泉田さんCWで話題（4/22）／池田さん・木本さんが入会済のため重なりあり</span>
+        </div>
+        <div class="pipe-card">
+          <span class="name">山口さん</span>
+          <span class="meta-text">経験あり・採捕から時給高め希望／理念共感が薄く採用検討は保留中</span>
+        </div>
+      </div>
+
+      <div class="pipe-col c2">
+        <h4>🎯 面談予定／実施済</h4>
+        <div class="pipe-card">
+          <span class="name">ほしななこさん</span>
+          <span class="meta-text">SEO/インタビューライター歴6年・週20時間可能・お孫さんが遠方／<strong>エントリーシート記入中・次回面談</strong></span>
+          <span class="tag-mini">ライター枠</span>
+        </div>
+      </div>
+
+      <div class="pipe-col c3">
+        <h4>📝 採否判断中</h4>
+        <p style="text-align:center; color:#bbb; font-size:11px; margin-top:24px;">該当なし</p>
+      </div>
+
+      <div class="pipe-col c4">
+        <h4>✅ 契約締結中</h4>
+        <p style="text-align:center; color:#bbb; font-size:11px; margin-top:24px;">該当なし</p>
+      </div>
+
+      <div class="pipe-col c5">
+        <h4>🌱 入会済（直近）</h4>
+        <div class="pipe-card">
+          <span class="name">🌸 池田 里歩さん</span>
+          <span class="meta-text">4/30入会・5/13オリエン済</span>
+        </div>
+        <div class="pipe-card">
+          <span class="name">🌳 木本 恵さん</span>
+          <span class="meta-text">5/10入会・ガイド進行中</span>
+        </div>
+        <div class="pipe-card">
+          <span class="name">🌷 小泉 滋さん</span>
+          <span class="meta-text">5/11入会・ガイド進行中</span>
+        </div>
+        <div class="pipe-card">
+          <span class="name">🌼 森岡 美香さん</span>
+          <span class="meta-text">5/12入会・ガイド進行中</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 候補者カード -->
+<section>
+  <div class="section-header">
+    <div class="icon">👤</div>
+    <h2>候補者カード（詳細）</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">採用Chatworkでの面談所感やコメントを元に整理。入会済の方は <a href="./irodori-onboarding-report-202605.html" style="color:#2a9d8f; font-weight:600;">メインダッシュボード</a> 参照。</p>
+    <div class="candidate-grid">
+
+      <div class="cand-card interviewing">
+        <h4>ほしななこさん <span class="tag">面談前・エントリーシート記入中</span></h4>
+        <div class="detail">
+          <strong>SEO・インタビューライター歴6年</strong>／週20時間稼働可能／50代・お孫さんが遠方／人柄よさげ／<strong>採用LINE案内・永井さんに動き依頼済</strong>（5/2 小川さん発信）
+        </div>
+        <div class="next-step">📌 <strong>次のうごき</strong>：エントリーシート記入完了 → 面談へ進む（5/7時点で泉田さんが対応中）</div>
+      </div>
+
+      <div class="cand-card applying">
+        <h4>山口さん <span class="tag">採用保留</span></h4>
+        <div class="detail">
+          営業職経験あり／<strong>採捕から時給高め希望・フルコミは難しそう</strong>（小山さん5/3「IRODORIのためじゃなく自分の会社・チームのため、目線が違う」と評価）<br>
+          → 採用フローには載せず、外部連携の可能性として検討
+        </div>
+        <div class="next-step">📌 <strong>次のうごき</strong>：営業職としては別募集する方針（4/30小川さん発信）</div>
+      </div>
+
+      <div class="cand-card rejected">
+        <h4>赤坂さん <span class="tag">見送り</span></h4>
+        <div class="detail">
+          ぽんぬさん講座生／デザインスキルは確認できず／事務やお客様対応は丁寧／<strong>4/27面談実施 → 5/2に見送り判断</strong>（4名indeed採用枠の中で森岡さん・小泉さんを採用）
+        </div>
+        <div class="next-step">📌 <strong>状態</strong>：採用見送り済</div>
+      </div>
+
+      <div class="cand-card contracted">
+        <h4>🌸 池田 里歩さん <span class="tag">入会済・オリエン済</span></h4>
+        <div class="detail">
+          愛知県／完全在宅2年目／元コンサル・採用コーディネーター／<strong>4/30入会 → 5/13おけもんオリエン完了</strong>／永井さん引継ぎで秘書OJT中
+        </div>
+        <div class="next-step">📌 <strong>次のうごき</strong>：永井さん退任（5/19）までに引継ぎ完了 → 詳細はメインダッシュボードへ</div>
+      </div>
+
+      <div class="cand-card contracted">
+        <h4>🌳 木本 恵さん <span class="tag">入会済・ガイド進行中</span></h4>
+        <div class="detail">
+          大分県／個人事業主／<strong>資金調達・補助金/融資申請支援が専門</strong>／indeed面談経由で5/10入会
+        </div>
+        <div class="next-step">📌 <strong>次のうごき</strong>：スタートアップガイド進行中・オリエン未予約</div>
+      </div>
+
+      <div class="cand-card contracted">
+        <h4>🌷 小泉 滋さん <span class="tag">入会済・ガイド進行中</span></h4>
+        <div class="detail">
+          神奈川県横浜市／元会社員・販促/広告/イベント企画/Webシステム経験豊富／indeed面談経由で5/11入会
+        </div>
+        <div class="next-step">📌 <strong>次のうごき</strong>：スタートアップガイド進行中・オリエン未予約</div>
+      </div>
+
+      <div class="cand-card contracted">
+        <h4>🌼 森岡 美香さん <span class="tag">入会済・ガイド進行中</span></h4>
+        <div class="detail">
+          東京都／在宅3年目・他社で<strong>採用アシスタント経験</strong>／元歯科向けwebライター／小4&小2のママ／面談時に <strong>メンタル面の懸念</strong> も出たが理念共感が強く採用判断
+        </div>
+        <div class="next-step">📌 <strong>次のうごき</strong>：スタートアップガイド進行中（5/13に全体チャットへ自己紹介投稿）</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 直近のうごき -->
+<section>
+  <div class="section-header">
+    <div class="icon">📅</div>
+    <h2>採用Chatworkの直近のうごき</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="move-row">
+      <div class="move-date">5/7</div>
+      <div class="move-text">泉田さん：「ほしななこさんはエントリーシート記入に進んでもらっていて、次面談です」と進捗報告</div>
+    </div>
+    <div class="move-row">
+      <div class="move-date">5/7</div>
+      <div class="move-text">小川さん：「PM・日中動ける人が本当に足りず、ほしななこさんの採用関係、今後のPM募集など、空いてる人巻き込みながらでも急ぎ目に進めて」</div>
+    </div>
+    <div class="move-row">
+      <div class="move-date">5/7</div>
+      <div class="move-text"><strong>採用面談に進む条件として「自己紹介シートの事前更新」を必須化</strong>（おけもん案・小川さん同意）。記入できない方は面談に進めない方針に</div>
+    </div>
+    <div class="move-row">
+      <div class="move-date">5/4頃</div>
+      <div class="move-text">泉田さん：indeed4名（池田・木本・森岡・小泉）採用完了の <strong>正式ご報告</strong>。今月は経理、来月以降PMと職を変えて募集予定</div>
+    </div>
+    <div class="move-row">
+      <div class="move-date">5/2</div>
+      <div class="move-text">小川さん：「ほしななこさん（SEO/インタビューライター）人柄よく週20時間可能、よさげだったので採用LINE案内して永井さんに動きお願いしました」</div>
+    </div>
+    <div class="move-row">
+      <div class="move-date">5/2</div>
+      <div class="move-text">小川さん・小山さん：山口さん採用検討 → 「IRODORIのためじゃなく自分のため、目線が違う」と評価 → 別募集の方針へ</div>
+    </div>
+    <div class="move-row">
+      <div class="move-date">4/27</div>
+      <div class="move-text">小山さん：indeed面談2名（森岡さん・赤坂さん）所感報告／<strong>面談前にポートフォリオ確認できる体制</strong>を整える要望が小川さんから</div>
+    </div>
+    <div class="move-row">
+      <div class="move-date">4/23</div>
+      <div class="move-text">泉田さん：森岡さんメンタル面の懸念点を共有 → おけもん「線が細そうな印象は受けるが30分の動画だけでは判断できない、いろんなirodori業務を経験している泉田さんの感覚を重視」と回答</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 採用基準サマリ -->
+<section>
+  <div class="section-header">
+    <div class="icon">🎯</div>
+    <h2>採用基準・運用ルール（直近で議論されたもの）</h2>
+  </div>
+  <div class="section-body">
+
+    <div style="background:#fef9f5; padding:16px 20px; border-radius:10px; margin-bottom:12px; border-left:4px solid #e9c46a;">
+      <strong style="color:#264653; font-size:14px;">🎯 オンライン秘書の人物像</strong>
+      <p style="font-size:13px; color:#4a4a4a; margin-top:6px;">「丁寧で細やかな作業ができる」「AIやNotionに抵抗がない」「クライアントワークが苦痛じゃない」を最低ラインに。<br>あれもこれも求めると無理ゲー化するので、フィルターを段階的に整備する方向</p>
+    </div>
+
+    <div style="background:#fef9f5; padding:16px 20px; border-radius:10px; margin-bottom:12px; border-left:4px solid #e9c46a;">
+      <strong style="color:#264653; font-size:14px;">📝 面談前の必須対応</strong>
+      <p style="font-size:13px; color:#4a4a4a; margin-top:6px;">「<strong>自己紹介シートの事前記入</strong>」が完了していない方は面談に進めない（5/7おけもん案・小川さん同意）<br>「<strong>ライター・デザイナー職の応募者はポートフォリオを面談前に確認できる状態</strong>」を必須化（4/24小川さん要望）</p>
+    </div>
+
+    <div style="background:#fef9f5; padding:16px 20px; border-radius:10px; margin-bottom:12px; border-left:4px solid #e9c46a;">
+      <strong style="color:#264653; font-size:14px;">💡 募集要項の前提条件（追記検討中）</strong>
+      <p style="font-size:13px; color:#4a4a4a; margin-top:6px;">「Notionが触れる前提」を明記する方向（5/7おけもん提起・小川さん「これは追記した方が良さそうです！」）<br>「<strong>使えるツール（Canva・パワポ等）</strong>」「<strong>希望報酬額と理由</strong>」も面談前のヒアリング項目に追加</p>
+    </div>
+
+    <div style="background:#fef9f5; padding:16px 20px; border-radius:10px; border-left:4px solid #e9c46a;">
+      <strong style="color:#264653; font-size:14px;">🌟 採用テスト案（議論中）</strong>
+      <p style="font-size:13px; color:#4a4a4a; margin-top:6px;">「<strong>クライアント役での想定問答</strong>」を採用テストに入れる案（4/30小川さん提案・「検討しますと言われたらどうする？費用が高いと言われたら？」など）<br>営業職の経験を採用時の優遇事項に入れる検討も</p>
+    </div>
+
+  </div>
+</section>
+
+<div style="text-align:center; margin-top:24px;">
+  <a href="./irodori-onboarding-report-202605.html" class="back-link">← ダッシュボードに戻る</a>
+</div>
+
+<footer>
+  <p>📋 本資料はモック版（v0.1）<br>
+  作成: 三又謙次郎（おけもん）<br>
+  情報源: Chatworkルーム「採用/オンボーディング/人事/総務」</p>
+</footer>
+
+</div>
+</body>
+</html>
