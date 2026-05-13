@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow">
+<title>Thirdphase協業状況 - 2026-05</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', sans-serif;
+  background: linear-gradient(135deg, #fef9f5 0%, #fef3ec 50%, #faf5fd 100%);
+  color: #2c2c2c;
+  line-height: 1.7;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  color: #2a9d8f;
+  padding: 8px 18px;
+  border-radius: 22px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 36px 32px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 6px;
+  background: linear-gradient(90deg, #76c1b3, #2a9d8f, #f4a261);
+}
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2a9d8f;
+  margin-bottom: 6px;
+}
+h1 {
+  font-size: 22px;
+  color: #264653;
+  margin-bottom: 10px;
+}
+.subtitle { color: #6b6b6b; font-size: 13px; }
+.meta {
+  display: inline-block;
+  background: #e8f5f1;
+  color: #2a9d8f;
+  padding: 6px 16px;
+  border-radius: 18px;
+  font-size: 12px;
+  margin-top: 12px;
+  font-weight: 500;
+}
+
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 28px;
+}
+.partner-card {
+  background: white;
+  padding: 24px 26px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  border-top: 5px solid;
+}
+.partner-card.nakamura { border-top-color: #2a9d8f; }
+.partner-card.takumi { border-top-color: #f4a261; }
+.partner-card h2 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: #264653;
+}
+.partner-card .role {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.partner-card.nakamura .role { color: #2a9d8f; }
+.partner-card.takumi .role { color: #f4a261; }
+.partner-card p {
+  font-size: 13px;
+  color: #4a4a4a;
+  line-height: 1.7;
+}
+
+section { margin-bottom: 32px; }
+.section-header {
+  background: white;
+  padding: 18px 26px;
+  border-radius: 14px 14px 0 0;
+  border-bottom: 3px solid #2a9d8f;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.section-header h2 { color: #264653; font-size: 17px; }
+.section-header .icon {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, #2a9d8f, #76c1b3);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.section-body {
+  background: white;
+  padding: 24px;
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.task-card {
+  padding: 16px 18px;
+  background: #fafbfd;
+  border-radius: 10px;
+  border-left: 3px solid #2a9d8f;
+}
+.task-card.done { border-left-color: #2a9d8f; background: #e8f5f1; }
+.task-card.ongoing { border-left-color: #e9c46a; background: #fff8e8; }
+.task-card.future { border-left-color: #f4a261; background: #fff5ec; }
+.task-card h4 {
+  font-size: 14px;
+  color: #264653;
+  margin-bottom: 6px;
+}
+.task-card .status-tag {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 6px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+.task-card.done .status-tag { background: #2a9d8f; color: white; }
+.task-card.ongoing .status-tag { background: #e9c46a; color: white; }
+.task-card.future .status-tag { background: #f4a261; color: white; }
+.task-card p {
+  font-size: 12px;
+  color: #4a4a4a;
+  line-height: 1.6;
+}
+
+.flow-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px dashed #eee;
+}
+.flow-row:last-child { border-bottom: none; }
+.flow-date {
+  font-size: 12px;
+  color: #2a9d8f;
+  font-weight: 600;
+  min-width: 90px;
+}
+.flow-text { font-size: 13px; color: #4a4a4a; }
+.flow-text strong { color: #264653; }
+
+.info-box {
+  background: #fef9f5;
+  padding: 18px 22px;
+  border-radius: 12px;
+  border-left: 4px solid #e76f51;
+  font-size: 13px;
+  color: #4a4a4a;
+  line-height: 1.8;
+}
+.info-box strong { color: #264653; }
+.info-box .label {
+  font-size: 11px;
+  color: #e76f51;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 36px;
+  padding: 20px;
+  color: #999;
+  font-size: 12px;
+}
+
+@media (max-width: 700px) {
+  body { padding: 20px 12px; }
+  .partner-grid { grid-template-columns: 1fr; }
+  .task-grid { grid-template-columns: 1fr; }
+  .section-body { padding: 18px; }
+  h1 { font-size: 19px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="./irodori-onboarding-report-202605.html" class="back-link">← ダッシュボードに戻る</a>
+
+<header>
+  <div class="logo">🌱 irodori</div>
+  <h1>📚 Thirdphase 協業状況</h1>
+  <p class="subtitle">Notion構築支援 ＆ 補助金申請サポートの専門家パートナーとの並走</p>
+  <div class="meta">📅 2026-05-13 時点</div>
+</header>
+
+<!-- パートナー紹介 -->
+<div class="partner-grid">
+  <div class="partner-card nakamura">
+    <h2>👤 中村 勇哉さん</h2>
+    <div class="role">Thirdphase ／ Notion構築・実装担当</div>
+    <p>irodoriの <strong>Notion全体の設計・自動化・改修</strong> をリードしてくれている専門家。期限切れタスクのAIエージェント、入力漏れ検知、KPI管理表、メンバー個人ページのテンプレ整備など、複雑なNotionの仕組みづくりを依頼している。<br>5/11に対面MTGを実施し、6月以降は <strong>毎月第2月曜日16時〜の定例</strong> でレギュラー伴走に。</p>
+  </div>
+  <div class="partner-card takumi">
+    <h2>👤 匠 一剛さん</h2>
+    <div class="role">補助金申請の専門家 ／ 行政書士的役割</div>
+    <p>当初は <strong>IT補助金</strong> を活用してNotion構築を進める前提で、必要書類（GビズID・セキュリティアクション2つ星・履歴事項全部証明書など）の準備をサポート。<br>その後、法人化直後で要件が合わないことが判明し、<strong>小規模事業者持続化補助金</strong> への切替を提案。5月末頃に座組について打ち合わせ予定。</p>
+  </div>
+</div>
+
+<!-- 契約・お金の流れ -->
+<section>
+  <div class="section-header">
+    <div class="icon">💰</div>
+    <h2>契約・お金の流れ</h2>
+  </div>
+  <div class="section-body">
+    <div class="info-box" style="margin-bottom:14px;">
+      <span class="label">📝 現在の契約形態</span>
+      Thirdphase（中村さん）への支払いは <strong>5月開始・5月末締め・6月末払い</strong>。<br>当初予定していたIT補助金の活用は法人化直後の要件で難しいことが判明したため、<strong>5月分から自費でのスタート</strong>に切り替えてサポートを継続いただいている。
+    </div>
+    <div class="info-box">
+      <span class="label">🔄 補助金切替の経緯</span>
+      ・<strong>4月後半</strong>：IT補助金申請の準備を進める（書類提出・GビズID・セキュリティアクション宣言）<br>
+      ・<strong>5月1日</strong>：法人化直後＋廃業届提出済のため IT補助金の要件に合わないと判明<br>
+      ・<strong>5月2日</strong>：匠さんから <strong>小規模事業者持続化補助金</strong> への切替を提案いただく<br>
+      ・<strong>5月末〜</strong>：座組整理MTGを予定（次回採択発表は7月予想）
+    </div>
+  </div>
+</section>
+
+<!-- 主な依頼内容 -->
+<section>
+  <div class="section-header">
+    <div class="icon">📋</div>
+    <h2>中村さんに伴走いただいている主な領域</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">Notion本体の構造設計・複雑な自動化・DB設計など、Notion運用の専門領域全般。日々の依頼は概要欄のNotionリンクに集約して管理。</p>
+    <div class="task-grid">
+
+      <div class="task-card done">
+        <h4>期限切れタスク通知AIエージェント<span class="status-tag">運用中</span></h4>
+        <p>担当者別・案件別に期限切れタスクを抽出し通知。日馬さん担当タスクのリセット対応・ステータス取消の除外設定も実施済</p>
+      </div>
+
+      <div class="task-card ongoing">
+        <h4>担当者・期日入力漏れの検知<span class="status-tag">調整中</span></h4>
+        <p>担当者や期日が未入力のタスクを拾うロジック。Inbox的な運用と両立する範囲で設計中（どらさんとの調整あり）</p>
+      </div>
+
+      <div class="task-card ongoing">
+        <h4>個人ページのフィロソフィー実装<span class="status-tag">運用開始</span></h4>
+        <p>営業フィロソフィーが投稿されたら個人ページに並べる仕組み。新規メンバーページに実装済</p>
+      </div>
+
+      <div class="task-card ongoing">
+        <h4>不具合検証・運用フィードバック対応<span class="status-tag">継続</span></h4>
+        <p>Notionステータス変更の反映遅延・コメント通知の挙動など、運用中に出てくる不具合報告へのキャッチアップ</p>
+      </div>
+
+      <div class="task-card future">
+        <h4>KPI管理表（予実・達成率）<span class="status-tag">設計中</span></h4>
+        <p>マネフォから引き出した数値を予実管理する仕組み。スプレッドシート連携を含めて要件整理中</p>
+      </div>
+
+      <div class="task-card future">
+        <h4>入金アラート機能<span class="status-tag">これから</span></h4>
+        <p>請求書の入金状況をアラート化する仕組み。手数料3.6%上乗せ請求の自動計算も含む</p>
+      </div>
+
+      <div class="task-card future">
+        <h4>朝礼の議事録機能デフォルト化<span class="status-tag">これから</span></h4>
+        <p>朝礼ページの一番上に議事録機能をデフォルト配置</p>
+      </div>
+
+      <div class="task-card future">
+        <h4>案件名に会社名を自動付与<span class="status-tag">これから</span></h4>
+        <p>各案件のタイトルに会社名を自動で頭につける仕組み</p>
+      </div>
+
+      <div class="task-card future">
+        <h4>半年更新時の請求管理DB自動展開<span class="status-tag">これから</span></h4>
+        <p>半年更新になったクライアントの請求管理DBを、自動で半年先まで展開</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 直近のやり取り -->
+<section>
+  <div class="section-header">
+    <div class="icon">📅</div>
+    <h2>直近のやり取り（時系列）</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="flow-row">
+      <div class="flow-date">5/13</div>
+      <div class="flow-text">中村さんが <strong>ゲストアカウントで再参加</strong>。マスターアカウントだとコメント通知が届かない課題に対応 ／ 依頼項目をNotion上のページコメントで返答する運用に</div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-date">5/12</div>
+      <div class="flow-text">小川さんから <strong>7件まとめての依頼ページ</strong> を提示 ／ 中村さん「Notionで障害が起きており閲覧不可、後ほど確認」と即応</div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-date">5/11 16:00</div>
+      <div class="flow-text"><strong>対面MTG実施</strong>（小川さん×中村さん×匠さん×irodoriメンバー）／ オン秘書とコンテンツ制作の案件ページ統合方針・小規模事業者持続化補助金の座組整理 ／ <strong>6月以降の月1定例化を決定</strong></div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-date">5/2</div>
+      <div class="flow-text">匠さんから <strong>小規模事業者持続化補助金への切替提案</strong> ／ チラシ枠で社内で試したいサービスのテスト実施案も併せて</div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-date">5/1</div>
+      <div class="flow-text">廃業届提出済のため <strong>IT補助金は要件不適合</strong> と判明 ／ Notion改善の依頼を中村さんに直接お願いする方針へ転換</div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-date">4/30</div>
+      <div class="flow-text">期限切れタスク通知AIエージェントの調整 ／ 日馬さん担当タスクのリセット・ステータス取消の除外設定を実施</div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-date">4/25頃</div>
+      <div class="flow-text">税務署発行の納税証明書について：法人設立から半年未満のため、個人事業主時代のものでの対応可否を匠さんに確認 ／ ヒアリングシートにPDFで提出</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 6月以降の運用 -->
+<section>
+  <div class="section-header">
+    <div class="icon">📆</div>
+    <h2>6月以降の定例運用</h2>
+  </div>
+  <div class="section-body">
+    <div class="info-box">
+      <span class="label">🗓 中村さん（Thirdphase）レギュラーMTG</span>
+      <strong>毎月第2月曜日 16:00〜17:00</strong>（zoom）<br>
+      ・6月：<strong>6/1（月）16:00〜</strong> ／ <strong>6/22（月）16:00〜</strong> の2回実施予定<br>
+      ・以降：毎月第2月曜日で繰り返し設定済<br>
+      ・Googleカレンダーリマインド ＋ 永井さんから当日朝のリマインドあり
+    </div>
+    <div class="info-box" style="margin-top:14px;">
+      <span class="label">💼 匠さん（補助金）の調整</span>
+      <strong>5月末頃</strong> に座組整理のMTGを予定 ／ 小規模事業者持続化補助金の次回採択発表は7月予想<br>
+      補助金が活用できる場合、Notion関連の改善や新しい取り組みを補助金枠で進められる可能性あり
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center; margin-top:24px;">
+  <a href="./irodori-onboarding-report-202605.html" class="back-link">← ダッシュボードに戻る</a>
+</div>
+
+<footer>
+  <p>📋 本資料はモック版（v0.1）<br>
+  作成: 三又謙次郎（おけもん）<br>
+  情報源: Chatworkルーム「IRODORI様 ✖️ Thirdphase」</p>
+</footer>
+
+</div>
+</body>
+</html>
