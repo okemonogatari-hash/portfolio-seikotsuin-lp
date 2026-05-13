@@ -397,6 +397,69 @@ section { margin-bottom: 40px; }
 .wishlist-row.p-low { border-left-color: #e9c46a; }
 .wishlist-row.p-low .priority { color: #b78c0c; }
 
+/* 自己紹介シート＆面談 早見表 */
+.quickview-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+.quickview-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 1fr;
+  gap: 16px;
+  padding: 14px 18px;
+  background: #fafbfd;
+  border-radius: 10px;
+  border-left: 4px solid;
+  align-items: center;
+}
+.quickview-row.qv-warn { border-left-color: #d62828; background: #fef0e8; }
+.quickview-row.qv-active { border-left-color: #f4a261; background: #fef9f5; }
+.quickview-row.qv-done { border-left-color: #2a9d8f; background: #f0faf7; }
+.quickview-row .qv-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #264653;
+}
+.quickview-row .qv-sheet,
+.quickview-row .qv-meeting {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+}
+.quickview-row .qv-detail { color: #6b6b6b; font-size: 11px; }
+.sheet-status, .meet-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 12px;
+  width: fit-content;
+}
+.sheet-status.sheet-done { background: #e8f5f1; color: #2a9d8f; }
+.sheet-status.sheet-unknown { background: #fef9e6; color: #b78c0c; }
+.sheet-status.sheet-none { background: #fbe9e6; color: #d62828; }
+.meet-status.meet-soon { background: #fef0e8; color: #d62828; }
+.meet-status.meet-ongoing { background: #e8f5f1; color: #2a9d8f; }
+.meet-status.meet-warn { background: #fef9e6; color: #b78c0c; }
+.meet-status.meet-none { background: #f4f4f4; color: #888; }
+
+/* 状態タイルのシート専用行 */
+.sheet-highlight {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 14px;
+  background: #f7faf9;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+.sheet-highlight .sheet-label { font-weight: 600; color: #2a9d8f; font-size: 12px; min-width: 100px; }
+.sheet-highlight .sheet-value { color: #4a4a4a; }
+
 /* 共通傾向（圧縮） */
 .trend-row {
   display: flex;
@@ -725,6 +788,101 @@ footer {
   </div>
 </section>
 
+<!-- 自己紹介シート＆次の面談 一覧 -->
+<section>
+  <div class="section-header">
+    <div class="icon">📝</div>
+    <h2>自己紹介シート＆次の面談（早見表）</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">面談前に「この人シート書いてる？／次いつ会う？」が一目で分かる早見表。<br><strong>シートはガイドStep3で記入・提出</strong>（小泉さん「3.自己紹介シート記入・提出まで来ました」発言から確認）</p>
+
+    <div class="quickview-grid">
+
+      <div class="quickview-row qv-warn">
+        <div class="qv-name">🌼 森岡 美香さん</div>
+        <div class="qv-sheet">
+          <span class="sheet-status sheet-unknown">❓ 未確認</span>
+          <span class="qv-detail">挨拶のみ・3日間動き無し</span>
+        </div>
+        <div class="qv-meeting">
+          <span class="meet-status meet-none">未予約</span>
+          <span class="qv-detail">面談連絡待ち</span>
+        </div>
+      </div>
+
+      <div class="quickview-row qv-active">
+        <div class="qv-name">🌷 小泉 滋さん</div>
+        <div class="qv-sheet">
+          <span class="sheet-status sheet-done">✅ 提出済</span>
+          <span class="qv-detail">5/13 03時報告</span>
+        </div>
+        <div class="qv-meeting">
+          <span class="meet-status meet-soon">🔥 明日 5/14 16:30</span>
+          <span class="qv-detail">小川代表 初回面談</span>
+        </div>
+      </div>
+
+      <div class="quickview-row qv-active">
+        <div class="qv-name">🌳 木本 恵さん</div>
+        <div class="qv-sheet">
+          <span class="sheet-status sheet-unknown">❓ 未確認</span>
+          <span class="qv-detail">ガイド4・5番対応中（Step3通過？）</span>
+        </div>
+        <div class="qv-meeting">
+          <span class="meet-status meet-soon">5/15（金）13:30</span>
+          <span class="qv-detail">初回面談・<strong style="color:#d62828;">⚠ MTG過密リスケ検討</strong></span>
+        </div>
+      </div>
+
+      <div class="quickview-row qv-done">
+        <div class="qv-name">🌸 池田 里歩さん</div>
+        <div class="qv-sheet">
+          <span class="sheet-status sheet-done">✅ 提出済</span>
+          <span class="qv-detail">ガイドほぼ完了（5/8）</span>
+        </div>
+        <div class="qv-meeting">
+          <span class="meet-status meet-ongoing">永井さん引継ぎMTG連日</span>
+          <span class="qv-detail">〜5/19 永井さん退職</span>
+        </div>
+      </div>
+
+      <div class="quickview-row qv-done">
+        <div class="qv-name">📝 山下 絢子さん</div>
+        <div class="qv-sheet">
+          <span class="sheet-status sheet-done">✅ 提出済</span>
+          <span class="qv-detail">4/19 小川さん「拝見しました」確認</span>
+        </div>
+        <div class="qv-meeting">
+          <span class="meet-status meet-ongoing">定例なし・実務指示</span>
+          <span class="qv-detail">小川さん主導でタスク投入中</span>
+        </div>
+      </div>
+
+      <div class="quickview-row qv-done">
+        <div class="qv-name">🌱 錫谷 詩菜さん</div>
+        <div class="qv-sheet">
+          <span class="sheet-status sheet-done">✅ 提出済</span>
+          <span class="qv-detail">泉田さん「書いてもらってる」</span>
+        </div>
+        <div class="qv-meeting">
+          <span class="meet-status meet-warn">⏳ 小川 1on1 未実施</span>
+          <span class="qv-detail">小川「夢や目標を把握できてない」</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:18px; padding:14px 18px; background:#fef9f5; border-radius:10px; font-size:13px; line-height:1.7;">
+      💡 <strong>ステータスの凡例</strong><br>
+      <span class="sheet-status sheet-done" style="font-size:12px;">✅ 提出済</span> ＝ チャットで提出・確認発言あり ／
+      <span class="sheet-status sheet-unknown" style="font-size:12px;">❓ 未確認</span> ＝ チャットからは判別不可（Notionで要確認） ／
+      <span class="sheet-status sheet-none" style="font-size:12px;">⛔ 未着手</span> ＝ ガイド未到達<br>
+      <span style="color:#888; font-size:12px;">※ シート確認はNotionデータ取得が繋がるとより正確になります（<a href="#wishlist" style="color:#2a9d8f;">下の情報拡張候補参照</a>）</span>
+    </div>
+  </div>
+</section>
+
 <!-- 個別メンバー状態タイル -->
 <section>
   <div class="section-header">
@@ -1035,7 +1193,7 @@ footer {
 </section>
 
 <!-- これがあればもっと充実 ロードマップ -->
-<section>
+<section id="wishlist">
   <div class="section-header">
     <div class="icon">💡</div>
     <h2>これがあればもっと充実するよ（情報拡張候補）</h2>
