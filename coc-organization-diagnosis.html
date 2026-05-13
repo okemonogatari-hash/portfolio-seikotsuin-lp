@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>組織は、診ると変わる。 | 一般社団法人 組織力診断士協会</title>
+<meta name="description" content="人事戦略の指標に。組織力診断士が、見えなかった組織の輪郭を可視化します。京都発、全国対応。経営者と一緒に組織を診る伴走型の人事戦略支援。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --color-primary:#1F3147;
+  --color-primary-light:#E8EDF2;
+  --color-primary-dark:#15233A;
+  --color-accent:#C77A4A;
+  --color-accent-light:#EBD9CB;
+  --color-bg:#F7F3EC;
+  --color-bg-paper:#FBF8F2;
+  --color-text:#2D2A26;
+  --color-text-mute:#6F6A63;
+  --color-border:#E5DFD3;
+  --serif:'Noto Serif JP',serif;
+  --sans:'Noto Sans JP',sans-serif;
+  --inter:'Inter',sans-serif;
+  --container:1140px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  color:var(--color-text);
+  background:var(--color-bg);
+  line-height:1.85;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  letter-spacing:.02em;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ============ HEADER ============ */
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(247,243,236,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(229,223,211,.6);
+  transition:padding .3s ease;
+}
+.header-inner{
+  max-width:var(--container);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 32px;
+}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{
+  width:36px;height:36px;
+  border:1.5px solid var(--color-primary);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-weight:600;
+  color:var(--color-primary);
+  position:relative;
+}
+.logo-mark::after{
+  content:'';position:absolute;
+  width:8px;height:8px;
+  background:var(--color-accent);
+  bottom:-3px;right:-3px;
+  border-radius:50%;
+}
+.logo-text{
+  font-family:var(--serif);
+  font-size:15px;font-weight:500;
+  color:var(--color-primary);
+  letter-spacing:.08em;
+}
+.logo-text small{
+  display:block;font-family:var(--inter);
+  font-size:9px;letter-spacing:.25em;
+  color:var(--color-text-mute);
+  margin-top:2px;
+}
+.nav{display:flex;align-items:center;gap:36px}
+.nav-link{
+  font-size:13px;font-weight:500;
+  color:var(--color-text);
+  position:relative;
+  transition:color .2s;
+}
+.nav-link:hover{color:var(--color-accent)}
+.nav-cta{
+  background:var(--color-primary);
+  color:#fff;
+  padding:11px 24px;
+  font-size:12px;font-weight:600;
+  letter-spacing:.1em;
+  border:none;
+  transition:all .25s;
+  cursor:pointer;
+}
+.nav-cta:hover{
+  background:var(--color-accent);
+  transform:translateY(-1px);
+}
+.nav-toggle{display:none}
+@media(max-width:900px){
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--color-bg);flex-direction:column;padding:24px;gap:20px;border-top:1px solid var(--color-border)}
+  .nav.is-open{display:flex}
+  .nav-toggle{display:block;background:none;border:none;font-size:22px;cursor:pointer;color:var(--color-primary)}
+}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;align-items:center;
+  overflow:hidden;
+  background:#0f1a2b;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:linear-gradient(120deg,rgba(15,26,43,.78) 0%,rgba(31,49,71,.62) 50%,rgba(199,122,74,.42) 100%),url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-size:cover;background-position:center;
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 40%,rgba(199,122,74,.18),transparent 50%);
+}
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:var(--container);
+  margin:0 auto;padding:140px 32px 100px;
+  width:100%;
+}
+.hero-label{
+  font-family:var(--inter);
+  font-size:11px;font-weight:600;
+  letter-spacing:.32em;
+  color:var(--color-accent-light);
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:32px;
+}
+.hero-label::before{
+  content:'';width:48px;height:1px;
+  background:var(--color-accent);
+}
+.hero-title{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:clamp(38px,6.2vw,76px);
+  line-height:1.22;
+  color:#fff;
+  letter-spacing:.04em;
+  margin-bottom:36px;
+}
+.hero-title span{
+  color:var(--color-accent-light);
+  font-weight:500;
+}
+.hero-sub{
+  font-size:17px;
+  color:rgba(255,255,255,.86);
+  line-height:2;
+  max-width:560px;
+  margin-bottom:48px;
+  font-weight:400;
+}
+.hero-actions{display:flex;gap:18px;flex-wrap:wrap}
+.btn-primary{
+  background:var(--color-accent);
+  color:#fff;
+  padding:18px 36px;
+  font-size:14px;font-weight:600;
+  letter-spacing:.12em;
+  border:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:12px;
+  transition:all .3s;
+}
+.btn-primary:hover{
+  background:#B86B3D;
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(199,122,74,.35);
+}
+.btn-ghost{
+  background:transparent;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.4);
+  padding:18px 36px;
+  font-size:14px;font-weight:500;
+  letter-spacing:.1em;
+  cursor:pointer;
+  display:inline-flex;align-items:center;gap:12px;
+  transition:all .3s;
+}
+.btn-ghost:hover{
+  border-color:#fff;background:rgba(255,255,255,.08);
+}
+.hero-scroll{
+  position:absolute;bottom:32px;left:50%;
+  transform:translateX(-50%);
+  z-index:3;
+  font-family:var(--inter);
+  font-size:10px;letter-spacing:.3em;
+  color:rgba(255,255,255,.55);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.hero-scroll::after{
+  content:'';width:1px;height:42px;
+  background:rgba(255,255,255,.4);
+  animation:scrollLine 2.2s ease-in-out infinite;
+}
+@keyframes scrollLine{
+  0%{height:0;opacity:0}
+  50%{height:42px;opacity:1}
+  100%{height:0;opacity:0;transform:translateY(42px)}
+}
+
+/* ============ TRUST BAR ============ */
+.trust-bar{
+  background:#fff;
+  padding:54px 32px;
+  border-bottom:1px solid var(--color-border);
+}
+.trust-inner{
+  max-width:var(--container);margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:48px;
+  text-align:center;
+}
+.trust-item{
+  position:relative;
+}
+.trust-item:not(:last-child)::after{
+  content:'';position:absolute;
+  top:50%;right:-24px;
+  width:1px;height:54px;
+  background:var(--color-border);
+  transform:translateY(-50%);
+}
+.trust-num{
+  font-family:var(--serif);
+  font-size:42px;font-weight:500;
+  color:var(--color-primary);
+  line-height:1;
+  display:flex;align-items:baseline;justify-content:center;gap:4px;
+  margin-bottom:8px;
+}
+.trust-num small{
+  font-size:18px;color:var(--color-accent);
+}
+.trust-label{
+  font-size:12px;letter-spacing:.18em;
+  color:var(--color-text-mute);
+  font-weight:500;
+}
+@media(max-width:768px){
+  .trust-inner{grid-template-columns:repeat(2,1fr);gap:32px}
+  .trust-item:not(:last-child)::after{display:none}
+}
+
+/* ============ SECTION COMMON ============ */
+section{padding:130px 32px}
+.section-inner{max-width:var(--container);margin:0 auto}
+.section-label{
+  font-family:var(--inter);
+  font-size:11px;font-weight:600;
+  letter-spacing:.32em;
+  color:var(--color-accent);
+  margin-bottom:18px;
+  display:flex;align-items:center;gap:14px;
+}
+.section-label::before{
+  content:'';width:32px;height:1px;
+  background:var(--color-accent);
+}
+.section-title{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:clamp(30px,4vw,46px);
+  line-height:1.4;
+  color:var(--color-primary);
+  margin-bottom:24px;
+  letter-spacing:.04em;
+  position:relative;
+  padding-bottom:18px;
+}
+.section-title::after{
+  content:'';position:absolute;
+  bottom:0;left:0;
+  width:0;height:2px;
+  background:var(--color-accent);
+  transition:width .7s ease .2s;
+}
+.fade-in.is-visible .section-title::after,
+.section-title.is-visible::after{width:48px}
+.section-lead{
+  font-size:16px;line-height:2;
+  color:var(--color-text-mute);
+  max-width:680px;
+  margin-bottom:64px;
+}
+
+/* ============ PROBLEMS ============ */
+.problems{background:var(--color-bg)}
+.problems-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:0;
+  border-top:1px solid var(--color-border);
+}
+.problem-item{
+  padding:48px 40px;
+  border-bottom:1px solid var(--color-border);
+  display:flex;gap:24px;align-items:flex-start;
+  position:relative;
+  transition:background .3s;
+}
+.problem-item:nth-child(odd){border-right:1px solid var(--color-border)}
+.problem-item:hover{background:var(--color-bg-paper)}
+.problem-num{
+  font-family:var(--inter);
+  font-size:13px;font-weight:600;
+  color:var(--color-accent);
+  letter-spacing:.15em;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.problem-body h3{
+  font-family:var(--serif);
+  font-size:21px;font-weight:600;
+  color:var(--color-primary);
+  margin-bottom:10px;
+  line-height:1.55;
+}
+.problem-body p{
+  font-size:14px;
+  color:var(--color-text-mute);
+  line-height:1.95;
+}
+@media(max-width:768px){
+  .problems-grid{grid-template-columns:1fr}
+  .problem-item:nth-child(odd){border-right:none}
+}
+.problems-bridge{
+  text-align:center;
+  margin-top:80px;
+  font-family:var(--serif);
+  font-size:clamp(22px,3vw,30px);
+  font-weight:500;
+  color:var(--color-primary);
+  line-height:1.8;
+  letter-spacing:.05em;
+}
+.problems-bridge span{
+  display:inline-block;
+  border-bottom:2px solid var(--color-accent);
+  padding-bottom:6px;
+}
+
+/* ============ DIVIDER ============ */
+.divider{
+  height:280px;
+  background-image:linear-gradient(180deg,rgba(31,49,71,.35),rgba(31,49,71,.55)),url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-size:cover;background-position:center;
+  position:relative;
+}
+.divider-quote{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  padding:32px;
+}
+.divider-quote p{
+  font-family:var(--serif);
+  font-size:clamp(20px,2.6vw,30px);
+  color:#fff;
+  text-align:center;
+  font-weight:400;
+  line-height:1.7;
+  letter-spacing:.06em;
+  max-width:780px;
+}
+.divider-quote p::before,
+.divider-quote p::after{
+  content:'';display:block;
+  width:36px;height:1px;
+  background:var(--color-accent);
+  margin:18px auto;
+}
+
+/* ============ FEATURES ============ */
+.features{background:var(--color-bg-paper)}
+.feature-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+  margin-bottom:120px;
+}
+.feature-row:last-child{margin-bottom:0}
+.feature-row.reverse .feature-image{order:2}
+.feature-image{
+  position:relative;
+  aspect-ratio:4/5;
+  overflow:hidden;
+}
+.feature-image img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .8s ease;
+}
+.feature-image:hover img{transform:scale(1.05)}
+.feature-image-num{
+  position:absolute;
+  top:24px;left:24px;
+  font-family:var(--serif);
+  font-size:64px;font-weight:500;
+  color:#fff;
+  text-shadow:0 4px 20px rgba(0,0,0,.4);
+  letter-spacing:.02em;
+  line-height:1;
+}
+.feature-image-num::after{
+  content:'';display:block;
+  width:38px;height:1px;
+  background:var(--color-accent);
+  margin-top:8px;
+}
+.feature-text-label{
+  font-family:var(--inter);
+  font-size:11px;font-weight:600;
+  letter-spacing:.28em;
+  color:var(--color-accent);
+  margin-bottom:18px;
+}
+.feature-text-title{
+  font-family:var(--serif);
+  font-size:clamp(26px,3.4vw,38px);
+  font-weight:600;
+  color:var(--color-primary);
+  line-height:1.45;
+  margin-bottom:24px;
+  letter-spacing:.04em;
+}
+.feature-text-body{
+  font-size:15px;line-height:2;
+  color:var(--color-text);
+  margin-bottom:24px;
+}
+.feature-tags{
+  display:flex;gap:10px;flex-wrap:wrap;
+}
+.feature-tag{
+  font-family:var(--inter);
+  font-size:11px;font-weight:500;
+  letter-spacing:.1em;
+  color:var(--color-primary);
+  border:1px solid var(--color-border);
+  background:#fff;
+  padding:8px 14px;
+}
+@media(max-width:900px){
+  .feature-row,.feature-row.reverse{grid-template-columns:1fr;gap:36px}
+  .feature-row.reverse .feature-image{order:initial}
+}
+
+/* ============ MENU ============ */
+.menu{background:var(--color-bg)}
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  border:1px solid var(--color-border);
+  background:#fff;
+}
+.menu-card{
+  padding:48px 36px;
+  border-right:1px solid var(--color-border);
+  position:relative;
+  transition:all .3s;
+}
+.menu-card:last-child{border-right:none}
+.menu-card.featured{
+  background:var(--color-primary);
+  color:#fff;
+  position:relative;
+}
+.menu-card.featured::before{
+  content:'RECOMMENDED';
+  position:absolute;top:18px;right:24px;
+  font-family:var(--inter);
+  font-size:9px;font-weight:600;
+  letter-spacing:.22em;
+  color:var(--color-accent-light);
+}
+.menu-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(31,49,71,.08)}
+.menu-card.featured:hover{box-shadow:0 18px 40px rgba(31,49,71,.25)}
+.menu-name{
+  font-family:var(--serif);
+  font-size:20px;font-weight:600;
+  margin-bottom:8px;
+  letter-spacing:.04em;
+}
+.menu-card.featured .menu-name{color:#fff}
+.menu-card:not(.featured) .menu-name{color:var(--color-primary)}
+.menu-tagline{
+  font-size:12px;letter-spacing:.05em;
+  color:var(--color-text-mute);
+  margin-bottom:28px;
+  line-height:1.7;
+}
+.menu-card.featured .menu-tagline{color:rgba(255,255,255,.7)}
+.menu-price{
+  font-family:var(--serif);
+  font-size:34px;font-weight:500;
+  margin-bottom:6px;line-height:1;
+  display:flex;align-items:baseline;gap:6px;
+}
+.menu-card.featured .menu-price{color:#fff}
+.menu-card:not(.featured) .menu-price{color:var(--color-primary)}
+.menu-price small{
+  font-size:13px;font-weight:400;
+  color:var(--color-text-mute);
+  letter-spacing:.05em;
+}
+.menu-card.featured .menu-price small{color:rgba(255,255,255,.7)}
+.menu-price-note{
+  font-size:11px;
+  color:var(--color-text-mute);
+  margin-bottom:32px;
+  letter-spacing:.05em;
+}
+.menu-card.featured .menu-price-note{color:rgba(255,255,255,.6)}
+.menu-list{
+  list-style:none;
+  padding-top:24px;
+  border-top:1px solid var(--color-border);
+}
+.menu-card.featured .menu-list{border-top-color:rgba(255,255,255,.2)}
+.menu-list li{
+  font-size:13px;
+  padding:8px 0;
+  display:flex;gap:10px;align-items:flex-start;
+  line-height:1.7;
+}
+.menu-list li::before{
+  content:'\f00c';
+  font-family:'Font Awesome 6 Free';font-weight:900;
+  color:var(--color-accent);
+  font-size:10px;flex-shrink:0;margin-top:6px;
+}
+@media(max-width:900px){
+  .menu-grid{grid-template-columns:1fr}
+  .menu-card{border-right:none;border-bottom:1px solid var(--color-border)}
+  .menu-card:last-child{border-bottom:none}
+}
+
+/* ============ TESTIMONIALS ============ */
+.testimonials{background:var(--color-bg-paper)}
+.testi-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px;
+}
+.testi-card{
+  background:#fff;
+  padding:44px 32px;
+  border-top:3px solid var(--color-accent);
+  position:relative;
+  transition:all .3s;
+}
+.testi-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(31,49,71,.07)}
+.testi-quote{
+  font-family:var(--serif);
+  font-size:48px;color:var(--color-accent-light);
+  line-height:1;
+  margin-bottom:16px;
+}
+.testi-text{
+  font-size:14px;line-height:2;
+  color:var(--color-text);
+  margin-bottom:28px;
+}
+.testi-meta{
+  padding-top:20px;
+  border-top:1px solid var(--color-border);
+  font-size:12px;
+  color:var(--color-text-mute);
+  line-height:1.7;
+}
+.testi-meta strong{
+  display:block;
+  font-family:var(--serif);
+  font-size:14px;font-weight:600;
+  color:var(--color-primary);
+  margin-bottom:4px;
+}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr}}
+
+/* ============ FLOW ============ */
+.flow{background:var(--color-bg)}
+.flow-list{
+  position:relative;
+  padding-left:48px;
+}
+.flow-list::before{
+  content:'';position:absolute;
+  left:18px;top:14px;bottom:14px;
+  width:1px;
+  background:var(--color-border);
+}
+.flow-item{
+  position:relative;
+  padding:24px 0 48px;
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:40px;
+  align-items:start;
+}
+.flow-item:last-child{padding-bottom:0}
+.flow-num{
+  position:absolute;left:-48px;top:24px;
+  width:38px;height:38px;
+  background:var(--color-bg);
+  border:1.5px solid var(--color-accent);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--inter);
+  font-weight:600;font-size:13px;
+  color:var(--color-accent);
+  transition:all .3s;
+}
+.flow-item:hover .flow-num{
+  background:var(--color-accent);
+  color:#fff;
+  transform:scale(1.1);
+}
+.flow-step{
+  font-family:var(--inter);
+  font-size:11px;font-weight:600;
+  letter-spacing:.25em;
+  color:var(--color-accent);
+  margin-bottom:6px;
+}
+.flow-time{
+  font-family:var(--serif);
+  font-size:14px;
+  color:var(--color-text-mute);
+  letter-spacing:.05em;
+}
+.flow-body h3{
+  font-family:var(--serif);
+  font-size:22px;font-weight:600;
+  color:var(--color-primary);
+  margin-bottom:12px;
+  letter-spacing:.04em;
+}
+.flow-body p{
+  font-size:14px;line-height:2;
+  color:var(--color-text);
+}
+@media(max-width:768px){
+  .flow-item{grid-template-columns:1fr;gap:16px}
+}
+
+/* ============ DIRECTOR ============ */
+.director{background:var(--color-primary);color:#fff;position:relative;overflow:hidden}
+.director::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background-image:radial-gradient(circle at 80% 20%,rgba(199,122,74,.18),transparent 40%);
+}
+.director-inner{position:relative;z-index:1}
+.director .section-label{color:var(--color-accent-light)}
+.director .section-label::before{background:var(--color-accent-light)}
+.director .section-title{color:#fff}
+.director-grid{
+  display:grid;grid-template-columns:1fr 1.4fr;gap:80px;
+  align-items:center;
+}
+.director-image{
+  aspect-ratio:3/4;
+  overflow:hidden;
+  position:relative;
+}
+.director-image img{width:100%;height:100%;object-fit:cover}
+.director-image::after{
+  content:'';position:absolute;inset:0;
+  border:1px solid rgba(255,255,255,.2);
+  pointer-events:none;
+  margin:14px;
+}
+.director-name{
+  font-family:var(--serif);
+  font-size:32px;font-weight:600;
+  margin-bottom:6px;letter-spacing:.04em;
+}
+.director-role{
+  font-family:var(--inter);
+  font-size:11px;letter-spacing:.28em;
+  color:var(--color-accent-light);
+  margin-bottom:32px;font-weight:500;
+}
+.director-message{
+  font-size:15px;line-height:2.1;
+  color:rgba(255,255,255,.86);
+  margin-bottom:20px;
+}
+.director-signature{
+  display:flex;align-items:center;gap:18px;
+  margin-top:36px;padding-top:28px;
+  border-top:1px solid rgba(255,255,255,.2);
+}
+.director-sig-line{
+  flex:1;height:1px;background:rgba(255,255,255,.2);
+}
+.director-sig-name{
+  font-family:var(--serif);
+  font-size:18px;font-weight:500;
+  letter-spacing:.08em;
+}
+@media(max-width:900px){
+  .director-grid{grid-template-columns:1fr;gap:40px}
+}
+
+/* ============ ACCESS ============ */
+.access{background:var(--color-bg)}
+.access-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;
+  align-items:start;
+}
+.access-info{padding-top:20px}
+.access-row{
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:24px;
+  padding:22px 0;
+  border-bottom:1px solid var(--color-border);
+}
+.access-label{
+  font-family:var(--inter);
+  font-size:11px;font-weight:600;
+  letter-spacing:.22em;
+  color:var(--color-accent);
+  padding-top:4px;
+}
+.access-value{
+  font-size:14px;
+  color:var(--color-text);
+  line-height:1.85;
+}
+.access-value a{
+  color:var(--color-primary);
+  border-bottom:1px solid var(--color-border);
+  transition:border-color .2s;
+}
+.access-value a:hover{border-color:var(--color-accent)}
+.access-map{
+  aspect-ratio:4/5;
+  background-image:linear-gradient(180deg,rgba(31,49,71,.15),rgba(31,49,71,.5)),url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+  background-size:cover;background-position:center;
+  position:relative;
+}
+.access-map-tag{
+  position:absolute;
+  top:24px;left:24px;
+  background:rgba(255,255,255,.95);
+  padding:14px 18px;
+  font-family:var(--inter);
+  font-size:11px;letter-spacing:.18em;
+  color:var(--color-primary);
+  font-weight:600;
+}
+.access-map-tag i{color:var(--color-accent);margin-right:8px}
+@media(max-width:900px){.access-grid{grid-template-columns:1fr;gap:40px}}
+
+/* ============ FAQ ============ */
+.faq{background:var(--color-bg-paper)}
+.faq-list{max-width:880px;margin:0 auto}
+.faq-item{
+  border-bottom:1px solid var(--color-border);
+}
+.faq-q{
+  width:100%;
+  background:none;border:none;cursor:pointer;
+  padding:28px 0;
+  display:flex;align-items:center;gap:20px;
+  text-align:left;
+  font-family:var(--sans);
+  transition:color .2s;
+}
+.faq-q:hover{color:var(--color-accent)}
+.faq-q-mark{
+  font-family:var(--serif);
+  font-size:24px;font-weight:500;
+  color:var(--color-accent);
+  flex-shrink:0;
+  line-height:1;
+}
+.faq-q-text{
+  flex:1;
+  font-size:15px;font-weight:500;
+  color:var(--color-primary);
+  line-height:1.6;
+}
+.faq-q-icon{
+  width:32px;height:32px;
+  border:1px solid var(--color-border);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;
+  color:var(--color-text-mute);
+  transition:all .3s;
+  flex-shrink:0;
+}
+.faq-item.open .faq-q-icon{
+  background:var(--color-accent);
+  border-color:var(--color-accent);
+  color:#fff;
+  transform:rotate(45deg);
+}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .4s ease,padding .4s ease;
+}
+.faq-item.open .faq-a{
+  max-height:400px;
+  padding:0 0 28px 44px;
+}
+.faq-a p{
+  font-size:14px;line-height:2;
+  color:var(--color-text-mute);
+}
+
+/* ============ FINAL CTA ============ */
+.final-cta{
+  background-image:linear-gradient(120deg,rgba(15,26,43,.92),rgba(31,49,71,.85)),url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-size:cover;background-position:center;
+  color:#fff;
+  text-align:center;
+  padding:140px 32px;
+}
+.final-cta .section-label{
+  color:var(--color-accent-light);
+  justify-content:center;
+}
+.final-cta .section-label::before{display:none}
+.final-cta h2{
+  font-family:var(--serif);
+  font-size:clamp(28px,4vw,46px);
+  font-weight:600;
+  margin-bottom:24px;
+  line-height:1.5;
+  letter-spacing:.05em;
+}
+.final-cta p{
+  font-size:15px;line-height:2;
+  color:rgba(255,255,255,.8);
+  max-width:560px;margin:0 auto 48px;
+}
+.final-cta .btn-primary{padding:22px 56px;font-size:14px}
+
+/* ============ FOOTER ============ */
+.footer{
+  background:#15233A;
+  color:rgba(255,255,255,.6);
+  padding:80px 32px 32px;
+}
+.footer-inner{
+  max-width:var(--container);margin:0 auto;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:60px;
+  padding-bottom:48px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.footer-brand .logo-text{color:#fff}
+.footer-brand p{
+  font-size:13px;line-height:1.9;
+  margin-top:20px;
+  color:rgba(255,255,255,.55);
+  max-width:380px;
+}
+.footer-col h4{
+  font-family:var(--inter);
+  font-size:11px;letter-spacing:.22em;
+  font-weight:600;
+  color:var(--color-accent-light);
+  margin-bottom:20px;
+}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:12px}
+.footer-col a{
+  font-size:13px;
+  color:rgba(255,255,255,.7);
+  transition:color .2s;
+}
+.footer-col a:hover{color:var(--color-accent-light)}
+.footer-bottom{
+  padding-top:32px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:11px;
+  color:rgba(255,255,255,.4);
+  letter-spacing:.08em;
+}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr;gap:40px}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes heroFadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes heroSlideUp{
+  from{opacity:0;transform:translateY(32px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero-label{animation:heroFadeIn 0.9s 0.3s both}
+.hero-title{animation:heroSlideUp 1s 0.5s both}
+.hero-sub{animation:heroSlideUp 1s 0.8s both}
+.hero-actions{animation:heroSlideUp 1s 1.0s both}
+.hero-scroll{animation:heroFadeIn 1.2s 1.4s both}
+
+.fade-in{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+.fade-in.is-visible{opacity:1;transform:translateY(0)}
+.fade-in-left{opacity:0;transform:translateX(-32px);transition:opacity .9s ease,transform .9s ease}
+.fade-in-left.is-visible{opacity:1;transform:translateX(0)}
+.fade-in-right{opacity:0;transform:translateX(32px);transition:opacity .9s ease,transform .9s ease}
+.fade-in-right.is-visible{opacity:1;transform:translateX(0)}
+.stagger > *{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.stagger.is-visible > *{opacity:1;transform:translateY(0)}
+.stagger.is-visible > *:nth-child(1){transition-delay:.05s}
+.stagger.is-visible > *:nth-child(2){transition-delay:.15s}
+.stagger.is-visible > *:nth-child(3){transition-delay:.25s}
+.stagger.is-visible > *:nth-child(4){transition-delay:.35s}
+.stagger.is-visible > *:nth-child(5){transition-delay:.45s}
+.stagger.is-visible > *:nth-child(6){transition-delay:.55s}
+.trust-bar{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.trust-bar.is-visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">診</div>
+      <div class="logo-text">
+        組織力診断士協会
+        <small>COC ・ Capability of Organization</small>
+      </div>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#problems" class="nav-link">こんなお悩み</a>
+      <a href="#features" class="nav-link">診断の特徴</a>
+      <a href="#menu" class="nav-link">プラン</a>
+      <a href="#flow" class="nav-link">ご相談の流れ</a>
+      <a href="#director" class="nav-link">代表挨拶</a>
+      <a href="#final-cta" class="nav-cta">無料相談する</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-label">A NEW WAY TO SEE YOUR ORGANIZATION</div>
+    <h1 class="hero-title">
+      組織は、<br>
+      <span>診ると、</span>変わる。
+    </h1>
+    <p class="hero-sub">
+      人事戦略の指標に。<br>
+      組織力診断士が、見えなかった輪郭を可視化します。<br>
+      京都発・全国対応の伴走型・人事戦略支援。
+    </p>
+    <div class="hero-actions">
+      <a href="#final-cta" class="btn-primary">
+        無料で相談する <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <a href="#features" class="btn-ghost">
+        診断について見る <i class="fa-solid fa-arrow-down"></i>
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-num">12<small>の尺度</small></div>
+      <div class="trust-label">MEASUREMENT AXIS</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">60<small>分</small></div>
+      <div class="trust-label">FREE CONSULTATION</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">全国<small>対応</small></div>
+      <div class="trust-label">NATIONWIDE</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">京都<small>本部</small></div>
+      <div class="trust-label">BASED IN KYOTO</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PROBLEMS ============ -->
+<section class="problems" id="problems">
+  <div class="section-inner">
+    <div class="fade-in">
+      <div class="section-label">PROBLEMS</div>
+      <h2 class="section-title">こんなお悩み、<br>持ち込まれてきませんか。</h2>
+      <p class="section-lead">
+        組織の課題は、輪郭が見えない。<br>
+        だから打ち手が空振りする。私たちが解決したいのは、その輪郭です。
+      </p>
+    </div>
+    <div class="problems-grid stagger">
+      <div class="problem-item">
+        <div class="problem-num">01</div>
+        <div class="problem-body">
+          <h3>採用しても、定着しない。</h3>
+          <p>合うと思って採った人ほど、なぜか辞めていく。組織と人の相性が、感覚でしかつかめていない。</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">02</div>
+        <div class="problem-body">
+          <h3>部署の壁が、思ったより高い。</h3>
+          <p>同じ会社のはずなのに、伝えたことが伝わらない。情報が縦に流れて、横に渡らない。</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">03</div>
+        <div class="problem-body">
+          <h3>評価制度が、しっくりこない。</h3>
+          <p>頑張った人を正しく評価したい。でも何を見て評価すれば公平なのか、軸が定まらない。</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">04</div>
+        <div class="problem-body">
+          <h3>経営層と現場の、温度差。</h3>
+          <p>方針を出しても、現場の手応えが薄い。どこですれ違っているのか、見えないまま時間が過ぎる。</p>
+        </div>
+      </div>
+    </div>
+    <div class="problems-bridge fade-in">
+      <p>そんな組織の<span>「いま」</span>、可視化できますか。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIVIDER ============ -->
+<div class="divider">
+  <div class="divider-quote">
+    <p>組織は、見えてくると、<br>動かせるようになる。</p>
+  </div>
+</div>
+
+<!-- ============ FEATURES ============ -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="fade-in" style="margin-bottom:80px">
+      <div class="section-label">FEATURES</div>
+      <h2 class="section-title">組織を診る、という<br>新しい人事戦略。</h2>
+      <p class="section-lead">
+        感覚や経験だけに頼らない、客観的な指標で組織を見る。<br>
+        その上で、経営者の意思と一緒に、次の一手を描いていく。
+      </p>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-image fade-in-left">
+        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="12の尺度で可視化">
+        <div class="feature-image-num">01</div>
+      </div>
+      <div class="feature-content fade-in-right">
+        <div class="feature-text-label">FEATURE 01</div>
+        <h3 class="feature-text-title">12の尺度で、<br>組織の輪郭を可視化。</h3>
+        <p class="feature-text-body">
+          基本的な発想を測定することで、組織と個人の「変わりにくい個性」が見えてきます。120問の設問から12の尺度で数値化し、グラフで可視化。曖昧だった印象が、はじめて言葉になる瞬間です。
+        </p>
+        <div class="feature-tags">
+          <span class="feature-tag">VISUALIZATION</span>
+          <span class="feature-tag">12 AXIS</span>
+          <span class="feature-tag">GRAPH OUTPUT</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-image fade-in-right">
+        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="伴走型の解釈セッション">
+        <div class="feature-image-num">02</div>
+      </div>
+      <div class="feature-content fade-in-left">
+        <div class="feature-text-label">FEATURE 02</div>
+        <h3 class="feature-text-title">数字を「読む」まで、<br>一緒に伴走します。</h3>
+        <p class="feature-text-body">
+          診断結果は、出して終わりではありません。経営者と一緒に数字を読み解き、組織の現在地と次の一手を言葉にしていく解釈セッションを必ずセットにしています。結果を「使える」状態まで届けます。
+        </p>
+        <div class="feature-tags">
+          <span class="feature-tag">CO-INTERPRETATION</span>
+          <span class="feature-tag">EXECUTIVE SESSION</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-image fade-in-left">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="経営者の言葉で">
+        <div class="feature-image-num">03</div>
+      </div>
+      <div class="feature-content fade-in-right">
+        <div class="feature-text-label">FEATURE 03</div>
+        <h3 class="feature-text-title">経営者の言葉で、<br>組織が動き出す。</h3>
+        <p class="feature-text-body">
+          診断は、行動につながって初めて意味を持ちます。数値で見えたものを、経営者ご自身の言葉に落とし込み、現場へ降ろしていく。その伝え方の設計までを、私たちは支援します。
+        </p>
+        <div class="feature-tags">
+          <span class="feature-tag">ACTION DESIGN</span>
+          <span class="feature-tag">CASCADE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<section class="menu" id="menu">
+  <div class="section-inner">
+    <div class="fade-in" style="margin-bottom:64px;text-align:center">
+      <div class="section-label" style="justify-content:center">PLAN</div>
+      <h2 class="section-title" style="text-align:center">ご利用プラン</h2>
+      <p class="section-lead" style="margin:0 auto 0">
+        まずは無料相談から。組織のサイズや課題に合わせて、最適なプランをご提案します。
+      </p>
+    </div>
+    <div class="menu-grid stagger">
+      <div class="menu-card">
+        <div class="menu-name">無料相談</div>
+        <div class="menu-tagline">まずはお話を伺うところから</div>
+        <div class="menu-price">¥0</div>
+        <div class="menu-price-note">60分・オンライン可</div>
+        <ul class="menu-list">
+          <li>組織の現状ヒアリング</li>
+          <li>診断概要のご説明</li>
+          <li>進め方のご提案</li>
+        </ul>
+      </div>
+      <div class="menu-card featured">
+        <div class="menu-name">組織力診断<br>スタンダード</div>
+        <div class="menu-tagline">中核プラン・もっとも選ばれています</div>
+        <div class="menu-price">¥298,000<small>〜</small></div>
+        <div class="menu-price-note">税別 / 対象人数による</div>
+        <ul class="menu-list">
+          <li>全社員アンケート（120問）</li>
+          <li>12軸スコアレポート</li>
+          <li>経営層向け解釈セッション(120分)</li>
+          <li>3ヶ月の実行サポート</li>
+        </ul>
+      </div>
+      <div class="menu-card">
+        <div class="menu-name">伴走顧問契約</div>
+        <div class="menu-tagline">継続的に組織を診ていく</div>
+        <div class="menu-price">¥150,000<small>/月</small></div>
+        <div class="menu-price-note">税別 / 6ヶ月から</div>
+        <ul class="menu-list">
+          <li>月次の組織モニタリング</li>
+          <li>四半期診断と振り返り</li>
+          <li>経営判断への伴走</li>
+          <li>採用・育成設計の助言</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials">
+  <div class="section-inner">
+    <div class="fade-in" style="margin-bottom:64px">
+      <div class="section-label">VOICE</div>
+      <h2 class="section-title">受けた経営者の声</h2>
+    </div>
+    <div class="testi-grid stagger">
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">
+          長年なんとなく感じていた「組織のクセ」が、はじめて言葉になりました。打ち手の精度が変わったと、現場のメンバーからも声が上がっています。
+        </p>
+        <div class="testi-meta">
+          <strong>製造業 / 代表取締役</strong>
+          従業員数 48名・関西
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">
+          採用基準を「なんとなく」で決めていたことに気づきました。診断後は、組織のどこに合う人かが言語化できるようになり、定着率が変わってきています。
+        </p>
+        <div class="testi-meta">
+          <strong>IT企業 / 人事部長</strong>
+          従業員数 120名・首都圏
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">
+          経営層と現場の温度差の正体が、ここまで具体的に見えるとは思いませんでした。伴走してもらえるので、結果を見て終わりにならないのが何より助かっています。
+        </p>
+        <div class="testi-meta">
+          <strong>サービス業 / 役員</strong>
+          従業員数 85名・東海
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLOW ============ -->
+<section class="flow" id="flow">
+  <div class="section-inner">
+    <div class="fade-in" style="margin-bottom:80px">
+      <div class="section-label">FLOW</div>
+      <h2 class="section-title">ご相談の流れ</h2>
+      <p class="section-lead">
+        無料相談から、診断・解釈セッション、実行支援まで。<br>
+        おおむね2〜3ヶ月で組織の輪郭が見え、次の一手が動き出します。
+      </p>
+    </div>
+    <div class="flow-list stagger">
+      <div class="flow-item">
+        <div class="flow-num">01</div>
+        <div>
+          <div class="flow-step">STEP 01</div>
+          <div class="flow-time">所要時間：60分</div>
+        </div>
+        <div class="flow-body">
+          <h3>無料相談</h3>
+          <p>まずはオンラインで60分。組織の現状と、いま気になっていることをお聞かせください。診断が必要かどうかも含めて、率直にお話しします。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">02</div>
+        <div>
+          <div class="flow-step">STEP 02</div>
+          <div class="flow-time">所要時間：1週間</div>
+        </div>
+        <div class="flow-body">
+          <h3>診断設計</h3>
+          <p>対象範囲・実施タイミング・告知方法を一緒に設計します。社員の方が安心して回答できる環境づくりまで、丁寧に整えます。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">03</div>
+        <div>
+          <div class="flow-step">STEP 03</div>
+          <div class="flow-time">所要時間：2〜3週間</div>
+        </div>
+        <div class="flow-body">
+          <h3>診断実施</h3>
+          <p>全社員アンケート（120問）をオンラインで実施。回収・集計・スコアレポート作成まで、私たちが責任を持って進めます。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">04</div>
+        <div>
+          <div class="flow-step">STEP 04</div>
+          <div class="flow-time">所要時間：120分</div>
+        </div>
+        <div class="flow-body">
+          <h3>解釈セッション</h3>
+          <p>経営層の方と一緒に、診断結果を読み解きます。数字の意味と、組織にとっての「次の一手」を言語化していく時間です。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">05</div>
+        <div>
+          <div class="flow-step">STEP 05</div>
+          <div class="flow-time">期間：3ヶ月〜</div>
+        </div>
+        <div class="flow-body">
+          <h3>実行サポート</h3>
+          <p>診断後3ヶ月、見えた課題への実行を伴走します。必要に応じて顧問契約での継続支援にも切り替え可能です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIRECTOR ============ -->
+<section class="director" id="director">
+  <div class="section-inner director-inner">
+    <div class="director-grid">
+      <div class="director-image fade-in-left">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="代表理事 江田幸央">
+      </div>
+      <div class="fade-in-right">
+        <div class="section-label">MESSAGE FROM DIRECTOR</div>
+        <h2 class="section-title">代表挨拶</h2>
+        <p class="director-message">
+          組織のことを「なんとなく」で判断する時代は、もう終わりに近づいています。<br><br>
+          私たちが大切にしているのは、組織を「診る」という視点です。数字で見ること自体が目的ではなく、見えてはじめて、経営者の意思が組織に届くようになる。その瞬間に立ち会いたくて、私たちはこの仕事を続けています。
+        </p>
+        <p class="director-message">
+          120問の設問から12の尺度で組織を可視化する「組織力診断システム」は、長年にわたる組織開発の現場と研究をベースに開発しました。けれど、本当に大事なのはその先。結果を経営者の言葉に翻訳し、組織に降ろしていく伴走を、私たちは大切にしています。
+        </p>
+        <div class="director-signature">
+          <div class="director-sig-line"></div>
+          <div>
+            <div class="director-role" style="margin-bottom:6px">REPRESENTATIVE DIRECTOR</div>
+            <div class="director-sig-name">江田 幸央</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACCESS ============ -->
+<section class="access" id="access">
+  <div class="section-inner">
+    <div class="fade-in" style="margin-bottom:64px">
+      <div class="section-label">ACCESS</div>
+      <h2 class="section-title">アクセス・お問い合わせ</h2>
+    </div>
+    <div class="access-grid">
+      <div class="access-info fade-in-left">
+        <div class="access-row">
+          <div class="access-label">NAME</div>
+          <div class="access-value">一般社団法人 組織力診断士協会</div>
+        </div>
+        <div class="access-row">
+          <div class="access-label">ADDRESS</div>
+          <div class="access-value">
+            〒600-8216<br>
+            京都市下京区烏丸通七条下ル<br>
+            東塩小路町735 京阪京都ビル8階
+          </div>
+        </div>
+        <div class="access-row">
+          <div class="access-label">TEL</div>
+          <div class="access-value"><a href="tel:0757088999">075-708-8999</a></div>
+        </div>
+        <div class="access-row">
+          <div class="access-label">FAX</div>
+          <div class="access-value">075-320-1398</div>
+        </div>
+        <div class="access-row">
+          <div class="access-label">EMAIL</div>
+          <div class="access-value"><a href="mailto:info@coc.or.jp">info@coc.or.jp</a></div>
+        </div>
+        <div class="access-row">
+          <div class="access-label">HOURS</div>
+          <div class="access-value">平日 9:00 - 18:00<br>（土日祝休）</div>
+        </div>
+      </div>
+      <div class="access-map fade-in-right">
+        <div class="access-map-tag"><i class="fa-solid fa-location-dot"></i>京阪京都ビル 8F</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq">
+  <div class="section-inner">
+    <div class="fade-in" style="margin-bottom:64px;text-align:center">
+      <div class="section-label" style="justify-content:center">FAQ</div>
+      <h2 class="section-title" style="text-align:center">よくあるご質問</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">診断はどれぐらいの期間がかかりますか？</span>
+          <span class="faq-q-icon"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="faq-a">
+          <p>無料相談から実行サポート開始まで、おおむね2〜3ヶ月が目安です。社員の方の回答自体は1人あたり20〜30分で完了します。組織の規模やスケジュールに合わせて柔軟に調整できますので、まずはお気軽にご相談ください。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">何人から実施できますか？</span>
+          <span class="faq-q-icon"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="faq-a">
+          <p>5名規模の組織から、数百名規模の企業まで実績があります。少人数の場合は経営層・幹部層を中心に、規模が大きい場合は部門別の分析もご提供しています。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">結果はどのようにフィードバックされますか？</span>
+          <span class="faq-q-icon"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="faq-a">
+          <p>レポートをお渡しして終わり、にはしません。経営層向けの解釈セッション（120分）を必ずセットにしており、数字の読み方・組織にとっての意味・次の一手までを一緒に言語化していきます。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">オンラインだけでも実施できますか？</span>
+          <span class="faq-q-icon"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="faq-a">
+          <p>はい、全国対応しています。診断アンケート・解釈セッション・実行サポート、すべてオンラインで完結可能です。ご希望に応じて、京都本部または現地でのセッションも対応しています。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">社員に「監視されている」と感じさせませんか？</span>
+          <span class="faq-q-icon"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="faq-a">
+          <p>もっとも大切にしている部分です。診断は個人を評価するものではなく、組織を見るためのものであることを丁寧に伝える告知設計から、私たちが伴走します。匿名性の担保と社内コミュニケーションの設計まで含めてご提案いたします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="final-cta">
+  <div class="section-label">START FROM HERE</div>
+  <h2>組織のいま、<br>一度、診てみませんか。</h2>
+  <p>
+    まずは60分の無料相談から。<br>
+    「うちの組織、どうなんだろう」を、一緒に言葉にしていきましょう。
+  </p>
+  <a href="mailto:info@coc.or.jp" class="btn-primary">
+    無料相談を申し込む <i class="fa-solid fa-arrow-right"></i>
+  </a>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:0">
+          <div class="logo-mark" style="border-color:rgba(255,255,255,.5);color:#fff">診</div>
+          <div class="logo-text" style="color:#fff">
+            組織力診断士協会
+            <small style="color:rgba(255,255,255,.5)">COC ・ Capability of Organization</small>
+          </div>
+        </div>
+        <p>
+          人事戦略の指標に。組織を「診る」という新しい視点から、経営者の意思が組織に届くまでを伴走する一般社団法人です。
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>SITE MAP</h4>
+        <ul>
+          <li><a href="#problems">こんなお悩み</a></li>
+          <li><a href="#features">診断の特徴</a></li>
+          <li><a href="#menu">プラン</a></li>
+          <li><a href="#flow">ご相談の流れ</a></li>
+          <li><a href="#director">代表挨拶</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CONTACT</h4>
+        <ul>
+          <li><a href="tel:0757088999">TEL: 075-708-8999</a></li>
+          <li><a href="mailto:info@coc.or.jp">info@coc.or.jp</a></li>
+          <li>京都市下京区烏丸通七条下ル<br>東塩小路町735 京阪京都ビル8階</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 一般社団法人 組織力診断士協会</div>
+      <div>Capability of Organization Council</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav toggle (mobile)
+document.getElementById('navToggle')?.addEventListener('click', () => {
+  document.getElementById('nav').classList.toggle('is-open');
+});
+document.querySelectorAll('.nav-link, .nav-cta').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('nav').classList.remove('is-open'));
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.parentElement.classList.toggle('open');
+  });
+});
+
+// Animations
+const animEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger, .trust-bar, .section-title');
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      animObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+animEls.forEach(el => {
+  const r = el.getBoundingClientRect();
+  if (r.top < window.innerHeight && r.bottom > 0) {
+    el.classList.add('is-visible');
+  } else {
+    animObs.observe(el);
+  }
+});
+
+// Header shrink on scroll
+const header = document.querySelector('.header');
+let lastY = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  header.style.padding = y > 40 ? '4px 0' : '0';
+  lastY = y;
+});
+</script>
+
+</body>
+</html>
