@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow">
+<title>新メンバー進行レビュー - 2026-05</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', sans-serif;
+  background: linear-gradient(135deg, #fef9f5 0%, #fef3ec 50%, #faf5fd 100%);
+  color: #2c2c2c;
+  line-height: 1.7;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+
+header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 50px 40px;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 8px;
+  background: linear-gradient(90deg, #f4a261, #e76f51, #e9c46a, #2a9d8f, #76c1b3);
+}
+.logo {
+  font-size: 30px;
+  font-weight: 700;
+  color: #2a9d8f;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+h1 {
+  font-size: 26px;
+  color: #264653;
+  margin-bottom: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.subtitle { color: #6b6b6b; font-size: 15px; }
+.meta {
+  display: inline-block;
+  background: #fef3ec;
+  color: #e76f51;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+.exec-summary {
+  background: white;
+  padding: 36px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  border-left: 6px solid #e76f51;
+}
+.exec-summary h2 { color: #e76f51; font-size: 20px; margin-bottom: 16px; }
+.exec-summary p { font-size: 15px; color: #4a4a4a; }
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.stat-card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.stat-card .num {
+  font-size: 36px;
+  font-weight: 700;
+  color: #2a9d8f;
+  display: block;
+  margin-bottom: 4px;
+}
+.stat-card .label { font-size: 12px; color: #6b6b6b; }
+.stat-card.warn .num { color: #e76f51; }
+.stat-card.critical .num { color: #d62828; }
+
+section { margin-bottom: 50px; }
+.section-header {
+  background: white;
+  padding: 24px 32px;
+  border-radius: 16px 16px 0 0;
+  border-bottom: 3px solid #2a9d8f;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.section-header .number {
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, #2a9d8f, #76c1b3);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.section-header h2 { color: #264653; font-size: 22px; }
+.section-body {
+  background: white;
+  padding: 32px;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+.issue-card {
+  margin-bottom: 28px;
+  padding: 24px;
+  background: #fef9f5;
+  border-radius: 12px;
+  border-left: 4px solid #e76f51;
+}
+.issue-card:last-child { margin-bottom: 0; }
+.issue-card.critical {
+  background: #fef0e8;
+  border-left-color: #d62828;
+}
+.issue-card h3 {
+  font-size: 17px;
+  margin-bottom: 12px;
+  color: #2c2c2c;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.frequency-badge {
+  display: inline-block;
+  background: #d62828;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.frequency-badge.normal { background: #e76f51; }
+.issue-card .description {
+  margin-bottom: 12px;
+  color: #4a4a4a;
+  font-size: 14px;
+}
+.solution-box {
+  margin-top: 14px;
+  padding: 14px 16px;
+  background: white;
+  border-radius: 8px;
+  font-size: 14px;
+  border-left: 3px solid #2a9d8f;
+}
+.solution-box strong { color: #2a9d8f; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 13px;
+}
+th {
+  background: #2a9d8f;
+  color: white;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #eee;
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: #fafafa; }
+
+.member-card {
+  margin-bottom: 28px;
+  padding: 28px;
+  background: white;
+  border-radius: 16px;
+  border-top: 4px solid;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.member-card:last-child { margin-bottom: 0; }
+.member-card.pink { border-top-color: #e76f51; }
+.member-card.blue { border-top-color: #2a9d8f; }
+.member-card.green { border-top-color: #76c1b3; }
+.member-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.member-header h3 { font-size: 20px; color: #264653; }
+.status-pill {
+  background: #e8f5f1;
+  color: #2a9d8f;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.member-desc {
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: #4a4a4a;
+  padding: 12px 16px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+.direction-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+.direction-card {
+  padding: 28px 20px;
+  background: linear-gradient(135deg, #fef9f5, #fff);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.direction-card .icon { font-size: 36px; margin-bottom: 12px; display: block; }
+.direction-card h4 { color: #264653; margin-bottom: 10px; font-size: 17px; }
+.direction-card .role {
+  font-size: 12px;
+  color: #2a9d8f;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.direction-card .place {
+  font-size: 12px;
+  color: #888;
+}
+
+.flow-diagram {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 24px;
+  background: #fafbfd;
+  border-radius: 12px;
+}
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.flow-step .step-num {
+  background: #2a9d8f;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+.flow-step .step-content { font-size: 14px; }
+.flow-step .step-content strong { color: #2a9d8f; }
+.flow-arrow {
+  text-align: center;
+  color: #2a9d8f;
+  font-size: 20px;
+}
+
+.next-steps {
+  background: linear-gradient(135deg, #e8f5f1, #f4e7da);
+  padding: 32px;
+  border-radius: 16px;
+  margin-top: 32px;
+}
+.next-steps h3 {
+  color: #2a9d8f;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+.next-steps ol { padding-left: 24px; }
+.next-steps li {
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #4a4a4a;
+}
+.next-steps li strong { color: #264653; }
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 24px;
+  color: #999;
+  font-size: 13px;
+}
+footer code {
+  background: #f4f4f4;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  body { padding: 20px 12px; }
+  .direction-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  h1 { font-size: 20px; }
+  header { padding: 32px 20px; }
+  .section-body { padding: 20px; }
+  .member-card, .exec-summary, .issue-card { padding: 20px; }
+  table { font-size: 12px; }
+  th, td { padding: 8px 10px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="logo">🌱 irodori</div>
+  <h1>新メンバー オンボーディング 現状報告書</h1>
+  <p class="subtitle">スタートアップガイド ／ オリエンテーション ／ OJT 進行レビュー</p>
+  <div class="meta">📅 2026-05-13 作成 ／ 観測期間: 2026-04-13 〜 2026-05-13</div>
+</header>
+
+<div class="stats-row">
+  <div class="stat-card">
+    <span class="num">7</span>
+    <span class="label">対象メンバー数</span>
+  </div>
+  <div class="stat-card">
+    <span class="num">3</span>
+    <span class="label">オリエン実施済</span>
+  </div>
+  <div class="stat-card warn">
+    <span class="num">3</span>
+    <span class="label">ガイド進行中</span>
+  </div>
+  <div class="stat-card critical">
+    <span class="num">19</span>
+    <span class="label">記録されたつまずき</span>
+  </div>
+</div>
+
+<div class="exec-summary">
+  <h2>📊 ざっくり全体感</h2>
+  <p>4月以降に入会した新メンバー7名のオンボーディング進行を見てみた結果、<strong>「Googleカレンダー承認メールが迷惑メールに行く」「Notion/Chatworkアカウント作成手順の混乱」「Facebook Messenger関連設定」</strong>の3領域で <strong>複数名が同じところでつまずいている</strong>のが見えてきました。これらは <strong>ガイドに記述があっても実行段階で詰まりやすい部分</strong>。書いてあること自体は揃っているけれど、<strong>図解や実演を加えて立体的にサポートを補える余地</strong> がある領域だと思います。本資料では全体での気づき・個別の状況・今後の方向性をまとめています。</p>
+</div>
+
+<section>
+  <div class="section-header">
+    <div class="number">1</div>
+    <h2>全体最重要ポイント（構造的つまずき）</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="issue-card critical">
+      <h3>① Googleカレンダー共有・承認メールが迷惑メール行き <span class="frequency-badge">最頻発・5件</span></h3>
+      <p class="description">3人全員が異なる時期に同型の事象を踏んだ。<strong>承認メールが迷惑メールフォルダに自動分類</strong>される仕様問題。</p>
+      <table>
+        <tr><th>日付</th><th>メンバー</th><th>詳細</th></tr>
+        <tr><td>4/13</td><td>山下絢子</td><td>Notion登録時に招待が迷惑メールに</td></tr>
+        <tr><td>4/30</td><td>錫谷詩菜</td><td>カレンダー権限承認後、3時間紛糾</td></tr>
+        <tr><td>5/8</td><td>山下絢子</td><td>同問題が再発（飯田さんスクショ手順で解決）</td></tr>
+        <tr><td>5/8</td><td>池田里歩</td><td>カレンダー共有承認メールが迷惑メール行き</td></tr>
+        <tr><td>5/12</td><td>錫谷詩菜</td><td>承認後に権限が外れる（2度目・原因不明）</td></tr>
+      </table>
+      <div class="solution-box">
+        <strong>💡 補強候補：</strong>迷惑メールフォルダの確認案内＋スクショ実演があると、同じ詰まり方を減らせる可能性。ガイドに記述があっても、スパム分類は本人側で気づきにくいので、実演で立体化する余地あり。
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <h3>② Facebook Messenger 関連 <span class="frequency-badge normal">3件</span></h3>
+      <table>
+        <tr><th>日付</th><th>メンバー</th><th>詳細</th></tr>
+        <tr><td>5/7</td><td>錫谷詩菜</td><td>スマホアプリ未導入で約束破り（子供インフル看病時にPC見れず）</td></tr>
+        <tr><td>5/11</td><td>池田里歩</td><td>再ログイン時の認証コード迷子</td></tr>
+        <tr><td>5/12</td><td>池田里歩</td><td>検索でヒットしない（英字表記名「@Yosuke Amano」）</td></tr>
+      </table>
+      <div class="solution-box">
+        <strong>💡 補強候補：</strong>Messenger関連の運用ノウハウ（スマホアプリ・英字表記名検索・再ログイン手順）を実演ベースで補える領域。書いてあっても気づきにくい・実際に詰まったことのある経験者の補足が効きやすい部分。
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <h3>③ Notion / Chatwork アカウント作成時の混乱 <span class="frequency-badge normal">3件</span></h3>
+      <table>
+        <tr><th>日付</th><th>メンバー</th><th>詳細</th></tr>
+        <tr><td>4/13</td><td>山下絢子</td><td>サインアップURLとログインURL混同、1日紛糾</td></tr>
+        <tr><td>4/14</td><td>山下絢子</td><td>アカウント作成完了したつもりが未完</td></tr>
+        <tr><td>4/30</td><td>池田里歩</td><td>Chatworkアカウント名変更不可→新規作成</td></tr>
+      </table>
+      <div class="solution-box">
+        <strong>💡 補強候補：</strong>アカウント作成手順をスクショ付き or 動画で実演化する候補。文章で読んで自分で操作してみる段階で詰まりやすい部分。
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <h3>④ カレンダー入力ルール（対応不可枠・TimeRex運用） <span class="frequency-badge normal">2件</span></h3>
+      <table>
+        <tr><th>日付</th><th>メンバー</th><th>詳細</th></tr>
+        <tr><td>5/13</td><td>錫谷詩菜</td><td>「終日対応不可」枠とMTG予定が同時に入ってる</td></tr>
+        <tr><td>5/13</td><td>池田里歩</td><td>TimeRex運用ルール不明（候補日抽出ツールと誤解）</td></tr>
+      </table>
+      <div class="solution-box">
+        <strong>💡 補強候補：</strong>カレンダー運用のローカルルール（<strong>対応不可枠の扱い</strong>・<strong>TimeRexの役割分担</strong>）を整理する余地。社内独自の運用知見は文書化が漏れやすい領域。
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <div class="number">2</div>
+    <h2>個別具体ケース</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="member-card pink">
+      <div class="member-header">
+        <h3>🌸 池田 里歩さん</h3>
+        <span class="status-pill">4/30入会 ・ 本日17:00オリエン予定</span>
+      </div>
+      <div class="member-desc">
+        ガイド19項目進捗：<strong>ほぼ完了</strong>。既に永井さん引継ぎOJT突入中（小川代表 ＆ 小山取締役の秘書業務＋くうさん案件 請求書回り）
+      </div>
+      <table>
+        <tr><th>日付</th><th>つまずいた事実</th><th>解決経路</th></tr>
+        <tr><td>4/30</td><td>Chatworkアカウント名変更不可</td><td>新規アカウント作成→小山さん再招待</td></tr>
+        <tr><td>5/8</td><td>カレンダー承認メールが迷惑メール</td><td>永井さん事前注意→本人確認</td></tr>
+        <tr><td>5/11</td><td>Messenger再ログインで認証コード迷子</td><td>永井さんがメール転送</td></tr>
+        <tr><td>5/11</td><td>LINE Business Manager QRログインが不明</td><td>永井さん段階的誘導</td></tr>
+        <tr><td>5/11</td><td>カレンダー編集権限なくリンク貼付不可</td><td>永井さん権限変更</td></tr>
+        <tr><td>5/12</td><td>Messenger検索ヒットしない（英字表記名）</td><td>永井さん指摘</td></tr>
+        <tr><td>5/12</td><td>クライアント送信文面が冗長</td><td>永井さん赤入れ</td></tr>
+        <tr><td>5/13</td><td>TimeRex運用ルール不明</td><td>永井さん指摘「TimeRex≠候補日抽出ツール」</td></tr>
+      </table>
+    </div>
+
+    <div class="member-card blue">
+      <div class="member-header">
+        <h3>📝 山下 絢子さん</h3>
+        <span class="status-pill">3月末入会 ・ ライター枠 ・ 副業勤務</span>
+      </div>
+      <div class="member-desc">
+        ガイド19項目進捗：<strong>完了</strong>・実務段階（オン秘書内部資料の更新＋メルマガ参考登録）
+      </div>
+      <table>
+        <tr><th>日付</th><th>つまずいた事実</th><th>解決経路</th></tr>
+        <tr><td>4/13</td><td>NotionサインアップURLとログインURL混同・1日紛糾</td><td>小山さん指摘→永井さん補足</td></tr>
+        <tr><td>4/14</td><td>アカウント作成完了したつもりが未完</td><td>永井さん案内→再作成</td></tr>
+        <tr><td>4/30</td><td>カレンダー権限「自分のしか見えない」</td><td>永井さん追加権限付与</td></tr>
+        <tr><td>5/8</td><td>同上の再発（迷惑メール内に招待届く問題）</td><td>飯田さんスクショ付き手順案内</td></tr>
+      </table>
+    </div>
+
+    <div class="member-card green">
+      <div class="member-header">
+        <h3>🌱 錫谷 詩菜さん</h3>
+        <span class="status-pill">4月中旬入会 ・ 現役稼働中</span>
+      </div>
+      <div class="member-desc">
+        ガイド完了済み・現場OJT段階。<strong>「ガイドで触れない実務での詰まり」が頻発</strong>している代表事例
+      </div>
+      <table>
+        <tr><th>日付</th><th>つまずいた事実</th><th>解決経路</th></tr>
+        <tr><td>4/27</td><td>パワポ環境無（新規パワポ案件対応不可）</td><td>小川さん「1ヶ月練習・稼働外」指示</td></tr>
+        <tr><td>4/30</td><td>カレンダー権限承認後3時間紛糾</td><td>永井さん再権限付与・図解説明</td></tr>
+        <tr><td>5/7</td><td>FBメッセンジャースマホ未導入で約束破り</td><td>小川さんが代理対応</td></tr>
+        <tr><td>5/7</td><td>Notionタスクに期日入れない</td><td>小川さん「期日と一緒に連絡」ルール提示</td></tr>
+        <tr><td>5/12</td><td>カレンダー権限が承認後に外れる（2度目・原因不明）</td><td>全員から招待メール再送</td></tr>
+        <tr><td>5/13</td><td>「終日対応不可」枠とMTG予定が同時に入ってる</td><td>永井さん「分けて入力してください」</td></tr>
+        <tr><td>5/13</td><td>Notionリンク共有・6点メニューの場所が分からない</td><td>小川さん・どらさん・おけちゃん議論中</td></tr>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <div class="number">3</div>
+    <h2>今後の方向性</h2>
+  </div>
+  <div class="section-body">
+    <h3 style="color:#264653; margin-bottom:12px; font-size:18px;">領域を3つに分けて整理する</h3>
+    <p style="font-size:14px; color:#6b6b6b; margin-bottom:16px;">「オンボーディング」「オリエン」「OJT」が混ざっているのが、現状の "ごちゃごちゃ感" の正体。3層に分離することで各々の役目が明確化される。</p>
+    <div class="direction-grid">
+      <div class="direction-card">
+        <span class="icon">🏗</span>
+        <h4>オンボーディング</h4>
+        <div class="role">担当：泉田さん（ガイド19項目）</div>
+        <p style="font-size:13px; color:#4a4a4a; margin-bottom:8px;">環境セットアップ・全体ルール理解</p>
+        <div class="place">場：入場前〜2週間 ／ 自学・動画</div>
+      </div>
+      <div class="direction-card">
+        <span class="icon">💗</span>
+        <h4>オリエン</h4>
+        <div class="role">担当：おけもん（カウンセラー枠）</div>
+        <p style="font-size:13px; color:#4a4a4a; margin-bottom:8px;">不安解消・橋渡し・期待値調整</p>
+        <div class="place">場：30分1on1</div>
+      </div>
+      <div class="direction-card">
+        <span class="icon">🛠</span>
+        <h4>OJT</h4>
+        <div class="role">担当：配属先PM・先輩</div>
+        <p style="font-size:13px; color:#4a4a4a; margin-bottom:8px;">都度発生する実務・暗黙知</p>
+        <div class="place">場：現場の中</div>
+      </div>
+    </div>
+
+    <h3 style="color:#264653; margin-top:36px; margin-bottom:12px; font-size:18px;">オリエンをAIで支える流れ</h3>
+    <p style="font-size:14px; color:#6b6b6b; margin-bottom:8px;">新人側にこれ以上やることを増やさず、おけもん側がAIの補助で事前準備と事後の仕組み化を回せる形を目指す。</p>
+    <div class="flow-diagram">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>オリエン前</strong>：AIがChatwork・Notion・自己紹介シートを横断して下調べ → 5分で読める要約を生成 → おけもんが現在地把握</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>オリエン中（30分）</strong>：機能ハイライト＋説明シート配布（10分）→ 詰まり所・期待値・心配ごとを聞く（15分）→ 質問受付（5分）</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>オリエン後</strong>：AIがつまずきログに蓄積 → 頻発項目を説明シート・動画化候補に → 構造改善議論ハブに提案ドラフト</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>次のオリエン</strong>：蓄積データから「先回り3つ」をAIが提案 → 説明シートも自動で更新 → <strong>回を重ねるごとにオリエンの質が上がる</strong></div>
+      </div>
+    </div>
+
+    <div class="next-steps">
+      <h3>🚀 AIで仕組み化していくこと（直近やってみたい候補）</h3>
+      <ol>
+        <li><strong>オリエン前の事前リサーチをAIにやらせる</strong> ─ Chatwork・Notion・自己紹介シートを横断してAIが5分で要約。おけもん側がそれを読んで現在地把握。本資料がその試作版にあたります</li>
+        <li><strong>よくあるつまずきTOP3のHTML図解化</strong> ─ Googleカレンダー権限・Messenger設定・Notion操作の3点を、AI支援で図解化→Web公開→新メンバーに永続URLで配布</li>
+        <li><strong>説明シート1枚の作成</strong> ─ オリエン時に渡す要点まとめをHTML化、スマホでも読める形に</li>
+        <li><strong>つまずきの蓄積と還元</strong> ─ 各オリエン後に発生した事案を記録、頻発項目を自動抽出して説明シートに反映→振り返りながら改善を続ける</li>
+        <li><strong>構造的な改善議論の集約</strong> ─ 募集要項に「Notion触れる前提」明記・段階配信化・自己紹介シートの閲覧化など、採用フロー全体の改善提案を継続</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>📋 本資料はモック版（v0.1）<br>
+  作成: 三又謙次郎（おけもん）<br>
+  対象期間: 2026-04-13 〜 2026-05-13</p>
+</footer>
+
+</div>
+</body>
+</html>
