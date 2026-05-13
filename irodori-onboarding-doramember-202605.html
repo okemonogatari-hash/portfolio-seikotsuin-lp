@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow">
+<title>高谷さん（どら）進行状況 - 2026-05</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', sans-serif;
+  background: linear-gradient(135deg, #fef9f5 0%, #fef3ec 50%, #faf5fd 100%);
+  color: #2c2c2c;
+  line-height: 1.7;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  color: #2a9d8f;
+  padding: 8px 18px;
+  border-radius: 22px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.back-link:hover { transform: translateX(-2px); }
+
+header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 36px 32px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 6px;
+  background: linear-gradient(90deg, #76c1b3, #2a9d8f, #264653);
+}
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2a9d8f;
+  margin-bottom: 6px;
+}
+h1 {
+  font-size: 22px;
+  color: #264653;
+  margin-bottom: 10px;
+}
+.subtitle { color: #6b6b6b; font-size: 13px; }
+.meta {
+  display: inline-block;
+  background: #e8f5f1;
+  color: #2a9d8f;
+  padding: 6px 16px;
+  border-radius: 18px;
+  font-size: 12px;
+  margin-top: 12px;
+  font-weight: 500;
+}
+
+.profile-box {
+  background: white;
+  padding: 26px 30px;
+  border-radius: 16px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  border-left: 5px solid #76c1b3;
+}
+.profile-box h2 { color: #2a9d8f; font-size: 18px; margin-bottom: 14px; }
+.profile-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px 20px;
+  font-size: 13px;
+}
+.profile-grid dt { color: #6b6b6b; font-weight: 600; }
+.profile-grid dd { color: #2c2c2c; }
+
+section { margin-bottom: 32px; }
+.section-header {
+  background: white;
+  padding: 18px 26px;
+  border-radius: 14px 14px 0 0;
+  border-bottom: 3px solid #2a9d8f;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.section-header h2 { color: #264653; font-size: 17px; }
+.section-header .icon {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, #2a9d8f, #76c1b3);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.section-body {
+  background: white;
+  padding: 24px;
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.task-card {
+  padding: 16px 18px;
+  background: #fafbfd;
+  border-radius: 10px;
+  border-left: 3px solid #2a9d8f;
+}
+.task-card.done { border-left-color: #2a9d8f; background: #e8f5f1; }
+.task-card.ongoing { border-left-color: #e9c46a; background: #fff8e8; }
+.task-card.future { border-left-color: #f4a261; background: #fff5ec; }
+.task-card h4 {
+  font-size: 14px;
+  color: #264653;
+  margin-bottom: 6px;
+}
+.task-card .status-tag {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 6px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+.task-card.done .status-tag { background: #2a9d8f; color: white; }
+.task-card.ongoing .status-tag { background: #e9c46a; color: white; }
+.task-card.future .status-tag { background: #f4a261; color: white; }
+.task-card p {
+  font-size: 12px;
+  color: #4a4a4a;
+  line-height: 1.6;
+}
+
+.dialog-flow {
+  background: #fafbfd;
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 14px;
+  color: #4a4a4a;
+}
+.dialog-flow .role-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+.role-pill {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.role-pill.requester { color: #e76f51; }
+.role-pill.implementer { color: #2a9d8f; }
+.dialog-flow .arrow { font-size: 22px; color: #2a9d8f; margin: 8px 0; }
+
+.quote-card {
+  background: #fef9f5;
+  padding: 18px 22px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border-left: 3px solid #e76f51;
+  font-size: 13px;
+  color: #4a4a4a;
+}
+.quote-card .quote { font-style: italic; margin-bottom: 6px; }
+.quote-card .quote::before { content: "「"; color: #e76f51; }
+.quote-card .quote::after { content: "」"; color: #e76f51; }
+.quote-card .source { font-size: 11px; color: #888; }
+
+.collab-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px dashed #eee;
+}
+.collab-row:last-child { border-bottom: none; }
+.collab-date {
+  font-size: 12px;
+  color: #2a9d8f;
+  font-weight: 600;
+  min-width: 90px;
+}
+.collab-text { font-size: 13px; color: #4a4a4a; }
+.collab-text strong { color: #264653; }
+
+footer {
+  text-align: center;
+  margin-top: 36px;
+  padding: 20px;
+  color: #999;
+  font-size: 12px;
+}
+
+@media (max-width: 700px) {
+  body { padding: 20px 12px; }
+  .task-grid { grid-template-columns: 1fr; }
+  .profile-grid { grid-template-columns: 1fr; gap: 4px; }
+  .section-body { padding: 18px; }
+  h1 { font-size: 19px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="./irodori-onboarding-report-202605.html" class="back-link">← ダッシュボードに戻る</a>
+
+<header>
+  <div class="logo">🌱 irodori</div>
+  <h1>📚 高谷さん（どら）進行状況</h1>
+  <p class="subtitle">Notion運用パートナーとしての並走 ＆ 運営陣との対話</p>
+  <div class="meta">📅 2026-05-13 時点</div>
+</header>
+
+<!-- プロフィール -->
+<div class="profile-box">
+  <h2>👤 立ち位置とプロフィール</h2>
+  <dl class="profile-grid">
+    <dt>契約形態</dt>
+    <dd>業務委託契約（3ヶ月お試し）</dd>
+    <dt>契約開始日</dt>
+    <dd>3/1付（書面）</dd>
+    <dt>実稼働開始</dt>
+    <dd>3/25（永井さん初回MTG）</dd>
+    <dt>役割</dt>
+    <dd><strong>Notion運用パートナー</strong>（PM補助・自動化担当）</dd>
+    <dt>専門領域</dt>
+    <dd>Notion全体設計／GAS連携／タスク自動化／DB設計／オートメーション</dd>
+    <dt>所在</dt>
+    <dd>北海道（夕張から車1時間ほどの場所）</dd>
+    <dt>稼働パターン</dt>
+    <dd>5/8〜10は対応不可など、対応日を都度発信</dd>
+  </dl>
+</div>
+
+<!-- 動いているタスク -->
+<section>
+  <div class="section-header">
+    <div class="icon">📋</div>
+    <h2>並走している主要タスク</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">Notionと周辺ツール（GAS・Chatwork・Googleドライブ）を横断して、運営の手作業を仕組みに置き換える領域を一手に担当中。</p>
+    <div class="task-grid">
+
+      <div class="task-card done">
+        <h4>日報の自動化<span class="status-tag">実装済</span></h4>
+        <p>個人ページに「日付_名前」自動セット ／ 毎朝7時タスク自動作成 ／ 平日通知の最適化</p>
+      </div>
+
+      <div class="task-card done">
+        <h4>メンバー管理表のNotion DB化<span class="status-tag">実装済</span></h4>
+        <p>スプシ→Notion移行完了。対応可メンバーが上部に来るソート ／ 最終更新1ヶ月超は赤背景でアラート ／ 既存プロフィール項目とグルーピング</p>
+      </div>
+
+      <div class="task-card done">
+        <h4>セルフカウンセリングDB<span class="status-tag">実装済</span></h4>
+        <p>小川さんのセルフカウンセリングフォーマットを設置可能に。希望者へのマイページ自動展開対応</p>
+      </div>
+
+      <div class="task-card ongoing">
+        <h4>作業管理表のGAS自動転記<span class="status-tag">運用開始</span></h4>
+        <p>クライアント時間管理をGASで自動化 ／ 毎週月曜9時に通知 ／ PMがない案件はC6カラムで後埋め運用 ／ 実行アカウント整理中（個人→info@へ移行検討）</p>
+      </div>
+
+      <div class="task-card ongoing">
+        <h4>超過時間の自動通知<span class="status-tag">運用開始</span></h4>
+        <p>前月超過したクライアントを毎月1日昼にChatworkへ自動通知。Notionタスク化はワンクッション要のため一旦Chatworkのみで運用</p>
+      </div>
+
+      <div class="task-card ongoing">
+        <h4>窪田さん案件のデータ移行<span class="status-tag">進行中</span></h4>
+        <p>移行用DB＋データ移行用ページ＋説明動画（Loom 2本）まで作成。泉田さんに引継ぎ確認依頼中</p>
+      </div>
+
+      <div class="task-card ongoing">
+        <h4>個人ページテンプレ修正<span class="status-tag">進行中</span></h4>
+        <p>泉田さんページに投入テスト中。「マスターシートにChatwork ID＋Notionメアド」追加し、超過時間タスク設定に連携予定</p>
+      </div>
+
+      <div class="task-card ongoing">
+        <h4>事業計画／月次推移の整理<span class="status-tag">進行中</span></h4>
+        <p>損益計算書CSVをきれいに取り込み。経常利益率予算10%で算出。5/13に小川さん×どらさんで個別MTG実施済</p>
+      </div>
+
+      <div class="task-card future">
+        <h4>誕生日DBの自動化<span class="status-tag">これから</span></h4>
+        <p>メンバー誕生日の通知の仕組み化。泉田さんからの依頼として残置</p>
+      </div>
+
+      <div class="task-card future">
+        <h4>時間管理表の入力ルール整理<span class="status-tag">これから</span></h4>
+        <p>「年間管理表」「対応期間／担当／プラン／単価／次回やること」など重複項目を整理 ／ 重複入力を減らす方針</p>
+      </div>
+
+      <div class="task-card future">
+        <h4>PMマニュアル協議<span class="status-tag">これから</span></h4>
+        <p>5/14（木）9:30 zoom1で泉田さんと協議予定。窪田さん引継ぎ・個人ページテンプレ・PMマニュアルを30〜60分で</p>
+      </div>
+
+      <div class="task-card future">
+        <h4>定例MTG リマインドの自動化<span class="status-tag">これから</span></h4>
+        <p>小川さん要望「定例MTG当日の朝に、リマインドの連絡をする というタスクが自動発生するといい」</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 運営陣とのやり取り構造 -->
+<section>
+  <div class="section-header">
+    <div class="icon">🗣</div>
+    <h2>運営陣とのやり取りパターン</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="dialog-flow">
+      <p style="font-size:14px; color:#4a4a4a; margin-bottom:10px;"><strong>典型的な進行パターン</strong></p>
+      <div class="role-row">
+        <span class="role-pill requester">🗣 小川さん（要望出し）</span>
+        <span class="role-pill" style="color:#999;">／</span>
+        <span class="role-pill requester">🗣 泉田さん（運用面の要望）</span>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="role-row">
+        <span class="role-pill implementer">🛠 高谷さん（設計判断＋実装）</span>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="role-row">
+        <span class="role-pill" style="color:#76c1b3;">✅ 動作確認・通知設定・運用開始</span>
+      </div>
+    </div>
+
+    <h3 style="color:#264653; font-size:15px; margin-top:24px; margin-bottom:10px;">📝 主なやり取り（直近2週間）</h3>
+
+    <div class="collab-row">
+      <div class="collab-date">5/13</div>
+      <div class="collab-text">事業計画／月次推移の整理MTG（<strong>小川さん×どらさん</strong>）／ マスターシートにChatwork ID・Notionメアドを追加（タスク連携のため）</div>
+    </div>
+    <div class="collab-row">
+      <div class="collab-date">5/11</div>
+      <div class="collab-text"><strong>泉田さん</strong>と15分MTG実施 ／ 作業管理表のGAS実行者整理・通知の動作確認完了 ／ 超過分追加請求の自動通知運用開始</div>
+    </div>
+    <div class="collab-row">
+      <div class="collab-date">5/8〜10</div>
+      <div class="collab-text">どらさん対応不可期間（GW明け）／ 5/11からPMチャットでの自動投稿を本格運用</div>
+    </div>
+    <div class="collab-row">
+      <div class="collab-date">5/7</div>
+      <div class="collab-text"><strong>小川さん</strong>から期日切れタスク確認依頼 ／ 「定例MTG当日朝のリマインド自動化」要望追加</div>
+    </div>
+    <div class="collab-row">
+      <div class="collab-date">5/1</div>
+      <div class="collab-text"><strong>小川さん</strong>「請求書発行は前月20日過ぎに翌月分前払い」のフロー認識共有 ／ 補助金がペンディングになったため <strong>Notion改善を全面的にどらさんに依頼</strong>する方針に転換</div>
+    </div>
+    <div class="collab-row">
+      <div class="collab-date">4/30</div>
+      <div class="collab-text">ZOOM被り検知ダッシュボード（<strong>おけもん×どらさん</strong>連携）／ 「ギリギリの場合もアラート」「誰がそのMTGに出るか」要望対応</div>
+    </div>
+    <div class="collab-row">
+      <div class="collab-date">4/16</div>
+      <div class="collab-text">日報自動化の初期設定 ／ <strong>永井さん</strong>から「過去分の日報名が全て上書きされた」報告 → どらさん深夜まで対応・修正完了</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 本人発信 -->
+<section>
+  <div class="section-header">
+    <div class="icon">💭</div>
+    <h2>本人発信（負荷感・運用判断のメモ）</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">本人が発した言葉から、現在のキャパ感・運用設計の判断軸が見えるもの。</p>
+
+    <div class="quote-card">
+      <p class="quote">優先順位もわかりつつ…小粒タスクも隙間で片づけますので、ご容赦ください〜〜　量は減らしていきたくて…</p>
+      <p class="source">5/1 ／ タスク量が増えてきている中での発信</p>
+    </div>
+
+    <div class="quote-card">
+      <p class="quote">もろもろ追いついてないので、順次やってきます。ちょっとお待ちくださいませ。明日明後日は別案件の対応メインになる予定です</p>
+      <p class="source">5/11 ／ GW明け復帰時のキャパ宣言</p>
+    </div>
+
+    <div class="quote-card">
+      <p class="quote">本当はNotionタスクに追加したいんですけどね。できないことはないけれど、ワンクッション必要なので、どうしようかなと。これだけのためにやるのは、どうしようかなという感じです〜　タスク追加しなかったら、メンションを受け取った人が責任を持ってやってもらうという形で、1回お願いしたいです</p>
+      <p class="source">5/11 ／ 超過時間通知の設計判断（ChatworkだけにするかNotionタスク化までするか）</p>
+    </div>
+
+    <div class="quote-card">
+      <p class="quote">手で追加しなくていいように、入力ルールの統一も考えます。。</p>
+      <p class="source">4/30 ／ メンバー管理表移行時に大量データ削除が発生した際の反省＆改善宣言</p>
+    </div>
+  </div>
+</section>
+
+<!-- おけもん連携 -->
+<section>
+  <div class="section-header">
+    <div class="icon">🤝</div>
+    <h2>おけもん（AI支援）側との連携</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">どらさんのNotion運用と、おけもん側のAI支援は同じ「irodoriの仕組み化」を別側面で支えている関係。直接の対話は少ないが、領域が補完的。</p>
+
+    <div class="collab-row">
+      <div class="collab-date">5/4</div>
+      <div class="collab-text">おけもんから <strong>Zoom API・YouTube文字起こし</strong>仮説検証共有 ／ どらさん「次回案件MTGでテスト運用したい」と即反応</div>
+    </div>
+    <div class="collab-row">
+      <div class="collab-date">5/1</div>
+      <div class="collab-text">ZOOM被り検知ダッシュボード（<strong>おけもん実装</strong>）→ どらさんが要望出し ／ 自動投稿先（PMチャット）を協議</div>
+    </div>
+    <div class="collab-row">
+      <div class="collab-date">4/30</div>
+      <div class="collab-text">小川さんから「ZOOM被りをAIで検知してほしい」依頼 → おけもん実装 ／ どらさんが運用面でフィードバック</div>
+    </div>
+
+    <p style="margin-top:18px; padding:14px 18px; background:#e8f5f1; border-radius:10px; font-size:13px; color:#264653;">
+      💡 <strong>役割の住み分け</strong>：<br>
+      ・どらさん：Notion内側の自動化（GAS・Notion オートメーション）<br>
+      ・おけもん：Notion外側の AI 連携（Zoom API・Chatwork解析・文字起こし）<br>
+      → 連携すると、Notion内に閉じない「irodori全体のオペレーション可視化基盤」になっていく
+    </p>
+  </div>
+</section>
+
+<div style="text-align:center; margin-top:24px;">
+  <a href="./irodori-onboarding-report-202605.html" class="back-link">← ダッシュボードに戻る</a>
+</div>
+
+<footer>
+  <p>📋 本資料はモック版（v0.1）<br>
+  作成: 三又謙次郎（おけもん）<br>
+  情報源: Chatworkルーム「高谷さんノーションnotion」（直近1ヶ月分の対話）</p>
+</footer>
+
+</div>
+</body>
+</html>
