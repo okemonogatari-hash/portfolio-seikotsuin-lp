@@ -906,6 +906,175 @@ section{padding:130px 32px}
   .footer-bottom{flex-direction:column;gap:12px;text-align:center}
 }
 
+/* ============ DIAGNOSIS PREVIEW ============ */
+.diagnosis-preview{background:var(--color-bg-paper);padding:130px 32px;position:relative;overflow:hidden}
+.diagnosis-preview::before{
+  content:'';position:absolute;
+  top:0;right:-100px;width:300px;height:300px;
+  background:radial-gradient(circle,rgba(199,122,74,.06),transparent 70%);
+}
+.chart-wrap{
+  display:grid;grid-template-columns:1.15fr 1fr;gap:64px;
+  align-items:center;
+  max-width:1080px;margin:0 auto;
+  position:relative;z-index:1;
+}
+.chart-svg-wrap{
+  position:relative;
+  background:#fff;
+  padding:48px 36px 32px;
+  border:1px solid var(--color-border);
+  box-shadow:0 14px 40px rgba(31,49,71,.06);
+}
+.chart-svg-wrap svg{width:100%;height:auto;display:block;max-width:480px;margin:0 auto}
+.chart-svg-wrap::before{
+  content:'SAMPLE DIAGNOSIS REPORT';
+  position:absolute;top:18px;left:24px;
+  font-family:var(--inter);
+  font-size:10px;letter-spacing:.25em;
+  color:var(--color-text-mute);font-weight:600;
+}
+.chart-svg-wrap::after{
+  content:'';position:absolute;top:18px;right:24px;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--color-accent);
+  box-shadow:0 0 0 4px rgba(199,122,74,.15);
+}
+.chart-caption{padding-left:8px}
+.chart-caption-label{
+  font-family:var(--inter);
+  font-size:11px;font-weight:600;
+  letter-spacing:.28em;
+  color:var(--color-accent);
+  margin-bottom:14px;
+}
+.chart-caption-title{
+  font-family:var(--serif);
+  font-size:22px;font-weight:600;
+  color:var(--color-primary);
+  margin-bottom:24px;
+  line-height:1.55;letter-spacing:.04em;
+}
+.chart-legend{
+  display:flex;flex-direction:column;gap:14px;
+  margin-bottom:28px;
+  padding:20px 22px;
+  background:var(--color-bg);
+  border-left:2px solid var(--color-accent);
+}
+.legend-item{
+  display:flex;align-items:center;gap:14px;
+  font-size:13px;font-weight:500;
+  color:var(--color-text);
+}
+.legend-dot{
+  width:32px;height:12px;display:inline-block;
+  flex-shrink:0;
+}
+.legend-dot.before{background:rgba(31,49,71,.12);border:1.5px dashed var(--color-primary)}
+.legend-dot.after{background:rgba(199,122,74,.22);border:2px solid var(--color-accent)}
+.chart-caption-body{
+  font-size:14px;line-height:2;
+  color:var(--color-text);
+}
+.chart-caption-body strong{
+  color:var(--color-accent);
+  font-weight:600;
+}
+@media(max-width:900px){.chart-wrap{grid-template-columns:1fr;gap:36px}}
+
+/* ============ METHODOLOGY ============ */
+.methodology{background:var(--color-bg);padding:130px 32px}
+.method-pillars{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+  margin-bottom:80px;
+}
+.pillar{
+  background:#fff;
+  padding:44px 32px;
+  border-left:3px solid var(--color-accent);
+  transition:all .3s;
+  position:relative;
+}
+.pillar:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(31,49,71,.08)}
+.pillar-num{
+  font-family:var(--inter);
+  font-size:12px;font-weight:600;
+  letter-spacing:.24em;
+  color:var(--color-accent);
+  margin-bottom:18px;
+}
+.pillar h3{
+  font-family:var(--serif);
+  font-size:20px;font-weight:600;
+  color:var(--color-primary);
+  margin-bottom:18px;line-height:1.55;
+  letter-spacing:.04em;
+}
+.pillar p{
+  font-size:13.5px;line-height:2;
+  color:var(--color-text);
+}
+.pillar p strong{color:var(--color-accent);font-weight:600}
+@media(max-width:900px){.method-pillars{grid-template-columns:1fr}}
+
+.axes-list{
+  background:#fff;
+  border:1px solid var(--color-border);
+  padding:48px 44px;
+}
+.axes-title{
+  font-family:var(--serif);
+  font-size:22px;font-weight:600;
+  color:var(--color-primary);
+  margin-bottom:8px;
+  letter-spacing:.04em;
+}
+.axes-subtitle{
+  font-family:var(--inter);
+  font-size:11px;letter-spacing:.22em;
+  color:var(--color-accent);font-weight:600;
+  margin-bottom:32px;
+  padding-bottom:24px;
+  border-bottom:1px solid var(--color-border);
+}
+.axes-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:36px;
+}
+.axes-group-title{
+  font-family:var(--inter);
+  font-size:11px;letter-spacing:.18em;
+  color:var(--color-text-mute);
+  font-weight:600;
+  margin-bottom:18px;
+  display:flex;align-items:center;gap:12px;
+}
+.axes-group-title span{
+  font-family:var(--serif);
+  font-size:20px;
+  color:var(--color-accent);
+  font-weight:500;
+  letter-spacing:.02em;
+}
+.axes-group ul{list-style:none}
+.axes-group li{
+  font-family:var(--serif);
+  font-size:14.5px;font-weight:500;
+  color:var(--color-primary);
+  padding:11px 0;
+  border-bottom:1px solid var(--color-bg);
+  letter-spacing:.04em;
+  display:flex;align-items:center;gap:10px;
+}
+.axes-group li::before{
+  content:'';width:4px;height:4px;
+  background:var(--color-accent);
+  border-radius:50%;
+}
+.axes-group li:last-child{border-bottom:none}
+@media(max-width:900px){.axes-grid{grid-template-columns:repeat(2,1fr);gap:28px}.axes-list{padding:36px 28px}}
+@media(max-width:560px){.axes-grid{grid-template-columns:1fr}}
+
 /* ============ ANIMATIONS ============ */
 @keyframes heroFadeIn{
   from{opacity:0}
@@ -953,6 +1122,7 @@ section{padding:130px 32px}
     </a>
     <nav class="nav" id="nav">
       <a href="#problems" class="nav-link">こんなお悩み</a>
+      <a href="#methodology" class="nav-link">診断の方法論</a>
       <a href="#features" class="nav-link">診断の特徴</a>
       <a href="#menu" class="nav-link">プラン</a>
       <a href="#flow" class="nav-link">ご相談の流れ</a>
@@ -1010,6 +1180,172 @@ section{padding:130px 32px}
     </div>
   </div>
 </div>
+
+<!-- ============ DIAGNOSIS PREVIEW ============ -->
+<section class="diagnosis-preview">
+  <div class="section-inner">
+    <div class="fade-in" style="margin-bottom:72px;text-align:center">
+      <div class="section-label" style="justify-content:center">DIAGNOSIS PREVIEW</div>
+      <h2 class="section-title" style="text-align:center;display:inline-block">「組織の輪郭」が、<br>こうして見えてきます。</h2>
+      <p class="section-lead" style="margin:32px auto 0">
+        12の尺度で、組織と個人の「変わりにくい個性」を可視化します。<br>
+        実際の診断レポートで使われるグラフ表現の一例です。
+      </p>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-svg-wrap fade-in-left">
+        <svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="組織力診断 12軸スパイダーチャート サンプル">
+          <!-- 5段階の同心12角形 -->
+          <polygon points="220,188 236,192.29 247.71,204 252,220 247.71,236 236,247.71 220,252 204,247.71 192.29,236 188,220 192.29,204 204,192.29" fill="none" stroke="#EDE7D8" stroke-width="1"/>
+          <polygon points="220,156 252,164.57 275.43,188 284,220 275.43,252 252,275.43 220,284 188,275.43 164.57,252 156,220 164.57,188 188,164.57" fill="none" stroke="#EDE7D8" stroke-width="1"/>
+          <polygon points="220,124 268,136.86 303.14,172 316,220 303.14,268 268,303.14 220,316 172,303.14 136.86,268 124,220 136.86,172 172,136.86" fill="none" stroke="#EDE7D8" stroke-width="1"/>
+          <polygon points="220,92 284,109.14 330.86,156 348,220 330.86,284 284,330.86 220,348 156,330.86 109.14,284 92,220 109.14,156 156,109.14" fill="none" stroke="#E5DFD3" stroke-width="1"/>
+          <polygon points="220,60 300,81.44 358.56,140 380,220 358.56,300 300,358.56 220,380 140,358.56 81.44,300 60,220 81.44,140 140,81.44" fill="none" stroke="#C8C0AE" stroke-width="1.5"/>
+
+          <!-- 12スポーク -->
+          <g stroke="#E5DFD3" stroke-width="1">
+            <line x1="220" y1="220" x2="220" y2="60"/>
+            <line x1="220" y1="220" x2="300" y2="81.44"/>
+            <line x1="220" y1="220" x2="358.56" y2="140"/>
+            <line x1="220" y1="220" x2="380" y2="220"/>
+            <line x1="220" y1="220" x2="358.56" y2="300"/>
+            <line x1="220" y1="220" x2="300" y2="358.56"/>
+            <line x1="220" y1="220" x2="220" y2="380"/>
+            <line x1="220" y1="220" x2="140" y2="358.56"/>
+            <line x1="220" y1="220" x2="81.44" y2="300"/>
+            <line x1="220" y1="220" x2="60" y2="220"/>
+            <line x1="220" y1="220" x2="81.44" y2="140"/>
+            <line x1="220" y1="220" x2="140" y2="81.44"/>
+          </g>
+
+          <!-- Before polygon（診断時） -->
+          <polygon
+            points="220,108 260,150.72 330.86,156 284,220 303.14,268 276,316.99 220,300 172,303.14 164.57,252 92,220 123.01,164 180,150.72"
+            fill="rgba(31,49,71,0.12)" stroke="#1F3147" stroke-width="2" stroke-dasharray="4 3"/>
+
+          <!-- After polygon（3ヶ月後） -->
+          <polygon
+            points="220,92 276,123.01 344.71,148 332,220 330.86,284 284,330.86 220,332 156,330.86 136.86,268 76,220 109.14,156 164,123.01"
+            fill="rgba(199,122,74,0.20)" stroke="#C77A4A" stroke-width="2.5"/>
+
+          <!-- ラベル -->
+          <g font-family="Noto Serif JP, serif" font-size="11.5" fill="#2D2A26" font-weight="500" letter-spacing="0.04em">
+            <text x="220" y="42" text-anchor="middle">目標明確度</text>
+            <text x="310" y="64" text-anchor="middle">意思決定速度</text>
+            <text x="372" y="138" text-anchor="start">リーダー求心力</text>
+            <text x="394" y="225" text-anchor="end">情報共有</text>
+            <text x="372" y="312" text-anchor="start">傾聴姿勢</text>
+            <text x="310" y="386" text-anchor="middle">共感力</text>
+            <text x="220" y="408" text-anchor="middle">当事者意識</text>
+            <text x="130" y="386" text-anchor="middle">推進力</text>
+            <text x="68" y="312" text-anchor="end">改善行動</text>
+            <text x="46" y="225" text-anchor="start">信頼関係</text>
+            <text x="68" y="138" text-anchor="end">協働性</text>
+            <text x="130" y="64" text-anchor="middle">適応柔軟性</text>
+          </g>
+
+          <!-- 中心点と目盛り -->
+          <circle cx="220" cy="220" r="3" fill="#C77A4A"/>
+          <g font-family="Inter, sans-serif" font-size="9" fill="#A89E8A" font-weight="500">
+            <text x="226" y="220" text-anchor="start">0</text>
+            <text x="226" y="188" text-anchor="start">2</text>
+            <text x="226" y="156" text-anchor="start">4</text>
+            <text x="226" y="124" text-anchor="start">6</text>
+            <text x="226" y="92" text-anchor="start">8</text>
+            <text x="226" y="60" text-anchor="start">10</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="chart-caption fade-in-right">
+        <div class="chart-caption-label">CASE EXAMPLE</div>
+        <h3 class="chart-caption-title">中堅製造業（48名）<br>診断 → 3ヶ月伴走の事例</h3>
+
+        <div class="chart-legend">
+          <div class="legend-item"><span class="legend-dot before"></span>診断時の状態</div>
+          <div class="legend-item"><span class="legend-dot after"></span>3ヶ月後の状態</div>
+        </div>
+
+        <p class="chart-caption-body">
+          診断時に低かった<strong>「情報共有」「改善行動」「適応柔軟性」</strong>の3軸が、解釈セッションと実行支援を経て3ヶ月で顕著に改善。<br><br>
+          「経営層と現場の温度差」の正体が、この3軸の落ち込みにあったことが可視化され、打ち手が定まった典型例です。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHODOLOGY ============ -->
+<section class="methodology" id="methodology">
+  <div class="section-inner">
+    <div class="fade-in" style="margin-bottom:64px">
+      <div class="section-label">METHODOLOGY</div>
+      <h2 class="section-title">なぜ、12の尺度で<br>組織が変わるのか。</h2>
+      <p class="section-lead">
+        感覚で組織を「なんとなく分かった気」になると、打ち手は空振りします。<br>
+        私たちの診断は、組織を動かすために必要な「変わりにくい個性」だけを抽出することに特化しています。
+      </p>
+    </div>
+
+    <div class="method-pillars stagger">
+      <div class="pillar">
+        <div class="pillar-num">PRINCIPLE 01</div>
+        <h3>「変わりにくい個性」を測る</h3>
+        <p>性格テストではなく、組織の中で発露する<strong>基本的な発想・判断のクセ</strong>を測定します。短期間では変わらない、組織の<strong>骨格</strong>を捉えることで、打ち手の精度が変わります。</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">PRINCIPLE 02</div>
+        <h3>120問・3択の設計</h3>
+        <p>長年の組織開発研究をベースに、<strong>120問×3択式</strong>で「曖昧な印象」を数値に翻訳。1人あたり約25分で完了する、社員の方に負担をかけない設計です。</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">PRINCIPLE 03</div>
+        <h3>12軸×4カテゴリ</h3>
+        <p>リーダーシップ／コミュニケーション／コミットメント／関係性・適応の4領域から、<strong>計12軸</strong>で組織の特性を整理。経営判断に直結する軸だけに絞り込んでいます。</p>
+      </div>
+    </div>
+
+    <div class="axes-list fade-in">
+      <h3 class="axes-title">診断で見える、12の尺度</h3>
+      <div class="axes-subtitle">THE 12 AXES OF ORGANIZATIONAL CAPABILITY</div>
+      <div class="axes-grid">
+        <div class="axes-group">
+          <h4 class="axes-group-title"><span>I</span>リーダーシップ</h4>
+          <ul>
+            <li>目標明確度</li>
+            <li>意思決定速度</li>
+            <li>リーダー求心力</li>
+          </ul>
+        </div>
+        <div class="axes-group">
+          <h4 class="axes-group-title"><span>II</span>コミュニケーション</h4>
+          <ul>
+            <li>情報共有</li>
+            <li>傾聴姿勢</li>
+            <li>共感力</li>
+          </ul>
+        </div>
+        <div class="axes-group">
+          <h4 class="axes-group-title"><span>III</span>コミットメント</h4>
+          <ul>
+            <li>当事者意識</li>
+            <li>推進力</li>
+            <li>改善行動</li>
+          </ul>
+        </div>
+        <div class="axes-group">
+          <h4 class="axes-group-title"><span>IV</span>関係性・適応</h4>
+          <ul>
+            <li>信頼関係</li>
+            <li>協働性</li>
+            <li>適応柔軟性</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ PROBLEMS ============ -->
 <section class="problems" id="problems">
@@ -1086,7 +1422,7 @@ section{padding:130px 32px}
         <div class="feature-text-label">FEATURE 01</div>
         <h3 class="feature-text-title">12の尺度で、<br>組織の輪郭を可視化。</h3>
         <p class="feature-text-body">
-          基本的な発想を測定することで、組織と個人の「変わりにくい個性」が見えてきます。120問の設問から12の尺度で数値化し、グラフで可視化。曖昧だった印象が、はじめて言葉になる瞬間です。
+          本質的な発想を測定することで、組織と個人の「変わりにくい個性」が見えてきます。120問の回答を12軸で数値化し、<strong style="color:var(--color-accent);font-weight:600;">1枚のレーダーチャート</strong>に集約。曖昧だった印象が、はじめて<strong style="color:var(--color-accent);font-weight:600;">経営の言葉</strong>になる瞬間が生まれます。
         </p>
         <div class="feature-tags">
           <span class="feature-tag">VISUALIZATION</span>
