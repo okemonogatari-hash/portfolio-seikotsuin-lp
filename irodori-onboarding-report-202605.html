@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="googlebot" content="noindex,nofollow">
-<title>新メンバー進行レビュー - 2026-05</title>
+<title>新メンバー進行ダッシュボード - 2026-05</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -16,12 +16,12 @@ body {
   padding: 40px 20px;
   min-height: 100vh;
 }
-.container { max-width: 1100px; margin: 0 auto; }
+.container { max-width: 1200px; margin: 0 auto; }
 
 header {
   text-align: center;
-  margin-bottom: 50px;
-  padding: 50px 40px;
+  margin-bottom: 40px;
+  padding: 40px 32px;
   background: white;
   border-radius: 24px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.06);
@@ -35,51 +35,40 @@ header::before {
   background: linear-gradient(90deg, #f4a261, #e76f51, #e9c46a, #2a9d8f, #76c1b3);
 }
 .logo {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   color: #2a9d8f;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   letter-spacing: 0.05em;
 }
 h1 {
-  font-size: 26px;
+  font-size: 24px;
   color: #264653;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   font-weight: 700;
   line-height: 1.4;
 }
-.subtitle { color: #6b6b6b; font-size: 15px; }
+.subtitle { color: #6b6b6b; font-size: 14px; }
 .meta {
   display: inline-block;
   background: #fef3ec;
   color: #e76f51;
-  padding: 8px 20px;
+  padding: 6px 18px;
   border-radius: 20px;
-  font-size: 13px;
-  margin-top: 16px;
+  font-size: 12px;
+  margin-top: 14px;
   font-weight: 500;
 }
-
-.exec-summary {
-  background: white;
-  padding: 36px;
-  border-radius: 20px;
-  margin-bottom: 40px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-  border-left: 6px solid #e76f51;
-}
-.exec-summary h2 { color: #e76f51; font-size: 20px; margin-bottom: 16px; }
-.exec-summary p { font-size: 15px; color: #4a4a4a; }
 
 .stats-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 40px;
+  gap: 14px;
+  margin-bottom: 32px;
 }
 .stat-card {
   background: white;
-  padding: 24px;
+  padding: 20px;
   border-radius: 16px;
   text-align: center;
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);
@@ -89,190 +78,275 @@ h1 {
   font-weight: 700;
   color: #2a9d8f;
   display: block;
-  margin-bottom: 4px;
+  line-height: 1.2;
 }
 .stat-card .label { font-size: 12px; color: #6b6b6b; }
-.stat-card.warn .num { color: #e76f51; }
-.stat-card.critical .num { color: #d62828; }
+.stat-card.warn .num { color: #e9c46a; }
+.stat-card.done .num { color: #2a9d8f; }
+.stat-card.info .num { color: #e76f51; }
 
-section { margin-bottom: 50px; }
+section { margin-bottom: 40px; }
 .section-header {
   background: white;
-  padding: 24px 32px;
+  padding: 20px 28px;
   border-radius: 16px 16px 0 0;
   border-bottom: 3px solid #2a9d8f;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
-.section-header .number {
-  width: 48px; height: 48px;
+.section-header h2 { color: #264653; font-size: 19px; }
+.section-header .icon {
+  width: 42px; height: 42px;
   background: linear-gradient(135deg, #2a9d8f, #76c1b3);
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 18px;
   flex-shrink: 0;
 }
-.section-header h2 { color: #264653; font-size: 22px; }
 .section-body {
   background: white;
-  padding: 32px;
+  padding: 28px;
   border-radius: 0 0 16px 16px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.04);
 }
 
-.issue-card {
-  margin-bottom: 28px;
-  padding: 24px;
-  background: #fef9f5;
-  border-radius: 12px;
-  border-left: 4px solid #e76f51;
-}
-.issue-card:last-child { margin-bottom: 0; }
-.issue-card.critical {
-  background: #fef0e8;
-  border-left-color: #d62828;
-}
-.issue-card h3 {
-  font-size: 17px;
-  margin-bottom: 12px;
-  color: #2c2c2c;
+/* 今日のハイライト */
+.highlight-row {
   display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px dashed #eee;
+}
+.highlight-row:last-child { border-bottom: none; }
+.highlight-date {
+  font-size: 13px;
+  color: #2a9d8f;
+  font-weight: 600;
+  min-width: 100px;
+}
+.highlight-text { font-size: 14px; color: #4a4a4a; }
+.highlight-text strong { color: #264653; }
+
+/* カンバン現在地ボード */
+.kanban {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.kanban-col {
+  background: #fafbfd;
+  border-radius: 12px;
+  padding: 16px 14px;
+  min-height: 180px;
+}
+.kanban-col h4 {
+  text-align: center;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid;
+  font-size: 13px;
+  font-weight: 600;
+}
+.kanban-col.col1 h4 { color: #999; border-color: #ddd; }
+.kanban-col.col2 h4 { color: #e9c46a; border-color: #e9c46a; }
+.kanban-col.col3 h4 { color: #e76f51; border-color: #e76f51; }
+.kanban-col.col4 h4 { color: #2a9d8f; border-color: #2a9d8f; }
+.kanban-card {
+  background: white;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.kanban-card .name { font-weight: 600; color: #264653; }
+.kanban-card .meta-text { font-size: 11px; color: #888; display: block; margin-top: 2px; }
+
+/* 進捗バー */
+.progress-list { margin-top: 8px; }
+.progress-row {
+  display: grid;
+  grid-template-columns: 150px 1fr 140px;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.progress-row:last-child { border-bottom: none; }
+.progress-name { font-weight: 600; font-size: 14px; color: #264653; }
+.progress-bar-bg {
+  height: 14px;
+  background: #f4f4f4;
+  border-radius: 7px;
+  overflow: hidden;
+  position: relative;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2a9d8f, #76c1b3);
+  border-radius: 7px;
+}
+.progress-bar-fill.warm { background: linear-gradient(90deg, #e9c46a, #f4a261); }
+.progress-bar-fill.cool { background: linear-gradient(90deg, #76c1b3, #b8e0d2); }
+.progress-status {
+  font-size: 12px;
+  color: #6b6b6b;
+  text-align: right;
+}
+.progress-status .done { color: #2a9d8f; font-weight: 600; }
+.progress-status .ongoing { color: #e9c46a; font-weight: 600; }
+
+/* 個別メンバー圧縮カード */
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+.member-mini {
+  background: white;
+  padding: 18px 20px;
+  border-radius: 12px;
+  border-left: 4px solid;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+.member-mini.m-pink { border-left-color: #e76f51; }
+.member-mini.m-blue { border-left-color: #2a9d8f; }
+.member-mini.m-green { border-left-color: #76c1b3; }
+.member-mini.m-yellow { border-left-color: #e9c46a; }
+.member-mini.m-orange { border-left-color: #f4a261; }
+.member-mini.m-purple { border-left-color: #d896c4; }
+.member-mini h4 {
+  font-size: 15px;
+  color: #264653;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
 }
-.frequency-badge {
-  display: inline-block;
-  background: #d62828;
-  color: white;
-  padding: 4px 12px;
-  border-radius: 12px;
+.member-mini .tag {
+  font-size: 10px;
+  background: #f4f4f4;
+  color: #666;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: normal;
+}
+.member-mini .tag.t-done { background: #e8f5f1; color: #2a9d8f; }
+.member-mini .tag.t-ongoing { background: #fef3ec; color: #e9c46a; }
+.member-mini .intro {
   font-size: 12px;
-  font-weight: 600;
+  color: #6b6b6b;
+  margin-bottom: 8px;
+  line-height: 1.6;
 }
-.frequency-badge.normal { background: #e76f51; }
-.issue-card .description {
-  margin-bottom: 12px;
-  color: #4a4a4a;
-  font-size: 14px;
+.member-mini .stats-mini {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: #888;
+  margin-top: 8px;
+  flex-wrap: wrap;
 }
-.solution-box {
-  margin-top: 14px;
-  padding: 14px 16px;
-  background: white;
+.member-mini .stats-mini span {
+  background: #fafafa;
+  padding: 3px 8px;
   border-radius: 8px;
-  font-size: 14px;
-  border-left: 3px solid #2a9d8f;
 }
-.solution-box strong { color: #2a9d8f; }
+.member-mini .stats-mini strong { color: #e76f51; }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 12px;
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  font-size: 13px;
-}
-th {
-  background: #2a9d8f;
-  color: white;
-  padding: 10px 14px;
-  text-align: left;
-  font-size: 13px;
-  font-weight: 600;
-}
-td {
-  padding: 10px 14px;
-  border-bottom: 1px solid #eee;
-}
-tr:last-child td { border-bottom: none; }
-tr:nth-child(even) td { background: #fafafa; }
-
-.member-card {
-  margin-bottom: 28px;
-  padding: 28px;
-  background: white;
-  border-radius: 16px;
-  border-top: 4px solid;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-}
-.member-card:last-child { margin-bottom: 0; }
-.member-card.pink { border-top-color: #e76f51; }
-.member-card.blue { border-top-color: #2a9d8f; }
-.member-card.green { border-top-color: #76c1b3; }
-.member-header {
+/* 共通傾向（圧縮） */
+.trend-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
+  padding: 14px 18px;
+  background: #fef9f5;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border-left: 3px solid #e76f51;
 }
-.member-header h3 { font-size: 20px; color: #264653; }
-.status-pill {
-  background: #e8f5f1;
-  color: #2a9d8f;
-  padding: 6px 16px;
-  border-radius: 20px;
+.trend-row.hot { border-left-color: #d62828; background: #fef0e8; }
+.trend-text { flex: 1; font-size: 14px; }
+.trend-text strong { color: #264653; }
+.trend-count {
+  background: white;
+  padding: 6px 14px;
+  border-radius: 14px;
   font-size: 12px;
   font-weight: 600;
+  color: #e76f51;
+  white-space: nowrap;
 }
-.member-desc {
-  margin-bottom: 14px;
-  font-size: 14px;
-  color: #4a4a4a;
-  padding: 12px 16px;
-  background: #fafafa;
-  border-radius: 8px;
-}
+.trend-row.hot .trend-count { color: #d62828; }
 
+.see-more {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #2a9d8f, #76c1b3);
+  color: white;
+  text-decoration: none;
+  border-radius: 22px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(42,157,143,0.25);
+  transition: transform 0.15s;
+}
+.see-more:hover { transform: translateY(-1px); }
+
+/* 3層方向性 */
 .direction-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 24px;
+  gap: 16px;
+  margin-top: 16px;
 }
 .direction-card {
-  padding: 28px 20px;
+  padding: 24px 18px;
   background: linear-gradient(135deg, #fef9f5, #fff);
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
-.direction-card .icon { font-size: 36px; margin-bottom: 12px; display: block; }
-.direction-card h4 { color: #264653; margin-bottom: 10px; font-size: 17px; }
+.direction-card .icon-emoji { font-size: 32px; margin-bottom: 10px; display: block; }
+.direction-card h4 { color: #264653; margin-bottom: 8px; font-size: 16px; }
 .direction-card .role {
   font-size: 12px;
   color: #2a9d8f;
   margin-bottom: 8px;
   font-weight: 600;
 }
-.direction-card .place {
+.direction-card .desc {
   font-size: 12px;
-  color: #888;
+  color: #4a4a4a;
+  margin-bottom: 8px;
+  line-height: 1.6;
 }
+.direction-card .place { font-size: 11px; color: #888; }
 
 .flow-diagram {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   margin-top: 24px;
-  padding: 24px;
+  padding: 20px;
   background: #fafbfd;
   border-radius: 12px;
 }
 .flow-step {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 14px 18px;
+  gap: 14px;
+  padding: 12px 16px;
   background: white;
   border-radius: 10px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
@@ -280,67 +354,45 @@ tr:nth-child(even) td { background: #fafafa; }
 .flow-step .step-num {
   background: #2a9d8f;
   color: white;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   flex-shrink: 0;
-  font-size: 14px;
+  font-size: 13px;
 }
-.flow-step .step-content { font-size: 14px; }
+.flow-step .step-content { font-size: 13px; }
 .flow-step .step-content strong { color: #2a9d8f; }
 .flow-arrow {
   text-align: center;
   color: #2a9d8f;
-  font-size: 20px;
+  font-size: 16px;
 }
-
-.next-steps {
-  background: linear-gradient(135deg, #e8f5f1, #f4e7da);
-  padding: 32px;
-  border-radius: 16px;
-  margin-top: 32px;
-}
-.next-steps h3 {
-  color: #2a9d8f;
-  margin-bottom: 16px;
-  font-size: 18px;
-}
-.next-steps ol { padding-left: 24px; }
-.next-steps li {
-  margin-bottom: 12px;
-  font-size: 14px;
-  color: #4a4a4a;
-}
-.next-steps li strong { color: #264653; }
 
 footer {
   text-align: center;
-  margin-top: 50px;
-  padding: 24px;
+  margin-top: 40px;
+  padding: 20px;
   color: #999;
-  font-size: 13px;
-}
-footer code {
-  background: #f4f4f4;
-  padding: 2px 8px;
-  border-radius: 4px;
   font-size: 12px;
 }
 
-@media (max-width: 768px) {
-  body { padding: 20px 12px; }
+@media (max-width: 900px) {
+  .kanban { grid-template-columns: repeat(2, 1fr); }
   .direction-grid { grid-template-columns: 1fr; }
+  .member-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  body { padding: 20px 12px; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
-  h1 { font-size: 20px; }
-  header { padding: 32px 20px; }
-  .section-body { padding: 20px; }
-  .member-card, .exec-summary, .issue-card { padding: 20px; }
-  table { font-size: 12px; }
-  th, td { padding: 8px 10px; }
+  .progress-row { grid-template-columns: 110px 1fr; }
+  .progress-status { grid-column: 2; text-align: left; }
+  h1 { font-size: 19px; }
+  header { padding: 28px 18px; }
+  .section-body { padding: 18px; }
 }
 </style>
 </head>
@@ -349,284 +401,309 @@ footer code {
 
 <header>
   <div class="logo">🌱 irodori</div>
-  <h1>新メンバー オンボーディング 現状報告書</h1>
-  <p class="subtitle">スタートアップガイド ／ オリエンテーション ／ OJT 進行レビュー</p>
-  <div class="meta">📅 2026-05-13 作成 ／ 観測期間: 2026-04-13 〜 2026-05-13</div>
+  <h1>新メンバー進行ダッシュボード</h1>
+  <p class="subtitle">いま みんながどこにいるか／何が起きているか</p>
+  <div class="meta">📅 2026-05-13 更新 ／ 観測期間: 2026-04-13 〜</div>
 </header>
 
+<!-- 統計カード -->
 <div class="stats-row">
   <div class="stat-card">
     <span class="num">7</span>
-    <span class="label">対象メンバー数</span>
+    <span class="label">対象メンバー</span>
   </div>
-  <div class="stat-card">
-    <span class="num">3</span>
-    <span class="label">オリエン実施済</span>
+  <div class="stat-card done">
+    <span class="num">4</span>
+    <span class="label">オリエン済み</span>
   </div>
   <div class="stat-card warn">
     <span class="num">3</span>
     <span class="label">ガイド進行中</span>
   </div>
-  <div class="stat-card critical">
+  <div class="stat-card info">
     <span class="num">19</span>
-    <span class="label">記録されたつまずき</span>
+    <span class="label">サポート機会</span>
   </div>
 </div>
 
-<div class="exec-summary">
-  <h2>📊 ざっくり全体感</h2>
-  <p>4月以降に入会した新メンバー7名のオンボーディング進行を見てみた結果、<strong>「Googleカレンダー承認メールが迷惑メールに行く」「Notion/Chatworkアカウント作成手順の混乱」「Facebook Messenger関連設定」</strong>の3領域で <strong>複数名が同じところでつまずいている</strong>のが見えてきました。これらは <strong>ガイドに記述があっても実行段階で詰まりやすい部分</strong>。書いてあること自体は揃っているけれど、<strong>図解や実演を加えて立体的にサポートを補える余地</strong> がある領域だと思います。本資料では全体での気づき・個別の状況・今後の方向性をまとめています。</p>
-</div>
-
+<!-- 今日のハイライト -->
 <section>
   <div class="section-header">
-    <div class="number">1</div>
-    <h2>全体最重要ポイント（構造的つまずき）</h2>
+    <div class="icon">📰</div>
+    <h2>今日・直近のうごき</h2>
   </div>
   <div class="section-body">
-
-    <div class="issue-card critical">
-      <h3>① Googleカレンダー共有・承認メールが迷惑メール行き <span class="frequency-badge">最頻発・5件</span></h3>
-      <p class="description">3人全員が異なる時期に同型の事象を踏んだ。<strong>承認メールが迷惑メールフォルダに自動分類</strong>される仕様問題。</p>
-      <table>
-        <tr><th>日付</th><th>メンバー</th><th>詳細</th></tr>
-        <tr><td>4/13</td><td>山下絢子</td><td>Notion登録時に招待が迷惑メールに</td></tr>
-        <tr><td>4/30</td><td>錫谷詩菜</td><td>カレンダー権限承認後、3時間紛糾</td></tr>
-        <tr><td>5/8</td><td>山下絢子</td><td>同問題が再発（飯田さんスクショ手順で解決）</td></tr>
-        <tr><td>5/8</td><td>池田里歩</td><td>カレンダー共有承認メールが迷惑メール行き</td></tr>
-        <tr><td>5/12</td><td>錫谷詩菜</td><td>承認後に権限が外れる（2度目・原因不明）</td></tr>
-      </table>
-      <div class="solution-box">
-        <strong>💡 補強候補：</strong>迷惑メールフォルダの確認案内＋スクショ実演があると、同じ詰まり方を減らせる可能性。ガイドに記述があっても、スパム分類は本人側で気づきにくいので、実演で立体化する余地あり。
-      </div>
+    <div class="highlight-row">
+      <div class="highlight-date">🌸 5/13 17:00</div>
+      <div class="highlight-text"><strong>池田さん</strong> オリエン完了 ✅</div>
     </div>
-
-    <div class="issue-card">
-      <h3>② Facebook Messenger 関連 <span class="frequency-badge normal">3件</span></h3>
-      <table>
-        <tr><th>日付</th><th>メンバー</th><th>詳細</th></tr>
-        <tr><td>5/7</td><td>錫谷詩菜</td><td>スマホアプリ未導入で約束破り（子供インフル看病時にPC見れず）</td></tr>
-        <tr><td>5/11</td><td>池田里歩</td><td>再ログイン時の認証コード迷子</td></tr>
-        <tr><td>5/12</td><td>池田里歩</td><td>検索でヒットしない（英字表記名「@Yosuke Amano」）</td></tr>
-      </table>
-      <div class="solution-box">
-        <strong>💡 補強候補：</strong>Messenger関連の運用ノウハウ（スマホアプリ・英字表記名検索・再ログイン手順）を実演ベースで補える領域。書いてあっても気づきにくい・実際に詰まったことのある経験者の補足が効きやすい部分。
-      </div>
+    <div class="highlight-row">
+      <div class="highlight-date">🌼 5/13 全体チャット</div>
+      <div class="highlight-text"><strong>森岡さん</strong> 自己紹介投稿（採用アシスタント経験／元歯科向けライター）</div>
     </div>
-
-    <div class="issue-card">
-      <h3>③ Notion / Chatwork アカウント作成時の混乱 <span class="frequency-badge normal">3件</span></h3>
-      <table>
-        <tr><th>日付</th><th>メンバー</th><th>詳細</th></tr>
-        <tr><td>4/13</td><td>山下絢子</td><td>サインアップURLとログインURL混同、1日紛糾</td></tr>
-        <tr><td>4/14</td><td>山下絢子</td><td>アカウント作成完了したつもりが未完</td></tr>
-        <tr><td>4/30</td><td>池田里歩</td><td>Chatworkアカウント名変更不可→新規作成</td></tr>
-      </table>
-      <div class="solution-box">
-        <strong>💡 補強候補：</strong>アカウント作成手順をスクショ付き or 動画で実演化する候補。文章で読んで自分で操作してみる段階で詰まりやすい部分。
-      </div>
+    <div class="highlight-row">
+      <div class="highlight-date">🌷 5/12</div>
+      <div class="highlight-text"><strong>小泉さん</strong> 入会（横浜・販促/Webシステム経験豊富）</div>
     </div>
-
-    <div class="issue-card">
-      <h3>④ カレンダー入力ルール（対応不可枠・TimeRex運用） <span class="frequency-badge normal">2件</span></h3>
-      <table>
-        <tr><th>日付</th><th>メンバー</th><th>詳細</th></tr>
-        <tr><td>5/13</td><td>錫谷詩菜</td><td>「終日対応不可」枠とMTG予定が同時に入ってる</td></tr>
-        <tr><td>5/13</td><td>池田里歩</td><td>TimeRex運用ルール不明（候補日抽出ツールと誤解）</td></tr>
-      </table>
-      <div class="solution-box">
-        <strong>💡 補強候補：</strong>カレンダー運用のローカルルール（<strong>対応不可枠の扱い</strong>・<strong>TimeRexの役割分担</strong>）を整理する余地。社内独自の運用知見は文書化が漏れやすい領域。
-      </div>
+    <div class="highlight-row">
+      <div class="highlight-date">🌳 5/10</div>
+      <div class="highlight-text"><strong>木本さん（めめシエンタ）</strong> 入会（大分・補助金/融資申請サポート専門）</div>
     </div>
-
+    <div class="highlight-row">
+      <div class="highlight-date">📝 5/8</div>
+      <div class="highlight-text"><strong>山下さん</strong> 採用後初の本格作業（GW中タスク3件納品）</div>
+    </div>
   </div>
 </section>
 
+<!-- 現在地ボード -->
 <section>
   <div class="section-header">
-    <div class="number">2</div>
-    <h2>個別具体ケース</h2>
+    <div class="icon">🌱</div>
+    <h2>みんなの現在地</h2>
   </div>
   <div class="section-body">
-
-    <div class="member-card pink">
-      <div class="member-header">
-        <h3>🌸 池田 里歩さん</h3>
-        <span class="status-pill">4/30入会 ・ 本日17:00オリエン予定</span>
+    <div class="kanban">
+      <div class="kanban-col col1">
+        <h4>📥 入会前後</h4>
+        <p style="text-align:center; color:#bbb; font-size:12px; margin-top:24px;">該当なし</p>
       </div>
-      <div class="member-desc">
-        ガイド19項目進捗：<strong>ほぼ完了</strong>。既に永井さん引継ぎOJT突入中（小川代表 ＆ 小山取締役の秘書業務＋くうさん案件 請求書回り）
+      <div class="kanban-col col2">
+        <h4>🌱 ガイド進行中</h4>
+        <div class="kanban-card">
+          <span class="name">🌳 木本さん</span>
+          <span class="meta-text">5/10入会・3日目</span>
+        </div>
+        <div class="kanban-card">
+          <span class="name">🌷 小泉さん</span>
+          <span class="meta-text">5/11入会・2日目</span>
+        </div>
+        <div class="kanban-card">
+          <span class="name">🌼 森岡さん</span>
+          <span class="meta-text">5/12入会・1日目</span>
+        </div>
       </div>
-      <div style="background:#fef9f5; padding:14px 18px; border-radius:8px; margin-bottom:14px; font-size:13px; line-height:1.8;">
-        <strong style="color:#e76f51;">📌 自己紹介から</strong><br>
-        ・愛知県在住・完全在宅2年目<br>
-        ・元会社員（コンサルタント・採用コーディネーター等の業界経験）<br>
-        ・他企業でもオンライン事務として稼働中（基本は午後稼働、状況により午前も）<br>
-        ・本人発信：「本当によく質問をする人間」「お付き合いいただけますと幸い」
+      <div class="kanban-col col3">
+        <h4>💗 オリエン済み</h4>
+        <div class="kanban-card">
+          <span class="name">🌸 池田さん</span>
+          <span class="meta-text">本日 5/13 17:00 完了 ✨</span>
+        </div>
+        <div class="kanban-card">
+          <span class="name">📝 山下さん</span>
+          <span class="meta-text">4/21 完了（ライター枠）</span>
+        </div>
+        <div class="kanban-card">
+          <span class="name">🌱 錫谷さん</span>
+          <span class="meta-text">4/15 完了</span>
+        </div>
+        <div class="kanban-card">
+          <span class="name">高谷さん（どら）</span>
+          <span class="meta-text">4/27 完了</span>
+        </div>
       </div>
-      <table>
-        <tr><th>日付</th><th>つまずいた事実</th><th>解決経路</th></tr>
-        <tr><td>4/30</td><td>Chatworkアカウント名変更不可</td><td>新規アカウント作成→小山さん再招待</td></tr>
-        <tr><td>5/8</td><td>カレンダー承認メールが迷惑メール</td><td>永井さん事前注意→本人確認</td></tr>
-        <tr><td>5/11</td><td>Messenger再ログインで認証コード迷子</td><td>永井さんがメール転送</td></tr>
-        <tr><td>5/11</td><td>LINE Business Manager QRログインが不明</td><td>永井さん段階的誘導</td></tr>
-        <tr><td>5/11</td><td>カレンダー編集権限なくリンク貼付不可</td><td>永井さん権限変更</td></tr>
-        <tr><td>5/12</td><td>Messenger検索ヒットしない（英字表記名）</td><td>永井さん指摘</td></tr>
-        <tr><td>5/12</td><td>クライアント送信文面が冗長</td><td>永井さん赤入れ</td></tr>
-        <tr><td>5/13</td><td>TimeRex運用ルール不明</td><td>永井さん指摘「TimeRex≠候補日抽出ツール」</td></tr>
-      </table>
-    </div>
-
-    <div class="member-card blue">
-      <div class="member-header">
-        <h3>📝 山下 絢子さん</h3>
-        <span class="status-pill">3月末入会 ・ ライター枠 ・ 副業勤務</span>
-      </div>
-      <div class="member-desc">
-        ガイド19項目進捗：<strong>完了</strong>・実務段階（オン秘書内部資料の更新＋メルマガ参考登録）
-      </div>
-      <div style="background:#e8f5f1; padding:14px 18px; border-radius:8px; margin-bottom:14px; font-size:13px; line-height:1.8;">
-        <strong style="color:#2a9d8f;">📌 自己紹介から</strong><br>
-        ・東京都在住・ライター<br>
-        ・実績：サプリメントLP / フラワーアレンジメントチラシ / 無料相談会チラシ<br>
-        ・ポートフォリオ：<a href="https://note.com/aya75" target="_blank">note.com/aya75</a><br>
-        ・本人発信：「現在会社員。<strong>2026年12月末までに退職を目指す</strong>。<strong>不妊治療・フェムケアなど女性の健康のお役に立ちたい</strong>」<br>
-        ・「人間として温かさのあるコミュニケーションを心がけます」
-      </div>
-      <table>
-        <tr><th>日付</th><th>つまずいた事実</th><th>解決経路</th></tr>
-        <tr><td>4/13</td><td>NotionサインアップURLとログインURL混同・1日紛糾</td><td>小山さん指摘→永井さん補足</td></tr>
-        <tr><td>4/14</td><td>アカウント作成完了したつもりが未完</td><td>永井さん案内→再作成</td></tr>
-        <tr><td>4/30</td><td>カレンダー権限「自分のしか見えない」</td><td>永井さん追加権限付与</td></tr>
-        <tr><td>5/8</td><td>同上の再発（迷惑メール内に招待届く問題）</td><td>飯田さんスクショ付き手順案内</td></tr>
-      </table>
-    </div>
-
-    <div class="member-card green">
-      <div class="member-header">
-        <h3>🌱 錫谷 詩菜さん</h3>
-        <span class="status-pill">4月中旬入会 ・ 現役稼働中</span>
-      </div>
-      <div class="member-desc">
-        ガイド完了済み・現場OJT段階。<strong>「ガイドで触れない実務での詰まり」が頻発</strong>している代表事例
-      </div>
-      <div style="background:#f0f9f5; padding:14px 18px; border-radius:8px; margin-bottom:14px; font-size:13px; line-height:1.8;">
-        <strong style="color:#76c1b3;">📌 自己紹介から</strong><br>
-        ・大阪府在住・水曜定休<br>
-        ・本人発信：「ご縁があってIRODORIのメンバーとして採用いただきました」<br>
-        ・「愛を込めて精一杯頑張りたい」「まだまだ経験不足ですが何卒よろしくお願いいたします」
-      </div>
-      <table>
-        <tr><th>日付</th><th>つまずいた事実</th><th>解決経路</th></tr>
-        <tr><td>4/27</td><td>パワポ環境無（新規パワポ案件対応不可）</td><td>小川さん「1ヶ月練習・稼働外」指示</td></tr>
-        <tr><td>4/30</td><td>カレンダー権限承認後3時間紛糾</td><td>永井さん再権限付与・図解説明</td></tr>
-        <tr><td>5/7</td><td>FBメッセンジャースマホ未導入で約束破り</td><td>小川さんが代理対応</td></tr>
-        <tr><td>5/7</td><td>Notionタスクに期日入れない</td><td>小川さん「期日と一緒に連絡」ルール提示</td></tr>
-        <tr><td>5/12</td><td>カレンダー権限が承認後に外れる（2度目・原因不明）</td><td>全員から招待メール再送</td></tr>
-        <tr><td>5/13</td><td>「終日対応不可」枠とMTG予定が同時に入ってる</td><td>永井さん「分けて入力してください」</td></tr>
-        <tr><td>5/13</td><td>Notionリンク共有・6点メニューの場所が分からない</td><td>小川さん・どらさん・おけちゃん議論中</td></tr>
-      </table>
-    </div>
-
-    <h3 style="color:#264653; margin-top:32px; margin-bottom:8px; font-size:18px;">🟠 ガイド進行中の3名（5/13時点でオリエン未予約）</h3>
-    <p style="font-size:13px; color:#6b6b6b; margin-bottom:20px;">入会から日が浅く、まだガイド19項目を進めている段階。つまずきテーブルはまだ薄いので、自己紹介で本人が発信した情報を中心にまとめています。</p>
-
-    <div class="member-card" style="border-top-color:#e9c46a;">
-      <div class="member-header">
-        <h3>🌳 木本 恵さん（めめシエンタ）</h3>
-        <span class="status-pill" style="background:#fef3ec; color:#e9c46a;">5/10入会 ・ ガイド進行中</span>
-      </div>
-      <div class="member-desc">
-        ガイド進行3日目。オリエン未予約（ステップ19にまだ到達してない可能性が高い）
-      </div>
-      <div style="background:#fff8e8; padding:14px 18px; border-radius:8px; margin-bottom:14px; font-size:13px; line-height:1.8;">
-        <strong style="color:#e9c46a;">📌 自己紹介から</strong><br>
-        ・大分県を拠点<br>
-        ・経歴：金融事務・債権管理・法務関連業務・行政対応・施設運営管理など幅広い実務経験<br>
-        ・現在は個人事業主として <strong>資金調達サポート・事業計画書作成・補助金／融資申請支援を専門</strong><br>
-        ・本人発信：「これまでの経験を活かした丁寧な対応を心がけてまいります」<br>
-        ・「まだ不慣れな点もございますが、どうぞよろしくお願いいたします」
+      <div class="kanban-col col4">
+        <h4>🔥 稼働中</h4>
+        <div class="kanban-card">
+          <span class="name">🌱 錫谷さん</span>
+          <span class="meta-text">LINE/HP/らせった堂</span>
+        </div>
+        <div class="kanban-card">
+          <span class="name">📝 山下さん</span>
+          <span class="meta-text">オン秘書資料更新／メルマガ</span>
+        </div>
+        <div class="kanban-card">
+          <span class="name">🌸 池田さん</span>
+          <span class="meta-text">永井さん引継ぎOJT中</span>
+        </div>
       </div>
     </div>
-
-    <div class="member-card" style="border-top-color:#f4a261;">
-      <div class="member-header">
-        <h3>🌷 小泉 滋さん</h3>
-        <span class="status-pill" style="background:#fef3ec; color:#f4a261;">5/11入会 ・ ガイド進行中</span>
-      </div>
-      <div class="member-desc">
-        ガイド進行2日目。オリエン未予約
-      </div>
-      <div style="background:#fff5ec; padding:14px 18px; border-radius:8px; margin-bottom:14px; font-size:13px; line-height:1.8;">
-        <strong style="color:#f4a261;">📌 自己紹介から</strong><br>
-        ・神奈川県横浜市在住<br>
-        ・経歴：会社員生活が長く、販売促進系・広告宣伝・イベント企画運営・ツール制作・Webシステム企画運用・マニュアル執筆<br>
-        ・個人事業主開業後は「人様のお役に立つことをする」を心がけ<br>
-        ・本人発信：「<strong>好きなこと、得意なこと、向いていること、はどれも微妙に違うと思う</strong>」「<strong>いま現在も何が向いているのか、はっきりわかっておりません</strong>」<br>
-        ・「どんなことも前向きに取り組んで向上していきたい」
-      </div>
-    </div>
-
-    <div class="member-card" style="border-top-color:#d896c4;">
-      <div class="member-header">
-        <h3>🌼 森岡 美香さん</h3>
-        <span class="status-pill" style="background:#fbeef7; color:#d896c4;">5/12入会 ・ ガイド進行中</span>
-      </div>
-      <div class="member-desc">
-        ガイド進行1日目。本日5/13に全体チャットへ自己紹介投稿
-      </div>
-      <div style="background:#fbeef7; padding:14px 18px; border-radius:8px; margin-bottom:14px; font-size:13px; line-height:1.8;">
-        <strong style="color:#d896c4;">📌 自己紹介から</strong><br>
-        ・東京都在住<br>
-        ・<strong>在宅でのお仕事3年目</strong>。他社では <strong>採用アシスタント</strong>として稼働中<br>
-        ・元webライター（<strong>歯科医院様向けブログ記事</strong>の執筆・投稿が主領域）<br>
-        ・プライベートでは小学4年生・2年生のママ<br>
-        ・本人発信：「<strong>子育てと仕事のバランスで悩んだ時期があった</strong>。在宅ワークという働き方に出会ったことで、必要ないストレスから解放されて、初めて仕事にやりがいを感じることができるようになった」<br>
-        ・「<strong>IRODORI様の働き方に対する理念には非常に共感できる部分が多くあります</strong>」
-      </div>
-    </div>
-
+    <p style="font-size:12px; color:#888; margin-top:16px; text-align:center;">※「オリエン済み」と「稼働中」は両方に該当する人がいます（実務段階に入ったメンバー）</p>
   </div>
 </section>
 
+<!-- 進捗バー -->
 <section>
   <div class="section-header">
-    <div class="number">3</div>
-    <h2>今後の方向性</h2>
+    <div class="icon">📊</div>
+    <h2>スタートアップガイドの進み具合</h2>
   </div>
   <div class="section-body">
-    <h3 style="color:#264653; margin-bottom:12px; font-size:18px;">領域を3つに分けて整理する</h3>
-    <p style="font-size:14px; color:#6b6b6b; margin-bottom:16px;">「オンボーディング」「オリエン」「OJT」が混ざっているのが、現状の "ごちゃごちゃ感" の正体。3層に分離することで各々の役目が明確化される。</p>
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">19項目のうち、それぞれどこまで進んでそうかの推定（Chatworkのやり取りから観察）。</p>
+    <div class="progress-list">
+      <div class="progress-row">
+        <div class="progress-name">🌸 池田さん</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:100%;"></div></div>
+        <div class="progress-status"><span class="done">19/19 ＋オリエン済</span></div>
+      </div>
+      <div class="progress-row">
+        <div class="progress-name">📝 山下さん</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:100%;"></div></div>
+        <div class="progress-status"><span class="done">19/19 ＋実務段階</span></div>
+      </div>
+      <div class="progress-row">
+        <div class="progress-name">🌱 錫谷さん</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:100%;"></div></div>
+        <div class="progress-status"><span class="done">19/19 ＋稼働中</span></div>
+      </div>
+      <div class="progress-row">
+        <div class="progress-name">🌳 木本さん</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill warm" style="width:30%;"></div></div>
+        <div class="progress-status"><span class="ongoing">推定 6/19</span></div>
+      </div>
+      <div class="progress-row">
+        <div class="progress-name">🌷 小泉さん</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill warm" style="width:20%;"></div></div>
+        <div class="progress-status"><span class="ongoing">推定 4/19</span></div>
+      </div>
+      <div class="progress-row">
+        <div class="progress-name">🌼 森岡さん</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill warm" style="width:10%;"></div></div>
+        <div class="progress-status"><span class="ongoing">推定 2/19</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 個別メンバーカード（圧縮） -->
+<section>
+  <div class="section-header">
+    <div class="icon">👤</div>
+    <h2>個別メンバーの今</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">最近入った方を上に表示。詳しいつまずきは <a href="./irodori-onboarding-stumble-202605.html" style="color:#2a9d8f; font-weight:600;">つまずき詳細ページ →</a></p>
+    <div class="member-grid">
+
+      <div class="member-mini m-purple">
+        <h4>🌼 森岡 美香さん <span class="tag t-ongoing">ガイド進行中・1日目</span></h4>
+        <div class="intro">東京都／在宅3年目／他社で<strong>採用アシスタント</strong>として稼働中／元webライター（歯科医院向け）／小4・小2のママ／「IRODORIの理念に非常に共感」</div>
+        <div class="stats-mini">
+          <span>進捗 推定2/19</span>
+          <span>つまずき <strong>0件</strong></span>
+        </div>
+      </div>
+
+      <div class="member-mini m-orange">
+        <h4>🌷 小泉 滋さん <span class="tag t-ongoing">ガイド進行中・2日目</span></h4>
+        <div class="intro">神奈川県横浜市／元会社員・販促/広告/イベント/Webシステム/マニュアル執筆経験／「何が向いてるかまだ自分でも分かってない」と素直に発信</div>
+        <div class="stats-mini">
+          <span>進捗 推定4/19</span>
+          <span>つまずき <strong>0件</strong></span>
+        </div>
+      </div>
+
+      <div class="member-mini m-yellow">
+        <h4>🌳 木本 恵さん（めめシエンタ）<span class="tag t-ongoing">ガイド進行中・3日目</span></h4>
+        <div class="intro">大分県／個人事業主／<strong>資金調達サポート・補助金/融資申請支援が専門</strong>／金融事務・債権管理・法務関連の実務経験豊富</div>
+        <div class="stats-mini">
+          <span>進捗 推定6/19</span>
+          <span>つまずき <strong>0件</strong></span>
+        </div>
+      </div>
+
+      <div class="member-mini m-pink">
+        <h4>🌸 池田 里歩さん <span class="tag t-done">本日オリエン済</span></h4>
+        <div class="intro">愛知県／完全在宅2年目／元コンサル・採用コーディネーター経験／本日永井さん引継ぎ秘書OJTスタート／「よく質問する」と自己申告</div>
+        <div class="stats-mini">
+          <span>進捗 19/19 完了</span>
+          <span>つまずき <strong>8件</strong></span>
+        </div>
+      </div>
+
+      <div class="member-mini m-blue">
+        <h4>📝 山下 絢子さん <span class="tag t-done">オリエン済・実務段階</span></h4>
+        <div class="intro">東京都／ライター枠・副業勤務／<strong>2026年12月末退職予定／不妊治療・フェムケア領域に進みたい</strong>／GW中タスク3件爆速納品</div>
+        <div class="stats-mini">
+          <span>進捗 19/19 完了</span>
+          <span>つまずき <strong>4件</strong></span>
+        </div>
+      </div>
+
+      <div class="member-mini m-green">
+        <h4>🌱 錫谷 詩菜さん <span class="tag t-done">オリエン済・現役稼働</span></h4>
+        <div class="intro">大阪府／水曜定休／LINE・HP・らせった堂のクライアント案件で稼働中／OJTでの詰まりが頻発している代表事例</div>
+        <div class="stats-mini">
+          <span>進捗 19/19 完了</span>
+          <span>つまずき <strong>7件</strong></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 見えてきた共通傾向（圧縮） -->
+<section>
+  <div class="section-header">
+    <div class="icon">🔍</div>
+    <h2>見えてきた共通の傾向</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">複数メンバーが似たところで詰まっている領域。ガイドに記述があっても実行段階で詰まりやすい部分。</p>
+
+    <div class="trend-row hot">
+      <div class="trend-text">① <strong>Googleカレンダー承認メールが迷惑メール行き</strong> ── 3人全員が異なる時期に踏んだ最頻発の場所</div>
+      <div class="trend-count">5件</div>
+    </div>
+    <div class="trend-row">
+      <div class="trend-text">② <strong>Facebook Messenger関連</strong> ── スマホアプリ未導入・認証コード・英字表記名検索</div>
+      <div class="trend-count">3件</div>
+    </div>
+    <div class="trend-row">
+      <div class="trend-text">③ <strong>Notion/Chatworkアカウント作成時の混乱</strong> ── サインアップURL混同・アカウント名変更</div>
+      <div class="trend-count">3件</div>
+    </div>
+    <div class="trend-row">
+      <div class="trend-text">④ <strong>カレンダー入力ルール</strong> ── 対応不可枠とMTG併存・TimeRex運用</div>
+      <div class="trend-count">2件</div>
+    </div>
+
+    <div style="text-align:center; margin-top:24px;">
+      <a href="./irodori-onboarding-stumble-202605.html" class="see-more">🔍 つまずき詳細ページへ</a>
+    </div>
+  </div>
+</section>
+
+<!-- これからの方向性 -->
+<section>
+  <div class="section-header">
+    <div class="icon">🚀</div>
+    <h2>これからの方向性</h2>
+  </div>
+  <div class="section-body">
+    <h3 style="color:#264653; margin-bottom:10px; font-size:16px;">領域を3つに分けて整理する</h3>
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:8px;">「オンボーディング」「オリエン」「OJT」が混ざっているのが現状の "ごちゃごちゃ感" の正体。3層に分離することで各々の役目が明確化される。</p>
     <div class="direction-grid">
       <div class="direction-card">
-        <span class="icon">🏗</span>
+        <span class="icon-emoji">🏗</span>
         <h4>オンボーディング</h4>
         <div class="role">担当：泉田さん</div>
-        <p style="font-size:13px; color:#4a4a4a; margin-bottom:8px;">スタートアップガイド（マニュアル）の作成・更新と配布 ／ メンバー向けChatworkチャットの作成<br><span style="font-size:11px; color:#888;">※セットアップ手順はマニュアル内で誘導</span></p>
-        <div class="place">場：入場前〜2週間 ／ 自学</div>
+        <div class="desc">スタートアップガイド（マニュアル）の作成・更新と配布 ／ メンバー向けChatworkチャットの作成<br><span style="font-size:11px; color:#888;">※セットアップ手順はマニュアル内で誘導</span></div>
+        <div class="place">入場前〜2週間 ／ 自学</div>
       </div>
       <div class="direction-card">
-        <span class="icon">💗</span>
+        <span class="icon-emoji">💗</span>
         <h4>オリエン</h4>
         <div class="role">担当：おけもん</div>
-        <p style="font-size:13px; color:#4a4a4a; margin-bottom:8px;">カウンセラー役 兼 オリエンテーション説明役 ／ 不安・心配の受け止め ／ 期待値調整 ／ 機能面ハイライト</p>
-        <div class="place">場：30分1on1</div>
+        <div class="desc">カウンセラー役 兼 オリエンテーション説明役 ／ 不安・心配の受け止め ／ 期待値調整 ／ 機能面ハイライト</div>
+        <div class="place">30分1on1</div>
       </div>
       <div class="direction-card">
-        <span class="icon">🛠</span>
+        <span class="icon-emoji">🛠</span>
         <h4>OJT</h4>
         <div class="role">担当：配属先PM・先輩</div>
-        <p style="font-size:13px; color:#4a4a4a; margin-bottom:8px;">現場で都度発生する実務・操作の伴走 ／ 暗黙知の引き継ぎ</p>
-        <div class="place">場：現場の中</div>
+        <div class="desc">現場で都度発生する実務・操作の伴走 ／ 暗黙知の引き継ぎ</div>
+        <div class="place">現場の中</div>
       </div>
     </div>
 
-    <h3 style="color:#264653; margin-top:36px; margin-bottom:12px; font-size:18px;">オリエンをAIで支える流れ</h3>
-    <p style="font-size:14px; color:#6b6b6b; margin-bottom:8px;">新人側にこれ以上やることを増やさず、おけもん側がAIの補助で事前準備と事後の仕組み化を回せる形を目指す。</p>
+    <h3 style="color:#264653; margin-top:32px; margin-bottom:10px; font-size:16px;">オリエンをAIで支える流れ</h3>
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:8px;">新人側にこれ以上やることを増やさず、おけもん側がAIの補助で事前準備と事後の仕組み化を回せる形を目指す。</p>
     <div class="flow-diagram">
       <div class="flow-step">
         <div class="step-num">1</div>
-        <div class="step-content"><strong>オリエン前</strong>：AIがChatwork・Notion・自己紹介シートを横断して下調べ → 5分で読める要約を生成 → おけもんが現在地把握</div>
+        <div class="step-content"><strong>オリエン前</strong>：AIがChatwork・Notion・自己紹介シートを横断して下調べ → 5分で読める要約 → 現在地把握</div>
       </div>
       <div class="flow-arrow">↓</div>
       <div class="flow-step">
@@ -636,7 +713,7 @@ footer code {
       <div class="flow-arrow">↓</div>
       <div class="flow-step">
         <div class="step-num">3</div>
-        <div class="step-content"><strong>オリエン後</strong>：AIがつまずきログに蓄積 → 頻発項目を説明シート・動画化候補に → 構造改善議論ハブに提案ドラフト</div>
+        <div class="step-content"><strong>オリエン後</strong>：AIがつまずきを蓄積 → 頻発項目を説明シート・動画化候補に → 改善議論を集約</div>
       </div>
       <div class="flow-arrow">↓</div>
       <div class="flow-step">
@@ -644,22 +721,11 @@ footer code {
         <div class="step-content"><strong>次のオリエン</strong>：蓄積データから「先回り3つ」をAIが提案 → 説明シートも自動で更新 → <strong>回を重ねるごとにオリエンの質が上がる</strong></div>
       </div>
     </div>
-
-    <div class="next-steps">
-      <h3>🚀 AIで仕組み化していくこと（直近やってみたい候補）</h3>
-      <ol>
-        <li><strong>オリエン前の事前リサーチをAIにやらせる</strong> ─ Chatwork・Notion・自己紹介シートを横断してAIが5分で要約。おけもん側がそれを読んで現在地把握。本資料がその試作版にあたります</li>
-        <li><strong>よくあるつまずきTOP3のHTML図解化</strong> ─ Googleカレンダー権限・Messenger設定・Notion操作の3点を、AI支援で図解化→Web公開→新メンバーに永続URLで配布</li>
-        <li><strong>説明シート1枚の作成</strong> ─ オリエン時に渡す要点まとめをHTML化、スマホでも読める形に</li>
-        <li><strong>つまずきの蓄積と還元</strong> ─ 各オリエン後に発生した事案を記録、頻発項目を自動抽出して説明シートに反映→振り返りながら改善を続ける</li>
-        <li><strong>構造的な改善議論の集約</strong> ─ 募集要項に「Notion触れる前提」明記・段階配信化・自己紹介シートの閲覧化など、採用フロー全体の改善提案を継続</li>
-      </ol>
-    </div>
   </div>
 </section>
 
 <footer>
-  <p>📋 本資料はモック版（v0.1）<br>
+  <p>📋 本資料はモック版（v0.2）<br>
   作成: 三又謙次郎（おけもん）<br>
   対象期間: 2026-04-13 〜 2026-05-13</p>
 </footer>

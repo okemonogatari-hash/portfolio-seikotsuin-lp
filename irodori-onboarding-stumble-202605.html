@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow">
+<title>つまずき詳細 - 2026-05</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', sans-serif;
+  background: linear-gradient(135deg, #fef9f5 0%, #fef3ec 50%, #faf5fd 100%);
+  color: #2c2c2c;
+  line-height: 1.7;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  color: #2a9d8f;
+  padding: 8px 18px;
+  border-radius: 22px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.back-link:hover { transform: translateX(-2px); }
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 36px 32px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 6px;
+  background: linear-gradient(90deg, #e76f51, #e9c46a, #f4a261);
+}
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2a9d8f;
+  margin-bottom: 6px;
+}
+h1 {
+  font-size: 22px;
+  color: #264653;
+  margin-bottom: 10px;
+}
+.subtitle { color: #6b6b6b; font-size: 13px; }
+
+.intro-note {
+  background: white;
+  padding: 24px 28px;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  border-left: 5px solid #e76f51;
+}
+.intro-note p { font-size: 14px; color: #4a4a4a; }
+
+section { margin-bottom: 36px; }
+.section-header {
+  background: white;
+  padding: 20px 28px;
+  border-radius: 14px 14px 0 0;
+  border-bottom: 3px solid #e76f51;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.section-header h2 { color: #264653; font-size: 18px; }
+.section-header .icon {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, #e76f51, #f4a261);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.section-body {
+  background: white;
+  padding: 26px;
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+.issue-card {
+  margin-bottom: 24px;
+  padding: 22px;
+  background: #fef9f5;
+  border-radius: 12px;
+  border-left: 4px solid #e76f51;
+}
+.issue-card:last-child { margin-bottom: 0; }
+.issue-card.critical {
+  background: #fef0e8;
+  border-left-color: #d62828;
+}
+.issue-card h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #2c2c2c;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.frequency-badge {
+  display: inline-block;
+  background: #d62828;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.frequency-badge.normal { background: #e76f51; }
+.issue-card .description {
+  margin-bottom: 10px;
+  color: #4a4a4a;
+  font-size: 13px;
+}
+.solution-box {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: white;
+  border-radius: 8px;
+  font-size: 13px;
+  border-left: 3px solid #2a9d8f;
+}
+.solution-box strong { color: #2a9d8f; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 12px;
+}
+th {
+  background: #2a9d8f;
+  color: white;
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+}
+td {
+  padding: 9px 12px;
+  border-bottom: 1px solid #eee;
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: #fafafa; }
+
+.member-card {
+  margin-bottom: 24px;
+  padding: 22px;
+  background: white;
+  border-radius: 14px;
+  border-top: 4px solid;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+.member-card:last-child { margin-bottom: 0; }
+.member-card.pink { border-top-color: #e76f51; }
+.member-card.blue { border-top-color: #2a9d8f; }
+.member-card.green { border-top-color: #76c1b3; }
+.member-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.member-header h3 { font-size: 17px; color: #264653; }
+.status-pill {
+  background: #e8f5f1;
+  color: #2a9d8f;
+  padding: 5px 14px;
+  border-radius: 18px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.member-desc {
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #4a4a4a;
+  padding: 10px 14px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  color: #999;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  body { padding: 20px 12px; }
+  .section-body { padding: 18px; }
+  .issue-card, .member-card { padding: 16px; }
+  table { font-size: 11px; }
+  th, td { padding: 7px 9px; }
+  h1 { font-size: 19px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="./irodori-onboarding-report-202605.html" class="back-link">← ダッシュボードに戻る</a>
+
+<header>
+  <div class="logo">🌱 irodori</div>
+  <h1>つまずき詳細ページ</h1>
+  <p class="subtitle">共通の傾向 ＋ 個別メンバーのつまずきテーブル</p>
+</header>
+
+<div class="intro-note">
+  <p>このページは <strong>「みんなが似たところで詰まる場所」</strong> を可視化して、ガイドや説明シートをどこから補強するかを考える素材にするためのものです。<br>事実をベースに、ガイドに記述があっても実行段階で詰まりやすい部分を <strong>補強候補</strong> としてまとめています。「課題」より「気づき」のトーンで読んでいただけたら嬉しいです🌱</p>
+</div>
+
+<!-- 全体傾向 -->
+<section>
+  <div class="section-header">
+    <div class="icon">🔍</div>
+    <h2>共通の傾向（構造的に補強できる場所）</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="issue-card critical">
+      <h3>① Googleカレンダー共有・承認メールが迷惑メール行き <span class="frequency-badge">最頻発・5件</span></h3>
+      <p class="description">3人全員が異なる時期に同型の事象を踏んだ。<strong>承認メールが迷惑メールフォルダに自動分類</strong>される仕様問題。</p>
+      <table>
+        <tr><th>日付</th><th>メンバー</th><th>詳細</th></tr>
+        <tr><td>4/13</td><td>山下絢子</td><td>Notion登録時に招待が迷惑メールに</td></tr>
+        <tr><td>4/30</td><td>錫谷詩菜</td><td>カレンダー権限承認後、3時間紛糾</td></tr>
+        <tr><td>5/8</td><td>山下絢子</td><td>同問題が再発（飯田さんスクショ手順で解決）</td></tr>
+        <tr><td>5/8</td><td>池田里歩</td><td>カレンダー共有承認メールが迷惑メール行き</td></tr>
+        <tr><td>5/12</td><td>錫谷詩菜</td><td>承認後に権限が外れる（2度目・原因不明）</td></tr>
+      </table>
+      <div class="solution-box">
+        <strong>💡 補強候補：</strong>迷惑メールフォルダの確認案内＋スクショ実演があると、同じ詰まり方を減らせる可能性。ガイドに記述があっても、スパム分類は本人側で気づきにくいので、実演で立体化する余地あり。
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <h3>② Facebook Messenger 関連 <span class="frequency-badge normal">3件</span></h3>
+      <table>
+        <tr><th>日付</th><th>メンバー</th><th>詳細</th></tr>
+        <tr><td>5/7</td><td>錫谷詩菜</td><td>スマホアプリ未導入で約束破り（子供インフル看病時にPC見れず）</td></tr>
+        <tr><td>5/11</td><td>池田里歩</td><td>再ログイン時の認証コード迷子</td></tr>
+        <tr><td>5/12</td><td>池田里歩</td><td>検索でヒットしない（英字表記名「@Yosuke Amano」）</td></tr>
+      </table>
+      <div class="solution-box">
+        <strong>💡 補強候補：</strong>Messenger関連の運用ノウハウ（スマホアプリ・英字表記名検索・再ログイン手順）を実演ベースで補える領域。書いてあっても気づきにくい・実際に詰まったことのある経験者の補足が効きやすい部分。
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <h3>③ Notion / Chatwork アカウント作成時の混乱 <span class="frequency-badge normal">3件</span></h3>
+      <table>
+        <tr><th>日付</th><th>メンバー</th><th>詳細</th></tr>
+        <tr><td>4/13</td><td>山下絢子</td><td>サインアップURLとログインURL混同、1日紛糾</td></tr>
+        <tr><td>4/14</td><td>山下絢子</td><td>アカウント作成完了したつもりが未完</td></tr>
+        <tr><td>4/30</td><td>池田里歩</td><td>Chatworkアカウント名変更不可→新規作成</td></tr>
+      </table>
+      <div class="solution-box">
+        <strong>💡 補強候補：</strong>アカウント作成手順をスクショ付き or 動画で実演化する候補。文章で読んで自分で操作してみる段階で詰まりやすい部分。
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <h3>④ カレンダー入力ルール（対応不可枠・TimeRex運用） <span class="frequency-badge normal">2件</span></h3>
+      <table>
+        <tr><th>日付</th><th>メンバー</th><th>詳細</th></tr>
+        <tr><td>5/13</td><td>錫谷詩菜</td><td>「終日対応不可」枠とMTG予定が同時に入ってる</td></tr>
+        <tr><td>5/13</td><td>池田里歩</td><td>TimeRex運用ルール不明(候補日抽出ツールと誤解)</td></tr>
+      </table>
+      <div class="solution-box">
+        <strong>💡 補強候補：</strong>カレンダー運用のローカルルール（<strong>対応不可枠の扱い</strong>・<strong>TimeRexの役割分担</strong>）を整理する余地。社内独自の運用知見は文書化が漏れやすい領域。
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 個別メンバーつまずきテーブル -->
+<section>
+  <div class="section-header">
+    <div class="icon">👤</div>
+    <h2>個別メンバーのつまずきテーブル</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="member-card pink">
+      <div class="member-header">
+        <h3>🌸 池田 里歩さん</h3>
+        <span class="status-pill">4/30入会 ・ 5/13オリエン済</span>
+      </div>
+      <div class="member-desc">
+        ガイド19項目進捗：<strong>完了</strong>。永井さん引継ぎOJTに突入（小川代表＆小山取締役の秘書業務＋くうさん案件 請求書回り）
+      </div>
+      <table>
+        <tr><th>日付</th><th>つまずいた事実</th><th>解決経路</th></tr>
+        <tr><td>4/30</td><td>Chatworkアカウント名変更不可</td><td>新規アカウント作成→小山さん再招待</td></tr>
+        <tr><td>5/8</td><td>カレンダー承認メールが迷惑メール</td><td>永井さん事前注意→本人確認</td></tr>
+        <tr><td>5/11</td><td>Messenger再ログインで認証コード迷子</td><td>永井さんがメール転送</td></tr>
+        <tr><td>5/11</td><td>LINE Business Manager QRログインが不明</td><td>永井さん段階的誘導</td></tr>
+        <tr><td>5/11</td><td>カレンダー編集権限なくリンク貼付不可</td><td>永井さん権限変更</td></tr>
+        <tr><td>5/12</td><td>Messenger検索ヒットしない(英字表記名)</td><td>永井さん指摘</td></tr>
+        <tr><td>5/12</td><td>クライアント送信文面が冗長</td><td>永井さん赤入れ</td></tr>
+        <tr><td>5/13</td><td>TimeRex運用ルール不明</td><td>永井さん指摘「TimeRex≠候補日抽出ツール」</td></tr>
+      </table>
+    </div>
+
+    <div class="member-card blue">
+      <div class="member-header">
+        <h3>📝 山下 絢子さん</h3>
+        <span class="status-pill">3月末入会 ・ ライター枠 ・ 副業勤務</span>
+      </div>
+      <div class="member-desc">
+        ガイド19項目進捗：<strong>完了</strong>・実務段階（オン秘書内部資料の更新＋メルマガ参考登録）
+      </div>
+      <table>
+        <tr><th>日付</th><th>つまずいた事実</th><th>解決経路</th></tr>
+        <tr><td>4/13</td><td>NotionサインアップURLとログインURL混同・1日紛糾</td><td>小山さん指摘→永井さん補足</td></tr>
+        <tr><td>4/14</td><td>アカウント作成完了したつもりが未完</td><td>永井さん案内→再作成</td></tr>
+        <tr><td>4/30</td><td>カレンダー権限「自分のしか見えない」</td><td>永井さん追加権限付与</td></tr>
+        <tr><td>5/8</td><td>同上の再発(迷惑メールに招待届く問題)</td><td>飯田さんスクショ付き手順案内</td></tr>
+      </table>
+    </div>
+
+    <div class="member-card green">
+      <div class="member-header">
+        <h3>🌱 錫谷 詩菜さん</h3>
+        <span class="status-pill">4月中旬入会 ・ 現役稼働中</span>
+      </div>
+      <div class="member-desc">
+        ガイド完了済み・現場OJT段階。<strong>「ガイドで触れない実務での詰まり」が頻発</strong>している代表事例
+      </div>
+      <table>
+        <tr><th>日付</th><th>つまずいた事実</th><th>解決経路</th></tr>
+        <tr><td>4/27</td><td>パワポ環境無(新規パワポ案件対応不可)</td><td>小川さん「1ヶ月練習・稼働外」指示</td></tr>
+        <tr><td>4/30</td><td>カレンダー権限承認後3時間紛糾</td><td>永井さん再権限付与・図解説明</td></tr>
+        <tr><td>5/7</td><td>FBメッセンジャースマホ未導入で約束破り</td><td>小川さんが代理対応</td></tr>
+        <tr><td>5/7</td><td>Notionタスクに期日入れない</td><td>小川さん「期日と一緒に連絡」ルール提示</td></tr>
+        <tr><td>5/12</td><td>カレンダー権限が承認後に外れる(2度目・原因不明)</td><td>全員から招待メール再送</td></tr>
+        <tr><td>5/13</td><td>「終日対応不可」枠とMTG予定が同時に入ってる</td><td>永井さん「分けて入力してください」</td></tr>
+        <tr><td>5/13</td><td>Notionリンク共有・6点メニューの場所が分からない</td><td>小川さん・どらさん・おけちゃん議論中</td></tr>
+      </table>
+    </div>
+
+    <p style="text-align:center; font-size:13px; color:#888; margin-top:24px; padding:16px; background:#fafafa; border-radius:8px;">🌳 木本さん／🌷 小泉さん／🌼 森岡さん は <strong>ガイド進行中</strong> のため、まだ大きなつまずきの観察データはありません。今後オリエン時／OJT時に観察データが積み重なる予定です。</p>
+
+  </div>
+</section>
+
+<div style="text-align:center; margin-top:30px;">
+  <a href="./irodori-onboarding-report-202605.html" class="back-link">← ダッシュボードに戻る</a>
+</div>
+
+<footer>
+  <p>📋 本資料はモック版（v0.2）<br>
+  作成: 三又謙次郎（おけもん）<br>
+  対象期間: 2026-04-13 〜 2026-05-13</p>
+</footer>
+
+</div>
+</body>
+</html>
