@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>EMIさんのトリセツ | あの頃の私が、また歩き始めている</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  /* EMIさんカラー：植物・若葉・芽吹き・太陽 */
+  --moss-deep:  #4A7C59;
+  --moss-mid:   #6B9F7F;
+  --moss-light: #9DC5AC;
+  --moss-glow:  #DCE9DE;
+  --gold:       #C9A96E;
+  --gold-light: #E8D8B8;
+  --gold-glow:  #F5EAD8;
+  --warm-bg:    #FAF8F2;
+  --warm-white: #FFFCF7;
+  --text:       #2D3A31;
+  --text-muted: #5A6B60;
+  --text-light: #A8B5AC;
+  --line:       rgba(0,0,0,0.07);
+  --shadow-sm:  0 2px 12px rgba(74,124,89,0.08);
+  --shadow-md:  0 8px 30px rgba(74,124,89,0.10);
+  --shadow-lg:  0 16px 48px rgba(74,124,89,0.16);
+  --radius:     12px;
+  --radius-lg:  20px;
+
+  /* StrengthsFinder 4領域カラー */
+  --sf-blue:   #4A90C2;   /* 人間関係構築力 */
+  --sf-green:  #5EA889;   /* 戦略的思考力 */
+  --sf-orange: #E8A85C;   /* 影響力 */
+  --sf-purple: #9B7BB8;   /* 実行力 */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text);
+  background: var(--warm-bg);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    linear-gradient(160deg, rgba(74,124,89,0.88) 0%, rgba(157,197,172,0.65) 45%, rgba(201,169,110,0.78) 100%),
+    radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.42), transparent 60%),
+    linear-gradient(135deg, #4A7C59 0%, #C9A96E 100%);
+  color: #fff;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 18% 28%, rgba(255,255,255,0.20) 0%, transparent 8%),
+    radial-gradient(circle at 78% 35%, rgba(255,255,255,0.16) 0%, transparent 7%),
+    radial-gradient(circle at 38% 70%, rgba(255,255,255,0.18) 0%, transparent 9%),
+    radial-gradient(circle at 88% 78%, rgba(255,255,255,0.14) 0%, transparent 6%),
+    radial-gradient(circle at 8% 88%, rgba(255,255,255,0.12) 0%, transparent 5%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to top, var(--warm-bg), transparent);
+}
+.hero-inner { position: relative; z-index: 2; padding: 60px 24px; }
+.hero-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.78;
+  margin-bottom: 24px;
+  animation: heroFadeIn 0.8s 0.2s both;
+}
+.hero-name {
+  font-size: clamp(28px, 6vw, 52px);
+  font-weight: 700;
+  margin-bottom: 18px;
+  animation: heroSlideUp 0.9s 0.3s both;
+  letter-spacing: 0.04em;
+}
+.hero-name span { color: #FFE9C7; }
+.hero-tagline {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(17px, 3.4vw, 24px);
+  font-weight: 500;
+  opacity: 0.96;
+  margin-bottom: 14px;
+  animation: heroSlideUp 0.9s 0.5s both;
+  letter-spacing: 0.02em;
+}
+.hero-sub {
+  font-size: 14px;
+  opacity: 0.78;
+  margin-top: 22px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: heroFadeIn 0.8s 0.7s both;
+  line-height: 1.8;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: heroFadeIn 0.8s 1s both, bounce 2s 1.5s infinite;
+  opacity: 0.65;
+  font-size: 22px;
+}
+
+@keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes heroSlideUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+/* ─── SECTIONS ─── */
+section { padding: 80px 0; }
+section:nth-of-type(even) { background: var(--warm-white); }
+
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--moss-mid);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-size: clamp(22px, 4vw, 30px);
+  color: var(--moss-deep);
+  margin-bottom: 16px;
+  position: relative;
+  display: inline-block;
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: var(--moss-light);
+  margin-top: 8px;
+  transition: width 0.6s ease 0.2s;
+}
+.fade-in.is-visible .section-title::after { width: 48px; }
+
+.section-lead {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 640px;
+  margin-bottom: 40px;
+  line-height: 1.9;
+}
+
+/* ─── TOC（目次） ─── */
+.toc-section { background: var(--warm-white); }
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 28px;
+}
+.toc-card {
+  background: var(--warm-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 14px;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+.toc-card:hover {
+  background: var(--moss-glow);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--moss-light);
+}
+.toc-card.highlight {
+  background: linear-gradient(135deg, rgba(157,197,172,0.20), rgba(232,216,184,0.20));
+  border-color: rgba(74,124,89,0.20);
+}
+.toc-card.highlight:hover {
+  background: linear-gradient(135deg, rgba(157,197,172,0.32), rgba(232,216,184,0.32));
+}
+.toc-card::after {
+  content: '→';
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--moss-mid);
+  font-size: 18px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.toc-card:hover::after {
+  opacity: 1;
+  right: 14px;
+}
+.toc-emoji {
+  font-size: 28px;
+  line-height: 1.4;
+  text-align: center;
+}
+.toc-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  color: var(--moss-mid);
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.toc-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3px;
+  line-height: 1.45;
+}
+.toc-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* anchor scroll margin */
+section[id] { scroll-margin-top: 24px; }
+
+/* ─── 診断画像frame ─── */
+.diag-image-frame {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+.diag-image-cap {
+  font-size: 12px;
+  color: var(--moss-mid);
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.diag-image-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+}
+.diag-image-note {
+  font-size: 11.5px;
+  color: var(--text-light);
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+/* ─── ABOUT ─── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.about-text p { margin-bottom: 16px; font-size: 15px; color: var(--text-muted); }
+.about-text p:first-child::first-letter {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 38px;
+  float: left;
+  line-height: 1;
+  margin-right: 8px;
+  color: var(--moss-deep);
+}
+.about-card {
+  background: var(--warm-white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+.about-card .big-icon { font-size: 44px; color: var(--moss-mid); margin-bottom: 16px; }
+.about-card h3 { font-size: 18px; color: var(--moss-deep); margin-bottom: 12px; }
+.about-card p { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+
+/* ─── STRENGTHS ─── */
+.strengths-intro {
+  background: linear-gradient(135deg, var(--moss-glow), var(--gold-glow));
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 36px;
+  border-left: 4px solid var(--moss-deep);
+}
+.strengths-intro strong { color: var(--moss-deep); font-weight: 700; }
+
+.strengths-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.strength-card {
+  background: var(--warm-white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--sf-blue);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.strength-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.strength-card.dom-blue   { border-left-color: var(--sf-blue); }
+.strength-card.dom-green  { border-left-color: var(--sf-green); }
+.strength-card.dom-orange { border-left-color: var(--sf-orange); }
+.strength-card.dom-purple { border-left-color: var(--sf-purple); }
+.strength-rank {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--moss-glow);
+  color: var(--moss-deep);
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.strength-card.top3 .strength-rank {
+  background: linear-gradient(135deg, var(--moss-deep), var(--gold));
+  color: white;
+}
+.strength-info { flex: 1; }
+.strength-name { font-weight: 700; color: var(--text); font-size: 15px; margin-bottom: 2px; }
+.strength-meaning { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+/* domain bar */
+.domain-bar {
+  background: var(--warm-white);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+}
+.domain-bar-title { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; font-weight: 500; }
+.domain-bar-track {
+  display: flex;
+  height: 28px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.domain-seg { display: flex; align-items: center; justify-content: center; color: white; font-size: 11px; font-weight: 700; }
+.domain-seg.blue   { background: var(--sf-blue); }
+.domain-seg.green  { background: var(--sf-green); }
+.domain-seg.orange { background: var(--sf-orange); }
+.domain-seg.purple { background: var(--sf-purple); }
+.domain-legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--text-muted); }
+.domain-legend span::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.domain-legend .lg-blue::before   { background: var(--sf-blue); }
+.domain-legend .lg-green::before  { background: var(--sf-green); }
+.domain-legend .lg-orange::before { background: var(--sf-orange); }
+.domain-legend .lg-purple::before { background: var(--sf-purple); }
+
+/* ─── CQ PERSONALITY ─── */
+.cq-banner {
+  background: linear-gradient(135deg, var(--gold-glow), var(--moss-glow));
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 28px;
+}
+.cq-icon {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  box-shadow: var(--shadow-sm);
+}
+.cq-banner h3 { font-size: 22px; color: var(--moss-deep); margin-bottom: 6px; }
+.cq-banner p { font-size: 13px; color: var(--text-muted); }
+
+.cq-meters {
+  display: grid;
+  gap: 12px;
+}
+.cq-meter {
+  background: var(--warm-white);
+  border-radius: var(--radius);
+  padding: 14px 20px;
+  border: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 200px 1fr 50px;
+  gap: 16px;
+  align-items: center;
+}
+.cq-meter-label { font-size: 13px; }
+.cq-meter-label strong { display: block; color: var(--text); font-weight: 600; margin-bottom: 2px; }
+.cq-meter-label span { font-size: 11px; color: var(--text-light); }
+.cq-meter-bar {
+  background: var(--moss-glow);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.cq-meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--moss-mid), var(--moss-deep));
+  border-radius: 4px;
+}
+.cq-meter-value {
+  text-align: right;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--moss-deep);
+  font-size: 14px;
+}
+
+/* ─── PERSONA SUMMARY ─── */
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.persona-card {
+  background: var(--warm-white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.persona-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.persona-emoji { font-size: 36px; margin-bottom: 12px; }
+.persona-card h3 {
+  font-size: 16px;
+  color: var(--moss-deep);
+  margin-bottom: 10px;
+  letter-spacing: 0.02em;
+}
+.persona-card p { font-size: 13px; color: var(--text-muted); line-height: 1.85; }
+
+/* ─── ARUARU ─── */
+.aruaru-list {
+  display: grid;
+  gap: 14px;
+}
+.aruaru-item {
+  background: var(--warm-white);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  border-left: 4px solid var(--moss-light);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 14px;
+}
+.aruaru-emoji { font-size: 22px; line-height: 1.4; }
+.aruaru-scene { font-size: 14px; color: var(--text); font-weight: 500; margin-bottom: 6px; line-height: 1.7; }
+.aruaru-reason { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.aruaru-reason strong { color: var(--moss-deep); font-weight: 600; }
+
+/* ─── MANUAL ─── */
+.manual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.manual-box {
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  padding: 28px 30px;
+  box-shadow: var(--shadow-sm);
+}
+.manual-box.joy {
+  background: linear-gradient(135deg, rgba(157,197,172,0.18), rgba(220,233,222,0.4));
+  border: 1px solid rgba(74,124,89,0.20);
+}
+.manual-box.pain {
+  background: linear-gradient(135deg, rgba(232,216,184,0.25), rgba(245,234,216,0.35));
+  border: 1px solid rgba(201,169,110,0.22);
+}
+.manual-box h3 {
+  font-size: 18px;
+  margin-bottom: 18px;
+  color: var(--moss-deep);
+}
+.manual-box.pain h3 { color: #8B6F40; }
+.manual-box ul { list-style: none; padding: 0; }
+.manual-box li {
+  padding: 8px 0 8px 22px;
+  position: relative;
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--text-muted);
+}
+.manual-box.joy li::before {
+  content: '🌱';
+  position: absolute;
+  left: 0;
+  font-size: 12px;
+}
+.manual-box.pain li::before {
+  content: '🍃';
+  position: absolute;
+  left: 0;
+  font-size: 12px;
+}
+
+/* ─── QUOTES ─── */
+.quotes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.quote-card {
+  background: var(--warm-white);
+  border-radius: var(--radius);
+  padding: 24px 26px 24px 38px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.85;
+  transition: all 0.3s ease;
+}
+.quote-card::before {
+  content: '“';
+  position: absolute;
+  top: 4px;
+  left: 14px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 40px;
+  color: var(--moss-light);
+  line-height: 1;
+}
+.quote-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.quote-card em {
+  font-style: normal;
+  background: linear-gradient(transparent 60%, rgba(201,169,110,0.35) 60%);
+  padding: 0 2px;
+  font-weight: 600;
+}
+.quote-card.pin {
+  background: linear-gradient(135deg, rgba(157,197,172,0.20), rgba(232,216,184,0.18));
+  border: 1px solid rgba(74,124,89,0.18);
+}
+.quote-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  color: var(--text-light);
+  margin-top: 12px;
+  letter-spacing: 0.08em;
+}
+
+/* ─── STORY TIMELINE ─── */
+.story-timeline {
+  position: relative;
+  padding-left: 40px;
+}
+.story-timeline::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  bottom: 14px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--moss-deep), var(--gold), var(--moss-mid));
+}
+.story-item {
+  position: relative;
+  margin-bottom: 36px;
+  padding-bottom: 8px;
+}
+.story-item::before {
+  content: '';
+  position: absolute;
+  left: -34px;
+  top: 8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid var(--moss-deep);
+  box-shadow: 0 0 0 4px rgba(74,124,89,0.15);
+}
+.story-item.now::before {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(201,169,110,0.25);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 4px rgba(201,169,110,0.25); }
+  50% { box-shadow: 0 0 0 8px rgba(201,169,110,0.10); }
+}
+.story-era {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--moss-mid);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.story-title { font-size: 19px; color: var(--moss-deep); margin-bottom: 12px; }
+.story-body { font-size: 14px; color: var(--text-muted); line-height: 1.9; }
+.story-body em {
+  font-style: normal;
+  color: var(--moss-deep);
+  font-weight: 600;
+}
+
+/* ─── CORE INSIGHT (15年) ─── */
+.core-insight {
+  background: linear-gradient(135deg, var(--moss-deep), var(--moss-mid));
+  color: white;
+  border-radius: var(--radius-lg);
+  padding: 44px 48px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+.core-insight::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.10), transparent 70%);
+}
+.core-insight h3 {
+  font-size: 22px;
+  margin-bottom: 18px;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+.core-insight p {
+  font-size: 15px;
+  line-height: 1.95;
+  opacity: 0.94;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 2;
+}
+.core-insight .core-quote {
+  border-left: 3px solid var(--gold-light);
+  padding-left: 18px;
+  font-style: italic;
+  font-size: 14px;
+  opacity: 0.92;
+  margin: 18px 0;
+}
+.core-insight .reframe-tag {
+  display: inline-block;
+  background: var(--gold);
+  color: white;
+  padding: 4px 14px;
+  border-radius: 14px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+/* ─── NEXT STEPS ─── */
+.steps-list { display: grid; gap: 16px; }
+.step-item {
+  background: var(--warm-white);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 18px;
+  align-items: start;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+.step-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--moss-deep), var(--gold));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(74,124,89,0.25);
+}
+.step-content h4 { font-size: 16px; color: var(--moss-deep); margin-bottom: 6px; }
+.step-content p { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+.step-content .step-why {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(0,0,0,0.08);
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+/* ─── VIDEO ─── */
+.video-section {
+  background: linear-gradient(135deg, var(--moss-glow), var(--gold-glow));
+}
+.video-frame {
+  background: white;
+  border: 2px solid var(--moss-light);
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+.video-frame h3 { font-size: 20px; color: var(--moss-deep); margin-bottom: 14px; }
+.video-frame p { font-size: 14px; color: var(--text-muted); margin-bottom: 22px; }
+.video-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, var(--moss-deep), var(--gold));
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 8px 20px rgba(74,124,89,0.3);
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+}
+.video-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(74,124,89,0.4);
+}
+.video-placeholder {
+  background: var(--moss-glow);
+  border: 2px dashed var(--moss-mid);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  color: var(--moss-deep);
+  font-size: 13px;
+  line-height: 1.9;
+}
+.video-placeholder code {
+  background: white;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* ─── CLOSING ─── */
+.closing {
+  background: linear-gradient(135deg, var(--moss-deep), var(--moss-mid) 50%, var(--gold) 100%);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.closing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.16) 0%, transparent 10%),
+    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.14) 0%, transparent 10%);
+  pointer-events: none;
+}
+.closing-inner { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; padding: 80px 28px; }
+.closing h2 {
+  font-size: clamp(24px, 5vw, 36px);
+  margin-bottom: 28px;
+  color: white;
+}
+.closing p {
+  font-size: 15px;
+  line-height: 2.0;
+  opacity: 0.96;
+  margin-bottom: 20px;
+}
+.closing .sig {
+  margin-top: 36px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  opacity: 0.92;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--warm-bg);
+  text-align: center;
+  padding: 36px 24px;
+  font-size: 12px;
+  color: var(--text-light);
+  border-top: 1px solid var(--line);
+}
+.footer strong { color: var(--moss-deep); }
+
+/* ─── ANIMATIONS ─── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.stagger > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+.stagger.is-visible > :nth-child(1)  { transition-delay: 0.05s; }
+.stagger.is-visible > :nth-child(2)  { transition-delay: 0.10s; }
+.stagger.is-visible > :nth-child(3)  { transition-delay: 0.15s; }
+.stagger.is-visible > :nth-child(4)  { transition-delay: 0.20s; }
+.stagger.is-visible > :nth-child(5)  { transition-delay: 0.25s; }
+.stagger.is-visible > :nth-child(6)  { transition-delay: 0.30s; }
+.stagger.is-visible > :nth-child(7)  { transition-delay: 0.35s; }
+.stagger.is-visible > :nth-child(8)  { transition-delay: 0.40s; }
+.stagger.is-visible > :nth-child(9)  { transition-delay: 0.45s; }
+.stagger.is-visible > :nth-child(10) { transition-delay: 0.50s; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  section { padding: 56px 0; }
+  .about-grid,
+  .manual-grid,
+  .quotes-grid { grid-template-columns: 1fr; }
+  .persona-grid { grid-template-columns: 1fr; }
+  .strengths-list { grid-template-columns: 1fr; }
+  .toc-grid { grid-template-columns: 1fr; }
+  .cq-meter { grid-template-columns: 140px 1fr 40px; }
+  .core-insight { padding: 32px 28px; }
+  .closing-inner { padding: 60px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">SESSION REVIEW · 2026.05.13</div>
+    <h1 class="hero-name"><span>EMI</span>さんのトリセツ</h1>
+    <p class="hero-tagline">あの頃の私が、また歩き始めている。</p>
+    <p class="hero-sub">
+      根拠のない自信で一人で中国を放浪したエミさんが、<br>
+      15年の中で小さくなって、<br>
+      いま、自分を取り戻し始めている。<br>
+      これは、その途中にいるあなたへのトリセツです。
+    </p>
+  </div>
+  <div class="hero-scroll"><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about" class="fade-in">
+  <div class="container">
+    <div class="section-label">ABOUT THIS GUIDE</div>
+    <h2 class="section-title">このトリセツについて</h2>
+    <p class="section-lead">
+      これは、2026年5月13日のコーチングセッションで見えてきた、<br>
+      あなた自身の取扱説明書です。
+    </p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>「自分迷子中です。それがちょっと分かったらいいかなと思って」── そう言ってセッションに来てくれたエミさん。</p>
+        <p>StrengthsFinder（34資質）とCQパーソナリティ診断、ふたつの診断結果を入り口に、80分かけてあなたの中の声を一緒に聴きました。</p>
+        <p>その中で、ひとつ大きなことに気づきました。あなたの自信のなさは <strong>「能力」の問題ではなくて、「15年かけて積もったもの」</strong> だということ。そして、すでに <strong>「自分を取り戻す」</strong> 動きが始まっているということ。</p>
+        <p>このトリセツは、迷ったときに開いて「あ、こういう人だった」と思い出すための、あなた専用の地図です。</p>
+      </div>
+      <div class="about-card">
+        <div class="big-icon">🌿</div>
+        <h3>使い方</h3>
+        <p>頭から読まなくていいです。<strong>下の目次から</strong>気になるセクションへ飛べます。「いま自分がぐらついてる」と感じた日に、<a href="#quotes" style="color:var(--moss-deep); text-decoration:underline;">QUOTES</a>セクションに戻ってきてください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TOC（目次） ═══════════ -->
+<section id="toc" class="fade-in toc-section">
+  <div class="container">
+    <div class="section-label">TABLE OF CONTENTS</div>
+    <h2 class="section-title">目次</h2>
+    <p class="section-lead">気になるところから、どうぞ。タップで飛びます。</p>
+    <nav class="toc-grid stagger">
+      <a href="#strengths" class="toc-card">
+        <div class="toc-emoji">🌿</div>
+        <div class="toc-content">
+          <div class="toc-number">02</div>
+          <div class="toc-title">あなたの中で自然に動いている力</div>
+          <div class="toc-desc">ストレングスファインダーTOP10</div>
+        </div>
+      </a>
+      <a href="#cq" class="toc-card">
+        <div class="toc-emoji">☀️</div>
+        <div class="toc-content">
+          <div class="toc-number">03</div>
+          <div class="toc-title">CQパーソナリティ診断の結果</div>
+          <div class="toc-desc">ムードメーカータイプ／7指標</div>
+        </div>
+      </a>
+      <a href="#persona" class="toc-card">
+        <div class="toc-emoji">✨</div>
+        <div class="toc-content">
+          <div class="toc-number">04</div>
+          <div class="toc-title">あなたを3つの言葉で</div>
+          <div class="toc-desc">セッションで見えた輪郭</div>
+        </div>
+      </a>
+      <a href="#aruaru" class="toc-card">
+        <div class="toc-emoji">🙈</div>
+        <div class="toc-content">
+          <div class="toc-number">05</div>
+          <div class="toc-title">こんなとき、ありませんか？</div>
+          <div class="toc-desc">あなたの強みの裏返し8つ</div>
+        </div>
+      </a>
+      <a href="#manual" class="toc-card">
+        <div class="toc-emoji">📘</div>
+        <div class="toc-content">
+          <div class="toc-number">06</div>
+          <div class="toc-title">あなたを「使う」ためのガイド</div>
+          <div class="toc-desc">光る瞬間／省エネのコツ</div>
+        </div>
+      </a>
+      <a href="#quotes" class="toc-card highlight">
+        <div class="toc-emoji">💬</div>
+        <div class="toc-content">
+          <div class="toc-number">07</div>
+          <div class="toc-title">あなたが言ってくれた言葉</div>
+          <div class="toc-desc">ぐらついた日にここへ戻ってきて</div>
+        </div>
+      </a>
+      <a href="#story" class="toc-card">
+        <div class="toc-emoji">📚</div>
+        <div class="toc-content">
+          <div class="toc-number">08</div>
+          <div class="toc-title">あなたの物語 ── 3つの章</div>
+          <div class="toc-desc">中国放浪→15年→NOW</div>
+        </div>
+      </a>
+      <a href="#core" class="toc-card highlight">
+        <div class="toc-emoji">🔥</div>
+        <div class="toc-content">
+          <div class="toc-number">09</div>
+          <div class="toc-title">15年の中で、根っこにあったこと</div>
+          <div class="toc-desc">セッションで一番大きく見えたこと</div>
+        </div>
+      </a>
+      <a href="#next" class="toc-card">
+        <div class="toc-emoji">🎯</div>
+        <div class="toc-content">
+          <div class="toc-number">10</div>
+          <div class="toc-title">これから、やってみること</div>
+          <div class="toc-desc">宿題3つ</div>
+        </div>
+      </a>
+      <a href="#video" class="toc-card">
+        <div class="toc-emoji">🎬</div>
+        <div class="toc-content">
+          <div class="toc-number">11</div>
+          <div class="toc-title">セッション動画（限定公開）</div>
+          <div class="toc-desc">聞き直したくなったらここから</div>
+        </div>
+      </a>
+      <a href="#closing" class="toc-card">
+        <div class="toc-emoji">💌</div>
+        <div class="toc-content">
+          <div class="toc-number">12</div>
+          <div class="toc-title">EMIさんへ</div>
+          <div class="toc-desc">おけもんからの手紙</div>
+        </div>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<!-- ═══════════ STRENGTHS ═══════════ -->
+<section id="strengths" class="fade-in">
+  <div class="container">
+    <div class="section-label">YOUR NATURAL TALENTS</div>
+    <h2 class="section-title">あなたの中で自然に動いている力</h2>
+    <p class="section-lead">
+      ストレングスファインダー® 34資質。<br>
+      上位10個の <strong style="color:var(--moss-deep);">7つが「人間関係構築力」</strong>。<br>
+      これは「人と一緒に・人を支える」ことが、あなたの自然な動き方であることを示しています。
+    </p>
+
+    <div class="diag-image-frame">
+      <div class="diag-image-cap">📋 あなたが受けた CliftonStrengths® 34 結果</div>
+      <img src="clifton_strengths_34.png" alt="EMIさんのCliftonStrengths 34 結果一覧">
+      <div class="diag-image-note">下に並ぶカードは、この結果のTOP10をドメイン別に色分けして並べたものです。</div>
+    </div>
+
+    <div class="strengths-intro">
+      <strong>あなたの才能のかたち：</strong>相手の感情を察して（共感性）／みんなに公平に（公平性）／対立を起こさず（調和性）／少人数で深く（親密性）関わる ── これは <strong>母として家庭を整え、家業の専従者として支え、三姉妹を育ててきたあなた</strong> の歩みそのものを才能の言葉で説明したものです。
+    </div>
+
+    <div class="strengths-list stagger">
+      <div class="strength-card top3 dom-blue"><div class="strength-rank">1</div><div class="strength-info"><div class="strength-name">調和性</div><div class="strength-meaning">対立より合意。場の空気を整える</div></div></div>
+      <div class="strength-card top3 dom-green"><div class="strength-rank">2</div><div class="strength-info"><div class="strength-name">収集心</div><div class="strength-meaning">情報を集めて引き出しに溜める</div></div></div>
+      <div class="strength-card top3 dom-blue"><div class="strength-rank">3</div><div class="strength-info"><div class="strength-name">適応性</div><div class="strength-meaning">その時その場に柔軟に乗れる</div></div></div>
+      <div class="strength-card dom-blue"><div class="strength-rank">4</div><div class="strength-info"><div class="strength-name">共感性</div><div class="strength-meaning">相手の感情を自分のことのように感じる</div></div></div>
+      <div class="strength-card dom-purple"><div class="strength-rank">5</div><div class="strength-info"><div class="strength-name">公平性</div><div class="strength-meaning">誰にも同じように、を大切にする</div></div></div>
+      <div class="strength-card dom-blue"><div class="strength-rank">6</div><div class="strength-info"><div class="strength-name">親密性</div><div class="strength-meaning">少人数の深い関係に安心を感じる</div></div></div>
+      <div class="strength-card dom-purple"><div class="strength-rank">7</div><div class="strength-info"><div class="strength-name">慎重さ</div><div class="strength-meaning">一歩ずつ・確かめながら進む</div></div></div>
+      <div class="strength-card dom-blue"><div class="strength-rank">8</div><div class="strength-info"><div class="strength-name">運命思考</div><div class="strength-meaning">出来事の繋がりや意味を感じ取る</div></div></div>
+      <div class="strength-card dom-blue"><div class="strength-rank">9</div><div class="strength-info"><div class="strength-name">成長促進</div><div class="strength-meaning">人が伸びていく姿に喜びを感じる</div></div></div>
+      <div class="strength-card dom-blue"><div class="strength-rank">10</div><div class="strength-info"><div class="strength-name">包含</div><div class="strength-meaning">誰一人取り残さない、を自然にやる</div></div></div>
+    </div>
+
+    <div class="domain-bar">
+      <div class="domain-bar-title">あなたのTOP10ドメイン分布</div>
+      <div class="domain-bar-track">
+        <div class="domain-seg blue" style="flex:7;">人間関係 70%</div>
+        <div class="domain-seg purple" style="flex:2;">実行 20%</div>
+        <div class="domain-seg green" style="flex:1;">戦略 10%</div>
+      </div>
+      <div class="domain-legend">
+        <span class="lg-blue">人間関係構築力</span>
+        <span class="lg-purple">実行力</span>
+        <span class="lg-green">戦略的思考力</span>
+        <span class="lg-orange">影響力（TOP10には不在）</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CQ PERSONALITY ═══════════ -->
+<section id="cq" class="fade-in">
+  <div class="container">
+    <div class="section-label">CQ PERSONALITY DIAGNOSIS</div>
+    <h2 class="section-title">CQパーソナリティ診断の結果</h2>
+    <p class="section-lead">
+      もう一つの診断、CQパーソナリティ診断の結果も、<br>
+      あなたの強みの形をくっきり浮かび上がらせてくれました。
+    </p>
+
+    <div class="diag-image-frame">
+      <div class="diag-image-cap">📊 あなたが受けた CQパーソナリティ診断 結果</div>
+      <img src="cq_chart_personality.png" alt="EMIさんのCQパーソナリティ診断結果（レーダーチャート＋アクティブ傾向）">
+      <div class="diag-image-note">上のレーダーチャートが「あなたの自然な傾向」、下のメーターが「行動の出力傾向」を示しています。下にその詳細を並べました。</div>
+    </div>
+
+    <div class="cq-banner">
+      <div class="cq-icon">☀️</div>
+      <div>
+        <h3>ムードメーカータイプ</h3>
+        <p>誰とでも親しくなれる／ストレスに強い／臨機応変が合言葉</p>
+      </div>
+    </div>
+
+    <div class="cq-meters">
+      <div class="cq-meter"><div class="cq-meter-label"><strong>ストレス耐性</strong><span>悩みを抱えにくいか</span></div><div class="cq-meter-bar"><div class="cq-meter-fill" style="width:74%"></div></div><div class="cq-meter-value">74</div></div>
+      <div class="cq-meter"><div class="cq-meter-label"><strong>ディペンデント</strong><span>相手の心を理解できるか</span></div><div class="cq-meter-bar"><div class="cq-meter-fill" style="width:60%"></div></div><div class="cq-meter-value">60</div></div>
+      <div class="cq-meter"><div class="cq-meter-label"><strong>インプレッション</strong><span>アプローチ力</span></div><div class="cq-meter-bar"><div class="cq-meter-fill" style="width:50%"></div></div><div class="cq-meter-value">50</div></div>
+      <div class="cq-meter"><div class="cq-meter-label"><strong>ポジティブ</strong><span>積極性</span></div><div class="cq-meter-bar"><div class="cq-meter-fill" style="width:48.5%"></div></div><div class="cq-meter-value">48.5</div></div>
+      <div class="cq-meter"><div class="cq-meter-label"><strong>チャレンジ</strong><span>前向きに行動できるか</span></div><div class="cq-meter-bar"><div class="cq-meter-fill" style="width:47.4%"></div></div><div class="cq-meter-value">47.4</div></div>
+      <div class="cq-meter"><div class="cq-meter-label"><strong>クリエイティブ</strong><span>創造・発想力</span></div><div class="cq-meter-bar"><div class="cq-meter-fill" style="width:37.7%"></div></div><div class="cq-meter-value">37.7</div></div>
+      <div class="cq-meter"><div class="cq-meter-label"><strong>イニシアティブ</strong><span>主導権タイプか</span></div><div class="cq-meter-bar"><div class="cq-meter-fill" style="width:33.6%"></div></div><div class="cq-meter-value">33.6</div></div>
+    </div>
+
+    <p style="margin-top:28px; padding:20px 24px; background:var(--moss-glow); border-radius:var(--radius); font-size:14px; color:var(--text); line-height:1.9;">
+      <strong style="color:var(--moss-deep);">💡 読み解き：</strong>
+      ストレス耐性74はかなり高い数字。困難の中でもしなやかに立ち続けられる芯の強さがあります。一方で「主導権を握って人を動かす」「論理を緻密に組む」は本来の力みどころではない。<strong>引っ張るより、まわす。指示するより、整える。</strong>そういう動き方が自然です。
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ PERSONA SUMMARY ═══════════ -->
+<section id="persona" class="fade-in">
+  <div class="container">
+    <div class="section-label">YOU IN THREE WORDS</div>
+    <h2 class="section-title">あなたという人を、3つの言葉で</h2>
+    <p class="section-lead">セッションを通して見えてきた、あなたの輪郭。</p>
+
+    <div class="persona-grid stagger">
+      <div class="persona-card">
+        <div class="persona-emoji">🌿</div>
+        <h3>調和の風を通す人</h3>
+        <p>誰にでも親しく、相手の感情のゆれを敏感に感じ取れる。場に自然と調和の風を通せる、強くてやわらかい人。</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-emoji">🌊</div>
+        <h3>しなやかに乗る人</h3>
+        <p>環境が変わっても、その時その場に柔軟に乗れる。困難の中でも立ち続けられる、74という芯の強さ。</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-emoji">🌱</div>
+        <h3>静かに育てる人</h3>
+        <p>誰一人取り残さず、人が伸びていく姿に喜びを感じる。前に出るより、整える方が天職。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ARUARU ═══════════ -->
+<section id="aruaru" class="fade-in">
+  <div class="container">
+    <div class="section-label">YOU SAID...</div>
+    <h2 class="section-title">こんなとき、ありませんか？</h2>
+    <p class="section-lead">
+      セッションであなたが話してくれたこと。<br>
+      これ全部、あなたの強みの裏返しです。
+    </p>
+
+    <div class="aruaru-list stagger">
+      <div class="aruaru-item">
+        <div class="aruaru-emoji">😶‍🌫️</div>
+        <div>
+          <div class="aruaru-scene">資格を取っても「これやりたくないのに」が先に来る。</div>
+          <div class="aruaru-reason"><strong>調和性1位×公平性5位</strong>──「期待された基準と自分の実力にギャップがあると、場の調和を乱す／不公平になる」と感じやすい。だから資格を取っても、自分の中で「やる動機」に火が点きにくい。</div>
+        </div>
+      </div>
+      <div class="aruaru-item">
+        <div class="aruaru-emoji">🔍</div>
+        <div>
+          <div class="aruaru-scene">頼まれごとに対して、できる側より「できない側」が先に見えてしまう。</div>
+          <div class="aruaru-reason"><strong>慎重さ7位＋分析思考14位＋自己確信31位</strong>──自分の力を確かめる時、足りない側から検算するクセが自然に発動。これは性格の弱さじゃなく、慎重さの裏面です。</div>
+        </div>
+      </div>
+      <div class="aruaru-item">
+        <div class="aruaru-emoji">🥲</div>
+        <div>
+          <div class="aruaru-scene">体育の授業を任されても、中国語の翻訳を頼まれても、「私そんなにできるわけじゃないし」と思って楽しくない。</div>
+          <div class="aruaru-reason"><strong>活発性34位（最下位）＋自我30位</strong>──「自分のエネルギーで前に出てやる」は本来の動き方じゃない。一人でステージに立つ形は才能のかたちとズレてる。</div>
+        </div>
+      </div>
+      <div class="aruaru-item">
+        <div class="aruaru-emoji">🌬️</div>
+        <div>
+          <div class="aruaru-scene">人と話したあと、家に帰ってから「あの言い方、ちょっとあったな」と反省してしまう。</div>
+          <div class="aruaru-reason"><strong>共感性4位＋慎重さ7位</strong>──相手の感情を自分のことのように感じる力が、終わったあとも継続して動く。優しさのアフターサービスが効きすぎているだけ。</div>
+        </div>
+      </div>
+      <div class="aruaru-item">
+        <div class="aruaru-emoji">🌷</div>
+        <div>
+          <div class="aruaru-scene">褒められても「いやいや、そんなことない」とつい返してしまう。</div>
+          <div class="aruaru-reason"><strong>自己確信31位</strong>──「これでいい」と自分で旗を立てる資質が薄い。だから外から差し出された褒めを、受け取る筋肉が育ってないだけ。</div>
+        </div>
+      </div>
+      <div class="aruaru-item">
+        <div class="aruaru-emoji">🍃</div>
+        <div>
+          <div class="aruaru-scene">「断れない」「迷う」が日常の中にある。</div>
+          <div class="aruaru-reason"><strong>調和性1位×公平性5位</strong>──「相手と調和したい」「みんなに公平でいたい」が、自分の境界線より先に動く。これはあなたの優しさの自然な現れです。</div>
+        </div>
+      </div>
+      <div class="aruaru-item">
+        <div class="aruaru-emoji">📚</div>
+        <div>
+          <div class="aruaru-scene">気になることを、ついつい調べてしまう。YouTube、ブログ、保険、リベ……。</div>
+          <div class="aruaru-reason"><strong>収集心2位</strong>──情報を集めて引き出しに溜めることが、自然な栄養補給。「自分は知識ない」と思ってる本人の中に、実はものすごい引き出しが既にある。</div>
+        </div>
+      </div>
+      <div class="aruaru-item">
+        <div class="aruaru-emoji">🌱</div>
+        <div>
+          <div class="aruaru-scene">三姉妹を育てて、家業の経理を担ってきたけれど、自分のことは後回しが続いた。</div>
+          <div class="aruaru-reason"><strong>成長促進9位×包含10位×親密性6位</strong>──「人を支える」が才能のど真ん中。だから自然と自分は後ろに置いてしまう構造になっている。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MANUAL ═══════════ -->
+<section id="manual" class="fade-in">
+  <div class="container">
+    <div class="section-label">USER MANUAL</div>
+    <h2 class="section-title">あなたを「使う」ためのガイド</h2>
+    <p class="section-lead">
+      強みは、使い方を知らないと宝の持ち腐れ。<br>
+      あなたが <strong style="color:var(--moss-deep);">光る瞬間</strong> と、<strong style="color:#8B6F40;">省エネで生きるコツ</strong> を整理しました。
+    </p>
+
+    <div class="manual-grid">
+      <div class="manual-box joy">
+        <h3>🌱 あなたが光る瞬間</h3>
+        <ul>
+          <li>どんなタイプの人とも、自然にコミュニケーションが取れている時</li>
+          <li>場の調和を整えていて、誰かが安心して話せている時</li>
+          <li>少人数の深い関係の中で、相手の心の機微を受け止めている時</li>
+          <li>誰かの成長や変化を、近くで見守っている時</li>
+          <li>新しい情報や学びを発見できて、引き出しに加わった時</li>
+          <li>環境が変わってもしなやかに乗れて、自分でも「あれ、乗れてる」と気づいた時</li>
+          <li>困難の中でも立ち続けている、その芯の強さを発揮している時</li>
+        </ul>
+      </div>
+      <div class="manual-box pain">
+        <h3>🍃 省エネで生きるコツ</h3>
+        <ul>
+          <li>「主導権を握ってグイグイ動かす役」は無理に取らない（イニシアティブ33.6）</li>
+          <li>長期的・緻密な計画立てを一人で背負わない（クリエイティブ37.7）</li>
+          <li>同じ作業のくり返し・地道な単純作業は飽きやすいと知っておく</li>
+          <li>「自分の意見を強く主張する」は苦手でOK（活発性34位・自我30位）</li>
+          <li>「断れない・迷う」は弱みじゃなく <strong style="color:#8B6F40;">調和性×公平性の自然な現れ</strong></li>
+          <li>「断る」を学ぶより、「断らなくても自分が消耗しない場所の選び方」を学ぶほうが合っている</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ QUOTES ═══════════ -->
+<section id="quotes" class="fade-in">
+  <div class="container">
+    <div class="section-label">YOUR OWN WORDS</div>
+    <h2 class="section-title">あなたが、セッションで言ってくれた言葉</h2>
+    <p class="section-lead">
+      これは全部、あなたが自分の口で言った言葉です。<br>
+      迷ったときに戻ってきて、もう一度自分の声を聴いてください。
+    </p>
+
+    <div class="quotes-grid stagger">
+      <div class="quote-card pin">
+        <em>自分迷子中です</em>。それがちょっと分かったらいいかなと思って。
+        <div class="quote-meta">[03:32] セッション冒頭</div>
+      </div>
+      <div class="quote-card pin">
+        資格取ってもその資格に対して「本当はこんなんしたくないのになー」とか、すごい<em>弱い方を自分が見つけてしまって</em>、自分は苦手意識というか。
+        <div class="quote-meta">[04:55] 自分の癖を自分で名付けた瞬間</div>
+      </div>
+      <div class="quote-card">
+        私教員免許を持ってて何年か数年教員をしてたことがあったんですよ。体育の免許を持ってて……でも任されることって、体育の授業であったり、人の前で話しするとか。でも私話あまり上手じゃないしドキドキするし。
+        <div class="quote-meta">[05:44] 体育のエピソード</div>
+      </div>
+      <div class="quote-card">
+        得意じゃないっていうのが一番に出てきて楽しくない。やりたくないのに仕事振られるみたいで、すごい嫌だったんです。
+        <div class="quote-meta">[06:27] 「楽しくない」の源泉</div>
+      </div>
+      <div class="quote-card">
+        昔中国に留学してたことがあって、中国語少し喋れるんですけど、喋れるって言っても日常会話レベルなんですよ。でも翻訳とか通訳とか任されることがあって、いやでも私そんな上手じゃないのにとか。
+        <div class="quote-meta">[06:40] 中国語のエピソード</div>
+      </div>
+      <div class="quote-card">
+        自分が求められることに対してうまく答えられないとか責任果たせないっていうのが、どんどん<em>自己否定していく癖</em>が。
+        <div class="quote-meta">[07:09] 自己否定の癖の正体</div>
+      </div>
+      <div class="quote-card pin">
+        <em>根拠のない自信。無知だからこそできた</em>みたいな感じ。怖さも知らんかったから、歴史も本当知らんかったから、一人で中国ぐるぐる回ってました。
+        <div class="quote-meta">[62:09–62:23] 結婚前のあなた</div>
+      </div>
+      <div class="quote-card pin">
+        その時の私を知っている友達が今を見たら、「<em>どうしたー、なんでなんでそんな小さくなってんの</em>」みたいな。
+        <div class="quote-meta">[62:23] 過去と現在の落差</div>
+      </div>
+      <div class="quote-card">
+        ずっとそれは言われ続けてきたら、私ってちょっといかんかったかもしれんっていう考える癖がついた、っていうのが、ほんと結婚して15年。
+        <div class="quote-meta">[59:18] 15年で積もったもの</div>
+      </div>
+      <div class="quote-card">
+        リベのオフ会に参加して、こんな楽しい時間が、大人になってこんな人たちと出会うんや。テニスオフ会っていうのを初めて行って、体動かしてなんか楽しいなって思いました。
+        <div class="quote-meta">[29:33–30:01] 取り戻し始めた瞬間</div>
+      </div>
+      <div class="quote-card">
+        今新しく自分としてリベのお付き合いとか、リベの人たちとつながるのがすごい、昔こうやったっていうのが取り戻せている感じになってる。
+        <div class="quote-meta">[60:01] 自分を取り戻す感覚</div>
+      </div>
+      <div class="quote-card pin">
+        <em>自分を取り戻す。</em>
+        <div class="quote-meta">[61:22] 着地のひとこと</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ STORY TIMELINE ═══════════ -->
+<section id="story" class="fade-in">
+  <div class="container">
+    <div class="section-label">YOUR STORY</div>
+    <h2 class="section-title">あなたの物語 ── 3つの章</h2>
+    <p class="section-lead">
+      あなたは「自信のない人」じゃない。<br>
+      ただ、長い時間をかけて小さくなって、いま戻り始めているだけ。
+    </p>
+
+    <div class="story-timeline">
+      <div class="story-item">
+        <div class="story-era">CHAPTER 1 · 結婚前</div>
+        <h3 class="story-title">🌏 「根拠のない自信」期</h3>
+        <div class="story-body">
+          一人で中国に留学して、怖さも歴史も知らないまま、ぐるぐる放浪していたエミさん。<br>
+          <em>「無知だからこそできた」</em>と、あなた自身が振り返ったあの感覚。<br>
+          根拠なんてなくても、自分の足で歩いていた人。
+        </div>
+      </div>
+
+      <div class="story-item">
+        <div class="story-era">CHAPTER 2 · 結婚15年</div>
+        <h3 class="story-title">🍃 「小さくなっていった」期</h3>
+        <div class="story-body">
+          結婚して、出産して、三姉妹を育てて、家業の経理を担って。<br>
+          その15年の中で、主人からの否定的な言葉が <em>「ちょっといかんかったかもしれん」という考える癖</em> を作っていった。<br>
+          教員免許×体育、中国留学×翻訳。<br>
+          「専門じゃないのに頼まれる→できない側に目が行く→楽しくない」のループ。<br>
+          かつての先生の <em>「能力ないのに過大評価されてる」</em> という言葉も、深く刻まれた。<br>
+          ── そうやって、できる自分を出さないようにしてきた。
+        </div>
+      </div>
+
+      <div class="story-item now">
+        <div class="story-era">CHAPTER 3 · NOW</div>
+        <h3 class="story-title">🌱 「自分を取り戻す」期</h3>
+        <div class="story-body">
+          子どもが少しずつ手離れしてきて、自分の時間が戻ってきた。<br>
+          リベシティに入って、テニスオフ会で「体動かして楽しい」って久しぶりに思えた。<br>
+          楽天ROOMを始めて「新しいことが意外と楽しい」と気づいた。<br>
+          そして今日のセッションで <em>「自分を取り戻す」</em> という言葉が、自分の口から出た。<br>
+          <strong>充実度65点 ── ここ数ヶ月で、確かに変わってきている。</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CORE INSIGHT ═══════════ -->
+<section id="core" class="fade-in" style="background:var(--warm-bg);">
+  <div class="container">
+    <div class="section-label">CORE INSIGHT</div>
+    <h2 class="section-title">15年の中で、根っこにあったこと</h2>
+    <p class="section-lead">
+      これは、セッションで一番大きく見えたことです。<br>
+      診断データだけでは絶対に見えなかった、あなたの自信のなさの本当の出どころ。
+    </p>
+
+    <div class="core-insight">
+      <div class="reframe-tag">REFRAME</div>
+      <h3>あなたの「自信のなさ」は、能力の問題ではない。</h3>
+
+      <div class="core-quote">
+        「主人が結構モラハラじゃないけど、そこまではいかない、そういうあれがあって……ずっとそれは言われ続けてきたら、<strong>私ってちょっといかんかったかもしれんっていう考える癖がついた</strong>。ほんと結婚して15年」
+      </div>
+
+      <p>主人は悪い人じゃない。ちゃんとしてくれる。お金も入れてくれる。だから本人にもそのつもりはない。── でも、否定的な言葉を15年間浴び続けた結果、あなたの中に <strong>「私ってちょっといかんかったかもしれん」という考える癖</strong> ができた。</p>
+
+      <p>これは <strong>あなたの性格でも、能力でもありません</strong>。15年かけて、外から積もったもの。</p>
+
+      <p>そして大事なこと。あなたは結婚前、<strong>「根拠のない自信」で一人で中国を放浪していた人</strong>です。そのエミさんは、消えていない。リベでテニスをはじめて、楽天ROOMをはじめて、今ここに戻り始めている。</p>
+
+      <p style="font-size:17px; font-weight:600; margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.25);">
+        ── 15年かけて積もったものは、これから時間をかけて、ゆっくり溶かしていけば良いのです。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ NEXT STEPS ═══════════ -->
+<section id="next" class="fade-in">
+  <div class="container">
+    <div class="section-label">YOUR HOMEWORK</div>
+    <h2 class="section-title">これから、やってみること</h2>
+    <p class="section-lead">
+      セッションでお渡しした、ふたつの宿題。<br>
+      今すぐじゃなくていいです。気が向いたときに、ひとつずつ。
+    </p>
+
+    <div class="steps-list stagger">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>🤲 周りの人に "褒めてもらう" 練習</h4>
+          <p>リベの仲間に「おけもんからこんなこと言われた」と話してみてください。きっと笑いながら、いろんな褒め言葉を返してくれます。出てきた褒めを、<strong>「いやいや」で返さず、一旦受け取ってみる</strong>のがコツ。</p>
+          <div class="step-why">なぜ？ ── 日本人は「できない側を伸ばす教育」で育つから、褒められ受けの筋肉が弱い。あなたの自己確信31位を補うのは、「褒めを受け取る練習」です。</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>🗣 周りに "やりたいこと" を口に出してみる</h4>
+          <p>「私、何かやりたいんだけど、何やったらできると思う？」── このフレーズを、リベの仲間に投げてみてください。<strong>「でも私、知識ないから」と付け加えてもOK</strong>です。</p>
+          <div class="step-why">なぜ？ ── 周りはきっと「そんなことなくても、できてくるやん」と返してくれます。あなたの「できない方を見る」癖を、外から書き換えていく実験です。</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>🌿 ぐらついた日、このトリセツに戻ってきてください</h4>
+          <p>とくに QUOTES セクション。あなたが自分の口で言った言葉を、もう一度自分の声で読んでみてください。</p>
+          <div class="step-why">なぜ？ ── 一番説得力のある言葉は、いつも自分の中にあるからです。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ VIDEO ═══════════ -->
+<section id="video" class="fade-in video-section">
+  <div class="container">
+    <div class="section-label">SESSION RECORDING</div>
+    <h2 class="section-title">セッション動画（限定公開）</h2>
+    <p class="section-lead">
+      聞き直したくなったら、いつでもここから。
+    </p>
+
+    <div class="video-frame">
+      <h3>🎬 2026-05-13 初回コーチングセッション</h3>
+      <p>セッションをまるごと、ゆっくり振り返ってみてください。<br>聞き直すたびに、新しい発見があるはずです🌿</p>
+      <a href="https://youtu.be/Nzd06H6yiY8" target="_blank" rel="noopener" class="video-button">
+        <i class="fab fa-youtube"></i> セッション動画を見る（80分）
+      </a>
+      <p style="margin-top:18px; font-size:11.5px; color:var(--text-light); line-height:1.7;">
+        🔒 <strong>限定公開リンク</strong>です。このURLを知っている方だけが視聴できます。<br>
+        外部に共有はしないでくださいね。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CLOSING ═══════════ -->
+<section id="closing" class="closing">
+  <div class="closing-inner">
+    <h2>EMIさんへ</h2>
+    <p>あなたは、自信がない人じゃありません。</p>
+    <p>ただ、15年かけて少しずつ小さくなってきた人。<br>そして、いま、自分を取り戻し始めている人です。</p>
+    <p>テニスをはじめて、楽天ROOMをはじめて、リベの仲間と繋がりはじめて。<br>これって、「根拠のない自信」で中国をぐるぐる放浪していた、あの頃のあなたが、ゆっくり戻ってきている兆しなんだと思います。</p>
+    <p>「日常会話レベルの中国語」も「専門知識のない体育」も、<br>受け取った相手にとっては、確かな贈り物になっていたはずです。<br>あなたは <strong>「できる側に立たないと差し出してはいけない」</strong> というルールを、いつのまにか自分にだけ厳しく適用してきただけ。</p>
+    <p>そのルールを、これから一緒に、ゆっくり外していきましょう。</p>
+    <p>このトリセツが色褪せるくらい、自信を持って自分の足で歩く日まで。<br>一緒に走ります。</p>
+    <div class="sig">── おけもん（おけもんカンパニー）<br>2026.05.13</div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<div class="footer">
+  <strong>EMIさんのトリセツ</strong> ｜ 初回コーチングセッション 2026-05-13 ｜ おけもんカンパニー<br>
+  <small style="opacity:0.7; margin-top:8px; display:inline-block;">作成：はるかCEO×ゆいCPO ／ 元データ：StrengthsFinder 34・CQパーソナリティ診断・セッショントランスクリプト</small>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in, .stagger').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
