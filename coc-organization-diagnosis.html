@@ -928,7 +928,7 @@ section{padding:130px 32px}
 }
 .chart-svg-wrap svg{width:100%;height:auto;display:block;max-width:480px;margin:0 auto}
 .chart-svg-wrap::before{
-  content:'SAMPLE DIAGNOSIS REPORT';
+  content:'ACTUAL DIAGNOSIS REPORT';
   position:absolute;top:18px;left:24px;
   font-family:var(--inter);
   font-size:10px;letter-spacing:.25em;
@@ -973,6 +973,141 @@ section{padding:130px 32px}
 }
 .legend-dot.before{background:rgba(31,49,71,.12);border:1.5px dashed var(--color-primary)}
 .legend-dot.after{background:rgba(199,122,74,.22);border:2px solid var(--color-accent)}
+.legend-dot.standard{background:transparent;border:1.5px dashed var(--color-primary)}
+
+/* ============ ACTIVITY TREND ============ */
+.activity-trend{
+  margin:80px auto 0;
+  max-width:1080px;
+  background:#fff;
+  border:1px solid var(--color-border);
+  padding:48px 44px;
+}
+.activity-trend-title{
+  font-family:var(--serif);
+  font-size:22px;font-weight:600;
+  color:var(--color-primary);
+  margin-bottom:8px;
+  letter-spacing:.04em;
+}
+.activity-trend-subtitle{
+  font-family:var(--inter);
+  font-size:11px;letter-spacing:.22em;
+  color:var(--color-accent);font-weight:600;
+  margin-bottom:36px;
+  padding-bottom:24px;
+  border-bottom:1px solid var(--color-border);
+}
+.bar-list{display:flex;flex-direction:column;gap:22px}
+.bar-row{
+  display:grid;
+  grid-template-columns:200px 1fr 70px;
+  gap:24px;
+  align-items:center;
+}
+.bar-label{
+  font-family:var(--serif);
+  font-size:14px;font-weight:600;
+  color:var(--color-primary);
+  letter-spacing:.04em;
+}
+.bar-label small{
+  display:block;
+  font-family:var(--sans);
+  font-size:11px;font-weight:400;
+  color:var(--color-text-mute);
+  letter-spacing:.02em;
+  margin-top:3px;
+}
+.bar-track{
+  position:relative;
+  height:10px;
+  background:var(--color-bg);
+  border-radius:5px;
+  overflow:hidden;
+}
+.bar-fill{
+  position:absolute;left:0;top:0;
+  height:100%;
+  background:linear-gradient(90deg,var(--color-accent),#B86B3D);
+  border-radius:5px;
+}
+.bar-fill.is-low{background:linear-gradient(90deg,#a8a097,#888076)}
+.bar-fill.is-high{background:linear-gradient(90deg,#C77A4A,#A05A30);box-shadow:0 0 0 1px rgba(199,122,74,.3)}
+.bar-value{
+  font-family:var(--serif);
+  font-size:18px;font-weight:600;
+  color:var(--color-primary);
+  text-align:right;
+  letter-spacing:.02em;
+}
+.type-result{
+  margin-top:48px;
+  padding:32px 36px;
+  background:var(--color-primary);
+  color:#fff;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:36px;
+  align-items:center;
+}
+.type-result-left{display:flex;flex-direction:column;gap:6px}
+.type-result-label{
+  font-family:var(--inter);
+  font-size:11px;font-weight:600;
+  letter-spacing:.28em;
+  color:var(--color-accent-light);
+}
+.type-result-name{
+  font-family:var(--serif);
+  font-size:28px;font-weight:600;
+  letter-spacing:.04em;
+  line-height:1.4;
+}
+.type-result-text p{
+  font-size:13.5px;line-height:1.95;
+  color:rgba(255,255,255,.85);
+}
+@media(max-width:768px){
+  .bar-row{grid-template-columns:1fr;gap:8px}
+  .bar-value{text-align:left}
+  .activity-trend{padding:32px 24px}
+  .type-result{grid-template-columns:1fr;gap:20px;padding:24px 28px}
+}
+
+/* ============ AXES TWELVE (Override) ============ */
+.axes-twelve{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--color-border);
+  border:1px solid var(--color-border);
+}
+.axes-card{
+  background:#fff;
+  padding:24px 22px;
+  transition:all .3s;
+}
+.axes-card:hover{background:var(--color-bg);transform:translateY(-2px)}
+.axes-card-num{
+  font-family:var(--inter);
+  font-size:10px;letter-spacing:.24em;
+  color:var(--color-accent);
+  font-weight:600;margin-bottom:10px;
+}
+.axes-card h4{
+  font-family:var(--serif);
+  font-size:18px;font-weight:600;
+  color:var(--color-primary);
+  margin-bottom:10px;
+  letter-spacing:.04em;
+}
+.axes-card p{
+  font-size:12px;line-height:1.85;
+  color:var(--color-text-mute);
+}
+@media(max-width:900px){.axes-twelve{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.axes-twelve{grid-template-columns:1fr}}
 .chart-caption-body{
   font-size:14px;line-height:2;
   color:var(--color-text);
@@ -1195,84 +1330,166 @@ section{padding:130px 32px}
 
     <div class="chart-wrap">
       <div class="chart-svg-wrap fade-in-left">
-        <svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="組織力診断 12軸スパイダーチャート サンプル">
-          <!-- 5段階の同心12角形 -->
-          <polygon points="220,188 236,192.29 247.71,204 252,220 247.71,236 236,247.71 220,252 204,247.71 192.29,236 188,220 192.29,204 204,192.29" fill="none" stroke="#EDE7D8" stroke-width="1"/>
-          <polygon points="220,156 252,164.57 275.43,188 284,220 275.43,252 252,275.43 220,284 188,275.43 164.57,252 156,220 164.57,188 188,164.57" fill="none" stroke="#EDE7D8" stroke-width="1"/>
-          <polygon points="220,124 268,136.86 303.14,172 316,220 303.14,268 268,303.14 220,316 172,303.14 136.86,268 124,220 136.86,172 172,136.86" fill="none" stroke="#EDE7D8" stroke-width="1"/>
-          <polygon points="220,92 284,109.14 330.86,156 348,220 330.86,284 284,330.86 220,348 156,330.86 109.14,284 92,220 109.14,156 156,109.14" fill="none" stroke="#E5DFD3" stroke-width="1"/>
-          <polygon points="220,60 300,81.44 358.56,140 380,220 358.56,300 300,358.56 220,380 140,358.56 81.44,300 60,220 81.44,140 140,81.44" fill="none" stroke="#C8C0AE" stroke-width="1.5"/>
+        <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CQパーソナリティ診断 12軸スパイダーチャート（経営者おけもん氏 実データ）" style="overflow:visible">
+          <!-- 5段階の同心12角形（中心240,240・半径160） -->
+          <polygon points="240,208 256,212.29 267.71,224 272,240 267.71,256 256,267.71 240,272 224,267.71 212.29,256 208,240 212.29,224 224,212.29" fill="none" stroke="#EDE7D8" stroke-width="1"/>
+          <polygon points="240,176 272,184.57 295.43,208 304,240 295.43,272 272,295.43 240,304 208,295.43 184.57,272 176,240 184.57,208 208,184.57" fill="none" stroke="#EDE7D8" stroke-width="1"/>
+          <polygon points="240,144 288,156.86 323.14,192 336,240 323.14,288 288,323.14 240,336 192,323.14 156.86,288 144,240 156.86,192 192,156.86" fill="none" stroke="#EDE7D8" stroke-width="1"/>
+          <polygon points="240,112 304,129.14 350.86,176 368,240 350.86,304 304,350.86 240,368 176,350.86 129.14,304 112,240 129.14,176 176,129.14" fill="none" stroke="#E5DFD3" stroke-width="1"/>
+          <polygon points="240,80 320,101.44 378.56,160 400,240 378.56,320 320,378.56 240,400 160,378.56 101.44,320 80,240 101.44,160 160,101.44" fill="none" stroke="#C8C0AE" stroke-width="1.5"/>
 
           <!-- 12スポーク -->
           <g stroke="#E5DFD3" stroke-width="1">
-            <line x1="220" y1="220" x2="220" y2="60"/>
-            <line x1="220" y1="220" x2="300" y2="81.44"/>
-            <line x1="220" y1="220" x2="358.56" y2="140"/>
-            <line x1="220" y1="220" x2="380" y2="220"/>
-            <line x1="220" y1="220" x2="358.56" y2="300"/>
-            <line x1="220" y1="220" x2="300" y2="358.56"/>
-            <line x1="220" y1="220" x2="220" y2="380"/>
-            <line x1="220" y1="220" x2="140" y2="358.56"/>
-            <line x1="220" y1="220" x2="81.44" y2="300"/>
-            <line x1="220" y1="220" x2="60" y2="220"/>
-            <line x1="220" y1="220" x2="81.44" y2="140"/>
-            <line x1="220" y1="220" x2="140" y2="81.44"/>
+            <line x1="240" y1="240" x2="240" y2="80"/>
+            <line x1="240" y1="240" x2="320" y2="101.44"/>
+            <line x1="240" y1="240" x2="378.56" y2="160"/>
+            <line x1="240" y1="240" x2="400" y2="240"/>
+            <line x1="240" y1="240" x2="378.56" y2="320"/>
+            <line x1="240" y1="240" x2="320" y2="378.56"/>
+            <line x1="240" y1="240" x2="240" y2="400"/>
+            <line x1="240" y1="240" x2="160" y2="378.56"/>
+            <line x1="240" y1="240" x2="101.44" y2="320"/>
+            <line x1="240" y1="240" x2="80" y2="240"/>
+            <line x1="240" y1="240" x2="101.44" y2="160"/>
+            <line x1="240" y1="240" x2="160" y2="101.44"/>
           </g>
 
-          <!-- Before polygon（診断時） -->
+          <!-- 標準点（55）：薄い基準ライン -->
           <polygon
-            points="220,108 260,150.72 330.86,156 284,220 303.14,268 276,316.99 220,300 172,303.14 164.57,252 92,220 123.01,164 180,150.72"
-            fill="rgba(31,49,71,0.12)" stroke="#1F3147" stroke-width="2" stroke-dasharray="4 3"/>
+            points="240,152 284,163.79 316.21,196 328,240 316.21,284 284,316.21 240,328 196,316.21 163.79,284 152,240 163.79,196 196,163.79"
+            fill="none" stroke="#1F3147" stroke-width="1.3" stroke-dasharray="3 3" opacity="0.55"/>
 
-          <!-- After polygon（3ヶ月後） -->
+          <!-- 評価点（おけもん実データ：話欲10,交意2,肯定55,感表37,寄添50,他中100,環馴76,友好10,発想67,個集58,感深85,現充54） -->
           <polygon
-            points="220,92 276,123.01 344.71,148 332,220 330.86,284 284,330.86 220,332 156,330.86 136.86,268 76,220 109.14,156 164,123.01"
-            fill="rgba(199,122,74,0.20)" stroke="#C77A4A" stroke-width="2.5"/>
+            points="240,224 241.6,237.23 316.21,196 299.2,240 309.28,280 320,378.56 240,361.6 232,253.86 147.17,293.6 147.2,240 122.22,172 196.8,165.18"
+            fill="rgba(199,122,74,0.22)" stroke="#C77A4A" stroke-width="2.5"/>
 
-          <!-- ラベル -->
-          <g font-family="Noto Serif JP, serif" font-size="11.5" fill="#2D2A26" font-weight="500" letter-spacing="0.04em">
-            <text x="220" y="42" text-anchor="middle">目標明確度</text>
-            <text x="310" y="64" text-anchor="middle">意思決定速度</text>
-            <text x="372" y="138" text-anchor="start">リーダー求心力</text>
-            <text x="394" y="225" text-anchor="end">情報共有</text>
-            <text x="372" y="312" text-anchor="start">傾聴姿勢</text>
-            <text x="310" y="386" text-anchor="middle">共感力</text>
-            <text x="220" y="408" text-anchor="middle">当事者意識</text>
-            <text x="130" y="386" text-anchor="middle">推進力</text>
-            <text x="68" y="312" text-anchor="end">改善行動</text>
-            <text x="46" y="225" text-anchor="start">信頼関係</text>
-            <text x="68" y="138" text-anchor="end">協働性</text>
-            <text x="130" y="64" text-anchor="middle">適応柔軟性</text>
+          <!-- 評価点の各頂点（小さい点） -->
+          <g fill="#C77A4A">
+            <circle cx="240" cy="224" r="3"/>
+            <circle cx="241.6" cy="237.23" r="3"/>
+            <circle cx="316.21" cy="196" r="3"/>
+            <circle cx="299.2" cy="240" r="3"/>
+            <circle cx="309.28" cy="280" r="3"/>
+            <circle cx="320" cy="378.56" r="3.5"/>
+            <circle cx="240" cy="361.6" r="3"/>
+            <circle cx="232" cy="253.86" r="3"/>
+            <circle cx="147.17" cy="293.6" r="3"/>
+            <circle cx="147.2" cy="240" r="3"/>
+            <circle cx="122.22" cy="172" r="3.5"/>
+            <circle cx="196.8" cy="165.18" r="3"/>
+          </g>
+
+          <!-- 軸ラベル -->
+          <g font-family="Noto Serif JP, serif" font-size="12" fill="#2D2A26" font-weight="500" letter-spacing="0.04em">
+            <text x="240" y="32" text-anchor="middle">1. 話欲度</text>
+            <text x="338" y="58" text-anchor="middle">2. 交意度</text>
+            <text x="408" y="138" text-anchor="start">3. 肯定度</text>
+            <text x="432" y="245" text-anchor="end">4. 感表度</text>
+            <text x="408" y="346" text-anchor="start">5. 寄添度</text>
+            <text x="338" y="430" text-anchor="middle">6. 他中度</text>
+            <text x="240" y="456" text-anchor="middle">7. 環馴度</text>
+            <text x="142" y="430" text-anchor="middle">8. 友好度</text>
+            <text x="72" y="346" text-anchor="end">9. 発想度</text>
+            <text x="48" y="245" text-anchor="start">10. 個集度</text>
+            <text x="72" y="138" text-anchor="end">11. 感深度</text>
+            <text x="142" y="58" text-anchor="middle">12. 現充度</text>
+          </g>
+
+          <!-- 強調値ラベル（実データの極端値） -->
+          <g font-family="Noto Sans JP, sans-serif" font-size="10" font-weight="700">
+            <text x="328" y="386" text-anchor="start" fill="#C77A4A">100</text>
+            <text x="113" y="166" text-anchor="end" fill="#C77A4A">85</text>
+            <text x="248" y="362" fill="#C77A4A">76</text>
+            <text x="248" y="224" fill="#888076" font-weight="600">10</text>
+            <text x="240" y="234" text-anchor="middle" fill="#888076" font-weight="600" font-size="9">2</text>
           </g>
 
           <!-- 中心点と目盛り -->
-          <circle cx="220" cy="220" r="3" fill="#C77A4A"/>
+          <circle cx="240" cy="240" r="3" fill="#1F3147"/>
           <g font-family="Inter, sans-serif" font-size="9" fill="#A89E8A" font-weight="500">
-            <text x="226" y="220" text-anchor="start">0</text>
-            <text x="226" y="188" text-anchor="start">2</text>
-            <text x="226" y="156" text-anchor="start">4</text>
-            <text x="226" y="124" text-anchor="start">6</text>
-            <text x="226" y="92" text-anchor="start">8</text>
-            <text x="226" y="60" text-anchor="start">10</text>
+            <text x="246" y="244" text-anchor="start">0</text>
+            <text x="246" y="212" text-anchor="start">20</text>
+            <text x="246" y="180" text-anchor="start">40</text>
+            <text x="246" y="148" text-anchor="start">60</text>
+            <text x="246" y="116" text-anchor="start">80</text>
+            <text x="246" y="84" text-anchor="start">100</text>
           </g>
         </svg>
       </div>
 
       <div class="chart-caption fade-in-right">
-        <div class="chart-caption-label">CASE EXAMPLE</div>
-        <h3 class="chart-caption-title">中堅製造業（48名）<br>診断 → 3ヶ月伴走の事例</h3>
+        <div class="chart-caption-label">REAL DATA CASE</div>
+        <h3 class="chart-caption-title">経営者・おけもん氏の<br>診断結果から読めること</h3>
 
         <div class="chart-legend">
-          <div class="legend-item"><span class="legend-dot before"></span>診断時の状態</div>
-          <div class="legend-item"><span class="legend-dot after"></span>3ヶ月後の状態</div>
+          <div class="legend-item"><span class="legend-dot standard"></span>標準点 55（一般的な傾向）</div>
+          <div class="legend-item"><span class="legend-dot after"></span>本人の評価点</div>
         </div>
 
-        <p class="chart-caption-body">
-          診断時に低かった<strong>「情報共有」「改善行動」「適応柔軟性」</strong>の3軸が、解釈セッションと実行支援を経て3ヶ月で顕著に改善。<br><br>
-          「経営層と現場の温度差」の正体が、この3軸の落ち込みにあったことが可視化され、打ち手が定まった典型例です。
-        </p>
+        <div class="chart-caption-body">
+          <p style="margin-bottom:18px;font-family:var(--serif);font-size:16px;font-weight:600;color:var(--color-primary);line-height:1.7;">「自分の意思を強く持ち、深く感じ取り、<br>少人数で濃く関わる」タイプ。</p>
+          <p style="margin-bottom:16px"><strong>他中度100・感深度85・環馴度76</strong>と一部の軸が突出して高い一方、<strong>交意度2・話欲度10・友好度10</strong>は際立って低い。多くの人に広く声をかけるより、目の前の少人数に深く関わることで力を発揮するタイプであることが、グラフ1枚で見えてきます。</p>
+          <p>これは介護現場16年・コーチング1,000件超・少人数オフ会20回主催という<strong>本人のキャリア実像と完全に一致</strong>。経営者ご自身の自己理解と、組織内の人材配置・育成方針の両方で使える診断です。</p>
+        </div>
       </div>
     </div>
+
+    <!-- アクティブ傾向（7要素 横棒グラフ） -->
+    <div class="activity-trend fade-in">
+      <h3 class="activity-trend-title">アクティブ傾向（7要素）</h3>
+      <div class="activity-trend-subtitle">CQ ACTIVE TENDENCY — おけもん氏の結果</div>
+      <div class="bar-list">
+        <div class="bar-row">
+          <div class="bar-label">インプレッション<small>アプローチ力があるか</small></div>
+          <div class="bar-track"><div class="bar-fill is-low" style="width:6%"></div></div>
+          <div class="bar-value">6.0</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">イニシアティブ<small>主導権を持てるタイプか</small></div>
+          <div class="bar-track"><div class="bar-fill" style="width:73.8%"></div></div>
+          <div class="bar-value">73.8</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">クリエイティブ<small>創造・発想力</small></div>
+          <div class="bar-track"><div class="bar-fill" style="width:74.4%"></div></div>
+          <div class="bar-value">74.4</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">チャレンジ<small>前向きに考え行動できるか</small></div>
+          <div class="bar-track"><div class="bar-fill is-high" style="width:91%"></div></div>
+          <div class="bar-value">91.0</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">ポジティブ<small>積極的に物事を進める意欲</small></div>
+          <div class="bar-track"><div class="bar-fill" style="width:66.6%"></div></div>
+          <div class="bar-value">66.6</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">ディペンデント<small>相手の心を理解できるか</small></div>
+          <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
+          <div class="bar-value">75.0</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">ストレス<small>悩みを抱えにくいか</small></div>
+          <div class="bar-track"><div class="bar-fill" style="width:55%"></div></div>
+          <div class="bar-value">55.0</div>
+        </div>
+      </div>
+
+      <div class="type-result">
+        <div class="type-result-left">
+          <div class="type-result-label">YOUR TYPE</div>
+          <div class="type-result-name">クリエイティブ<br>タイプ</div>
+        </div>
+        <div class="type-result-text">
+          <p style="margin-bottom:10px;"><strong style="color:var(--color-accent-light);">◆ 強み</strong>　元気で積極的・創造性とアイデア豊富・自分独自の世界観を持つ・自走で物事を進められる。</p>
+          <p style="margin-bottom:14px;"><strong style="color:var(--color-accent-light);">◆ 注意点</strong>　慎重さに欠け、地道な作業が長続きしない・人が多いと集中力を欠く・興味がないと力が出ない。</p>
+          <p>「積極的で前向き。表面的には口数少なく落ち着いた印象。ストレスに強く困難を乗り越える力があり、創造性に富む。一方で思いつきで行動し、慎重さや計画性に欠ける一面も。」</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1308,40 +1525,20 @@ section{padding:130px 32px}
 
     <div class="axes-list fade-in">
       <h3 class="axes-title">診断で見える、12の尺度</h3>
-      <div class="axes-subtitle">THE 12 AXES OF ORGANIZATIONAL CAPABILITY</div>
-      <div class="axes-grid">
-        <div class="axes-group">
-          <h4 class="axes-group-title"><span>I</span>リーダーシップ</h4>
-          <ul>
-            <li>目標明確度</li>
-            <li>意思決定速度</li>
-            <li>リーダー求心力</li>
-          </ul>
-        </div>
-        <div class="axes-group">
-          <h4 class="axes-group-title"><span>II</span>コミュニケーション</h4>
-          <ul>
-            <li>情報共有</li>
-            <li>傾聴姿勢</li>
-            <li>共感力</li>
-          </ul>
-        </div>
-        <div class="axes-group">
-          <h4 class="axes-group-title"><span>III</span>コミットメント</h4>
-          <ul>
-            <li>当事者意識</li>
-            <li>推進力</li>
-            <li>改善行動</li>
-          </ul>
-        </div>
-        <div class="axes-group">
-          <h4 class="axes-group-title"><span>IV</span>関係性・適応</h4>
-          <ul>
-            <li>信頼関係</li>
-            <li>協働性</li>
-            <li>適応柔軟性</li>
-          </ul>
-        </div>
+      <div class="axes-subtitle">THE 12 AXES OF CQ PERSONALITY DIAGNOSIS</div>
+      <div class="axes-twelve">
+        <div class="axes-card"><div class="axes-card-num">01</div><h4>話欲度</h4><p>思ったことを言葉として発言したい欲求の強さ</p></div>
+        <div class="axes-card"><div class="axes-card-num">02</div><h4>交意度</h4><p>多くの人と関わることに対する心の負担の大きさ</p></div>
+        <div class="axes-card"><div class="axes-card-num">03</div><h4>肯定度</h4><p>自分の人生・行動・考え方を前向きに捉えやすいか</p></div>
+        <div class="axes-card"><div class="axes-card-num">04</div><h4>感表度</h4><p>感情を表情や態度に示すことが得意か苦手か</p></div>
+        <div class="axes-card"><div class="axes-card-num">05</div><h4>寄添度</h4><p>相手の感情に対して、自分から寄り添うかどうか</p></div>
+        <div class="axes-card"><div class="axes-card-num">06</div><h4>他中度</h4><p>他人の意思を優先するか、自分の意思を優先するか</p></div>
+        <div class="axes-card"><div class="axes-card-num">07</div><h4>環馴度</h4><p>環境が変化したときに自分から馴染みやすいか</p></div>
+        <div class="axes-card"><div class="axes-card-num">08</div><h4>友好度</h4><p>心の中を相手に伝えたい気持ちの強さ</p></div>
+        <div class="axes-card"><div class="axes-card-num">09</div><h4>発想度</h4><p>物事に対して、自分のアイデアがひらめきやすいか</p></div>
+        <div class="axes-card"><div class="axes-card-num">10</div><h4>個集度</h4><p>個人行動を好むか、集団での行動を好むか</p></div>
+        <div class="axes-card"><div class="axes-card-num">11</div><h4>感深度</h4><p>変化する感情をどれだけ印象深く捉えられるか</p></div>
+        <div class="axes-card"><div class="axes-card-num">12</div><h4>現充度</h4><p>現在の心の満足度</p></div>
       </div>
     </div>
   </div>
@@ -1422,7 +1619,7 @@ section{padding:130px 32px}
         <div class="feature-text-label">FEATURE 01</div>
         <h3 class="feature-text-title">12の尺度で、<br>組織の輪郭を可視化。</h3>
         <p class="feature-text-body">
-          本質的な発想を測定することで、組織と個人の「変わりにくい個性」が見えてきます。120問の回答を12軸で数値化し、<strong style="color:var(--color-accent);font-weight:600;">1枚のレーダーチャート</strong>に集約。曖昧だった印象が、はじめて<strong style="color:var(--color-accent);font-weight:600;">経営の言葉</strong>になる瞬間が生まれます。
+          話欲度・交意度・他中度・発想度など、対人関係・自己表現・適応性に関わる<strong style="color:var(--color-accent);font-weight:600;">12の尺度</strong>で個性を数値化。120問×3択の回答を<strong style="color:var(--color-accent);font-weight:600;">1枚のレーダーチャート</strong>に集約することで、曖昧だった印象がはじめて<strong style="color:var(--color-accent);font-weight:600;">経営の言葉</strong>になる瞬間が生まれます。
         </p>
         <div class="feature-tags">
           <span class="feature-tag">VISUALIZATION</span>
