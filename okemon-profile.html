@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Okemon — AIと融合する、新しい働き方</title>
+<meta name="description" content="AIを最高の分身に、相棒に。介護現場16年とコーチングの経験を、AIと融合させて届ける。AI導入支援・HP制作・コーチング・ストレングスファインダー診断。">
+<meta property="og:title" content="Okemon — AIと融合する、新しい働き方">
+<meta property="og:description" content="6人のAI相棒と動かす、これからの個人経営。">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root {
+  --color-primary: #5B7E6E;
+  --color-primary-light: #E8EFEB;
+  --color-primary-dark: #3D5A4D;
+  --color-accent: #D4A574;
+  --color-accent-light: #F0DFC5;
+  --color-ink: #2D3E50;
+  --color-text: #3A4A5C;
+  --color-text-sub: #6B7785;
+  --color-bg: #FBFAF7;
+  --color-bg-warm: #F5F2ED;
+  --color-bg-soft: #FFFFFF;
+  --color-border: #E5E0D7;
+  --shadow-sm: 0 2px 8px rgba(45, 62, 80, 0.06);
+  --shadow-md: 0 8px 24px rgba(45, 62, 80, 0.08);
+  --shadow-lg: 0 16px 48px rgba(45, 62, 80, 0.12);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.container-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+/* ===== Header ===== */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(251, 250, 247, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 16px 0;
+  transition: padding 0.3s ease;
+}
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--color-ink);
+  letter-spacing: 0.04em;
+}
+.logo span { color: var(--color-primary); }
+.nav { display: flex; gap: 32px; align-items: center; font-size: 14px; font-weight: 500; }
+.nav a { color: var(--color-text); transition: color 0.2s; }
+.nav a:hover { color: var(--color-primary); }
+.nav-cta {
+  background: var(--color-primary);
+  color: #fff !important;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+.nav-cta:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+@media (max-width: 768px) {
+  .nav { gap: 16px; }
+  .nav-link-text { display: none; }
+}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center;
+  background: linear-gradient(135deg, #5B7E6E 0%, #3D5A4D 100%);
+  color: #fff;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(212, 165, 116, 0.15), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(232, 239, 235, 0.1), transparent 50%),
+    url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2000&q=80');
+  background-size: cover; background-position: center;
+  opacity: 0.25;
+  z-index: 0;
+}
+.hero-inner { position: relative; z-index: 1; width: 100%; }
+.hero-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent-light);
+  margin-bottom: 24px;
+  opacity: 0; animation: heroFadeIn 0.8s 0.2s both;
+}
+.hero-label::before, .hero-label::after {
+  content: ''; width: 20px; height: 1px; background: var(--color-accent-light);
+}
+.hero-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(32px, 5.5vw, 64px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  margin-bottom: 28px;
+  opacity: 0; animation: heroSlideUp 0.9s 0.3s both;
+}
+.hero-title .accent { color: var(--color-accent); }
+.hero-title .br-soft { display: block; }
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  line-height: 1.9;
+  max-width: 620px;
+  margin-bottom: 40px;
+  color: rgba(255, 255, 255, 0.88);
+  opacity: 0; animation: heroSlideUp 0.9s 0.5s both;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--color-accent);
+  color: var(--color-ink);
+  padding: 18px 36px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  transition: all 0.3s ease;
+  opacity: 0; animation: heroSlideUp 0.9s 0.7s both;
+  box-shadow: 0 8px 24px rgba(212, 165, 116, 0.35);
+}
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(212, 165, 116, 0.5);
+}
+.hero-scroll {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  opacity: 0; animation: heroFadeIn 1.2s 1s both;
+}
+.hero-scroll i { display: block; margin-top: 8px; animation: bounce 2s infinite; }
+
+@keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes heroSlideUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+/* ===== Trust Bar ===== */
+.trust-bar {
+  background: var(--color-bg-soft);
+  padding: 56px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.trust-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+.trust-num {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.trust-num .unit { font-size: 0.5em; color: var(--color-text-sub); margin-left: 4px; }
+.trust-label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--color-text-sub);
+  font-weight: 500;
+}
+@media (max-width: 768px) {
+  .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+}
+
+/* ===== Section Common ===== */
+.section { padding: 120px 0; position: relative; }
+.section-warm { background: var(--color-bg-warm); }
+.section-soft { background: var(--color-bg-soft); }
+.section-dark { background: var(--color-ink); color: #fff; }
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+  display: block;
+  font-weight: 600;
+}
+.section-dark .section-label { color: var(--color-accent); }
+.section-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-ink);
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+  position: relative;
+  display: inline-block;
+}
+.section-dark .section-title { color: #fff; }
+.section-title::after {
+  content: '';
+  position: absolute; bottom: -12px; left: 0;
+  width: 0; height: 2px;
+  background: var(--color-accent);
+  transition: width 0.6s ease 0.2s;
+}
+.fade-in.is-visible .section-title::after { width: 40px; }
+.section-head { margin-bottom: 64px; }
+.section-head-center { text-align: center; }
+.section-head-center .section-title::after { left: 50%; transform: translateX(-50%); }
+.section-lead {
+  font-size: 16px;
+  line-height: 2;
+  color: var(--color-text);
+  max-width: 720px;
+  margin-top: 16px;
+}
+.section-head-center .section-lead { margin-left: auto; margin-right: auto; }
+
+/* ===== About / Story ===== */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1.3fr;
+  gap: 80px; align-items: center;
+}
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+.about-img {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent-light));
+}
+.about-img img { width: 100%; height: 100%; object-fit: cover; }
+.about-img::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(45, 62, 80, 0.3) 100%);
+  z-index: 1;
+}
+.about-badge {
+  position: absolute; bottom: 24px; left: 24px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-ink);
+  z-index: 2;
+  letter-spacing: 0.04em;
+}
+.about-badge i { color: var(--color-primary); margin-right: 6px; }
+
+.about-story h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 24px;
+  line-height: 1.6;
+  color: var(--color-ink);
+  margin-bottom: 32px;
+  font-weight: 700;
+}
+.about-story h3 em {
+  font-style: normal;
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 2px;
+}
+.about-story p {
+  font-size: 15px;
+  line-height: 2.1;
+  margin-bottom: 20px;
+  color: var(--color-text);
+}
+.about-story p strong {
+  color: var(--color-ink);
+  font-weight: 700;
+  background: linear-gradient(transparent 60%, var(--color-accent-light) 60%);
+  padding: 0 2px;
+}
+.about-quote {
+  margin-top: 32px;
+  padding: 24px 28px;
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-bg-warm);
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--color-ink);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* ===== Services (4本柱) ===== */
+.services-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+@media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } }
+.service-card {
+  background: var(--color-bg-soft);
+  padding: 48px 40px;
+  position: relative;
+  transition: all 0.4s ease;
+}
+.service-card:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-2px);
+}
+.service-icon {
+  width: 56px; height: 56px;
+  background: var(--color-primary-light);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+  color: var(--color-primary);
+  font-size: 22px;
+  transition: all 0.3s ease;
+}
+.service-card:hover .service-icon {
+  background: var(--color-primary);
+  color: #fff;
+  transform: rotate(-5deg) scale(1.05);
+}
+.service-num {
+  position: absolute; top: 36px; right: 40px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+}
+.service-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 14px;
+}
+.service-desc {
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--color-text);
+  margin-bottom: 20px;
+}
+.service-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.service-tag {
+  font-size: 11.5px;
+  padding: 5px 12px;
+  background: var(--color-bg-warm);
+  color: var(--color-text-sub);
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+
+/* ===== AI Team Section ===== */
+.ai-team-intro {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 56px;
+  font-size: 16px;
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.85);
+}
+.ai-team-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 900px) { .ai-team-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .ai-team-grid { grid-template-columns: 1fr; } }
+.ai-member {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 32px 28px;
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.ai-member::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), transparent);
+}
+.ai-member:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-4px);
+  border-color: rgba(212, 165, 116, 0.3);
+}
+.ai-member-icon {
+  width: 48px; height: 48px;
+  background: rgba(212, 165, 116, 0.15);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-accent);
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.ai-member-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--color-accent);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.ai-member-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.ai-member-desc {
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ai-team-note {
+  margin-top: 56px;
+  text-align: center;
+  padding: 32px 32px;
+  background: rgba(212, 165, 116, 0.08);
+  border: 1px dashed rgba(212, 165, 116, 0.3);
+  border-radius: var(--radius-md);
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 820px;
+  margin-left: auto; margin-right: auto;
+}
+.ai-team-note em {
+  font-style: normal;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* ===== Strengths ===== */
+.strengths-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+@media (max-width: 768px) { .strengths-grid { grid-template-columns: 1fr; } }
+.strength-item {
+  background: var(--color-bg-soft);
+  padding: 32px 32px;
+  border-left: 3px solid var(--color-primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+.strength-item:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+  border-left-color: var(--color-accent);
+}
+.strength-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: 8px;
+}
+.strength-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 10px;
+}
+.strength-desc {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--color-text);
+}
+
+/* ===== Works Gallery ===== */
+.works-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+@media (max-width: 900px) { .works-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .works-grid { grid-template-columns: 1fr; } }
+.work-card {
+  background: var(--color-bg-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s ease;
+  display: flex; flex-direction: column;
+}
+.work-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+.work-thumb {
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent-light));
+  position: relative;
+  overflow: hidden;
+}
+.work-thumb img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.work-card:hover .work-thumb img { transform: scale(1.06); }
+.work-thumb-icon {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 40px;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.work-body { padding: 24px 26px 28px; flex: 1; display: flex; flex-direction: column; }
+.work-cat {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.work-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.work-desc {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--color-text-sub);
+  margin-bottom: 16px;
+  flex: 1;
+}
+.work-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: auto;
+}
+.work-link i { transition: transform 0.3s; }
+.work-card:hover .work-link i { transform: translateX(4px); }
+
+/* ===== CTA ===== */
+.cta-section {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(212, 165, 116, 0.15), transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(232, 239, 235, 0.08), transparent 50%);
+}
+.cta-inner { position: relative; z-index: 1; }
+.cta-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.cta-sub {
+  font-size: 15px;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 580px;
+  margin: 0 auto 40px;
+}
+.cta-buttons {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+}
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 18px 36px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  transition: all 0.3s ease;
+}
+.cta-btn-primary {
+  background: var(--color-accent);
+  color: var(--color-ink);
+  box-shadow: 0 8px 24px rgba(212, 165, 116, 0.35);
+}
+.cta-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(212, 165, 116, 0.5);
+}
+.cta-btn-ghost {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+.cta-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* ===== Footer ===== */
+.footer {
+  background: var(--color-ink);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 56px 0 32px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+.footer-logo span { color: var(--color-accent); }
+.footer-tagline {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 32px;
+  letter-spacing: 0.04em;
+}
+.footer-copy {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.35);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+}
+
+/* ===== Divider ===== */
+.divider {
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.divider::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(91, 126, 110, 0.4), rgba(45, 62, 80, 0.5));
+}
+.divider-text {
+  position: relative; z-index: 1;
+  height: 100%; display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(20px, 3vw, 32px);
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.08em;
+  padding: 0 24px;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.4);
+}
+
+/* ===== Animations ===== */
+.fade-in, .fade-in-left, .fade-in-right, .stagger {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in { transform: translateY(24px); }
+.fade-in-left { transform: translateX(-32px); }
+.fade-in-right { transform: translateX(32px); }
+.fade-in.is-visible,
+.fade-in-left.is-visible,
+.fade-in-right.is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+.stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+.stagger.is-visible > *:nth-child(1) { transition-delay: 0s; }
+.stagger.is-visible > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger.is-visible > *:nth-child(3) { transition-delay: 0.2s; }
+.stagger.is-visible > *:nth-child(4) { transition-delay: 0.3s; }
+.stagger.is-visible > *:nth-child(5) { transition-delay: 0.4s; }
+.stagger.is-visible > *:nth-child(6) { transition-delay: 0.5s; }
+.stagger.is-visible > *:nth-child(7) { transition-delay: 0.6s; }
+.stagger.is-visible > *:nth-child(8) { transition-delay: 0.7s; }
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="header">
+  <div class="container header-inner">
+    <a href="#" class="logo">Oke<span>mon</span></a>
+    <nav class="nav">
+      <a href="#about" class="nav-link-text">About</a>
+      <a href="#services" class="nav-link-text">Services</a>
+      <a href="#team" class="nav-link-text">AI Team</a>
+      <a href="#works" class="nav-link-text">Works</a>
+      <a href="#contact" class="nav-cta">相談する</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="container hero-inner">
+    <span class="hero-label">Okemon &nbsp;/&nbsp; AI × Coaching × Design</span>
+    <h1 class="hero-title">
+      AIと融合する、<span class="br-soft">新しい働き方。</span>
+      <span class="accent">AIを最高の分身に、相棒に。</span>
+    </h1>
+    <p class="hero-sub">
+      介護現場16年、コーチング、そしてAIとの出会い。<br>
+      6人のAI相棒と動かす、これからの個人経営のかたちを、<br>
+      ひとつずつ、一緒に形にしていきます。
+    </p>
+    <a href="#contact" class="hero-cta">
+      <i class="fa-solid fa-comment-dots"></i>
+      まずは話してみる
+    </a>
+  </div>
+  <div class="hero-scroll">
+    SCROLL
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- ===== Trust Bar ===== -->
+<section class="trust-bar fade-in">
+  <div class="container">
+    <div class="trust-grid stagger">
+      <div>
+        <div class="trust-num">16<span class="unit">年</span></div>
+        <div class="trust-label">介護・福祉現場の経験</div>
+      </div>
+      <div>
+        <div class="trust-num">37<span class="unit">名</span></div>
+        <div class="trust-label">コーチングセッション実績</div>
+      </div>
+      <div>
+        <div class="trust-num">20<span class="unit">+</span></div>
+        <div class="trust-label">自作AIスキル数</div>
+      </div>
+      <div>
+        <div class="trust-num">20<span class="unit">回</span></div>
+        <div class="trust-label">オフ会・場づくり主催</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== About ===== -->
+<section id="about" class="section section-warm">
+  <div class="container">
+    <div class="section-head section-head-center fade-in">
+      <span class="section-label">About</span>
+      <h2 class="section-title">私について</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-img fade-in-left">
+        <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=900&q=80" alt="自然の中で考える">
+        <div class="about-badge"><i class="fa-solid fa-leaf"></i>動きながら、考える人</div>
+      </div>
+
+      <div class="about-story fade-in-right">
+        <h3>
+          <em>「自分の普通」が、誰かにとっての「魔法」になる。</em><br>
+          それに気づいたのは、AIと出会ってからでした。
+        </h3>
+        <p>
+          20代から<strong>介護・福祉の現場で16年</strong>。特養で3年、障害福祉のサービス管理責任者として10年、グループホームの施設長として3年。「人を見る目」と「現場で困ってる人の声を聞く力」を、ずっと磨いてきました。
+        </p>
+        <p>
+          その後コーチングと出会い、ストレングスファインダーで「人の強みを言葉にする」仕事を始めました。それでも、頭の中はずっと忙しくて、<strong>ADHDという特性</strong>と付き合いながら、「できないこと」「続かないこと」にもがいてきた時間が長くありました。
+        </p>
+        <p>
+          そんなときに出会ったのが <strong>AI</strong> でした。<br>
+          AIは、できないことを補ってくれるだけじゃなくて、<strong>「変えたい」という意思を、ものすごく強く後押ししてくれる道具</strong>でした。
+        </p>
+        <p>
+          いまは、AIを「使う」じゃなくて「<strong>AIと一緒に生きる</strong>」感覚で、毎日を回しています。歯磨いて、顔洗って、ご飯食べて、AIと喋る。それぐらい自然に、AIが日常に溶けている。
+        </p>
+        <div class="about-quote">
+          AIへの愛と、AIで働くことの楽しさ。<br>
+          それを、これから出会う人と、ただシェアしていきたい。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Divider ===== -->
+<div class="divider" style="background-image: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=2000&q=80');">
+  <div class="divider-text">「AIで稼ぐ」のその先へ。<br>AIと、生きる。</div>
+</div>
+
+<!-- ===== Services ===== -->
+<section id="services" class="section section-soft">
+  <div class="container">
+    <div class="section-head section-head-center fade-in">
+      <span class="section-label">Services</span>
+      <h2 class="section-title">4つの仕事</h2>
+      <p class="section-lead">
+        どれも単発じゃなくて、つながっています。<br>
+        「業務を整理する」「カタチにする」「人を伸ばす」「個性を言葉にする」——全部、AIと一緒に。
+      </p>
+    </div>
+
+    <div class="services-grid stagger">
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
+        <h3 class="service-title">AI導入支援</h3>
+        <p class="service-desc">
+          「AIで何ができるか分からない」「触ったけど続かなかった」を、現場の業務に沿って一緒に整理。動かすところまで伴走します。
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">業務棚卸し</span>
+          <span class="service-tag">自動化設計</span>
+          <span class="service-tag">伴走サポート</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <div class="service-icon"><i class="fa-solid fa-globe"></i></div>
+        <h3 class="service-title">HP・LP制作</h3>
+        <p class="service-desc">
+          AIを使った高速・高品質な制作。整骨院・美容室・空手道場・YouTube事業者など、地域に根ざしたお仕事のホームページを作ってきました。
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">ランディングページ</span>
+          <span class="service-tag">店舗HP</span>
+          <span class="service-tag">スピード納品</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <div class="service-icon"><i class="fa-solid fa-comments"></i></div>
+        <h3 class="service-title">コーチング・人材育成</h3>
+        <p class="service-desc">
+          現場16年の知見と、ストレングスファインダー、そしてAI。個人の方も、組織の方も。「人がもっと活きる場」を、対話と仕組みの両方から作ります。
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">個人コーチング</span>
+          <span class="service-tag">組織開発</span>
+          <span class="service-tag">研修・育成設計</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">04</span>
+        <div class="service-icon"><i class="fa-solid fa-star"></i></div>
+        <h3 class="service-title">ストレングスファインダー診断</h3>
+        <p class="service-desc">
+          資質を「知る」だけじゃなくて、「どう活かすか」をAIと一緒に個別ドキュメントに落とし込み。読んだ瞬間にほっとして、ちょっとワクワクする診断シートをお届けします。
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">資質分析</span>
+          <span class="service-tag">個別ドキュメント</span>
+          <span class="service-tag">活用設計</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI Team ===== -->
+<section id="team" class="section section-dark">
+  <div class="container">
+    <div class="section-head section-head-center fade-in">
+      <span class="section-label">AI Team</span>
+      <h2 class="section-title">6人のAI相棒と動かす、会社経営。</h2>
+      <p class="ai-team-intro">
+        ひとりで全部はやらない。役割ごとに、AIの相棒を持つ。<br>
+        経営判断・財務・営業・マーケ・商品・技術——<br>
+        AIチームで動かすことが、品質と再現性の両立につながっています。
+      </p>
+    </div>
+
+    <div class="ai-team-grid stagger">
+      <div class="ai-member">
+        <div class="ai-member-icon"><i class="fa-solid fa-compass"></i></div>
+        <div class="ai-member-role">CEO / 経営</div>
+        <h3 class="ai-member-title">全体を見る相棒</h3>
+        <p class="ai-member-desc">起案を受け止め、各役割に振り分けて、結果を統合。会社全体のリズムを整える。</p>
+      </div>
+      <div class="ai-member">
+        <div class="ai-member-icon"><i class="fa-solid fa-coins"></i></div>
+        <div class="ai-member-role">CFO / 財務・経理</div>
+        <h3 class="ai-member-title">お金まわりの相棒</h3>
+        <p class="ai-member-desc">売上管理、請求書、確定申告、補助金。数字を毎日触ってくれる存在。</p>
+      </div>
+      <div class="ai-member">
+        <div class="ai-member-icon"><i class="fa-solid fa-handshake"></i></div>
+        <div class="ai-member-role">CSO / 営業・顧客対応</div>
+        <h3 class="ai-member-title">人と繋がる相棒</h3>
+        <p class="ai-member-desc">案件の対応、顧客フォロー、提案書づくり。動きながら積み重ねていく担当。</p>
+      </div>
+      <div class="ai-member">
+        <div class="ai-member-icon"><i class="fa-solid fa-bullhorn"></i></div>
+        <div class="ai-member-role">CMO / マーケ・発信</div>
+        <h3 class="ai-member-title">届ける相棒</h3>
+        <p class="ai-member-desc">SNS、ブランディング、コンテンツ設計。「伝わるカタチ」にしてくれる役。</p>
+      </div>
+      <div class="ai-member">
+        <div class="ai-member-icon"><i class="fa-solid fa-heart"></i></div>
+        <div class="ai-member-role">CPO / 商品・コーチング</div>
+        <h3 class="ai-member-title">商品を磨く相棒</h3>
+        <p class="ai-member-desc">セッション設計、教材づくり、お客様体験の改善。「人を活かす」軸の担当。</p>
+      </div>
+      <div class="ai-member">
+        <div class="ai-member-icon"><i class="fa-solid fa-code"></i></div>
+        <div class="ai-member-role">CDO / 技術・開発</div>
+        <h3 class="ai-member-title">仕組みをつくる相棒</h3>
+        <p class="ai-member-desc">自動化、AIツール設計、データ整備。仕事の裏側を支える技術担当。</p>
+      </div>
+    </div>
+
+    <div class="ai-team-note fade-in">
+      AIを「使う」だけじゃなく、<em>役割ごとに分けて育てる</em>。<br>
+      そうすると、毎回の仕事に再現性が生まれます。<br>
+      そのままお客様の現場にも、同じやり方で応用していきます。
+    </div>
+  </div>
+</section>
+
+<!-- ===== Strengths ===== -->
+<section class="section section-warm">
+  <div class="container-narrow">
+    <div class="section-head section-head-center fade-in">
+      <span class="section-label">My Strengths</span>
+      <h2 class="section-title">わたしの強みのもと</h2>
+    </div>
+
+    <div class="strengths-grid stagger">
+      <div class="strength-item">
+        <div class="strength-num">01</div>
+        <h3 class="strength-title">現場16年で磨いた、人を見る目</h3>
+        <p class="strength-desc">介護・福祉の現場で、声にならない声を聞き続けてきた経験。話を聞くだけじゃなくて、「何で困っているか」を一緒に言葉にできます。</p>
+      </div>
+      <div class="strength-item">
+        <div class="strength-num">02</div>
+        <h3 class="strength-title">ADHDという、双方向の思考スタイル</h3>
+        <p class="strength-desc">じっと一人で考えるより、誰かと喋りながら考える方が早い。だからAIとの相性が抜群で、それを仕組みに変えてきました。</p>
+      </div>
+      <div class="strength-item">
+        <div class="strength-num">03</div>
+        <h3 class="strength-title">月¥5万のAI環境投資と、20+のスキル自作</h3>
+        <p class="strength-desc">使うだけじゃなくて、自分用の「相棒」を作ってきた経験。同じやり方を、お客様の業務にも展開できます。</p>
+      </div>
+      <div class="strength-item">
+        <div class="strength-num">04</div>
+        <h3 class="strength-title">オフ会20回主催の、場づくりの感覚</h3>
+        <p class="strength-desc">人と人がほっとして話せる場を、たくさん作ってきました。それは個人セッションでも、組織研修でも、ずっと活きています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Divider ===== -->
+<div class="divider" style="background-image: url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=2000&q=80');">
+  <div class="divider-text">これまで作ってきたもの</div>
+</div>
+
+<!-- ===== Works ===== -->
+<section id="works" class="section section-soft">
+  <div class="container">
+    <div class="section-head section-head-center fade-in">
+      <span class="section-label">Works</span>
+      <h2 class="section-title">これまでの制作物・実績</h2>
+      <p class="section-lead">
+        AIを使って作ってきた、ランディングページや図解、デモHPの一部です。
+      </p>
+    </div>
+
+    <div class="works-grid stagger">
+      <a href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/seikotsuin.html" target="_blank" rel="noopener" class="work-card">
+        <div class="work-thumb">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=900&q=80" alt="整骨院LP">
+        </div>
+        <div class="work-body">
+          <div class="work-cat">LP / 整骨院</div>
+          <h3 class="work-title">やすらぎ整骨院</h3>
+          <p class="work-desc">深緑×ゴールドの落ち着いた配色で、地域密着の信頼感を表現。</p>
+          <span class="work-link">サイトを見る <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/salon.html" target="_blank" rel="noopener" class="work-card">
+        <div class="work-thumb">
+          <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=80" alt="まつエクサロンLP">
+        </div>
+        <div class="work-body">
+          <div class="work-cat">LP / 美容サロン</div>
+          <h3 class="work-title">Lash Bloom（まつエク）</h3>
+          <p class="work-desc">やわらかなパープルとゴールドで、上品さと女性らしさを両立。</p>
+          <span class="work-link">サイトを見る <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/karate.html" target="_blank" rel="noopener" class="work-card">
+        <div class="work-thumb">
+          <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=900&q=80" alt="空手道場LP">
+        </div>
+        <div class="work-body">
+          <div class="work-cat">LP / 武道</div>
+          <h3 class="work-title">芦原カラテ北見道場</h3>
+          <p class="work-desc">武道らしい硬派さに、子ども向けの親しみやすさを重ねた一枚。</p>
+          <span class="work-link">サイトを見る <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/irodori-philosophy.html" target="_blank" rel="noopener" class="work-card">
+        <div class="work-thumb">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="irodori 理念LP">
+        </div>
+        <div class="work-body">
+          <div class="work-cat">LP / 企業理念</div>
+          <h3 class="work-title">irodori 理念LP</h3>
+          <p class="work-desc">採用・社内ブランディングを目的にした、理念を語るためのページ。</p>
+          <span class="work-link">サイトを見る <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/ai-grant-guide.html" target="_blank" rel="noopener" class="work-card">
+        <div class="work-thumb">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80" alt="AI補助金ガイド">
+        </div>
+        <div class="work-body">
+          <div class="work-cat">LP / AI導入支援</div>
+          <h3 class="work-title">AI補助金ガイド</h3>
+          <p class="work-desc">事業者向けにAI導入×補助金の使い方をまとめた、営業同行用ページ。</p>
+          <span class="work-link">サイトを見る <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/ai-youtube-support.html" target="_blank" rel="noopener" class="work-card">
+        <div class="work-thumb">
+          <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=900&q=80" alt="YouTube運営サポート">
+        </div>
+        <div class="work-body">
+          <div class="work-cat">LP / クリエイター向け</div>
+          <h3 class="work-title">YouTube運営サポート</h3>
+          <p class="work-desc">配信者向けに、AIで運営を効率化する具体プランをまとめたページ。</p>
+          <span class="work-link">サイトを見る <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="https://okemonogatari-hash.github.io/html-share-box/demo-hp-2026-05/" target="_blank" rel="noopener" class="work-card">
+        <div class="work-thumb">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80" alt="営業用デモHP集">
+        </div>
+        <div class="work-body">
+          <div class="work-cat">プロジェクト / 業種別量産</div>
+          <h3 class="work-title">営業用デモHP集（34社分）</h3>
+          <p class="work-desc">電気工事・水道・工務店・板金塗装・外壁塗装、5業種34社のデモHPを一気に量産。</p>
+          <span class="work-link">サイトを見る <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="https://okemonogatari-hash.github.io/html-share-box/gallery.html" target="_blank" rel="noopener" class="work-card">
+        <div class="work-thumb">
+          <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80" alt="図解ナレッジ">
+        </div>
+        <div class="work-body">
+          <div class="work-cat">図解 / ナレッジ</div>
+          <h3 class="work-title">図解ナレッジ集</h3>
+          <p class="work-desc">学んだことを「人に伝わるカタチ」にした図解を、57本以上ストックしています。</p>
+          <span class="work-link">ギャラリーを見る <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="contact" class="cta-section">
+  <div class="container cta-inner">
+    <h2 class="cta-title">AIと融合した働き方を、<br>一緒に作りませんか？</h2>
+    <p class="cta-sub">
+      初回のご相談は無料です。<br>
+      「AIで何ができるか分からない」「ちょっと話を聞いてみたい」——その入口でだいじょうぶ。<br>
+      まずは気軽に、お声がけください。
+    </p>
+    <div class="cta-buttons">
+      <a href="#" class="cta-btn cta-btn-primary">
+        <i class="fa-solid fa-paper-plane"></i>
+        相談してみる
+      </a>
+      <a href="#works" class="cta-btn cta-btn-ghost">
+        <i class="fa-solid fa-images"></i>
+        制作物を見る
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">Oke<span>mon</span></div>
+    <div class="footer-tagline">AIと融合する、新しい働き方を。</div>
+    <div class="footer-copy">&copy; Okemon. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const animEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger, .trust-bar');
+  const animObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        animObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  animEls.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) {
+      el.classList.add('is-visible');
+    } else {
+      animObs.observe(el);
+    }
+  });
+
+  // Smooth anchor scroll with header offset
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e){
+      const id = this.getAttribute('href');
+      if (id.length > 1) {
+        const t = document.querySelector(id);
+        if (t) {
+          e.preventDefault();
+          const y = t.getBoundingClientRect().top + window.pageYOffset - 70;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
