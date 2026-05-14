@@ -1,0 +1,1208 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>山本さま向け AI業務サポート 相談資料</title>
+  <style>
+    :root {
+      --ink: #1e2a32;
+      --muted: #5d6b73;
+      --line: #d8e2e2;
+      --paper: #f7faf9;
+      --white: #ffffff;
+      --teal: #0f766e;
+      --teal-soft: #dff4ef;
+      --blue: #255a8f;
+      --blue-soft: #e8f1fb;
+      --green: #46734d;
+      --green-soft: #edf6e9;
+      --amber: #9b641f;
+      --amber-soft: #fff2d8;
+      --rose: #8b4a5a;
+      --rose-soft: #f8e9ed;
+      --shadow: 0 10px 30px rgba(24, 42, 54, 0.08);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", Meiryo, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.75;
+      letter-spacing: 0;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 24px 64px;
+    }
+
+    header {
+      padding: 28px 0 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 14px;
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 3px;
+      background: var(--teal);
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 920px;
+      font-size: clamp(30px, 5vw, 56px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 820px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .meta {
+      padding: 14px 16px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .meta span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .meta strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 15px;
+    }
+
+    section {
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 26px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .section-lead {
+      max-width: 820px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    ul {
+      margin: 12px 0 0;
+      padding-left: 1.2em;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .note {
+      padding: 16px 18px;
+      border-left: 4px solid var(--teal);
+      background: var(--teal-soft);
+      border-radius: 6px;
+      color: #244541;
+      font-weight: 650;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .proof {
+      padding: 16px 14px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .proof strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.15;
+      color: var(--teal);
+      letter-spacing: 0;
+    }
+
+    .proof span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .talk-guide {
+      padding-top: 28px;
+    }
+
+    .talk-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .talk-step {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .talk-step span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      margin-bottom: 10px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--amber-soft);
+      color: var(--amber);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .talk-step p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .quick-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 13px;
+      border: 1px solid #9fc8c2;
+      border-radius: 999px;
+      background: var(--teal-soft);
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .focus-band {
+      margin-top: 22px;
+      padding: 20px;
+      border: 1px solid #b9d7d2;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #eef8f5 0%, #ffffff 100%);
+    }
+
+    .focus-band strong {
+      color: var(--teal);
+    }
+
+    .context-system {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 20px 0 4px;
+    }
+
+    .context-card {
+      min-height: 178px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .context-card span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      margin-bottom: 10px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .context-card h3 {
+      font-size: 17px;
+    }
+
+    .context-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .work-card {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 16px;
+      align-items: start;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .work-card + .work-card {
+      margin-top: 12px;
+    }
+
+    .work-label {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .branch-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      margin-top: 12px;
+      padding: 7px 12px;
+      border: 1px solid #9fc8c2;
+      border-radius: 999px;
+      color: var(--teal);
+      background: var(--teal-soft);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .demo {
+      border-top: 5px solid var(--teal);
+    }
+
+    .sample {
+      margin-top: 12px;
+      padding: 13px 14px;
+      border-radius: 8px;
+      background: #f4f7f7;
+      color: #33434b;
+      font-size: 14px;
+    }
+
+    .artifact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .artifact-card {
+      display: flex;
+      min-height: 270px;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 5px solid var(--blue);
+    }
+
+    .artifact-card.green-line {
+      border-top-color: var(--teal);
+    }
+
+    .artifact-card.amber-line {
+      border-top-color: var(--amber);
+    }
+
+    .artifact-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .artifact-meta {
+      margin-top: 12px;
+      padding: 12px 13px;
+      border-radius: 8px;
+      background: #f4f7f7;
+      color: #33434b;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .artifact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .artifact-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 7px 12px;
+      border: 1px solid #9fc8c2;
+      border-radius: 999px;
+      color: var(--teal);
+      background: var(--teal-soft);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .outcome {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .outcome .card {
+      min-height: 180px;
+    }
+
+    .price {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .price .card {
+      border-top: 5px solid var(--blue);
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding: 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      min-height: 170px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: var(--white);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .matrix > div {
+      padding: 14px 16px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .matrix > div:nth-child(3n) {
+      border-right: 0;
+    }
+
+    .matrix .head {
+      background: #edf4f4;
+      font-weight: 800;
+      color: #26464b;
+    }
+
+    .matrix .label {
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tag.green {
+      color: var(--green);
+      background: var(--green-soft);
+    }
+
+    .tag.amber {
+      color: var(--amber);
+      background: var(--amber-soft);
+    }
+
+    .tag.rose {
+      color: var(--rose);
+      background: var(--rose-soft);
+    }
+
+    .agenda {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .agenda div {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .agenda div:nth-last-child(-n + 2) {
+      border-bottom: 0;
+    }
+
+    .time {
+      background: #edf4f4;
+      font-weight: 800;
+      color: #26464b;
+    }
+
+    .footer-note {
+      padding-top: 28px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 840px) {
+      .page {
+        padding: 28px 16px 44px;
+      }
+
+      .meta-grid,
+      .grid-2,
+      .grid-3,
+      .proof-grid,
+      .context-system,
+      .demo-grid,
+      .artifact-grid,
+      .outcome,
+      .price,
+      .talk-steps,
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .work-card {
+        grid-template-columns: 1fr;
+      }
+
+      .matrix {
+        grid-template-columns: 1fr;
+      }
+
+      .matrix > div {
+        border-right: 0;
+      }
+
+      .matrix .head {
+        display: none;
+      }
+
+      .agenda {
+        grid-template-columns: 78px 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: var(--white);
+      }
+
+      .page {
+        max-width: none;
+        padding: 20mm;
+      }
+
+      .card,
+      .meta,
+      .matrix,
+      .agenda {
+        box-shadow: none;
+      }
+
+      section {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="eyebrow">AI業務サポート相談資料 / 共有用</p>
+      <h1>山本さまの職場で、AIで軽くできそうな仕事を一緒に見つけます</h1>
+      <p class="lead">
+        医療法人福命会 健康管理支援室での産業保健の専門判断は山本さまが担い、AIは「下書き・整理・抜け漏れ確認・資料作成」を担当します。
+        鍵になるのは、業務の背景・過去資料・判断ルール・共有範囲といった仕事の材料を集めていくことです。
+        いきなり新しい仕組みを入れるのではなく、訪問当日に小さな例を見ながら、職場で使える形まで一緒に絞ります。
+      </p>
+      <div class="meta-grid">
+        <div class="meta"><span>対象</span><strong>山本さま / 産業保健実務</strong></div>
+        <div class="meta"><span>訪問予定</span><strong>2026年5月14日 10:00-11:30</strong></div>
+        <div class="meta"><span>初回の着地</span><strong>仕事の整理 + 小さな例を見る</strong></div>
+        <div class="meta"><span>訪問先</span><strong>医療法人福命会 健康管理支援室</strong></div>
+      </div>
+      <div class="proof-grid">
+        <div class="proof"><strong>20回+</strong><span>AIに詳しくない方向けの講座・相談</span></div>
+        <div class="proof"><strong>100名+</strong><span>AIの使い方相談に参加した人数</span></div>
+        <div class="proof"><strong>1,000名+</strong><span>コーチング/対話支援の累計</span></div>
+        <div class="proof"><strong>100回+</strong><span>イベント・オフ会主催</span></div>
+        <div class="proof"><strong>400件+</strong><span>スキルマーケット販売実績</span></div>
+      </div>
+    </header>
+
+    <section class="talk-guide" id="talk-guide">
+      <h2>今日の見方</h2>
+      <p class="section-lead">
+        このページは、山本さまと画面を見ながら話を進めるための当日用メモです。
+        まず実物を見て、次に「どの仕事が重いか」を整理し、最後に小さく試す候補を1つ決めます。
+      </p>
+      <div class="talk-steps">
+        <article class="talk-step">
+          <span>1. まず見せる</span>
+          <h3>できあがりのイメージを見る</h3>
+          <p>会議録、支援先台帳、月次報告など、実際に開けるお試し画面を先に見ます。</p>
+        </article>
+        <article class="talk-step">
+          <span>2. 一緒に分ける</span>
+          <h3>AIに任せる作業を選ぶ</h3>
+          <p>人が判断する仕事、AIで下書きできる仕事、今は触らない仕事に分けます。</p>
+        </article>
+        <article class="talk-step">
+          <span>3. 持ち帰る</span>
+          <h3>小さなお試しを1つ決める</h3>
+          <p>職場で説明しやすい形にして、次回までに試せる一歩へ落とします。</p>
+        </article>
+      </div>
+      <div class="quick-links" aria-label="当日見せる順番">
+        <a href="#demo-cases">小さな例を見る</a>
+        <a href="./branches/06_meeting-minutes.html">会議録の例</a>
+        <a href="./branches/07_client-hub.html">支援先台帳の例</a>
+        <a href="#safe-materials">集めたい材料</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>今回の提案の核</h2>
+      <p class="section-lead">
+        山本さまは、開業保健師として中小企業向けに産業保健サービスを届けている方です。だからAIを使う目的は「人を減らすこと」ではなく、
+        山本さまや職場の方が、相談・予防・関係づくりに時間を使えるようにすることです。
+      </p>
+      <div class="context-system">
+        <article class="context-card">
+          <span>01 材料集め</span>
+          <h3>まず仕事の背景を集める</h3>
+          <p>過去の資料、よく使う文面、支援先ごとの型、守秘ルール、確認者、共有範囲を集めます。</p>
+        </article>
+        <article class="context-card">
+          <span>02 作業候補</span>
+          <h3>PC上の操作を代行候補にする</h3>
+          <p>文章作成、要約、表の整理、資料化、ブラウザ入力、メール下書きなどをAIに任せやすくします。</p>
+        </article>
+        <article class="context-card">
+          <span>03 人の確認</span>
+          <h3>判断と承認は人が持つ</h3>
+          <p>医療判断、労務判断、個人情報の扱い、外部送信の承認は、必ず山本さまや職場側が確認します。</p>
+        </article>
+        <article class="context-card">
+          <span>04 型づくり</span>
+          <h3>使うほど型が育つ</h3>
+          <p>一度作ったひな形や修正方針を次回の材料に戻し、支援先ごとの作業を少しずつ軽くします。</p>
+        </article>
+      </div>
+      <div class="focus-band">
+        <strong>今回一緒に考えること:</strong>
+        「増員前に、どの事務作業をAIで軽くできるか」を一緒に整理し、まず1つだけ実際の例として試します。
+        個人情報・健康情報はAIに入れず、個人がわからない例や作り物の例で安全に試します。
+      </div>
+      <div class="focus-band">
+        <strong>AI活用の前提:</strong>
+        仕事の材料が十分に集まれば、PCで行う作業の多くはAIに任せる候補になります。大事なのは「何をAIに渡すか」と
+        「どこで人が確認するか」を決め、職場の資料や記録を安全に集めていくことです。
+      </div>
+      <div class="focus-band">
+        <strong>保健師業務での線引き:</strong>
+        AIは健康判断・診断・個別相談の結論づけは行いません。訪問後メモ、衛生委員会、健康だより、面談前チェック、日程調整、提案資料などの
+        「下書き・整理・抜け漏れ確認・資料化」に絞って使います。
+      </div>
+    </section>
+
+    <section>
+      <h2>山本さまの職場でできそうなこと</h2>
+      <p class="section-lead">
+        以下は仮説です。当日、実際の仕事の流れを聞きながら「本当に時間を食っているもの」「AIに任せても安全なもの」に絞ります。
+      </p>
+      <article class="work-card">
+        <span class="work-label">支援先対応</span>
+        <div>
+          <h3>企業ごとの月次報告・訪問後メモを整える</h3>
+          <p>訪問後の箇条書きメモから、支援先へ出せる報告文・次回までにやること・確認事項を整えます。健康情報そのものではなく、個人がわからない業務メモや構成案から始めます。</p>
+          <a class="branch-link" href="./branches/01_monthly-report.html">試せる例を見る</a>
+        </div>
+      </article>
+      <article class="work-card">
+        <span class="work-label">衛生委員会</span>
+        <div>
+          <h3>衛生委員会の議題案・資料案・議事録要約を作る</h3>
+          <p>熱中症、睡眠、こころの健康、腰痛、感染症対策など、毎月のテーマ候補を出し、15分で話せる資料たたき台にします。</p>
+          <a class="branch-link" href="./branches/02_safety-committee.html">試せる例を見る</a>
+        </div>
+      </article>
+      <article class="work-card">
+        <span class="work-label">面談準備</span>
+        <div>
+          <h3>面談前に聞くことと、聞き漏れ防止の確認表を作る</h3>
+          <p>初回面談・復職面談・ストレス相談などの前に、確認したい観点を確認表にします。判断は人が行い、AIは準備と整理に限定します。</p>
+          <a class="branch-link" href="./branches/03_interview-checklist.html">試せる例を見る</a>
+        </div>
+      </article>
+      <article class="work-card">
+        <span class="work-label">営業資料</span>
+        <div>
+          <h3>中小企業向けの産業保健サービス提案書を作る</h3>
+          <p>経営者・事務長に伝わるように、「何をしてくれるのか」「月に何が変わるのか」「従業員にどんな安心があるのか」を1枚資料にします。</p>
+          <a class="branch-link" href="./branches/04_service-proposal.html">試せる例を見る</a>
+        </div>
+      </article>
+      <article class="work-card">
+        <span class="work-label">事務局業務</span>
+        <div>
+          <h3>日程調整・案内文・よくある質問・業務手順書をひな形にする</h3>
+          <p>毎回ゼロから書いている文章をひな形にし、Windows環境でもブラウザ中心で使えるようにします。ExcelやGoogleスプレッドシートとの連携も候補です。</p>
+          <a class="branch-link" href="./branches/05_admin-templates.html">試せる例を見る</a>
+        </div>
+      </article>
+      <article class="work-card">
+        <span class="work-label">会議録整理</span>
+        <div>
+          <h3>会議メモ・文字起こしを、議事録と次回のやることに整える</h3>
+          <p>衛生委員会、支援先打ち合わせ、社内共有会のメモから、決定事項・未決事項・次回のやること・共有文を作ります。個人情報や相談内容は入れず、会議として扱える内容に絞ります。</p>
+          <a class="branch-link" href="./branches/06_meeting-minutes.html">試せる例を見る</a>
+        </div>
+      </article>
+      <article class="work-card">
+        <span class="work-label">情報の一元化</span>
+        <div>
+          <h3>支援先ごとの情報・訪問履歴・宿題・資料を1画面にまとめる</h3>
+          <p>支援先ごとの契約範囲、訪問メモ、次回宿題、資料の場所、共有ルールを台帳化します。次回訪問前に「何を見るんだっけ？」を減らすための支援先管理のお試し画面です。</p>
+          <a class="branch-link" href="./branches/07_client-hub.html">試せる例を見る</a>
+        </div>
+      </article>
+    </section>
+
+    <section id="demo-cases">
+      <h2>当日見せられる小さな例</h2>
+      <p class="section-lead">
+        その場で「これなら使うイメージが湧く」と感じてもらうため、以下のどれかを実物に近い形で見せます。
+      </p>
+      <div class="demo-grid">
+        <article class="card demo">
+          <h3>例1: 健康だよりの下書き</h3>
+          <p>例: 「6月の熱中症予防」を、中小企業の朝礼で読める1分版・掲示用A4版・管理者向け注意点に展開。</p>
+          <div class="sample">持ち帰り例: 健康だより本文 / 朝礼用の話す内容 / 従業員向け確認表</div>
+          <a class="branch-link" href="./branches/02_safety-committee.html">関連する例を見る</a>
+        </article>
+        <article class="card demo">
+          <h3>例2: 衛生委員会の議題一式</h3>
+          <p>テーマ候補、議題、参加者への問いかけ、議事録の形、次回までにやることまでを一気にたたき台化。</p>
+          <div class="sample">持ち帰り例: 15分議題案 / 議事録の形 / やること表</div>
+          <a class="branch-link" href="./branches/02_safety-committee.html">関連する例を見る</a>
+        </article>
+        <article class="card demo">
+          <h3>例3: 支援先向け月次報告の整形</h3>
+          <p>箇条書きメモを、経営者・事務長が読みやすい報告書に変換。機微情報は入れず、構成と表現だけ整えます。</p>
+          <div class="sample">持ち帰り例: 報告書見出し / 所感文 / 次月提案</div>
+          <a class="branch-link" href="./branches/01_monthly-report.html">関連する例を見る</a>
+        </article>
+        <article class="card demo">
+          <h3>例4: 産業保健サービス提案書</h3>
+          <p>山本さまの経験や想いを、企業側が検討しやすい「支援内容・月ごとの流れ・料金表のたたき台」に整えます。</p>
+          <div class="sample">持ち帰り例: 初回提案1枚 / 料金表ラフ / 始めて30日でやること</div>
+          <a class="branch-link" href="./branches/04_service-proposal.html">関連する例を見る</a>
+        </article>
+        <article class="card demo">
+          <h3>例5: 会議録と次回のやること整理</h3>
+          <p>ざっくりした会議メモから、議事録・やること表・上司や事務局へ送れる共有文に切り替えて見せます。</p>
+          <div class="sample">持ち帰り例: 議事録 / 決定事項 / 次回までの宿題 / 共有文</div>
+          <a class="branch-link" href="./branches/06_meeting-minutes.html">関連する例を見る</a>
+        </article>
+        <article class="card demo">
+          <h3>例6: 支援先情報の一元管理</h3>
+          <p>支援先ごとの基本情報、訪問メモ、資料、宿題、共有ルールを1画面に集め、次回訪問前の確認を軽くします。</p>
+          <div class="sample">持ち帰り例: 支援先台帳 / 訪問準備 / 引き継ぎメモ</div>
+          <a class="branch-link" href="./branches/07_client-hub.html">関連する例を見る</a>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>文字より、実物で見せる成果物</h2>
+      <p class="section-lead">
+        説明だけでは伝わりにくいので、実際に開けるページ・一覧画面・自動化の例を見ながら話します。
+        山本さまの職場に近いものは「HP作成・改修」「情報の一元化」「日々の事務作業の自動化」です。
+      </p>
+      <div class="artifact-grid">
+        <article class="card artifact-card green-line">
+          <div>
+            <span class="tag green">HP作成・改修</span>
+            <h3>司法書士事務所HPの見本</h3>
+            <p>既存素材と要望をもとに、相談しやすさ・信頼感・導線を整えた専門職向けHPの見本です。</p>
+            <div class="artifact-meta">見せたい点: 専門職の言葉を、相談者に伝わるページへ翻訳できる</div>
+          </div>
+          <div class="artifact-actions">
+            <a class="artifact-link" href="#demo-cases">当日画面で紹介</a>
+          </div>
+        </article>
+        <article class="card artifact-card">
+          <div>
+            <span class="tag amber">HP作成・改修</span>
+            <h3>IRODORI 理念紹介ページ</h3>
+            <p>理念や事業の背景を、社内外に伝わる1ページへ整理した紹介ページです。</p>
+            <div class="artifact-meta">見せたい点: 言語化されていない価値を、見せられるページに変換できる</div>
+          </div>
+          <div class="artifact-actions">
+            <a class="artifact-link" href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/irodori-philosophy.html" target="_blank" rel="noreferrer">実物を開く</a>
+          </div>
+        </article>
+        <article class="card artifact-card amber-line">
+          <div>
+            <span class="tag rose">HP作成・改修</span>
+            <h3>空手道場HP</h3>
+            <p>地域の教室・店舗向けに、雰囲気や信頼感を出しながら問い合わせ導線を整えたHP例です。</p>
+            <div class="artifact-meta">見せたい点: 小規模事業者のHPを、短期間で形にして改善できる</div>
+          </div>
+          <div class="artifact-actions">
+            <a class="artifact-link" href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/karate.html" target="_blank" rel="noreferrer">実物を開く</a>
+          </div>
+        </article>
+        <article class="card artifact-card">
+          <div>
+            <span class="tag green">情報の一元化</span>
+            <h3>Zoom運行管理の一覧画面</h3>
+            <p>Zoom予定と被りを一覧化し、担当者向けの短い共有文までつなげた運用画面です。</p>
+            <div class="artifact-meta">見せたい点: 散らばる予定・会議情報を、毎日見る画面に集約できる</div>
+          </div>
+          <div class="artifact-actions">
+            <a class="artifact-link" href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/irodori-zoom-dashboard.html" target="_blank" rel="noreferrer">実物を開く</a>
+          </div>
+        </article>
+        <article class="card artifact-card green-line">
+          <div>
+            <span class="tag amber">採用整理画面</span>
+            <h3>採用・受け入れ準備の整理画面</h3>
+            <p>採用の流れ、候補者対応、入社後の準備を、見落としにくい画面へ整理した社内向けの例です。</p>
+            <div class="artifact-meta">見せたい点: 採用・支援先・面談など、進捗が散らばる仕事を1画面に集められる</div>
+          </div>
+          <div class="artifact-actions">
+            <a class="artifact-link" href="#demo-cases">当日画面で紹介</a>
+          </div>
+        </article>
+        <article class="card artifact-card amber-line">
+          <div>
+            <span class="tag rose">自動化</span>
+            <h3>制服在庫管理の例</h3>
+            <p>複数店舗のExcelや表の情報を集約し、月次確認作業を大幅に減らす業務改善の例です。</p>
+            <div class="artifact-meta">見せたい点: 手作業集約を、AIと自動処理で数分の確認作業に変えられる</div>
+          </div>
+          <div class="artifact-actions">
+            <a class="artifact-link" href="https://okemonogatari-hash.github.io/uniform-management-demo/" target="_blank" rel="noreferrer">実物を開く</a>
+          </div>
+        </article>
+        <article class="card artifact-card green-line">
+          <div>
+            <span class="tag green">自動化</span>
+            <h3>領収書自動転記の例</h3>
+            <p>紙の領収書や読み取りデータから、日付・支払先・金額・用途分類を表へ転記するお試し版です。</p>
+            <div class="artifact-meta">見せたい点: 毎月の事務作業を、まず小さな例で見せられる</div>
+          </div>
+          <div class="artifact-actions">
+            <a class="artifact-link" href="#safe-materials">当日画面で紹介</a>
+          </div>
+        </article>
+        <article class="card artifact-card">
+          <div>
+            <span class="tag amber">情報の一元化</span>
+            <h3>Zoom文字起こしDocs化</h3>
+            <p>Zoom録画の文字起こしを文書へ整形保存し、社内資料や記録として後から拾いやすくする検証です。</p>
+            <div class="artifact-meta">見せたい点: 会議・面談・研修ログを、後から探せる形に残せる</div>
+          </div>
+          <div class="artifact-actions">
+            <a class="artifact-link" href="#safe-materials">当日画面で紹介</a>
+          </div>
+        </article>
+        <article class="card artifact-card green-line">
+          <div>
+            <span class="tag green">この場で試せる例</span>
+            <h3>会議録・面談メモ整理</h3>
+            <p>会議メモを、議事録・次回のやること・共有文に変換する産業保健向けのお試し画面です。</p>
+            <div class="artifact-meta">見せたい点: 文字起こしを「あとで動ける記録」に変換できる</div>
+          </div>
+          <div class="artifact-actions">
+            <a class="artifact-link" href="./branches/06_meeting-minutes.html">実物を開く</a>
+          </div>
+        </article>
+        <article class="card artifact-card amber-line">
+          <div>
+            <span class="tag amber">この場で試せる例</span>
+            <h3>支援先情報一元管理</h3>
+            <p>支援先ごとの訪問履歴、宿題、資料、共有ルールを1画面にまとめるお試し画面です。</p>
+            <div class="artifact-meta">見せたい点: 散らばる支援先情報を、次回訪問準備に使える形へ集約できる</div>
+          </div>
+          <div class="artifact-actions">
+            <a class="artifact-link" href="./branches/07_client-hub.html">実物を開く</a>
+          </div>
+        </article>
+      </div>
+      <div class="focus-band">
+        <strong>当日の見せ方:</strong>
+        まず実物を2〜3個開いて、「こういう見えるものを作れます」と伝えます。そのあとで、山本さまの職場なら
+        どの情報を一元化すると楽になるか、どのPC作業を自動化候補にできるかを一緒に棚卸しします。
+      </div>
+    </section>
+
+    <section>
+      <h2>初回訪問で持ち帰れるもの</h2>
+      <p class="section-lead">
+        話して終わりではなく、職場内で検討しやすい形にして持ち帰れることを重視します。
+      </p>
+      <div class="outcome">
+        <article class="card">
+          <span class="tag green">持ち帰り1</span>
+          <h3>仕事の整理シート</h3>
+          <p>人がやる業務、AIで下書きできる業務、まだ触らない業務を1枚に分類します。</p>
+        </article>
+        <article class="card">
+          <span class="tag amber">持ち帰り2</span>
+          <h3>安全なAI利用ルール案</h3>
+          <p>個人情報、健康情報、顧客情報をAIに入れないための初期ルールを作ります。</p>
+        </article>
+        <article class="card">
+          <span class="tag rose">持ち帰り3</span>
+          <h3>小さなお試し 1つ</h3>
+          <p>健康だより、月次報告、衛生委員会資料などから、最初に試す1つを決めます。</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>おけもんが今していること・伴走できる理由</h2>
+      <p class="section-lead">
+        おけもんの強みは、AIを押し付けることではなく、AIに詳しくない方の不安や現場感を受け止めながら、使える形に翻訳することです。
+        福祉・介護現場での管理経験、対話支援、AI初心者サポート、小さな業務改善の見本づくりが重なっています。
+      </p>
+      <div class="grid-2">
+        <article class="card">
+          <span class="tag green">現場理解</span>
+          <h3>福祉・介護マネジメントの現場経験</h3>
+          <p>福祉業界15年。障害福祉グループホーム管理、介護現場の管理を経験。個人情報や人の状態を扱う仕事に、いきなりAIを入れる怖さを前提にできます。</p>
+        </article>
+        <article class="card">
+          <span class="tag amber">AI初心者支援</span>
+          <h3>AI活用の場を20回以上、累計100名以上</h3>
+          <p>AIツールの初心者向けオフ会・相談会を継続。4月だけでも導入系オフ会を多数開催し、つまずきや不安のパターンを実地で見ています。</p>
+        </article>
+        <article class="card">
+          <span class="tag rose">対話支援</span>
+          <h3>1,000名以上の対話支援・100回以上の場づくり</h3>
+          <p>ストレングスファインダー認定コーチ。個性診断・コーチング・オフ会運営を通じて、相手の言葉を引き出し、整理することを本業としてきました。</p>
+        </article>
+        <article class="card">
+          <span class="tag green">実務改善</span>
+          <h3>小さく試せる業務改善の見本を作れる</h3>
+          <p>制服在庫管理、Zoom文字起こしDocs化、予定の重なり検知、領収書自動転記など、PC上の面倒を「まず見える形」にする試作を進めています。</p>
+        </article>
+        <article class="card">
+          <span class="tag amber">資料化</span>
+          <h3>職場で説明しやすい形へ翻訳できる</h3>
+          <p>紹介ページ、提案資料、回覧メモ、案内ページ、確認表を作成。AIの話を専門用語のままにせず、職場内で共有しやすい1枚に整えます。</p>
+        </article>
+        <article class="card">
+          <span class="tag rose">線引き</span>
+          <h3>AIに任せる範囲と、人が確認する範囲を分ける</h3>
+          <p>健康判断・労務判断・個人情報の扱いは人が持つ。AIは下書き、整理、抜け漏れ確認、資料化に使うという安全な始め方を前提にします。</p>
+        </article>
+      </div>
+      <div class="focus-band">
+        <strong>山本さまと合いそうなところ:</strong>
+        産業保健師さんの仕事は、相談・予防・関係づくりが中心です。だからこそ、AIは判断役ではなく、
+        訪問メモ、衛生委員会資料、健康だより、日程調整、提案書などの「PCで行う下ごしらえ」を軽くする役として相性を見ます。
+      </div>
+    </section>
+
+    <section>
+      <h2>初回90分の進め方</h2>
+      <div class="agenda">
+        <div class="time">0-10分</div>
+        <div>「何をAIで楽にしたいか」ではなく、「何に時間を取られているか」を確認します。</div>
+        <div class="time">10-35分</div>
+        <div>支援先対応、面談準備、報告作成、衛生委員会、会議録、支援先情報の一元管理、営業資料、日程調整を整理します。</div>
+        <div class="time">35-60分</div>
+        <div>当日見せる小さな例を確認し、「これなら使いたい」を1つ選びます。</div>
+        <div class="time">60-75分</div>
+        <div>個人情報を入れない使い方のルールを決め、Windows環境での使い方を確認します。</div>
+        <div class="time">75-90分</div>
+        <div>次の一手を決めます。単発のお試し、職場向け勉強会、補助金資料整理のどれに進むかを分けます。</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>その後の進め方</h2>
+      <p class="section-lead">
+        初回の反応を見て、必要な分だけ小さく進めます。正式な実施範囲と金額は、扱う業務と守秘ルールを確認してから決めます。
+      </p>
+      <div class="price">
+        <article class="card">
+          <h3>単発のお試し作成</h3>
+          <p>初回で選んだ1テーマを、実際に使えるひな形や資料にします。</p>
+          <ul>
+            <li>健康だより / 衛生委員会資料 / 月次報告 / 提案書など</li>
+            <li>匿名の例で作成</li>
+            <li>職場内で見せられる形に整える</li>
+          </ul>
+          <p class="small">金額: 実施範囲を確認してからお見積もり</p>
+        </article>
+        <article class="card">
+          <h3>3ヶ月伴走</h3>
+          <p>月1回の仕事整理と改善で、産業保健サービスの中にAIを少しずつ取り入れます。</p>
+          <ul>
+            <li>月1回の振り返り</li>
+            <li>ひな形追加</li>
+            <li>職場向けの短いAI勉強会</li>
+            <li>補助金資料の整理</li>
+          </ul>
+          <p class="small">金額: 対応範囲・回数・資料作成量に応じて個別に相談</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>できないこと・慎重に扱うこと</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>扱わないこと</h3>
+          <ul>
+            <li>診断・医療判断・労務判断をAIに任せること</li>
+            <li>申請代行や補助金の採択保証</li>
+            <li>個人情報や健康情報を外部AIへそのまま入力する運用</li>
+            <li>カルテ・顧客管理など、止まると困る大事な仕組みをいきなり作ること</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>最初に決めたいルール</h3>
+          <ul>
+            <li>AIに入れてよい情報 / 入れない情報</li>
+            <li>最終確認者は必ず人にすること</li>
+            <li>職場内で共有する文面の責任範囲</li>
+            <li>補助金を使う場合の公式窓口・専門家確認の流れ</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>当日、ぜひ話したいこと</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>山本さまの職場について</h3>
+          <ul>
+            <li>いま毎月必ず発生している定型業務</li>
+            <li>報告書・資料・案内文で時間がかかるもの</li>
+            <li>事務員を増やしたい理由になっている作業</li>
+            <li>Windows以外に使っているもの</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>山本さま自身の事業について</h3>
+          <ul>
+            <li>中小企業向け産業保健サービスで増やしたい案件</li>
+            <li>経営者や事務長に説明しにくい価値</li>
+            <li>2026年にAIの使い方を身につけたい具体場面</li>
+            <li>合同会社化を見据えて型化したい業務</li>
+          </ul>
+        </article>
+      </div>
+      <div class="focus-band">
+        <strong>当日の一番の問い:</strong>
+        「AIに何をさせるか」ではなく、「山本さまと職場の方が、人にしかできない仕事へ戻るために、何をAIに下書きさせるか」を一緒に決めます。
+      </div>
+    </section>
+
+    <section id="safe-materials">
+      <h2>AIに渡す前に集めたいもの</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>AIに渡せる安全な材料</h3>
+          <ul>
+            <li>実際の報告書や案内文から、個人情報を抜いた例</li>
+            <li>衛生委員会や健康だよりの過去テーマ</li>
+            <li>日程調整・案内文・よくある質問など、よく使う文章</li>
+            <li>支援先ごとに繰り返し使う見出し、文体、提出形式</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>人が確認するためのルール</h3>
+          <ul>
+            <li>増員を検討している理由</li>
+            <li>AI利用について気になっている不安</li>
+            <li>職場として守りたい個人情報ルール</li>
+            <li>補助金で想定している制度名</li>
+            <li>最終確認者、外部送信前の承認フロー、共有してよい範囲</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      作成日: 2026-05-14 / 共有用相談資料です。実際の導入範囲・守秘ルール・補助金制度名・金額は、打ち合わせ後に確認します。
+    </p>
+  </main>
+</body>
+</html>

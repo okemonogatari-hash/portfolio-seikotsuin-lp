@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>衛生委員会・健康だより お試し画面</title>
+  <link rel="stylesheet" href="./branch-style.css?v=20260514-branch-wow5">
+  <script>
+    window.branchMockConfig = {
+      current: "02",
+      documentTitle: "衛生委員会・健康だより お試し画面",
+      eyebrow: "試せる例 02 / 衛生委員会",
+      title: "衛生委員会の議題・資料・議事録をまとめて作る",
+      lead: "毎月の衛生委員会を、テーマ探し、15分の進め方案、配布資料、議事録の形まで一気につくる想定です。最後は山本さまが専門家として確認します。",
+      statusTitle: "訪問日に見せる使い方",
+      statusCopy: "季節テーマと職場課題を入れると、委員会一式が右側に出る。",
+      impactCards: [
+        { label: "これまで", title: "毎月の議題探しが地味に重い", copy: "季節テーマ、現場課題、委員会の時間配分を毎回組み直す必要がある。", tone: "rose" },
+        { label: "AIで変わること", title: "15分進行・配布資料・議事録がひとつながり", copy: "話す順番から終わった後の記録まで、同じテーマで一式にできる。", tone: "green" },
+        { label: "使った後", title: "現場に合わせる余白が増える", copy: "ゼロ作成を減らし、山本さまは言葉の温度と実務に合う表現へ集中できる。", tone: "amber" }
+      ],
+      demoFlow: [
+        { title: "季節テーマを選ぶ", copy: "熱中症・睡眠・腰痛などから選択" },
+        { title: "現場の声を入れる", copy: "部署差や管理職の迷いを匿名で入力" },
+        { title: "委員会一式にする", copy: "議題、配布資料、議事録を切り替え表示" },
+        { title: "翌月の宿題へ", copy: "決定事項と担当を残して継続しやすくする" }
+      ],
+      controlTitle: "委員会テーマを入力",
+      controlCopy: "支援先の業種や今月の困りごとを仮入力して動きを見せます。",
+      safety: "AIは一般的な情報整理と台本づくりまで。医学的判断や個別対応の指示は、保健師が確認してから使います。",
+      fitTitle: "この画面で伝えたいこと",
+      fitCopy: "ゼロから資料を考える時間を減らし、山本さまは現場に合う言葉へ直すことに集中できます。",
+      fitList: [
+        "季節ごとのテーマ候補をすぐ出せる",
+        "15分で話す順番と問いかけが作れる",
+        "委員会後の議事録・やること整理までつながる"
+      ],
+      questions: [
+        "衛生委員会は毎月ありますか？参加者は誰ですか？",
+        "よく扱うテーマ、扱いづらいテーマは何ですか？",
+        "資料はPowerPoint、紙、PDF、どれが多いですか？"
+      ],
+      nextStep: "当日は、6月の熱中症テーマでその場で例を見せ、山本さまが普段使う資料の言い方に合わせて表現を調整する。",
+      fields: [
+        { id: "month", label: "開催月", type: "input", value: "2026年6月", helper: "季節要因を反映する" },
+        { id: "workplace", label: "職場タイプ", type: "select", value: "製造現場あり", options: ["製造現場あり", "オフィス中心", "介護・福祉", "運送・物流", "小売・接客"] },
+        { id: "theme", label: "扱いたいテーマ", type: "select", value: "熱中症予防", options: ["熱中症予防", "睡眠と疲労", "こころの健康", "腰痛予防", "感染症対策"] },
+        { id: "issue", label: "現場の気になる声", type: "textarea", value: "昨年、暑い時期に体調不良が数件あった。管理職から「どこまで声かけしていいかわからない」と相談あり。部署によって休憩の取り方が違う。", helper: "実際の会社名や個人名は入れない" },
+        { id: "minutes", label: "話せる時間", type: "select", value: "15分", options: ["10分", "15分", "30分"] }
+      ],
+      outputs: [
+        {
+          id: "agenda",
+          label: "議題一式",
+          description: "衛生委員会でそのまま使える進行案と問いかけを作ります。",
+          render: (v, { s, nl }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.month)} 衛生委員会 議題案</h2>
+                <p>${s(v.workplace)} / テーマ: ${s(v.theme)} / 想定時間: ${s(v.minutes)}</p>
+              </div>
+              <div class="doc-body">
+                <div class="paper-title">
+                  <span>委員会セット</span>
+                  <strong>${s(v.theme)}を「個人の注意」だけで終わらせず、職場の声かけと休憩ルールに落とし込む</strong>
+                  <p>${s(v.minutes)}で話し切れるように、現場の問いかけと決定事項までセットにします。</p>
+                </div>
+                <div class="section-title-line">当日の進行</div>
+                <div class="mini-table">
+                  <div class="head">時間</div><div class="head">内容</div><div class="head">問いかけ</div>
+                  <div>3分</div><div>昨年・現場の振り返り</div><div>どの部署で起きやすいか</div>
+                  <div>5分</div><div>${s(v.theme)}のサイン確認</div><div>早めに気づくポイントは何か</div>
+                  <div>5分</div><div>管理職の声かけ例</div><div>どんな言い方なら現場で使えるか</div>
+                  <div>2分</div><div>今月やることの確認</div><div>掲示、休憩、水分補給の確認者を決める</div>
+                </div>
+                <div class="doc-block accent">
+                  <h3>現場背景</h3>
+                  <p>${nl(v.issue)}</p>
+                </div>
+                <div class="risk-grid">
+                  <div class="risk-card"><strong>決めること</strong><p>掲示物の更新、声かけ役、休憩確認のタイミング。</p></div>
+                  <div class="risk-card"><strong>持ち帰ること</strong><p>部署差が大きい場合は、次回までに運用例を1つ聞き取る。</p></div>
+                </div>
+              </div>
+            </article>`
+        },
+        {
+          id: "handout",
+          label: "配布資料",
+          description: "従業員に配れる1枚資料の下書きです。",
+          render: (v, { s }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>健康だより案: ${s(v.theme)}</h2>
+                <p>朝礼・掲示・社内共有に使うA4一枚想定</p>
+              </div>
+              <div class="doc-body">
+                <div class="paper-title">
+                  <span>配布資料</span>
+                  <strong>暑さに「気合い」で耐えない。声をかけ合える職場にする。</strong>
+                  <p>${s(v.workplace)}向けに、朝礼・掲示・社内共有で使える1枚資料の下書きです。</p>
+                </div>
+                <div class="three-col">
+                  <div class="doc-block"><h3>気づく</h3><p>いつもより反応が遅い、顔色が悪い、ふらつきがある場合は早めに休憩を促す。</p></div>
+                  <div class="doc-block"><h3>声をかける</h3><p>「少し休憩を入れましょう」「水分を取りましたか」と具体的に伝える。</p></div>
+                  <div class="doc-block"><h3>続ける</h3><p>掲示物、朝礼、管理職の声かけを毎週の習慣にする。</p></div>
+                </div>
+                <div class="doc-block accent">
+                  <h3>管理職向けの一言</h3>
+                  <p>本人任せにせず、休憩を取りやすい空気をつくることが予防につながります。</p>
+                </div>
+              </div>
+            </article>`
+        },
+        {
+          id: "minutes",
+          label: "議事録の形",
+          description: "委員会後の決定事項と宿題を残す記録の形です。",
+          render: (v, { s }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.month)} 衛生委員会 議事録メモ</h2>
+                <p>終了後5分で整理する想定</p>
+              </div>
+              <div class="doc-body">
+                <div class="metric-strip">
+                  <div class="metric"><strong>3</strong><span>決定事項</span></div>
+                  <div class="metric"><strong>2</strong><span>担当未確定</span></div>
+                  <div class="metric"><strong>1</strong><span>次回確認テーマ</span></div>
+                </div>
+                <div class="timeline">
+                  <div class="timeline-item"><strong>決定</strong><p>${s(v.theme)}の掲示物を更新する</p><span>期限: 今月中</span></div>
+                  <div class="timeline-item"><strong>決定</strong><p>管理職からの声かけ例を共有する</p><span>担当: 要確認</span></div>
+                  <div class="timeline-item"><strong>宿題</strong><p>休憩しづらい部署の運用を聞き取る</p><span>次回確認</span></div>
+                </div>
+              </div>
+            </article>`
+        }
+      ]
+    };
+  </script>
+  <script defer src="./branch-mock.js?v=20260514-branch-wow6"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../index.html">← 最初の資料に戻る</a>
+    <header class="hero">
+      <div><p id="page-eyebrow" class="eyebrow"></p><h1 id="page-title"></h1><p id="page-lead" class="lead"></p></div>
+      <aside class="status-card"><strong id="status-strong"></strong><span id="status-copy"></span></aside>
+    </header>
+    <nav id="branch-nav" class="nav-pages" aria-label="試せる例の一覧"></nav>
+    <section class="mock-shell">
+      <aside class="control-panel">
+        <div class="control-head"><h2 id="control-title"></h2><p id="control-copy"></p></div>
+        <form id="mock-fields"></form>
+        <div class="mock-actions"><button id="generate-button" class="primary-button" type="button">下書きを作る</button><button id="reset-button" class="ghost-button" type="button">初期化</button></div>
+        <div id="safety-copy" class="safety-box"></div>
+      </aside>
+      <section class="workbench" aria-live="polite">
+        <div class="workbench-bar"><div id="mode-row" class="mode-row"></div><p id="mode-desc" class="mode-desc"></p></div>
+        <div id="preview" class="preview-wrap"></div>
+      </section>
+    </section>
+    <section class="info-grid">
+      <article class="info-panel"><h2 id="fit-title"></h2><p id="fit-copy"></p><ul id="fit-list"></ul></article>
+      <article class="info-panel"><h2>当日聞きたいこと</h2><ul id="questions-list"></ul></article>
+      <article class="info-panel"><h2>自然な次の一手</h2><p id="next-step"></p></article>
+    </section>
+    <p class="footer-note">共有用資料 / 入力内容は作り物の例で表示</p>
+  </main>
+</body>
+</html>

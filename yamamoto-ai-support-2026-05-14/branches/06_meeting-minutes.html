@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>会議録・面談メモ整理 お試し画面</title>
+  <link rel="stylesheet" href="./branch-style.css?v=20260514-branch-wow5">
+  <script>
+    window.branchMockConfig = {
+      current: "06",
+      documentTitle: "会議録・面談メモ整理 お試し画面",
+      eyebrow: "試せる例 06 / 会議録",
+      title: "会議メモから、議事録・決定事項・次回のやることを作る",
+      lead: "衛生委員会、支援先との打ち合わせ、社内共有会のメモや文字起こしを、あとから追いやすい議事録に整える想定です。個人の健康情報は入れず、職場として扱える内容に限定します。",
+      statusTitle: "訪問日に見せる使い方",
+      statusCopy: "ざっくりした会議メモを入れると、議事録、やること表、共有文に切り替わる。",
+      impactCards: [
+        { label: "これまで", title: "会議後のメモが散らばって残る", copy: "決定事項、宿題、次回確認がメモの中に混ざり、後から探すのに時間がかかる。", tone: "rose" },
+        { label: "AIで変わること", title: "議事録・宿題・共有文に分けて残せる", copy: "同じメモから、読み手と用途に合わせた形へ自動で整理する。", tone: "green" },
+        { label: "使った後", title: "次回訪問前にすぐ思い出せる", copy: "何を決めたか、誰がやるか、次に何を見るかを1画面で追える。", tone: "amber" }
+      ],
+      demoFlow: [
+        { title: "メモを入れる", copy: "録音文字起こし、箇条書き、走り書きで開始" },
+        { title: "決定事項を抽出", copy: "決めたこと、未決事項、次回確認を分ける" },
+        { title: "人が確認する", copy: "表現、事実、共有範囲を最後に確認" },
+        { title: "次回へつなぐ", copy: "やることと期限を残して迷子を防ぐ" }
+      ],
+      controlTitle: "会議メモを入力",
+      controlCopy: "実際の個人情報は入れず、会議の流れや決定事項だけを仮入力します。",
+      safety: "個人名、診断名、個別相談の詳細は入れない。AIは議事録の構成、決定事項の抽出、次回のやること整理に使います。",
+      fitTitle: "この画面で伝えたいこと",
+      fitCopy: "会議録を綺麗にするだけでなく、次回訪問や社内共有で再利用できる状態にする例です。",
+      fitList: [
+        "会議後の記録作成を短縮できる",
+        "決定事項と未決事項を分けて残せる",
+        "次回訪問前の思い出しが速くなる"
+      ],
+      questions: [
+        "会議録は誰が、どのくらいの粒度で残していますか？",
+        "決定事項や宿題はどこで管理していますか？",
+        "録音・文字起こしを使える場面はありますか？"
+      ],
+      nextStep: "当日は作り物の会議メモで動かし、山本さまが普段残している議事録の項目に合わせて見出しを変える。",
+      fields: [
+        { id: "meetingType", label: "会議の種類", type: "select", value: "衛生委員会", options: ["衛生委員会", "支援先打ち合わせ", "社内共有会", "研修後振り返り", "月次報告会"] },
+        { id: "date", label: "開催日", type: "input", value: "2026年5月14日", helper: "議事録の見出しに使う" },
+        { id: "participants", label: "参加者の役割", type: "input", value: "保健師、事務長、管理職2名", helper: "実名ではなく役割でOK" },
+        { id: "sourceMemo", label: "会議メモ・文字起こし要約", type: "textarea", value: "熱中症対策について確認。昨年は暑い時期に体調不良が数件。部署ごとに休憩の取り方が違う。掲示物が古い。管理職から、声かけの言い方が難しいという相談あり。", helper: "個人が特定される情報は入れない" },
+        { id: "decisions", label: "決まったこと・持ち帰り", type: "textarea", value: "掲示物を更新する。管理職向けの声かけ例を作る。次回、部署ごとの休憩運用を確認する。", helper: "未整理の箇条書きでOK" },
+        { id: "tone", label: "共有文のトーン", type: "select", value: "落ち着いて簡潔", options: ["落ち着いて簡潔", "管理職向けに明確", "社内向けにやわらかく", "提出用に丁寧"] }
+      ],
+      outputs: [
+        {
+          id: "minutes",
+          label: "議事録",
+          description: "会議後に残せる、読み返しやすい議事録のたたき台です。",
+          render: (v, { s, nl }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.meetingType)} 議事録</h2>
+                <p>${s(v.date)} / 参加者: ${s(v.participants)}</p>
+              </div>
+              <div class="doc-body">
+                <div class="paper-title">
+                  <span>会議の要点</span>
+                  <strong>今回の主題は、職場全体で扱える予防策と次回までの準備を整理することです。</strong>
+                  <p>個別相談の詳細は含めず、会議として決まったことと次に確認することだけを残します。</p>
+                </div>
+                <div class="metric-strip">
+                  <div class="metric"><strong>3</strong><span>決定・宿題候補</span></div>
+                  <div class="metric"><strong>1</strong><span>次回確認テーマ</span></div>
+                  <div class="metric"><strong>0</strong><span>個人健康情報</span></div>
+                </div>
+                <div class="doc-block accent"><h3>会議メモから見えた要点</h3><p>${nl(v.sourceMemo)}</p></div>
+                <div class="doc-block"><h3>決定事項・持ち帰り</h3><p>${nl(v.decisions)}</p></div>
+                <div class="doc-block warning"><h3>議事録に入れない情報</h3><p>個別相談の詳細、診断名、本人が特定される発言、健康情報の逐語記録は含めません。</p></div>
+              </div>
+            </article>`
+        },
+        {
+          id: "actions",
+          label: "やること表",
+          description: "次回までに誰が何をするかを見える形にします。",
+          render: (v, { s }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.meetingType)} 次回までのやること</h2>
+                <p>会議録から自動整理した候補</p>
+              </div>
+              <div class="doc-body">
+                <div class="timeline">
+                  <div class="timeline-item"><strong>今週中</strong><p>掲示物の更新案を作る</p><span>担当: 保健師</span></div>
+                  <div class="timeline-item"><strong>1週間以内</strong><p>管理職向けの声かけ例を確認する</p><span>担当: 管理職</span></div>
+                  <div class="timeline-item"><strong>次回訪問</strong><p>部署ごとの休憩運用を確認する</p><span>担当: 支援先</span></div>
+                </div>
+                <div class="quote-strip">会議録から「次に動くための情報」だけを抜き出すと、次回訪問前の確認が速くなります。</div>
+              </div>
+            </article>`
+        },
+        {
+          id: "share",
+          label: "共有文",
+          description: "上司・事務局へ送れる短い共有文です。",
+          render: (v, { s }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>会議後共有メモ</h2>
+                <p>トーン: ${s(v.tone)}</p>
+              </div>
+              <div class="doc-body">
+                <div class="message-box">
+                  <p>${s(v.date)}の${s(v.meetingType)}では、熱中症対策を中心に、掲示物の更新、管理職向けの声かけ例、部署ごとの休憩運用の確認を次回までのテーマとして整理しました。個別相談の詳細は共有せず、職場全体で扱える改善事項のみを記録します。</p>
+                </div>
+              </div>
+            </article>`
+        }
+      ]
+    };
+  </script>
+  <script defer src="./branch-mock.js?v=20260514-branch-wow6"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../index.html">← 最初の資料に戻る</a>
+    <header class="hero">
+      <div><p id="page-eyebrow" class="eyebrow"></p><h1 id="page-title"></h1><p id="page-lead" class="lead"></p></div>
+      <aside class="status-card"><strong id="status-strong"></strong><span id="status-copy"></span></aside>
+    </header>
+    <nav id="branch-nav" class="nav-pages" aria-label="試せる例の一覧"></nav>
+    <section class="mock-shell">
+      <aside class="control-panel">
+        <div class="control-head"><h2 id="control-title"></h2><p id="control-copy"></p></div>
+        <form id="mock-fields"></form>
+        <div class="mock-actions"><button id="generate-button" class="primary-button" type="button">下書きを作る</button><button id="reset-button" class="ghost-button" type="button">初期化</button></div>
+        <div id="safety-copy" class="safety-box"></div>
+      </aside>
+      <section class="workbench" aria-live="polite">
+        <div class="workbench-bar"><div id="mode-row" class="mode-row"></div><p id="mode-desc" class="mode-desc"></p></div>
+        <div id="preview" class="preview-wrap"></div>
+      </section>
+    </section>
+    <section class="info-grid">
+      <article class="info-panel"><h2 id="fit-title"></h2><p id="fit-copy"></p><ul id="fit-list"></ul></article>
+      <article class="info-panel"><h2>当日聞きたいこと</h2><ul id="questions-list"></ul></article>
+      <article class="info-panel"><h2>自然な次の一手</h2><p id="next-step"></p></article>
+    </section>
+    <p class="footer-note">共有用資料 / 入力内容は作り物の例で表示</p>
+  </main>
+</body>
+</html>

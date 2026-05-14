@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>面談前の聞き取り・聞き漏れ防止 お試し画面</title>
+  <link rel="stylesheet" href="./branch-style.css?v=20260514-branch-wow5">
+  <script>
+    window.branchMockConfig = {
+      current: "03",
+      documentTitle: "面談前の聞き取り・聞き漏れ防止 お試し画面",
+      eyebrow: "試せる例 03 / 面談準備",
+      title: "面談前の確認項目と記録欄を作る",
+      lead: "初回面談、復職面談、ストレス相談などで、聞き漏れを防ぐための確認表と記録欄を作る想定です。AIは判断せず、準備と整理に限定します。",
+      statusTitle: "訪問日に見せる使い方",
+      statusCopy: "面談の種類を選ぶと、質問リスト・記録欄・共有範囲メモが出る。",
+      impactCards: [
+        { label: "これまで", title: "面談前の準備品質が人や状況で揺れる", copy: "初回、復職、長時間労働などで確認観点が変わり、聞き漏れ不安が残りやすい。", tone: "rose" },
+        { label: "AIで変わること", title: "面談種別ごとの確認表と記録欄を即出し", copy: "判断はしないまま、質問の順番、最後の共有確認、記録欄を整える。", tone: "green" },
+        { label: "使った後", title: "傾聴に集中しやすい面談準備になる", copy: "型を先に置くことで、当日は本人の話を聴く余白を増やす。", tone: "amber" }
+      ],
+      demoFlow: [
+        { title: "面談種別を選ぶ", copy: "初回・復職・ストレス相談などを切り替え" },
+        { title: "目的だけを入れる", copy: "個人情報は入れず、確認したい観点だけにする" },
+        { title: "抜け漏れ確認", copy: "質問表、記録欄、共有範囲メモを生成" },
+        { title: "保健師が使う形へ", copy: "普段の記録ルールに合わせて項目を調整" }
+      ],
+      controlTitle: "面談の前提を入力",
+      controlCopy: "個人情報ではなく、面談の種類や確認したい観点だけを入れます。",
+      safety: "本人の個人情報、診断名、詳細な相談内容は入れない。AIに任せるのは、質問の抜け漏れ防止と記録の形づくりまで。",
+      fitTitle: "この画面で伝えたいこと",
+      fitCopy: "保健師としての傾聴や判断を置き換えるのではなく、準備の質をそろえるために使います。",
+      fitList: [
+        "面談の種類ごとに聞く項目を揃えられる",
+        "職場に共有してよい範囲を確認しやすい",
+        "面談後の記録が短く残せる"
+      ],
+      questions: [
+        "面談はどの種類が多いですか？",
+        "記録はどこに、どの粒度で残していますか？",
+        "職場と共有する情報のルールはありますか？"
+      ],
+      nextStep: "当日は、初回面談・復職面談のどちらか1つを選び、山本さまが普段確認している項目と照らし合わせる。",
+      fields: [
+        { id: "caseType", label: "面談の種類", type: "select", value: "初回面談", options: ["初回面談", "復職面談", "ストレス相談", "長時間労働面談", "管理職相談"] },
+        { id: "goal", label: "面談の目的", type: "textarea", value: "本人が何に困っているかを整理し、職場で配慮が必要か、本人が何を希望しているかを確認したい。", helper: "本人情報ではなく目的だけを書く" },
+        { id: "topics", label: "確認したい観点", type: "textarea", value: "業務負荷、人間関係、睡眠、食事、通院状況、職場に伝えてよい範囲、次回までに確認すること", helper: "聞きたい項目を粗く入れる" },
+        { id: "shareRange", label: "共有範囲の前提", type: "select", value: "本人に確認してから共有", options: ["本人に確認してから共有", "個人情報は共有しない", "必要最小限のみ共有", "社内ルールを確認"] },
+        { id: "recordStyle", label: "記録の細かさ", type: "select", value: "簡潔な要点のみ", options: ["簡潔な要点のみ", "確認式", "所見欄あり", "次回までにやること重視"] }
+      ],
+      outputs: [
+        {
+          id: "checklist",
+          label: "面談前の確認",
+          description: "面談前に見る確認項目リストです。",
+          render: (v, { s, nl }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.caseType)} 面談前の確認表</h2>
+                <p>目的: ${s(v.recordStyle)}で記録する</p>
+              </div>
+              <div class="doc-body">
+                <div class="paper-title">
+                  <span>INTERVIEW RUNBOOK</span>
+                  <strong>${s(v.caseType)}で聞き漏れを防ぎつつ、本人の話を遮らないための確認表</strong>
+                  <p>AIは質問の型を作るだけ。判断、助言、共有可否の最終確認は保健師が行います。</p>
+                </div>
+                <div class="doc-block accent">
+                  <h3>面談の目的</h3>
+                  <p>${nl(v.goal)}</p>
+                </div>
+                <div class="section-title-line">面談前の確認バランス</div>
+                <div class="doc-block">
+                  <div class="score-row"><span>業務要因</span><div class="score-track"><div class="score-fill" style="width: 86%"></div></div><span>高</span></div>
+                  <div class="score-row"><span>生活要因</span><div class="score-track"><div class="score-fill" style="width: 64%"></div></div><span>中</span></div>
+                  <div class="score-row"><span>共有確認</span><div class="score-track"><div class="score-fill" style="width: 92%"></div></div><span>必須</span></div>
+                </div>
+                <div class="two-col">
+                  <div class="doc-block">
+                    <h3>最初に確認すること</h3>
+                    <ul>
+                      <li>今日いちばん相談したいこと</li>
+                      <li>業務上いちばん負担に感じていること</li>
+                      <li>睡眠・食事・休息の状態</li>
+                      <li>本人が希望する支援</li>
+                    </ul>
+                  </div>
+                  <div class="doc-block">
+                    <h3>聞き漏れ防止</h3>
+                    <p>${nl(v.topics)}</p>
+                  </div>
+                </div>
+                <div class="doc-block">
+                  <h3>最後に必ず確認</h3>
+                  <p>職場へ共有してよい範囲: ${s(v.shareRange)}</p>
+                </div>
+              </div>
+            </article>`
+        },
+        {
+          id: "record",
+          label: "記録欄",
+          description: "面談後に短く残すための記録欄です。",
+          render: (v, { s }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.caseType)} 記録欄</h2>
+                <p>個人名・診断名を入れずに使える形</p>
+              </div>
+              <div class="doc-body">
+                <div class="paper-title">
+                  <span>RECORD TEMPLATE</span>
+                  <strong>あとで見返して、次の連携に迷わない記録欄</strong>
+                  <p>詳しすぎる逐語記録ではなく、支援に必要な要点だけを残す想定です。</p>
+                </div>
+                <div class="mini-table">
+                  <div class="head">項目</div><div class="head">記録欄</div><div class="head">注意</div>
+                  <div>主訴</div><div>本人が困っていることを要約</div><div>本人の言葉を尊重</div>
+                  <div>背景</div><div>業務負荷・環境・生活面</div><div>断定しない</div>
+                  <div>本人希望</div><div>相談、配慮、情報共有の希望</div><div>共有範囲を確認</div>
+                  <div>次回までにやること</div><div>確認事項・連携先・次回日程</div><div>担当者を明確に</div>
+                </div>
+              </div>
+            </article>`
+        },
+        {
+          id: "share",
+          label: "共有範囲メモ",
+          description: "職場に共有してよいこと、避けることを整理します。",
+          render: (v, { s }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>職場共有前の確認メモ</h2>
+                <p>共有方針: ${s(v.shareRange)}</p>
+              </div>
+              <div class="doc-body">
+                <div class="quote-strip">共有は「必要最小限」「本人確認」「職場で対応できる形」の3点で整えます。</div>
+                <div class="two-col">
+                  <div class="doc-block"><h3>共有してよい候補</h3><ul><li>業務上の配慮が必要な範囲</li><li>勤務調整の必要性</li><li>次回確認予定</li></ul></div>
+                  <div class="doc-block"><h3>共有しない候補</h3><ul><li>診断名</li><li>本人の詳細な発言</li><li>家庭事情や個人的背景</li></ul></div>
+                </div>
+                <div class="doc-block accent"><h3>本人確認の一言</h3><p>職場に伝える内容は、必要最小限に整理してから、共有前に本人へ確認します。</p></div>
+              </div>
+            </article>`
+        }
+      ]
+    };
+  </script>
+  <script defer src="./branch-mock.js?v=20260514-branch-wow6"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../index.html">← 最初の資料に戻る</a>
+    <header class="hero">
+      <div><p id="page-eyebrow" class="eyebrow"></p><h1 id="page-title"></h1><p id="page-lead" class="lead"></p></div>
+      <aside class="status-card"><strong id="status-strong"></strong><span id="status-copy"></span></aside>
+    </header>
+    <nav id="branch-nav" class="nav-pages" aria-label="試せる例の一覧"></nav>
+    <section class="mock-shell">
+      <aside class="control-panel">
+        <div class="control-head"><h2 id="control-title"></h2><p id="control-copy"></p></div>
+        <form id="mock-fields"></form>
+        <div class="mock-actions"><button id="generate-button" class="primary-button" type="button">下書きを作る</button><button id="reset-button" class="ghost-button" type="button">初期化</button></div>
+        <div id="safety-copy" class="safety-box"></div>
+      </aside>
+      <section class="workbench" aria-live="polite">
+        <div class="workbench-bar"><div id="mode-row" class="mode-row"></div><p id="mode-desc" class="mode-desc"></p></div>
+        <div id="preview" class="preview-wrap"></div>
+      </section>
+    </section>
+    <section class="info-grid">
+      <article class="info-panel"><h2 id="fit-title"></h2><p id="fit-copy"></p><ul id="fit-list"></ul></article>
+      <article class="info-panel"><h2>当日聞きたいこと</h2><ul id="questions-list"></ul></article>
+      <article class="info-panel"><h2>自然な次の一手</h2><p id="next-step"></p></article>
+    </section>
+    <p class="footer-note">共有用資料 / 入力内容は作り物の例で表示</p>
+  </main>
+</body>
+</html>

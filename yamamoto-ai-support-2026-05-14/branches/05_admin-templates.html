@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>日程調整・案内文・よくある質問・手順書 お試し画面</title>
+  <link rel="stylesheet" href="./branch-style.css?v=20260514-branch-wow5">
+  <script>
+    window.branchMockConfig = {
+      current: "05",
+      documentTitle: "日程調整・案内文・よくある質問・手順書 お試し画面",
+      eyebrow: "試せる例 05 / 事務連絡",
+      title: "毎回書く案内文・よくある質問・手順書をひな形にする",
+      lead: "日程調整、従業員向け案内、よくある質問、事務手順を、使い回しやすい文面に整える想定です。Windows環境でもブラウザだけで始めやすい領域です。",
+      statusTitle: "訪問日に見せる使い方",
+      statusCopy: "目的と相手を入れると、案内文・よくある質問・手順書が切り替わる。",
+      impactCards: [
+        { label: "これまで", title: "小さな連絡文が毎回じわっと時間を取る", copy: "日程調整、前日連絡、よくある質問、手順書が散らばり、担当者ごとに表現も変わりやすい。", tone: "rose" },
+        { label: "AIで変わること", title: "案内文・よくある質問・手順書をセットでひな形化", copy: "同じ条件から、送る文面、質問回答、担当者用手順まで切り替えて作れる。", tone: "green" },
+        { label: "使った後", title: "まず小さく始められるAI活用になる", copy: "医療判断に入らず、安心して試せる事務効率化の入口として見せやすい。", tone: "amber" }
+      ],
+      demoFlow: [
+        { title: "目的を選ぶ", copy: "面談案内、日程調整、研修案内などを選択" },
+        { title: "相手と日程を書く", copy: "従業員、管理職、事務担当ごとに文面を変える" },
+        { title: "文面を切り替える", copy: "案内文、よくある質問、手順書、前日連絡を同時管理" },
+        { title: "ひな形として蓄積", copy: "次回からゼロ作成を減らして運用に戻す" }
+      ],
+      controlTitle: "作りたい文面を入力",
+      controlCopy: "毎回ゼロから書いている連絡文を、まずは安全なひな形にします。",
+      safety: "固有名詞や個別の健康情報は入れない。AIは文面のたたき台、よくある質問、手順整理に使います。",
+      fitTitle: "この画面で伝えたいこと",
+      fitCopy: "小さな事務作業から始めると、AIを使うことへの心理的ハードルが下がります。",
+      fitList: [
+        "案内文のトーンをそろえられる",
+        "よくある質問への返答をためておける",
+        "担当者が変わっても同じ手順で進めやすい"
+      ],
+      questions: [
+        "毎回書いている案内文や連絡文はありますか？",
+        "よく聞かれる質問は何ですか？",
+        "メール、LINE、Googleフォーム、Excelなど何を使っていますか？"
+      ],
+      nextStep: "当日は、山本さまが実際によく送る文章を1つだけ選び、案内文・よくある質問・前日連絡文まで一気にひな形にする。",
+      fields: [
+        { id: "docType", label: "作りたいもの", type: "select", value: "従業員面談の案内", options: ["従業員面談の案内", "日程調整", "研修案内", "前日連絡", "よくある質問"] },
+        { id: "audience", label: "送る相手", type: "select", value: "従業員", options: ["従業員", "管理職", "事務担当者", "経営者", "紹介者"] },
+        { id: "schedule", label: "日程・場所", type: "textarea", value: "5月下旬、各事業所の会議室またはオンライン。所要時間は1人20分程度。", helper: "未定の場合は未定でOK" },
+        { id: "notes", label: "入れたい要素", type: "textarea", value: "相談内容は必要な範囲で慎重に扱うこと。体調不良や業務都合がある場合は日程変更できること。堅すぎず安心感のある文章にしたい。", helper: "注意事項やトーンを入れる" },
+        { id: "tone", label: "文面のトーン", type: "select", value: "安心感がある", options: ["安心感がある", "短く事務的", "やわらかい", "管理職向けに明確"] }
+      ],
+      outputs: [
+        {
+          id: "message",
+          label: "案内文",
+          description: "そのまま整えて送れる案内文の下書きです。",
+          render: (v, { s, nl }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.docType)} 文面たたき台</h2>
+                <p>宛先: ${s(v.audience)} / トーン: ${s(v.tone)}</p>
+              </div>
+              <div class="doc-body">
+                <div class="paper-title">
+                  <span>MESSAGE TEMPLATE</span>
+                  <strong>安心感を残しながら、必要事項が抜けない案内文にする</strong>
+                  <p>${s(v.audience)}向けに、日程、目的、変更方法、情報の扱いを同じ温度で整えます。</p>
+                </div>
+                <div class="message-box">
+                  <p>このたび、働く皆さまの健康状態や職場での困りごとを確認するため、産業保健師による${s(v.docType)}を実施します。</p>
+                  <p>実施予定は以下の通りです。</p>
+                  <p>${nl(v.schedule)}</p>
+                  <p>${nl(v.notes)}</p>
+                  <p>ご不明点があれば、事務担当または産業保健師までお知らせください。</p>
+                </div>
+                <div class="risk-grid">
+                  <div class="risk-card"><strong>本文に入った要素</strong><p>目的、日程、相談内容の扱い、日程変更、問い合わせ先。</p></div>
+                  <div class="risk-card"><strong>次に確認する要素</strong><p>送信方法、受付締切、担当者名、オンラインURLの扱い。</p></div>
+                </div>
+              </div>
+            </article>`
+        },
+        {
+          id: "faq",
+          label: "よくある質問",
+          description: "従業員や事務担当から出そうな質問への回答案です。",
+          render: (v, { s }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.docType)} よくある質問案</h2>
+                <p>事前案内に添える想定</p>
+              </div>
+              <div class="doc-body">
+                <div class="paper-title">
+                  <span>よくある質問</span>
+                  <strong>不安が出やすい質問を、事前にやわらかくほどく</strong>
+                  <p>${s(v.docType)}の案内に添えられる、従業員向けのよくある質問の下書きです。</p>
+                </div>
+                <div class="doc-block"><h3>何を相談してよいですか？</h3><p>睡眠、疲労、体調、職場での困りごとなど、働くうえで気になっていることを相談できます。</p></div>
+                <div class="doc-block"><h3>相談内容は会社に伝わりますか？</h3><p>必要な範囲で慎重に扱います。職場への共有が必要な場合も、共有内容を確認しながら進めます。</p></div>
+                <div class="doc-block"><h3>都合が悪い場合はどうすればよいですか？</h3><p>体調不良や業務都合がある場合は、日程変更が可能です。無理なく参加できる日時を相談してください。</p></div>
+              </div>
+            </article>`
+        },
+        {
+          id: "procedure",
+          label: "手順書",
+          description: "事務担当者が迷わないための進め方です。",
+          render: (v, { s }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.docType)} 進め方</h2>
+                <p>担当者が変わっても回るようにする</p>
+              </div>
+              <div class="doc-body">
+                <div class="timeline">
+                  <div class="timeline-item"><strong>Step 1</strong><p>対象者と候補日を確認する。勤務時間、場所、オンライン可否を合わせて確認。</p><span>事前</span></div>
+                  <div class="timeline-item"><strong>Step 2</strong><p>案内文を送付する。目的、所要時間、日程変更方法を明記。</p><span>送付</span></div>
+                  <div class="timeline-item"><strong>Step 3</strong><p>前日連絡を送る。場所、時間、体調不良時の連絡先を短く確認。</p><span>前日</span></div>
+                  <div class="timeline-item"><strong>Step 4</strong><p>実施後の記録整理。共有範囲と個人情報の扱いを確認して保管。</p><span>実施後</span></div>
+                </div>
+              </div>
+            </article>`
+        },
+        {
+          id: "reminder",
+          label: "前日連絡文",
+          description: "前日や当日に送る短い確認文です。",
+          render: (v, { s }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>前日連絡文たたき台</h2>
+                <p>${s(v.audience)}向け</p>
+              </div>
+              <div class="doc-body">
+                <div class="message-box">
+                  <p>明日の${s(v.docType)}についてのご案内です。予定日時・場所をご確認ください。体調不良や急な業務都合により参加が難しい場合は、無理をせず事前にご連絡ください。</p>
+                </div>
+                <div class="quote-strip">短い文でも「無理をしなくてよい」「連絡先が分かる」「当日迷わない」を必ず入れる。</div>
+              </div>
+            </article>`
+        }
+      ]
+    };
+  </script>
+  <script defer src="./branch-mock.js?v=20260514-branch-wow6"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../index.html">← 最初の資料に戻る</a>
+    <header class="hero">
+      <div><p id="page-eyebrow" class="eyebrow"></p><h1 id="page-title"></h1><p id="page-lead" class="lead"></p></div>
+      <aside class="status-card"><strong id="status-strong"></strong><span id="status-copy"></span></aside>
+    </header>
+    <nav id="branch-nav" class="nav-pages" aria-label="試せる例の一覧"></nav>
+    <section class="mock-shell">
+      <aside class="control-panel">
+        <div class="control-head"><h2 id="control-title"></h2><p id="control-copy"></p></div>
+        <form id="mock-fields"></form>
+        <div class="mock-actions"><button id="generate-button" class="primary-button" type="button">下書きを作る</button><button id="reset-button" class="ghost-button" type="button">初期化</button></div>
+        <div id="safety-copy" class="safety-box"></div>
+      </aside>
+      <section class="workbench" aria-live="polite">
+        <div class="workbench-bar"><div id="mode-row" class="mode-row"></div><p id="mode-desc" class="mode-desc"></p></div>
+        <div id="preview" class="preview-wrap"></div>
+      </section>
+    </section>
+    <section class="info-grid">
+      <article class="info-panel"><h2 id="fit-title"></h2><p id="fit-copy"></p><ul id="fit-list"></ul></article>
+      <article class="info-panel"><h2>当日聞きたいこと</h2><ul id="questions-list"></ul></article>
+      <article class="info-panel"><h2>自然な次の一手</h2><p id="next-step"></p></article>
+    </section>
+    <p class="footer-note">共有用資料 / 入力内容は作り物の例で表示</p>
+  </main>
+</body>
+</html>

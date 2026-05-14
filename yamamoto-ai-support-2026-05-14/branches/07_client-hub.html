@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>支援先情報一元管理 お試し画面</title>
+  <link rel="stylesheet" href="./branch-style.css?v=20260514-branch-wow5">
+  <script>
+    window.branchMockConfig = {
+      current: "07",
+      documentTitle: "支援先情報一元管理 お試し画面",
+      eyebrow: "試せる例 07 / 支援先管理",
+      title: "支援先ごとの情報を、あとから探せる台帳にまとめる",
+      lead: "法人・事業所単位の基本情報、訪問履歴、次回宿題、資料リンク、共有ルールを1画面に集める想定です。個人の健康情報ではなく、支援先対応を迷子にしないための業務情報を扱います。",
+      statusTitle: "訪問日に見せる使い方",
+      statusCopy: "支援先メモを入れると、台帳、訪問準備、引き継ぎメモに切り替わる。",
+      impactCards: [
+        { label: "これまで", title: "支援先の情報が資料・メモ・記憶に散らばる", copy: "過去の訪問内容、次回宿題、提出資料を探すところから始まりやすい。", tone: "rose" },
+        { label: "AIで変わること", title: "必要な情報を1画面に集約できる", copy: "メモを要約し、次回見るべき点と資料の置き場を台帳化する。", tone: "green" },
+        { label: "使った後", title: "次回訪問前の準備が速くなる", copy: "前回何を話したか、次に何を確認するか、どこまで共有してよいかをすぐ見られる。", tone: "amber" }
+      ],
+      demoFlow: [
+        { title: "情報を集める", copy: "契約範囲、訪問メモ、資料リンク、共有ルール" },
+        { title: "台帳化する", copy: "支援先ごとに見出しを固定して整理" },
+        { title: "次回準備に変換", copy: "確認事項と持参資料を抜き出す" },
+        { title: "安全に引き継ぐ", copy: "個人情報を除いた共有文に整える" }
+      ],
+      controlTitle: "支援先メモを入力",
+      controlCopy: "法人・事業所単位の業務メモを入れる想定です。個人が特定される情報は入れません。",
+      safety: "個人名、診断名、個別相談の経過は入れない。AIは支援先単位の業務整理、訪問準備、資料管理の下書きに使います。",
+      fitTitle: "この画面で伝えたいこと",
+      fitCopy: "支援先情報の一元管理は、単なる名簿ではなく、次の訪問や社内共有にすぐつながる形にするのがポイントです。",
+      fitList: [
+        "支援先ごとの状況をあとから探しやすくできる",
+        "訪問準備と次回宿題を1画面で追える",
+        "共有してよい情報と伏せる情報を分けられる"
+      ],
+      questions: [
+        "支援先ごとの情報は今どこに集まっていますか？",
+        "訪問前に毎回探している資料やメモはありますか？",
+        "社内で共有できる情報と、共有しない情報の線引きはありますか？"
+      ],
+      nextStep: "当日は作り物の支援先メモで見せ、山本さまの実務に合わせて「支援先台帳に必要な項目」を一緒に選ぶ。",
+      fields: [
+        { id: "clientName", label: "支援先名", type: "input", value: "A社 本社", helper: "仮名でOK" },
+        { id: "stage", label: "支援状況", type: "select", value: "月1回支援中", options: ["初回相談前", "初回提案中", "月1回支援中", "スポット支援", "休止中"] },
+        { id: "scope", label: "支援範囲", type: "textarea", value: "衛生委員会、健康だより、従業員相談、管理職相談。毎月1回訪問し、必要に応じて資料作成を行う。", helper: "契約範囲やよく頼まれること" },
+        { id: "latestMemo", label: "最新メモ", type: "textarea", value: "5月は熱中症対策が中心。掲示物が古く、部署ごとに休憩の取り方に差がある。管理職から声かけ例がほしいという相談あり。", helper: "個人情報を含まない業務メモ" },
+        { id: "tasks", label: "次回までの宿題", type: "textarea", value: "6月健康だよりの下書き、休憩確認表、次回衛生委員会の議題案、掲示物更新案。", helper: "未整理の箇条書きでOK" },
+        { id: "documents", label: "紐づく資料", type: "textarea", value: "月次報告、衛生委員会議事録、健康だより、契約メモ、管理職向け声かけ例。", helper: "資料名だけでもOK" },
+        { id: "shareRule", label: "共有ルール", type: "select", value: "個人情報は入れない", options: ["個人情報は入れない", "社内共有用に要約する", "支援先提出用に丁寧にする", "担当者だけで確認する"] }
+      ],
+      outputs: [
+        {
+          id: "hub",
+          label: "支援先台帳",
+          description: "支援先ごとに必要な情報を1画面にまとめた台帳です。",
+          render: (v, { s, nl }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.clientName)} 支援先台帳</h2>
+                <p>支援状況: ${s(v.stage)} / 共有ルール: ${s(v.shareRule)}</p>
+              </div>
+              <div class="doc-body">
+                <div class="paper-title">
+                  <span>支援先台帳</span>
+                  <strong>次回訪問前に、ここを見れば状況を思い出せる状態にする。</strong>
+                  <p>契約範囲、最新メモ、宿題、関連資料を支援先単位でまとめます。</p>
+                </div>
+                <div class="metric-strip">
+                  <div class="metric"><strong>4</strong><span>次回宿題候補</span></div>
+                  <div class="metric"><strong>5</strong><span>紐づく資料</span></div>
+                  <div class="metric"><strong>0</strong><span>個人健康情報</span></div>
+                </div>
+                <div class="risk-grid">
+                  <div class="risk-card"><strong>支援範囲</strong><p>${nl(v.scope)}</p></div>
+                  <div class="risk-card"><strong>最新メモ</strong><p>${nl(v.latestMemo)}</p></div>
+                  <div class="risk-card"><strong>次回までの宿題</strong><p>${nl(v.tasks)}</p></div>
+                  <div class="risk-card"><strong>紐づく資料</strong><p>${nl(v.documents)}</p></div>
+                </div>
+              </div>
+            </article>`
+        },
+        {
+          id: "visit",
+          label: "訪問準備",
+          description: "次回訪問前に見る確認表へ変換します。",
+          render: (v, { s }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.clientName)} 次回訪問準備</h2>
+                <p>支援状況: ${s(v.stage)}</p>
+              </div>
+              <div class="doc-body">
+                <div class="timeline">
+                  <div class="timeline-item"><strong>事前確認</strong><p>前回メモと次回宿題を確認する</p><span>訪問前</span></div>
+                  <div class="timeline-item"><strong>持参資料</strong><p>健康だより、休憩確認表、議題案を準備する</p><span>当日</span></div>
+                  <div class="timeline-item"><strong>確認事項</strong><p>部署ごとの休憩運用と掲示物更新状況を確認する</p><span>面談時</span></div>
+                  <div class="timeline-item"><strong>終了後</strong><p>決定事項を台帳へ戻し、次回宿題を更新する</p><span>訪問後</span></div>
+                </div>
+                <div class="quote-strip">支援先台帳が育つほど、「毎回思い出す時間」が短くなります。</div>
+              </div>
+            </article>`
+        },
+        {
+          id: "handoff",
+          label: "引き継ぎメモ",
+          description: "他の担当者や事務局に共有できる短いメモです。",
+          render: (v, { s, nl }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.clientName)} 引き継ぎメモ</h2>
+                <p>共有ルール: ${s(v.shareRule)}</p>
+              </div>
+              <div class="doc-body">
+                <div class="message-box">
+                  <p>${s(v.clientName)}は現在「${s(v.stage)}」です。支援範囲は衛生委員会、健康だより、従業員相談、管理職相談が中心です。最新テーマは熱中症対策で、次回までに健康だより、休憩確認表、衛生委員会議題案、掲示物更新案を準備します。</p>
+                  <p>共有時は個人の健康情報や相談内容を含めず、支援先全体の業務テーマと次回のやることのみを扱います。</p>
+                </div>
+                <div class="doc-block warning"><h3>共有前チェック</h3><p>個人名、診断名、個別相談の詳細、本人が特定される表現が混ざっていないかを人が確認します。</p></div>
+                <div class="doc-block accent"><h3>元メモ</h3><p>${nl(v.latestMemo)}</p></div>
+              </div>
+            </article>`
+        }
+      ]
+    };
+  </script>
+  <script defer src="./branch-mock.js?v=20260514-branch-wow6"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../index.html">← 最初の資料に戻る</a>
+    <header class="hero">
+      <div><p id="page-eyebrow" class="eyebrow"></p><h1 id="page-title"></h1><p id="page-lead" class="lead"></p></div>
+      <aside class="status-card"><strong id="status-strong"></strong><span id="status-copy"></span></aside>
+    </header>
+    <nav id="branch-nav" class="nav-pages" aria-label="試せる例の一覧"></nav>
+    <section class="mock-shell">
+      <aside class="control-panel">
+        <div class="control-head"><h2 id="control-title"></h2><p id="control-copy"></p></div>
+        <form id="mock-fields"></form>
+        <div class="mock-actions"><button id="generate-button" class="primary-button" type="button">下書きを作る</button><button id="reset-button" class="ghost-button" type="button">初期化</button></div>
+        <div id="safety-copy" class="safety-box"></div>
+      </aside>
+      <section class="workbench" aria-live="polite">
+        <div class="workbench-bar"><div id="mode-row" class="mode-row"></div><p id="mode-desc" class="mode-desc"></p></div>
+        <div id="preview" class="preview-wrap"></div>
+      </section>
+    </section>
+    <section class="info-grid">
+      <article class="info-panel"><h2 id="fit-title"></h2><p id="fit-copy"></p><ul id="fit-list"></ul></article>
+      <article class="info-panel"><h2>当日聞きたいこと</h2><ul id="questions-list"></ul></article>
+      <article class="info-panel"><h2>自然な次の一手</h2><p id="next-step"></p></article>
+    </section>
+    <p class="footer-note">共有用資料 / 入力内容は作り物の例で表示</p>
+  </main>
+</body>
+</html>
