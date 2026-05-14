@@ -398,6 +398,19 @@ a { color: inherit; text-decoration: none; }
   border-radius: 999px;
   letter-spacing: 0.04em;
 }
+.service-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 20px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-primary);
+  border-top: 1px dashed var(--color-border);
+  padding-top: 16px;
+  width: 100%;
+}
+.service-link i { transition: transform 0.3s; }
+.service-card:hover .service-link i { transform: translateX(4px); }
+.service-card:hover .service-link { color: var(--color-primary-dark); }
 
 /* ===== AI Team Section ===== */
 .ai-team-intro {
@@ -676,9 +689,20 @@ a { color: inherit; text-decoration: none; }
 .footer-tagline {
   font-size: 13px;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   letter-spacing: 0.04em;
 }
+.footer-links {
+  display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.footer-links a {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.3s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.footer-links a:hover { color: var(--color-accent); }
 .footer-copy {
   font-family: 'Inter', sans-serif;
   font-size: 11px;
@@ -878,6 +902,9 @@ a { color: inherit; text-decoration: none; }
           <span class="service-tag">自動化設計</span>
           <span class="service-tag">伴走サポート</span>
         </div>
+        <a href="ai-grant-guide.html" target="_blank" rel="noopener" class="service-link">
+          AI補助金ガイドを見る <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
 
       <div class="service-card">
@@ -892,6 +919,9 @@ a { color: inherit; text-decoration: none; }
           <span class="service-tag">店舗HP</span>
           <span class="service-tag">スピード納品</span>
         </div>
+        <a href="index.html" target="_blank" rel="noopener" class="service-link">
+          制作ポートフォリオを見る <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
 
       <div class="service-card">
@@ -906,6 +936,9 @@ a { color: inherit; text-decoration: none; }
           <span class="service-tag">組織開発</span>
           <span class="service-tag">研修・育成設計</span>
         </div>
+        <a href="coaching.html" target="_blank" rel="noopener" class="service-link">
+          コーチング相談ページを見る <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
 
       <div class="service-card">
@@ -920,6 +953,9 @@ a { color: inherit; text-decoration: none; }
           <span class="service-tag">個別ドキュメント</span>
           <span class="service-tag">活用設計</span>
         </div>
+        <a href="coaching.html" target="_blank" rel="noopener" class="service-link">
+          ストレングス × AI 詳細ページを見る <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
     </div>
   </div>
@@ -1107,6 +1143,30 @@ a { color: inherit; text-decoration: none; }
         </div>
       </a>
 
+      <a href="coaching.html" target="_blank" rel="noopener" class="work-card">
+        <div class="work-thumb">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=80" alt="コーチング相談LP">
+        </div>
+        <div class="work-body">
+          <div class="work-cat">LP / コーチング</div>
+          <h3 class="work-title">ストレングス × AI コーチング相談</h3>
+          <p class="work-desc">ストレングスファインダー結果をAIで自分専用の取扱説明書に翻訳するコーチングサービスLP。</p>
+          <span class="work-link">サイトを見る <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="onoko-strengths.html" target="_blank" rel="noopener" class="work-card">
+        <div class="work-thumb">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80" alt="ストレングス取説事例">
+        </div>
+        <div class="work-body">
+          <div class="work-cat">事例 / クライアント成果物</div>
+          <h3 class="work-title">まどかさんの取説</h3>
+          <p class="work-desc">薬剤師×副業クリエイターの方の、ストレングスファインダー34＋セッションから作った個別取扱説明書の実例。</p>
+          <span class="work-link">取説を見る <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
       <a href="https://okemonogatari-hash.github.io/html-share-box/demo-hp-2026-05/" target="_blank" rel="noopener" class="work-card">
         <div class="work-thumb">
           <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80" alt="営業用デモHP集">
@@ -1161,6 +1221,11 @@ a { color: inherit; text-decoration: none; }
   <div class="container">
     <div class="footer-logo">Oke<span>mon</span></div>
     <div class="footer-tagline">AIと融合する、新しい働き方を。</div>
+    <div class="footer-links">
+      <a href="index.html" target="_blank" rel="noopener"><i class="fa-solid fa-folder-open"></i>制作ポートフォリオ</a>
+      <a href="coaching.html" target="_blank" rel="noopener"><i class="fa-solid fa-comments"></i>コーチング相談</a>
+      <a href="#contact"><i class="fa-solid fa-paper-plane"></i>お問い合わせ</a>
+    </div>
     <div class="footer-copy">&copy; Okemon. All rights reserved.</div>
   </div>
 </footer>
