@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>産業保健サービス提案書 お試し画面</title>
+  <link rel="stylesheet" href="./branch-style.css?v=20260514-branch-wow5">
+  <script>
+    window.branchMockConfig = {
+      current: "04",
+      documentTitle: "産業保健サービス提案書 お試し画面",
+      eyebrow: "試せる例 04 / 提案書",
+      title: "山本さまの産業保健サービスを、企業向け提案書にする",
+      lead: "山本さまの経験・想い・提供内容を、経営者や事務長が検討しやすい1枚提案、月ごとの支援案、短い連絡文に整える想定です。",
+      statusTitle: "訪問日に見せる使い方",
+      statusCopy: "想定する企業と困りごとを入れると、提案書のたたき台が出る。",
+      impactCards: [
+        { label: "これまで", title: "良い支援ほど、価値が言葉になりにくい", copy: "従業員相談や衛生委員会の価値は、経営者向けには説明し直す必要がある。", tone: "rose" },
+        { label: "AIで変わること", title: "企業の困りごとから提案書へ変換", copy: "相手の痛み、提供内容、導入後の変化を1枚に整理し、紹介文まで同時に作る。", tone: "green" },
+        { label: "使った後", title: "紹介・商談・社内稟議に渡しやすい", copy: "専門職の言葉を、企業が検討しやすい順番に並べ替える。", tone: "amber" }
+      ],
+      demoFlow: [
+        { title: "想定企業を入れる", copy: "業種、人数、地域だけで仮提案を開始" },
+        { title: "困りごとを言語化", copy: "管理職の迷い、相談窓口不足などを入力" },
+        { title: "1枚提案へ", copy: "価値、支援内容、初回導入を読みやすく整理" },
+        { title: "連絡文にも展開", copy: "紹介者や見込み先に送る短文まで作る" }
+      ],
+      controlTitle: "提案先の仮情報を入力",
+      controlCopy: "実際の会社名ではなく、業種・規模・困りごとだけで動かします。",
+      safety: "料金や契約条件は仮置き。法務・労務・医療判断に踏み込まず、価値の伝え方と構成づくりに限定します。",
+      fitTitle: "この画面で伝えたいこと",
+      fitCopy: "山本さまの支援内容を、相手企業が社内で説明しやすい言葉に変える例です。",
+      fitList: [
+        "経営者向けの価値を短く言葉にできる",
+        "小さく始める案、標準案、しっかり伴走する案に分けられる",
+        "紹介や短い連絡に使える文面も同時に作れる"
+      ],
+      questions: [
+        "今後増やしたい支援先は、どんな業種・規模ですか？",
+        "経営者に説明しにくい価値はどこですか？",
+        "既存の支援内容や料金表はありますか？"
+      ],
+      nextStep: "当日は、山本さまの今ある支援内容を聞きながら、まず1枚提案と短い連絡文の2つを一緒に整える。",
+      fields: [
+        { id: "target", label: "想定企業", type: "input", value: "従業員30名の製造業", helper: "業種と規模だけでOK" },
+        { id: "region", label: "届けたい地域", type: "input", value: "阪神間・神戸周辺", helper: "山本さまの強みとつなげる" },
+        { id: "pain", label: "相手企業の困りごと", type: "textarea", value: "こころの不調や休職の前に相談できる窓口がない。管理職が従業員の変化に気づいても、どこまで声をかけてよいかわからない。", helper: "相手の言葉で書くと伝わりやすくなる" },
+        { id: "services", label: "提供できること", type: "textarea", value: "従業員相談、衛生委員会サポート、健康だより作成、管理職への声かけ支援、休職・復職時の相談整理、職場の健康課題の見える化", helper: "箇条書きでもOK" },
+        { id: "tone", label: "文面のトーン", type: "select", value: "安心感重視", options: ["安心感重視", "経営者向けに簡潔", "紹介者向けにやわらかく", "行政・専門職寄り"] }
+      ],
+      outputs: [
+        {
+          id: "onepager",
+          label: "1枚提案",
+          description: "企業に見せるA4一枚提案のたたき台です。",
+          render: (v, { s, nl }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>働く人が安心して続けられる職場づくりを、外部保健師が月1回から支援します</h2>
+                <p>対象: ${s(v.target)} / エリア: ${s(v.region)} / トーン: ${s(v.tone)}</p>
+              </div>
+              <div class="doc-body">
+                <div class="paper-title">
+                  <span>ONE PAGE PROPOSAL</span>
+                  <strong>社内に専門相談先を置きにくい企業へ、月1回から外部保健師の支援を入れる</strong>
+                  <p>${s(v.target)}が検討しやすいよう、困りごと、提供価値、初回導入を1枚にまとめます。</p>
+                </div>
+                <div class="metric-strip">
+                  <div class="metric"><strong>月1</strong><span>小さく始める入口</span></div>
+                  <div class="metric"><strong>3層</strong><span>従業員・管理職・組織</span></div>
+                  <div class="metric"><strong>1枚</strong><span>紹介しやすい資料</span></div>
+                </div>
+                <div class="doc-block accent">
+                  <h3>企業側の困りごと</h3>
+                  <p>${nl(v.pain)}</p>
+                </div>
+                <div class="two-col">
+                  <div class="doc-block">
+                    <h3>提供できること</h3>
+                    <p>${nl(v.services)}</p>
+                  </div>
+                  <div class="doc-block">
+                    <h3>始めた後の変化</h3>
+                    <ul>
+                      <li>従業員が早めに相談できる入口ができる</li>
+                      <li>管理職が声かけや対応で迷いにくくなる</li>
+                      <li>衛生委員会や健康情報発信が継続しやすくなる</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="doc-block warning">
+                  <h3>初回の進め方</h3>
+                  <p>今の状況を聞き、相談体制を確認し、今月の重点テーマと翌月に試す小さな取り組みを1つ決めます。</p>
+                </div>
+              </div>
+            </article>`
+        },
+        {
+          id: "plan",
+          label: "月ごとの支援案",
+          description: "小さく始める案、標準案、しっかり伴走する案に分けます。",
+          render: (v, { s }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>産業保健サポート 支援案</h2>
+                <p>${s(v.target)}向けの検討資料</p>
+              </div>
+              <div class="doc-body">
+                <div class="timeline">
+                  <div class="timeline-item"><strong>ライト</strong><p>月1回相談、健康だより、簡易報告。まず相談窓口を作りたい企業向け。</p><span>入口</span></div>
+                  <div class="timeline-item"><strong>標準</strong><p>衛生委員会、従業員相談、管理職相談、月次報告。継続的に整えたい企業向け。</p><span>基本</span></div>
+                  <div class="timeline-item"><strong>伴走</strong><p>休職・復職支援、課題整理、資料作成、社内体制づくり。課題が複数ある企業向け。</p><span>深掘り</span></div>
+                </div>
+                <div class="quote-strip">提案の見せ方: 「何をしてくれる人か」より先に、「会社のどの迷いが減るか」で伝える。</div>
+              </div>
+            </article>`
+        },
+        {
+          id: "dm",
+          label: "紹介・連絡文",
+          description: "紹介者や見込み先に送れる短縮文です。",
+          render: (v, { s }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>短い連絡文たたき台</h2>
+                <p>営業感を出しすぎない紹介文</p>
+              </div>
+              <div class="doc-body">
+                <div class="message-box">
+                  <p>中小企業向けに、従業員相談や衛生委員会、管理職の声かけ支援などを行う外部保健師サービスを整理しています。${s(v.target)}のように、社内に専門相談先を置きづらい職場でも、月1回から無理なく始められる形を考えています。まずは現状を伺いながら、どこから整えると負担が減るか一緒に見られたらと思っています。</p>
+                </div>
+                <div class="risk-grid">
+                  <div class="risk-card"><strong>紹介者に伝わる一言</strong><p>「管理職が抱え込まないための外部保健師サポート」</p></div>
+                  <div class="risk-card"><strong>商談で聞くこと</strong><p>相談窓口の有無、休職復職の頻度、衛生委員会の運用状況。</p></div>
+                </div>
+              </div>
+            </article>`
+        }
+      ]
+    };
+  </script>
+  <script defer src="./branch-mock.js?v=20260514-branch-wow6"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../index.html">← 最初の資料に戻る</a>
+    <header class="hero">
+      <div><p id="page-eyebrow" class="eyebrow"></p><h1 id="page-title"></h1><p id="page-lead" class="lead"></p></div>
+      <aside class="status-card"><strong id="status-strong"></strong><span id="status-copy"></span></aside>
+    </header>
+    <nav id="branch-nav" class="nav-pages" aria-label="試せる例の一覧"></nav>
+    <section class="mock-shell">
+      <aside class="control-panel">
+        <div class="control-head"><h2 id="control-title"></h2><p id="control-copy"></p></div>
+        <form id="mock-fields"></form>
+        <div class="mock-actions"><button id="generate-button" class="primary-button" type="button">下書きを作る</button><button id="reset-button" class="ghost-button" type="button">初期化</button></div>
+        <div id="safety-copy" class="safety-box"></div>
+      </aside>
+      <section class="workbench" aria-live="polite">
+        <div class="workbench-bar"><div id="mode-row" class="mode-row"></div><p id="mode-desc" class="mode-desc"></p></div>
+        <div id="preview" class="preview-wrap"></div>
+      </section>
+    </section>
+    <section class="info-grid">
+      <article class="info-panel"><h2 id="fit-title"></h2><p id="fit-copy"></p><ul id="fit-list"></ul></article>
+      <article class="info-panel"><h2>当日聞きたいこと</h2><ul id="questions-list"></ul></article>
+      <article class="info-panel"><h2>自然な次の一手</h2><p id="next-step"></p></article>
+    </section>
+    <p class="footer-note">共有用資料 / 入力内容は作り物の例で表示</p>
+  </main>
+</body>
+</html>

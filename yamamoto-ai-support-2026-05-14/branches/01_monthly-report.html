@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>支援先向け月次報告・訪問後メモ お試し画面</title>
+  <link rel="stylesheet" href="./branch-style.css?v=20260514-branch-wow5">
+  <script>
+    window.branchMockConfig = {
+      current: "01",
+      documentTitle: "支援先向け月次報告・訪問後メモ お試し画面",
+      eyebrow: "試せる例 01 / 訪問メモ",
+      title: "訪問メモから、支援先に出せる月次報告を作る",
+      lead: "散らかった訪問後メモを、経営者・事務長が読める報告書、次回までにやること、社内共有メモへ整える想定です。健康情報の詳細は入れず、構成と表現の整備に限定します。",
+      statusTitle: "訪問日に見せる使い方",
+      statusCopy: "山本さまの匿名メモを1つ入れ、右側に報告書ができる流れを見せる。",
+      impactCards: [
+        { label: "これまで", title: "訪問後メモが、提出物になるまで重い", copy: "現場の声、委員会メモ、次回宿題が混ざり、毎回ゼロから整える負担が出やすい。", tone: "rose" },
+        { label: "AIで変わること", title: "報告書・宿題・共有文が同時に出る", copy: "同じ匿名メモから、読む人別の3種類に分けて下書き化。抜け漏れも見つけやすい。", tone: "green" },
+        { label: "使った後", title: "山本さまは確認と専門判断に寄せられる", copy: "文章整形に使っていた時間を、現場理解と次回提案に戻すイメージで見せる。", tone: "amber" }
+      ],
+      demoFlow: [
+        { title: "匿名メモを入れる", copy: "個人名・診断名は入れず、現場で起きたことだけを書く" },
+        { title: "読み手別に分ける", copy: "経営者向け、次回準備、社内共有を自動で切り替え" },
+        { title: "保健師が確認する", copy: "表現・事実・共有範囲を山本さまが最後に確認" },
+        { title: "支援先へ出せる形へ", copy: "月次報告や次回のやることとして残せる" }
+      ],
+      controlTitle: "匿名の訪問メモを入力",
+      controlCopy: "下の項目を書き換えると、右側の成果物が変わります。",
+      safety: "個人名、診断名、具体的な相談内容は入れない。AIに任せるのは、報告書の形・表現・抜け漏れ整理まで。",
+      fitTitle: "この画面で伝えたいこと",
+      fitCopy: "山本さまの専門判断を代替するのではなく、訪問後の整理と文面化を軽くするための道具として見せます。",
+      fitList: [
+        "支援先ごとに報告の型をそろえられる",
+        "次回訪問までの宿題が自然に整理される",
+        "個人情報を抜いた状態で社内共有しやすくなる"
+      ],
+      questions: [
+        "月次報告は誰に、どの形式で出していますか？",
+        "毎回書く項目と、毎回悩む項目はどこですか？",
+        "個人情報を抜いた報告書の例を1つ見せられますか？"
+      ],
+      nextStep: "当日は、作り物の訪問メモで一度動かしたあと、山本さまが普段使う報告書の形に合わせて項目名を変える。",
+      fields: [
+        { id: "client", label: "支援先名", type: "input", value: "A社", helper: "実際に使う時は匿名名や管理番号でも可" },
+        { id: "month", label: "対象月", type: "input", value: "2026年5月", helper: "月次報告の見出しに使う" },
+        { id: "theme", label: "今月の主テーマ", type: "select", value: "熱中症対策", options: ["熱中症対策", "こころの健康", "睡眠・疲労", "腰痛・転倒予防", "感染症対策"] },
+        { id: "memo", label: "訪問後メモ", type: "textarea", value: "衛生委員会で熱中症対策の話。現場から「休憩の取り方が部署で違う」と声あり。掲示物が古い。個別相談は2件あったが詳細は報告書に入れない。", helper: "箇条書きでOK。個人が特定される情報は入れない" },
+        { id: "next", label: "次回やりたいこと", type: "textarea", value: "管理職向けの声かけ例を作る。休憩促進の確認表を作る。掲示物の更新案を確認する。", helper: "次回までにやることや持ち帰り事項" }
+      ],
+      outputs: [
+        {
+          id: "report",
+          label: "月次報告書",
+          description: "支援先へ提出できる、読みやすい報告書のたたき台です。",
+          render: (v, { s, nl }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.client)} ${s(v.month)} 産業保健支援 月次報告</h2>
+                <p>作り方: 訪問後メモからAIで下書き、人が確認して提出</p>
+              </div>
+              <div class="doc-body">
+                <div class="metric-strip">
+                  <div class="metric"><strong>90秒</strong><span>読む側の把握時間</span></div>
+                  <div class="metric"><strong>3件</strong><span>次回のやること候補</span></div>
+                  <div class="metric"><strong>0件</strong><span>報告書内の個人情報</span></div>
+                </div>
+                <div class="paper-title">
+                  <span>今月の要点</span>
+                  <strong>${s(v.theme)}は「本人任せ」ではなく、部署ごとの休憩ルールと管理職の声かけに落とし込む段階です。</strong>
+                  <p>個別相談の詳細は含めず、職場として扱える改善テーマだけを月次報告に残します。</p>
+                </div>
+                <div class="section-title-line">報告書本文のたたき台</div>
+                <div class="doc-block accent">
+                  <h3>今月の支援内容</h3>
+                  <p>${s(v.theme)}を中心に、衛生委員会での情報共有と現場状況の確認を行いました。</p>
+                </div>
+                <div class="risk-grid">
+                  <div class="risk-card"><strong>現場から見えたこと</strong><p>${nl(v.memo)}</p></div>
+                  <div class="risk-card"><strong>支援先へ伝える要点</strong><p>部署ごとの運用差を責めるのではなく、休憩を取りやすい仕組みと声かけに変換する。</p></div>
+                </div>
+                <div class="doc-block">
+                  <h3>次回提案</h3>
+                  <p>${nl(v.next)}</p>
+                </div>
+                <div class="doc-block warning">
+                  <h3>報告書に入れない情報</h3>
+                  <p>個別相談の詳細、個人が特定される情報、診断名、本人の発言の逐語記録は含めません。</p>
+                </div>
+              </div>
+            </article>`
+        },
+        {
+          id: "todo",
+          label: "次回準備",
+          description: "次回訪問までに準備することを、確認表にします。",
+          render: (v, { s, nl }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>${s(v.client)} 次回訪問準備チェック</h2>
+                <p>${s(v.month)}の訪問メモから作成</p>
+              </div>
+              <div class="doc-body">
+                <div class="timeline">
+                  <div class="timeline-item"><strong>訪問翌日</strong><p>${s(v.theme)}の管理職向け声かけ例を作る</p><span>担当: 保健師</span></div>
+                  <div class="timeline-item"><strong>1週間以内</strong><p>掲示物の更新案と確認表を支援先へ確認する</p><span>担当: 事務局</span></div>
+                  <div class="timeline-item"><strong>次回訪問</strong><p>部署ごとの休憩ルール差を確認し、運用の小さな統一案を決める</p><span>担当: 先方管理職</span></div>
+                </div>
+                <div class="doc-block accent">
+                  <h3>メモから拾った宿題</h3>
+                  <p>${nl(v.next)}</p>
+                </div>
+                <div class="quote-strip">次回の目的: 「気をつけましょう」で終わらせず、現場が動ける1枚と声かけ例にする。</div>
+              </div>
+            </article>`
+        },
+        {
+          id: "share",
+          label: "社内共有メモ",
+          description: "事務長・上司へ共有しやすい短い文面に整えます。",
+          render: (v, { s }) => `
+            <article class="doc-preview">
+              <div class="doc-header">
+                <h2>共有用ショートメモ</h2>
+                <p>個人情報を含まない共有文</p>
+              </div>
+              <div class="doc-body">
+                <div class="message-box">
+                  <p>${s(v.client)}の${s(v.month)}訪問では、${s(v.theme)}を中心に確認しました。現場では運用のばらつきが見られるため、次回は管理職向けの声かけ例と確認表を準備し、現場で使える形に整える予定です。個別相談の詳細は共有範囲外とします。</p>
+                </div>
+                <div class="risk-grid">
+                  <div class="risk-card"><strong>共有OK</strong><p>職場全体の傾向、次回準備、掲示物更新など。</p></div>
+                  <div class="risk-card"><strong>共有NG</strong><p>個別相談内容、診断名、本人が特定される情報。</p></div>
+                </div>
+              </div>
+            </article>`
+        }
+      ]
+    };
+  </script>
+  <script defer src="./branch-mock.js?v=20260514-branch-wow6"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../index.html">← 最初の資料に戻る</a>
+    <header class="hero">
+      <div>
+        <p id="page-eyebrow" class="eyebrow"></p>
+        <h1 id="page-title"></h1>
+        <p id="page-lead" class="lead"></p>
+      </div>
+      <aside class="status-card">
+        <strong id="status-strong"></strong>
+        <span id="status-copy"></span>
+      </aside>
+    </header>
+    <nav id="branch-nav" class="nav-pages" aria-label="試せる例の一覧"></nav>
+
+    <section class="mock-shell">
+      <aside class="control-panel">
+        <div class="control-head">
+          <h2 id="control-title"></h2>
+          <p id="control-copy"></p>
+        </div>
+        <form id="mock-fields"></form>
+        <div class="mock-actions">
+          <button id="generate-button" class="primary-button" type="button">下書きを作る</button>
+          <button id="reset-button" class="ghost-button" type="button">初期化</button>
+        </div>
+        <div id="safety-copy" class="safety-box"></div>
+      </aside>
+
+      <section class="workbench" aria-live="polite">
+        <div class="workbench-bar">
+          <div id="mode-row" class="mode-row"></div>
+          <p id="mode-desc" class="mode-desc"></p>
+        </div>
+        <div id="preview" class="preview-wrap"></div>
+      </section>
+    </section>
+
+    <section class="info-grid">
+      <article class="info-panel">
+        <h2 id="fit-title"></h2>
+        <p id="fit-copy"></p>
+        <ul id="fit-list"></ul>
+      </article>
+      <article class="info-panel">
+        <h2>当日聞きたいこと</h2>
+        <ul id="questions-list"></ul>
+      </article>
+      <article class="info-panel">
+        <h2>自然な次の一手</h2>
+        <p id="next-step"></p>
+      </article>
+    </section>
+
+    <p class="footer-note">共有用資料 / 入力内容は作り物の例で表示</p>
+  </main>
+</body>
+</html>
