@@ -21,9 +21,30 @@ JST = timezone(timedelta(hours=9))
 HOST_NAEO = "5jeFf8S-TWC2zwtYGtLxLg"
 HOST_KOYAMA = "aAUji7r9QqWo-9JSS5yEFA"
 
-# Google Calendar 補完取得（Zoom APIで漏れる定期会議＝朝礼を補う）
+# Google Calendar 補完取得（Zoom APIで漏れる予定を補う）
+# 朝礼に加え、TimeRex+PMI使い回し運用で Zoom APIに登録されない予定（【内部ZOOM②】AI MTG等）も拾う
 NAEO_CALENDAR_ID = "naaa.gwgw@gmail.com"
-ASAREI_KEYWORDS = ("朝礼",)
+CAL_KEYWORDS = (
+    "朝礼",
+    "Z①", "Z②", "z①", "z②",
+    "Zoom①", "Zoom②", "zoom①", "zoom②",
+    "ZOOM①", "ZOOM②",
+    "ｚ①", "ｚ②", "ｚ１", "ｚ２",
+    "内部ZOOM", "内部Zoom", "内部zoom",
+    "【内部",
+)
+
+
+def _classify_host(topic: str) -> str:
+    """タイトル文字列からZ①/Z②を判定。番号なしの「朝礼」「内部ZOOM」はZ②デフォルト。"""
+    z1_kw = ("Z①", "z①", "Zoom①", "zoom①", "ZOOM①", "ｚ①", "ｚ１")
+    z2_kw = ("Z②", "z②", "Zoom②", "zoom②", "ZOOM②", "ｚ②", "ｚ２", "内部ZOOM２", "内部ZOOM2", "内部zoom２", "内部zoom2")
+    if any(k in topic for k in z1_kw):
+        return "Z①"
+    if any(k in topic for k in z2_kw):
+        return "Z②"
+    # 朝礼・「内部ZOOM」（番号なし）等はZ②をデフォルトに
+    return "Z②"
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 OUT_PATH = REPO_ROOT / "irodori-zoom-dashboard.html"
@@ -81,9 +102,10 @@ def auto_zoom_prefix(topic, host_label):
 ASAREI_JSON_PATH = REPO_ROOT / "data" / "calendar_asarei.json"
 
 
-def _load_asarei_from_json():
-    """data/calendar_asarei.json から朝礼イベントを読む（MCP事前取得スナップショット）。
-    GitHub Actions環境のようにCalendar API認証が無い環境でも朝礼を表示するためのfallback。"""
+def _load_calendar_snapshot():
+    """data/calendar_asarei.json からなっつんカレンダー由来Zoom予定を読む（MCP事前取得スナップショット）。
+    GitHub Actions環境のようにCalendar API認証が無い環境でも予定を表示するためのfallback。
+    ※ファイル名は歴史的経緯で _asarei のまま（中身は朝礼以外も含むZoom関連全予定）。"""
     if not ASAREI_JSON_PATH.exists():
         return []
     try:
@@ -94,10 +116,9 @@ def _load_asarei_from_json():
     return data.get("events", [])
 
 
-def fetch_asarei_from_calendar():
-    """なっつんカレンダーから朝礼イベントを取得して Zoom API互換の形に整形して返す。
-    Zoom API（upcoming_meetings）では朝礼の各occurrenceが返ってこないため、
-    Calendar側から拾い上げて Z② 表示に合流させる。
+def fetch_naaa_calendar_zoom_events():
+    """なっつんカレンダーからZoom関連予定（朝礼/Z①Z②/内部ZOOM等）を取得して
+    Zoom API互換の形に整形して返す。タイトルからZ①/Z②を判定し host_label を付ける。
     認証が通らない環境では data/calendar_asarei.json のスナップショットへフォールバック。"""
     try:
         from google.oauth2.credentials import Credentials
@@ -109,6 +130,9 @@ def fetch_asarei_from_calendar():
 
     token_env = os.environ.get("GOOGLE_TOKEN_JSON")
     token_path = Path(os.path.expanduser("~/Documents/google_sync/token.json"))
+
+    raw_events = []
+    used_live = False
 
     if sdk_ok and (token_env or token_path.exists()):
         try:
@@ -127,14 +151,12 @@ def fetch_asarei_from_calendar():
                 timeMax=end.isoformat(),
                 singleEvents=True,
                 orderBy="startTime",
-                q="朝礼",
-                maxResults=200,
+                maxResults=250,
             ).execute()
             items = res.get("items", [])
-            out = []
             for ev in items:
-                summary = ev.get("summary", "") or ""
-                if not any(k in summary for k in ASAREI_KEYWORDS):
+                summary = (ev.get("summary", "") or "").strip()
+                if not any(k in summary for k in CAL_KEYWORDS):
                     continue
                 start_dt = ev.get("start", {}).get("dateTime")
                 end_dt = ev.get("end", {}).get("dateTime")
@@ -146,32 +168,67 @@ def fetch_asarei_from_calendar():
                 except ValueError:
                     continue
                 duration = max(0, int((et - st).total_seconds() // 60))
-                out.append({
+                typ = 8 if ev.get("recurringEventId") else 2
+                raw_events.append({
                     "id": f"calendar:{ev.get('id')}",
                     "topic": summary,
                     "start_time": start_dt,
                     "duration": duration,
-                    "type": 8,
+                    "type": typ,
                 })
-            print(f"📥 Calendar API 朝礼取得: {len(out)}件（live）")
-            return out
+            used_live = True
+            print(f"📥 Calendar API Zoom関連取得: {len(raw_events)}件（live）")
         except Exception as e:
             print(f"⚠️ Calendar live取得失敗 ({e}) → JSONスナップショットへfallback")
 
-    # fallback: data/calendar_asarei.json
-    snapshot = _load_asarei_from_json()
-    today = datetime.now(JST).replace(hour=0, minute=0, second=0, microsecond=0)
-    end = today + timedelta(days=10)
-    filtered = []
-    for ev in snapshot:
+    if not used_live:
+        snapshot = _load_calendar_snapshot()
+        today = datetime.now(JST).replace(hour=0, minute=0, second=0, microsecond=0)
+        end = today + timedelta(days=10)
+        for ev in snapshot:
+            try:
+                st = datetime.fromisoformat(ev["start_time"]).astimezone(JST)
+            except Exception:
+                continue
+            if today <= st < end:
+                raw_events.append(ev)
+        print(f"📥 Calendar JSONスナップショット使用: {len(raw_events)}件（{ASAREI_JSON_PATH.name}）")
+
+    # Z①/Z②に振り分け
+    bucket = {"Z①": [], "Z②": []}
+    for ev in raw_events:
+        host = _classify_host(ev["topic"])
+        bucket[host].append(ev)
+    print(f"   ├ Z① 振り分け: {len(bucket['Z①'])}件")
+    print(f"   └ Z② 振り分け: {len(bucket['Z②'])}件")
+    return bucket
+
+
+def _filter_calendar_dedup(cal_events, zoom_api_events):
+    """Zoom API由来とCalendar由来の重複排除。
+    同じstart_time（分単位）で既にZoom API由来があれば、Calendar由来を捨てる。
+    Zoom APIが正本扱い（タイトルがより正確・参加者情報も含む）。"""
+    def _jst_key(st_str):
+        """start_time（UTC/JST混在）をJSTに正規化して 'YYYY-MM-DDTHH:MM' を返す"""
+        if not st_str:
+            return ""
         try:
-            st = datetime.fromisoformat(ev["start_time"]).astimezone(JST)
+            s = st_str.replace("Z", "+00:00")
+            return datetime.fromisoformat(s).astimezone(JST).strftime("%Y-%m-%dT%H:%M")
         except Exception:
+            return st_str[:16]
+
+    zoom_keys = {_jst_key(m.get("start_time", "")) for m in zoom_api_events}
+    out = []
+    dropped = 0
+    for ev in cal_events:
+        if _jst_key(ev.get("start_time", "")) in zoom_keys:
+            dropped += 1
             continue
-        if today <= st < end:
-            filtered.append(ev)
-    print(f"📥 朝礼JSONスナップショット使用: {len(filtered)}件（{ASAREI_JSON_PATH.name}）")
-    return filtered
+        out.append(ev)
+    if dropped:
+        print(f"   ⊖ Calendar→Zoom API重複排除: {dropped}件")
+    return out
 
 
 def normalize(meetings, host_label):
@@ -697,11 +754,14 @@ def main():
     koyama_scheduled = fetch_meetings(token, HOST_KOYAMA, "upcoming_meetings")
     koyama_past = fetch_meetings(token, HOST_KOYAMA, "previous_meetings")
 
-    # なっつんCalendarから朝礼を補完（Zoom APIで漏れる定期会議のキャッチアップ）
-    asarei = fetch_asarei_from_calendar()
+    # なっつんCalendarからZoom関連予定を補完
+    # （Zoom APIで漏れる定期会議＝朝礼/TimeRex+PMI使い回しの予定をキャッチアップ）
+    naaa_cal = fetch_naaa_calendar_zoom_events()
+    cal_z1 = _filter_calendar_dedup(naaa_cal["Z①"], naeo_scheduled + naeo_past)
+    cal_z2 = _filter_calendar_dedup(naaa_cal["Z②"], koyama_scheduled + koyama_past)
 
-    z1 = normalize(naeo_scheduled + naeo_past, "Z①")
-    z2 = normalize(koyama_scheduled + koyama_past + asarei, "Z②")
+    z1 = normalize(naeo_scheduled + naeo_past + cal_z1, "Z①")
+    z2 = normalize(koyama_scheduled + koyama_past + cal_z2, "Z②")
 
     raw_counts = {
         "z1_scheduled": len(naeo_scheduled),
