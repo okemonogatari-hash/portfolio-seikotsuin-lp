@@ -1167,24 +1167,31 @@ a { color: inherit; text-decoration: none; }
 
 <script>
 (function(){
-  const animEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger, .trust-bar');
-  const animObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('is-visible');
-        animObs.unobserve(e.target);
+  const selectors = '.fade-in:not(.is-visible), .fade-in-left:not(.is-visible), .fade-in-right:not(.is-visible), .stagger:not(.is-visible), .trust-bar:not(.is-visible)';
+
+  function checkVisibility() {
+    document.querySelectorAll(selectors).forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.92 && r.bottom > 0) {
+        el.classList.add('is-visible');
       }
     });
-  }, { threshold: 0.12 });
+  }
 
-  animEls.forEach(el => {
-    const r = el.getBoundingClientRect();
-    if (r.top < window.innerHeight && r.bottom > 0) {
+  // Initial run
+  checkVisibility();
+
+  // Re-run on scroll, resize, and after full load
+  window.addEventListener('scroll', checkVisibility, { passive: true });
+  window.addEventListener('resize', checkVisibility);
+  window.addEventListener('load', checkVisibility);
+
+  // Safety fallback: after 4s, show everything regardless
+  setTimeout(() => {
+    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger, .trust-bar').forEach(el => {
       el.classList.add('is-visible');
-    } else {
-      animObs.observe(el);
-    }
-  });
+    });
+  }, 4000);
 
   // Smooth anchor scroll with header offset
   document.querySelectorAll('a[href^="#"]').forEach(a => {
