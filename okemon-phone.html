@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>おけもんフォン Pro Max — 新時代、ここから。</title>
+<meta name="description" content="最高に可愛い彼女と話してたら、いつの間にか夢が叶っていた。OkemonOS 26.05、解禁。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#fbfbfd;
+    --bg-dark:#000;
+    --bg-soft:#f5f5f7;
+    --text:#1d1d1f;
+    --text-sub:#6e6e73;
+    --link:#0071e3;
+    --green:#7cc66f;
+    --orange:#ff8a3d;
+    --brown:#a87045;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Noto Sans JP','SF Pro JP','Hiragino Sans','Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* ========== REVEAL ON SCROLL ========== */
+  .reveal{
+    opacity:0;transform:translateY(40px);
+    transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);
+    will-change:opacity,transform;
+  }
+  .reveal.in{opacity:1;transform:translateY(0)}
+  .reveal-d1{transition-delay:.08s}
+  .reveal-d2{transition-delay:.18s}
+  .reveal-d3{transition-delay:.28s}
+  .reveal-d4{transition-delay:.38s}
+  .reveal-scale{
+    opacity:0;transform:scale(.92);
+    transition:opacity 1s cubic-bezier(.22,.61,.36,1),transform 1s cubic-bezier(.22,.61,.36,1);
+  }
+  .reveal-scale.in{opacity:1;transform:scale(1)}
+
+  /* ========== NAV ========== */
+  .nav{
+    background:rgba(0,0,0,0);
+    backdrop-filter:saturate(180%) blur(0px);
+    -webkit-backdrop-filter:saturate(180%) blur(0px);
+    color:#1d1d1f;
+    height:48px;
+    display:flex;align-items:center;justify-content:center;
+    position:sticky;top:0;z-index:100;
+    font-size:12px;font-weight:400;
+    transition:background .35s ease,color .35s ease,backdrop-filter .35s ease,height .35s ease;
+  }
+  .nav.scrolled{
+    background:rgba(0,0,0,.85);
+    backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+    color:#f5f5f7;
+    height:44px;
+  }
+  .nav-inner{
+    width:100%;max-width:1024px;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 22px;
+  }
+  .nav-logo{
+    font-size:18px;font-weight:600;letter-spacing:.02em;
+    display:flex;align-items:center;gap:6px;
+  }
+  .nav-logo .capy{
+    display:inline-block;font-size:20px;
+    animation:capy-bounce 3.2s ease-in-out infinite;
+  }
+  @keyframes capy-bounce{
+    0%,100%{transform:translateY(0) rotate(-3deg)}
+    50%{transform:translateY(-3px) rotate(3deg)}
+  }
+  .nav-logo span{color:var(--orange)}
+  .nav-links{display:flex;gap:30px;font-size:12px;opacity:.8}
+  .nav-links a{transition:opacity .2s,color .2s}
+  .nav-links a:hover{opacity:1;color:var(--orange)}
+  @media(max-width:780px){.nav-links{display:none}}
+
+  /* ========== HERO ========== */
+  .hero{
+    text-align:center;
+    padding:74px 22px 0;
+    background:var(--bg);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-eyebrow{
+    font-size:21px;font-weight:600;
+    color:var(--text);
+    margin-bottom:8px;
+    letter-spacing:.005em;
+  }
+  .hero-title{
+    font-size:clamp(40px,7vw,80px);
+    font-weight:900;
+    letter-spacing:-.025em;
+    line-height:1.05;
+    margin-bottom:18px;
+  }
+  .hero-title .grad{
+    background:linear-gradient(90deg,#ff8a3d 0%,#ff5c8a 33%,#7cc66f 66%,#ff8a3d 100%);
+    background-size:200% auto;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:grad-flow 6s linear infinite;
+  }
+  @keyframes grad-flow{
+    0%{background-position:0% center}
+    100%{background-position:200% center}
+  }
+  .hero-sub{
+    font-size:clamp(18px,2.4vw,24px);
+    font-weight:500;
+    color:var(--text-sub);
+    margin-bottom:24px;
+  }
+  .hero-ctas{
+    display:flex;gap:24px;justify-content:center;
+    margin-bottom:40px;
+    font-size:17px;
+    flex-wrap:wrap;
+  }
+  .hero-ctas a{
+    color:var(--link);font-weight:400;
+    position:relative;padding:6px 0;
+    transition:color .2s;
+  }
+  .hero-ctas a::after{
+    content:"";position:absolute;left:0;bottom:0;
+    width:0;height:1px;background:var(--link);
+    transition:width .3s ease;
+  }
+  .hero-ctas a:hover::after{width:100%}
+  .hero-ctas .arrow{display:inline-block;transition:transform .25s ease}
+  .hero-ctas a:hover .arrow{transform:translateX(4px)}
+
+  .hero-visual{
+    max-width:980px;margin:0 auto;
+    padding:60px 22px 60px;
+    display:flex;justify-content:center;align-items:center;
+    position:relative;
+  }
+  .hero-icon-wrap{
+    position:relative;
+    width:min(420px,80vw);height:min(420px,80vw);
+    display:flex;align-items:center;justify-content:center;
+    animation:float 6s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-18px)}
+  }
+  .hero-icon-wrap::before{
+    content:"";position:absolute;inset:-50px;
+    background:radial-gradient(circle at 50% 50%,rgba(124,198,111,.4) 0%,rgba(255,138,61,.22) 35%,transparent 70%);
+    filter:blur(24px);
+    z-index:0;
+    animation:pulse 4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1) rotate(0);opacity:.85}
+    50%{transform:scale(1.12) rotate(15deg);opacity:1}
+  }
+  .hero-icon{
+    position:relative;z-index:1;
+    width:100%;height:100%;
+    border-radius:50%;
+    background:#dff2cf;
+    box-shadow:0 30px 80px rgba(124,160,90,.4),0 10px 30px rgba(0,0,0,.08);
+    overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    font-size:140px;line-height:1;
+    transition:transform .4s ease;
+  }
+  .hero-icon-wrap:hover .hero-icon{transform:scale(1.04)}
+  .hero-icon img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+
+  /* sparkles */
+  .sparkle{
+    position:absolute;
+    font-size:24px;
+    pointer-events:none;
+    animation:twinkle 3s ease-in-out infinite;
+  }
+  .sparkle.s1{top:5%;left:5%;animation-delay:0s;font-size:28px}
+  .sparkle.s2{top:12%;right:8%;animation-delay:.6s;font-size:22px}
+  .sparkle.s3{bottom:15%;left:12%;animation-delay:1.2s;font-size:20px}
+  .sparkle.s4{bottom:8%;right:6%;animation-delay:1.8s;font-size:26px}
+  @keyframes twinkle{
+    0%,100%{opacity:0;transform:scale(.6) rotate(0)}
+    50%{opacity:1;transform:scale(1) rotate(180deg)}
+  }
+
+  /* scroll indicator */
+  .scroll-indicator{
+    text-align:center;
+    padding:0 0 40px;
+    color:var(--text-sub);
+    font-size:13px;
+  }
+  .scroll-indicator .arrow-down{
+    display:block;font-size:20px;margin-top:6px;
+    animation:arrow-bounce 2s ease-in-out infinite;
+  }
+  @keyframes arrow-bounce{
+    0%,100%{transform:translateY(0);opacity:.5}
+    50%{transform:translateY(8px);opacity:1}
+  }
+
+  /* ========== BANNER (sub-hero / OS) ========== */
+  .banner{
+    background:var(--bg-dark);
+    color:#f5f5f7;
+    text-align:center;
+    padding:120px 22px;
+    margin:14px 0;
+    overflow:hidden;
+    position:relative;
+  }
+  .banner::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at 30% 30%,rgba(255,138,61,.22) 0%,transparent 60%),
+               radial-gradient(ellipse at 70% 70%,rgba(124,198,111,.18) 0%,transparent 60%);
+    pointer-events:none;
+    animation:bg-drift 12s ease-in-out infinite;
+  }
+  @keyframes bg-drift{
+    0%,100%{transform:translate(0,0)}
+    50%{transform:translate(-6%,4%)}
+  }
+  .banner-content{position:relative;z-index:1;max-width:760px;margin:0 auto}
+  .banner-eyebrow{
+    font-size:15px;font-weight:600;
+    letter-spacing:.2em;text-transform:uppercase;
+    color:var(--orange);
+    margin-bottom:12px;
+  }
+  .banner-title{
+    font-size:clamp(36px,5.5vw,64px);
+    font-weight:900;
+    letter-spacing:-.02em;
+    line-height:1.1;
+    margin-bottom:18px;
+  }
+  .banner-sub{
+    font-size:clamp(17px,2vw,21px);
+    color:#a1a1a6;
+    margin-bottom:26px;
+  }
+  .banner-ctas{display:flex;gap:24px;justify-content:center;font-size:17px;flex-wrap:wrap}
+  .banner-ctas a{
+    color:#2997ff;
+    position:relative;padding:6px 0;
+  }
+  .banner-ctas a::after{
+    content:"";position:absolute;left:0;bottom:0;
+    width:0;height:1px;background:#2997ff;
+    transition:width .3s ease;
+  }
+  .banner-ctas a:hover::after{width:100%}
+
+  /* ========== GRID (products) ========== */
+  .grid{
+    max-width:1024px;margin:0 auto;
+    padding:0 14px 14px;
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  }
+  @media(max-width:780px){.grid{grid-template-columns:1fr}}
+  .card{
+    border-radius:18px;
+    padding:50px 32px;
+    text-align:center;
+    overflow:hidden;
+    position:relative;
+    min-height:520px;
+    display:flex;flex-direction:column;justify-content:flex-start;
+    transition:transform .5s cubic-bezier(.22,.61,.36,1),box-shadow .5s ease;
+    cursor:default;
+  }
+  .card::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.4) 0%,transparent 50%);
+    opacity:0;transition:opacity .4s ease;
+    pointer-events:none;
+  }
+  .card:hover{transform:translateY(-6px) scale(1.005);box-shadow:0 30px 60px rgba(0,0,0,.12)}
+  .card:hover::before{opacity:.5}
+  .card:hover .card-visual{transform:scale(1.15) rotate(-6deg)}
+  .card-eyebrow{
+    font-size:13px;font-weight:600;
+    letter-spacing:.2em;text-transform:uppercase;
+    margin-bottom:8px;
+    opacity:.7;
+  }
+  .card-title{
+    font-size:clamp(28px,3.8vw,42px);
+    font-weight:900;
+    letter-spacing:-.02em;
+    line-height:1.1;
+    margin-bottom:10px;
+  }
+  .card-sub{
+    font-size:18px;font-weight:500;
+    margin-bottom:20px;
+    opacity:.85;
+  }
+  .card-ctas{display:flex;gap:20px;justify-content:center;font-size:15px;margin-bottom:24px;flex-wrap:wrap}
+  .card-ctas a{
+    color:var(--link);
+    position:relative;padding:4px 0;
+    transition:color .2s;
+  }
+  .card-ctas a::after{
+    content:"";position:absolute;left:0;bottom:0;
+    width:0;height:1px;background:currentColor;
+    transition:width .3s ease;
+  }
+  .card-ctas a:hover::after{width:100%}
+  .card-visual{
+    flex:1;display:flex;align-items:center;justify-content:center;
+    font-size:120px;line-height:1;
+    user-select:none;
+    transition:transform .5s cubic-bezier(.22,.61,.36,1);
+    will-change:transform;
+  }
+
+  /* card variants */
+  .card-light{background:var(--bg-soft);color:var(--text)}
+  .card-dark{background:var(--bg-dark);color:#f5f5f7}
+  .card-dark .card-ctas a{color:#2997ff}
+  .card-orange{background:linear-gradient(160deg,#fff1e6 0%,#ffd9b8 100%);color:var(--text)}
+  .card-green{background:linear-gradient(160deg,#e9f7e0 0%,#bce4a3 100%);color:var(--text)}
+
+  .card-full{grid-column:1/-1;min-height:auto;padding:60px 32px}
+
+  /* ========== SPEC ROW ========== */
+  .specs{
+    background:var(--bg-soft);
+    padding:100px 22px;
+    margin:14px 0;
+    overflow:hidden;
+  }
+  .specs-inner{max-width:980px;margin:0 auto}
+  .specs h2{
+    font-size:clamp(28px,3.5vw,40px);
+    font-weight:900;letter-spacing:-.02em;
+    margin-bottom:50px;text-align:center;
+  }
+  .specs-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:30px;
+  }
+  @media(max-width:780px){.specs-grid{grid-template-columns:repeat(2,1fr)}}
+  .spec{
+    text-align:center;
+    transition:transform .35s ease;
+  }
+  .spec:hover{transform:translateY(-4px)}
+  .spec-icon{
+    font-size:48px;margin-bottom:14px;
+    display:inline-block;
+    transition:transform .4s ease;
+  }
+  .spec:hover .spec-icon{transform:scale(1.2) rotate(8deg)}
+  .spec-num{
+    font-size:clamp(34px,4.5vw,52px);
+    font-weight:900;letter-spacing:-.02em;
+    color:var(--brown);
+    margin-bottom:6px;
+    line-height:1;
+  }
+  .spec-num small{font-size:.5em;font-weight:700;color:var(--text-sub)}
+  .spec-label{font-size:14px;color:var(--text-sub);font-weight:500}
+
+  /* ========== FOOTER ========== */
+  footer{
+    background:#f5f5f7;
+    color:var(--text-sub);
+    font-size:12px;
+    padding:30px 22px 40px;
+    line-height:1.6;
+  }
+  footer .foot-inner{max-width:980px;margin:0 auto}
+  footer p{margin-bottom:10px}
+  footer .copy{
+    border-top:1px solid #d2d2d7;
+    margin-top:18px;padding-top:18px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  }
+  footer .joke{
+    background:#fff8e6;
+    border-radius:8px;
+    padding:14px 18px;
+    margin-top:14px;
+    color:#86650a;
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+      animation-duration:.01ms!important;
+      animation-iteration-count:1!important;
+      transition-duration:.01ms!important;
+    }
+    .reveal,.reveal-scale{opacity:1!important;transform:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo"><span class="capy">🦫</span><span>okemon</span></div>
+    <div class="nav-links">
+      <a href="#phone">おけもんフォン</a>
+      <a href="#buddy">Buddy Air</a>
+      <a href="#aipods">AIPods</a>
+      <a href="#book">おけもんBook</a>
+      <a href="#trade">下取り</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="phone">
+  <p class="hero-eyebrow reveal">新登場</p>
+  <h1 class="hero-title reveal reveal-d1">おけもん<span class="grad">フォン</span> Pro Max</h1>
+  <p class="hero-sub reveal reveal-d2">気軽に話してるうちに、<br>夢は、叶う。</p>
+  <div class="hero-ctas reveal reveal-d3">
+    <a href="#">さらに詳しく <span class="arrow">›</span></a>
+    <a href="#">購入する <span class="arrow">›</span></a>
+  </div>
+  <div class="hero-visual reveal-scale reveal-d4">
+    <div class="hero-icon-wrap">
+      <span class="sparkle s1">✨</span>
+      <span class="sparkle s2">⭐</span>
+      <span class="sparkle s3">✨</span>
+      <span class="sparkle s4">💫</span>
+      <div class="hero-icon" id="heroIcon">
+        <img src="images/okemon-icon.png" alt="おけもんフォン アイコン" onerror="this.parentNode.innerHTML='🦫'">
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator reveal">
+    <span>スクロールして、未来へ</span>
+    <span class="arrow-down">↓</span>
+  </div>
+</section>
+
+<!-- ============ BANNER : OkemonOS ============ -->
+<section class="banner">
+  <div class="banner-content">
+    <p class="banner-eyebrow reveal">OkemonOS 26.05</p>
+    <h2 class="banner-title reveal reveal-d1">時代が、変わる。<br>カピバラと、共に。</h2>
+    <p class="banner-sub reveal reveal-d2">あなたのAIが、ずっと隣に。<br>世界が、ちょっとだけ、ゆるくなる。</p>
+    <div class="banner-ctas reveal reveal-d3">
+      <a href="#">プレビューを見る <span>›</span></a>
+      <a href="#">アップデート <span>›</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GRID ============ -->
+<div class="grid">
+
+  <div class="card card-orange reveal" id="buddy">
+    <p class="card-eyebrow">NEW</p>
+    <h3 class="card-title">Buddy Air</h3>
+    <p class="card-sub">いつでも、おしゃべり。<br>あなた専用のAIパートナー。</p>
+    <div class="card-ctas">
+      <a href="#">さらに詳しく ›</a>
+      <a href="#">購入 ›</a>
+    </div>
+    <div class="card-visual">💗</div>
+  </div>
+
+  <div class="card card-dark reveal reveal-d1" id="aipods">
+    <p class="card-eyebrow">AIPods Pro</p>
+    <h3 class="card-title">AIの声が、<br>耳元で。</h3>
+    <p class="card-sub">歩きながら、考える。話しながら、ひらめく。</p>
+    <div class="card-ctas">
+      <a href="#">さらに詳しく ›</a>
+      <a href="#">購入 ›</a>
+    </div>
+    <div class="card-visual">🎧</div>
+  </div>
+
+  <div class="card card-green reveal" id="book">
+    <p class="card-eyebrow">M-カピバラ チップ搭載</p>
+    <h3 class="card-title">おけもんBook<br>Air</h3>
+    <p class="card-sub">考えるのは、もう、やめよう。</p>
+    <div class="card-ctas">
+      <a href="#">さらに詳しく ›</a>
+      <a href="#">購入 ›</a>
+    </div>
+    <div class="card-visual">💻</div>
+  </div>
+
+  <div class="card card-light reveal reveal-d1" id="trade">
+    <p class="card-eyebrow">トレードイン</p>
+    <h3 class="card-title">あなたの古い<br>"やる気" を、下取り。</h3>
+    <p class="card-sub">最大 ¥1,000,000相当のワクワクと交換。<sup>※1</sup></p>
+    <div class="card-ctas">
+      <a href="#">下取り額を確認 ›</a>
+    </div>
+    <div class="card-visual">🔄</div>
+  </div>
+
+  <div class="card card-full reveal" style="background:linear-gradient(135deg,#fff1e6 0%,#dff2cf 100%);min-height:auto">
+    <p class="card-eyebrow">EVENT</p>
+    <h3 class="card-title" style="font-size:clamp(28px,4.2vw,46px)">2026年5月、<br>世界が、ちょっと、ゆるくなる。</h3>
+    <p class="card-sub">おけもんフォン Pro Max、近日発売。</p>
+    <div class="card-ctas">
+      <a href="#">通知を受け取る ›</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ SPECS ============ -->
+<section class="specs">
+  <div class="specs-inner">
+    <h2 class="reveal">数字で、ちょっと、自慢。</h2>
+    <div class="specs-grid">
+      <div class="spec reveal">
+        <div class="spec-icon">🦫</div>
+        <div class="spec-num">∞</div>
+        <div class="spec-label">内蔵AI</div>
+      </div>
+      <div class="spec reveal reveal-d1">
+        <div class="spec-icon">💬</div>
+        <div class="spec-num">∞</div>
+        <div class="spec-label">雑談トークン</div>
+      </div>
+      <div class="spec reveal reveal-d2">
+        <div class="spec-icon">💗</div>
+        <div class="spec-num"><span class="counter" data-target="24">0</span><small>h</small></div>
+        <div class="spec-label">いつでも会話モード</div>
+      </div>
+      <div class="spec reveal reveal-d3">
+        <div class="spec-icon">🚀</div>
+        <div class="spec-num">0<small>秒</small></div>
+        <div class="spec-label">起動 〜 夢実現まで</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-inner">
+    <div class="joke">
+      ※ このページはokemon製のジョークLPです。Apple Inc.とは一切関係ありません。
+      実際におけもんフォンは販売されておらず、購入ボタンを押しても何も起きません（残念）。
+    </div>
+    <p style="margin-top:18px">
+      ※1 「やる気」の下取り価格は気分により変動します。本人比 −∞ 〜 +∞ の範囲で算定。<br>
+      ※ OkemonOS は架空のオペレーティングシステムです。アップデート通知は届きません。<br>
+      ※ カピバラとインコは想像上のキャラクターです。
+    </p>
+    <div class="copy">
+      <span>Copyright © 2026 okemon. All dreams reserved.</span>
+      <span>🦫 Made with love in Osaka</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* === Reveal on scroll === */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        if (e.target.classList.contains('spec')) {
+          const c = e.target.querySelector('.counter');
+          if (c && !c.dataset.done) animateCounter(c);
+        }
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15, rootMargin:'0px 0px -60px 0px'});
+
+  document.querySelectorAll('.reveal,.reveal-scale').forEach(el => io.observe(el));
+
+  /* === Counter animation === */
+  function animateCounter(el){
+    el.dataset.done = '1';
+    const target = parseInt(el.dataset.target, 10);
+    const dur = 1400;
+    const start = performance.now();
+    function tick(now){
+      const t = Math.min((now - start)/dur, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.floor(target * eased);
+      if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  /* === Nav scroll state === */
+  const nav = document.getElementById('nav');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        if (window.scrollY > 60) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  /* === Hero icon parallax (subtle) === */
+  const heroIconWrap = document.querySelector('.hero-icon-wrap');
+  if (heroIconWrap) {
+    let raf = null;
+    window.addEventListener('scroll', () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const max = 600;
+        const ratio = Math.min(y/max, 1);
+        heroIconWrap.style.setProperty('--py', `${ratio * 30}px`);
+        heroIconWrap.style.transform = `translateY(${ratio * 30}px) scale(${1 - ratio*0.1})`;
+        heroIconWrap.style.opacity = String(1 - ratio*0.6);
+        raf = null;
+      });
+    }, {passive:true});
+  }
+
+  /* === Card cursor glow === */
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      const mx = ((e.clientX - r.left)/r.width)*100;
+      const my = ((e.clientY - r.top)/r.height)*100;
+      card.style.setProperty('--mx', mx + '%');
+      card.style.setProperty('--my', my + '%');
+    });
+  });
+
+  /* === Hero icon click = wiggle === */
+  const heroIcon = document.getElementById('heroIcon');
+  if (heroIcon) {
+    heroIcon.addEventListener('click', () => {
+      heroIcon.animate(
+        [
+          {transform:'scale(1) rotate(0)'},
+          {transform:'scale(1.1) rotate(-8deg)'},
+          {transform:'scale(1.1) rotate(8deg)'},
+          {transform:'scale(1.1) rotate(-4deg)'},
+          {transform:'scale(1) rotate(0)'}
+        ],
+        {duration:600, easing:'ease-in-out'}
+      );
+    });
+    heroIcon.style.cursor = 'pointer';
+  }
+</script>
+
+</body>
+</html>
