@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【提案モック】青葉司法書士事務所 | 司法書士事務所ホームページ</title>
+  <meta name="description" content="司法書士事務所ホームページ制作の提案用モック。落ち着きと信頼感を重視し、コラム・新着情報を更新しやすい構成にしたサンプルです。">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Noto+Serif+JP:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #17212b;
+      --ink-soft: #394554;
+      --deep: #173f4c;
+      --teal: #2f6f6a;
+      --bronze: #9b6b36;
+      --paper: #f7f4ed;
+      --mist: #edf3f2;
+      --white: #ffffff;
+      --line: #d8ddd9;
+      --shadow: 0 18px 50px rgba(23, 33, 43, 0.13);
+      --sans: "Noto Sans JP", system-ui, sans-serif;
+      --serif: "Noto Serif JP", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .top-note {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 120;
+      background: var(--bronze);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      padding: 5px 16px;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 28px;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid rgba(216, 221, 217, 0.8);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      min-height: 72px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 212px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--deep);
+      color: var(--white);
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .brand-name {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .brand-sub {
+      display: block;
+      color: var(--ink-soft);
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+
+    .nav a {
+      padding: 10px 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav a:hover {
+      color: var(--deep);
+      border-bottom-color: var(--bronze);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--deep);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--teal);
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 12px 22px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: var(--deep);
+      color: var(--white);
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      background: #0f3340;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.13);
+      border-color: rgba(255, 255, 255, 0.38);
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 78svh;
+      padding: 170px 24px 64px;
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(13, 28, 38, 0.92), rgba(13, 28, 38, 0.62), rgba(13, 28, 38, 0.22)),
+        url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1800&q=82") center/cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 120px;
+      background: linear-gradient(180deg, transparent, rgba(247, 244, 237, 0.98));
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1160px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #e8d4b6;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: #e8d4b6;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 54px;
+      line-height: 1.22;
+      font-weight: 900;
+    }
+
+    .hero-copy {
+      max-width: 660px;
+      margin: 22px 0 34px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 42px;
+    }
+
+    .hero-trust {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      max-width: 720px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(10, 26, 35, 0.46);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-trust div {
+      padding: 18px 16px;
+      border-right: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .hero-trust div:last-child {
+      border-right: 0;
+    }
+
+    .hero-trust strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 19px;
+      line-height: 1.35;
+      color: var(--white);
+    }
+
+    .hero-trust span {
+      display: block;
+      margin-top: 4px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 92px 24px;
+    }
+
+    .section-mist {
+      background: var(--mist);
+    }
+
+    .section-white {
+      background: var(--white);
+    }
+
+    .section-deep {
+      background: var(--deep);
+      color: var(--white);
+    }
+
+    .inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 44px;
+    }
+
+    .label {
+      color: var(--bronze);
+      font-size: 13px;
+      font-weight: 900;
+      margin: 0 0 10px;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 36px;
+      line-height: 1.38;
+      font-weight: 900;
+    }
+
+    .section-head p:last-child {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 15px;
+    }
+
+    .section-deep .section-head p:last-child,
+    .section-deep .muted {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .lead-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .lead-text {
+      font-size: 16px;
+      color: var(--ink-soft);
+    }
+
+    .lead-text strong {
+      color: var(--deep);
+    }
+
+    .lead-image {
+      position: relative;
+      min-height: 420px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=82") center/cover no-repeat;
+    }
+
+    .lead-image-note {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.93);
+      border-radius: 8px;
+      color: var(--ink);
+      box-shadow: 0 12px 32px rgba(23, 33, 43, 0.14);
+    }
+
+    .lead-image-note strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 20px;
+      line-height: 1.45;
+      color: var(--deep);
+    }
+
+    .lead-image-note span {
+      color: var(--ink-soft);
+      font-size: 13px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card,
+    .reason-card,
+    .news-card,
+    .faq-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .service-card {
+      min-height: 230px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--mist);
+      color: var(--teal);
+    }
+
+    .service-card h3,
+    .reason-card h3,
+    .news-card h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 21px;
+      line-height: 1.45;
+      color: var(--deep);
+    }
+
+    .service-card p,
+    .reason-card p,
+    .news-card p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+
+    .reason-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .reason-photo {
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 560px;
+      background: url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=82") center/cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .reason-card {
+      padding: 24px;
+      min-height: 250px;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .reason-number {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--deep);
+      color: var(--white);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .flow {
+      counter-reset: step;
+      display: grid;
+      gap: 14px;
+    }
+
+    .flow-step {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      align-items: stretch;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .flow-step::before {
+      content: counter(step, decimal-leading-zero);
+      display: grid;
+      place-items: center;
+      min-height: 104px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #e8d4b6;
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 900;
+    }
+
+    .flow-body {
+      padding: 22px 26px;
+    }
+
+    .flow-body h3 {
+      margin: 0 0 6px;
+      font-family: var(--serif);
+      font-size: 21px;
+    }
+
+    .flow-body p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 14px;
+    }
+
+    .news-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .tabs {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tab {
+      min-height: 40px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink-soft);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      background: var(--deep);
+      color: var(--white);
+      border-color: var(--deep);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .news-card {
+      padding: 24px;
+      min-height: 220px;
+    }
+
+    .news-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: var(--ink-soft);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .news-tag {
+      color: var(--bronze);
+    }
+
+    .external-column {
+      margin-top: 22px;
+      padding: 24px;
+      border-radius: 8px;
+      background: var(--mist);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .external-column h3 {
+      margin: 0 0 4px;
+      font-family: var(--serif);
+      color: var(--deep);
+      font-size: 22px;
+    }
+
+    .external-column p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+
+    .office-layout {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .office-photo {
+      border-radius: 8px;
+      min-height: 540px;
+      overflow: hidden;
+      background: url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=82") center/cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .office-panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .office-panel table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .office-panel th,
+    .office-panel td {
+      padding: 18px 20px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .office-panel th {
+      width: 150px;
+      color: var(--deep);
+      background: var(--mist);
+      font-weight: 900;
+    }
+
+    .office-panel tr:last-child th,
+    .office-panel tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .profile {
+      margin-top: 20px;
+      padding: 26px;
+      border-radius: 8px;
+      background: var(--mist);
+    }
+
+    .profile h3 {
+      margin: 0 0 10px;
+      font-family: var(--serif);
+      font-size: 24px;
+      color: var(--deep);
+    }
+
+    .profile p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      max-width: 900px;
+    }
+
+    .faq-q {
+      width: 100%;
+      min-height: 58px;
+      border: 0;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 17px 22px;
+      color: var(--deep);
+      font-weight: 900;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .faq-a {
+      display: none;
+      padding: 0 22px 20px;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+
+    .faq-item.open .faq-a {
+      display: block;
+    }
+
+    .faq-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--mist);
+      color: var(--deep);
+      flex: 0 0 auto;
+    }
+
+    .faq-item.open .faq-icon {
+      background: var(--deep);
+      color: var(--white);
+    }
+
+    .cta {
+      padding: 84px 24px;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(15, 43, 54, 0.92), rgba(15, 43, 54, 0.76)),
+        url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1800&q=82") center/cover no-repeat;
+    }
+
+    .cta-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 38px;
+    }
+
+    .cta p {
+      margin: 18px auto 30px;
+      max-width: 680px;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .footer {
+      background: #111b22;
+      color: rgba(255, 255, 255, 0.68);
+      padding: 34px 24px;
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1040px) {
+      .header-inner {
+        min-height: 66px;
+      }
+
+      .nav {
+        position: absolute;
+        top: 67px;
+        left: 16px;
+        right: 16px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        padding: 10px 16px;
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+      .nav a {
+        padding: 13px 0;
+      }
+
+      .menu-toggle {
+        display: grid;
+      }
+
+      .header-actions .btn {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      .section-head,
+      .lead-grid,
+      .reason-layout,
+      .office-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .reason-photo,
+      .office-photo {
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-header {
+        top: 42px;
+      }
+
+      .top-note {
+        min-height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-name {
+        font-size: 14px;
+      }
+
+      .brand-sub {
+        font-size: 10px;
+      }
+
+      .hero {
+        min-height: 82svh;
+        padding-top: 160px;
+        background:
+          linear-gradient(180deg, rgba(13, 28, 38, 0.95), rgba(13, 28, 38, 0.62)),
+          url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1100&q=82") center/cover no-repeat;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero-copy {
+        font-size: 15px;
+      }
+
+      .hero-trust {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-trust div:nth-child(2) {
+        border-right: 0;
+      }
+
+      .hero-trust div:nth-child(1),
+      .hero-trust div:nth-child(2) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .section {
+        padding: 68px 20px;
+      }
+
+      h2,
+      .cta h2 {
+        font-size: 29px;
+      }
+
+      .service-grid,
+      .reason-grid,
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .external-column {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .office-panel th,
+      .office-panel td {
+        display: block;
+        width: 100%;
+      }
+
+      .office-panel th {
+        padding-bottom: 8px;
+      }
+
+      .office-panel td {
+        padding-top: 10px;
+      }
+
+      .flow-step {
+        grid-template-columns: 68px 1fr;
+      }
+
+      .flow-body {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-note">提案用モック：名称・写真・ロゴ・文章は差し替え前提のサンプルです</div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="ページ上部へ">
+        <span class="brand-mark">青</span>
+        <span class="brand-name">青葉司法書士事務所<span class="brand-sub">Aoba Legal Office</span></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#services">業務内容</a>
+        <a href="#reason">選ばれる理由</a>
+        <a href="#flow">ご相談の流れ</a>
+        <a href="#news">お知らせ・コラム</a>
+        <a href="#office">事務所案内</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn" href="#contact">相談予約</a>
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="メニューを開く">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 7h16v2H4V7Zm0 4h16v2H4v-2Zm0 4h16v2H4v-2Z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-kicker fade">相続・登記・成年後見・会社法人登記</div>
+        <h1 class="fade">青葉司法書士事務所</h1>
+        <p class="hero-copy fade">
+          はじめての手続きにも、複雑なご事情にも。地域に根ざした司法書士が、必要な手続きをひとつずつ整理し、誠実に伴走します。
+        </p>
+        <div class="hero-actions fade">
+          <a class="btn" href="#contact">初回相談を予約する</a>
+          <a class="btn btn-secondary" href="#services">業務内容を見る</a>
+        </div>
+        <div class="hero-trust fade" aria-label="主な対応内容">
+          <div><strong>相続登記</strong><span>不動産名義変更</span></div>
+          <div><strong>会社登記</strong><span>設立・役員変更</span></div>
+          <div><strong>生前対策</strong><span>遺言・後見</span></div>
+          <div><strong>地域相談</strong><span>暮らしと制度</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="inner lead-grid">
+        <div class="lead-text fade">
+          <p class="label">MESSAGE</p>
+          <h2>落ち着いて話せること。<br>正確に進むこと。</h2>
+          <p>
+            司法書士への相談は、人生や事業の大切な節目で起こります。だからこそ、専門用語だけで進めず、現在地と次の一手がわかるようにお伝えします。
+          </p>
+          <p>
+            <strong>相続・不動産登記・法人登記・成年後見・裁判所提出書類</strong>まで、必要に応じて税理士・弁護士・行政機関とも連携しながら、安心して任せられる窓口を目指します。
+          </p>
+        </div>
+        <div class="lead-image fade" role="img" aria-label="書類とペンの写真">
+          <div class="lead-image-note">
+            <strong>一つひとつの手続きを、見通しから。</strong>
+            <span>必要書類・費用・完了までの流れを、初回相談で整理します。</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-mist" id="services">
+      <div class="inner">
+        <div class="section-head fade">
+          <div>
+            <p class="label">SERVICES</p>
+            <h2>業務内容</h2>
+          </div>
+          <p>個人の暮らしと法人の手続きを、幅広くサポートします。掲載外のご相談も、内容を伺ったうえで対応可否をご案内します。</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card fade">
+            <span class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 3 9l9 6 9-6-9-6Zm0 14.2L5.4 13 3 14.6 12 21l9-6.4-2.4-1.6-6.6 4.2Z"/></svg></span>
+            <h3>相続登記</h3>
+            <p>不動産の名義変更、戸籍収集、遺産分割協議書の作成など、相続手続きを整理します。</p>
+          </article>
+
+          <article class="service-card fade">
+            <span class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 3h10v4h4v14H3V3h4Zm2 2H5v14h14V9h-4V5H9Zm0 8h6v2H9v-2Zm0 4h6v2H9v-2Z"/></svg></span>
+            <h3>遺言・生前対策</h3>
+            <p>遺言書作成、家族信託、任意後見など、将来の不安を減らす準備を支援します。</p>
+          </article>
+
+          <article class="service-card fade">
+            <span class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 3 9 8h-3v9h-5v-6h-2v6H6v-9H3l9-8Z"/></svg></span>
+            <h3>不動産登記</h3>
+            <p>売買・贈与・抵当権抹消など、不動産に関する登記申請を正確に進めます。</p>
+          </article>
+
+          <article class="service-card fade">
+            <span class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 21V5l8-3 8 3v16h-6v-6h-4v6H4Zm3-2h2v-6h6v6h2V6.4l-5-1.9-5 1.9V19Zm2-9h2V8H9v2Zm4 0h2V8h-2v2Z"/></svg></span>
+            <h3>会社・法人登記</h3>
+            <p>会社設立、役員変更、本店移転、目的変更など、法人運営に必要な登記を支えます。</p>
+          </article>
+
+          <article class="service-card fade">
+            <span class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 1 7 7c0 5.2-7 13-7 13S5 14.2 5 9a7 7 0 0 1 7-7Zm0 9.5A2.5 2.5 0 1 0 12 6a2.5 2.5 0 0 0 0 5.5Z"/></svg></span>
+            <h3>成年後見</h3>
+            <p>判断能力に不安がある方の財産管理・生活支援に関する制度利用をサポートします。</p>
+          </article>
+
+          <article class="service-card fade">
+            <span class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 2h9l5 5v15H6V2Zm8 2H8v16h10V8h-4V4ZM4 6H2v18h14v-2H4V6Z"/></svg></span>
+            <h3>裁判所提出書類</h3>
+            <p>相続放棄、成年後見申立など、裁判所へ提出する書類作成を支援します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="reason">
+      <div class="inner">
+        <div class="section-head fade">
+          <div>
+            <p class="label">REASON</p>
+            <h2>選ばれる理由</h2>
+          </div>
+          <p>はじめて相談する方にも安心していただけるよう、対応姿勢・進め方・連携体制をわかりやすくお伝えします。</p>
+        </div>
+
+        <div class="reason-layout">
+          <div class="reason-photo fade" role="img" aria-label="相談風景の写真"></div>
+          <div class="reason-grid">
+            <article class="reason-card fade">
+              <span class="reason-number">1</span>
+              <h3>相談時点で見通しを整理</h3>
+              <p>必要書類、費用、期間、次にやることを初回でできるだけ明確にします。</p>
+            </article>
+            <article class="reason-card fade">
+              <span class="reason-number">2</span>
+              <h3>難しい案件も分解して対応</h3>
+              <p>相続人が多い、古い登記が残っているなど、複雑な手続きも順序立てて進めます。</p>
+            </article>
+            <article class="reason-card fade">
+              <span class="reason-number">3</span>
+              <h3>他士業・行政との連携</h3>
+              <p>税務・紛争・許認可など、司法書士業務外の論点も必要な専門家へつなぎます。</p>
+            </article>
+            <article class="reason-card fade">
+              <span class="reason-number">4</span>
+              <h3>地域に根ざした窓口</h3>
+              <p>暮らしと制度の接点を理解し、地域の方が相談しやすい事務所づくりを大切にします。</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-deep" id="flow">
+      <div class="inner">
+        <div class="section-head fade">
+          <div>
+            <p class="label">FLOW</p>
+            <h2>ご相談の流れ</h2>
+          </div>
+          <p>相談から完了までの流れをシンプルに示し、はじめての方でも問い合わせしやすい導線にしています。</p>
+        </div>
+
+        <div class="flow">
+          <article class="flow-step fade">
+            <div class="flow-body">
+              <h3>お問い合わせ</h3>
+              <p>電話またはフォームから、相談内容とご希望日時をお知らせください。</p>
+            </div>
+          </article>
+          <article class="flow-step fade">
+            <div class="flow-body">
+              <h3>初回相談</h3>
+              <p>現在の状況を伺い、必要書類・費用・手続きの流れをご案内します。</p>
+            </div>
+          </article>
+          <article class="flow-step fade">
+            <div class="flow-body">
+              <h3>ご依頼・書類準備</h3>
+              <p>正式にご依頼後、委任状や本人確認資料などを揃えて手続きに入ります。</p>
+            </div>
+          </article>
+          <article class="flow-step fade">
+            <div class="flow-body">
+              <h3>申請・完了報告</h3>
+              <p>登記申請や書類提出を行い、完了後に控え・完了書類をお渡しします。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="news">
+      <div class="inner">
+        <div class="section-head fade">
+          <div>
+            <p class="label">NEWS & COLUMN</p>
+            <h2>お知らせ・コラム</h2>
+          </div>
+          <p>事務所からのお知らせ、相続や登記に関する読みもの、手続きの事例メモを掲載しています。</p>
+        </div>
+
+        <div class="news-toolbar fade">
+          <div class="tabs" aria-label="記事カテゴリ">
+            <button class="tab active" data-filter="all">すべて</button>
+            <button class="tab" data-filter="notice">お知らせ</button>
+            <button class="tab" data-filter="column">コラム</button>
+            <button class="tab" data-filter="case">事例メモ</button>
+          </div>
+          <a class="btn" href="#contact">記事について相談する</a>
+        </div>
+
+        <div class="news-grid" id="newsGrid">
+          <article class="news-card fade" data-kind="notice">
+            <div class="news-meta"><span>2026.05.09</span><span class="news-tag">お知らせ</span></div>
+            <h3>初回相談の受付時間を更新しました</h3>
+            <p>平日夕方以降のご相談枠について、予約制で対応できる日程を追加しました。</p>
+          </article>
+          <article class="news-card fade" data-kind="column">
+            <div class="news-meta"><span>2026.04.30</span><span class="news-tag">コラム</span></div>
+            <h3>相続登記で最初に確認したい3つのこと</h3>
+            <p>不動産の名義、相続人、遺産分割協議の進み具合を整理しておくと相談がスムーズです。</p>
+          </article>
+          <article class="news-card fade" data-kind="case">
+            <div class="news-meta"><span>2026.04.18</span><span class="news-tag">事例メモ</span></div>
+            <h3>役員変更登記を期限内に進めたケース</h3>
+            <p>必要資料の確認から申請まで、法人側の事務負担を抑えて進行した事例です。</p>
+          </article>
+        </div>
+
+        <div class="external-column fade">
+          <div>
+            <h3>外部コラムサイトへの導線</h3>
+            <p>別サイトで公開する専門コラム・活動報告・地域向け情報へ、トップページから自然につなげます。</p>
+          </div>
+          <a class="btn" href="#" onclick="alert('外部コラムサイトURLに差し替え予定です。'); return false;">コラムサイトへ</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-mist" id="office">
+      <div class="inner">
+        <div class="section-head fade">
+          <div>
+            <p class="label">OFFICE</p>
+            <h2>事務所案内</h2>
+          </div>
+          <p>ご相談者様が来所前に雰囲気をつかめるよう、所在地・受付時間・代表プロフィールを掲載しています。</p>
+        </div>
+
+        <div class="office-layout">
+          <div class="office-photo fade" role="img" aria-label="落ち着いた事務所の写真"></div>
+          <div>
+            <div class="office-panel fade">
+              <table>
+                <tr><th>事務所名</th><td>青葉司法書士事務所</td></tr>
+                <tr><th>代表</th><td>司法書士 〇〇 〇〇</td></tr>
+                <tr><th>所在地</th><td>〒000-0000 〇〇県〇〇市〇〇町 0-0-0</td></tr>
+                <tr><th>営業時間</th><td>平日 9:00〜18:00 / 事前予約で時間外相談可</td></tr>
+                <tr><th>対応地域</th><td>〇〇市周辺を中心に、オンライン相談も対応</td></tr>
+                <tr><th>登録番号</th><td>〇〇司法書士会 第0000号</td></tr>
+              </table>
+            </div>
+
+            <div class="profile fade">
+              <h3>代表あいさつ</h3>
+              <p>
+                法律手続きは、慣れていない方にとって不安が大きいものです。ご相談者様の事情を丁寧に伺い、必要な選択肢をわかりやすく整理することを大切にしています。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="inner">
+        <div class="section-head fade">
+          <div>
+            <p class="label">FAQ</p>
+            <h2>よくある質問</h2>
+          </div>
+          <p>問い合わせ前の不安を減らすため、費用・必要書類・相談方法などの基本質問を置いています。</p>
+        </div>
+
+        <div class="faq-list">
+          <article class="faq-item fade">
+            <button class="faq-q" type="button">相談前に何を準備すればよいですか？<span class="faq-icon">+</span></button>
+            <div class="faq-a">お手元にある資料だけで大丈夫です。相続なら戸籍や固定資産税通知書、会社登記なら履歴事項全部証明書などがあると整理しやすくなります。</div>
+          </article>
+          <article class="faq-item fade">
+            <button class="faq-q" type="button">費用はいつわかりますか？<span class="faq-icon">+</span></button>
+            <div class="faq-a">初回相談で内容を伺ったうえで、司法書士報酬・登録免許税などの実費を分けてお見積りします。</div>
+          </article>
+          <article class="faq-item fade">
+            <button class="faq-q" type="button">オンライン相談はできますか？<span class="faq-icon">+</span></button>
+            <div class="faq-a">事前予約制で対応できます。本人確認や原本確認が必要な手続きでは、郵送や来所が必要になる場合があります。</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="cta-inner fade">
+        <p class="label">CONTACT</p>
+        <h2>まずは、今の状況をお聞かせください。</h2>
+        <p>相続・登記・会社手続き・成年後見など、必要な手続きを一緒に整理します。内容がまとまっていなくても、最初の相談からお受けします。</p>
+        <a class="btn" href="mailto:sample@example.jp?subject=ホームページモックからの相談予約">メールで相談する</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>© 2026 Aoba Legal Office. Sample Mock.</div>
+      <div>司法書士事務所ホームページ制作 提案用モック</div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById("nav");
+    const menuToggle = document.getElementById("menuToggle");
+
+    menuToggle.addEventListener("click", () => {
+      nav.classList.toggle("open");
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => nav.classList.remove("open"));
+    });
+
+    document.querySelectorAll(".faq-q").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        const icon = button.querySelector(".faq-icon");
+        item.classList.toggle("open");
+        icon.textContent = item.classList.contains("open") ? "−" : "+";
+      });
+    });
+
+    document.querySelectorAll(".tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const filter = tab.dataset.filter;
+        document.querySelectorAll(".tab").forEach((current) => current.classList.remove("active"));
+        tab.classList.add("active");
+        document.querySelectorAll(".news-card").forEach((card) => {
+          const shouldShow = filter === "all" || card.dataset.kind === filter;
+          card.style.display = shouldShow ? "" : "none";
+        });
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".fade").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

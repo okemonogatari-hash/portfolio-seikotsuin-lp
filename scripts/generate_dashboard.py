@@ -23,7 +23,13 @@ HOST_KOYAMA = "aAUji7r9QqWo-9JSS5yEFA"
 
 # Google Calendar 補完取得（Zoom APIで漏れる予定を補う）
 # 朝礼に加え、TimeRex+PMI使い回し運用で Zoom APIに登録されない予定（【内部ZOOM②】AI MTG等）も拾う
-NAEO_CALENDAR_ID = "naaa.gwgw@gmail.com"
+# 承認済みカレンダー: なっつん（小川さん）／飯田さん（2026-05-15時点）
+IRODORI_CALENDAR_IDS = (
+    "naaa.gwgw@gmail.com",       # なっつん（小川さん）
+    "iida.m.irodori@gmail.com",  # 飯田さん（2026-05-15共有承認）
+)
+NAEO_CALENDAR_ID = IRODORI_CALENDAR_IDS[0]  # 後方互換のため
+
 CAL_KEYWORDS = (
     "朝礼",
     "Z①", "Z②", "z①", "z②",
@@ -32,13 +38,15 @@ CAL_KEYWORDS = (
     "ｚ①", "ｚ②", "ｚ１", "ｚ２",
     "内部ZOOM", "内部Zoom", "内部zoom",
     "【内部",
+    "ズーム①", "ズーム②", "ズーム1", "ズーム2",  # カタカナ表記対応（飯田さん書式）
+    "zoom1.", "zoom2.", "ZOOM1.", "ZOOM2.",        # ピリオド表記対応
 )
 
 
 def _classify_host(topic: str) -> str:
     """タイトル文字列からZ①/Z②を判定。番号なしの「朝礼」「内部ZOOM」はZ②デフォルト。"""
-    z1_kw = ("Z①", "z①", "Zoom①", "zoom①", "ZOOM①", "ｚ①", "ｚ１")
-    z2_kw = ("Z②", "z②", "Zoom②", "zoom②", "ZOOM②", "ｚ②", "ｚ２", "内部ZOOM２", "内部ZOOM2", "内部zoom２", "内部zoom2")
+    z1_kw = ("Z①", "z①", "Zoom①", "zoom①", "ZOOM①", "ｚ①", "ｚ１", "ズーム①", "ズーム1", "zoom1.", "ZOOM1.")
+    z2_kw = ("Z②", "z②", "Zoom②", "zoom②", "ZOOM②", "ｚ②", "ｚ２", "ズーム②", "ズーム2", "zoom2.", "ZOOM2.", "内部ZOOM２", "内部ZOOM2", "内部zoom２", "内部zoom2")
     if any(k in topic for k in z1_kw):
         return "Z①"
     if any(k in topic for k in z2_kw):
@@ -117,8 +125,10 @@ def _load_calendar_snapshot():
 
 
 def fetch_naaa_calendar_zoom_events():
-    """なっつんカレンダーからZoom関連予定（朝礼/Z①Z②/内部ZOOM等）を取得して
+    """irodori承認済みカレンダー（IRODORI_CALENDAR_IDS：なっつん＋飯田さん等）から
+    Zoom関連予定（朝礼/Z①Z②/内部ZOOM/ズーム等）を取得して
     Zoom API互換の形に整形して返す。タイトルからZ①/Z②を判定し host_label を付ける。
+    複数カレンダー横断＋start_time/topic重複排除（カレンダー内重複対策）。
     認証が通らない環境では data/calendar_asarei.json のスナップショットへフォールバック。"""
     try:
         from google.oauth2.credentials import Credentials
@@ -145,39 +155,61 @@ def fetch_naaa_calendar_zoom_events():
             svc = build("calendar", "v3", credentials=creds, cache_discovery=False)
             today = datetime.now(JST).replace(hour=0, minute=0, second=0, microsecond=0)
             end = today + timedelta(days=10)
-            res = svc.events().list(
-                calendarId=NAEO_CALENDAR_ID,
-                timeMin=today.isoformat(),
-                timeMax=end.isoformat(),
-                singleEvents=True,
-                orderBy="startTime",
-                maxResults=250,
-            ).execute()
-            items = res.get("items", [])
-            for ev in items:
-                summary = (ev.get("summary", "") or "").strip()
-                if not any(k in summary for k in CAL_KEYWORDS):
-                    continue
-                start_dt = ev.get("start", {}).get("dateTime")
-                end_dt = ev.get("end", {}).get("dateTime")
-                if not start_dt or not end_dt:
-                    continue
+            for cal_id in IRODORI_CALENDAR_IDS:
                 try:
-                    st = datetime.fromisoformat(start_dt)
-                    et = datetime.fromisoformat(end_dt)
-                except ValueError:
+                    res = svc.events().list(
+                        calendarId=cal_id,
+                        timeMin=today.isoformat(),
+                        timeMax=end.isoformat(),
+                        singleEvents=True,
+                        orderBy="startTime",
+                        maxResults=250,
+                    ).execute()
+                except Exception as e:
+                    print(f"⚠️ Calendar {cal_id} 取得失敗: {e}")
                     continue
-                duration = max(0, int((et - st).total_seconds() // 60))
-                typ = 8 if ev.get("recurringEventId") else 2
-                raw_events.append({
-                    "id": f"calendar:{ev.get('id')}",
-                    "topic": summary,
-                    "start_time": start_dt,
-                    "duration": duration,
-                    "type": typ,
-                })
+                items = res.get("items", [])
+                cal_short = cal_id.split("@")[0]
+                cal_count = 0
+                for ev in items:
+                    summary = (ev.get("summary", "") or "").strip()
+                    if not any(k in summary for k in CAL_KEYWORDS):
+                        continue
+                    start_dt = ev.get("start", {}).get("dateTime")
+                    end_dt = ev.get("end", {}).get("dateTime")
+                    if not start_dt or not end_dt:
+                        continue
+                    try:
+                        st = datetime.fromisoformat(start_dt)
+                        et = datetime.fromisoformat(end_dt)
+                    except ValueError:
+                        continue
+                    duration = max(0, int((et - st).total_seconds() // 60))
+                    typ = 8 if ev.get("recurringEventId") else 2
+                    raw_events.append({
+                        "id": f"calendar:{cal_short}:{ev.get('id')}",
+                        "topic": summary,
+                        "start_time": start_dt,
+                        "duration": duration,
+                        "type": typ,
+                    })
+                    cal_count += 1
+                print(f"📥 Calendar {cal_short}: {cal_count}件")
+            # カレンダー間重複排除（同じ予定が複数カレンダーに招待で乗ってるケース・start_time+topic先頭で判定）
+            dedup_seen = set()
+            deduped = []
+            for ev in raw_events:
+                key = (ev["start_time"][:16], ev["topic"][:20])
+                if key in dedup_seen:
+                    continue
+                dedup_seen.add(key)
+                deduped.append(ev)
+            cross_dropped = len(raw_events) - len(deduped)
+            if cross_dropped:
+                print(f"   ⊖ カレンダー間重複排除: {cross_dropped}件")
+            raw_events = deduped
             used_live = True
-            print(f"📥 Calendar API Zoom関連取得: {len(raw_events)}件（live）")
+            print(f"📥 Calendar API Zoom関連合計: {len(raw_events)}件（live・{len(IRODORI_CALENDAR_IDS)}カレンダー）")
         except Exception as e:
             print(f"⚠️ Calendar live取得失敗 ({e}) → JSONスナップショットへfallback")
 

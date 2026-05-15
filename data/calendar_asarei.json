@@ -1,7 +1,7 @@
 {
-  "_comment": "なっつんカレンダー（naaa.gwgw@gmail.com）からZoom関連予定（朝礼/Z①Z②/ZOOM/内部ZOOM等のキーワード一致）を抽出したスナップショット。Zoom APIでrecurring meeting occurrenceが取れない、またはTimeRex経由でPMI使い回しの予定（Zoom側に登録なし）を補完するため。",
-  "_source": "Google Calendar API (naaa.gwgw@gmail.com)",
-  "_fetched_at": "2026-05-14T12:39:43.391808",
+  "_comment": "なっつん（小川さん）＋飯田さん のGoogleカレンダーからZoom関連予定（朝礼/Z①Z②/ZOOM/内部ZOOM/ズーム/zoom1./zoom2.等のキーワード一致）を抽出したスナップショット。Zoom APIで取れないPMI使い回し運用の予定を補完するため。承認カレンダー：なっつん（naaa.gwgw@gmail.com）／飯田（iida.m.irodori@gmail.com）。",
+  "_source": "Google Calendar API (naaa.gwgw@gmail.com + iida.m.irodori@gmail.com)",
+  "_fetched_at": "2026-05-15T19:39:50.498104",
   "_keywords": [
     "朝礼",
     "ZOOM②",
@@ -19,126 +19,159 @@
     "内部ZOOM",
     "内部Zoom",
     "内部zoom",
-    "【内部"
+    "【内部",
+    "ズーム①",
+    "ズーム②",
+    "ズーム1",
+    "ズーム2",
+    "zoom1.",
+    "zoom2.",
+    "ZOOM1.",
+    "ZOOM2."
+  ],
+  "_calendars_taken": [
+    "naaa.gwgw@gmail.com",
+    "iida.m.irodori@gmail.com"
   ],
   "events": [
     {
-      "id": "calendar:lqfotv85937rj6knvvneikd8kv_20260514T010000Z",
-      "topic": "ZOOM②IRODORI 朝礼",
-      "start_time": "2026-05-14T10:00:00+09:00",
-      "duration": 30,
-      "type": 8
-    },
-    {
-      "id": "calendar:1c3sud1pfovumhphirg7l7inhs_20260514T050000Z",
-      "topic": "【内部ZOOM②】AI MTG",
-      "start_time": "2026-05-14T14:00:00+09:00",
-      "duration": 60,
-      "type": 8
-    },
-    {
-      "id": "calendar:tsb7nnt07cfknrg0lv30u467oc",
-      "topic": "Z① 小泉　滋さん: 内部 1on1（30分）",
-      "start_time": "2026-05-14T16:30:00+09:00",
-      "duration": 30,
-      "type": 2
-    },
-    {
-      "id": "calendar:lqfotv85937rj6knvvneikd8kv_20260515T010000Z",
+      "id": "calendar:naaa:lqfotv85937rj6knvvneikd8kv_20260515T010000Z",
       "topic": "ZOOM②IRODORI 朝礼",
       "start_time": "2026-05-15T10:00:00+09:00",
       "duration": 30,
       "type": 8
     },
     {
-      "id": "calendar:kkijsrvv9c44ctc0dijc0r5d7g",
+      "id": "calendar:naaa:kkijsrvv9c44ctc0dijc0r5d7g",
       "topic": "Z①【1to1】株式会社和楽創世 矢部功泰さん: 1on1ミーティング",
       "start_time": "2026-05-15T11:00:00+09:00",
       "duration": 50,
       "type": 2
     },
     {
-      "id": "calendar:q4hl3bjgreh1plv65s2rj4p3ak",
+      "id": "calendar:naaa:q4hl3bjgreh1plv65s2rj4p3ak",
       "topic": "Z①【1to1】アーバン企画株式会社 士業専門AI集客コンサルタント　滝澤宗之さん: 1on1ミーティング【30分】",
       "start_time": "2026-05-15T12:30:00+09:00",
       "duration": 30,
       "type": 2
     },
     {
-      "id": "calendar:1jgmuufh3app62106pep7ilbrs",
-      "topic": "Z① 木本　恵さん: 内部 1on1（30分）",
-      "start_time": "2026-05-15T13:00:00+09:00",
-      "duration": 30,
-      "type": 2
-    },
-    {
-      "id": "calendar:45pfjq6d1atca09v3gdtif1ap9",
+      "id": "calendar:naaa:45pfjq6d1atca09v3gdtif1ap9",
       "topic": "Z②【1to1】堀さん商談（小川）",
       "start_time": "2026-05-15T13:30:00+09:00",
       "duration": 60,
       "type": 2
     },
     {
-      "id": "calendar:lqfotv85937rj6knvvneikd8kv_20260518T010000Z",
+      "id": "calendar:naaa:9s9qiaih0i42d08666samhg3pc_20260515T060000Z",
+      "topic": "zoom2.  受注後の案件進捗管理MTG",
+      "start_time": "2026-05-15T15:00:00+09:00",
+      "duration": 60,
+      "type": 8
+    },
+    {
+      "id": "calendar:naaa:lqfotv85937rj6knvvneikd8kv_20260518T010000Z",
       "topic": "ZOOM②IRODORI 朝礼",
       "start_time": "2026-05-18T10:00:00+09:00",
       "duration": 30,
       "type": 8
     },
     {
-      "id": "calendar:lqfotv85937rj6knvvneikd8kv_20260519T010000Z",
+      "id": "calendar:iida:iida_20260518_kai",
+      "topic": "ZOOM①甲斐さんMTG",
+      "start_time": "2026-05-18T16:30:00+09:00",
+      "duration": 60,
+      "type": 8
+    },
+    {
+      "id": "calendar:naaa:lqfotv85937rj6knvvneikd8kv_20260519T010000Z",
       "topic": "ZOOM②IRODORI 朝礼",
       "start_time": "2026-05-19T10:00:00+09:00",
       "duration": 30,
       "type": 8
     },
     {
-      "id": "calendar:dtjcq0guna6g0k7mnbnlhe352o_20260520T023000Z",
+      "id": "calendar:naaa:dtjcq0guna6g0k7mnbnlhe352o_20260520T023000Z",
       "topic": "朝礼",
       "start_time": "2026-05-20T11:30:00+09:00",
       "duration": 30,
       "type": 8
     },
     {
-      "id": "calendar:vp19jc033t5rkde9peholi57mg_20260520T040000Z",
+      "id": "calendar:naaa:vp19jc033t5rkde9peholi57mg_20260520T040000Z",
       "topic": "内部ZOOM２　どらさんMTG",
       "start_time": "2026-05-20T13:00:00+09:00",
       "duration": 30,
       "type": 8
     },
     {
-      "id": "calendar:6pkot715oibfbql932jpmbomv4",
+      "id": "calendar:naaa:6pkot715oibfbql932jpmbomv4",
       "topic": "ｚ①【1to1】寺尾かな子さん　1to1　2回目（小川）",
       "start_time": "2026-05-20T16:30:00+09:00",
       "duration": 60,
       "type": 2
     },
     {
-      "id": "calendar:lqfotv85937rj6knvvneikd8kv_20260521T010000Z",
+      "id": "calendar:naaa:lqfotv85937rj6knvvneikd8kv_20260521T010000Z",
       "topic": "ZOOM②IRODORI 朝礼",
       "start_time": "2026-05-21T10:00:00+09:00",
       "duration": 30,
       "type": 8
     },
     {
-      "id": "calendar:6iisnn0bsqleq59s464el2i06q",
+      "id": "calendar:naaa:6iisnn0bsqleq59s464el2i06q",
       "topic": "zoom②ギバーずピッチ",
       "start_time": "2026-05-21T12:00:00+09:00",
       "duration": 30,
       "type": 2
     },
     {
-      "id": "calendar:1c3sud1pfovumhphirg7l7inhs_20260521T050000Z",
-      "topic": "【内部ZOOM②】AI MTG",
+      "id": "calendar:naaa:r13r2oh0rm7q0li5norlf4fn74",
+      "topic": "木本　恵さん: Z① 内部 1on1（30分）",
+      "start_time": "2026-05-21T13:00:00+09:00",
+      "duration": 30,
+      "type": 2
+    },
+    {
+      "id": "calendar:naaa:4rqva8m13ov089plhjs802pk52",
+      "topic": "ｚ①【1to1】藤林アリスさん　1to1（小川）",
       "start_time": "2026-05-21T14:00:00+09:00",
       "duration": 60,
+      "type": 2
+    },
+    {
+      "id": "calendar:naaa:jco6cnbrfq91dr8b91kugcafhk",
+      "topic": "Z①【1to1】行政書士岩田とみゑ法務事務所 岩田とみゑさん 1on1ミーティング【50min】（小川）",
+      "start_time": "2026-05-21T15:00:00+09:00",
+      "duration": 50,
+      "type": 2
+    },
+    {
+      "id": "calendar:iida:iida_20260521_asakura",
+      "topic": "Zoom②：朝倉さんMTG",
+      "start_time": "2026-05-21T16:00:00+09:00",
+      "duration": 75,
       "type": 8
     },
     {
-      "id": "calendar:lqfotv85937rj6knvvneikd8kv_20260522T010000Z",
+      "id": "calendar:naaa:lqfotv85937rj6knvvneikd8kv_20260522T010000Z",
       "topic": "ZOOM②IRODORI 朝礼",
       "start_time": "2026-05-22T10:00:00+09:00",
       "duration": 30,
+      "type": 8
+    },
+    {
+      "id": "calendar:iida:iida_20260522_as",
+      "topic": "ズーム①：AnswerSmile様MTG",
+      "start_time": "2026-05-22T11:00:00+09:00",
+      "duration": 60,
+      "type": 2
+    },
+    {
+      "id": "calendar:naaa:9s9qiaih0i42d08666samhg3pc_20260522T060000Z",
+      "topic": "zoom2.  受注後の案件進捗管理MTG",
+      "start_time": "2026-05-22T15:00:00+09:00",
+      "duration": 60,
       "type": 8
     }
   ]
