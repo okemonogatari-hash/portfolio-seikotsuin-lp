@@ -1,0 +1,47 @@
+name: Pukari News (note RSS → HP auto update)
+
+on:
+  schedule:
+    - cron: '15 * * * *'  # 毎時15分（zoom-daily 7:00と被らないようにずらす）
+  workflow_dispatch:
+    inputs:
+      note_user:
+        description: 'note ユーザーID（デフォルト nice_gnu546）'
+        required: false
+        default: 'nice_gnu546'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Update news from note RSS
+        env:
+          NOTE_USER: ${{ github.event.inputs.note_user || 'nice_gnu546' }}
+        run: python3 scripts/update_pukari_news.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pukari-codex-v01/index.html
+          if git diff --cached --quiet; then
+            echo "差分なし → スキップ"
+          else
+            STAMP=$(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M JST')
+            git commit -m "auto: pukari news更新 ($STAMP)"
+            git push
+            echo "✅ push完了"
+          fi
