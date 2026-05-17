@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>sanae-note-ops｜note運用代行を Claude Code で仕組み化するスキル</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --text: #2b2a26;
+    --sub: #6b6862;
+    --accent: #3d5a3c;
+    --accent-light: #e8efe6;
+    --card: #fffdf9;
+    --border: #e5e0d6;
+    --code-bg: #f0ede5;
+    --warn-bg: #fdf4e3;
+    --warn-border: #e0c280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .layout { display: flex; min-height: 100vh; }
+  .sidebar {
+    width: 260px;
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    padding: 30px 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+  .sidebar h1 {
+    padding: 0 24px 8px;
+    font-size: 16px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .sidebar .subtitle {
+    padding: 0 24px 24px;
+    font-size: 12px;
+    color: var(--sub);
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar nav { padding: 16px 0; }
+  .sidebar nav a {
+    display: block;
+    padding: 10px 24px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+  }
+  .sidebar nav a:hover {
+    background: var(--accent-light);
+    border-left-color: var(--accent);
+  }
+  .main {
+    flex: 1;
+    padding: 60px 80px;
+    max-width: 880px;
+  }
+  section { margin-bottom: 80px; scroll-margin-top: 20px; }
+  h2 {
+    font-size: 26px;
+    color: var(--accent);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent-light);
+  }
+  h3 {
+    font-size: 18px;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+  h4 {
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: var(--accent);
+  }
+  p { margin-bottom: 16px; }
+  ul, ol { margin: 12px 0 16px 24px; }
+  li { margin-bottom: 6px; }
+  code {
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: "SF Mono", Consolas, monospace;
+  }
+  pre {
+    background: var(--code-bg);
+    padding: 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 12px 0 20px;
+  }
+  pre code { background: none; padding: 0; }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 8px 16px;
+    margin: 12px 0 16px;
+    background: var(--accent-light);
+    color: var(--text);
+    font-style: normal;
+  }
+  blockquote p:last-child { margin-bottom: 0; }
+  .callout {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .callout strong { color: #8a5a00; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 20px;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .lead {
+    font-size: 16px;
+    color: var(--sub);
+    margin-bottom: 32px;
+  }
+  .tree {
+    background: var(--code-bg);
+    padding: 20px;
+    border-radius: 6px;
+    font-family: "SF Mono", Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .article-preview {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 40px 50px;
+    margin: 20px 0;
+  }
+  .article-preview h3 {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 24px;
+    text-align: center;
+    color: var(--accent);
+  }
+  .article-preview h4 {
+    font-size: 17px;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    background: var(--accent);
+    color: white;
+    font-size: 11px;
+    border-radius: 10px;
+    margin-right: 8px;
+  }
+  .badge.todo { background: #c47a3a; }
+  .badge.done { background: var(--accent); }
+  .footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    color: var(--sub);
+    font-size: 13px;
+    text-align: center;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
+  }
+  @media (max-width: 900px) {
+    .layout { flex-direction: column; }
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      padding: 16px 0;
+    }
+    .sidebar nav { display: flex; flex-wrap: wrap; gap: 4px; padding: 8px 16px; }
+    .sidebar nav a { border-left: none; border-bottom: 2px solid transparent; padding: 6px 10px; font-size: 12px; }
+    .main { padding: 30px 20px; }
+    h2 { font-size: 22px; }
+    .article-preview { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <h1>sanae-note-ops</h1>
+    <div class="subtitle">note運用代行を Claude Code で仕組み化するスキル</div>
+    <nav>
+      <a href="#intro">🌱 はじめに</a>
+      <a href="#what">📋 このスキルでできること</a>
+      <a href="#how">🛠 どうやって作ったか</a>
+      <a href="#structure">🏗 スキルの中身（構成）</a>
+      <a href="#policy">🎨 早苗さんトーン観察ノート</a>
+      <a href="#demo">📝 デモ：たつきさん紹介記事</a>
+      <a href="#receive">📂 受け取り方</a>
+      <a href="#first">🚶 最初の使い方</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+
+    <section id="intro">
+      <h2>🌱 はじめに</h2>
+      <p class="lead">さなえさんへ。シェア会で話してくださっていた「複数クライアントのnote運用代行をClaude Codeで仕組み化したい」を受けて、骨組みを作ってプレゼントとして用意したものです。</p>
+
+      <p>このページは、スキルの中身・できること・実物のサンプルが全部見えるように1ページにまとめてあります。気になるところからどうぞ。</p>
+
+      <div class="callout">
+        <strong>📦 名前：</strong> <code>sanae-note-ops</code>（Claude Code Skill）<br>
+        <strong>🔖 バージョン：</strong> v1.1（さなえさん実物note記事のトーン分析を反映済み）<br>
+        <strong>🎯 想定：</strong> さなえさん本人がClaude Codeのデスクトップアプリで使う前提
+      </div>
+    </section>
+
+    <section id="what">
+      <h2>📋 このスキルでできること</h2>
+
+      <p>クライアントごとに毎回考えること（誰に向けて／どんなトーンで／NGテーマ／本人語／月次MTGの拾い方）を <strong>クライアントカルテ</strong> にまとめておけば、あとは月次MTGの文字起こしを渡すだけで、Claude Codeが以下を順番に出してくれます。</p>
+
+      <ol>
+        <li><strong>MTG要約</strong>（本人語そのまま引用＋触れない話＋要確認情報）</li>
+        <li><strong>記事ネタ候補3〜5本</strong>（推奨度付き）</li>
+        <li><strong>採用1本の章立て</strong></li>
+        <li><strong>note叩き台</strong>（粗さ60〜70%でさなえさんが磨きやすい状態）</li>
+        <li><strong>投稿前チェック</strong>（8カテゴリ）</li>
+        <li><strong>クライアントへの確認事項リスト</strong></li>
+        <li><strong>月次納品レポートの下書き</strong>（必要なら）</li>
+      </ol>
+
+      <h3>4つの大事なルール</h3>
+      <ul>
+        <li><strong>投稿は自動化していません</strong> — 事故リスク大なので最後はさなえさんが磨いて手動投稿の前提</li>
+        <li><strong>未確認情報は全部「確認事項」に回す</strong> — 数字・固有名詞・第三者の声は断定で書かない</li>
+        <li><strong>本人語の引用はそのまま残す</strong> — AIっぽい一般論で穴埋めしないように指示済み</li>
+        <li><strong>叩き台はわざと60〜70%の粗さ</strong> — 完成品だと直しづらいと思うので</li>
+      </ul>
+    </section>
+
+    <section id="how">
+      <h2>🛠 どうやって作ったか</h2>
+
+      <p>大きく3段階で作りました。</p>
+
+      <h3>① ChatGPTで構想を言語化</h3>
+      <p>「こういうスキルを作りたい」と背景・目的・スコープ・出力フォーマット・安全ルールをまずChatGPTに整理してもらいました。</p>
+
+      <h3>② Claude Codeで骨組みを生成</h3>
+      <p>整理した指示文をClaude Codeに渡して、SKILL.md・references（3本）・templates（6本）の合計10ファイルの骨組みを生成。</p>
+
+      <h3>③ さなえさんのnote記事を実物で読み込んで、トーンを反映</h3>
+      <p>さなえさんの既存note記事を2本（<a href="https://note.com/cocoatoaisu/n/n1b4e414eaf4a" target="_blank" rel="noopener">ゼロフラ記事</a>と<a href="https://note.com/cocoatoaisu/n/n3cec4d3c7545" target="_blank" rel="noopener">林撚糸記事</a>）defuddleで取得して、文体・温度・引用のリズム・接続語・太字の入れ方・締めの着地まで分析。スキル内部の <code>references/writing-policy.md</code> に「<strong>さなえさん実物観察ノート</strong>」として残しました。</p>
+
+      <p>Claude Codeは叩き台を書く前に必ずこのノートを読むようにしてあるので、最初から「さなえさんっぽい」文体で出力されます。</p>
+    </section>
+
+    <section id="structure">
+      <h2>🏗 スキルの中身（構成）</h2>
+
+      <p>スキルは1フォルダで完結する設計です。中身は10ファイル：</p>
+
+<div class="tree">sanae-note-ops/
+├── SKILL.md                          ← 起動時の振る舞い・出力順序・安全ルール
+│
+├── references/                       ← 内部参照ドキュメント（3本）
+│   ├── workflow.md                   ←   Step 0〜7の実行フロー
+│   ├── writing-policy.md             ←   早苗さん記事5タイプの型・文体・観点
+│   │                                       + 早苗さん実物観察ノート（v1.1の核）
+│   └── safety-rules.md               ←   10の鉄則（未確認情報・盛り表現禁止 etc）
+│
+└── templates/                        ← 出力テンプレート（6本）
+    ├── client-card.md                ←   クライアントカルテ（一言ポジション込み）
+    ├── meeting-transcript-summary.md ←   MTG要約（本人語引用＋要確認リスト）
+    ├── article-plan.md               ←   記事ネタ3〜5本＋採用1本の章立て
+    ├── note-draft.md                 ←   note叩き台（60〜70%粗さ）
+    ├── pre-publish-check.md          ←   投稿前チェック（8カテゴリ）
+    └── monthly-report.md             ←   月次納品レポートのテンプレ</div>
+
+      <h3>各ファイルの役割</h3>
+      <table>
+        <thead><tr><th>ファイル</th><th>役割</th></tr></thead>
+        <tbody>
+          <tr><td><code>SKILL.md</code></td><td>スキルの起動時に最初に読まれる。何ができて何をしないか、出力順序、必須ルール</td></tr>
+          <tr><td><code>workflow.md</code></td><td>Step 0（起動時の確認）〜Step 7（月次レポート）まで、毎回の作業フローを書いてある</td></tr>
+          <tr><td><code>writing-policy.md</code></td><td>早苗さん記事5タイプの型・観点・文体。<strong>v1.1で「実物観察ノート」を追加</strong></td></tr>
+          <tr><td><code>safety-rules.md</code></td><td>クライアント業務で絶対に外さない10鉄則。盛り表現禁止・自動投稿禁止・未確認情報の扱い</td></tr>
+          <tr><td><code>client-card.md</code></td><td>クライアントごとに1枚埋める。トーン・NGテーマ・読者・本人語を集約</td></tr>
+          <tr><td><code>meeting-transcript-summary.md</code></td><td>MTG要約の出力フォーマット。本人語引用＋触れない話＋要確認</td></tr>
+          <tr><td><code>article-plan.md</code></td><td>記事ネタ3〜5本＋採用1本の章立てを並べる</td></tr>
+          <tr><td><code>note-draft.md</code></td><td>叩き台本体のテンプレ。60〜70%の粗さ指示が埋め込まれている</td></tr>
+          <tr><td><code>pre-publish-check.md</code></td><td>投稿前の8カテゴリチェック。事実・NGテーマ・トーン・売り込み感・本人温度 etc</td></tr>
+          <tr><td><code>monthly-report.md</code></td><td>クライアントに送る月次レポートの下書きテンプレ</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="policy">
+      <h2>🎨 早苗さんトーン観察ノート（抜粋）</h2>
+
+      <p>スキル内部の <code>references/writing-policy.md</code> 末尾に入っている「早苗さん実物観察ノート」の抜粋です。これがClaude Codeに「早苗さんっぽさ」を再現させる核です。</p>
+
+      <h3>冒頭の入り方</h3>
+      <ul>
+        <li>問い or 事実1文からズバッと入る</li>
+        <li>「最近、〜の話題が増えてきて」など説明的な導入は避ける</li>
+      </ul>
+      <blockquote>例：「自分は何がしたくて、何ができる人なのか分からない」（ゼロフラ記事冒頭）</blockquote>
+
+      <h3>文末のメリハリ</h3>
+      <ul>
+        <li><strong>「です」「と思います」を言い切る</strong>（ぼかさない）</li>
+        <li>「のかもしれません」「と感じます」は控えめに（多用すると曖昧で温度が下がる）</li>
+      </ul>
+
+      <h3>太字（早苗さん記事の最大の特徴）</h3>
+      <ul>
+        <li><strong>章ごとに2〜4箇所</strong> キーフレーズを太字化</li>
+        <li>「読者にここで止まってほしい」場所を狙う</li>
+      </ul>
+
+      <h3>引用→解釈→具体 のリズム（核中の核）</h3>
+      <pre>&gt; 「本人語そのまま」
+（1文の解釈・意味付け）
+（具体エピソード or 次の話題への橋渡し）</pre>
+
+      <h3>接続語</h3>
+      <ul>
+        <li><strong>「実際に」</strong>「だからこそ」「正直に言うと」「ところが」</li>
+        <li>文と文をきちんと繋いで「説明→意味→具体」のリズムを作る</li>
+      </ul>
+
+      <h3>早苗さんの主観の出し方</h3>
+      <ul>
+        <li>「<strong>私（さなえ）も</strong>」「私の場合は」を要所に入れる</li>
+        <li>紹介記事でも自分の体験・感想を控えめに入れて温度を上げる</li>
+      </ul>
+
+      <h3>叩き台書き終わりのチェックリスト（9項目）</h3>
+      <ul>
+        <li>冒頭が問い or 事実1文か？</li>
+        <li>章ごとに太字が2〜4箇所あるか？</li>
+        <li>引用後に1文の解釈→具体エピソードのリズムがあるか？</li>
+        <li>「実際に」「だからこそ」など接続語が要所に入っているか？</li>
+        <li>早苗さんの「私も」自己接続が1箇所以上あるか？</li>
+        <li>文末がメリハリある言い切りになっているか？</li>
+        <li>締めが感謝の一言＋連絡先で着地しているか？</li>
+        <li>業界用語にふりがなが付いているか？</li>
+        <li>絵文字を本文に入れていないか？</li>
+      </ul>
+    </section>
+
+    <section id="demo">
+      <h2>📝 デモ：たつきさんを題材に書いてみた紹介記事（叩き台 v2）</h2>
+
+      <div class="callout">
+        <strong>⚠️ これはあくまでサンプルです。</strong> 5/15シェア会のトランスクリプトだけを素材に、スキルが実際にどう動くかを見ていただくために試しに出力したものです。たつきさん本人の確認は取っていません。<br>
+        実運用では、さなえさんが本人ヒアリングを足して、本人確認を経て公開する流れになります。
+      </div>
+
+      <p><strong>入力素材：</strong> 2026-05-15 AIシェア会のCirclebackトランスクリプト1本だけ<br>
+      <strong>所要時間：</strong> 約2分</p>
+
+      <div class="article-preview">
+        <h3>ドラえもんみたいなClaude Codeを、自分のために</h3>
+
+        <p>「AI、もっとちゃんと使えるようにならなきゃ」</p>
+        <p>そう感じている方は多いと思います。実際、Claude CodeやCodexといったAI開発ツールの話題が、私の周りでもどんどん増えてきました。</p>
+        <p>でも、その「ちゃんと使えるようにならなきゃ」という気持ちを、ちょっとだけ手放してみる選択肢を、今日はご紹介したいです。</p>
+
+        <h4>滋賀のライターさんが作っている、「自分のドラえもん」</h4>
+        <p><strong>滋賀県在住、本業は製造業の会社員、副業は取材ライター。</strong> たつきさんは、AI開発ツール「Claude Code」で、<strong>自分のキャリアを伴走してくれる「ドラえもんみたいなAI」を自分のために作っている方</strong>です。</p>
+        <blockquote>「要するに、ドラえもんみたいなClaude Code作りたいなと、試しに自分の進路を伴走するみたいなのを、ちょっと作ったかなという感じです」</blockquote>
+        <p>肩書きで言えば「副業ライター」ですが、たつきさんが今やっているのは、それより少し<strong>手前のこと</strong>。</p>
+        <p><strong>「ライターが、自分のキャリアをAIと一緒に育てるには、まず何から触ればいいか」</strong>——その答えを、自分の手で先に試している方です。</p>
+
+        <h4>ライターになるまで</h4>
+        <p>たつきさんが副業でライティングを始めたきっかけは、共通の師匠である<strong>渡辺まりこさん主宰の「取材ライター養成講座」</strong>でした。私（さなえ）もまりこさんのライター講座「ゼロフラ」の卒業生なので、同じご縁から繋がった方です。</p>
+
+        <h4>「自分のためのAI」を作り始めた、ある日のシェア会</h4>
+        <p>きっかけは、私たちが毎月集まっているAIシェア会で、おけもんさん（カンパニー）が共有した一本の動画だったそうです。</p>
+        <blockquote>「別に会社じゃなくても、優秀なエージェント1人がいるだけでも十分ですよ、みたいな話がされていて。たぶん自分にはこっちのほうが合ってるかなと思って」</blockquote>
+        <p>仕事のためのAIではなく、<strong>自分の人生のためのAI</strong>。<br>そういう関わり方もある、と気づいた瞬間でした。</p>
+        <p>そこから生まれたのが、たつきさんの自作Claude Code環境、<strong>「AIキャリア伴走者ドラえもん」</strong>です。</p>
+        <blockquote>「僕のドラえもんを作りたいなと思って。でも自分用のやつなので、そんなに難しくなくていいんです。デスクトップのClaude Codeぐらいのわかりやすい方がいいなと思って」</blockquote>
+        <p><strong>「完璧を目指さない。自分が使いやすい粗さで、自分のために作る」</strong>——これがたつきさんのAIとの距離の取り方です。私はここに、たつきさんらしい温度があるなと感じました。</p>
+
+        <h4>「教えるのが好きなんだな」と気づいたとき</h4>
+        <p>たつきさんはClaude Codeを触りながら、もう一つ別のことにも気づいていました。<strong>「自分は、人に教えるのが好きなんじゃないか」</strong>ということです。</p>
+        <blockquote>「みのるんさんといろいろ壁打ちをしているときに、僕は結構、人に教えるのが好きなんだなと（思いました）」</blockquote>
+        <p>でも、こうも言います。</p>
+        <blockquote>「今の自分ではちょっとAIに詳しいだけなので、これでは教えるにはまだ程遠いなと思って」</blockquote>
+        <p>この<strong>正直さ</strong>が、たつきさんのこれからの強みになる気がします。</p>
+
+        <h4>DigiRiseへ。「レベル上げより、提供する場所」というフェーズ</h4>
+        <p>そして2026年5月、たつきさんは<strong>DigiRise</strong>というAIコミュニティに入会します。</p>
+        <p>入会したのと同じタイミングで、シェア会の場で、みのるんさんからたつきさんにこんな言葉がありました。</p>
+        <blockquote>「Tasukuさんはすでに Cursor＋CLAUDE.md まで触っている。これはDigiRiseのライター陣の中でも、誰もやっていないレベルですよ」<br><br>「<strong>レベル上げる場所より、提供する場所を決めるフェーズ</strong>ですよ」</blockquote>
+        <p><strong>「ツールはもう十分使えている。次は、誰にどう届けるかを決めるとき」</strong>——この言葉は、AIに詳しくなりすぎて「教えるなんてまだまだ」と感じてしまっている人ほど、刺さるのではないでしょうか。</p>
+
+        <h4>「今更GPTs」が、誰かの「すごく便利」になった日</h4>
+        <p>もう一つだけ、たつきさんの最近のエピソードを書かせてください。</p>
+        <p>去年作っていた<strong>取材記事構成用のGPTs</strong>を、最近ブラッシュアップして、所属するゼロフラのコミュニティでシェアしたそうです。</p>
+        <blockquote>「世間ではClaude Code一色なので、今更GPTsなんて、と思ったんですけど」</blockquote>
+        <p>ところがシェア後すぐに、同じシェア会メンバーのユキさんが使ってくださり、「<strong>すごく便利</strong>」と伝えてくれました。私（さなえ）も実際に使わせていただいて、本当に助かりました。</p>
+        <blockquote>「需要があるのかなと思って、それは良かったなと思いますね」</blockquote>
+        <p><strong>「最新じゃなくても、届く相手はちゃんといる」</strong>——これは、AIで何か作っている全ての方に共有したい話です。</p>
+
+        <h4>たつきさんに相談してみたい方へ</h4>
+        <p>「AIに興味はあるけれど、何から触ればいいか分からない」<br>
+        「AIで何か作ってみたけれど、誰かの役に立つのか自信がない」<br>
+        「自分のキャリアを、AIと一緒に育てるってどういうこと？」</p>
+        <p>そんな問いを持っている方にとって、たつきさんは<strong>ちょうど一歩手前にいる伴走者</strong>だと思います。完璧な専門家ではなく、自分のドラえもんを自分で作っている人だからこそ、相談しやすい距離感があるはずです。</p>
+        <p>たつきさんの「<strong>AIキャリア伴走者ドラえもん</strong>」、いつか公開されたり、その実例が見られる日を、私も楽しみにしています。</p>
+        <p>最後まで読んでくださった方、ありがとうございました。</p>
+        <hr>
+        <p style="text-align:center; color:var(--sub); font-size:13px;">田畑さなえ｜note運用代行・取材ライター</p>
+      </div>
+
+      <h3>このサンプルと一緒に、スキルが出力したもの</h3>
+      <ul>
+        <li><strong>MTG要約</strong>：本人語を7箇所そのまま引用＋触れない方がよい話＋要確認情報5項目</li>
+        <li><strong>記事ネタ候補</strong>：3本（推奨度★3／★2／★1）</li>
+        <li><strong>章立て</strong>：採用案の10章構成</li>
+        <li><strong>投稿前チェック</strong>：8カテゴリ判定（事実確認・NGテーマ・トーン・売り込み感 etc）</li>
+        <li><strong>クライアント確認事項</strong>：12項目（プロダクション名の掲載可否・第三者のお名前掲載可否・GPTs公開URL等）</li>
+      </ul>
+    </section>
+
+    <section id="receive">
+      <h2>📂 受け取り方</h2>
+
+      <p>スキル本体（<code>sanae-note-ops</code>フォルダ）を、さなえさんのMacの <code>~/.claude/skills/</code> 配下に置くだけで使えるようになります。</p>
+
+      <h3>手順</h3>
+      <ol>
+        <li>こちらからフォルダをダウンロード（おけもんから個別にお渡しします）</li>
+        <li>解凍して <code>sanae-note-ops</code> フォルダを <code>~/.claude/skills/</code> に配置</li>
+        <li>Claude Codeを開いて「<strong>sanae-note-ops 起動して</strong>」と話しかける</li>
+      </ol>
+
+      <div class="callout">
+        <strong>💬 セットアップ伴走OK：</strong> もし「自分のMacにコピーするやり方わかんない」だったら、画面共有で5分くらいで一緒にやれるのでいつでも声かけてください。
+      </div>
+    </section>
+
+    <section id="first">
+      <h2>🚶 最初の使い方の提案</h2>
+
+      <p>いきなり本番クライアントで使うのが不安だったら、こんな順で慣らすのがおすすめです：</p>
+
+      <ol>
+        <li>担当クライアント1社を選んで、<strong>カルテだけ埋める</strong>（30〜60分・空欄でもOK）</li>
+        <li>直近のMTG文字起こしを1本だけ貼って、<strong>MTG要約と記事ネタ3〜5本まで</strong> 出してもらう</li>
+        <li>ピンと来た1本を選んで、<strong>叩き台まで作ってもらう</strong></li>
+        <li>出てきた叩き台を読んで「ここ違和感ある」「ここはもっとこう」をフィードバック</li>
+        <li>そのフィードバックを<strong>スキル本体に反映してさなえさん専用としてどんどん育てる</strong></li>
+      </ol>
+
+      <h3>さなえさんへのお願い</h3>
+      <p>このスキル、さなえさんが使えば使うほど精度が上がる設計になっています。「叩き台のここが違和感あった」「もっとこう書いてほしい」みたいなフィードバックを教えてもらえると、<strong>さなえさん専用としてもっと磨ける</strong>ので、ぜひ遠慮なく言ってください。</p>
+
+      <p>押し付けるつもりはぜんぜんなくて、<strong>「楽しくてやってる延長で作ったから、もし合いそうだったら触ってみて」</strong> くらいの温度で受け取ってもらえたら嬉しいです🌱</p>
+    </section>
+
+    <div class="footer">
+      <p>🤖 おけもんカンパニー × Claude Code</p>
+      <p>このページは限定共有用です。検索エンジンには表示されません。</p>
+    </div>
+
+  </main>
+</div>
+</body>
+</html>
