@@ -500,51 +500,59 @@
     <section id="receive">
       <h2>📂 受け取り方</h2>
 
-      <p>道具一式を、Macの中の決まった場所に置くだけで使えるようになります。5分くらいで設置完了です。</p>
+      <p>下の魔法の指示文をコピーして、Claude Codeに貼り付けるだけ。<strong>ダウンロードも解凍も設置も、ぜんぶClaude Codeが自動でやってくれます。</strong></p>
 
-      <div style="text-align: center; margin: 30px 0;">
-        <a href="sanae-note-ops.zip" download style="display:inline-block; background: var(--accent); color: white; padding: 18px 44px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 17px; box-shadow: 0 2px 8px rgba(61,90,60,0.25);">⬇️ sanae-note-ops.zip をダウンロード（23KB）</a>
+      <div style="background: linear-gradient(135deg, #e8efe6 0%, #d4e0d3 100%); border: 2px solid var(--accent); padding: 28px 28px 24px; border-radius: 10px; margin: 30px 0;">
+        <p style="font-size: 17px; font-weight: 600; color: var(--accent); margin-bottom: 8px;">✨ コピペするだけで設置完了する魔法の指示文</p>
+        <p style="font-size: 13px; color: var(--sub); margin-bottom: 16px;">下のボタンでコピー → Claude Codeのデスクトップアプリに貼り付けて Enter</p>
+        <div class="copy-block">
+          <pre id="cmd-magic">以下のURLから sanae-note-ops.zip をダウンロードして、
+~/.claude/skills/ の中に「sanae-note-ops」というフォルダとして設置してください。
+
+ダウンロード元：
+https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/sanae-note-ops/sanae-note-ops.zip
+
+手順：
+1. curl で ~/Downloads/sanae-note-ops.zip にダウンロード
+2. unzip で解凍
+3. ~/.claude/skills/ フォルダがなければ作る
+4. 解凍した sanae-note-ops フォルダを ~/.claude/skills/ の中へ移動
+5. 完了したら「設置完了！」と教えて
+
+そのあと、私が「sanae-note-ops 起動して」と言ったら、
+sanae-note-ops スキルを起動できるように準備しておいてください。</pre>
+          <button class="copy-btn" onclick="copyText('cmd-magic', this)">📋 コピー</button>
+        </div>
       </div>
 
-      <h3>設置の手順（Claude Codeに頼んじゃう方式・おすすめ）</h3>
-      <p>せっかくAIを触り始めたところなので、設置作業もClaude Codeにそのまま頼んじゃうのが一番ラクです。</p>
-
-      <h4>① 上のボタンからZIPをダウンロード</h4>
-      <p>ダウンロードフォルダに <code>sanae-note-ops.zip</code> が保存されます。</p>
-
-      <h4>② Claude Codeのデスクトップアプリを開く</h4>
-      <p>（普段使っているClaude Codeを開くだけ）</p>
-
-      <h4>③ 以下の指示文をコピーして、Claude Codeに貼り付けて話しかける</h4>
-      <div class="copy-block">
-        <pre id="cmd-install">ダウンロードフォルダにある sanae-note-ops.zip を解凍して、
-中の sanae-note-ops フォルダを ~/.claude/skills/ に入れて。
-（skillsフォルダがまだなければ作って）
-入れ終わったら「設置できたよ」と教えて。</pre>
-        <button class="copy-btn" onclick="copyText('cmd-install', this)">📋 コピー</button>
-      </div>
-      <p>Claude Codeが解凍も設置も全部やってくれます。「設置できたよ」と返事が来たら完了です（10秒くらい）。</p>
-
-      <h4>④ 続けて、起動の合言葉を話しかける</h4>
-      <div class="copy-block">
-        <pre id="cmd-run">sanae-note-ops 起動して</pre>
-        <button class="copy-btn" onclick="copyText('cmd-run', this)">📋 コピー</button>
-      </div>
+      <h3>使い方</h3>
+      <ol>
+        <li><strong>Claude Codeのデスクトップアプリを開く</strong>（普段使っているのでOK）</li>
+        <li><strong>上の「📋 コピー」ボタンを押す</strong></li>
+        <li><strong>Claude Codeに貼り付けてEnter</strong></li>
+        <li>Claude Codeが「設置完了！」と返事をくれるのを待つ（30秒くらい）</li>
+        <li>続けて、起動の合言葉を話しかける：
+          <div class="copy-block" style="margin-top: 10px;">
+            <pre id="cmd-run">sanae-note-ops 起動して</pre>
+            <button class="copy-btn" onclick="copyText('cmd-run', this)">📋 コピー</button>
+          </div>
+        </li>
+      </ol>
       <p>Claude Codeが「了解、まずクライアントは誰の記事を作りますか？」のように返してくれたら成功です🎉</p>
 
       <div class="callout">
-        <strong>💬 詰まったら気軽に声かけてください：</strong> 何か変なメッセージが出たり、Claude Codeが「できません」と言ったら、その画面のスクショを送ってもらえれば一緒に解決します。画面共有で5分くらいで一緒にやることもできます。
+        <strong>💬 詰まったら気軽に声かけてください：</strong> 何か変なメッセージが出たり、Claude Codeが「できません」と言ったら、その画面のスクショを送ってもらえれば一緒に解決します。
       </div>
 
       <details>
-        <summary>🛠 「自分で手を動かして設置したい」派の方向け（クリックで開く）</summary>
-        <p>Claude Codeに頼まずに、自分でFinderから設置したい方は、こちらの手順でどうぞ。</p>
+        <summary>📥 ZIPファイルを先に見たい・自分で手を動かしたい派の方向け</summary>
+        <p style="margin-top: 10px;">中身を確認してから入れたい方は、まずZIPだけダウンロードできます：</p>
+        <p><a href="sanae-note-ops.zip" download style="display:inline-block; background: var(--accent); color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-size: 14px; margin: 10px 0;">⬇️ sanae-note-ops.zip をダウンロード（23KB）</a></p>
+        <p style="margin-top: 16px;"><strong>自分で手動設置する手順：</strong></p>
         <ol>
-          <li>ダウンロードしたZIPをダブルクリックして解凍</li>
-          <li>Finder（顔のアイコン）を開く</li>
-          <li>メニューバーの「<strong>移動</strong>」→「<strong>フォルダへ移動...</strong>」をクリック<br>
-              <span style="color: var(--sub); font-size: 13px;">（ショートカット：<code>⌘ + Shift + G</code>）</span></li>
-          <li>出てきた入力欄に <code>~/.claude/skills</code> をコピペしてEnter</li>
+          <li>ZIPをダブルクリックして解凍</li>
+          <li>Finder（顔のアイコン）→ メニューバーの「<strong>移動</strong>」→「<strong>フォルダへ移動...</strong>」（<code>⌘ + Shift + G</code>）</li>
+          <li>入力欄に <code>~/.claude/skills</code> をコピペしてEnter</li>
           <li>解凍した <code>sanae-note-ops</code> フォルダを、開いたskillsフォルダにドラッグ＆ドロップ</li>
           <li>Claude Codeを開いて「<code>sanae-note-ops 起動して</code>」と話しかける</li>
         </ol>
