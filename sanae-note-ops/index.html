@@ -460,17 +460,42 @@
     <section id="receive">
       <h2>📂 受け取り方</h2>
 
-      <p>道具一式（<code>sanae-note-ops</code>というフォルダ）を、さなえさんのMacの中の決まった場所に置くだけで使えるようになります。</p>
+      <p>道具一式を、Macの中の決まった場所に置くだけで使えるようになります。5分くらいで設置完了です。</p>
 
-      <h3>手順</h3>
+      <div style="text-align: center; margin: 30px 0;">
+        <a href="sanae-note-ops.zip" download style="display:inline-block; background: var(--accent); color: white; padding: 18px 44px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 17px; box-shadow: 0 2px 8px rgba(61,90,60,0.25);">⬇️ sanae-note-ops.zip をダウンロード（23KB）</a>
+      </div>
+
+      <h3>設置の手順</h3>
+
+      <h4>① 上のボタンからZIPをダウンロード</h4>
+      <p>ダウンロードフォルダに <code>sanae-note-ops.zip</code> が保存されます。</p>
+
+      <h4>② ZIPをダブルクリックして解凍</h4>
+      <p><code>sanae-note-ops</code> というフォルダができます。</p>
+
+      <h4>③ Macの中の「Claude Codeのスキル置き場」を開く</h4>
       <ol>
-        <li>フォルダをダウンロード（おけもんから個別にお渡しします）</li>
-        <li>フォルダを解凍して、Macの決まった場所に置く</li>
-        <li>Claude Codeを開いて「<strong>sanae-note-ops 起動して</strong>」と話しかける</li>
+        <li>Finder（顔のアイコン）を開く</li>
+        <li>メニューバーの「<strong>移動</strong>」→「<strong>フォルダへ移動...</strong>」をクリック<br>
+            <span style="color: var(--sub); font-size: 13px;">（ショートカット：<code>⌘ + Shift + G</code>）</span></li>
+        <li>出てきた入力欄に以下をコピペしてEnter：</li>
       </ol>
+      <pre>~/.claude/skills</pre>
 
       <div class="callout">
-        <strong>💬 設置作業も一緒にやれます：</strong> もし「Macのどこに置くの？」「解凍ってどうやるの？」だったら、画面共有で5分くらいで一緒にやれるので、いつでも声かけてください。
+        <strong>💡 もし「フォルダが見つかりません」と出たら：</strong> Claude Codeがまだスキル機能を使ったことのない状態かも。Claude Codeを一度起動して何か話しかけてから、もう一度試してみてください。それでもダメなら、設置作業を画面共有で一緒にやりましょう。
+      </div>
+
+      <h4>④ 解凍した <code>sanae-note-ops</code> フォルダを、開いた skills フォルダにドラッグ＆ドロップ</h4>
+      <p>これで設置完了です。</p>
+
+      <h4>⑤ Claude Codeを開いて、こう話しかける</h4>
+      <pre>sanae-note-ops 起動して</pre>
+      <p>Claude Codeが「了解、まずクライアントは誰の記事を作りますか？」のように返してくれたら成功です。</p>
+
+      <div class="callout">
+        <strong>💬 詰まったら気軽に声かけてください：</strong> 「Finderってどこ？」「skillsフォルダが見つからない」「Claude Codeにどう話しかけるの？」など、どこで詰まっても画面共有で5分くらいで一緒にやれます。
       </div>
     </section>
 
