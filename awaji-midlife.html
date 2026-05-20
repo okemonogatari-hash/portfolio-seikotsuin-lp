@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自分を取り戻す旅 — 淡路島へ | Awaji Island, Reclaim Yourself</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --dark: #080C14;
+      --dark-2: #111827;
+      --dark-3: #1C2433;
+      --slate: #2D3748;
+      --gold: #B8926A;
+      --gold-light: #D4A96A;
+      --cream: #F0EBE3;
+      --cream-dim: #C4B9AE;
+      --muted: #6B7A8D;
+      --white: #FAFAF8;
+      --radius: 4px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--dark);
+      color: var(--cream);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== TYPOGRAPHY ===== */
+    .en-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+    .h-serif {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+    }
+    .h-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.5s ease, box-shadow 0.5s ease;
+    }
+    header.scrolled {
+      background: rgba(8,12,20,0.96);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(184,146,106,0.15);
+    }
+    .logo-text {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--cream-dim);
+      letter-spacing: 0.15em;
+    }
+    .logo-dot {
+      display: inline-block;
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin: 0 0.5rem;
+      vertical-align: middle;
+    }
+    nav { display: flex; gap: 2.5rem; }
+    nav a {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: var(--gold); }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 100vh;
+      min-height: 700px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 8rem;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=90');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.45) saturate(0.6);
+      transform: scale(1.04);
+      animation: heroZoom 18s ease-out forwards;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.04); filter: brightness(0.35) saturate(0.5); }
+      to { transform: scale(1); filter: brightness(0.45) saturate(0.65); }
+    }
+    .hero-vignette {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at center, transparent 30%, rgba(8,12,20,0.7) 100%),
+        linear-gradient(0deg, rgba(8,12,20,0.9) 0%, transparent 50%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 4rem;
+      max-width: 800px;
+    }
+    .hero-small {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeSlideUp 0.9s 0.6s forwards;
+    }
+    .hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      color: var(--white);
+      line-height: 1.5;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeSlideUp 1s 0.9s forwards;
+    }
+    .hero-title .accent { color: var(--gold-light); }
+    .hero-line {
+      width: 40px; height: 1px;
+      background: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeIn 0.8s 1.2s forwards;
+    }
+    .hero-sub {
+      font-size: 0.9rem;
+      color: var(--cream-dim);
+      line-height: 2;
+      max-width: 480px;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeSlideUp 0.9s 1.3s forwards;
+    }
+    .hero-scroll-hint {
+      position: absolute;
+      right: 3rem; bottom: 3rem;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeIn 0.8s 1.8s forwards;
+    }
+    .hero-scroll-hint::before {
+      content: '';
+      display: block;
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ===== SECTION BASE ===== */
+    .section { padding: 9rem 4rem; max-width: 1200px; margin: 0 auto; }
+    .section-sm { max-width: 780px; }
+
+    /* ===== OPENING STATEMENT ===== */
+    .opening {
+      padding: 9rem 4rem;
+      background: var(--dark-2);
+    }
+    .opening-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .opening-quote {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      line-height: 2;
+      color: var(--cream);
+      letter-spacing: 0.08em;
+      margin-bottom: 3rem;
+    }
+    .opening-quote em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+    .opening-body {
+      font-size: 0.93rem;
+      color: var(--cream-dim);
+      line-height: 2.2;
+      border-left: 1px solid var(--gold);
+      padding-left: 2rem;
+      font-weight: 300;
+    }
+
+    /* ===== FULLBLEED IMAGE ===== */
+    .fullbleed {
+      height: 70vh;
+      min-height: 480px;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+    .fullbleed-overlay {
+      position: absolute; inset: 0;
+      background: rgba(8,12,20,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fullbleed-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.6rem, 5vw, 3.5rem);
+      color: white;
+      text-align: center;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      line-height: 1.6;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+    }
+
+    /* ===== SCENE BLOCKS ===== */
+    .scenes { padding: 9rem 4rem; background: var(--dark-2); }
+    .scenes-inner { max-width: 1200px; margin: 0 auto; }
+    .scenes-title {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.08em;
+    }
+    .scenes-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 5rem;
+    }
+    .scene-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .scene-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 460px;
+    }
+    .scene-item:nth-child(even) .scene-img { order: 2; }
+    .scene-item:nth-child(even) .scene-text { order: 1; }
+    .scene-img {
+      overflow: hidden;
+      position: relative;
+    }
+    .scene-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: saturate(0.7) brightness(0.85);
+      transition: filter 0.7s ease, transform 0.7s ease;
+    }
+    .scene-item:hover .scene-img img {
+      filter: saturate(0.9) brightness(0.95);
+      transform: scale(1.03);
+    }
+    .scene-text {
+      background: var(--dark-3);
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .scene-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      color: rgba(184,146,106,0.18);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+    .scene-heading {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+      line-height: 1.6;
+    }
+    .scene-body {
+      font-size: 0.88rem;
+      color: var(--cream-dim);
+      line-height: 2.2;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+    .scene-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: gap 0.25s;
+    }
+    .scene-link:hover { gap: 1.1rem; }
+    .scene-link::after {
+      content: '→';
+      font-family: serif;
+    }
+
+    /* ===== DOG SECTION ===== */
+    .dog-section {
+      padding: 9rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .dog-img {
+      position: relative;
+    }
+    .dog-img-main {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .dog-img-main img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: saturate(0.65) brightness(0.8);
+      transition: filter 0.7s;
+    }
+    .dog-img-main:hover img { filter: saturate(0.85) brightness(0.95); }
+    .dog-img-accent {
+      position: absolute;
+      bottom: -2rem; right: -2rem;
+      width: 55%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border: 3px solid var(--dark);
+      border-radius: 2px;
+    }
+    .dog-img-accent img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: saturate(0.65);
+    }
+
+    /* ===== FOOD SECTION ===== */
+    .food-section { background: var(--dark-2); padding: 9rem 4rem; }
+    .food-inner { max-width: 1200px; margin: 0 auto; }
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 5rem;
+    }
+    .food-card {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .food-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: saturate(0.5) brightness(0.7);
+      transition: filter 0.6s, transform 0.6s;
+    }
+    .food-card:hover img {
+      filter: saturate(0.85) brightness(0.85);
+      transform: scale(1.04);
+    }
+    .food-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(8,12,20,0.85) 0%, transparent 60%);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .food-card-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.1em;
+    }
+    .food-card-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+    .food-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: gap 0.2s;
+    }
+    .food-link:hover { gap: 0.8rem; }
+
+    /* ===== PLAN ===== */
+    .plan-section { padding: 9rem 4rem; max-width: 1200px; margin: 0 auto; }
+    .plan-title {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--cream);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+    .plan-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 5rem;
+    }
+    .plan-day {
+      border-left: 1px solid var(--slate);
+      padding-left: 2.5rem;
+    }
+    .plan-day-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .plan-day-title {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 400;
+      font-size: 1.25rem;
+      color: var(--cream);
+      margin-bottom: 2rem;
+      letter-spacing: 0.08em;
+    }
+    .timeline { display: flex; flex-direction: column; gap: 2rem; }
+    .timeline-item { display: flex; gap: 1.5rem; }
+    .timeline-time {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      min-width: 48px;
+      padding-top: 3px;
+    }
+    .timeline-content {}
+    .timeline-place {
+      font-size: 0.9rem;
+      color: var(--cream);
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ===== ACCESS ===== */
+    .access-section { background: var(--dark-2); padding: 7rem 4rem; }
+    .access-inner { max-width: 1200px; margin: 0 auto; }
+    .access-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--slate);
+      margin-top: 4rem;
+    }
+    .access-block {
+      background: var(--dark-2);
+      padding: 3rem;
+    }
+    .access-block-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.1em;
+    }
+    .access-route { display: flex; flex-direction: column; gap: 1rem; }
+    .route-step { display: flex; gap: 1rem; align-items: flex-start; font-size: 0.83rem; color: var(--cream-dim); }
+    .route-dot {
+      width: 6px; min-width: 6px; height: 6px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      margin-top: 6px;
+    }
+    .route-time { font-size: 0.7rem; color: var(--gold); margin-top: 3px; }
+
+    /* ===== CLOSING ===== */
+    .closing {
+      height: 85vh;
+      min-height: 560px;
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=90');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .closing::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(8,12,20,0.62);
+    }
+    .closing-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      max-width: 700px;
+      padding: 2rem;
+    }
+    .closing-quote {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      font-size: clamp(1.4rem, 4vw, 2.4rem);
+      color: var(--white);
+      line-height: 1.9;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+    .closing-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      padding: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--slate);
+    }
+    .footer-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--cream-dim);
+      letter-spacing: 0.15em;
+    }
+    .footer-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.8;
+      text-align: right;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .fade-in-left {
+      opacity: 0; transform: translateX(-32px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .fade-in-right {
+      opacity: 0; transform: translateX(32px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .stagger > * {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .is-visible { opacity: 1 !important; transform: none !important; }
+    .stagger.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.05s; }
+    .stagger.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.15s; }
+    .stagger.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.25s; }
+    .stagger.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.35s; }
+    .stagger.is-visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.45s; }
+    .stagger.is-visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.55s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .scene-item { grid-template-columns: 1fr; min-height: auto; }
+      .scene-item:nth-child(even) .scene-img { order: 0; }
+      .scene-item:nth-child(even) .scene-text { order: 0; }
+      .scene-img { height: 340px; }
+      .dog-section { grid-template-columns: 1fr; gap: 3rem; }
+      .dog-img-accent { display: none; }
+      .food-grid { grid-template-columns: 1fr; }
+      .food-card { aspect-ratio: 16/9; }
+      .plan-grid { grid-template-columns: 1fr; }
+      .access-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .section { padding: 6rem 1.5rem; }
+      .hero-content { padding: 0 1.5rem; }
+      .opening { padding: 6rem 1.5rem; }
+      .scenes { padding: 6rem 1.5rem; }
+      .food-section { padding: 6rem 1.5rem; }
+      .plan-section { padding: 6rem 1.5rem; }
+      .access-section { padding: 6rem 1.5rem; }
+      .dog-section { padding: 6rem 1.5rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .footer-note { text-align: center; }
+      .fullbleed { background-attachment: scroll; }
+      .closing { background-attachment: scroll; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="logo-text">淡路島<span class="logo-dot"></span>自分を取り戻す旅</div>
+  <nav>
+    <a href="#experience">体験</a>
+    <a href="#food">食</a>
+    <a href="#plan">旅程</a>
+    <a href="#access">アクセス</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <p class="hero-small">Awaji Island — A Journey Back to Yourself</p>
+    <h1 class="hero-title">
+      ここで、もう一度、<br>
+      <span class="accent">息をする。</span>
+    </h1>
+    <div class="hero-line"></div>
+    <p class="hero-sub">
+      何も期待しなくていい。<br>
+      ただ、海の前に立ちたかった。<br>
+      それだけで、十分だ。
+    </p>
+  </div>
+  <div class="hero-scroll-hint">Scroll</div>
+</section>
+
+<!-- OPENING STATEMENT -->
+<div class="opening">
+  <div class="opening-inner fade-in">
+    <p class="opening-quote">
+      気づいたら、<em>疲れていた。</em><br>
+      いつからかわからないけれど。
+    </p>
+    <p class="opening-body">
+      40代になって、仕事も、家庭も、それなりに形になった。<br>
+      なのに、夜中に目が覚める。<br>
+      何かが、足りない。何かを、失った気がする。<br><br>
+      そういう時、人は旅に出る。<br>
+      大阪から一時間。明石海峡大橋を渡ると、<br>
+      空気が変わる。何かが、緩む。<br><br>
+      淡路島は、答えをくれない。<br>
+      ただ、海と花と、静かな時間がある。<br>
+      それで十分だと、ここに来た人は知っている。
+    </p>
+  </div>
+</div>
+
+<!-- FULLBLEED IMAGE 1 -->
+<div class="fullbleed" style="background-image: url('images/awaji-hanasajiki-verbena.jpg');">
+  <div class="fullbleed-overlay">
+    <p class="fullbleed-text">
+      「何もしない」を、<br>
+      していいんだ。
+    </p>
+  </div>
+</div>
+
+<!-- SCENES / EXPERIENCE -->
+<section class="scenes" id="experience">
+  <div class="scenes-inner">
+    <div class="fade-in">
+      <span class="en-label">The Experience</span>
+      <h2 class="scenes-title">淡路島が差し出すもの</h2>
+      <p class="scenes-sub">誰かを喜ばせるためではない。自分が、ただそこにいたいから。</p>
+    </div>
+    <div class="scene-list">
+
+      <!-- 渦潮 -->
+      <div class="scene-item">
+        <div class="scene-img fade-in-left">
+          <img src="https://images.unsplash.com/photo-1544552866-d3ed42536cfd?auto=format&fit=crop&w=900&q=85" alt="うずしおクルーズ" loading="lazy">
+        </div>
+        <div class="scene-text fade-in-right">
+          <div class="scene-num">01</div>
+          <h3 class="scene-heading">渦潮の前に立つ</h3>
+          <p class="scene-body">
+            世界最大の渦潮。<br>
+            鳴門海峡が引き起こす自然の暴力は、<br>
+            なぜか、見ていると楽になる。<br><br>
+            自分の悩みなど、ちっぽけだと思えるわけじゃない。<br>
+            ただ、渦は渦だ。流れは流れだ。<br>
+            それが、なぜか、清々しかった。
+          </p>
+          <a href="https://www.uzu-shio.com/" target="_blank" rel="noopener" class="scene-link">うずしおクルーズ 公式</a>
+        </div>
+      </div>
+
+      <!-- 花さじき -->
+      <div class="scene-item">
+        <div class="scene-img fade-in-right">
+          <img src="images/awaji-hanasajiki-verbena.jpg" alt="あわじ花さじき" loading="lazy">
+        </div>
+        <div class="scene-text fade-in-left">
+          <div class="scene-num">02</div>
+          <h3 class="scene-heading">花の丘で、何も考えない</h3>
+          <p class="scene-body">
+            あわじ花さじき。<br>
+            明石海峡を背景に、紫の花が丘一面を覆う。<br><br>
+            入園無料。駐車200円。<br>
+            何時間いても、誰も急かさない。<br>
+            ベンチに腰かけて、ただ、風を受けていた。<br>
+            それだけで、来た価値があった。
+          </p>
+          <a href="https://www.hyogo-tourism.jp/spot/0264" target="_blank" rel="noopener" class="scene-link">あわじ花さじき 詳細</a>
+        </div>
+      </div>
+
+      <!-- 夢舞台 -->
+      <div class="scene-item">
+        <div class="scene-img fade-in-left">
+          <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=900&q=85" alt="淡路夢舞台" loading="lazy">
+        </div>
+        <div class="scene-text fade-in-right">
+          <div class="scene-num">03</div>
+          <h3 class="scene-heading">安藤忠雄の空間に、一人でいる</h3>
+          <p class="scene-body">
+            淡路夢舞台。<br>
+            コンクリートと自然が交わる、安藤忠雄の設計。<br><br>
+            美しいとか、すごいとか、そういうことより。<br>
+            この空間にいると、なぜか、自分が静かになる。<br>
+            観光客の声も、どこか遠く聞こえる。<br>
+            そういう場所が、たまに必要だ。
+          </p>
+          <a href="https://www.yumebutai.co.jp/" target="_blank" rel="noopener" class="scene-link">淡路夢舞台 公式</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DOG SECTION -->
+<div class="dog-section">
+  <div class="dog-img fade-in-left">
+    <div class="dog-img-main">
+      <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=700&q=80" alt="犬と歩く" loading="lazy">
+    </div>
+    <div class="dog-img-accent">
+      <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=400&q=80" alt="犬と海" loading="lazy">
+    </div>
+  </div>
+  <div class="fade-in-right">
+    <span class="en-label">With Your Dog</span>
+    <h2 class="h-serif" style="font-size:clamp(1.4rem,3vw,2rem);font-weight:300;color:var(--cream);letter-spacing:0.08em;line-height:1.7;margin-bottom:1.5rem;">
+      犬は、正直だ。<br>
+      疲れた顔をしていたら、<br>
+      隣に来てくれる。
+    </h2>
+    <div style="width:32px;height:1px;background:var(--gold);margin-bottom:1.5rem;"></div>
+    <p style="font-size:0.88rem;color:var(--cream-dim);line-height:2.2;font-weight:300;margin-bottom:2rem;">
+      淡路島には、愛犬と一緒に歩ける場所が多い。<br>
+      のじまスコーラの無料ドッグランで走らせて、
+      隣で缶コーヒーを飲む。<br>
+      淡路ハイウェイオアシスで芝生に寝転がる。<br><br>
+      犬は、何も聞いてこない。<br>
+      ただ一緒にいてくれる。<br>
+      それが、今日は、ちょうどよかった。
+    </p>
+    <a href="https://nojima-scuola.com/" target="_blank" rel="noopener" class="scene-link">のじまスコーラ — ドッグラン無料</a>
+  </div>
+</div>
+
+<!-- FULLBLEED IMAGE 2 -->
+<div class="fullbleed" style="background-image: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=1920&q=90');">
+  <div class="fullbleed-overlay">
+    <p class="fullbleed-text">
+      The sea doesn't ask<br>
+      why you're here.
+    </p>
+  </div>
+</div>
+
+<!-- FOOD SECTION -->
+<section class="food-section" id="food">
+  <div class="food-inner">
+    <div class="fade-in">
+      <span class="en-label">Food & Drink</span>
+      <h2 class="scenes-title">一人で、ゆっくり食べる</h2>
+      <p class="scenes-sub">淡路牛、新鮮な海の幸、島の野菜。急がなくていい。誰も待っていない。</p>
+    </div>
+    <div class="food-grid stagger">
+
+      <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80" alt="のじまスコーラ" loading="lazy">
+        <div class="food-card-overlay">
+          <h3 class="food-card-name">のじまスコーラ</h3>
+          <p class="food-card-desc">廃校をリノベした空間で食べる地産地消ランチ。<br>犬を連れてテラスで、ゆっくり。</p>
+          <a href="https://nojima-scuola.com/" target="_blank" rel="noopener" class="food-link">詳細を見る →</a>
+        </div>
+      </div>
+
+      <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="miele the garden" loading="lazy">
+        <div class="food-card-overlay">
+          <h3 class="food-card-name">miele the garden</h3>
+          <p class="food-card-desc">海を眺める窓際の席。淡路鶏のランチ。<br>犬もOK。静かな午後。</p>
+          <a href="https://mielethegarden.com/" target="_blank" rel="noopener" class="food-link">詳細を見る →</a>
+        </div>
+      </div>
+
+      <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=600&q=80" alt="淡路シェフガーデン" loading="lazy">
+        <div class="food-card-overlay">
+          <h3 class="food-card-name">淡路シェフガーデン</h3>
+          <p class="food-card-desc">広大な芝生テラス。淡路牛と採れたて野菜。<br>夕暮れに一杯飲みたい。</p>
+          <a href="https://www.awaji-chefgarden.com/" target="_blank" rel="noopener" class="food-link">詳細を見る →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section class="plan-section" id="plan">
+  <div class="fade-in">
+    <span class="en-label">A Simple Plan</span>
+    <h2 class="plan-title">何も決めない、1泊2日。</h2>
+    <p style="font-size:0.85rem;color:var(--muted);margin-top:0.5rem;">これは「モデルコース」じゃない。誰かが実際に行った、ゆるい記録。</p>
+  </div>
+  <div class="plan-grid fade-in">
+    <div class="plan-day">
+      <p class="plan-day-num">Day One</p>
+      <h3 class="plan-day-title">着いて、ぼーっとする日</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-time">10:00</span>
+          <div>
+            <p class="timeline-place">淡路ハイウェイオアシス</p>
+            <p class="timeline-note">到着してすぐ。犬をドッグランで走らせる。缶コーヒーを買って芝生に座る。何もしない。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">12:30</span>
+          <div>
+            <p class="timeline-place">のじまスコーラ でランチ</p>
+            <p class="timeline-note">廃校の広いテラスでゆっくり食べる。ドッグランで遊んで疲れた犬は足元で寝ている。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">15:00</span>
+          <div>
+            <p class="timeline-place">あわじ花さじき</p>
+            <p class="timeline-note">入園無料。花の丘に一時間いた。何も考えなかった。それが正解だった。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">18:00</span>
+          <div>
+            <p class="timeline-place">宿にチェックイン → 夕食</p>
+            <p class="timeline-note">淡路牛のステーキを頼んだ。一人なのに、誰かに話したくなった。それは、悪くない感覚だった。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="plan-day">
+      <p class="plan-day-num">Day Two</p>
+      <h3 class="plan-day-title">帰り際に気づく日</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-time">07:00</span>
+          <div>
+            <p class="timeline-place">早朝の海岸を歩く</p>
+            <p class="timeline-note">犬は嬉しそうだった。波が来るたびに、少し後退する。俺もそうだな、と思った。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">10:00</span>
+          <div>
+            <p class="timeline-place">うずしおクルーズ</p>
+            <p class="timeline-note">渦潮を見た。大きかった。それだけで、なぜか十分だった。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">12:30</span>
+          <div>
+            <p class="timeline-place">道の駅うずしお でランチ</p>
+            <p class="timeline-note">270度の眺望。玉ねぎバーガーを食べた。海を見ながら、少しだけ未来のことを考えた。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">15:00</span>
+          <div>
+            <p class="timeline-place">帰路へ</p>
+            <p class="timeline-note">橋を渡るとき、島がだんだん小さくなった。「また来よう」と思った。それで十分だった。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="access-section" id="access">
+  <div class="access-inner">
+    <div class="fade-in">
+      <span class="en-label">Access</span>
+      <h2 class="scenes-title">大阪・神戸から、一時間。</h2>
+      <p class="scenes-sub" style="margin-top:0.5rem;">思い立ったら、行ける距離。それが淡路島のいいところ。</p>
+    </div>
+    <div class="access-grid stagger">
+      <div class="access-block">
+        <h4 class="access-block-title">大阪から</h4>
+        <div class="access-route">
+          <div class="route-step">
+            <div class="route-dot"></div>
+            <div>
+              <div>阪神高速 → 神戸淡路鳴門自動車道</div>
+              <div class="route-time">約60〜70分</div>
+            </div>
+          </div>
+          <div class="route-step">
+            <div class="route-dot"></div>
+            <div>明石海峡大橋を渡って淡路ICへ</div>
+          </div>
+        </div>
+      </div>
+      <div class="access-block">
+        <h4 class="access-block-title">神戸から</h4>
+        <div class="access-route">
+          <div class="route-step">
+            <div class="route-dot"></div>
+            <div>
+              <div>神戸西IC → 淡路IC</div>
+              <div class="route-time">約30〜40分</div>
+            </div>
+          </div>
+          <div class="route-step">
+            <div class="route-dot"></div>
+            <div>一番近い。朝思い立って、昼には着く。</div>
+          </div>
+        </div>
+      </div>
+      <div class="access-block">
+        <h4 class="access-block-title">フェリー（明石港）</h4>
+        <div class="access-route">
+          <div class="route-step">
+            <div class="route-dot"></div>
+            <div>
+              <div>明石港 → 岩屋港</div>
+              <div class="route-time">約13分・1,600円〜</div>
+            </div>
+          </div>
+          <div class="route-step">
+            <div class="route-dot"></div>
+            <div>この13分の船旅が、なぜか好きだ。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="closing-content fade-in">
+    <p class="closing-quote">
+      また、あなたに戻れる。<br>
+      ここに来れば、きっと。
+    </p>
+    <p class="closing-en">Awaji Island — where you come back to yourself.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">淡路島 · 自分を取り戻す旅</div>
+  <p class="footer-note">
+    掲載情報は2024〜2026年時点のものです。<br>
+    各施設の詳細は公式サイトでご確認ください。
+  </p>
+</footer>
+
+<script>
+  // Header scroll
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  // Intersection Observer
+  const animEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  animEls.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+    else obs.observe(el);
+  });
+</script>
+</body>
+</html>
