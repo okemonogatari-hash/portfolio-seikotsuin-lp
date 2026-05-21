@@ -384,6 +384,92 @@
       background: var(--cream);
     }
 
+    /* Q&Aブロック */
+    .qa-block {
+      margin-bottom: 20px;
+      padding: 20px 24px;
+      background: var(--cream);
+      border-left: 4px solid var(--navy);
+      border-radius: 2px;
+    }
+
+    .qa-block:last-child { margin-bottom: 0; }
+
+    .qa-q {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .qa-q-mark {
+      flex: 0 0 32px;
+      height: 32px;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: serif;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 2px;
+    }
+
+    .qa-q-text {
+      flex: 1;
+      font-size: 15px;
+      color: var(--navy-deep);
+      font-weight: 600;
+      padding-top: 4px;
+      line-height: 1.7;
+    }
+
+    .qa-a {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .qa-a-mark {
+      flex: 0 0 32px;
+      height: 32px;
+      background: var(--paper);
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: serif;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 2px;
+    }
+
+    .qa-a-text {
+      flex: 1;
+      font-size: 14px;
+      color: var(--text);
+      padding-top: 4px;
+      line-height: 1.8;
+    }
+
+    .qa-a-text p {
+      margin-bottom: 8px;
+    }
+
+    .qa-a-text p:last-child { margin-bottom: 0; }
+
+    .qa-a-text .note {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-top: 6px;
+      padding-left: 14px;
+      border-left: 2px solid var(--border);
+    }
+
     /* 実物リンクボックス */
     .demo-link {
       margin-top: 14px;
@@ -464,6 +550,7 @@
       <ol class="toc-list">
         <li><a href="#section-intro">はじめに</a></li>
         <li><a href="#section-request">甲斐さまからお預かりしているご要望</a></li>
+        <li><a href="#section-qa">甲斐さまからいただいたご質問へのお答え</a></li>
         <li><a href="#section-options">2つの選択肢</a></li>
         <li><a href="#section-notice">大切なご案内</a></li>
         <li><a href="#section-points">ご検討のポイント</a></li>
@@ -492,8 +579,58 @@
       <div class="back-to-toc"><a href="#toc">▲ 目次に戻る</a></div>
     </section>
 
+    <section id="section-qa">
+      <h2>3. 甲斐さまからいただいたご質問へのお答え</h2>
+      <p style="margin-bottom: 20px;">いただいた3つのご質問について、順番にお答えいたします。</p>
+
+      <div class="qa-block">
+        <div class="qa-q">
+          <div class="qa-q-mark">Q</div>
+          <div class="qa-q-text">ホームページは何のAIを使って制作されていますか？</div>
+        </div>
+        <div class="qa-a">
+          <div class="qa-a-mark">A</div>
+          <div class="qa-a-text">
+            <p>主に <strong>Codex</strong>（OpenAI社）というAIを使って制作しております。仕上げ・調整には <strong>Claude</strong>（Anthropic社）というAIも組み合わせて使っています。</p>
+            <div class="note">どちらも現在広く使われている、信頼性の高いAIです。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-block">
+        <div class="qa-q">
+          <div class="qa-q-mark">Q</div>
+          <div class="qa-q-text">今お渡ししているホームページに、軽量CMS（記事を直接書き込める仕組み）を埋め込むことは可能でしょうか？</div>
+        </div>
+        <div class="qa-a">
+          <div class="qa-a-mark">A</div>
+          <div class="qa-a-text">
+            <p>技術的には可能です。ただし、新たに月額のご利用料金と、管理画面の設定・運用にかかる費用が発生いたします。</p>
+            <p>同じ「記事を更新できる」目的でしたら、別の方法（後述の <strong>方法B</strong>）もご検討いただけます。あわせて2つの選択肢を整理しておりますので、ご一読ください。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-block">
+        <div class="qa-q">
+          <div class="qa-q-mark">Q</div>
+          <div class="qa-q-text">記事更新で外部サイトを登録する場合、複数のリンクを登録することは可能でしょうか？</div>
+        </div>
+        <div class="qa-a">
+          <div class="qa-a-mark">A</div>
+          <div class="qa-a-text">
+            <p>はい、可能です。</p>
+            <p>たとえば note ・ はてなブログ ・ Zenn など、複数の投稿サイトに書かれた記事を、ホームページの新着情報欄に <strong>混ぜて表示する</strong> ことができます。</p>
+            <div class="note">「メインはnote、補助として別サイト」のような使い分けもできます。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="back-to-toc"><a href="#toc">▲ 目次に戻る</a></div>
+    </section>
+
     <section id="section-options">
-      <h2>3. 2つの選択肢</h2>
+      <h2>4. 2つの選択肢</h2>
       <p>上記のご要望に対して、ご検討いただきたい方法は大きく2つございます。</p>
 
       <div class="compare-wrapper">
@@ -589,7 +726,7 @@
     </section>
 
     <div class="notice" id="section-notice">
-      <h2>4. 大切なご案内</h2>
+      <h2>5. 大切なご案内</h2>
       <p>
         <strong>どちらを選ばれましても、月々の継続費用が発生いたします。</strong>
       </p>
@@ -603,7 +740,7 @@
     </div>
 
     <section id="section-points">
-      <h2>5. ご検討のポイント</h2>
+      <h2>6. ご検討のポイント</h2>
       <p style="margin-bottom: 16px;">下記の3点をご検討いただけますと、方向性を決めやすくなります。</p>
       <ol class="check-list">
         <li>
@@ -620,7 +757,7 @@
     </section>
 
     <section id="section-next">
-      <h2>6. 次のステップ</h2>
+      <h2>7. 次のステップ</h2>
       <p>
         方向性が決まりましたら、詳細なお見積りをご用意いたします。
       </p>
