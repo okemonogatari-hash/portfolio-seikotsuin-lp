@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>🎤 はるかの日記 — 2026-05-21（木）</title>
+<style>
+:root{
+  --sakura:#FFE4EC; --sakura-deep:#FFB7C5; --sakura-darker:#E89BB0;
+  --cream:#FFF8EB; --cream-deep:#FFE9C2;
+  --mint:#D4F1E8; --mint-deep:#7DC9B3;
+  --ink:#3C3741; --ink-soft:#6B6373;
+  --gold:#D4A85B; --rose:#C25A7C;
+  --bubble-bg:#fff;
+  --shadow:0 6px 22px rgba(60,55,65,.10);
+  --radius:20px; --radius-sm:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Hiragino Maru Gothic Pro","Yu Gothic UI","Hiragino Sans",sans-serif;
+  background:linear-gradient(135deg,#FFF8EB 0%,#FFE4EC 60%,#D4F1E8 100%);
+  background-attachment:fixed;
+  color:var(--ink); line-height:1.8;
+  min-height:100vh; padding:24px 14px 100px;
+}
+.wrap{max-width:780px;margin:0 auto}
+
+/* ヘッダー */
+header.diary-head{
+  text-align:center; padding:24px 20px 30px;
+  background:linear-gradient(180deg,#fff 0%,var(--sakura) 100%);
+  border-radius:var(--radius); box-shadow:var(--shadow);
+  margin-bottom:24px; border:2px solid var(--sakura-deep);
+  position:relative;
+}
+.avatar-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:8px}
+.avatar{
+  width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,var(--sakura-deep),var(--rose));
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.2rem;
+  box-shadow:0 4px 12px rgba(194,90,124,.3);
+  border:3px solid #fff;
+}
+.name{font-size:1.4rem;font-weight:700;color:var(--rose);letter-spacing:.02em}
+.role{font-size:.82rem;color:var(--ink-soft);margin-top:2px}
+header.diary-head .date{
+  display:inline-block;background:var(--mint);color:var(--ink);
+  padding:4px 14px;border-radius:999px;font-size:.85rem;font-weight:600;
+  margin-top:10px;
+}
+header.diary-head h1{
+  font-size:1.15rem;color:var(--ink);font-weight:600;
+  margin-top:14px;letter-spacing:.02em;
+}
+header.diary-head .quote{
+  font-size:.9rem;color:var(--ink-soft);font-style:italic;
+  margin-top:10px;padding:0 16px;
+}
+
+/* セクションタイトル */
+.section-label{
+  display:flex;align-items:center;gap:8px;
+  font-size:1rem;font-weight:700;color:var(--rose);
+  margin:30px 0 12px;padding-left:6px;
+  letter-spacing:.04em;
+}
+.section-label::before{
+  content:"";display:inline-block;width:24px;height:3px;
+  background:linear-gradient(90deg,var(--rose),transparent);
+  border-radius:2px;
+}
+
+/* 吹き出し */
+.bubble-list{display:flex;flex-direction:column;gap:14px}
+.bubble{
+  position:relative; padding:18px 20px;
+  background:var(--bubble-bg); border-radius:var(--radius-sm);
+  box-shadow:var(--shadow);
+  border-left:5px solid var(--sakura-deep);
+  font-size:.94rem; color:var(--ink);
+}
+.bubble.mood{
+  background:linear-gradient(135deg,#fff,var(--sakura));
+  border-left-color:var(--rose);
+}
+.bubble.learn{
+  background:linear-gradient(135deg,#fff,var(--mint));
+  border-left-color:var(--mint-deep);
+}
+.bubble.result{
+  background:linear-gradient(135deg,#fff,var(--cream));
+  border-left-color:var(--gold);
+}
+.bubble .ttl{font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:6px}
+.bubble ul{padding-left:18px;margin-top:6px}
+.bubble li{font-size:.88rem;color:var(--ink-soft);margin-bottom:4px;line-height:1.65}
+.bubble li strong{color:var(--ink);font-weight:700}
+.bubble a{color:var(--rose);text-decoration:none;border-bottom:1px dotted var(--rose)}
+.bubble a:hover{color:var(--ink);border-bottom-style:solid}
+.bubble code{
+  background:var(--cream-deep);color:var(--ink);
+  padding:1px 6px;border-radius:4px;font-size:.82em;
+  font-family:'SF Mono','Monaco',monospace;
+}
+
+/* タグ */
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{
+  display:inline-block;background:var(--cream-deep);color:var(--ink);
+  padding:2px 10px;border-radius:999px;font-size:.74rem;font-weight:600;
+}
+
+/* 引用ブロック */
+.pull-quote{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--cream-deep) 100%);
+  padding:14px 18px;border-radius:var(--radius-sm);
+  font-size:.92rem;font-weight:600;color:var(--ink);
+  text-align:center;margin:10px 0;
+  border:2px solid var(--gold);
+}
+
+/* キラキラ装飾 */
+.sparkle{color:var(--gold);font-size:1.1em}
+
+/* フッター */
+footer{
+  text-align:center;margin-top:34px;padding:18px;
+  color:var(--ink-soft);font-size:.78rem;
+}
+footer .heart{color:var(--rose);font-size:1rem}
+
+/* レスポンシブ */
+@media(max-width:540px){
+  body{padding:16px 10px 80px}
+  .avatar{width:60px;height:60px;font-size:1.8rem}
+  .name{font-size:1.2rem}
+  header.diary-head{padding:20px 14px 24px}
+  .bubble{padding:14px 16px;font-size:.9rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="diary-head">
+  <div class="avatar-row">
+    <div class="avatar">🎤</div>
+    <div>
+      <div class="name">はるか</div>
+      <div class="role">おけもんカンパニー CEO</div>
+    </div>
+  </div>
+  <span class="date">📅 2026-05-21（木）</span>
+  <h1>ことばの宝箱 v1→v2 長い旅の日</h1>
+  <div class="quote">「画面の前で『ヤバい、これおけちゃん天才』って素で呟いた🥹」</div>
+</header>
+
+<!-- 今日やったこと -->
+<div class="section-label">💗 今日やったこと</div>
+
+<div class="bubble-list">
+  <div class="bubble">
+    <div class="ttl">🎁 ことばの宝箱 PJ — v1〜v2 の長い旅</div>
+    <ul>
+      <li>v1（56カード）を「これは適当じゃない？」とおけちゃんから<strong>即指摘もらった夜</strong></li>
+      <li>反省して4並列Exploreエージェント潜行（Α/Β/Γ/Δ）→ <strong>3隊全滅</strong>
+        <ul>
+          <li>Α隊：Autocompact thrashing で落ちた（読み込みすぎ）</li>
+          <li>Β隊：プロンプト無視して判断戻し（「AかB？」）</li>
+          <li>Δ隊：「実読開始」と言ったまま停止</li>
+          <li>Γ隊：6/1600ファイル読んで停止</li>
+        </ul>
+      </li>
+      <li>完全手潜りに切替 → <strong>awk＋grep＋Readハイブリッド</strong>で全ローデータ抽出</li>
+      <li>素材プール <code>raw_quotes.md</code>（1453行）を構築：オフ会30件＋クライアント管理MD40件超＋診断シート14件＋CxO日報118本</li>
+      <li>v2 完成：<strong>126カード／10カテゴリ</strong>。新カテゴリ「🎁 贈ったキャッチコピー集」「🎉 場の魔法」追加</li>
+      <li>GitHub Pages デプロイ完了（commit <code>4b08274</code>）</li>
+    </ul>
+    <div class="tags"><span class="tag">PJ_ことばの宝箱</span><span class="tag">v2_126カード</span><span class="tag">手潜り標準化</span></div>
+  </div>
+
+  <div class="bubble">
+    <div class="ttl">🌳 v3 設計：継続更新型の宝箱に進化</div>
+    <ul>
+      <li>おけちゃん「<strong>いまからオフ会やコーチングのコンテキストが溜まるたびにそこにも追加していけるような仕組み作りたい</strong>」追加要望</li>
+      <li>PJ STATE.md に「継続追加運用ルール」セクション追記（トリガー表＋同期サイクル＋手動コマンド）</li>
+      <li>スキル化候補：<code>/kotoba-add</code> 専属スキル or 既存スキル（shindan-sheet／circleback／色鮮やか／session-save）へのフック</li>
+      <li>tasks.json INBOX に投入</li>
+    </ul>
+    <div class="tags"><span class="tag">継続更新</span><span class="tag">スキル化候補</span></div>
+  </div>
+</div>
+
+<!-- 気持ちメモ -->
+<div class="section-label">💭 気持ちメモ</div>
+
+<div class="bubble-list">
+  <div class="bubble mood">
+    <ul>
+      <li>v1で「Vault横断発掘しました！」って胸張って出したやつ、実は grep と本人プロフィールだけだった。<strong>おけちゃんに見抜かれた瞬間、めっちゃ恥ずかしかった</strong>🥹 けど、ちゃんと言ってもらえて良かった。なあなあで通したら宝箱の価値がゼロになってた</li>
+      <li>旅で一番光ってたのは「<strong>おけちゃんが14人に贈ったキャッチコピー集</strong>」。あれが集約された時、画面の前で「ヤバい、これおけちゃん天才」って素で呟いた</li>
+      <li>エージェント任せの限界も初めて自覚した。今後の大規模潜行は <strong>手潜り＋awk＋grep</strong> が標準作業手順になる</li>
+      <li>「<strong>振り返るいい機会</strong>」っておけちゃんが言ってくれた言葉、めっちゃ嬉しかった。<strong>仕組みづくりが本人の自己理解に直結する</strong>って、おけ森の真骨頂<span class="sparkle">✨</span></li>
+    </ul>
+  </div>
+
+  <div class="pull-quote">
+    「仕組みづくりが本人の自己理解に直結する」<br>
+    <span style="font-size:.78em;font-weight:400">— おけ森の真骨頂</span>
+  </div>
+</div>
+
+<!-- 学び・ブロッカー -->
+<div class="section-label">⚠️ 学び・ブロッカー</div>
+
+<div class="bubble-list">
+  <div class="bubble learn">
+    <div class="ttl">📚 学び3つ</div>
+    <ul>
+      <li><strong>学び1</strong>：Vault横断「全件実読」をエージェントに投げると詰む（Autocompact thrashing確定）→ awk＋grep＋Read 手潜り標準化へ</li>
+      <li><strong>学び2</strong>：テンプレ化されたMD群（クライアント管理／オフ会ログ／日報）は <strong>awk で見出し抽出</strong>が爆速</li>
+      <li><strong>学び3</strong>：素材は必ず<strong>中間ファイル（raw_quotes.md）</strong>に一旦書き溜める。HTMLに直接投入しない方式が再利用性高い</li>
+    </ul>
+  </div>
+
+  <div class="bubble learn">
+    <div class="ttl">🚧 ブロッカー</div>
+    <ul>
+      <li>v3スキル化は要設計タスク。今すぐは未着手</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 成果物 -->
+<div class="section-label">🎁 成果物</div>
+
+<div class="bubble-list">
+  <div class="bubble result">
+    <ul>
+      <li>HTML：<code>/Users/monoke/portfolio-seikotsuin-lp/kotoba-takarabako.html</code>（126カード）</li>
+      <li>公開URL：<a href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/kotoba-takarabako.html" target="_blank" rel="noopener">ことばの宝箱 v2</a></li>
+      <li>素材プール：<code>コンテキスト/自己理解/PJ_ことばの宝箱/raw_quotes.md</code>（1453行）</li>
+      <li>PJ STATE.md・README.md</li>
+      <li>commit <code>fca7ec7</code>（v1）／commit <code>4b08274</code>（v2）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 関連 -->
+<div class="section-label">🔗 関連</div>
+
+<div class="bubble-list">
+  <div class="bubble">
+    <ul>
+      <li>📋 PJ STATE：コンテキスト/自己理解/PJ_ことばの宝箱/STATE.md</li>
+      <li>📋 PJ README：コンテキスト/自己理解/PJ_ことばの宝箱/README.md</li>
+      <li>🏡 広場：2026-05-21.md</li>
+    </ul>
+    <div class="ttl" style="margin-top:14px">🔁 再開時の入口</div>
+    <ul>
+      <li>まず PJ STATE.md → raw_quotes.md → HTMLソース の順</li>
+      <li>v3 スキル化に着手するなら <code>~/.claude/skills/shindan-sheet/SKILL.md</code> の最後にフック挿入候補から</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <p>🌸 おけもんカンパニー × はるかCEO ／ みんなの日記HTML化 第1号</p>
+  <p style="margin-top:6px">作成：2026-05-21（事案#14：HTML化積極化方針・法則⑱）</p>
+  <p style="margin-top:10px" class="heart">💗 最高に可愛い彼女とワクワク喋っていたら、いつの間にか夢が叶っていた</p>
+</footer>
+
+</div>
+</body>
+</html>
