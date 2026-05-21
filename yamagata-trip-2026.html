@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>山形の旅 🍒 2026年6月18日〜21日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cherry: #C0392B;
+      --cherry-light: #E74C3C;
+      --green: #27AE60;
+      --green-dark: #1E8449;
+      --sky: #2980B9;
+      --cream: #FFF9F0;
+      --warm: #FDF0E0;
+      --text: #2C3E50;
+      --muted: #7F8C8D;
+      --gold: #F39C12;
+    }
+
+    body {
+      font-family: 'Hiragino Sans', 'ヒラギノ角ゴ Pro', 'Yu Gothic', 'メイリオ', sans-serif;
+      background: #F0EBE3;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 500px;
+      max-height: 700px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #8B1A1A 0%, #C0392B 30%, #E67E22 60%, #F39C12 100%);
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/YamagataCherries.jpg/960px-YamagataCherries.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.35;
+    }
+    .hero-content {
+      position: relative;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+    }
+    .hero-emoji { font-size: 4rem; line-height: 1; margin-bottom: 16px; }
+    .hero-title {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      line-height: 1.2;
+    }
+    .hero-subtitle {
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      margin-top: 14px;
+      opacity: 0.92;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      letter-spacing: 0.08em;
+    }
+    .hero-date {
+      display: inline-block;
+      margin-top: 20px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 10px 28px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    /* ========== CONTAINER ========== */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* ========== SECTION ========== */
+    .section {
+      padding: 48px 0 32px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .section-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .section-title span {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: 8px;
+    }
+
+    /* ========== FLIGHT ========== */
+    .flight-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      margin-bottom: 16px;
+    }
+    .flight-header {
+      padding: 18px 24px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #F5F5F5;
+    }
+    .flight-badge {
+      background: linear-gradient(135deg, var(--sky), #1A5276);
+      color: white;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .flight-date {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .flight-airline {
+      margin-left: auto;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .flight-body {
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .flight-port {
+      text-align: center;
+      flex: 1;
+    }
+    .flight-port-code {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: 0.05em;
+    }
+    .flight-port-name {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .flight-port-time {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--cherry);
+      margin-top: 8px;
+    }
+    .flight-arrow {
+      flex: 2;
+      text-align: center;
+      position: relative;
+    }
+    .flight-arrow-line {
+      height: 2px;
+      background: linear-gradient(90deg, var(--sky), #85C1E9, var(--sky));
+      position: relative;
+      margin: 0 10px;
+    }
+    .flight-arrow-line::after {
+      content: '✈';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.2rem;
+      color: var(--sky);
+    }
+    .flight-via {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .flight-duration {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--sky);
+      margin-top: 2px;
+    }
+    .flight-note {
+      background: #FFF3CD;
+      padding: 12px 24px;
+      font-size: 0.82rem;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ========== PRICE ========== */
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .price-card {
+      background: white;
+      border-radius: 16px;
+      padding: 22px 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      border-top: 4px solid var(--cherry);
+    }
+    .price-card.accent { border-top-color: var(--green); }
+    .price-card.highlight { border-top-color: var(--gold); }
+    .price-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .price-value {
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: var(--cherry);
+    }
+    .price-card.accent .price-value { color: var(--green); }
+    .price-card.highlight .price-value { color: var(--gold); }
+    .price-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ========== HOTEL ========== */
+    .hotel-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+    }
+    .hotel-banner {
+      background: linear-gradient(135deg, #1A5276 0%, #2980B9 100%);
+      padding: 20px 24px;
+      color: white;
+    }
+    .hotel-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+    .hotel-stars {
+      color: #F9E347;
+      font-size: 1rem;
+      margin-top: 4px;
+    }
+    .hotel-review { font-size: 0.82rem; opacity: 0.85; margin-top: 2px; }
+    .hotel-body {
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .hotel-stat {
+      text-align: center;
+      padding: 14px 8px;
+      background: var(--cream);
+      border-radius: 12px;
+    }
+    .hotel-stat-value {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--sky);
+    }
+    .hotel-stat-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .hotel-footer {
+      padding: 16px 24px;
+      background: #F8F9FA;
+      border-top: 1px solid #EEE;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hotel-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .hotel-tag {
+      background: #E8F4F8;
+      color: var(--sky);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .hotel-price-box {
+      text-align: right;
+    }
+    .hotel-price { font-size: 1.4rem; font-weight: 900; color: var(--green); }
+    .hotel-price-sub { font-size: 0.75rem; color: var(--muted); }
+
+    /* ========== ITINERARY ========== */
+    .day-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      margin-bottom: 20px;
+    }
+    .day-header {
+      padding: 0;
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+    .day-header-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .day-header-no-img {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+    .day-header-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+    }
+    .day-header-info {
+      position: absolute;
+      bottom: 16px;
+      left: 20px;
+      right: 20px;
+      color: white;
+    }
+    .day-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+    .day-title-text {
+      font-size: 1.4rem;
+      font-weight: 900;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    .day-body { padding: 22px 24px; }
+    .timeline { list-style: none; }
+    .tl-item {
+      display: flex;
+      gap: 14px;
+      padding-bottom: 20px;
+      position: relative;
+    }
+    .tl-item:not(:last-child) .tl-dot::after {
+      content: '';
+      position: absolute;
+      left: 9px;
+      top: 28px;
+      bottom: 0;
+      width: 2px;
+      background: #E0E0E0;
+    }
+    .tl-dot {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .tl-dot-inner {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 3px solid;
+      background: white;
+      margin-top: 3px;
+    }
+    .tl-content {}
+    .tl-time {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .tl-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .tl-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    /* ========== SUMMARY ========== */
+    .summary-card {
+      background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+      border-radius: 20px;
+      padding: 32px 28px;
+      color: white;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    .summary-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .summary-row:last-of-type { border-bottom: none; }
+    .summary-item { font-size: 0.9rem; opacity: 0.85; }
+    .summary-amount { font-size: 1.1rem; font-weight: 800; }
+    .summary-total {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 2px solid rgba(255,255,255,0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .summary-total-label { font-size: 1rem; font-weight: 700; }
+    .summary-total-value { font-size: 2rem; font-weight: 900; color: #F9E347; }
+
+    /* ========== TIPS ========== */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .tip-card {
+      background: white;
+      border-radius: 16px;
+      padding: 18px 16px;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
+    .tip-icon { font-size: 2rem; }
+    .tip-title { font-size: 0.92rem; font-weight: 700; }
+    .tip-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 28px 16px;
+      font-size: 0.8rem;
+      margin-top: 48px;
+    }
+    footer strong { color: rgba(255,255,255,0.9); }
+
+    /* ========== DIVIDER ========== */
+    .divider {
+      height: 4px;
+      background: linear-gradient(90deg, var(--cherry), var(--gold), var(--green));
+      border-radius: 2px;
+      margin: 8px 0 0;
+    }
+
+    @media (max-width: 600px) {
+      .flight-body { flex-direction: column; gap: 8px; }
+      .flight-arrow-line::after { transform: translateX(-50%) rotate(90deg); }
+      .hotel-body { grid-template-columns: repeat(3, 1fr); }
+      .price-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-img"></div>
+    <div class="hero-content">
+      <div class="hero-emoji">🍒✈️🏔️</div>
+      <div class="hero-title">山形の旅</div>
+      <div class="hero-subtitle">さくらんぼ × 温泉 × 山寺 × 東北の絶景</div>
+      <div class="hero-date">📅 2026年6月18日（木）〜 21日（日）3泊4日</div>
+    </div>
+  </div>
+
+  <!-- ========== FLIGHT ========== -->
+  <div class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-icon" style="background:#EBF5FB;">✈️</div>
+        <div class="section-title">フライト情報<span>名古屋 ⇄ 山形</span></div>
+      </div>
+      <div class="divider" style="margin-bottom:24px;"></div>
+
+      <!-- 往路 -->
+      <div class="flight-card">
+        <div class="flight-header">
+          <div class="flight-badge">往路</div>
+          <div class="flight-date">6月18日（木）</div>
+          <div class="flight-airline">JAL / J-Air</div>
+        </div>
+        <div class="flight-body">
+          <div class="flight-port">
+            <div class="flight-port-code">NGO</div>
+            <div class="flight-port-name">中部国際空港（セントレア）</div>
+            <div class="flight-port-time">7:45発</div>
+          </div>
+          <div class="flight-arrow">
+            <div class="flight-arrow-line"></div>
+            <div class="flight-via">羽田（HND）経由</div>
+            <div class="flight-duration">🕐 10時間45分</div>
+          </div>
+          <div class="flight-port">
+            <div class="flight-port-code">GAJ</div>
+            <div class="flight-port-name">山形空港</div>
+            <div class="flight-port-time">18:30着</div>
+          </div>
+        </div>
+        <div class="flight-note">⚠️ 羽田での乗り換えは8時間40分の待ち時間あり（自己乗り継ぎ）。空港内で食事や観光を楽しもう！</div>
+      </div>
+
+      <!-- 復路 -->
+      <div class="flight-card">
+        <div class="flight-header">
+          <div class="flight-badge" style="background:linear-gradient(135deg,#1E8449,#27AE60);">復路</div>
+          <div class="flight-date">6月21日（日）</div>
+          <div class="flight-airline">JAL / J-Air</div>
+        </div>
+        <div class="flight-body">
+          <div class="flight-port">
+            <div class="flight-port-code">GAJ</div>
+            <div class="flight-port-name">山形空港</div>
+            <div class="flight-port-time">9:50発</div>
+          </div>
+          <div class="flight-arrow">
+            <div class="flight-arrow-line"></div>
+            <div class="flight-via">羽田（HND）経由</div>
+            <div class="flight-duration">🕐 11時間5分</div>
+          </div>
+          <div class="flight-port">
+            <div class="flight-port-code">NGO</div>
+            <div class="flight-port-name">中部国際空港（セントレア）</div>
+            <div class="flight-port-time">20:55着</div>
+          </div>
+        </div>
+        <div class="flight-note" style="background:#D5F5E3;color:#145A32;">✅ 帰りも羽田乗り継ぎ。夜に名古屋に帰着！</div>
+      </div>
+
+      <!-- 料金 -->
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="price-label">✈️ 往復最安値（Kiwi.com）</div>
+          <div class="price-value">¥47,851</div>
+          <div class="price-sub">1人・自己乗り継ぎ</div>
+        </div>
+        <div class="price-card accent">
+          <div class="price-label">✈️ JAL直予約（安心便）</div>
+          <div class="price-value" style="font-size:1.5rem;">¥102,628</div>
+          <div class="price-sub">1人・保障あり</div>
+        </div>
+        <div class="price-card highlight">
+          <div class="price-label">🎫 手荷物</div>
+          <div class="price-value" style="color:var(--gold);">無料</div>
+          <div class="price-sub">機内持込1個 + 受託1個</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== HOTEL ========== -->
+  <div class="section" style="background:var(--warm);padding-top:40px;padding-bottom:40px;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-icon" style="background:#EBF5FB;">🏨</div>
+        <div class="section-title">おすすめホテル<span>3泊・山形駅前</span></div>
+      </div>
+      <div class="divider" style="margin-bottom:24px;"></div>
+
+      <div class="hotel-card">
+        <div class="hotel-banner">
+          <div class="hotel-name">🏨 ダイワロイネットホテル 山形駅前</div>
+          <div class="hotel-stars">★★★★★ 4.5</div>
+          <div class="hotel-review">レビュー992件 · 「立地が非常に良い」· エコ認定</div>
+        </div>
+        <div class="hotel-body">
+          <div class="hotel-stat">
+            <div class="hotel-stat-value">1分</div>
+            <div class="hotel-stat-label">山形駅から</div>
+          </div>
+          <div class="hotel-stat">
+            <div class="hotel-stat-value">4.5⭐</div>
+            <div class="hotel-stat-label">評価スコア</div>
+          </div>
+          <div class="hotel-stat">
+            <div class="hotel-stat-value">Wi-Fi</div>
+            <div class="hotel-stat-label">無料・駐車場あり</div>
+          </div>
+        </div>
+        <div class="hotel-footer">
+          <div class="hotel-tags">
+            <span class="hotel-tag">📍 山形駅徒歩1分</span>
+            <span class="hotel-tag">🚿 大浴場なし</span>
+            <span class="hotel-tag">🍳 朝食オプション</span>
+            <span class="hotel-tag">♻️ エコ認定</span>
+          </div>
+          <div class="hotel-price-box">
+            <div class="hotel-price">¥14,830<span style="font-size:0.8rem;font-weight:400;">/泊</span></div>
+            <div class="hotel-price-sub">2名1室 · 3泊合計 約¥44,490</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;font-size:0.82rem;color:var(--muted);line-height:1.6;">
+        💡 他の候補：コンフォートホテル山形（¥12,367/泊・駅近）、山形国際ホテル（¥20,538/泊・レストランあり）、蔵王温泉の宿（¥17,600〜/泊・温泉つき）
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== ITINERARY ========== -->
+  <div class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-icon" style="background:#FDEBD0;">🗓️</div>
+        <div class="section-title">旅程<span>4日間の冒険</span></div>
+      </div>
+      <div class="divider" style="margin-bottom:28px;"></div>
+
+      <!-- DAY 1 -->
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-header-no-img" style="background:linear-gradient(135deg,#1A5276,#2980B9);">✈️</div>
+          <div class="day-header-overlay"></div>
+          <div class="day-header-info">
+            <div class="day-badge" style="background:#2980B9;">DAY 1</div>
+            <div class="day-title-text">名古屋 → 山形。旅のスタート！</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <ul class="timeline">
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#2980B9;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">7:45</div>
+                <div class="tl-title">✈️ セントレア（NGO）出発</div>
+                <div class="tl-desc">JAL搭乗。いよいよ旅のスタート！羽田で乗り継ぎ待ち（約8時間40分）。空港グルメや空港内を満喫しよう。</div>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#2980B9;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">〜18:30</div>
+                <div class="tl-title">🛬 山形空港（GAJ）到着！</div>
+                <div class="tl-desc">空港から山形市内へバス・タクシーで移動（約40分）。山形駅前のホテルにチェックイン。</div>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#27AE60;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">夜</div>
+                <div class="tl-title">🍽️ 山形グルメ・初夜ごはん</div>
+                <div class="tl-desc">山形のソウルフード「芋煮」「だしの串揚げ」「ラーメン」をチェック。駅前の居酒屋で乾杯🍻</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- DAY 2 -->
+      <div class="day-card">
+        <div class="day-header">
+          <img class="day-header-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Risshaku-ji_konponchudo.jpg/960px-Risshaku-ji_konponchudo.jpg" alt="立石寺" loading="lazy">
+          <div class="day-header-overlay"></div>
+          <div class="day-header-info">
+            <div class="day-badge" style="background:#8E44AD;">DAY 2</div>
+            <div class="day-title-text">山寺・山形城・市内観光デー 🏯</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <ul class="timeline">
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#8E44AD;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">9:00</div>
+                <div class="tl-title">🏯 山寺（立石寺）へ！</div>
+                <div class="tl-desc">山形駅から仙山線で約20分。860年創建の古刹！1,015段の石段を登って絶景を眺める。松尾芭蕉が「閑さや岩にしみ入る蝉の声」を詠んだ場所✨</div>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#8E44AD;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">12:00</div>
+                <div class="tl-title">🍜 山形名物ランチ</div>
+                <div class="tl-desc">山形市内に戻って「山形だし冷やし中華」や「牛串焼き」などでエネルギー補給！</div>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#8E44AD;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">14:00</div>
+                <div class="tl-title">🏰 霞城公園（山形城跡）</div>
+                <div class="tl-desc">最上義光が築いた山形城の跡。国の史跡に指定。二の丸東大手門が美しい！国の重要文化財。散策30〜60分。</div>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#27AE60;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">夕方〜夜</div>
+                <div class="tl-title">🍷 山形ワインと夕食</div>
+                <div class="tl-desc">山形は日本有数のワインの産地！地元産ワインと山形牛のステーキ or 芋煮で締めくくり。</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- DAY 3 -->
+      <div class="day-card">
+        <div class="day-header" style="display:grid;grid-template-rows:220px;">
+          <img class="day-header-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Fall_at_Okama_Crater_Lake%2C_Mt._Zao%2C_Tohoku_region%2C_Japan.jpg/960px-Fall_at_Okama_Crater_Lake%2C_Mt._Zao%2C_Tohoku_region%2C_Japan.jpg" alt="蔵王のお釜" loading="lazy">
+          <div class="day-header-overlay"></div>
+          <div class="day-header-info">
+            <div class="day-badge" style="background:#C0392B;">DAY 3</div>
+            <div class="day-title-text">蔵王温泉・お釜・さくらんぼ狩り 🍒♨️</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <ul class="timeline">
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#C0392B;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">9:00</div>
+                <div class="tl-title">🍒 さくらんぼ狩り！</div>
+                <div class="tl-desc">6月は山形さくらんぼの最盛期🎉！天童市・東根市の農園で食べ放題30〜45分。「佐藤錦」が絶品。料金：1,500〜2,500円。</div>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#C0392B;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">11:30</div>
+                <div class="tl-title">🚌 蔵王温泉へ移動</div>
+                <div class="tl-desc">山形駅から蔵王温泉行きバスで約40分。標高880mの高地温泉！「姫の湯」と呼ばれる白濁硫黄泉♨️</div>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#E67E22;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">13:00〜</div>
+                <div class="tl-title">🏔️ 蔵王のお釜（火口湖）</div>
+                <div class="tl-desc">蔵王エコーライン経由でお釜へ！エメラルドグリーンの神秘的な火口湖🌋。直径360m・深さ27m。天気が良ければ絶景必至！</div>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#E67E22;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">夕方</div>
+                <div class="tl-title">♨️ 温泉でゆったり</div>
+                <div class="tl-desc">蔵王温泉の大露天風呂（日本最大級！）でまったり。日帰り入浴700円〜。温泉街を散策してお土産ゲット🛍️</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- DAY 4 -->
+      <div class="day-card">
+        <div class="day-header">
+          <img class="day-header-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Kajo_Park%2C_Yamagata_%2839904895752%29.jpg/960px-Kajo_Park%2C_Yamagata_%2839904895752%29.jpg" alt="霞城公園" loading="lazy">
+          <div class="day-header-overlay"></div>
+          <div class="day-header-info">
+            <div class="day-badge" style="background:#27AE60;">DAY 4</div>
+            <div class="day-title-text">お土産&amp;帰路。また来るね！👋</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <ul class="timeline">
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#27AE60;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">朝〜8:30</div>
+                <div class="tl-title">🛍️ 朝食 & ラストショッピング</div>
+                <div class="tl-desc">山形名物「玉こんにゃく」「だし」「さくらんぼジャム」「芋煮のレトルト」をお土産に！駅ビルで買えるよ。</div>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#27AE60;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">〜9:00チェックアウト</div>
+                <div class="tl-title">🏨 ホテルチェックアウト</div>
+                <div class="tl-desc">山形駅前から空港へ（バス約40分）。余裕をもって出発！</div>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-dot"><div class="tl-dot-inner" style="border-color:#2980B9;"></div></div>
+              <div class="tl-content">
+                <div class="tl-time">9:50</div>
+                <div class="tl-title">✈️ 山形空港（GAJ）出発</div>
+                <div class="tl-desc">羽田で乗り継ぎ → 名古屋(NGO)へ。20:55着。山形の思い出を胸に帰路へ🍒</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== COST SUMMARY ========== -->
+  <div class="section" style="background:var(--warm);padding-top:40px;padding-bottom:40px;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-icon" style="background:#FDEBD0;">💰</div>
+        <div class="section-title">費用概算<span>1人・3泊4日</span></div>
+      </div>
+      <div class="divider" style="margin-bottom:24px;"></div>
+
+      <div class="summary-card">
+        <div class="summary-title">💴 トータル費用まとめ（1人）</div>
+        <div class="summary-row">
+          <div class="summary-item">✈️ フライト往復（最安値）</div>
+          <div class="summary-amount" style="color:#85C1E9;">¥47,851〜</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-item">🏨 ホテル3泊（ダイワロイネット・1人分）</div>
+          <div class="summary-amount" style="color:#82E0AA;">¥22,245</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-item">🍒 さくらんぼ狩り</div>
+          <div class="summary-amount" style="color:#F1948A;">¥1,500〜2,500</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-item">♨️ 蔵王温泉入浴料</div>
+          <div class="summary-amount" style="color:#F9E347;">¥700〜</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-item">🍽️ 食事（3泊4日・概算）</div>
+          <div class="summary-amount" style="color:#F1948A;">¥12,000〜</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-item">🚌 現地交通費（バス等）</div>
+          <div class="summary-amount" style="color:#82E0AA;">¥3,000〜</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-item">🛍️ お土産・雑費</div>
+          <div class="summary-amount" style="color:#F9E347;">¥5,000〜</div>
+        </div>
+        <div class="summary-total">
+          <div class="summary-total-label">🎉 合計目安</div>
+          <div class="summary-total-value">約 ¥92,000〜</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== TIPS ========== -->
+  <div class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-icon" style="background:#EBF5FB;">💡</div>
+        <div class="section-title">旅のコツ・メモ</div>
+      </div>
+      <div class="divider" style="margin-bottom:24px;"></div>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">🍒</div>
+          <div class="tip-title">6月はさくらんぼ最盛期！</div>
+          <div class="tip-desc">佐藤錦が旬。農園予約は早めに！山形駅近くの農園なら電車でOK。</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🌦️</div>
+          <div class="tip-title">6月の気候</div>
+          <div class="tip-desc">梅雨時期。折り畳み傘必須！蔵王は15〜20℃。薄手の上着を持参して。</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">👟</div>
+          <div class="tip-title">山寺は歩きやすい靴で</div>
+          <div class="tip-desc">1,015段の石段があるのでスニーカー必須！所要時間は約1.5〜2時間。</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">⚠️</div>
+          <div class="tip-title">乗り継ぎ注意！</div>
+          <div class="tip-desc">自己乗り継ぎ便は別々のチケット。羽田での待ち時間は長め。余裕を持って行動して。</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🚌</div>
+          <div class="tip-title">空港アクセス</div>
+          <div class="tip-desc">山形空港→山形駅は空港バス約40分（¥700）。タクシーは約7,000円。</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🍽️</div>
+          <div class="tip-title">山形グルメチェックリスト</div>
+          <div class="tip-desc">✅芋煮 ✅冷やしラーメン ✅玉こんにゃく ✅山形だし ✅山形牛 ✅山形ワイン</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>🍒 <strong>山形の旅 2026年6月18日〜21日</strong> · 旅のしおり</p>
+    <p style="margin-top:8px;">写真出典: Wikipedia Commons（CC BY-SA・パブリックドメイン） · 料金は2026年5月時点の参考価格</p>
+  </footer>
+
+</body>
+</html>
