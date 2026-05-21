@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>ホームページの新着情報を更新する 2つの方法 — 甲斐さま向けご案内</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #1f3b7e;
+      --navy-deep: #0f2056;
+      --cream: #f7f3ec;
+      --paper: #ffffff;
+      --text: #2a2a2a;
+      --text-soft: #555;
+      --accent-a: #b87a4f;
+      --accent-b: #4a7a8c;
+      --border: #e0d9c8;
+      --highlight: #fff8e7;
+      --highlight-border: #c8a23d;
+      --notice-text: #7a5f1a;
+    }
+
+    body {
+      font-family: "Hiragino Mincho ProN", "游明朝", YuMincho, "Yu Mincho", serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.8;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    header {
+      text-align: center;
+      padding: 32px 0 28px;
+      border-bottom: 2px solid var(--navy);
+      margin-bottom: 32px;
+    }
+
+    .label {
+      display: inline-block;
+      font-size: 12px;
+      color: var(--navy);
+      letter-spacing: 0.2em;
+      padding: 4px 16px;
+      border: 1px solid var(--navy);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: var(--navy-deep);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-soft);
+      letter-spacing: 0.05em;
+    }
+
+    section {
+      background: var(--paper);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(15, 32, 86, 0.06);
+      border-left: 4px solid var(--navy);
+    }
+
+    h2 {
+      font-size: 19px;
+      color: var(--navy-deep);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.03em;
+    }
+
+    h3 {
+      font-size: 17px;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    .request-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .request-list li {
+      padding: 12px 16px 12px 36px;
+      background: var(--cream);
+      margin-bottom: 8px;
+      border-left: 3px solid var(--navy);
+      border-radius: 2px;
+      position: relative;
+      font-size: 15px;
+    }
+
+    .request-list li::before {
+      content: "▶";
+      position: absolute;
+      left: 14px;
+      top: 12px;
+      color: var(--navy);
+      font-size: 10px;
+    }
+
+    .request-list li:last-child { margin-bottom: 0; }
+
+    .compare-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 720px) {
+      .compare-wrapper { grid-template-columns: 1fr; }
+    }
+
+    .compare-card {
+      padding: 24px;
+      border-radius: 4px;
+      background: var(--paper);
+      border: 1px solid var(--border);
+    }
+
+    .compare-a {
+      border-top: 5px solid var(--accent-a);
+    }
+
+    .compare-b {
+      border-top: 5px solid var(--accent-b);
+    }
+
+    .method-badge {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      padding: 3px 12px;
+      color: white;
+      margin-bottom: 12px;
+      border-radius: 2px;
+    }
+
+    .compare-a .method-badge { background: var(--accent-a); }
+    .compare-b .method-badge { background: var(--accent-b); }
+
+    .compare-card h3 {
+      margin-bottom: 6px;
+      font-size: 18px;
+    }
+
+    .compare-a h3 { color: var(--accent-a); }
+    .compare-b h3 { color: var(--accent-b); }
+
+    .compare-card .image {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed var(--border);
+      line-height: 1.6;
+    }
+
+    .compare-row {
+      display: flex;
+      padding: 9px 0;
+      border-bottom: 1px dotted var(--border);
+      font-size: 14px;
+    }
+
+    .compare-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .compare-label {
+      flex: 0 0 100px;
+      color: var(--text-soft);
+      font-weight: 500;
+    }
+
+    .compare-value {
+      flex: 1;
+      color: var(--text);
+    }
+
+    .merit-block {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .merit-block h4 {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    .merit-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .merit-list li {
+      padding: 5px 0 5px 20px;
+      position: relative;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .merit-list li::before {
+      content: "■";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      font-size: 9px;
+      color: var(--navy);
+    }
+
+    .compare-a .merit-list li::before { color: var(--accent-a); }
+    .compare-b .merit-list li::before { color: var(--accent-b); }
+
+    .notice {
+      background: var(--highlight);
+      padding: 28px 32px;
+      border-radius: 4px;
+      border-left: 4px solid var(--highlight-border);
+      margin-bottom: 20px;
+    }
+
+    .notice h2 {
+      color: var(--notice-text);
+      border-color: var(--highlight-border);
+    }
+
+    .notice p {
+      color: var(--notice-text);
+    }
+
+    .notice strong {
+      color: var(--notice-text);
+      font-weight: 700;
+    }
+
+    .check-list {
+      list-style: none;
+      padding-left: 0;
+      counter-reset: check-counter;
+    }
+
+    .check-list li {
+      padding: 14px 0 14px 52px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      counter-increment: check-counter;
+      font-size: 15px;
+    }
+
+    .check-list li::before {
+      content: counter(check-counter);
+      position: absolute;
+      left: 4px;
+      top: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: serif;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .check-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* 目次 */
+    .toc {
+      background: var(--paper);
+      padding: 24px 32px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(15, 32, 86, 0.06);
+      border-left: 4px solid var(--navy);
+    }
+
+    .toc-title {
+      font-size: 14px;
+      color: var(--navy);
+      letter-spacing: 0.15em;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toc-list {
+      list-style: none;
+      padding-left: 0;
+      counter-reset: toc-counter;
+    }
+
+    .toc-list li {
+      padding: 6px 0 6px 36px;
+      position: relative;
+      counter-increment: toc-counter;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .toc-list li::before {
+      content: counter(toc-counter, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 28px;
+      height: 22px;
+      color: var(--navy);
+      font-family: serif;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      border-right: 1px solid var(--border);
+    }
+
+    .toc-list a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .toc-list a:hover {
+      color: var(--navy);
+      text-decoration: underline;
+    }
+
+    /* 出戻りリンク */
+    .back-to-toc {
+      text-align: right;
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .back-to-toc a {
+      display: inline-block;
+      color: var(--text-soft);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .back-to-toc a:hover {
+      color: var(--navy);
+      border-color: var(--navy);
+      background: var(--cream);
+    }
+
+    /* 実物リンクボックス */
+    .demo-link {
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: #f0f6f8;
+      border-left: 3px solid var(--accent-b);
+      border-radius: 2px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .demo-link .demo-label {
+      color: var(--accent-b);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+      font-size: 12px;
+    }
+
+    .demo-link a {
+      color: var(--navy-deep);
+      word-break: break-all;
+      text-decoration: none;
+      border-bottom: 1px solid var(--navy-deep);
+    }
+
+    .demo-link a:hover {
+      color: var(--accent-b);
+      border-color: var(--accent-b);
+    }
+
+    .demo-link .demo-note {
+      color: var(--text-soft);
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    /* スムーススクロール */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 0 0;
+      color: var(--text-soft);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    footer .firm {
+      color: var(--navy);
+      font-weight: 500;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    @media print {
+      body { background: white; font-size: 12pt; }
+      section { box-shadow: none; page-break-inside: avoid; }
+      .notice { page-break-inside: avoid; }
+      .container { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header id="top">
+      <div class="label">甲斐さま向け ご案内資料</div>
+      <h1>ホームページの新着情報を<br>更新する 2つの方法</h1>
+      <p class="subtitle">2026年5月 / 株式会社IRODORI</p>
+    </header>
+
+    <nav class="toc" id="toc">
+      <div class="toc-title">目 次</div>
+      <ol class="toc-list">
+        <li><a href="#section-intro">はじめに</a></li>
+        <li><a href="#section-request">甲斐さまからお預かりしているご要望</a></li>
+        <li><a href="#section-options">2つの選択肢</a></li>
+        <li><a href="#section-notice">大切なご案内</a></li>
+        <li><a href="#section-points">ご検討のポイント</a></li>
+        <li><a href="#section-next">次のステップ</a></li>
+      </ol>
+    </nav>
+
+    <section id="section-intro">
+      <h2>1. はじめに</h2>
+      <p>
+        甲斐さまにご検討いただきたく、ホームページに新着情報や記事を更新する方法について、現状ご提案できる2つの選択肢を整理いたしました。
+      </p>
+      <p>
+        どちらにも良い点と注意点がございますので、ご一読のうえ、お気軽にご質問・ご相談ください。
+      </p>
+      <div class="back-to-toc"><a href="#toc">▲ 目次に戻る</a></div>
+    </section>
+
+    <section id="section-request">
+      <h2>2. 甲斐さまからお預かりしているご要望</h2>
+      <ul class="request-list">
+        <li>ホームページに直接、記事を書き込める形にしたい</li>
+        <li>別サイトで書いているコラムも紹介したい</li>
+        <li>新着情報が見やすく並ぶようにしたい</li>
+      </ul>
+      <div class="back-to-toc"><a href="#toc">▲ 目次に戻る</a></div>
+    </section>
+
+    <section id="section-options">
+      <h2>3. 2つの選択肢</h2>
+      <p>上記のご要望に対して、ご検討いただきたい方法は大きく2つございます。</p>
+
+      <div class="compare-wrapper">
+
+        <div class="compare-card compare-a">
+          <span class="method-badge">方法 A</span>
+          <h3>ホームページに直接書き込む方式</h3>
+          <div class="image">
+            編集画面にログインして、ホームページの本体にそのまま記事を書く形です。
+          </div>
+
+          <div class="compare-row">
+            <div class="compare-label">初期費用</div>
+            <div class="compare-value">30〜40万円程度<br><span style="font-size:12px;color:var(--text-soft);">（新規制作）</span></div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-label">月額費用</div>
+            <div class="compare-value">月1〜3万円程度<br><span style="font-size:12px;color:var(--text-soft);">（保守費）</span></div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-label">制作期間</div>
+            <div class="compare-value">1〜2ヶ月程度</div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-label">画像の挿入</div>
+            <div class="compare-value">編集画面から自由に追加可能</div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-label">複数サイト連携</div>
+            <div class="compare-value">別途設定が必要</div>
+          </div>
+
+          <div class="merit-block">
+            <h4>こんな方に向いています</h4>
+            <ul class="merit-list">
+              <li>文章・画像をホームページ内ですべて完結させたい</li>
+              <li>1つの場所で記事を管理したい</li>
+              <li>初期費用を一度に支払って、後はゆったり運用したい</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="compare-card compare-b">
+          <span class="method-badge">方法 B</span>
+          <h3>別サイトに書いて自動で並べる方式</h3>
+          <div class="image">
+            noteなどの書きやすい場所に記事を書くと、ホームページの新着欄に見出しと日付が自動で並びます。
+          </div>
+
+          <div class="compare-row">
+            <div class="compare-label">初期費用</div>
+            <div class="compare-value">すでに準備済み<br><span style="font-size:12px;color:var(--text-soft);">（本ご案内中の仕組み）</span></div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-label">月額費用</div>
+            <div class="compare-value">月額のサポート費が必要<br><span style="font-size:12px;color:var(--text-soft);">（要お見積り）</span></div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-label">制作期間</div>
+            <div class="compare-value">すぐにご利用いただけます</div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-label">画像の挿入</div>
+            <div class="compare-value">記事本文は別サイト側でご覧いただきます</div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-label">複数サイト連携</div>
+            <div class="compare-value">noteや他の投稿サイトを混ぜて表示可能</div>
+          </div>
+
+          <div class="merit-block">
+            <h4>こんな方に向いています</h4>
+            <ul class="merit-list">
+              <li>書く場所はnoteなど、シンプルなところで構わない</li>
+              <li>初期費用を抑えてスタートしたい</li>
+              <li>複数の場所で書いた記事を、ホームページにまとめて見せたい</li>
+            </ul>
+          </div>
+
+          <div class="demo-link">
+            <div class="demo-label">▼ 実際に動いている見本</div>
+            <a href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/pukari-codex-v01/" target="_blank" rel="noopener">
+              https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/pukari-codex-v01/
+            </a>
+            <div class="demo-note">
+              ※ こちらのホームページの「新着情報」欄に並んでいる記事は、別サイトに投稿した記事が自動で表示されているものです。
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="back-to-toc"><a href="#toc">▲ 目次に戻る</a></div>
+    </section>
+
+    <div class="notice" id="section-notice">
+      <h2>4. 大切なご案内</h2>
+      <p>
+        <strong>どちらを選ばれましても、月々の継続費用が発生いたします。</strong>
+      </p>
+      <p>
+        ホームページは公開して終わりではなく、表示の調整・記事の追加・トラブル時の対応など、継続的なお手入れが必要になるためです。
+      </p>
+      <p>
+        方法Bは初期費用を抑えられる一方で、運用にあたっての月額サポート費が必要となります。詳細につきましては、方向性が決まりましたら別途お見積りをお渡しいたしますので、ご安心ください。
+      </p>
+      <div class="back-to-toc"><a href="#toc">▲ 目次に戻る</a></div>
+    </div>
+
+    <section id="section-points">
+      <h2>5. ご検討のポイント</h2>
+      <p style="margin-bottom: 16px;">下記の3点をご検討いただけますと、方向性を決めやすくなります。</p>
+      <ol class="check-list">
+        <li>
+          ホームページの編集画面をご自身で触りたいか、それとも書く場所だけシンプルに使えれば良いか。
+        </li>
+        <li>
+          初期費用と月額費用、どちらをより抑えたいか。
+        </li>
+        <li>
+          記事の更新は、月に何回くらいを想定されているか。
+        </li>
+      </ol>
+      <div class="back-to-toc"><a href="#toc">▲ 目次に戻る</a></div>
+    </section>
+
+    <section id="section-next">
+      <h2>6. 次のステップ</h2>
+      <p>
+        方向性が決まりましたら、詳細なお見積りをご用意いたします。
+      </p>
+      <p>
+        ご不明な点・もう少し詳しくお聞きになりたい点がございましたら、いつでもお気軽にお声がけください。
+      </p>
+      <div class="back-to-toc"><a href="#toc">▲ 目次に戻る</a></div>
+    </section>
+
+    <footer>
+      <div class="firm">株式会社IRODORI</div>
+      <div>担当：飯田 真衣</div>
+      <div style="margin-top: 12px; font-size: 11px;">© 2026 IRODORI Inc.</div>
+    </footer>
+
+  </div>
+</body>
+</html>
