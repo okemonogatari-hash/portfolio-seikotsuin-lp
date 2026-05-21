@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ともも、毎日ゴリラに会いに行く。｜ともも@素直にやります！</title>
+<meta name="description" content="大阪のオカン。ゴリラを愛し、馬と歩み、お金を学ぶ。素直にやります！ともものストーリー。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-deep: #4a2670;
+    --purple-main: #7d3fb8;
+    --purple-soft: #b88de8;
+    --purple-pale: #f0e6fa;
+    --pink-heart: #ff7eb9;
+    --pink-soft: #ffd5e8;
+    --jungle: #2d5e3a;
+    --jungle-light: #4a8c5d;
+    --cream: #fdf8f3;
+    --gold: #f4c95d;
+    --ink: #2b1d3a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family:"Zen Maru Gothic","Noto Sans JP",sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+
+  /* 背景の流れるゴリラ絵文字 */
+  .gorilla-rain {
+    position:fixed; top:0; left:0; width:100%; height:100%;
+    pointer-events:none; z-index:1; overflow:hidden;
+  }
+  .gorilla-rain span {
+    position:absolute; top:-50px;
+    font-size:32px; opacity:0.18;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+  }
+
+  /* HERO */
+  .hero {
+    position:relative; min-height:100vh;
+    background:
+      radial-gradient(ellipse at top, rgba(184,141,232,0.6) 0%, transparent 60%),
+      linear-gradient(180deg, #2d1248 0%, #4a2670 40%, #7d3fb8 100%);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    padding:60px 20px; text-align:center;
+    overflow:hidden;
+  }
+  .hero::before {
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255,126,185,0.25) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(244,201,93,0.15) 0%, transparent 40%);
+    pointer-events:none;
+  }
+  .hero-inner { position:relative; z-index:2; max-width:900px; }
+  .hero-tag {
+    display:inline-block; padding:8px 24px;
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.4);
+    border-radius:999px; font-size:13px; letter-spacing:0.2em;
+    margin-bottom:30px; backdrop-filter:blur(8px);
+  }
+  .hero-gorilla {
+    font-size:140px; line-height:1;
+    display:inline-block;
+    filter:drop-shadow(0 10px 40px rgba(255,126,185,0.6));
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-20px) rotate(3deg); }
+  }
+  .hero h1 {
+    font-family:"Zen Maru Gothic",serif;
+    font-size: clamp(36px, 7vw, 78px);
+    font-weight:900; line-height:1.2;
+    margin:20px 0 18px;
+    text-shadow:0 4px 30px rgba(0,0,0,0.4);
+  }
+  .hero h1 .heart {
+    color:var(--pink-heart);
+    display:inline-block;
+    animation: beat 1.2s ease-in-out infinite;
+  }
+  @keyframes beat {
+    0%,100% { transform:scale(1); }
+    25% { transform:scale(1.2); }
+    50% { transform:scale(0.95); }
+  }
+  .hero-sub {
+    font-size: clamp(15px, 2.2vw, 20px);
+    opacity:0.92; margin-bottom:30px; letter-spacing:0.05em;
+  }
+  .hero-handwrite {
+    font-family:"Caveat",cursive;
+    font-size: clamp(28px, 4vw, 44px);
+    color:var(--gold);
+    margin-top:24px;
+    transform:rotate(-2deg);
+    display:inline-block;
+  }
+  .scroll-hint {
+    position:absolute; bottom:30px; left:50%;
+    transform:translateX(-50%);
+    font-size:12px; letter-spacing:0.3em;
+    color:rgba(255,255,255,0.7);
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform:translate(-50%,0); }
+    50% { transform:translate(-50%,10px); }
+  }
+
+  /* セクション共通 */
+  section {
+    position:relative; z-index:2;
+    padding: clamp(60px, 10vw, 120px) 20px;
+  }
+  .container { max-width:980px; margin:0 auto; }
+  .label {
+    display:inline-block;
+    font-family:"Caveat",cursive;
+    font-size:32px; color:var(--purple-main);
+    letter-spacing:0.05em; margin-bottom:8px;
+  }
+  h2 {
+    font-family:"Zen Maru Gothic",sans-serif;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight:900; color:var(--purple-deep);
+    line-height:1.4; margin-bottom:30px;
+  }
+  h2 .em { color:var(--pink-heart); }
+
+  /* PROFILE */
+  .profile {
+    background:linear-gradient(180deg, var(--cream) 0%, var(--purple-pale) 100%);
+    text-align:center;
+  }
+  .profile-avatar {
+    width:160px; height:160px; margin:0 auto 24px;
+    background:linear-gradient(135deg, var(--purple-soft), var(--purple-main));
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:90px;
+    box-shadow: 0 20px 50px rgba(125,63,184,0.35);
+    border:6px solid #fff;
+    position:relative;
+  }
+  .profile-avatar::after {
+    content:"🦍"; position:absolute;
+    right:-10px; bottom:-5px;
+    background:#fff; width:54px; height:54px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  }
+  .profile-name {
+    font-size:32px; font-weight:900;
+    color:var(--purple-deep); margin-bottom:6px;
+  }
+  .profile-tag {
+    font-size:14px; color:var(--purple-main);
+    letter-spacing:0.15em; margin-bottom:20px;
+  }
+  .profile-meta {
+    display:flex; flex-wrap:wrap; justify-content:center;
+    gap:10px; margin-bottom:30px;
+  }
+  .meta-chip {
+    background:#fff; padding:8px 18px;
+    border-radius:999px;
+    box-shadow: 0 4px 12px rgba(125,63,184,0.1);
+    font-size:13px; color:var(--purple-deep); font-weight:500;
+  }
+  .profile-bio {
+    max-width:680px; margin:0 auto;
+    background:#fff; padding:30px;
+    border-radius:24px;
+    box-shadow: 0 10px 40px rgba(125,63,184,0.1);
+    font-size:16px; text-align:left;
+  }
+  .profile-bio p + p { margin-top:14px; }
+
+  /* GORILLA SHRINE — メインの愛宣言 */
+  .gorilla-love {
+    background:
+      radial-gradient(ellipse at center, rgba(184,141,232,0.2) 0%, transparent 70%),
+      linear-gradient(135deg, var(--jungle) 0%, var(--purple-deep) 100%);
+    color:#fff; text-align:center;
+    overflow:hidden;
+  }
+  .gorilla-love .label { color:var(--gold); }
+  .gorilla-love h2 { color:#fff; }
+  .gorilla-love h2 .em { color:var(--gold); }
+  .big-gorilla-row {
+    font-size: clamp(60px, 12vw, 130px);
+    margin:30px 0;
+    letter-spacing:10px;
+    line-height:1;
+  }
+  .big-gorilla-row span {
+    display:inline-block;
+    animation: wiggle 3s ease-in-out infinite;
+  }
+  .big-gorilla-row span:nth-child(2) { animation-delay:0.3s; }
+  .big-gorilla-row span:nth-child(3) { animation-delay:0.6s; }
+  .big-gorilla-row span:nth-child(4) { animation-delay:0.9s; }
+  .big-gorilla-row span:nth-child(5) { animation-delay:1.2s; }
+  @keyframes wiggle {
+    0%,100% { transform: rotate(-8deg) translateY(0); }
+    50% { transform: rotate(8deg) translateY(-15px); }
+  }
+  .love-creed {
+    max-width:760px; margin:30px auto;
+    font-size: clamp(18px, 2.8vw, 26px);
+    line-height:2; font-weight:500;
+    background:rgba(0,0,0,0.25);
+    padding:40px; border-radius:24px;
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.15);
+  }
+  .love-creed strong {
+    color:var(--gold);
+    font-size:1.15em;
+    background:linear-gradient(transparent 60%, rgba(244,201,93,0.3) 60%);
+    padding:0 6px;
+  }
+  .creed-quote {
+    font-family:"Caveat",cursive;
+    font-size: clamp(26px, 4vw, 42px);
+    color:var(--pink-soft);
+    margin-top:30px;
+    transform:rotate(-1deg);
+    display:inline-block;
+  }
+
+  /* ANIMAL FAMILY */
+  .animals { background:var(--cream); }
+  .animal-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap:20px; margin-top:40px;
+  }
+  .animal-card {
+    background:#fff; padding:30px 20px;
+    border-radius:24px; text-align:center;
+    box-shadow: 0 8px 30px rgba(125,63,184,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border:2px solid transparent;
+  }
+  .animal-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 50px rgba(125,63,184,0.18);
+    border-color: var(--purple-soft);
+  }
+  .animal-emoji { font-size:60px; display:block; margin-bottom:12px; }
+  .animal-name {
+    font-weight:700; color:var(--purple-deep);
+    font-size:18px; margin-bottom:6px;
+  }
+  .animal-note {
+    font-size:13px; color:#666;
+  }
+
+  /* HORSE — 凛々しさ */
+  .horse {
+    background:linear-gradient(180deg, #f7f1e8 0%, #ede2cf 100%);
+    position:relative; overflow:hidden;
+  }
+  .horse::before {
+    content:"🐎"; position:absolute;
+    right:-20px; top:40px;
+    font-size:200px; opacity:0.07;
+    transform: scaleX(-1);
+  }
+  .horse-flex {
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap:50px; align-items:center;
+  }
+  @media (max-width:720px) { .horse-flex { grid-template-columns: 1fr; } }
+  .horse-stats {
+    background:#fff; padding:36px;
+    border-radius:24px;
+    box-shadow: 0 15px 50px rgba(74,140,93,0.15);
+  }
+  .stat-row {
+    display:flex; justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+    border-bottom:1px dashed #ddd;
+  }
+  .stat-row:last-child { border-bottom:0; }
+  .stat-label { font-size:14px; color:#777; }
+  .stat-value {
+    font-size:22px; font-weight:900;
+    color:var(--jungle);
+  }
+  .horse-dream {
+    background:rgba(255,255,255,0.5);
+    padding:30px; border-radius:24px;
+    border-left:6px solid var(--jungle-light);
+    font-size:17px; line-height:1.9;
+  }
+  .horse-dream strong {
+    color:var(--jungle);
+    font-size:1.1em;
+  }
+
+  /* MONEY — 大阪オカンの賢さ */
+  .money {
+    background:linear-gradient(180deg, var(--purple-pale) 0%, #fff 100%);
+  }
+  .money-checklist {
+    max-width:680px; margin:30px auto 0;
+    background:#fff; padding:36px;
+    border-radius:24px;
+    box-shadow: 0 10px 40px rgba(125,63,184,0.1);
+  }
+  .check-row {
+    display:flex; align-items:center; gap:14px;
+    padding:14px 0;
+    border-bottom:1px dotted #eaddf7;
+  }
+  .check-row:last-child { border-bottom:0; }
+  .check-icon {
+    width:30px; height:30px; flex-shrink:0;
+    background:var(--gold); color:#fff;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:900;
+  }
+  .check-row.done .check-icon {
+    background:var(--purple-main);
+  }
+  .check-row.done .check-text {
+    color:var(--purple-deep); font-weight:600;
+  }
+  .check-text { font-size:16px; }
+  .money-line {
+    text-align:center; margin-top:30px;
+    font-size:18px; color:var(--purple-main);
+    font-weight:700;
+  }
+
+  /* QUOTE — 学長語録 */
+  .quote-box {
+    background:linear-gradient(135deg, var(--purple-deep), #2d1248);
+    color:#fff; text-align:center;
+    padding: clamp(60px, 10vw, 110px) 20px;
+  }
+  .quote-mark {
+    font-size:100px; line-height:1;
+    color:var(--gold); opacity:0.6;
+    font-family:serif;
+  }
+  .quote-text {
+    font-size: clamp(22px, 4vw, 38px);
+    font-weight:700;
+    margin:10px 0 20px;
+    line-height:1.5;
+  }
+  .quote-text .gold { color:var(--gold); }
+  .quote-by {
+    font-size:14px; opacity:0.7;
+    letter-spacing:0.2em;
+  }
+
+  /* CTA / NAMEPLATE */
+  .nameplate {
+    background:
+      radial-gradient(ellipse at top, rgba(255,126,185,0.3) 0%, transparent 60%),
+      linear-gradient(180deg, var(--pink-soft) 0%, var(--purple-pale) 100%);
+    text-align:center;
+  }
+  .name-card {
+    max-width:520px; margin:0 auto;
+    background:#fff; padding:50px 40px;
+    border-radius:32px;
+    box-shadow: 0 20px 60px rgba(125,63,184,0.2);
+    position:relative; overflow:hidden;
+  }
+  .name-card::before {
+    content:"🦍"; position:absolute;
+    top:-30px; right:-30px;
+    font-size:140px; opacity:0.08;
+    transform:rotate(15deg);
+  }
+  .name-card-title {
+    font-family:"Caveat",cursive;
+    font-size:24px; color:var(--purple-main);
+    margin-bottom:8px;
+  }
+  .name-card-name {
+    font-size:36px; font-weight:900;
+    color:var(--purple-deep); margin-bottom:14px;
+  }
+  .name-card-sub {
+    font-size:14px; color:#777;
+    margin-bottom:30px;
+  }
+  .libe-btn {
+    display:inline-block;
+    background:linear-gradient(135deg, var(--purple-main), var(--pink-heart));
+    color:#fff !important;
+    padding:16px 36px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:700; font-size:15px;
+    letter-spacing:0.08em;
+    box-shadow: 0 10px 25px rgba(255,126,185,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .libe-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(255,126,185,0.5);
+  }
+
+  footer {
+    background:var(--purple-deep);
+    color:#fff; text-align:center;
+    padding:40px 20px;
+    font-size:13px; letter-spacing:0.05em;
+  }
+  footer p { opacity:0.7; }
+  footer .heart { color:var(--pink-heart); }
+
+  /* スクロールフェードイン */
+  .fade { opacity:0; transform: translateY(30px); transition: all 0.8s ease-out; }
+  .fade.in { opacity:1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- 流れるゴリラ -->
+<div class="gorilla-rain" id="rain"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">TOMOMO × GORILLA LOVE</div>
+    <div class="hero-gorilla">🦍</div>
+    <h1>ともも、毎日<br>ゴリラに会いに行く<span class="heart">💜</span></h1>
+    <p class="hero-sub">大阪のオカン。素直にやります。ゴリラを愛しています。</p>
+    <div class="hero-handwrite">— a love letter to gorillas —</div>
+  </div>
+  <div class="scroll-hint">SCROLL ↓</div>
+</section>
+
+<!-- PROFILE -->
+<section class="profile">
+  <div class="container fade">
+    <div class="label">Who am I ?</div>
+    <h2>はじめまして、<span class="em">ともも</span>です。</h2>
+    <div class="profile-avatar">💜</div>
+    <div class="profile-name">ともも</div>
+    <div class="profile-tag">＠素直にやります！</div>
+    <div class="profile-meta">
+      <span class="meta-chip">🌸 大阪府</span>
+      <span class="meta-chip">👨‍👩‍👦‍👦 夫＆息子2人</span>
+      <span class="meta-chip">💼 経理</span>
+      <span class="meta-chip">🐬 リベシティ2年5ヶ月</span>
+    </div>
+    <div class="profile-bio">
+      <p>子育ても少し落ち着き、いまは夫の会社の経理を担当している大阪のオカンです。大学生と高校生の息子ふたり、毎日にぎやかにやってます。</p>
+      <p>動物が大好き。馬・犬・猫と触れ合うと、心がふっと軽くなる。いつかは引退した馬たちに、穏やかな余生を過ごしてほしい。それが私のひそかな夢のひとつ。</p>
+      <p>そして — <strong style="color:var(--purple-main);">ゴリラ。</strong>毎日会いに行きたいくらい、大好きなの。</p>
+    </div>
+  </div>
+</section>
+
+<!-- GORILLA LOVE 宣言 -->
+<section class="gorilla-love">
+  <div class="container fade">
+    <div class="label">My Love Declaration</div>
+    <h2>私の心の中心には、<br><span class="em">いつもゴリラがいる。</span></h2>
+
+    <div class="big-gorilla-row">
+      <span>🦍</span><span>💜</span><span>🦍</span><span>💜</span><span>🦍</span>
+    </div>
+
+    <div class="love-creed">
+      朝、目を覚ますと、まず<strong>ゴリラのこと</strong>を考える。<br>
+      動物園の開園時間を確認して、今日も会いに行けるかな、と思う。<br>
+      あの<strong>大きな背中</strong>、<strong>静かな眼差し</strong>、<strong>家族を守る優しさ</strong>。<br>
+      ゴリラには、私が一番大切にしたいものが全部詰まっている。
+    </div>
+
+    <div class="creed-quote">— every day, every gorilla, every love. —</div>
+  </div>
+</section>
+
+<!-- ANIMAL FAMILY -->
+<section class="animals">
+  <div class="container fade">
+    <div class="label">Animal Family</div>
+    <h2>動物たちは、<span class="em">私の家族</span>です。</h2>
+    <p style="font-size:16px; max-width:600px; line-height:1.9;">人と話すより、動物のそばにいたい日がある。馬の鼓動、犬のあったかさ、猫のしっぽ、そしてゴリラの存在感。みんな違って、みんな好き。</p>
+
+    <div class="animal-grid">
+      <div class="animal-card">
+        <span class="animal-emoji">🦍</span>
+        <div class="animal-name">ゴリラ</div>
+        <div class="animal-note">心の主役。毎日会いたい。</div>
+      </div>
+      <div class="animal-card">
+        <span class="animal-emoji">🐎</span>
+        <div class="animal-name">お馬さん</div>
+        <div class="animal-note">乗馬歴10年。馬場馬術二級。</div>
+      </div>
+      <div class="animal-card">
+        <span class="animal-emoji">🐕</span>
+        <div class="animal-name">わんこ</div>
+        <div class="animal-note">無条件の愛をくれる存在。</div>
+      </div>
+      <div class="animal-card">
+        <span class="animal-emoji">🐈</span>
+        <div class="animal-name">ねこ</div>
+        <div class="animal-note">気まぐれな自由人(猫)。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HORSE -->
+<section class="horse">
+  <div class="container fade">
+    <div class="label">10 Years with Horses</div>
+    <h2>10年、馬と歩いてきました。<br><span style="color:var(--jungle-light);">馬場馬術二級。</span></h2>
+
+    <div class="horse-flex">
+      <div class="horse-stats">
+        <div class="stat-row">
+          <div class="stat-label">乗馬歴</div>
+          <div class="stat-value">10年</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label">資格</div>
+          <div class="stat-value">馬場馬術 二級</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label">習慣</div>
+          <div class="stat-value">ピラティス 週3-4</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label">最近はじめた</div>
+          <div class="stat-value">🎻 バイオリン</div>
+        </div>
+      </div>
+
+      <div class="horse-dream">
+        いつか、<strong>引退した競走馬</strong>たちに、穏やかな余生を過ごしてもらえる場所をつくりたい。<br><br>
+        走り終わった彼らに「ありがとう」を言える時間を、ちゃんと届けたい。<br><br>
+        それが、私の遠い、でもいつか必ず叶える夢です。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MONEY -->
+<section class="money">
+  <div class="container fade">
+    <div class="label">Money Literacy</div>
+    <h2>用心深い大阪のオカンが、<br><span class="em">小金持ち山</span>に登ってます。</h2>
+    <p style="max-width:600px; font-size:16px; line-height:1.9;">YouTubeで学長の動画に出会って、1年近くこっそり勉強。「毎日のライブを楽しみにしてる自分」に気づいた日、覚悟を決めて入会しました。</p>
+
+    <div class="money-checklist">
+      <div class="check-row done">
+        <div class="check-icon">✓</div>
+        <div class="check-text">2023年 FP3級 取得</div>
+      </div>
+      <div class="check-row done">
+        <div class="check-icon">✓</div>
+        <div class="check-text">不要なクレジットカード解約</div>
+      </div>
+      <div class="check-row done">
+        <div class="check-icon">✓</div>
+        <div class="check-text">使ってない銀行口座 解約</div>
+      </div>
+      <div class="check-row">
+        <div class="check-icon">→</div>
+        <div class="check-text">簿記3級 勉強中</div>
+      </div>
+      <div class="check-row">
+        <div class="check-icon">→</div>
+        <div class="check-text">夫の会社のお手伝いで、もっと役に立てるように</div>
+      </div>
+    </div>
+
+    <p class="money-line">小金持ち山、登る準備はほぼ完了。🏔️</p>
+  </div>
+</section>
+
+<!-- 学長語録 -->
+<section class="quote-box">
+  <div class="container fade">
+    <div class="quote-mark">"</div>
+    <div class="quote-text">
+      <span class="gold">今日が、一番若い日。</span><br>
+      今日も多くの人が生きたかった1日、<br>
+      精一杯生きよう。
+    </div>
+    <div class="quote-by">— 両学長の言葉に、毎日勇気をもらっています。</div>
+  </div>
+</section>
+
+<!-- NAMEPLATE -->
+<section class="nameplate">
+  <div class="container fade">
+    <div class="label">Let's Connect</div>
+    <h2>素直に、<span class="em">やります。</span></h2>
+    <p style="max-width:600px; margin:0 auto 40px; font-size:16px; line-height:1.9;">同じ動物好きさん、ゴリラ好きさん、リベ仲間さん。お気軽にDM・フォローしてもらえたら嬉しいです🦍💜</p>
+
+    <div class="name-card">
+      <div class="name-card-title">name card</div>
+      <div class="name-card-name">ともも</div>
+      <div class="name-card-sub">@素直にやります！ ／ イルカ会員 ／ 大阪府</div>
+      <a class="libe-btn" href="https://libecity.com/user_profile/07cjjBgaZNgHxZQQM1yCIIE90Ry2" target="_blank" rel="noopener">
+        リベシティでフォローする →
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>🦍 Made with <span class="heart">💜</span> for とももさん</p>
+  <p style="margin-top:8px;">毎日ゴリラに会いに行こう。</p>
+</footer>
+
+<script>
+  // 流れるゴリラ生成
+  const rain = document.getElementById('rain');
+  const emojis = ['🦍','💜','🍌','🌿','💚','🦍','💜','🍃'];
+  for (let i = 0; i < 30; i++) {
+    const s = document.createElement('span');
+    s.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    s.style.left = Math.random() * 100 + '%';
+    s.style.animationDuration = (8 + Math.random() * 10) + 's';
+    s.style.animationDelay = (Math.random() * 10) + 's';
+    s.style.fontSize = (20 + Math.random() * 25) + 'px';
+    rain.appendChild(s);
+  }
+
+  // スクロールフェードイン
+  const fades = document.querySelectorAll('.fade');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('in');
+    });
+  }, { threshold: 0.15 });
+  fades.forEach(f => obs.observe(f));
+</script>
+
+</body>
+</html>
