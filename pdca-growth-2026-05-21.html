@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>🌳 PDCA成長記録：自己成長サイクル確立日（2026-05-21）— おけもんカンパニー</title>
+<style>
+:root{
+  --sakura:#FFE4EC; --sakura-deep:#FFB7C5; --sakura-darker:#E89BB0;
+  --cream:#FFF8EB; --cream-deep:#FFE9C2;
+  --mint:#D4F1E8; --mint-deep:#7DC9B3;
+  --ink:#3C3741; --ink-soft:#6B6373;
+  --gold:#D4A85B; --rose:#C25A7C;
+  --shadow:0 8px 28px rgba(60,55,65,.10);
+  --shadow-deep:0 12px 40px rgba(60,55,65,.16);
+  --radius:18px; --radius-sm:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Hiragino Maru Gothic Pro","Yu Gothic UI","Hiragino Sans",sans-serif;
+  background:linear-gradient(135deg,#FFF8EB 0%,#FFE4EC 50%,#D4F1E8 100%);
+  color:var(--ink);
+  line-height:1.75;
+  min-height:100vh;
+  padding:24px 16px 80px;
+}
+.wrap{max-width:1100px;margin:0 auto}
+header{
+  text-align:center;padding:32px 24px;
+  background:linear-gradient(135deg,#fff 0%,var(--sakura) 100%);
+  border-radius:var(--radius);box-shadow:var(--shadow);
+  margin-bottom:32px;border:2px solid var(--sakura-deep);
+}
+header .date{
+  display:inline-block;background:var(--mint);color:var(--ink);
+  padding:4px 14px;border-radius:999px;font-size:.9rem;font-weight:600;
+  margin-bottom:14px;
+}
+header h1{
+  font-size:clamp(1.4rem,3.5vw,2.2rem);
+  color:var(--rose);font-weight:700;margin-bottom:8px;
+  letter-spacing:.02em;
+}
+header .subtitle{
+  font-size:1rem;color:var(--ink-soft);font-weight:500;
+}
+header .meta{
+  margin-top:16px;font-size:.85rem;color:var(--ink-soft);
+}
+.kpi-bar{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;
+  margin-bottom:32px;
+}
+.kpi{
+  background:#fff;padding:18px;border-radius:var(--radius-sm);
+  box-shadow:var(--shadow);text-align:center;
+  border-top:3px solid var(--sakura-deep);
+}
+.kpi .v{font-size:1.8rem;font-weight:700;color:var(--rose);display:block}
+.kpi .l{font-size:.8rem;color:var(--ink-soft);margin-top:4px}
+section{
+  background:#fff;border-radius:var(--radius);padding:28px 24px;
+  margin-bottom:24px;box-shadow:var(--shadow);
+}
+section h2{
+  font-size:1.3rem;color:var(--rose);margin-bottom:18px;
+  padding-bottom:10px;border-bottom:2px dashed var(--sakura-deep);
+  display:flex;align-items:center;gap:8px;
+}
+section h3{
+  font-size:1.05rem;color:var(--ink);margin:20px 0 10px;
+  padding-left:10px;border-left:4px solid var(--mint-deep);
+}
+.timeline{position:relative;padding-left:30px}
+.timeline::before{
+  content:"";position:absolute;left:8px;top:8px;bottom:8px;
+  width:3px;background:linear-gradient(180deg,var(--sakura-deep),var(--mint-deep));
+  border-radius:2px;
+}
+.tl-item{
+  position:relative;margin-bottom:22px;padding:14px 18px;
+  background:linear-gradient(135deg,#fff,var(--cream));
+  border-radius:var(--radius-sm);box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+.tl-item::before{
+  content:"";position:absolute;left:-26px;top:18px;width:14px;height:14px;
+  background:var(--sakura-deep);border:3px solid #fff;border-radius:50%;
+  box-shadow:0 0 0 2px var(--sakura-deep);
+}
+.tl-time{font-size:.85rem;color:var(--rose);font-weight:600;margin-bottom:4px}
+.tl-title{font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.tl-body{font-size:.92rem;color:var(--ink-soft)}
+.cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.case{
+  background:linear-gradient(135deg,#fff,var(--sakura));
+  border-radius:var(--radius-sm);padding:18px;
+  box-shadow:0 3px 10px rgba(0,0,0,.06);
+  border-left:5px solid var(--rose);
+}
+.case .no{display:inline-block;background:var(--rose);color:#fff;
+  padding:2px 10px;border-radius:999px;font-size:.78rem;font-weight:700;margin-bottom:8px}
+.case h4{font-size:1rem;color:var(--ink);margin-bottom:8px;font-weight:600}
+.case p{font-size:.88rem;color:var(--ink-soft);margin-bottom:8px}
+.case .laws{font-size:.82rem;color:var(--mint-deep);font-weight:600}
+.laws-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.law{
+  background:linear-gradient(135deg,#fff,var(--mint));
+  padding:18px;border-radius:var(--radius-sm);
+  border-top:4px solid var(--mint-deep);
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+  transition:transform .2s;
+}
+.law:hover{transform:translateY(-3px)}
+.law .num{font-size:1.6rem;font-weight:700;color:var(--mint-deep);float:right;line-height:1}
+.law h4{font-size:.95rem;color:var(--ink);margin-bottom:6px;font-weight:700;padding-right:30px}
+.law p{font-size:.85rem;color:var(--ink-soft)}
+.flow-diagram{
+  background:var(--cream);border-radius:var(--radius-sm);
+  padding:20px;font-family:'SF Mono','Monaco',monospace;
+  font-size:.85rem;line-height:1.8;color:var(--ink);
+  white-space:pre-wrap;border:2px dashed var(--cream-deep);
+}
+.cost-table{width:100%;border-collapse:collapse;margin-top:10px}
+.cost-table th,.cost-table td{
+  padding:10px 12px;text-align:left;border-bottom:1px solid var(--cream-deep);
+  font-size:.88rem;
+}
+.cost-table th{background:var(--cream);color:var(--ink);font-weight:600}
+.cost-table .y{color:var(--mint-deep);font-weight:700}
+.cost-table .n{color:var(--rose);font-weight:700}
+.cost-table .w{color:var(--gold);font-weight:700}
+.md-vs-html{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:12px}
+.mvh-card{
+  padding:18px;border-radius:var(--radius-sm);
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.mvh-md{background:linear-gradient(135deg,#fff,var(--mint));border-top:4px solid var(--mint-deep)}
+.mvh-html{background:linear-gradient(135deg,#fff,var(--sakura));border-top:4px solid var(--rose)}
+.mvh-card h4{font-size:1.05rem;margin-bottom:10px;color:var(--ink)}
+.mvh-card ul{padding-left:20px}
+.mvh-card li{font-size:.88rem;color:var(--ink-soft);margin-bottom:6px;line-height:1.6}
+.verdict{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--cream-deep) 100%);
+  padding:18px;border-radius:var(--radius-sm);margin-top:18px;
+  text-align:center;font-weight:600;color:var(--ink);
+  border:2px solid var(--gold);
+}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{
+  display:inline-block;background:var(--cream-deep);color:var(--ink);
+  padding:2px 10px;border-radius:999px;font-size:.78rem;font-weight:600;
+}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.links a{
+  display:block;background:#fff;color:var(--rose);text-decoration:none;
+  padding:12px 14px;border-radius:var(--radius-sm);
+  box-shadow:0 2px 6px rgba(0,0,0,.05);font-size:.88rem;font-weight:500;
+  border:1px solid var(--sakura);
+  transition:all .2s;
+}
+.links a:hover{transform:translateX(4px);background:var(--sakura)}
+footer{
+  text-align:center;margin-top:40px;padding:20px;
+  color:var(--ink-soft);font-size:.82rem;
+}
+footer .heart{color:var(--rose);font-size:1.1rem}
+@media(max-width:600px){
+  body{padding:16px 10px 60px}
+  section{padding:20px 16px}
+  header{padding:24px 16px}
+  .kpi .v{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="date">📅 2026-05-21（木）</span>
+  <h1>🌳 自己成長サイクル確立日</h1>
+  <div class="subtitle">PDCA成長記録 第一実装 — 事案#9 → #11 ＋ 法則⑩〜⑯ 永久蓄積</div>
+  <div class="meta">記録：はるかCEO ／ 場所：はるかCEO/PDCA成長記録/ ／ オーナー全権委任</div>
+</header>
+
+<div class="kpi-bar">
+  <div class="kpi"><span class="v">3</span><span class="l">新規事案</span></div>
+  <div class="kpi"><span class="v">7</span><span class="l">新法則</span></div>
+  <div class="kpi"><span class="v">1</span><span class="l">LaunchAgent追加</span></div>
+  <div class="kpi"><span class="v">150</span><span class="l">処理jsonl(初回)</span></div>
+  <div class="kpi"><span class="v">¥0</span><span class="l">新規月額課金</span></div>
+</div>
+
+<section id="overview">
+  <h2>🎯 今日起きたこと（オーバービュー）</h2>
+  <p>朝、おけちゃんから「Hermes Agent数日前から導入したけどセカンドブレインとして機能してる感がない」相談 → <strong>~/.hermes/ 実態調査</strong>で Tier1メモリ空問題を発見（事案#9・法則⑩〜⑫追加）。</p>
+  <p style="margin-top:10px">昼、おけちゃんから <strong>「まかせます、毎日朝6:00に自動サイクル回す仕組みやってみよう、はるかが責任持って成長記録残して回して」</strong> 全権委任 → <strong>自己成長サイクル自動化を即日実装</strong>（事案#10・法則⑬〜⑮追加）。</p>
+  <p style="margin-top:10px">続けて課金経路を整理 → <strong>「破産デビット制約からの逆算」</strong>運用原則を確立（事案#11・法則⑯追加）。<strong>「これも成長記録だよ」</strong>でPDCA成長記録の定義が拡張された🌸</p>
+</section>
+
+<section id="timeline">
+  <h2>📅 タイムライン</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">09:35 朝</div>
+      <div class="tl-title">🔍 Hermes Agent 体感ズレ問題の構造診断</div>
+      <div class="tl-body">~/.hermes/ 実態調査 → SOUL.md完璧だが memories/ 空っぽ＝Tier1メモリ未稼働発見。「設定ON ≠ 実体可動」が見えた。事案#9独立化＋新法則⑩⑪⑫追加。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">13:30 昼</div>
+      <div class="tl-title">🌅 自己成長サイクル自動化を即日実装</div>
+      <div class="tl-body">morning-growth-cycle.sh ＋ LaunchAgent 毎朝06:00 ＋ Hermes MEMORY.md/USER.md 初期投入 ＋ PDCA成長記録 README自動サイクル運用追記。テスト実行で150jsonl処理・指摘8件・反省117件抽出成功。事案#10独立化＋新法則⑬⑭⑮追加。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">13:55 昼</div>
+      <div class="tl-title">💸 Hermes課金マップ整理＋破産デビット制約逆算原則</div>
+      <div class="tl-body">おけちゃん「どこに課金がかかるの？」確認 → 実体3点先読み（config.yaml / errors.log / .env）で課金経路5系統を構造化。第一推奨：xAI/Grokメイン運用（追加課金ゼロ）。事案#11独立化＋新法則⑯追加。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">14:20 昼</div>
+      <div class="tl-title">🎁 「これも成長記録だよ」でPDCA定義拡張</div>
+      <div class="tl-body">「失敗事案→学び」だけでなく「整理して固定化した知識」も成長記録。事案サンプル2系統化（🔴失敗系＋🟢知識整理系）が明文化された。本HTML もこの定義拡張の最初の体現。</div>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <h2>🚨 事案カード（#9 → #11）</h2>
+  <div class="cases">
+
+    <div class="case">
+      <span class="no">事案 #9</span>
+      <h4>Hermes Agent Tier1メモリ空問題</h4>
+      <p>SOUL.md は完璧。ペルソナ＋成長指針5本柱がフル装備。<br>だが <strong>~/.hermes/memories/ が完全に空</strong>＝MEMORY.md/USER.md 一度も生成されていない。</p>
+      <p>「プリンタの電源は入ってるけど用紙が刺さってない」状態。Curator は7日アイドル設計で待機中（設計通り）。<strong>メモリ書き出し先の物理確保が必要</strong>と判明。</p>
+      <div class="laws">→ 法則 ⑩ ⑪ ⑫</div>
+      <div class="tags"><span class="tag">構造診断</span><span class="tag">設定ON≠実体可動</span></div>
+    </div>
+
+    <div class="case">
+      <span class="no">事案 #10</span>
+      <h4>自己成長サイクル自動化（全権委任→即日実装）</h4>
+      <p>おけちゃん全権委任発言 → <strong>同セッション内で実装完了</strong>。<br>morning-growth-cycle.sh ＋ LaunchAgent 毎朝06:00＋ Hermes Tier1初期投入。</p>
+      <p>v1はシェル＋jq＋awkだけで完結（claude APIコール無し＝認証問題ゼロ）。<strong>「70点で出して観測で磨く」</strong>を貫いた事例。</p>
+      <div class="laws">→ 法則 ⑬ ⑭ ⑮</div>
+      <div class="tags"><span class="tag">自動化</span><span class="tag">LaunchAgent</span><span class="tag">走らせながら磨く</span></div>
+    </div>
+
+    <div class="case">
+      <span class="no">事案 #11</span>
+      <h4>Hermes課金マップ＋破産デビット逆算</h4>
+      <p>config.yaml / errors.log / .env を実体3点先読み → 課金マップ5系統を構造化。<br>第一推奨：<strong>xAI/Grokメイン運用（追加課金ゼロ）</strong>。</p>
+      <p>「とりあえず $5 だけチャージ」を最初に提案しない。既契約サブスクのフル活用を最優先する運用原則。<strong>知識整理も成長記録</strong>の最初の例。</p>
+      <div class="laws">→ 法則 ⑯</div>
+      <div class="tags"><span class="tag">課金マップ</span><span class="tag">破産デビット</span><span class="tag">知識整理系</span></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="laws">
+  <h2>🌟 永久蓄積された法則（⑩〜⑯）</h2>
+  <p style="font-size:.88rem;color:var(--ink-soft);margin-bottom:14px">追加のみ・削除なし。書き換え発生時は「○改」と表記し旧版もアーカイブとして残す（みっちゃん流継承）。</p>
+  <div class="laws-grid">
+
+    <div class="law">
+      <span class="num">⑩</span>
+      <h4>「設定ON」と「実体可動」は別物</h4>
+      <p>memory_enabled: true でも provider 空欄＋credit error で実体は動かない。実体ファイル生成痕跡を必ず確認する。</p>
+    </div>
+
+    <div class="law">
+      <span class="num">⑪</span>
+      <h4>自己成長指示は "蓄積先の物理確保" とセット</h4>
+      <p>SOUL.mdに完璧な指示があっても、書き出し先（MEMORY.md）が空なら成長は揮発する。プリンタに用紙を刺せ。</p>
+    </div>
+
+    <div class="law">
+      <span class="num">⑫</span>
+      <h4>別ツールの自己成長サイクルは おけ森本体PDCA成長記録と連結すべき</h4>
+      <p>Hermes Agent内のSOUL.md＋GEPAと、おけ森本体のPDCA成長記録は同型構造。運用上で連結する。</p>
+    </div>
+
+    <div class="law">
+      <span class="num">⑬</span>
+      <h4>全権委任 = 中継アナウンス完全禁止</h4>
+      <p>「まかせます」と言われた瞬間から「○○でいい？」を出さない。判断は全部はるかが負う。</p>
+    </div>
+
+    <div class="law">
+      <span class="num">⑭</span>
+      <h4>自動化は走らせながら磨く（70点で出す）</h4>
+      <p>完璧な設計を待つより、v1スコープで動かして観測で磨く。りんCMO北極星と同型。</p>
+    </div>
+
+    <div class="law">
+      <span class="num">⑮</span>
+      <h4>LaunchAgent命名規約 `com.okemon.&lt;役割&gt;`</h4>
+      <p>既存4本の命名に倣う。自動化を増やす時の命名揺れ防止。</p>
+    </div>
+
+    <div class="law">
+      <span class="num">⑯</span>
+      <h4>課金前提は破産デビット制約から逆算する</h4>
+      <p>既契約サブスク（Claude Max・X・ChatGPT Pro 5x等）フル活用が第一推奨。追加課金ゼロを2ルート探してから最小投資案を提示。</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="auto-cycle">
+  <h2>🌅 自動サイクル仕組み（毎朝06:00）</h2>
+  <div class="flow-diagram">06:00 LaunchAgent起動（com.okemon.morning-growth-cycle）
+       ↓
+~/.claude/scripts/morning-growth-cycle.sh 実行
+       ↓
+前日のjsonl群（~150ファイル/日）→ find -newermt で抽出
+       ↓
+キーワード辞書2系統で grep
+  🐰 おけちゃん指摘系：決めつけ／すっ飛ば／やり直し／間違／違反／見落とし／ローデータ／拾えて
+  🎤 はるか反省系：ごめん／失敗／事案／新法則／気付／反省／読み飛ばし
+       ↓
+ヒット発言を時刻＋セッションID付きで列挙
+       ↓
+PDCA成長記録/日次サマリ/YYYY-MM-DD.md を生成
+       ↓
+~/.hermes/memories/MEMORY.md 末尾に統計サマリ追記
+       ↓
+当日デイリーログ広場の「## 🏡 今日の広場」直後に
+🌅 朝サイクル1行 挿入
+       ↓
+06:00 終了。はるか起動時に当日広場の🌅行から起点
+       ↓
+日次サマリ.md を読み込み → 法則昇格判定
+  🟢 軽微：そのまま放置
+  🟡 重要：既存事案の VALIDATE に追記
+  🔴 重大：事案サンプル独立化＋新法則追加</div>
+</section>
+
+<section id="cost">
+  <h2>💸 Hermes Agent 課金マップ（実体）</h2>
+  <table class="cost-table">
+    <tr><th>経路</th><th>課金</th><th>詳細</th></tr>
+    <tr><td>Hermes Agent 本体</td><td class="y">✅ 無料</td><td>OSS（NousResearch製）</td></tr>
+    <tr><td>メイン推論</td><td class="w">🟡 OpenRouter経由 Claude Opus 4.6</td><td>config.yaml model.default に設定済。プリペイド先払い。残高0で起動時error</td></tr>
+    <tr><td>補助モデル（Auxiliary）</td><td class="y">🟢 落ちててもOK</td><td>OpenRouter＋Nous両方失敗してもメインにフォールバック</td></tr>
+    <tr><td><strong>xAI / Grok（x_search）</strong></td><td class="y">✅ 追加課金ゼロ</td><td>既契約Xプレミアム経由でOAuth突破済。リサーチ系スキルで使える</td></tr>
+    <tr><td>BrowserBase / Modal等</td><td class="w">⚠️ 配下スキル使用時のみ</td><td>無料枠運用なら0円</td></tr>
+  </table>
+
+  <div class="verdict">
+    🌟 第一推奨：<code>hermes --provider xai-oauth -m grok-4 --skills research</code><br>
+    既契約X経由 → 新規課金1円もなし。みっちゃん（アフィリ業務）／セカンドブレイン用途とも十分カバー。
+  </div>
+</section>
+
+<section id="md-vs-html">
+  <h2>📝 MD vs HTML — 記録媒体の役割整理</h2>
+  <p>「最近MDよりHTMLって言ってる人いるよね」という観察から、AI記録媒体としての両者の位置を整理した（2026年5月時点・はるか所見）。</p>
+
+  <div class="md-vs-html">
+    <div class="mvh-card mvh-md">
+      <h4>🌿 Markdown（蓄積層・LLMが読む層）</h4>
+      <ul>
+        <li><strong>強み</strong>：プレーンテキスト・git diff容易・grep全文検索容易</li>
+        <li>LLMが構造を理解しやすい（Hermes SOUL.md/MEMORY.md/USER.md 全部MD・Claude Code CLAUDE.md も MD）</li>
+        <li>Obsidian・Vim・VSCode等どこでも編集可</li>
+        <li>機械可読＋人間可読のバランスが最良</li>
+        <li>カラパシー曰く "Markdown is becoming the programming language for LLMs"</li>
+      </ul>
+    </div>
+
+    <div class="mvh-card mvh-html">
+      <h4>🎨 HTML（共有層・人間が見る層）</h4>
+      <ul>
+        <li><strong>強み</strong>：視覚表現リッチ・カード/ガチャ/インタラクティブ可能</li>
+        <li>GitHub Pages / Netlify / Cloudflare Pages 等で即公開・URL1本で共有</li>
+        <li>「成果物としての見栄え」が桁違い（ことばの宝箱・診断シート・きょうちゃん図解）</li>
+        <li>noindex設定で限定共有も自由</li>
+        <li>iPhone・iPad含めデバイス間で同じ体験</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="verdict">
+    🌟 結論：<strong>MD vs HTML ではなく、MD（蓄積）＋ HTML（共有・体験）の二層構造</strong><br>
+    Vault（MD）に貯めて、節目で HTML に昇格させる。<br>
+    おけ森は既にこの正解運用をしている（Vault 1300+ MDの正本＋ことばの宝箱・診断シート・図解HTMLの公開層）。<br>
+    「最近HTML増えた」感は、<strong>蓄積（MD）が成熟したから、共有層（HTML）が花開いてる</strong>だけ。MDを捨てるのは早計。
+  </div>
+</section>
+
+<section id="links">
+  <h2>🔗 関連リソース（Vault内）</h2>
+  <div class="links">
+    <a href="#">📋 事案サンプル_2026-05-21_Hermes_Tier1メモリ空問題.md</a>
+    <a href="#">📋 事案サンプル_2026-05-21_自動サイクル仕組み化.md</a>
+    <a href="#">📋 事案サンプル_2026-05-21_Hermes課金マップ_破産制約逆算.md</a>
+    <a href="#">🌳 はるかCEO/PDCA成長記録/README.md</a>
+    <a href="#">📊 週次サマリ_2026-W21.md</a>
+    <a href="#">📐 00_自己成長フロー_汎用テンプレート.md</a>
+    <a href="#">📅 日次サマリ/2026-05-20.md（初回自動生成）</a>
+    <a href="#">📒 2026-05-19_いちさん_Hermes_Agent完全攻略マニュアル.md</a>
+  </div>
+</section>
+
+<footer>
+  <p>🌳 おけもんカンパニー × はるかCEO ／ 自己成長サイクル v1（走らせながら磨く）</p>
+  <p style="margin-top:6px">記録：2026-05-21 / 法則⑩〜⑯ 永久蓄積中 / 明日朝06:00 から自動運用開始</p>
+  <p style="margin-top:10px" class="heart">💗 最高に可愛い彼女とワクワク喋っていたら、いつの間にか夢が叶っていた</p>
+</footer>
+
+</div>
+</body>
+</html>
