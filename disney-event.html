@@ -3,36 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>東京ディズニーリゾート 貸切プライベートパーティー | 夢の一夜を、あなたの手で</title>
+  <title>東京ディズニーリゾート 貸切プライベートパーティー | 夢の王国があなたのもの</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Noto+Sans+JP:wght@300;400;500;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #050014;
-      --deep-blue: #0a0028;
-      --gold: #f5d36e;
-      --gold-light: #ffeea0;
-      --magenta: #e91e8c;
-      --purple: #6d2f8c;
-      --purple-light: #9b5fd6;
-      --white: #ffffff;
-      --glass-bg: rgba(255,255,255,0.06);
-      --glass-border: rgba(255,255,255,0.15);
+      --rose:       #ff4d8e;
+      --rose-deep:  #d63070;
+      --pink:       #ff89b8;
+      --pink-light: #ffd6ea;
+      --lavender:   #c97fff;
+      --lav-light:  #f0d8ff;
+      --champagne:  #f5c97a;
+      --cream:      #fff5f9;
+      --petal:      #fce8f3;
+      --plum:       #3d1440;
+      --plum-mid:   #7a3d6e;
+      --white:      #ffffff;
+      --glass-bg:   rgba(255,255,255,0.62);
+      --glass-border: rgba(255,100,180,0.25);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Noto Sans JP', sans-serif;
-      background: var(--navy);
-      color: var(--white);
+      background: var(--cream);
+      color: var(--plum);
       overflow-x: hidden;
     }
 
-    /* ========== CANVAS PARTICLES ========== */
+    /* ====== CANVAS ====== */
     #particle-canvas {
       position: fixed;
       top: 0; left: 0;
@@ -41,7 +44,7 @@
       z-index: 1;
     }
 
-    /* ========== HERO ========== */
+    /* ====== HERO ====== */
     .hero {
       position: relative;
       height: 100vh;
@@ -59,13 +62,13 @@
       background-size: cover;
       background-position: center;
       z-index: 0;
-      transform: scale(1.05);
-      animation: slowZoom 20s ease infinite alternate;
+      transform: scale(1.06);
+      animation: slowZoom 22s ease infinite alternate;
     }
 
     @keyframes slowZoom {
-      from { transform: scale(1.05); }
-      to   { transform: scale(1.12); }
+      from { transform: scale(1.06); }
+      to   { transform: scale(1.13); }
     }
 
     .hero-overlay {
@@ -73,10 +76,10 @@
       inset: 0;
       background: linear-gradient(
         180deg,
-        rgba(5,0,20,0.3) 0%,
-        rgba(5,0,20,0.55) 40%,
-        rgba(5,0,20,0.85) 85%,
-        rgba(5,0,20,1) 100%
+        rgba(80, 0, 50, 0.25) 0%,
+        rgba(200, 40, 100, 0.38) 40%,
+        rgba(255, 180, 210, 0.72) 80%,
+        rgba(255, 240, 248, 0.97) 100%
       );
       z-index: 1;
     }
@@ -85,111 +88,167 @@
       position: relative;
       z-index: 2;
       text-align: center;
-      padding: 0 20px;
-      max-width: 900px;
+      padding: 0 24px;
+      max-width: 920px;
       animation: fadeInUp 1.4s ease both;
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
+      from { opacity: 0; transform: translateY(44px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
     .hero-badge {
       display: inline-block;
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.35em;
-      color: var(--gold);
-      border: 1px solid rgba(245,211,110,0.5);
-      padding: 8px 24px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.1rem;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.7);
+      padding: 8px 28px;
       border-radius: 100px;
-      margin-bottom: 28px;
-      background: rgba(245,211,110,0.08);
-      backdrop-filter: blur(8px);
+      margin-bottom: 24px;
+      background: rgba(255,100,160,0.22);
+      backdrop-filter: blur(10px);
       animation: fadeInUp 1.4s 0.2s ease both;
+      letter-spacing: 0.05em;
     }
 
     .hero-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 6vw, 4.2rem);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 4rem);
       font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 16px;
+      line-height: 1.2;
+      margin-bottom: 14px;
       animation: fadeInUp 1.4s 0.35s ease both;
+      color: var(--white);
+      text-shadow: 0 2px 20px rgba(200,50,100,0.4);
     }
 
-    .hero-title .gold { color: var(--gold); }
-    .hero-title .magenta { color: var(--magenta); }
+    .hero-title .rose   { color: var(--pink-light); }
+    .hero-title .italic { font-style: italic; }
 
     .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-size: clamp(0.95rem, 2.2vw, 1.25rem);
       font-weight: 300;
-      color: rgba(255,255,255,0.85);
-      line-height: 1.8;
-      margin-bottom: 40px;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.9;
+      margin-bottom: 36px;
       animation: fadeInUp 1.4s 0.5s ease both;
+      text-shadow: 0 1px 8px rgba(150,30,80,0.3);
     }
 
     .hero-meta {
       display: flex;
-      gap: 32px;
+      gap: 36px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 48px;
+      margin-bottom: 44px;
       animation: fadeInUp 1.4s 0.65s ease both;
     }
 
-    .hero-meta-item {
-      text-align: center;
-    }
+    .hero-meta-item { text-align: center; }
 
     .hero-meta-item .label {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       letter-spacing: 0.2em;
-      color: var(--gold);
+      color: rgba(255,255,255,0.8);
       text-transform: uppercase;
       display: block;
       margin-bottom: 4px;
     }
 
     .hero-meta-item .value {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2.2vw, 1.4rem);
       font-weight: 700;
+      color: var(--white);
     }
 
     .hero-cta {
       animation: fadeInUp 1.4s 0.8s ease both;
     }
 
+    /* Floating hearts decoration */
+    .hero-hearts {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .float-heart {
+      position: absolute;
+      font-size: 1.4rem;
+      animation: floatUp linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes floatUp {
+      0%   { transform: translateY(0) rotate(-15deg) scale(0.8); opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-100vh) rotate(20deg) scale(1.1); opacity: 0; }
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      text-align: center;
+    }
+
+    .scroll-indicator span {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: rgba(200,80,130,0.7);
+      margin-bottom: 8px;
+    }
+
+    .scroll-dot {
+      width: 2px;
+      height: 38px;
+      background: linear-gradient(to bottom, rgba(255,100,160,0.9), transparent);
+      margin: 0 auto;
+      border-radius: 2px;
+      animation: scrollDrop 2s ease infinite;
+    }
+
+    @keyframes scrollDrop {
+      0%, 100% { opacity: 0; transform: translateY(-6px); }
+      50%       { opacity: 1; transform: translateY(6px); }
+    }
+
+    /* ====== BUTTONS ====== */
     .btn-primary {
       display: inline-block;
-      font-family: 'Cinzel', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      color: var(--navy);
-      background: linear-gradient(135deg, var(--gold-light), var(--gold), #e6b84a);
-      padding: 18px 52px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      background: linear-gradient(135deg, #ff6aaa, #d63070, #ff4d8e);
+      padding: 17px 50px;
       border-radius: 100px;
       text-decoration: none;
       position: relative;
       overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 0 30px rgba(245,211,110,0.5);
+      box-shadow: 0 6px 30px rgba(255,77,142,0.45);
     }
 
     .btn-primary::before {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -60%;
-      width: 40%;
-      height: 200%;
-      background: rgba(255,255,255,0.5);
+      top: -50%; left: -60%;
+      width: 40%; height: 200%;
+      background: rgba(255,255,255,0.45);
       transform: skewX(-20deg);
-      animation: shimmer 3s infinite;
+      animation: shimmer 3.2s infinite;
     }
 
     @keyframes shimmer {
@@ -199,92 +258,32 @@
 
     .btn-primary:hover {
       transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 0 60px rgba(245,211,110,0.75);
+      box-shadow: 0 12px 48px rgba(255,77,142,0.65);
     }
 
     .btn-secondary {
       display: inline-block;
-      font-family: 'Cinzel', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 0.95rem;
       font-weight: 600;
-      letter-spacing: 0.1em;
-      color: var(--gold);
-      border: 1.5px solid var(--gold);
-      padding: 16px 44px;
+      letter-spacing: 0.08em;
+      color: var(--rose);
+      border: 1.5px solid var(--rose);
+      padding: 15px 42px;
       border-radius: 100px;
       text-decoration: none;
       transition: all 0.3s;
       backdrop-filter: blur(10px);
-      background: rgba(245,211,110,0.06);
+      background: rgba(255,255,255,0.55);
     }
 
     .btn-secondary:hover {
-      background: rgba(245,211,110,0.15);
-      box-shadow: 0 0 30px rgba(245,211,110,0.4);
+      background: rgba(255,77,142,0.1);
+      box-shadow: 0 6px 28px rgba(255,77,142,0.3);
       transform: translateY(-2px);
     }
 
-    /* Firework SVG decoration */
-    .firework-decoration {
-      position: absolute;
-      top: 10%;
-      right: 8%;
-      width: 200px;
-      height: 200px;
-      z-index: 2;
-      opacity: 0.6;
-      animation: fireworkPulse 4s ease-in-out infinite;
-    }
-
-    .firework-decoration-left {
-      position: absolute;
-      top: 15%;
-      left: 6%;
-      width: 150px;
-      height: 150px;
-      z-index: 2;
-      opacity: 0.45;
-      animation: fireworkPulse 4s 1.5s ease-in-out infinite;
-    }
-
-    @keyframes fireworkPulse {
-      0%, 100% { opacity: 0.4; transform: scale(0.9) rotate(0deg); }
-      50%       { opacity: 0.8; transform: scale(1.1) rotate(15deg); }
-    }
-
-    /* Scroll indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 36px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 3;
-      text-align: center;
-    }
-
-    .scroll-indicator span {
-      display: block;
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 10px;
-    }
-
-    .scroll-dot {
-      width: 2px;
-      height: 40px;
-      background: linear-gradient(to bottom, rgba(245,211,110,0.8), transparent);
-      margin: 0 auto;
-      border-radius: 2px;
-      animation: scrollDrop 2s ease infinite;
-    }
-
-    @keyframes scrollDrop {
-      0%, 100% { opacity: 0; transform: translateY(-8px); }
-      50%       { opacity: 1; transform: translateY(8px); }
-    }
-
-    /* ========== SECTION BASE ========== */
+    /* ====== SECTION BASE ====== */
     section { position: relative; z-index: 2; }
 
     .container {
@@ -299,38 +298,38 @@
     }
 
     .section-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.4em;
-      color: var(--gold);
-      text-transform: uppercase;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.15rem;
+      color: var(--rose);
       display: block;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .section-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 4vw, 2.9rem);
       font-weight: 700;
       line-height: 1.3;
       margin-bottom: 20px;
+      color: var(--plum);
     }
 
-    .section-title .gold { color: var(--gold); }
-    .section-title .magenta { color: var(--magenta); }
+    .section-title .rose     { color: var(--rose); }
+    .section-title .lavender { color: var(--lavender); }
+    .section-title .italic   { font-style: italic; }
 
     .section-desc {
       font-size: 1rem;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.9;
+      color: var(--plum-mid);
+      line-height: 1.95;
       max-width: 680px;
       margin: 0 auto;
     }
 
-    /* Scroll reveal */
+    /* Reveal */
     .reveal {
       opacity: 0;
-      transform: translateY(36px);
+      transform: translateY(32px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
@@ -339,24 +338,63 @@
       transform: translateY(0);
     }
 
-    /* ========== CONCEPT SECTION ========== */
+    /* Pink divider */
+    .pink-divider {
+      display: block;
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--lavender), var(--rose), var(--pink));
+      margin: 18px auto 0;
+      border-radius: 3px;
+    }
+
+    /* ====== STATS BAR ====== */
+    .stats-bar {
+      padding: 56px 0;
+      background: linear-gradient(135deg, #fff0f8, #fce8f3, #f5e8ff);
+      border-top: 1px solid rgba(255,100,180,0.12);
+      border-bottom: 1px solid rgba(255,100,180,0.12);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+
+    .stat-item .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      font-weight: 900;
+      color: var(--rose);
+      display: block;
+    }
+
+    .stat-item .stat-label {
+      font-size: 0.78rem;
+      color: var(--plum-mid);
+      margin-top: 8px;
+    }
+
+    /* ====== CONCEPT SECTION ====== */
     .concept {
-      padding: 120px 0;
-      background: linear-gradient(180deg, var(--navy) 0%, var(--deep-blue) 100%);
+      padding: 110px 0;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--petal) 100%);
     }
 
     .concept-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
+      gap: 24px;
     }
 
     .concept-card {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 44px 36px;
-      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 42px 32px;
+      backdrop-filter: blur(16px);
       text-align: center;
       transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
       position: relative;
@@ -366,45 +404,45 @@
     .concept-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0;
-      right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--magenta), var(--gold), var(--purple-light));
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--rose), var(--lavender), var(--pink));
       opacity: 0;
       transition: opacity 0.4s;
     }
 
     .concept-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 60px rgba(109,47,140,0.35);
-      border-color: rgba(245,211,110,0.35);
+      box-shadow: 0 16px 48px rgba(255,77,142,0.18);
+      border-color: rgba(255,100,180,0.45);
     }
 
     .concept-card:hover::before { opacity: 1; }
 
     .concept-icon {
       font-size: 3rem;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       display: block;
     }
 
     .concept-card h3 {
-      font-family: 'Cinzel', serif;
-      font-size: 1.15rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 14px;
-      color: var(--gold);
+      margin-bottom: 12px;
+      color: var(--rose-deep);
     }
 
     .concept-card p {
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.72);
-      line-height: 1.85;
+      font-size: 0.9rem;
+      color: var(--plum-mid);
+      line-height: 1.9;
     }
 
-    /* ========== TIMELINE SECTION ========== */
+    /* ====== TIMELINE SECTION ====== */
     .timeline-section {
-      padding: 120px 0;
-      background: radial-gradient(ellipse at center, rgba(109,47,140,0.12) 0%, transparent 70%), var(--navy);
+      padding: 110px 0;
+      background: linear-gradient(180deg, var(--petal) 0%, #f5e8ff 50%, var(--cream) 100%);
     }
 
     .timeline {
@@ -419,24 +457,19 @@
       left: 50%;
       top: 0; bottom: 0;
       width: 2px;
-      background: linear-gradient(to bottom, var(--magenta), var(--gold), var(--purple-light));
+      background: linear-gradient(to bottom, var(--rose), var(--lavender), var(--pink));
       transform: translateX(-50%);
     }
 
     .timeline-item {
       display: flex;
       align-items: flex-start;
-      margin-bottom: 56px;
+      margin-bottom: 52px;
       position: relative;
     }
 
-    .timeline-item:nth-child(odd) {
-      flex-direction: row;
-    }
-
-    .timeline-item:nth-child(even) {
-      flex-direction: row-reverse;
-    }
+    .timeline-item:nth-child(odd)  { flex-direction: row; }
+    .timeline-item:nth-child(even) { flex-direction: row-reverse; }
 
     .timeline-time {
       width: calc(50% - 36px);
@@ -451,10 +484,10 @@
     }
 
     .timeline-time .time {
-      font-family: 'Cinzel', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 1.4rem;
       font-weight: 700;
-      color: var(--gold);
+      color: var(--rose);
       display: block;
     }
 
@@ -464,15 +497,15 @@
       justify-content: center;
       align-items: flex-start;
       flex-shrink: 0;
-      padding-top: 6px;
+      padding-top: 4px;
     }
 
     .timeline-dot-inner {
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--magenta), var(--gold));
-      box-shadow: 0 0 16px rgba(233,30,140,0.7);
+      background: linear-gradient(135deg, var(--rose), var(--lavender));
+      box-shadow: 0 0 14px rgba(255,77,142,0.6);
       flex-shrink: 0;
     }
 
@@ -488,133 +521,39 @@
     }
 
     .timeline-content h4 {
-      font-family: 'Cinzel', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 1rem;
       font-weight: 600;
-      color: var(--white);
+      color: var(--plum);
       margin-bottom: 8px;
     }
 
     .timeline-content p {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.75;
-    }
-
-    /* ========== BUDGET SECTION ========== */
-    .budget-section {
-      padding: 120px 0;
-      background: linear-gradient(135deg, rgba(5,0,20,1) 0%, rgba(10,0,40,1) 50%, rgba(5,0,20,1) 100%);
-    }
-
-    .budget-bg-img {
-      position: absolute;
-      inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1632754120060-5a14b0dd5ace?w=1920&q=80');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.06;
-    }
-
-    .budget-table-wrapper {
-      overflow-x: auto;
-      border-radius: 20px;
-      box-shadow: 0 0 80px rgba(109,47,140,0.25);
-    }
-
-    table.budget-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: rgba(10,0,40,0.75);
-      backdrop-filter: blur(20px);
-      font-size: 0.95rem;
-    }
-
-    table.budget-table thead th {
-      font-family: 'Cinzel', serif;
-      font-size: 0.78rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      padding: 22px 28px;
-      background: linear-gradient(135deg, rgba(109,47,140,0.7), rgba(5,0,20,0.9));
-      color: var(--gold);
-      text-align: left;
-      border-bottom: 1px solid rgba(245,211,110,0.25);
-    }
-
-    table.budget-table tbody td {
-      padding: 18px 28px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.85);
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    table.budget-table tbody tr:hover td {
-      background: rgba(245,211,110,0.07);
-      box-shadow: inset 0 0 20px rgba(245,211,110,0.08);
-    }
-
-    table.budget-table tbody td:first-child {
-      color: var(--white);
-      font-weight: 500;
-    }
-
-    table.budget-table tbody td.price {
-      font-family: 'Cinzel', serif;
-      color: var(--gold-light);
-      font-weight: 600;
-      font-size: 1rem;
-    }
-
-    table.budget-table tfoot td {
-      padding: 22px 28px;
-      background: linear-gradient(135deg, rgba(233,30,140,0.2), rgba(109,47,140,0.3));
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--white);
-      border-top: 2px solid rgba(245,211,110,0.4);
-    }
-
-    table.budget-table tfoot td.price {
-      color: var(--gold);
-      font-size: 1.25rem;
-    }
-
-    /* Budget note */
-    .budget-note {
-      margin-top: 24px;
-      padding: 20px 28px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.5);
+      font-size: 0.87rem;
+      color: var(--plum-mid);
       line-height: 1.8;
     }
 
-    /* ========== GALLERY SECTION ========== */
+    /* ====== GALLERY SECTION ====== */
     .gallery-section {
-      padding: 120px 0;
-      background: var(--navy);
+      padding: 110px 0;
+      background: linear-gradient(180deg, var(--cream), #fce8f3);
     }
 
     .gallery-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
       grid-template-rows: 280px 280px;
-      gap: 16px;
+      gap: 14px;
     }
 
     .gallery-item {
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
       position: relative;
     }
 
-    .gallery-item:first-child {
-      grid-row: span 2;
-    }
+    .gallery-item:first-child { grid-row: span 2; }
 
     .gallery-item img {
       width: 100%;
@@ -623,38 +562,118 @@
       transition: transform 0.6s ease;
     }
 
-    .gallery-item:hover img {
-      transform: scale(1.07);
-    }
+    .gallery-item:hover img { transform: scale(1.08); }
 
     .gallery-item::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, transparent 50%, rgba(5,0,20,0.6));
+      background: linear-gradient(to bottom, transparent 50%, rgba(200,50,100,0.25));
       pointer-events: none;
     }
 
-    /* ========== LINKS SECTION ========== */
+    /* ====== BUDGET SECTION ====== */
+    .budget-section {
+      padding: 110px 0;
+      background: linear-gradient(135deg, #fce8f3, #f5e8ff, #fce8f3);
+      position: relative;
+    }
+
+    .budget-table-wrapper {
+      overflow-x: auto;
+      border-radius: 20px;
+      box-shadow: 0 8px 56px rgba(255,77,142,0.15);
+    }
+
+    table.budget-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      font-size: 0.95rem;
+    }
+
+    table.budget-table thead th {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 22px 28px;
+      background: linear-gradient(135deg, #ffd6ea, #f5e8ff);
+      color: var(--rose-deep);
+      text-align: left;
+      border-bottom: 2px solid rgba(255,100,180,0.2);
+    }
+
+    table.budget-table tbody td {
+      padding: 17px 28px;
+      border-bottom: 1px solid rgba(255,100,180,0.08);
+      color: var(--plum-mid);
+      transition: background 0.3s;
+    }
+
+    table.budget-table tbody tr:hover td {
+      background: rgba(255,100,180,0.06);
+    }
+
+    table.budget-table tbody td:first-child {
+      color: var(--plum);
+      font-weight: 500;
+    }
+
+    table.budget-table tbody td.price {
+      font-family: 'Playfair Display', serif;
+      color: var(--rose-deep);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    table.budget-table tfoot td {
+      padding: 22px 28px;
+      background: linear-gradient(135deg, rgba(255,100,180,0.12), rgba(200,127,255,0.1));
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--plum);
+      border-top: 2px solid rgba(255,77,142,0.3);
+    }
+
+    table.budget-table tfoot td.price {
+      color: var(--rose);
+      font-size: 1.25rem;
+    }
+
+    .budget-note {
+      margin-top: 20px;
+      padding: 18px 26px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,100,180,0.15);
+      font-size: 0.82rem;
+      color: var(--plum-mid);
+      line-height: 1.85;
+    }
+
+    /* ====== LINKS SECTION ====== */
     .links-section {
       padding: 100px 0;
-      background: linear-gradient(180deg, var(--navy), rgba(10,0,40,1));
+      background: var(--cream);
     }
 
     .links-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+      gap: 18px;
     }
 
     .link-card {
       display: flex;
       align-items: flex-start;
-      gap: 18px;
-      padding: 28px 28px;
+      gap: 16px;
+      padding: 26px 26px;
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      border-radius: 16px;
+      border-radius: 18px;
       text-decoration: none;
       color: inherit;
       transition: all 0.35s;
@@ -662,63 +681,62 @@
     }
 
     .link-card:hover {
-      border-color: rgba(245,211,110,0.45);
-      background: rgba(245,211,110,0.07);
+      border-color: rgba(255,77,142,0.4);
+      background: rgba(255,255,255,0.85);
       transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(109,47,140,0.25);
+      box-shadow: 0 10px 36px rgba(255,77,142,0.16);
     }
 
     .link-card-icon {
-      font-size: 2rem;
+      font-size: 1.8rem;
       flex-shrink: 0;
-      width: 52px;
-      height: 52px;
+      width: 50px;
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(245,211,110,0.1);
+      background: linear-gradient(135deg, #ffd6ea, #f5e8ff);
       border-radius: 12px;
     }
 
     .link-card-body h4 {
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--gold);
-      margin-bottom: 6px;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--rose-deep);
+      margin-bottom: 5px;
     }
 
     .link-card-body p {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.55);
+      font-size: 0.78rem;
+      color: var(--plum-mid);
       line-height: 1.6;
     }
 
     .link-card-body .url {
-      font-size: 0.72rem;
-      color: rgba(245,211,110,0.5);
+      font-size: 0.7rem;
+      color: rgba(200,80,130,0.55);
       margin-top: 6px;
       word-break: break-all;
     }
 
-    /* ========== CTA SECTION ========== */
+    /* ====== CTA SECTION ====== */
     .cta-section {
       padding: 140px 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(233,30,140,0.2) 0%, transparent 60%),
-                  radial-gradient(ellipse at 80% 80%, rgba(109,47,140,0.25) 0%, transparent 50%),
-                  var(--navy);
+      background: linear-gradient(135deg, #ffe0f0, #f5d8ff, #ffd6ea);
       text-align: center;
       position: relative;
       overflow: hidden;
     }
 
-    .cta-bg-img {
+    .cta-section::before {
+      content: '';
       position: absolute;
       inset: 0;
       background-image: url('https://images.unsplash.com/photo-1565865519537-fac387237f9c?w=1920&q=80');
       background-size: cover;
       background-position: center 30%;
-      opacity: 0.08;
+      opacity: 0.06;
     }
 
     .cta-content {
@@ -727,19 +745,22 @@
     }
 
     .cta-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.8rem, 5vw, 3.5rem);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 5vw, 3.6rem);
       font-weight: 900;
       margin-bottom: 24px;
       line-height: 1.25;
+      color: var(--plum);
     }
+
+    .cta-title .rose { color: var(--rose); }
 
     .cta-desc {
       font-size: 1.05rem;
-      color: rgba(255,255,255,0.72);
-      line-height: 1.9;
+      color: var(--plum-mid);
+      line-height: 1.95;
       max-width: 600px;
-      margin: 0 auto 52px;
+      margin: 0 auto 50px;
     }
 
     .cta-buttons {
@@ -753,106 +774,76 @@
       margin-top: 48px;
       padding: 28px 40px;
       display: inline-block;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 16px;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(255,100,180,0.25);
+      border-radius: 18px;
       backdrop-filter: blur(20px);
     }
 
     .cta-contact-info p {
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.6);
+      color: var(--plum-mid);
       margin-bottom: 8px;
     }
 
     .cta-contact-info strong {
-      font-family: 'Cinzel', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 1rem;
-      color: var(--gold);
+      color: var(--rose-deep);
     }
 
-    /* ========== FOOTER ========== */
+    /* ====== FOOTER ====== */
     footer {
-      background: #02000d;
-      border-top: 1px solid rgba(255,255,255,0.07);
+      background: var(--plum);
+      border-top: 1px solid rgba(255,100,180,0.2);
       padding: 56px 0 36px;
       text-align: center;
     }
 
     .footer-logo {
-      font-family: 'Cinzel', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--gold);
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: var(--pink-light);
       margin-bottom: 6px;
     }
 
     .footer-sub {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 32px;
+      font-size: 0.78rem;
+      color: rgba(255,200,230,0.5);
+      margin-bottom: 30px;
     }
 
     .footer-links {
       display: flex;
-      gap: 28px;
+      gap: 24px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 32px;
+      margin-bottom: 30px;
     }
 
     .footer-links a {
       font-size: 0.82rem;
-      color: rgba(255,255,255,0.45);
+      color: rgba(255,200,230,0.6);
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .footer-links a:hover { color: var(--gold); }
+    .footer-links a:hover { color: var(--pink); }
 
     .footer-copy {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.2);
-      line-height: 1.8;
+      font-size: 0.74rem;
+      color: rgba(255,200,230,0.3);
+      line-height: 1.85;
     }
 
     .footer-disclaimer {
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.2);
+      font-size: 0.68rem;
+      color: rgba(255,200,230,0.25);
       margin-top: 10px;
       line-height: 1.7;
     }
 
-    /* ========== STATS BAR ========== */
-    .stats-bar {
-      padding: 60px 0;
-      background: linear-gradient(90deg, rgba(233,30,140,0.15), rgba(109,47,140,0.2), rgba(233,30,140,0.15));
-      border-top: 1px solid rgba(255,255,255,0.07);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      text-align: center;
-    }
-
-    .stat-item .stat-number {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 900;
-      color: var(--gold);
-      display: block;
-    }
-
-    .stat-item .stat-label {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.55);
-      margin-top: 8px;
-    }
-
-    /* ========== RESPONSIVE ========== */
+    /* ====== RESPONSIVE ====== */
     @media (max-width: 768px) {
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
@@ -887,7 +878,7 @@
 
       .timeline-content,
       .timeline-item:nth-child(even) .timeline-content {
-        padding-left: 24px;
+        padding-left: 20px;
         padding-right: 0;
         text-align: left;
         width: 100%;
@@ -895,38 +886,21 @@
 
       .timeline-time-mobile {
         display: block;
-        font-family: 'Cinzel', serif;
+        font-family: 'Playfair Display', serif;
         font-size: 1rem;
         font-weight: 700;
-        color: var(--gold);
-        margin-bottom: 6px;
-      }
-
-      .firework-decoration,
-      .firework-decoration-left {
-        display: none;
+        color: var(--rose);
+        margin-bottom: 5px;
       }
     }
 
     @media (min-width: 769px) {
       .timeline-time-mobile { display: none; }
     }
-
-    /* Gold divider */
-    .gold-divider {
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--magenta), var(--gold));
-      margin: 16px auto 0;
-      border-radius: 3px;
-    }
-
   </style>
 </head>
 <body>
 
-<!-- Canvas Particles -->
 <canvas id="particle-canvas"></canvas>
 
 <!-- ====== HERO ====== -->
@@ -934,57 +908,21 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <!-- Firework decorations -->
-  <svg class="firework-decoration" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g opacity="0.9">
-      <line x1="100" y1="20" x2="100" y2="80" stroke="#f5d36e" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="100" y1="120" x2="100" y2="180" stroke="#f5d36e" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="20" y1="100" x2="80" y2="100" stroke="#f5d36e" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="120" y1="100" x2="180" y2="100" stroke="#f5d36e" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="43" y1="43" x2="75" y2="75" stroke="#e91e8c" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="125" y1="125" x2="157" y2="157" stroke="#e91e8c" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="157" y1="43" x2="125" y2="75" stroke="#9b5fd6" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="75" y1="125" x2="43" y2="157" stroke="#9b5fd6" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="100" cy="100" r="14" fill="#e91e8c" opacity="0.9"/>
-      <circle cx="100" cy="100" r="8" fill="#f5d36e"/>
-      <!-- Stars -->
-      <circle cx="100" cy="15" r="3.5" fill="#f5d36e"/>
-      <circle cx="100" cy="185" r="3.5" fill="#f5d36e"/>
-      <circle cx="15" cy="100" r="3.5" fill="#f5d36e"/>
-      <circle cx="185" cy="100" r="3.5" fill="#f5d36e"/>
-      <circle cx="38" cy="38" r="3" fill="#e91e8c"/>
-      <circle cx="162" cy="38" r="3" fill="#e91e8c"/>
-      <circle cx="38" cy="162" r="3" fill="#9b5fd6"/>
-      <circle cx="162" cy="162" r="3" fill="#9b5fd6"/>
-    </g>
-  </svg>
-
-  <svg class="firework-decoration-left" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g opacity="0.8">
-      <line x1="100" y1="25" x2="100" y2="75" stroke="#9b5fd6" stroke-width="2" stroke-linecap="round"/>
-      <line x1="100" y1="125" x2="100" y2="175" stroke="#9b5fd6" stroke-width="2" stroke-linecap="round"/>
-      <line x1="25" y1="100" x2="75" y2="100" stroke="#9b5fd6" stroke-width="2" stroke-linecap="round"/>
-      <line x1="125" y1="100" x2="175" y2="100" stroke="#9b5fd6" stroke-width="2" stroke-linecap="round"/>
-      <line x1="47" y1="47" x2="72" y2="72" stroke="#f5d36e" stroke-width="2" stroke-linecap="round"/>
-      <line x1="128" y1="128" x2="153" y2="153" stroke="#f5d36e" stroke-width="2" stroke-linecap="round"/>
-      <line x1="153" y1="47" x2="128" y2="72" stroke="#e91e8c" stroke-width="2" stroke-linecap="round"/>
-      <line x1="72" y1="128" x2="47" y2="153" stroke="#e91e8c" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="100" cy="100" r="12" fill="#9b5fd6" opacity="0.9"/>
-      <circle cx="100" cy="100" r="6" fill="#f5d36e"/>
-    </g>
-  </svg>
+  <!-- Floating hearts -->
+  <div class="hero-hearts" id="hero-hearts"></div>
 
   <div class="hero-content">
     <div class="hero-badge">✦ Private Evening Party ✦</div>
 
     <h1 class="hero-title">
-      <span class="gold">東京ディズニーリゾート</span><br>
-      <span class="magenta">貸切</span> プライベートパーティー
+      今夜だけ、<span class="italic rose">夢の王国</span>が<br>
+      あなたのものになる 🌙
     </h1>
 
     <p class="hero-sub">
-      閉園後のパークが、あなただけの魔法の王国になる。<br>
-      4,000名が同じ夢を共有する、一夜限りの奇跡。
+      東京ディズニーリゾートが、閉園後に丸ごとあなたたちのもの。<br>
+      花火、アトラクション乗り放題、キャラクターとの特別な時間——<br>
+      この世に二度とない、最高の夜が待っている。✨
     </p>
 
     <div class="hero-meta">
@@ -1004,9 +942,9 @@
 
     <div class="hero-cta" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
       <a href="https://www.tokyodisneyresort.jp/" target="_blank" rel="noopener" class="btn-primary">
-        公式サイトで詳細を見る
+        💕 公式サイトで詳細を見る
       </a>
-      <a href="#budget" class="btn-secondary">予算・プランを確認</a>
+      <a href="#budget" class="btn-secondary">💰 予算・プランを確認</a>
     </div>
   </div>
 
@@ -1022,19 +960,19 @@
     <div class="stats-grid reveal">
       <div class="stat-item">
         <span class="stat-number">3h</span>
-        <div class="stat-label">完全貸切時間</div>
+        <div class="stat-label">完全貸切の魔法時間</div>
       </div>
       <div class="stat-item">
         <span class="stat-number">4,000+</span>
-        <div class="stat-label">最低参加人数</div>
+        <div class="stat-label">夢を共有できる仲間たち</div>
       </div>
       <div class="stat-item">
         <span class="stat-number">7,700万〜</span>
         <div class="stat-label">ミニマム予算（概算）</div>
       </div>
       <div class="stat-item">
-        <span class="stat-number">1</span>
-        <div class="stat-label">この世に2度とない夜</div>
+        <span class="stat-number">∞</span>
+        <div class="stat-label">この夜が残す感動の量</div>
       </div>
     </div>
   </div>
@@ -1044,45 +982,49 @@
 <section class="concept" id="concept">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">✦ Why Private ✦</span>
-      <h2 class="section-title">なぜ、貸切なのか。<br><span class="gold">その答えは「感動の密度」</span>にある</h2>
+      <span class="section-label">✦ なぜ貸切なの？ ✦</span>
+      <h2 class="section-title">
+        「特別」という言葉が、<br>
+        <span class="italic rose">本当の意味</span>を持つ夜
+      </h2>
       <p class="section-desc">
-        一般開園の喧騒を超えた先に、本物の非日常がある。<br>
-        誰にも邪魔されない空間で、仲間と分かち合う感動——それがディズニー貸切の本質。
+        一般開園とは全く違う空気が流れる。<br>
+        行列も、見知らぬ他人も、時間の制限も——すべて消えた世界で<br>
+        大切な人たちと過ごす3時間は、一生の宝物になる。
       </p>
-      <span class="gold-divider"></span>
+      <span class="pink-divider"></span>
     </div>
 
     <div class="concept-grid">
       <div class="concept-card reveal">
         <span class="concept-icon">🏰</span>
-        <h3>パーク独占という体験</h3>
-        <p>閉園後、4,000名だけのために灯り続けるパーク。行列ゼロ、制限ゼロ。アトラクションも、フォトスポットも、すべてあなた方のもの。</p>
+        <h3>パーク全体が私たちのもの</h3>
+        <p>閉園後、4,000名だけのために灯り続けるパーク。行列ゼロ、制限ゼロ。アトラクションも、フォトスポットも、すべてあなた方だけのもの。</p>
       </div>
       <div class="concept-card reveal">
         <span class="concept-icon">✨</span>
-        <h3>カスタマイズされた魔法</h3>
-        <p>オープニングセレモニーから花火のクライマックスまで、すべてがあなたの企業・団体のために設計される特別プログラム。世界に一つだけの演出。</p>
+        <h3>世界に一つだけの演出</h3>
+        <p>オープニングから花火のクライマックスまで、あなたの企業・団体のために設計される特別プログラム。どこにも売っていない、この夜だけの魔法。</p>
       </div>
       <div class="concept-card reveal">
         <span class="concept-icon">🎆</span>
-        <h3>記憶に残る企業ブランディング</h3>
-        <p>社員研修、顧客感謝祭、創立記念——どんな目的にも応える舞台。「あの夜があったから今がある」という共有体験は、何より強い絆を生む。</p>
+        <h3>感動が絆に変わる</h3>
+        <p>社員研修、顧客感謝祭、創立記念——どんな目的にも応える最高の舞台。「あの夜があったから今がある」という共有体験は、何より強い絆を生む。</p>
       </div>
       <div class="concept-card reveal">
         <span class="concept-icon">🌟</span>
-        <h3>プロが作る夢の舞台裏</h3>
-        <p>東京ディズニーリゾートの特別営業チームが、ゲスト一人ひとりへの温かいホスピタリティを徹底管理。あなたは当日、ただ夢の中にいればいい。</p>
+        <h3>当日はただ楽しむだけ</h3>
+        <p>東京ディズニーリゾートの特別営業チームが、ゲスト一人ひとりへのホスピタリティを徹底管理。準備も運営も全部お任せ。あなたは夢の中にいればいい。</p>
       </div>
       <div class="concept-card reveal">
         <span class="concept-icon">🎠</span>
-        <h3>キャラクターとの特別な時間</h3>
-        <p>ミッキー・ミニーをはじめ、人気キャラクターとのグリーティング枠を大幅に拡張。写真撮影・触れ合いの機会が通常開園の何倍にも。</p>
+        <h3>キャラクターと特別な時間を</h3>
+        <p>ミッキー・ミニーをはじめ、人気キャラクターとのグリーティング枠を大幅に拡張。通常では絶対に叶わない距離で、一緒に写真が撮れる！</p>
       </div>
       <div class="concept-card reveal">
         <span class="concept-icon">🥂</span>
-        <h3>ガラ・ダイニングの贅沢</h3>
-        <p>パーク内の複数レストランを貸切り、特別メニューのコースやビュッフェを用意。ディズニーの世界観に包まれたまま、特別な食体験を。</p>
+        <h3>特別メニューのダイニング</h3>
+        <p>パーク内の複数レストランを貸切り、特別メニューのコース料理やビュッフェを用意。ディズニーの世界観に包まれながら、特別な食体験を。</p>
       </div>
     </div>
   </div>
@@ -1092,9 +1034,9 @@
 <section class="gallery-section">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">✦ The World ✦</span>
-      <h2 class="section-title">夢の<span class="magenta">舞台</span>を、目に焼きつけろ</h2>
-      <span class="gold-divider"></span>
+      <span class="section-label">✦ その世界を見て ✦</span>
+      <h2 class="section-title">これが、<span class="italic rose">夢の舞台</span> 🎇</h2>
+      <span class="pink-divider"></span>
     </div>
 
     <div class="gallery-grid reveal">
@@ -1121,13 +1063,13 @@
 <section class="timeline-section" id="timeline">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">✦ Program ✦</span>
-      <h2 class="section-title">夢の夜、<span class="gold">3時間のストーリー</span></h2>
+      <span class="section-label">✦ タイムライン ✦</span>
+      <h2 class="section-title">夢の夜、<span class="italic rose">3時間のストーリー</span> 🌙</h2>
       <p class="section-desc">
-        19:30 から 22:30 まで、精緻に設計された感動のプログラム。<br>
-        一分一秒を無駄にしない、奇跡の夜がここから始まる。
+        19:30から22:30まで、精緻に設計された感動のプログラム。<br>
+        1分1秒を無駄にしない、奇跡の夜がここから始まる。
       </p>
-      <span class="gold-divider"></span>
+      <span class="pink-divider"></span>
     </div>
 
     <div class="timeline reveal">
@@ -1136,8 +1078,8 @@
         <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
         <div class="timeline-content">
           <span class="timeline-time-mobile">19:00</span>
-          <h4>ゲスト集合・受付開始</h4>
-          <p>パーク外のウェルカムエリアで参加者を迎える。記念バッジ・専用パスの配布。</p>
+          <h4>🎀 ゲスト集合・受付開始</h4>
+          <p>パーク外のウェルカムエリアで参加者をお出迎え。記念バッジ・専用パスの配布。</p>
         </div>
       </div>
 
@@ -1146,7 +1088,7 @@
         <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
         <div class="timeline-content">
           <span class="timeline-time-mobile">19:30</span>
-          <h4>パーク開場 — 貸切スタート</h4>
+          <h4>🏰 パーク開場 — 貸切スタート！</h4>
           <p>一般客が退場した後、あなた方だけのために門が開く。入場の瞬間から非日常が始まる。</p>
         </div>
       </div>
@@ -1156,8 +1098,8 @@
         <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
         <div class="timeline-content">
           <span class="timeline-time-mobile">19:45</span>
-          <h4>オープニングセレモニー &amp; 特別ショー</h4>
-          <p>センターステージでのオープニングショー。ディズニーキャラクターたちが登場し、夢の夜の幕が開く。</p>
+          <h4>🌟 オープニングセレモニー &amp; 特別ショー</h4>
+          <p>センターステージでのスペシャルショー。ディズニーキャラクターたちが登場し、夢の夜の幕が開く。</p>
         </div>
       </div>
 
@@ -1166,8 +1108,8 @@
         <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
         <div class="timeline-content">
           <span class="timeline-time-mobile">20:00〜21:30</span>
-          <h4>アトラクション乗り放題 &amp; キャラグリ</h4>
-          <p>全主要アトラクションが待ち時間なしで乗り放題。キャラクターとのプレミアムグリーティングタイム。特別ケータリングも楽しめる。</p>
+          <h4>✨ アトラクション乗り放題 &amp; キャラグリ</h4>
+          <p>全主要アトラクションが待ち時間なしで乗り放題！キャラクターとのプレミアムグリーティング、特別ケータリングも楽しめる。</p>
         </div>
       </div>
 
@@ -1176,8 +1118,8 @@
         <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
         <div class="timeline-content">
           <span class="timeline-time-mobile">21:30</span>
-          <h4>クライマックス花火 &amp; プロジェクションマッピング</h4>
-          <p>城を彩る大規模プロジェクションマッピングと打ち上げ花火。4,000名が見上げる空に、夢が炸裂する瞬間。</p>
+          <h4>🎆 クライマックス花火 &amp; プロジェクションマッピング</h4>
+          <p>城を彩る大規模プロジェクションマッピングと打ち上げ花火。4,000名が見上げる空に夢が炸裂する感動の瞬間！</p>
         </div>
       </div>
 
@@ -1186,8 +1128,8 @@
         <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
         <div class="timeline-content">
           <span class="timeline-time-mobile">22:00</span>
-          <h4>クロージングパーティー &amp; 記念撮影</h4>
-          <p>城をバックにした全員記念撮影、フォトブース解放。オリジナルグッズ・記念品の贈呈。</p>
+          <h4>📸 クロージングパーティー &amp; 記念撮影</h4>
+          <p>お城をバックにした全員記念撮影、フォトブース解放。オリジナルグッズ・記念品の贈呈。</p>
         </div>
       </div>
 
@@ -1196,7 +1138,7 @@
         <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
         <div class="timeline-content">
           <span class="timeline-time-mobile">22:30</span>
-          <h4>閉会 — 夢の夜、幕を閉じる</h4>
+          <h4>💕 閉会 — 夢の夜、幕を閉じる</h4>
           <p>キャラクターたちとのお見送り。この夜の記憶は、参加者の胸に永遠に刻まれる。</p>
         </div>
       </div>
@@ -1206,16 +1148,15 @@
 
 <!-- ====== BUDGET SECTION ====== -->
 <section class="budget-section" id="budget">
-  <div class="budget-bg-img"></div>
   <div class="container" style="position:relative;z-index:2;">
     <div class="section-header reveal">
-      <span class="section-label">✦ Investment ✦</span>
-      <h2 class="section-title"><span class="gold">夢の価格表</span> — リアルな予算詳細</h2>
+      <span class="section-label">✦ 夢の価格表 ✦</span>
+      <h2 class="section-title"><span class="italic rose">リアルな予算</span>、全部見せます 💰</h2>
       <p class="section-desc">
-        東京ディズニーリゾート貸切パーティーの費用は、規模・内容・プログラムによって幅があります。<br>
+        東京ディズニーリゾート貸切パーティーの費用は、規模・内容によって幅があります。<br>
         以下は参考概算です。実際の費用は公式特別営業部への問い合わせで確認ください。
       </p>
-      <span class="gold-divider"></span>
+      <span class="pink-divider"></span>
     </div>
 
     <div class="budget-table-wrapper reveal">
@@ -1229,49 +1170,49 @@
         </thead>
         <tbody>
           <tr>
-            <td>入場チケット（4,000名）</td>
+            <td>🎟 入場チケット（4,000名）</td>
             <td class="price">3,200万円</td>
             <td class="price">4,000万円</td>
           </tr>
           <tr>
-            <td>パーク使用料・運営費</td>
+            <td>🏰 パーク使用料・運営費</td>
             <td class="price">2,000万円</td>
             <td class="price">3,000万円</td>
           </tr>
           <tr>
-            <td>特別ショー・エンターテインメント</td>
+            <td>🎭 特別ショー・エンターテインメント</td>
             <td class="price">500万円</td>
             <td class="price">2,000万円</td>
           </tr>
           <tr>
-            <td>花火・プロジェクションマッピング</td>
+            <td>🎆 花火・プロジェクションマッピング</td>
             <td class="price">300万円</td>
             <td class="price">1,500万円</td>
           </tr>
           <tr>
-            <td>ケータリング・飲食（4,000名分）</td>
+            <td>🍽 ケータリング・飲食（4,000名分）</td>
             <td class="price">1,200万円</td>
             <td class="price">2,800万円</td>
           </tr>
           <tr>
-            <td>キャラクターグリーティング拡張</td>
+            <td>🐭 キャラクターグリーティング拡張</td>
             <td class="price">200万円</td>
             <td class="price">500万円</td>
           </tr>
           <tr>
-            <td>記念品・オリジナルグッズ</td>
+            <td>🎁 記念品・オリジナルグッズ</td>
             <td class="price">200万円</td>
             <td class="price">800万円</td>
           </tr>
           <tr>
-            <td>映像・写真・記録</td>
+            <td>📷 映像・写真・記録</td>
             <td class="price">100万円</td>
             <td class="price">500万円</td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
-            <td><strong>合計（概算）</strong></td>
+            <td><strong>💎 合計（概算）</strong></td>
             <td class="price"><strong>約7,700万円〜</strong></td>
             <td class="price"><strong>約1.5億円〜</strong></td>
           </tr>
@@ -1291,13 +1232,13 @@
 <section class="links-section" id="links">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">✦ References ✦</span>
-      <h2 class="section-title">実際の情報元 &amp; <span class="gold">参考リンク集</span></h2>
+      <span class="section-label">✦ 参考リンク集 ✦</span>
+      <h2 class="section-title">実際の情報を<span class="italic rose">チェック</span>しよう 🔗</h2>
       <p class="section-desc">
         すべての情報は公式・信頼性の高い一次情報をベースにしています。<br>
-        詳細はこちらのリンクから直接確認ください。
+        気になるリンクから直接確認してみてね。
       </p>
-      <span class="gold-divider"></span>
+      <span class="pink-divider"></span>
     </div>
 
     <div class="links-grid">
@@ -1360,30 +1301,29 @@
 
 <!-- ====== CTA SECTION ====== -->
 <section class="cta-section" id="contact">
-  <div class="cta-bg-img"></div>
   <div class="container">
     <div class="cta-content reveal">
       <h2 class="cta-title">
-        あなたの組織に、<br>
-        <span style="color:var(--gold)">伝説の一夜</span>を。
+        あなたの大切な人たちに、<br>
+        <span class="rose italic">一生忘れられない夜</span>を。
       </h2>
       <p class="cta-desc">
         東京ディズニーリゾートの貸切パーティーは、企業・団体のみ申し込み可能です。
         4,000名以上の参加を条件に、特別営業部が専任で対応します。
-        夢の計画は、一本の問い合わせから始まります。
+        夢の計画は、一本の問い合わせから始まります 💌
       </p>
 
       <div class="cta-buttons">
         <a href="https://www.tokyodisneyresort.jp/" target="_blank" rel="noopener" class="btn-primary">
-          東京ディズニーリゾート公式へ
+          💕 東京ディズニーリゾート公式へ
         </a>
-        <a href="#concept" class="btn-secondary">このページを最初から読む</a>
+        <a href="#concept" class="btn-secondary">🌸 最初から読む</a>
       </div>
 
       <div class="cta-contact-info">
         <p>お問い合わせ先</p>
         <strong>東京ディズニーリゾート 特別営業部</strong>
-        <p style="margin-top:8px;font-size:0.78rem;color:rgba(255,255,255,0.4);">
+        <p style="margin-top:8px;font-size:0.78rem;color:var(--plum-mid);">
           受付時間・連絡先は公式サイトよりご確認ください<br>
           主催は企業・団体のみ（個人申し込み不可）
         </p>
@@ -1420,11 +1360,36 @@
 
 <!-- ====== SCRIPTS ====== -->
 <script>
+// -------- FLOATING HEARTS (hero) --------
+(function() {
+  const container = document.getElementById('hero-hearts');
+  const emojis = ['🌸','💕','✨','💫','🌟','💖','🎀','🌺','⭐','💗'];
+
+  function createHeart() {
+    const el = document.createElement('span');
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.className = 'float-heart';
+    el.style.left  = Math.random() * 100 + '%';
+    el.style.bottom = '-40px';
+    const dur = 7 + Math.random() * 8;
+    el.style.animationDuration = dur + 's';
+    el.style.animationDelay   = Math.random() * 5 + 's';
+    el.style.fontSize = (0.9 + Math.random() * 1.2) + 'rem';
+    container.appendChild(el);
+    setTimeout(() => el.remove(), (dur + 5) * 1000);
+  }
+
+  for (let i = 0; i < 12; i++) {
+    setTimeout(createHeart, i * 400);
+  }
+  setInterval(createHeart, 900);
+})();
+
 // -------- PARTICLE CANVAS --------
 (function() {
   const canvas = document.getElementById('particle-canvas');
   const ctx    = canvas.getContext('2d');
-  let W, H, particles = [], mouseX = -9999, mouseY = -9999;
+  let W, H, particles = [];
 
   function resize() {
     W = canvas.width  = window.innerWidth;
@@ -1433,100 +1398,96 @@
   resize();
   window.addEventListener('resize', resize);
 
-  const COLORS = ['#f5d36e','#ffeea0','#e91e8c','#9b5fd6','#ffffff','#ffcce5'];
+  const COLORS = [
+    'rgba(255,100,160,', 'rgba(255,200,220,', 'rgba(200,127,255,',
+    'rgba(255,180,210,', 'rgba(255,255,255,', 'rgba(245,180,230,'
+  ];
 
-  function createParticle(burst) {
+  function mkParticle(burst) {
+    const isHeart = Math.random() < 0.18;
     return {
-      x: burst ? burst.x : Math.random() * W,
-      y: burst ? burst.y : Math.random() * H,
-      vx: (Math.random() - 0.5) * (burst ? 3.5 : 0.4),
-      vy: (Math.random() - 0.5) * (burst ? 3.5 : 0.4) - (burst ? 0 : 0.2),
-      size: Math.random() * (burst ? 3 : 2.2) + 0.8,
+      x:     burst ? burst.x : Math.random() * W,
+      y:     burst ? burst.y : -10,
+      vx:    (Math.random() - 0.5) * (burst ? 2.8 : 0.5),
+      vy:    (Math.random() - 0.5) * (burst ? 2.8 : 0.35) + (burst ? 0 : 0.4),
+      size:  Math.random() * (burst ? 3.5 : 3) + 1,
       color: COLORS[Math.floor(Math.random() * COLORS.length)],
-      alpha: burst ? 1 : Math.random() * 0.7 + 0.15,
-      decay: burst ? 0.018 : 0.001,
-      twinkle: Math.random() * Math.PI * 2,
-      twinkleSpeed: 0.03 + Math.random() * 0.04,
-      gravity: burst ? 0.06 : 0,
+      alpha: burst ? 0.9 : Math.random() * 0.55 + 0.15,
+      decay: burst ? 0.014 : 0.0015,
+      wobble: Math.random() * Math.PI * 2,
+      wobbleSpeed: 0.02 + Math.random() * 0.03,
+      gravity: burst ? 0.05 : 0,
+      isHeart,
     };
   }
 
-  // Init particles
-  for (let i = 0; i < 160; i++) particles.push(createParticle(null));
+  for (let i = 0; i < 140; i++) particles.push(mkParticle(null));
 
-  // Burst particles from a point
   function burst(x, y, n) {
-    for (let i = 0; i < n; i++) particles.push(createParticle({x, y}));
+    for (let i = 0; i < n; i++) particles.push(mkParticle({x, y}));
   }
 
-  // Random burst timer
   function randomBurst() {
-    const x = Math.random() * W;
-    const y = Math.random() * H * 0.6;
-    burst(x, y, 18);
-    setTimeout(randomBurst, 2200 + Math.random() * 3000);
+    burst(Math.random() * W, Math.random() * H * 0.65, 16);
+    setTimeout(randomBurst, 2500 + Math.random() * 3000);
   }
-  setTimeout(randomBurst, 1500);
+  setTimeout(randomBurst, 2000);
+
+  function drawHeart(ctx, x, y, size) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(size * 0.025, size * 0.025);
+    ctx.beginPath();
+    ctx.moveTo(0, -10);
+    ctx.bezierCurveTo(10, -20, 25, -5, 0, 12);
+    ctx.bezierCurveTo(-25, -5, -10, -20, 0, -10);
+    ctx.fill();
+    ctx.restore();
+  }
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
     const alive = [];
     for (const p of particles) {
-      p.x  += p.vx;
+      p.x  += p.vx + Math.sin(p.wobble) * 0.5;
       p.y  += p.vy + p.gravity;
-      p.vy += p.gravity * 0.6;
+      p.vy += p.gravity * 0.4;
       p.alpha -= p.decay;
-      p.twinkle += p.twinkleSpeed;
+      p.wobble += p.wobbleSpeed;
       if (p.alpha <= 0) {
         if (!p.gravity) {
-          // Recycled ambient particle
-          const np = createParticle(null);
+          const np = mkParticle(null);
           np.x = Math.random() * W;
-          np.y = H + 10;
+          np.y = -10;
           alive.push(np);
         }
         continue;
       }
-      const a = p.alpha * (0.6 + 0.4 * Math.sin(p.twinkle));
-      ctx.globalAlpha = a;
-      ctx.fillStyle   = p.color;
-      ctx.shadowBlur  = p.size * 5;
-      ctx.shadowColor = p.color;
-      ctx.beginPath();
-      // Draw star shape for variety
-      if (p.size > 1.8) {
-        drawStar(ctx, p.x, p.y, p.size * 0.55, p.size * 1.2, 4);
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle   = p.color + p.alpha + ')';
+      ctx.shadowBlur  = p.size * 6;
+      ctx.shadowColor = p.color + '0.5)';
+      if (p.isHeart) {
+        drawHeart(ctx, p.x, p.y, p.size * 14);
       } else {
+        ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
       }
-      ctx.fill();
     }
     ctx.globalAlpha = 1;
     ctx.shadowBlur  = 0;
-    // Keep ambient pool at ~120
-    const ambientCount = particles.filter(p => !p.gravity).length;
-    if (ambientCount < 120) {
-      for (let i = 0; i < 5; i++) {
-        const np = createParticle(null);
-        np.y = H + 10;
+
+    const ambient = particles.filter(p => !p.gravity).length;
+    if (ambient < 110) {
+      for (let i = 0; i < 4; i++) {
+        const np = mkParticle(null);
+        np.y = -10;
         alive.push(np);
       }
     }
     particles = particles.filter(p => p.alpha > 0).concat(alive);
     requestAnimationFrame(draw);
-  }
-
-  function drawStar(ctx, cx, cy, r1, r2, points) {
-    const step = Math.PI / points;
-    ctx.beginPath();
-    for (let i = 0; i < 2 * points; i++) {
-      const r   = i % 2 === 0 ? r2 : r1;
-      const ang = i * step - Math.PI / 2;
-      const x   = cx + r * Math.cos(ang);
-      const y   = cy + r * Math.sin(ang);
-      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-    }
-    ctx.closePath();
   }
 
   draw();
@@ -1535,12 +1496,11 @@
 // -------- SCROLL REVEAL --------
 (function() {
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
+    entries.forEach(e => {
       if (e.isIntersecting) {
-        // Staggered delay for grid children
         const siblings = Array.from(e.target.parentElement.querySelectorAll('.reveal'));
         const idx = siblings.indexOf(e.target);
-        setTimeout(() => e.target.classList.add('visible'), idx * 80);
+        setTimeout(() => e.target.classList.add('visible'), idx * 90);
         obs.unobserve(e.target);
       }
     });
