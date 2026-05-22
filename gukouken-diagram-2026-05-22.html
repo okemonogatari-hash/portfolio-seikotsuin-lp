@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>愚行権ってなに？ ── 他人から見て愚かな選択をする自由｜きょうちゃん図解</title>
+<meta name="description" content="J.S.ミル『自由論』(1859)由来の愚行権を、図解でわかりやすく整理。他者危害原則・賢明さの強制・現代日本での息苦しさ・TEDxKobe『勝手にやる』との接続まで一枚で理解できるダッシュボード。">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1f1a18;
+  --muted:#736b65;
+  --bg:#fff9f0;
+  --bg2:#fef3e0;
+  --cream:#fffaf2;
+  --line:#ecd9b8;
+  --gold:#d49a3e;
+  --gold-deep:#a87520;
+  --rose:#e87b8f;
+  --rose-deep:#c4546a;
+  --sky:#67a3c9;
+  --sky-deep:#4583a8;
+  --leaf:#7aa874;
+  --leaf-deep:#54864e;
+  --warn:#e07a4a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans JP",sans-serif;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,#fff 100%);color:var(--ink);line-height:1.85}
+a{color:var(--gold-deep);font-weight:700;text-underline-offset:4px;text-decoration:none}
+a:hover{color:var(--rose-deep);text-decoration:underline}
+.wrap{width:min(1100px,94vw);margin:0 auto}
+
+/* HEADER */
+header{padding:64px 0 44px;border-bottom:2px dashed var(--line);position:relative;overflow:hidden}
+header::before{content:"📜";position:absolute;top:24px;right:8%;font-size:64px;opacity:.15;transform:rotate(-12deg)}
+header::after{content:"🕊";position:absolute;bottom:12px;left:6%;font-size:54px;opacity:.18;transform:rotate(8deg)}
+.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);font-weight:900;margin-bottom:12px}
+.eyebrow .dot{display:inline-block;width:8px;height:8px;background:var(--gold);border-radius:50%;margin-right:8px;vertical-align:middle}
+h1{font-family:"Noto Serif JP",serif;font-size:clamp(30px,5.4vw,52px);line-height:1.28;color:var(--ink);position:relative;z-index:2}
+.title-em{background:linear-gradient(180deg,transparent 60%,#ffd98c 60%);padding:0 4px}
+.tagline{font-family:"Caveat",cursive;font-size:24px;color:var(--rose-deep);margin-top:14px;position:relative;z-index:2}
+.lead{margin-top:22px;font-size:16px;color:var(--muted);max-width:840px;position:relative;z-index:2}
+.metrics{display:flex;gap:32px;flex-wrap:wrap;margin-top:24px;position:relative;z-index:2}
+.metric{display:flex;flex-direction:column;gap:4px;background:#fff;padding:12px 18px;border-radius:14px;border:1px solid var(--line);box-shadow:0 4px 14px rgba(212,154,62,.08)}
+.metric .v{font-family:"Noto Serif JP",serif;font-size:22px;font-weight:900;color:var(--gold-deep);line-height:1}
+.metric .l{font-size:11px;color:var(--muted);letter-spacing:.06em;margin-top:4px}
+
+main{padding:30px 0 60px}
+section{padding:48px 0;position:relative}
+section + section{border-top:1px dashed var(--line)}
+h2{font-family:"Noto Serif JP",serif;font-size:28px;line-height:1.4;margin-bottom:8px;color:var(--ink);display:flex;align-items:center;gap:12px}
+h2 .num{font-family:"Caveat",cursive;color:var(--rose);font-size:38px;line-height:1}
+h2 .ic{font-size:28px}
+.h2-sub{font-size:14px;color:var(--muted);margin-bottom:30px;font-weight:400;padding-left:8px;border-left:3px solid var(--gold)}
+
+/* ONE-LINE DEFINITION */
+.def-card{background:linear-gradient(135deg,#fff6e1,#ffe7c9);border:2px solid var(--gold);border-radius:24px;padding:36px 40px;text-align:center;box-shadow:0 12px 36px rgba(212,154,62,.18);position:relative;overflow:hidden;margin-top:8px}
+.def-card::before{content:"";position:absolute;top:-30px;right:-30px;width:140px;height:140px;background:radial-gradient(circle,rgba(232,123,143,.16),transparent 70%);border-radius:50%}
+.def-label{font-size:11px;letter-spacing:.22em;color:var(--gold-deep);font-weight:900;margin-bottom:10px}
+.def-text{font-family:"Noto Serif JP",serif;font-size:clamp(20px,3.2vw,28px);color:var(--ink);font-weight:900;line-height:1.55;position:relative;z-index:2}
+.def-text .em{color:var(--rose-deep);background:linear-gradient(180deg,transparent 60%,#ffd0d8 60%);padding:0 4px}
+.def-source{margin-top:14px;font-size:12.5px;color:var(--muted)}
+
+/* CONCEPT MAP - 中心円 */
+.concept-map{margin:20px auto 0;max-width:760px;position:relative;padding:40px 20px}
+.cm-center{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#fff;width:200px;height:200px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto;box-shadow:0 14px 42px rgba(168,117,32,.4);position:relative;z-index:3}
+.cm-center .t1{font-family:"Noto Serif JP",serif;font-size:22px;font-weight:900;line-height:1.2}
+.cm-center .t2{font-size:12px;margin-top:4px;opacity:.92;letter-spacing:.04em}
+.cm-orbit{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:30px}
+.cm-card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:20px 22px;position:relative;transition:.3s}
+.cm-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(168,117,32,.15)}
+.cm-card.rose{border-color:#f3c4cd}
+.cm-card.sky{border-color:#bbd6e8}
+.cm-card.leaf{border-color:#cee1cb}
+.cm-card .h{font-family:"Noto Serif JP",serif;font-size:15px;font-weight:900;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.cm-card.rose .h{color:var(--rose-deep)}
+.cm-card.sky .h{color:var(--sky-deep)}
+.cm-card.leaf .h{color:var(--leaf-deep)}
+.cm-card p{font-size:13px;color:#5c5550;line-height:1.65}
+
+/* HARM PRINCIPLE 図解 */
+.harm-fig{background:#fff;border:2px solid var(--line);border-radius:20px;padding:40px 36px;margin-top:8px;box-shadow:0 10px 30px rgba(212,154,62,.08)}
+.harm-fig h3{text-align:center;font-family:"Noto Serif JP",serif;font-size:18px;color:var(--gold-deep);margin-bottom:32px}
+.harm-fig h3 .label{font-size:11px;letter-spacing:.18em;color:var(--rose);display:block;margin-bottom:6px;font-weight:900}
+.harm-grid{display:grid;grid-template-columns:1fr;gap:22px}
+@media(min-width:780px){.harm-grid{grid-template-columns:1fr 1fr}}
+.harm-cell{background:linear-gradient(135deg,#fffbf2,#fff5e2);border:2px dashed var(--line);border-radius:18px;padding:24px 26px;position:relative}
+.harm-cell.ok{border-color:var(--leaf);background:linear-gradient(135deg,#f6fbf4,#e8f3e4)}
+.harm-cell.ng{border-color:var(--warn);background:linear-gradient(135deg,#fff5ef,#ffe6d8)}
+.harm-cell .hd{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:"Noto Serif JP",serif;font-size:16px;font-weight:900}
+.harm-cell.ok .hd{color:var(--leaf-deep)}
+.harm-cell.ng .hd{color:var(--warn)}
+.harm-cell .hd .badge{font-size:20px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+.harm-cell.ok .badge{background:var(--leaf)}
+.harm-cell.ng .badge{background:var(--warn)}
+.harm-cell ul{list-style:none;padding:0;margin:0}
+.harm-cell li{font-size:13.5px;color:#544e49;padding:6px 0 6px 22px;position:relative;line-height:1.65}
+.harm-cell li::before{content:"✦";position:absolute;left:0;top:6px;color:var(--gold)}
+.harm-cell.ok li::before{content:"○";color:var(--leaf-deep);font-weight:900}
+.harm-cell.ng li::before{content:"✕";color:var(--warn);font-weight:900}
+.harm-arrow{text-align:center;margin:18px 0 0;font-family:"Caveat",cursive;color:var(--rose-deep);font-size:20px}
+
+/* QUOTE box */
+.quote-mill{background:linear-gradient(135deg,#fffaf2,#fef0d8);border-left:6px solid var(--gold);border-radius:8px;padding:24px 30px;margin-top:14px;font-family:"Noto Serif JP",serif;font-size:16px;line-height:1.95;color:#5c4720;position:relative}
+.quote-mill::before{content:"❝";position:absolute;top:-12px;left:14px;font-size:48px;color:var(--gold);background:#fff;padding:0 6px;line-height:1}
+.quote-mill .src{display:block;margin-top:14px;font-family:"Noto Sans JP",sans-serif;font-size:12px;color:var(--gold-deep);text-align:right;font-weight:700;letter-spacing:.04em}
+
+/* AXIS 図解 */
+.axis-fig{background:#fff;border:2px solid var(--line);border-radius:20px;padding:36px;margin-top:8px;box-shadow:0 10px 30px rgba(212,154,62,.08)}
+.axis-fig h3{text-align:center;font-family:"Noto Serif JP",serif;font-size:18px;color:var(--gold-deep);margin-bottom:28px}
+.axis-grid{display:grid;grid-template-columns:1fr;gap:14px;max-width:680px;margin:0 auto}
+.axis-row{display:grid;grid-template-columns:160px 1fr 140px;gap:12px;align-items:center;font-size:13.5px}
+.axis-row .label{font-weight:900;color:var(--ink);font-size:13.5px}
+.axis-row .bar{height:14px;background:#f7eed8;border-radius:8px;overflow:hidden;position:relative;border:1px solid var(--line)}
+.axis-row .fill{height:100%;border-radius:8px;display:flex;align-items:center;padding-left:10px;font-size:11px;color:#fff;font-weight:700}
+.axis-row .judge{font-family:"Noto Serif JP",serif;font-weight:900;font-size:13px;text-align:center;padding:6px 10px;border-radius:8px}
+.axis-row .judge.ok{background:#e9f4e6;color:var(--leaf-deep)}
+.axis-row .judge.ng{background:#fde6d8;color:var(--warn)}
+@media(max-width:680px){
+  .axis-row{grid-template-columns:1fr;gap:6px}
+  .axis-row .judge{justify-self:start}
+}
+
+/* JP CONTEXT */
+.jp-box{background:linear-gradient(135deg,#fef0ec,#ffe3da);border:2px solid #f3c5b3;border-radius:20px;padding:32px 36px;margin-top:8px}
+.jp-box h3{font-family:"Noto Serif JP",serif;font-size:19px;color:var(--warn);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.jp-box p{font-size:14.5px;color:#5c4439;line-height:1.85;margin-bottom:14px}
+.jp-box .examples{display:grid;grid-template-columns:1fr;gap:10px;margin-top:18px}
+@media(min-width:680px){.jp-box .examples{grid-template-columns:1fr 1fr}}
+.jp-box .ex{background:#fff;border-radius:12px;padding:14px 18px;border:1px solid #f3c5b3;font-size:13.5px;color:#5c4439}
+.jp-box .ex strong{color:var(--warn);display:block;margin-bottom:4px;font-size:13px}
+
+/* OKEMON 接続 */
+.okemon-box{background:linear-gradient(135deg,#fef5fa,#fde0eb);border:2px solid #f3c5d4;border-radius:20px;padding:32px 36px;margin-top:8px;position:relative;overflow:hidden}
+.okemon-box::before{content:"🍑";position:absolute;top:-10px;right:-10px;font-size:120px;opacity:.1;transform:rotate(15deg)}
+.okemon-box h3{font-family:"Noto Serif JP",serif;font-size:19px;color:var(--rose-deep);margin-bottom:14px;display:flex;align-items:center;gap:8px;position:relative;z-index:2}
+.okemon-box .lead-line{font-size:14.5px;color:#5c4248;line-height:1.85;margin-bottom:18px;position:relative;z-index:2}
+.okemon-list{display:grid;grid-template-columns:1fr;gap:12px;margin-top:18px;position:relative;z-index:2}
+@media(min-width:680px){.okemon-list{grid-template-columns:1fr 1fr}}
+.okemon-item{background:#fff;border-radius:14px;padding:16px 20px;border:1px solid #f3c5d4;display:flex;gap:12px;align-items:flex-start}
+.okemon-item .em{font-size:24px;flex-shrink:0}
+.okemon-item .body{flex:1}
+.okemon-item .h{font-family:"Noto Serif JP",serif;font-size:14px;font-weight:900;color:var(--rose-deep);margin-bottom:4px}
+.okemon-item p{font-size:13px;color:#5c4248;line-height:1.65}
+.okemon-conclusion{margin-top:22px;background:rgba(255,255,255,.7);border-radius:14px;padding:18px 22px;text-align:center;font-family:"Noto Serif JP",serif;font-size:15px;font-weight:900;color:var(--rose-deep);line-height:1.7;position:relative;z-index:2}
+
+/* USE CASES */
+.use-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:8px}
+@media(min-width:780px){.use-grid{grid-template-columns:1fr 1fr}}
+.use-card{background:#fff;border:2px solid var(--line);border-radius:16px;padding:22px 26px;display:flex;gap:16px;transition:.3s}
+.use-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(212,154,62,.12)}
+.use-card .ic-big{font-size:32px;flex-shrink:0;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--rose));display:flex;align-items:center;justify-content:center;color:#fff}
+.use-card .body{flex:1}
+.use-card h4{font-family:"Noto Serif JP",serif;font-size:15.5px;color:var(--ink);margin-bottom:6px;font-weight:900}
+.use-card p{font-size:13.5px;color:#5c5550;line-height:1.7}
+
+/* KYO Sign */
+.kyo-sign{margin-top:50px;text-align:center;padding:30px 24px;background:linear-gradient(135deg,#fff8f0,#fef0e0);border-radius:20px;border:1px dashed var(--gold)}
+.kyo-sign .kyo-name{font-family:"Caveat",cursive;font-size:32px;color:var(--gold-deep);margin-bottom:6px}
+.kyo-sign p{font-size:13.5px;color:var(--muted)}
+
+footer{padding:34px 0 56px;color:var(--muted);font-size:13px;text-align:center;border-top:1px dashed var(--line)}
+footer a{color:var(--gold-deep)}
+
+@media(max-width:680px){
+  header{padding-top:46px}
+  .def-card{padding:24px 22px}
+  .cm-center{width:160px;height:160px}
+  .cm-center .t1{font-size:18px}
+  .harm-fig{padding:24px 20px}
+  .axis-fig{padding:22px 18px}
+  .jp-box,.okemon-box{padding:22px 22px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>きょうちゃん図解 ✦ 2026.05.22</div>
+    <h1>愚行権ってなに？<br><span class="title-em">他人から見て愚かな選択</span>をする自由。</h1>
+    <p class="tagline">J.S.ミル『自由論』(1859)から、TEDxKobe・おけもんカンパニーまで一気に繋ぐ</p>
+    <p class="lead">「これ無駄じゃない？」「もっと合理的にやれば？」── そう言われ続ける現代日本で、<br>実は <strong>160年以上前に証明済みの権利</strong> がある。それが <strong>愚行権（the right to do wrong）</strong>。<br>「他人に危害を加えない限り、本人にとって愚かに見える選択は自由」というシンプルな原則を、図解で一気に理解しよう。</p>
+    <div class="metrics">
+      <div class="metric"><div class="v">1859</div><div class="l">概念の出発年</div></div>
+      <div class="metric"><div class="v">J.S.ミル</div><div class="l">提唱者</div></div>
+      <div class="metric"><div class="v">『自由論』</div><div class="l">原典</div></div>
+      <div class="metric"><div class="v">他者危害原則</div><div class="l">論理的支柱</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- 01: ONE-LINE DEFINITION -->
+    <section>
+      <h2><span class="num">01</span><span class="ic">📖</span>一言でいうと</h2>
+      <p class="h2-sub">難しい話の前に、まずひとことで掴む</p>
+      <div class="def-card">
+        <div class="def-label">DEFINITION</div>
+        <p class="def-text">
+          他人に <span class="em">危害を加えない限り</span>、<br>
+          本人にとって <span class="em">愚かに見える選択</span> をする自由。
+        </p>
+        <p class="def-source">── J.S.ミル『自由論』(1859) で展開された概念</p>
+      </div>
+    </section>
+
+    <!-- 02: CONCEPT MAP -->
+    <section>
+      <h2><span class="num">02</span><span class="ic">🗺</span>位置づけマップ</h2>
+      <p class="h2-sub">愚行権がどの理論のどこから生まれてきたか</p>
+      <div class="concept-map">
+        <div class="cm-center">
+          <div class="t1">愚行権</div>
+          <div class="t2">the right to do wrong</div>
+        </div>
+        <div class="cm-orbit">
+          <div class="cm-card rose">
+            <div class="h">🌹 親の概念</div>
+            <p><strong>他者危害原則</strong>（harm principle）<br>「他人を害さない限り、個人の自由は制約されない」というミルの基幹原則。愚行権はこの原則の <strong>論理的帰結</strong>。</p>
+          </div>
+          <div class="cm-card sky">
+            <div class="h">🌊 思想的源流</div>
+            <p><strong>近代自由主義</strong>＋<strong>功利主義</strong><br>個人の主権を「他人」より「本人」の側に置く。何が幸福かは本人が決める。</p>
+          </div>
+          <div class="cm-card leaf">
+            <div class="h">🌿 兄弟の概念</div>
+            <p><strong>自己決定権 / 個人の主権</strong><br>身体・精神・財産・生き方について、本人が最終決定者であるという考え。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03: HARM PRINCIPLE -->
+    <section>
+      <h2><span class="num">03</span><span class="ic">⚖️</span>支える論理：他者危害原則</h2>
+      <p class="h2-sub">愚行権を成立させている、たった一つの判定基準</p>
+
+      <div class="quote-mill">
+        文明社会の成員に対し、彼の意志に反して、正当に権力を行使しうる唯一の目的は、<br>
+        <strong>他人に対する危害の防止</strong> である。
+        <span class="src">── J.S.ミル『自由論』第1章</span>
+      </div>
+
+      <div class="harm-fig" style="margin-top:30px">
+        <h3><span class="label">JUDGE BY ONE LINE</span>「他人を害してる？」で判定する</h3>
+        <div class="harm-grid">
+          <div class="harm-cell ok">
+            <div class="hd"><span class="badge">○</span>自由が守られる（＝愚行権の対象）</div>
+            <ul>
+              <li>好きな趣味に没頭する（読書／ゲーム／推し活）</li>
+              <li>体に良くないものを食べる・飲む（自己責任の範囲で）</li>
+              <li>合理的に見えない投資・支出をする</li>
+              <li>普通の会社員ルートから外れる</li>
+              <li>誰も頼んでないのに「コマ」を1万回回す</li>
+            </ul>
+          </div>
+          <div class="harm-cell ng">
+            <div class="hd"><span class="badge">✕</span>自由が制約される（＝愚行権の対象外）</div>
+            <ul>
+              <li>他人に肉体的・精神的な危害を与える</li>
+              <li>他人の財産・権利を侵害する</li>
+              <li>他人を巻き込んで強制する</li>
+              <li>未成年者・判断能力のない人への加害</li>
+              <li>公共の安全を脅かす行為</li>
+            </ul>
+          </div>
+        </div>
+        <p class="harm-arrow">この一本の線の「自分側」なら、何をやっても自由 ✨</p>
+      </div>
+    </section>
+
+    <!-- 04: AXIS -->
+    <section>
+      <h2><span class="num">04</span><span class="ic">🎯</span>あるある「賢明 vs 愚行」判定</h2>
+      <p class="h2-sub">他人から見える評価と、本人の自由は別レイヤー</p>
+      <div class="axis-fig">
+        <h3>世間の評価軸（左：賢い 〜 右：愚か）と、愚行権の判定</h3>
+        <div class="axis-grid">
+          <div class="axis-row">
+            <div class="label">堅実な会社員生活</div>
+            <div class="bar"><div class="fill" style="width:18%;background:var(--leaf-deep)">賢い</div></div>
+            <div class="judge ok">○ 本人の自由</div>
+          </div>
+          <div class="axis-row">
+            <div class="label">破産中にAIサブスク¥50,000/月</div>
+            <div class="bar"><div class="fill" style="width:88%;background:var(--warn)">愚か</div></div>
+            <div class="judge ok">○ 本人の自由</div>
+          </div>
+          <div class="axis-row">
+            <div class="label">介護16年から無職でAI冒険</div>
+            <div class="bar"><div class="fill" style="width:78%;background:var(--warn)">愚か</div></div>
+            <div class="judge ok">○ 本人の自由</div>
+          </div>
+          <div class="axis-row">
+            <div class="label">「コマ」を1日1万回回す</div>
+            <div class="bar"><div class="fill" style="width:95%;background:var(--warn)">最大愚か</div></div>
+            <div class="judge ok">○ 本人の自由</div>
+          </div>
+          <div class="axis-row">
+            <div class="label">SNSで他人を中傷する</div>
+            <div class="bar"><div class="fill" style="width:65%;background:var(--warn)">愚か</div></div>
+            <div class="judge ng">✕ 危害ありNG</div>
+          </div>
+          <div class="axis-row">
+            <div class="label">家族のお金を勝手に投資</div>
+            <div class="bar"><div class="fill" style="width:72%;background:var(--warn)">愚か</div></div>
+            <div class="judge ng">✕ 危害ありNG</div>
+          </div>
+        </div>
+        <p style="text-align:center;margin-top:24px;font-family:'Caveat',cursive;color:var(--gold-deep);font-size:20px">「世間の賢愚」と「愚行権の○✕」は <strong>別軸</strong> ✦ 混ぜちゃダメ</p>
+      </div>
+    </section>
+
+    <!-- 05: 日本での文脈 -->
+    <section>
+      <h2><span class="num">05</span><span class="ic">🇯🇵</span>現代日本で息苦しい理由</h2>
+      <p class="h2-sub">「他人の人生にまで賢明さを強制する空気」がある</p>
+
+      <div class="jp-box">
+        <h3>⚠️ 愚行権が忘れられがちな場面</h3>
+        <p>日本では「他人がもっと賢く生きるべきだ」「合理的にやらないのは悪」という空気が強い。<br>
+        SNS時代になって、他人の選択への口出しが <strong>正義として可視化</strong> されやすくなった。<br>
+        本来は「他人を害してないなら本人の自由」なのに、<strong>「賢明さの押し付け」</strong> が起きている。</p>
+        <div class="examples">
+          <div class="ex"><strong>例1：節約論争</strong>「コンビニで買うなんて無駄」「もっと安い店あるよ」</div>
+          <div class="ex"><strong>例2：キャリア論争</strong>「30代で起業なんて無謀」「大企業に戻った方がいい」</div>
+          <div class="ex"><strong>例3：趣味論争</strong>「ソシャゲに課金とか正気？」「アイドル追っかけ卒業しなよ」</div>
+          <div class="ex"><strong>例4：生き方論争</strong>「結婚しないの？」「子供は？」「家買わないの？」</div>
+        </div>
+        <p style="margin-top:20px;font-weight:700;color:var(--warn)">
+        どれも「他人を害してない」なら、本人の <strong>愚行権の範囲内</strong>。<br>
+        外から「賢明さ」を押し付けるのは、ミルが160年前に「やっちゃダメ」と書いたまさにそれ。
+        </p>
+      </div>
+    </section>
+
+    <!-- 06: TED ODA 接続 -->
+    <section>
+      <h2><span class="num">06</span><span class="ic">🎤</span>TEDxKobe「勝手にやる」との接続</h2>
+      <p class="h2-sub">2026-05-22 Salon #28 小田崇さんのトーク → 即ヒット</p>
+      <div class="okemon-box">
+        <h3>🎨 「勝手にやる」と「愚行権」は同じコインの裏表</h3>
+        <p class="lead-line">小田崇さんのTEDxKobeトーク「<strong>A future guided by 'doing things on one's own accord'</strong>」を聞いた瞬間、<br>勝間和代も度々語っている <strong>「愚行権」</strong> が脳内ヒット。表現は別だけど、同じ核を指していた。</p>
+        <div class="okemon-list">
+          <div class="okemon-item">
+            <div class="em">🎤</div>
+            <div class="body">
+              <div class="h">小田崇「勝手にやる」</div>
+              <p><strong>行動の側</strong>：誰にも頼まれてない・1円にもならない・痛いと思われてもワクワクするからやる。コマ1万回・路上画家・神戸市職員…</p>
+            </div>
+          </div>
+          <div class="okemon-item">
+            <div class="em">📚</div>
+            <div class="body">
+              <div class="h">J.S.ミル／勝間和代「愚行権」</div>
+              <p><strong>権利の側</strong>：他人を害さない限り、何が愚行かを決めるのは本人。これを奪う社会は息苦しい。</p>
+            </div>
+          </div>
+        </div>
+        <div class="okemon-conclusion">
+          🌟 行動だけだと「変な人」、権利だけだと「概念」。<br>
+          両方そろって <strong>生き方の道具</strong> になる。
+        </div>
+      </div>
+    </section>
+
+    <!-- 07: 使いどころ -->
+    <section>
+      <h2><span class="num">07</span><span class="ic">🛠</span>愚行権の使いどころ（実用編）</h2>
+      <p class="h2-sub">概念を理解した上で、毎日どう使うか</p>
+      <div class="use-grid">
+        <div class="use-card">
+          <div class="ic-big">🛡</div>
+          <div class="body">
+            <h4>① 他人の口出しから自分を守る</h4>
+            <p>「他人を害してる？害してない？」の1問だけで判定。害してないなら、相手の言葉に従う必要はない。「あなたの愚行権を侵さないでね」と返せる。</p>
+          </div>
+        </div>
+        <div class="use-card">
+          <div class="ic-big">🌱</div>
+          <div class="body">
+            <h4>② 自分の中の判事を黙らせる</h4>
+            <p>「こんなことやって意味あるかな…」と止まったら愚行権発動。「他人を害してないから、私には今これをやる自由がある」とセルフ宣言。</p>
+          </div>
+        </div>
+        <div class="use-card">
+          <div class="ic-big">🤝</div>
+          <div class="body">
+            <h4>③ 他人の選択を尊重する練習</h4>
+            <p>「もっと賢くやればいいのに」と思った瞬間にこの概念を思い出す。他人を害してないなら、それは本人の正当な権利。口を出さない側に立つ。</p>
+          </div>
+        </div>
+        <div class="use-card">
+          <div class="ic-big">🎯</div>
+          <div class="body">
+            <h4>④ ブランド・発信の正当化軸に使う</h4>
+            <p>「合理性で測れない行動」の積み重ねが独自ポジションを作る。愚行権はその正当性を <strong>160年前の哲学</strong> で裏打ちしてくれる強い味方。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08: 注意点 -->
+    <section>
+      <h2><span class="num">08</span><span class="ic">⚠️</span>愚行権の落とし穴（最後に）</h2>
+      <p class="h2-sub">この権利、誤用すると逆に他人を害す</p>
+      <div class="harm-fig">
+        <h3><span class="label">REMINDER</span>「私の自由」は「他人の自由」を踏まない範囲で</h3>
+        <div class="harm-grid">
+          <div class="harm-cell ok">
+            <div class="hd"><span class="badge">○</span>正しい使い方</div>
+            <ul>
+              <li>自分の選択への「他人の口出し」をはねのける</li>
+              <li>自分の行動の理論的バックボーンにする</li>
+              <li>「他人を害してない」と確認した上で動く</li>
+              <li>他人の愚行権も同じように尊重する</li>
+            </ul>
+          </div>
+          <div class="harm-cell ng">
+            <div class="hd"><span class="badge">✕</span>誤った使い方</div>
+            <ul>
+              <li>「愚行権だから」と他人に迷惑をかける言い訳に使う</li>
+              <li>家族・パートナーの同意なく一方的に巻き込む</li>
+              <li>未成年・判断能力のない人への加害を正当化する</li>
+              <li>他人の愚行権は認めず、自分のだけ振りかざす</li>
+            </ul>
+          </div>
+        </div>
+        <p class="harm-arrow">愚行権は <strong>「他者危害原則と一対」</strong> でしか機能しない。片方だけ取り出すと暴走する ⚠️</p>
+      </div>
+    </section>
+
+    <div class="kyo-sign">
+      <div class="kyo-name">🎨 kyochan</div>
+      <p>「概念を持つと、毎日の判断が一段速くなる」<br>愚行権、覚えておいて損なし。今日からあなたも、自由に勝手にやろう ✨</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>きょうちゃん図解 ✦ おけもんカンパニー × TEDxKobe Salon #28 派生</p>
+    <p style="margin-top:6px">参考：J.S.ミル『自由論』(1859) / <a href="https://ja.wikipedia.org/wiki/%E6%84%9A%E8%A1%8C%E6%A8%A9" target="_blank" rel="noopener">愚行権 - Wikipedia</a> / <a href="https://gendai.media/articles/-/81731" target="_blank" rel="noopener">現代ビジネス「日本人がもっと、ミル『自由論』と『他者危害原則』に学ぶべき理由」</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
