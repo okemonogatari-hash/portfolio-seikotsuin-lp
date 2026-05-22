@@ -15,11 +15,9 @@
       --green: #2f8f63;
       --blue: #2b6b90;
       --amber: #d89445;
-      --rose: #b85c5c;
       --soft-blue: #eef7fb;
       --soft-green: #eef8f1;
       --soft-amber: #fff5e8;
-      --soft-rose: #fff0ee;
       --shadow: 0 18px 50px rgba(33, 49, 66, 0.10);
     }
 
@@ -32,90 +30,54 @@
       color: var(--ink);
       background: #f1f4f6;
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Meiryo", sans-serif;
-      line-height: 1.75;
+      line-height: 1.55;
       letter-spacing: 0;
     }
 
     main {
-      max-width: 1120px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 36px 22px 56px;
+      padding: 28px 18px 44px;
     }
 
     .sheet {
       background: var(--paper);
       border: 1px solid #eadfce;
       box-shadow: var(--shadow);
-      padding: 34px;
+      padding: 28px;
     }
 
     .topbar {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: flex-start;
-      padding-bottom: 22px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 22px;
+      align-items: start;
+      padding-bottom: 18px;
       border-bottom: 2px solid #e7ded1;
     }
 
     .eyebrow {
-      margin: 0 0 8px;
+      margin: 0 0 7px;
       color: var(--blue);
-      font-weight: 700;
-      font-size: 14px;
+      font-weight: 800;
+      font-size: 13px;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(26px, 4vw, 42px);
-      line-height: 1.2;
-    }
-
-    .subtitle {
-      margin: 14px 0 0;
-      max-width: 720px;
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    .meta {
-      min-width: 260px;
-      background: var(--white);
-      border: 1px solid var(--line);
-      padding: 16px;
-    }
-
-    .meta dl {
-      display: grid;
-      grid-template-columns: 78px 1fr;
-      gap: 8px 12px;
-      margin: 0;
-      font-size: 14px;
-    }
-
-    dt {
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    dd {
-      margin: 0;
-      font-weight: 700;
-    }
-
-    section {
-      margin-top: 28px;
+      font-size: 34px;
+      line-height: 1.18;
     }
 
     h2 {
-      margin: 0 0 14px;
-      font-size: 22px;
+      margin: 0 0 10px;
+      font-size: 19px;
       line-height: 1.35;
     }
 
     h3 {
-      margin: 0 0 10px;
-      font-size: 17px;
+      margin: 0 0 5px;
+      font-size: 15px;
       line-height: 1.35;
     }
 
@@ -123,204 +85,162 @@
       margin: 0;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
+    .subtitle {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    .card {
+    .meta {
       background: var(--white);
       border: 1px solid var(--line);
-      padding: 20px;
+      padding: 14px;
     }
 
-    .span-4 {
-      grid-column: span 4;
+    .meta dl {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 6px 10px;
+      margin: 0;
+      font-size: 13px;
     }
 
-    .span-6 {
-      grid-column: span 6;
-    }
-
-    .span-8 {
-      grid-column: span 8;
-    }
-
-    .span-12 {
-      grid-column: span 12;
-    }
-
-    .key-number {
-      display: block;
-      margin-top: 8px;
-      font-size: 32px;
-      line-height: 1.2;
+    dt {
+      color: var(--muted);
       font-weight: 800;
     }
 
-    .green {
+    dd {
+      margin: 0;
+      font-weight: 800;
+    }
+
+    section {
+      margin-top: 18px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .metric {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 14px;
+    }
+
+    .label {
+      display: inline-block;
+      margin-bottom: 6px;
+      padding: 2px 8px;
+      border: 1px solid #cbe7f4;
+      background: var(--soft-blue);
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .label.green {
+      border-color: #cfecd8;
+      background: var(--soft-green);
       color: var(--green);
     }
 
-    .blue {
-      color: var(--blue);
+    .label.amber {
+      border-color: #f1d2aa;
+      background: var(--soft-amber);
+      color: #9a641f;
     }
 
-    .amber {
-      color: var(--amber);
+    .metric strong {
+      display: block;
+      font-size: 26px;
+      line-height: 1.2;
     }
 
-    .rose {
-      color: var(--rose);
-    }
-
-    .note {
+    .metric span {
+      display: block;
+      margin-top: 4px;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 12px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       background: var(--white);
-      overflow: hidden;
     }
 
     th,
     td {
-      padding: 13px 14px;
+      padding: 9px 11px;
       border-bottom: 1px solid var(--line);
       text-align: left;
       vertical-align: top;
+      font-size: 14px;
     }
 
     th {
-      width: 34%;
+      width: 28%;
       color: var(--muted);
-      font-size: 14px;
       background: #f6f8f9;
+      font-weight: 800;
     }
 
-    td.amount,
-    th.amount {
+    td.amount {
       text-align: right;
       white-space: nowrap;
-      font-weight: 800;
+      font-weight: 900;
+    }
+
+    .green-text {
+      color: var(--green);
     }
 
     .total-row th,
     .total-row td {
       background: var(--soft-amber);
       border-bottom: none;
-      font-size: 19px;
+      font-size: 18px;
       color: var(--ink);
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 3px 10px;
-      border: 1px solid transparent;
-      font-size: 13px;
-      font-weight: 800;
-      line-height: 1.35;
+    .note {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
     }
 
-    .badge.blue {
-      color: var(--blue);
-      background: var(--soft-blue);
-      border-color: #cbe7f4;
-    }
-
-    .badge.green {
-      color: var(--green);
-      background: var(--soft-green);
-      border-color: #cfecd8;
-    }
-
-    .badge.amber {
-      color: #9a641f;
-      background: var(--soft-amber);
-      border-color: #f1d2aa;
-    }
-
-    .timeline {
+    .two-col {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
-      counter-reset: step;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
-    .step {
-      position: relative;
-      min-height: 168px;
+    .box {
       background: var(--white);
       border: 1px solid var(--line);
-      padding: 44px 14px 14px;
-    }
-
-    .step::before {
-      counter-increment: step;
-      content: counter(step);
-      position: absolute;
-      top: 12px;
-      left: 14px;
-      display: grid;
-      place-items: center;
-      width: 26px;
-      height: 26px;
-      background: var(--blue);
-      color: #fff;
-      font-weight: 800;
-      font-size: 13px;
-    }
-
-    .step strong {
-      display: block;
-      margin-bottom: 8px;
-      line-height: 1.4;
-    }
-
-    .step span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .callout {
-      border-left: 5px solid var(--blue);
-      background: var(--soft-blue);
-      padding: 16px 18px;
-    }
-
-    .callout.warn {
-      border-left-color: var(--amber);
-      background: var(--soft-amber);
-    }
-
-    .callout.danger {
-      border-left-color: var(--rose);
-      background: var(--soft-rose);
+      padding: 13px;
     }
 
     ul {
       margin: 0;
-      padding-left: 1.2em;
+      padding-left: 1.1em;
     }
 
     li + li {
-      margin-top: 6px;
+      margin-top: 3px;
     }
 
     .footer {
-      margin-top: 30px;
-      padding-top: 18px;
+      margin-top: 16px;
+      padding-top: 12px;
       border-top: 1px solid #e4d8c7;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 11px;
     }
 
     a {
@@ -330,26 +250,25 @@
       border-bottom: 1px solid rgba(43, 107, 144, 0.35);
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 760px) {
       .topbar,
-      .timeline {
+      .metrics,
+      .two-col {
         display: block;
       }
 
+      .metric,
       .meta,
-      .step {
-        margin-top: 14px;
-      }
-
-      .span-4,
-      .span-6,
-      .span-8,
-      .span-12 {
-        grid-column: span 12;
+      .box {
+        margin-top: 12px;
       }
 
       .sheet {
-        padding: 24px 18px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 28px;
       }
 
       th,
@@ -358,15 +277,20 @@
         width: 100%;
       }
 
-      td.amount,
-      th.amount {
+      td.amount {
         text-align: left;
       }
+    }
+
+    @page {
+      size: A4;
+      margin: 8mm;
     }
 
     @media print {
       body {
         background: #fff;
+        line-height: 1.42;
       }
 
       main {
@@ -375,8 +299,79 @@
       }
 
       .sheet {
+        padding: 0;
+        background: #fff;
         border: none;
         box-shadow: none;
+      }
+
+      .topbar {
+        grid-template-columns: 1fr 260px;
+        gap: 16px;
+        padding-bottom: 10px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      h2 {
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+
+      h3 {
+        font-size: 12px;
+      }
+
+      .subtitle,
+      th,
+      td,
+      .box,
+      .meta dl {
+        font-size: 10.4px;
+      }
+
+      section {
+        margin-top: 7px;
+      }
+
+      th,
+      td {
+        padding: 4px 6px;
+      }
+
+      .metrics {
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .metric {
+        padding: 7px;
+      }
+
+      .metric strong {
+        font-size: 17px;
+      }
+
+      .metric span,
+      .label,
+      .note,
+      .footer {
+        font-size: 9px;
+      }
+
+      .two-col {
+        gap: 9px;
+      }
+
+      .box {
+        padding: 6px;
+      }
+
+      .total-row th,
+      .total-row td {
+        font-size: 12.5px;
       }
 
       a {
@@ -393,7 +388,7 @@
         <div>
           <p class="eyebrow">上長確認用 / 概算見積</p>
           <h1>AI業務サポート研修<br>実施報告書 兼 概算見積書</h1>
-          <p class="subtitle">健康管理支援室の事務作業を対象に、8月開始の半年パックとして、AI・デジタル化研修と業務整理を進める場合の報告事項と概算費用をまとめたものです。開始直後は週1回訪問し、その後は状況を見ながら頻度を調整します。</p>
+          <p class="subtitle">健康管理支援室の事務作業を対象に、8月開始の半年パックとして、AI・デジタル化研修と業務整理を進める場合の概要と概算費用をまとめたものです。</p>
         </div>
         <aside class="meta" aria-label="資料情報">
           <dl>
@@ -409,8 +404,26 @@
         </aside>
       </header>
 
+      <div class="metrics">
+        <div class="metric">
+          <span class="label">実施期間</span>
+          <strong>半年間</strong>
+          <span>8月開始。訪問はまず週1回、その後は状況に応じて調整。</span>
+        </div>
+        <div class="metric">
+          <span class="label green">助成見込み</span>
+          <strong>249,000円</strong>
+          <span>経費助成225,000円 + 賃金助成24,000円の概算。</span>
+        </div>
+        <div class="metric">
+          <span class="label amber">実質負担</span>
+          <strong>51,000円</strong>
+          <span>研修費300,000円、2名・12時間想定の場合。</span>
+        </div>
+      </div>
+
       <section>
-        <h2>報告概要</h2>
+        <h2>1. 報告概要</h2>
         <table aria-label="報告概要">
           <tbody>
             <tr>
@@ -422,23 +435,19 @@
               <td>訪問リマインド、顧客台帳、請求書、会議録整理などの事務作業を見直し、AI・デジタルツールを安全に使いながら業務負担を減らす。</td>
             </tr>
             <tr>
-              <th>背景</th>
-              <td>訪問リマインドのサンプル通知は実際に動作確認済み。今後は、現場で使える形に整えるため、半年間で業務整理・安全ルール・運用手順を段階的に作る。</td>
-            </tr>
-            <tr>
               <th>実施案</th>
-              <td>2026年8月から2027年1月までの半年間。開始直後は週1回訪問し、業務整理と研修を進める。その後は状況を見ながら訪問頻度を調整し、オンライン相談は随時対応。</td>
+              <td>2026年8月から2027年1月までの半年間。開始直後は週1回訪問し、その後は状況を見ながら訪問頻度を調整。オンライン相談は随時対応。</td>
             </tr>
             <tr>
               <th>判断依頼</th>
-              <td>8月開始で検討を進めるか、受講者2名を選定できるか、補助金の確認を社労士または労働局へ進めるかをご判断ください。</td>
+              <td>8月開始で検討を進めるか、受講者2名を選定できるか、補助金確認を社労士または労働局へ進めるか。</td>
             </tr>
           </tbody>
         </table>
       </section>
 
       <section>
-        <h2>概算見積書</h2>
+        <h2>2. 概算見積書</h2>
         <table aria-label="概算見積">
           <tbody>
             <tr>
@@ -447,19 +456,15 @@
             </tr>
             <tr>
               <th>実施期間</th>
-              <td>2026年8月〜2027年1月（半年間）</td>
+              <td>2026年8月〜2027年1月</td>
             </tr>
             <tr>
-              <th>研修時間</th>
-              <td>助成対象研修は合計12時間を想定。訪問はまず週1回から開始し、その後は状況を見ながら調整。オンライン相談は随時。</td>
+              <th>実施方法</th>
+              <td>訪問はまず週1回から開始。その後は状況を見て調整。訪問日以外はオンラインで随時相談。</td>
             </tr>
             <tr>
-              <th>受講人数</th>
-              <td>2名想定（雇用保険被保険者であることを要確認）</td>
-            </tr>
-            <tr>
-              <th>研修内容</th>
-              <td>AI安全利用、顧客台帳整備、訪問リマインド、請求書業務整理、会議録整理、上長報告用の整理、オンライン相談</td>
+              <th>助成対象研修</th>
+              <td>2名・合計12時間想定（雇用保険被保険者であることを要確認）</td>
             </tr>
             <tr>
               <th>概算研修費</th>
@@ -467,11 +472,11 @@
             </tr>
             <tr>
               <th>経費助成見込み</th>
-              <td class="amount green">-225,000円</td>
+              <td class="amount green-text">-225,000円</td>
             </tr>
             <tr>
               <th>賃金助成見込み</th>
-              <td class="amount green">-24,000円</td>
+              <td class="amount green-text">-24,000円</td>
             </tr>
             <tr class="total-row">
               <th>助成金活用後の法人負担見込み</th>
@@ -479,187 +484,87 @@
             </tr>
           </tbody>
         </table>
-        <p class="note" style="margin-top: 10px;">上記は中小企業扱い、経費助成75%、賃金助成1,000円/時、2名 x 12時間を前提にした概算です。正式な金額・助成可否・消費税の扱いは、正式見積および管轄労働局・社労士確認後に確定します。</p>
+        <p class="note">上記は中小企業扱い、経費助成75%、賃金助成1,000円/時を前提にした概算です。正式金額・助成可否・消費税の扱いは、正式見積および管轄労働局・社労士確認後に確定します。</p>
       </section>
 
       <section>
-        <h2>上長へ報告する要点</h2>
-        <div class="grid">
-          <div class="card span-4">
-            <span class="badge blue">実施目的</span>
-            <h3>事務作業の負担軽減</h3>
-            <p>毎回探して作るリマインド文、請求書、会議録、送付状を、下書き・整理・確認しやすい形にする。</p>
-          </div>
-          <div class="card span-4">
-            <span class="badge green">期待効果</span>
-            <h3>抜け漏れと属人化を減らす</h3>
-            <p>顧客台帳・訪問予定・請求条件を整理し、誰が見ても次の作業に移れる状態を目指す。</p>
-          </div>
-          <div class="card span-4">
-            <span class="badge amber">安全面</span>
-            <h3>AIに判断を任せない</h3>
-            <p>個人情報・健康情報は人が管理し、AIは下書き・整理・抜け漏れ確認の補助に限定する。</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>上長向け報告文</h2>
-        <div class="callout">
-          <p>健康管理支援室の事務作業のうち、訪問リマインド、顧客台帳、請求書、会議録整理などを対象に、8月から半年間でAI・デジタル化研修と業務整理を進める案です。開始直後は週1回訪問し、現場の実務を確認しながら優先順位を整理します。その後は状況を見ながら訪問頻度を調整し、オンライン相談は随時対応します。助成対象研修は合計12時間を想定し、個人情報をAIに任せない運用ルールも整えます。研修費は概算30万円、助成金を活用できた場合の法人実質負担は概算51,000円です。申請可否は労働局または社労士確認前提で進めます。</p>
-        </div>
-      </section>
-
-      <section>
-        <h2>確認・判断いただきたいこと</h2>
-        <table aria-label="確認事項">
+        <h2>3. 実施内容</h2>
+        <table aria-label="実施内容">
           <tbody>
             <tr>
-              <th>法人名</th>
-              <td>申請主体が「医療法人福命会」か「一般社団法人 健康管理支援室」か確認。</td>
+              <th>主な対象業務</th>
+              <td>訪問リマインド、顧客台帳、請求書業務、会議録・面談メモ、送付状など</td>
             </tr>
             <tr>
-              <th>受講者</th>
-              <td>雇用保険に入っている職員さん2名を受講候補にできるか確認。</td>
+              <th>進め方</th>
+              <td>現場の実務を確認し、優先順位を決めながら、下書き・整理・確認しやすい形に整える。</td>
             </tr>
             <tr>
-              <th>補助金確認</th>
-              <td>人材開発支援助成金の利用可否を、社労士または管轄労働局へ確認。</td>
-            </tr>
-            <tr>
-              <th>他業者との重複</th>
-              <td>他業者さんでも補助金利用予定がある場合、制度名・対象経費・受講者・日程を確認。</td>
-            </tr>
-            <tr>
-              <th>8月開始可否</th>
-              <td>8月開始で進める場合、7月上旬までに計画届へ進める必要があります。</td>
+              <th>安全面</th>
+              <td>個人情報・健康情報は人が管理し、AIは下書き・整理・抜け漏れ確認の補助に限定する。</td>
             </tr>
           </tbody>
         </table>
       </section>
 
       <section>
-        <h2>半年パックの流れ</h2>
-        <div class="callout" style="margin-bottom: 14px;">
-          <p>訪問はまず週1回から開始し、現場の状況・作業量・定着度を見ながら頻度を調整します。訪問日以外の軽い確認や質問は、オンラインで随時相談できる形を想定しています。</p>
-        </div>
-        <table aria-label="研修カリキュラム">
+        <h2>4. 半年パックの流れ</h2>
+        <table aria-label="半年パックの流れ">
           <tbody>
             <tr>
               <th>8月 / 立ち上げ</th>
-              <td>週1回訪問から開始。AI・デジタル化の基本、医療情報・個人情報を扱うときの安全な線引き、優先業務の整理</td>
+              <td>週1回訪問から開始。AI利用の安全な線引き、優先業務の整理、進め方の確認。</td>
             </tr>
             <tr>
               <th>9月 / 台帳整備</th>
-              <td>支援先情報・顧客台帳を整理し、次回訪問準備に使える形にする。訪問頻度は状況を見て調整</td>
+              <td>支援先情報・顧客台帳を整理し、次回訪問準備に使える形にする。</td>
             </tr>
             <tr>
               <th>10月 / リマインド</th>
-              <td>訪問リマインドメールの下書き作成、Googleカレンダー・Gmail連携の考え方。オンライン相談で細かな確認</td>
+              <td>訪問リマインド文面、Googleカレンダー・Gmail連携の考え方を整理。</td>
             </tr>
             <tr>
               <th>11月 / 請求書整理</th>
-              <td>請求書業務の流れを表に落とし、契約条件・交通費・イレギュラー請求を整理する</td>
+              <td>契約条件、交通費、イレギュラー請求など、請求書業務の確認ポイントを整理。</td>
             </tr>
             <tr>
               <th>12月 / 記録整理</th>
-              <td>会議録・面談メモ・送付状を、共有しやすい記録に整える</td>
+              <td>会議録・面談メモ・送付状を、共有しやすい記録に整える。</td>
             </tr>
             <tr>
               <th>1月 / 定着確認</th>
-              <td>誤送信防止、人間チェック、運用ルール、上長への最終報告、次の改善候補の整理</td>
+              <td>誤送信防止、人間チェック、運用ルール、次の改善候補を整理。</td>
             </tr>
           </tbody>
         </table>
       </section>
 
       <section>
-        <h2>申請から受給までの流れ</h2>
-        <div class="timeline">
-          <div class="step">
-            <strong>対象確認</strong>
-            <span>5〜6月。法人名、雇用保険、受講者2名、社労士連携の有無を確認します。</span>
-          </div>
-          <div class="step">
-            <strong>研修設計</strong>
-            <span>6月。カリキュラム、見積書、受講案内、価格説明資料を整えます。</span>
-          </div>
-          <div class="step">
-            <strong>計画届提出</strong>
-            <span>7月上旬まで。研修開始の1か月前を目安に労働局へ提出します。</span>
-          </div>
-          <div class="step">
-            <strong>研修実施</strong>
-            <span>8月〜1月。まず週1回訪問から開始し、状況を見ながら調整。助成対象研修は合計12時間として記録します。</span>
-          </div>
-          <div class="step">
-            <strong>支給申請</strong>
-            <span>2〜3月。研修終了日の翌日から2か月以内に支給申請します。</span>
-          </div>
-          <div class="step">
-            <strong>審査・入金</strong>
-            <span>労働局の審査後、法人さまに助成金が支給されます。</span>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>他の業者さんでも補助金を使う場合</h2>
-        <div class="callout warn">
-          <p>別の研修・別の経費・別の目的として整理できれば、併用の余地はあります。ただし、同じ訓練時間、同じ賃金、同じ経費を二重に申請することは避ける必要があります。受講者は1人につき1年度3回までという上限もあります。</p>
-        </div>
-        <div class="grid" style="margin-top: 16px;">
-          <div class="card span-6">
-            <h3>確認したいこと</h3>
-            <ul>
-              <li>他業者さんが使う補助金の名称</li>
-              <li>研修なのか、システム導入なのか</li>
-              <li>受講者が誰になるのか</li>
-              <li>訓練開始日・終了日</li>
-              <li>こちらのAI研修と内容や経費が重ならないか</li>
-            </ul>
-          </div>
-          <div class="card span-6">
-            <h3>こちらの分け方</h3>
-            <p>本提案は「産業保健業務のデジタル化・AI活用研修」として、訪問リマインド、顧客台帳、請求書、会議録整理、安全なAI利用に範囲を絞ります。</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>次の進め方</h2>
-        <div class="grid">
-          <div class="card span-4">
-            <h3>1. 申請者</h3>
-            <p>医療法人福命会か、一般社団法人 健康管理支援室か、正式な申請主体を確認します。</p>
-          </div>
-          <div class="card span-4">
-            <h3>2. 受講者</h3>
-            <p>雇用保険に入っている職員さん2名を候補にできるか確認します。</p>
-          </div>
-          <div class="card span-4">
-            <h3>3. 開始月</h3>
-            <p>8月開始を想定し、7月上旬までに計画届へ進めるか確認します。</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="callout danger">
-          <h2 style="margin-bottom: 8px;">注意事項</h2>
-          <p>本資料は概算提案です。申請代行・採択保証ではありません。実際に申請する場合は、管轄労働局または社労士へ確認し、正式な申請書類・契約書・支払い資料・出席簿等を整えて進めます。</p>
-        </div>
+        <h2>5. 補助金手続きの流れ</h2>
+        <table aria-label="補助金手続きの流れ">
+          <tbody>
+            <tr>
+              <th>確認事項</th>
+              <td>申請主体の法人名、受講者2名の雇用保険加入状況、他業者の補助金利用予定を確認。</td>
+            </tr>
+            <tr>
+              <th>計画届</th>
+              <td>8月開始の場合、7月上旬までを目安に計画届を準備。</td>
+            </tr>
+            <tr>
+              <th>支給申請</th>
+              <td>研修終了後2か月以内に支給申請。助成金は審査後、法人さまへ後日支給。</td>
+            </tr>
+            <tr>
+              <th>次の進め方</th>
+              <td>8月開始で進めるか上長確認後、社労士または管轄労働局へ利用可否を確認し、正式見積へ進む。</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
       <footer class="footer">
         <p>参照: 厚生労働省「人材開発支援助成金」、令和8年度版 事業展開等リスキリング支援コース詳細版パンフレット、様式第1-1号記載例。最新情報は必ず公式資料・管轄労働局で確認してください。</p>
-        <p style="margin-top: 8px;">
-          <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/d01-1.html">厚生労働省 人材開発支援助成金</a>
-          /
-          <a href="https://www.mhlw.go.jp/content/11800000/001701940.pdf">詳細版パンフレット</a>
-          /
-          <a href="https://www.mhlw.go.jp/content/11800000/001686630.pdf">様式第1-1号 記載例</a>
-        </p>
       </footer>
     </article>
   </main>
