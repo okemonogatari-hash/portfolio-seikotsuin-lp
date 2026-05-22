@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 おけもんの本棚 — 130+冊の知識の森（非公開）</title>
+<meta name="description" content="おけもんの全読書資産を横断するダッシュボード。OCR完備2冊、Kindle読書メモ130+冊、テーマ別索引15ジャンル、セレンディピティ7ルート。完全非公開・個人管理用。">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2a241e;--muted:#6e645a;
+  --bg:#fbf6ea;--bg2:#f7ecd2;--cream:#fff;
+  --line:#e3cea5;--line-soft:#f0dfc0;
+  --wood:#9a6b48;--wood-deep:#6f4a30;
+  --gold:#c4923e;--gold-deep:#9a6f24;
+  --leaf:#6d9c6a;--leaf-deep:#476f47;
+  --rose:#c97187;--sky:#6f9bc1;
+  --hl:#fff5e0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans JP",sans-serif;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 60%,#fff 100%);color:var(--ink);line-height:1.8}
+a{color:var(--wood-deep);font-weight:700;text-underline-offset:4px;text-decoration:none}
+a:hover{color:var(--gold-deep)}
+.wrap{width:min(1180px,94vw);margin:0 auto}
+
+/* HEADER */
+header{padding:54px 0 36px;position:relative;overflow:hidden;border-bottom:2px dashed var(--line)}
+header::before{content:"📚";position:absolute;top:30px;right:6%;font-size:80px;opacity:.15;transform:rotate(8deg)}
+header::after{content:"🌳";position:absolute;bottom:0;left:5%;font-size:64px;opacity:.16;transform:rotate(-10deg)}
+.eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);font-weight:900;margin-bottom:12px;position:relative;z-index:2}
+.eyebrow .dot{display:inline-block;width:8px;height:8px;background:var(--gold);border-radius:50%;margin-right:8px;vertical-align:middle}
+h1{font-family:"Noto Serif JP",serif;font-size:clamp(30px,5vw,46px);line-height:1.3;position:relative;z-index:2}
+.title-em{background:linear-gradient(180deg,transparent 60%,#ffe2a0 60%);padding:0 4px}
+.tagline{font-family:"Caveat",cursive;font-size:24px;color:var(--wood-deep);margin-top:12px;position:relative;z-index:2}
+.lead{margin-top:18px;font-size:14.5px;color:var(--muted);max-width:760px;line-height:1.95;position:relative;z-index:2}
+.metrics{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;position:relative;z-index:2}
+.metric{background:#fff;padding:12px 18px;border-radius:12px;border:1px solid var(--line);box-shadow:0 4px 12px rgba(154,107,72,.08)}
+.metric .v{font-family:"Noto Serif JP",serif;font-size:22px;font-weight:900;color:var(--gold-deep);line-height:1}
+.metric .l{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:.04em}
+.private{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:8px 18px;background:#fff;border:1.5px solid var(--line);border-radius:999px;font-size:12px;color:var(--wood-deep);font-weight:700;position:relative;z-index:2}
+
+/* NAVIGATION */
+nav.toc{margin:30px 0;padding:22px 26px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 4px 14px rgba(154,107,72,.06)}
+nav.toc .label{font-size:11px;letter-spacing:.18em;color:var(--gold-deep);font-weight:900;margin-bottom:12px;text-transform:uppercase}
+nav.toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0}
+nav.toc a{font-size:12px;background:var(--hl);color:var(--wood-deep);padding:5px 11px;border-radius:999px;text-decoration:none;font-weight:600;transition:.2s;border:1px solid var(--line-soft)}
+nav.toc a:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+main{padding:30px 0 60px}
+section{padding:36px 0;border-bottom:1px dashed var(--line)}
+section:last-child{border-bottom:none}
+h2{font-family:"Noto Serif JP",serif;font-size:22px;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+h2 .ic{font-size:24px}
+.h2-sub{font-size:13px;color:var(--muted);margin-bottom:22px;padding-left:8px;border-left:3px solid var(--gold)}
+
+/* OCR HERO Books */
+.hero-books{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:780px){.hero-books{grid-template-columns:1fr 1fr}}
+.hero-book{background:linear-gradient(135deg,#fff,#fff5dc);border:2px solid var(--gold);border-radius:16px;padding:22px 24px;display:flex;gap:18px;transition:.3s}
+.hero-book:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(196,146,62,.16)}
+.hero-book .em{font-size:42px;flex-shrink:0}
+.hero-book h3{font-family:"Noto Serif JP",serif;font-size:17px;color:var(--ink);margin-bottom:4px}
+.hero-book .author{font-size:12px;color:var(--muted);margin-bottom:8px}
+.hero-book .status{display:inline-block;font-size:11px;background:var(--leaf);color:#fff;padding:2px 9px;border-radius:999px;font-weight:700;margin-bottom:8px}
+.hero-book p{font-size:13px;color:#5a5048;line-height:1.65}
+
+/* Theme grid */
+.theme-grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:680px){.theme-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.theme-grid{grid-template-columns:1fr 1fr 1fr}}
+.theme{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:18px 20px;transition:.3s;border-left:5px solid var(--gold)}
+.theme:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(154,107,72,.1)}
+.theme h3{font-family:"Noto Serif JP",serif;font-size:15px;color:var(--ink);margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.theme .count{font-size:11px;color:var(--gold-deep);font-weight:700;margin-bottom:10px;letter-spacing:.04em}
+.theme p{font-size:12.5px;color:#5a5048;line-height:1.7;margin-bottom:10px}
+.theme .picks{font-size:11.5px;color:var(--muted);font-style:italic;line-height:1.6;border-top:1px dashed var(--line-soft);padding-top:8px}
+.theme .picks strong{color:var(--wood-deep);font-style:normal;font-weight:700}
+
+/* Color variants */
+.theme.rose{border-left-color:var(--rose)}
+.theme.rose h3{color:#a04958}
+.theme.leaf{border-left-color:var(--leaf)}
+.theme.leaf h3{color:var(--leaf-deep)}
+.theme.sky{border-left-color:var(--sky)}
+.theme.sky h3{color:#4b7ba0}
+.theme.wood{border-left-color:var(--wood)}
+
+/* Serendipity routes */
+.serendipity{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:780px){.serendipity{grid-template-columns:1fr 1fr}}
+.route{background:linear-gradient(135deg,#fff,#fef0d8);border:1.5px dashed var(--gold);border-radius:14px;padding:18px 22px}
+.route .num{font-family:"Caveat",cursive;font-size:28px;color:var(--gold-deep);line-height:1;margin-bottom:6px}
+.route h4{font-family:"Noto Serif JP",serif;font-size:14px;color:var(--ink);margin-bottom:8px;font-weight:900}
+.route .path{font-size:12.5px;color:#5a5048;line-height:1.75}
+.route .path .arrow{color:var(--gold-deep);font-weight:900;margin:0 4px}
+
+/* Quote */
+.quote{margin:20px auto;max-width:760px;background:linear-gradient(135deg,#fff,#fef0d8);border-left:5px solid var(--gold);border-radius:8px;padding:20px 26px;font-family:"Noto Serif JP",serif;font-size:14.5px;line-height:1.9;color:#4a4035;position:relative}
+.quote::before{content:"❝";position:absolute;top:-12px;left:12px;font-size:42px;color:var(--gold);background:#fff;padding:0 6px;line-height:1}
+
+/* Vault links */
+.vault-links{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:22px 26px;margin-top:18px}
+.vault-links h4{font-family:"Noto Serif JP",serif;font-size:14px;color:var(--gold-deep);margin-bottom:12px}
+.vault-links ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr;gap:6px}
+@media(min-width:680px){.vault-links ul{grid-template-columns:1fr 1fr}}
+.vault-links li{font-size:12.5px;color:#5a5048;padding:5px 0 5px 22px;position:relative;line-height:1.6}
+.vault-links li::before{content:"📂";position:absolute;left:0;top:6px;font-size:11px}
+
+/* Back to square */
+.back-btn{display:inline-flex;align-items:center;gap:8px;margin-top:30px;padding:10px 22px;background:linear-gradient(135deg,var(--leaf),var(--leaf-deep));color:#fff;border-radius:999px;font-size:13px;font-weight:700;text-decoration:none;transition:.2s}
+.back-btn:hover{transform:translateX(-3px);color:#fff}
+
+footer{padding:30px 0 50px;color:var(--muted);font-size:12.5px;text-align:center;border-top:1px dashed var(--line);margin-top:30px}
+
+@media(max-width:680px){
+  header{padding-top:42px}
+  .hero-book{padding:18px 18px;gap:14px}
+  .hero-book .em{font-size:34px}
+  .theme{padding:14px 16px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>OKEMON HONDANA ✦ 2026.05.22</div>
+    <h1>📚 <span class="title-em">おけもんの本棚</span><br>130+冊の知識の森</h1>
+    <p class="tagline">セレンディピティが起きる入口 ✦ おけ森広場 ブランチ</p>
+    <p class="lead">
+      Vaultに散らばった全読書資産の中央広場。OCR完備の重量級2冊、Kindle読書メモ130+冊、テーマ別索引15ジャンル、宝物ノート、読みたい本リスト、ぜんぶここから1クリックで歩ける。<br>
+      目的は「索引で目的地を決めない」── <strong>気が向いた木の下で立ち止まる</strong> こと。
+    </p>
+    <div class="metrics">
+      <div class="metric"><div class="v">130+</div><div class="l">Kindle読書メモ</div></div>
+      <div class="metric"><div class="v">2冊</div><div class="l">OCR完全章別MD</div></div>
+      <div class="metric"><div class="v">15</div><div class="l">テーマジャンル</div></div>
+      <div class="metric"><div class="v">7</div><div class="l">セレンディピティ・ルート</div></div>
+      <div class="metric"><div class="v">30+</div><div class="l">読みたい本リスト</div></div>
+    </div>
+    <div class="private">🔒 完全非公開 / noindex / おけもん専用</div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="quote">
+      <p>「最高に可愛い彼女と仲間とワクワク喋っていたら、いつの間にか夢が叶っていた」── その「いつの間にか」を生むのは、<strong>本との出会いと再会</strong>。<br>このハブの目的は、130+冊の資産が眠ったままにならず、<strong>必要な時に必要な1冊が手のひらに戻ってくる</strong> こと。</p>
+    </div>
+
+    <nav class="toc">
+      <div class="label">📚 目次</div>
+      <ul>
+        <li><a href="#hero">🏛 OCR重量級</a></li>
+        <li><a href="#legendary">🎯 殿堂入り</a></li>
+        <li><a href="#themes">🧭 テーマ別索引</a></li>
+        <li><a href="#serendipity">🌳 セレンディピティ・ナビ</a></li>
+        <li><a href="#wishlist">🔥 読みたい本</a></li>
+        <li><a href="#vault">🔗 Vault導線</a></li>
+      </ul>
+    </nav>
+
+    <!-- OCR HERO -->
+    <section id="hero">
+      <h2><span class="ic">🏛</span>OCRデジタル化済み（重量級2冊）</h2>
+      <p class="h2-sub">ページ別に章別構造化済み・引用や転用がすぐできる "知の母艦"</p>
+      <div class="hero-books">
+        <article class="hero-book">
+          <div class="em">📕</div>
+          <div>
+            <span class="status">全155頁完了</span>
+            <h3>ブッちぎりの最高傑作</h3>
+            <div class="author">西野亮廣</div>
+            <p>Vault: <code>おけもんの図書館_西野亮廣/</code> 配下に10〜20頁刻みでMD化＋index完備。北極星文字起こし／Kindleメモも横断可。</p>
+          </div>
+        </article>
+        <article class="hero-book">
+          <div class="em">📘</div>
+          <div>
+            <span class="status">全284頁完了</span>
+            <h3>世界は自分で創造する</h3>
+            <div class="author">大瀧冬佳（IQ148の天才舞踏家）</div>
+            <p>Vault: <code>おけもんの図書館_世界は自分で創造する/</code> 配下に20頁刻みでMD化＋index完備。現実創造の法則・引き寄せ系の参照軸。</p>
+          </div>
+        </article>
+        <article class="hero-book" style="border-color:var(--wood);background:linear-gradient(135deg,#fff,#f3e5d0)">
+          <div class="em">📗</div>
+          <div>
+            <span class="status" style="background:var(--gold-deep)">OCR未・PDFあり</span>
+            <h3>努力の価値が変わる時代の「AI×自分」戦略 メタスキル</h3>
+            <div class="author">深津貴之・けんすう・尾原和啓</div>
+            <p>今のおけちゃんに刺さりまくる本。OCR化で章別MD構造化を待機中。Vault: <code>Kindle PDF保管庫/</code></p>
+          </div>
+        </article>
+        <article class="hero-book" style="border-color:var(--wood)">
+          <div class="em">📙</div>
+          <div>
+            <span class="status">文字起こし＋Kindleメモ</span>
+            <h3>北極星 僕たちはどう働くか</h3>
+            <div class="author">西野亮廣</div>
+            <p>本棚の中で「働く意味」軸の核。OCR・Kindleメモ双方あり。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- LEGENDARY -->
+    <section id="legendary">
+      <h2><span class="ic">🎯</span>殿堂入り（人生に深く刻まれた本）</h2>
+      <p class="h2-sub">何度も戻りたい、参照軸として機能する10冊</p>
+      <div class="theme-grid">
+        <div class="theme"><h3>📖 7つの習慣</h3><div class="count">スティーブン・R・コヴィー</div><p>人格主義の回復。Win-Winを考える・パラダイムシフト。ストレングスとの結婚論文あり。</p></div>
+        <div class="theme"><h3>📖 ナヴァル・ラビカント</h3><div class="count">富と幸福の公式とルール</div><p>章別要約＋全文＋PDF文字起こしの3本柱。自分自身を働かせる経済学。</p></div>
+        <div class="theme"><h3>📖 ザ・コーチ 1〜3</h3><div class="count">谷口貴彦</div><p>コーチング事業の参照軸。ゆいCPO配下と双方向参照。</p></div>
+        <div class="theme"><h3>📖 人を動かす</h3><div class="count">デール・カーネギー</div><p>『道は開ける』とセット。100年読まれる古典。</p></div>
+        <div class="theme"><h3>📖 さとりをひらいた犬</h3><div class="count">ボブ・ウォルツ</div><p>熱血プレゼン版あり。物語で哲学を体感する。</p></div>
+        <div class="theme"><h3>📖 夢をかなえるゾウ</h3><div class="count">水野敬也</div><p>ガネーシャ系。3冊目あり。</p></div>
+        <div class="theme"><h3>📖 傲慢と善良</h3><div class="count">辻村深月</div><p>小説。人間関係の脆さと強さ。</p></div>
+        <div class="theme"><h3>📖 金持ち父さん貧乏父さん</h3><div class="count">ロバート・キヨサキ</div><p>お金リテラシーの原点。</p></div>
+        <div class="theme"><h3>📖 タルムード</h3><div class="count">ユダヤ教の知恵</div><p>商売・人生・対話の古典。</p></div>
+        <div class="theme"><h3>📖 ハイパワーマーケティング</h3><div class="count">ジェイ・エイブラハム</div><p>マーケ参照軸。まなCSOと双方向。</p></div>
+      </div>
+    </section>
+
+    <!-- THEMES -->
+    <section id="themes">
+      <h2><span class="ic">🧭</span>テーマ別索引（130+冊横断）</h2>
+      <p class="h2-sub">ここがセレンディピティの本体・気の向く方向にどうぞ</p>
+      <div class="theme-grid">
+
+        <div class="theme rose">
+          <h3>💗 自己理解・セルフコンパッション</h3>
+          <div class="count">8冊+</div>
+          <p>自分との和解・心のケア軸。ADHD所見との横断有。</p>
+          <div class="picks"><strong>主軸：</strong>はらだあゆみ『セルフ・コンパッション』／Koujin『もし自己肯定感の低い僕が』／鈴木祐『無』／ザ・メンタルモデル</div>
+        </div>
+
+        <div class="theme rose">
+          <h3>🎤 質問力・聞く力・コーチング</h3>
+          <div class="count">9冊+</div>
+          <p>おけもんブランド軸「質問の型」の核。</p>
+          <div class="picks"><strong>主軸：</strong>齋藤孝『質問力』／健太郎『すごい問いかけ』／宮越大樹『コーチング脳』／苫米地式コーチング</div>
+        </div>
+
+        <div class="theme leaf">
+          <h3>🌟 才能発見・ストレングス・キャリア</h3>
+          <div class="count">7冊+</div>
+          <p>介護16年→AI起業の物語の補強教材。</p>
+          <div class="picks"><strong>主軸：</strong>仁平『才能の見つけ方』／祐『才能の地図』／けんすう『物語思考』／40歳の壁</div>
+        </div>
+
+        <div class="theme sky">
+          <h3>💬 コミュニケーション・話し方・自己紹介</h3>
+          <div class="count">12冊+</div>
+          <p>営業・発信の基礎体力。</p>
+          <div class="picks"><strong>主軸：</strong>Dr.ヒロ『ヤバい話し方』／裕哉『頭のいい人が話す前に』／ピョートル『一流の雑談』／アサーション入門</div>
+        </div>
+
+        <div class="theme sky">
+          <h3>✍️ 言葉・文章・ライティング</h3>
+          <div class="count">8冊+</div>
+          <p>発信戦略の根幹。Vault運用にも直結。</p>
+          <div class="picks"><strong>主軸：</strong>樺沢紫苑『言語化の魔力』／前田裕二『メモの魔力』／武士『書く瞑想』／苫米地『言葉が人生を決める』</div>
+        </div>
+
+        <div class="theme wood">
+          <h3>💰 お金・引き寄せ・豊かさ</h3>
+          <div class="count">9冊+</div>
+          <p>破産→再生フェーズの心の支え。</p>
+          <div class="picks"><strong>主軸：</strong>本田健シリーズ／田中渓『億までの人 億からの人』／エスター・ヒックス『新訳 お金と引き寄せ』／The Having</div>
+        </div>
+
+        <div class="theme">
+          <h3>✨ 引き寄せ・潜在意識・スピリチュアル</h3>
+          <div class="count">22冊+ ← 最大ジャンル</div>
+          <p>本棚で一番厚い棚。マーフィー・バシャール・タフティ系。</p>
+          <div class="picks"><strong>主軸：</strong>Yu『引き寄せにやる気はいらない』／こうちゃん『まったり引き寄せる』／Jeg『願望実現の最短ルート』『妄想力』／タフティ・ザ・プリーステス</div>
+        </div>
+
+        <div class="theme leaf">
+          <h3>💪 メンタル・モチベーション・やる気</h3>
+          <div class="count">9冊+</div>
+          <p>行動の燃料系。</p>
+          <div class="picks"><strong>主軸：</strong>渉『神メンタル』『神モチベーション』／ハイディ『やり抜く人の9つの習慣』／中村天風『運命を拓く』</div>
+        </div>
+
+        <div class="theme rose">
+          <h3>🤝 人間関係・恋愛・パートナーシップ</h3>
+          <div class="count">12冊+</div>
+          <p>恋愛・友人・チームの幅広い射程。</p>
+          <div class="picks"><strong>主軸：</strong>ROLAND『俺か、俺以外か』『君か、君以外か』／ジョン・グレイ『火星と金星』／MACO／藤本シゲユキ『人間のレベル論』</div>
+        </div>
+
+        <div class="theme">
+          <h3>🏛 哲学・人生・古典</h3>
+          <div class="count">9冊+</div>
+          <p>長く効く軸。</p>
+          <div class="picks"><strong>主軸：</strong>世阿弥『風姿花伝』／ストア派哲学／一郎『愛とためらいの哲学』／フィジー幸福論</div>
+        </div>
+
+        <div class="theme wood">
+          <h3>🏃 起業・ビジネス・働き方</h3>
+          <div class="count">10冊+</div>
+          <p>カンパニー運営の参考。</p>
+          <div class="picks"><strong>主軸：</strong>なにおれ『生きづらい人の起業戦略』／安宅和人『イシューから始めよ』／本田健『プロの講演家』／レバレッジ・リーディング</div>
+        </div>
+
+        <div class="theme">
+          <h3>📖 読書術・知的生産</h3>
+          <div class="count">4冊+</div>
+          <p>読み方のメタスキル。</p>
+          <div class="picks"><strong>主軸：</strong>DaiGo『知識を操る超読書術』／孝『読書する人だけがたどり着ける場所』／レバレッジ・リーディング</div>
+        </div>
+
+        <div class="theme leaf">
+          <h3>🧘 朝・習慣・ライフスタイル</h3>
+          <div class="count">6冊+</div>
+          <p>毎日の整え方。</p>
+          <div class="picks"><strong>主軸：</strong>キム・ユジン『朝イチのひとり時間』／ミニマリストしぶ『手放す練習』</div>
+        </div>
+
+        <div class="theme">
+          <h3>🧠 脳科学・内向性・特性</h3>
+          <div class="count">育成中</div>
+          <p>ADHD所見・内向性軸。TED Susan Cain と横断。</p>
+          <div class="picks"><strong>主軸：</strong>鈴木奈津美『Ｉ型さんのための100のスキル』／脳科学「強運」メカニズム論文</div>
+        </div>
+
+        <div class="theme sky">
+          <h3>📚 小説・物語</h3>
+          <div class="count">数冊</div>
+          <p>娯楽と人間理解の境界。</p>
+          <div class="picks"><strong>主軸：</strong>朝井リョウ『イン・ザ・メガチャーチ』／辻村深月『傲慢と善良』『かがみの孤城』</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SERENDIPITY -->
+    <section id="serendipity">
+      <h2><span class="ic">🌳</span>セレンディピティ・ナビ（7つの横断ルート）</h2>
+      <p class="h2-sub">気の向くまま歩いて、思いがけない繋がりに出会うための地図</p>
+      <div class="serendipity">
+        <div class="route">
+          <div class="num">01</div>
+          <h4>「質問力」軸</h4>
+          <div class="path">ザ・コーチ <span class="arrow">→</span> 齋藤孝『質問力』 <span class="arrow">→</span> 健太郎『すごい問いかけ』 <span class="arrow">→</span> ゆいCPO/コーチング事業</div>
+        </div>
+        <div class="route">
+          <div class="num">02</div>
+          <h4>「現実創造」軸</h4>
+          <div class="path">大瀧冬佳『世界は自分で創造する』 <span class="arrow">→</span> Jeg『願望実現の最短ルート』 <span class="arrow">→</span> タフティ <span class="arrow">→</span> バシャール</div>
+        </div>
+        <div class="route">
+          <div class="num">03</div>
+          <h4>「自己肯定感」軸</h4>
+          <div class="path">セルフ・コンパッション <span class="arrow">→</span> ザ・メンタルモデル <span class="arrow">→</span> 鈴木祐『無』 <span class="arrow">→</span> ADHD所見</div>
+        </div>
+        <div class="route">
+          <div class="num">04</div>
+          <h4>「キャリア転換」軸</h4>
+          <div class="path">物語思考（けんすう） <span class="arrow">→</span> 才能の地図 <span class="arrow">→</span> 40歳の壁 <span class="arrow">→</span> 介護16年→AI起業の物語</div>
+        </div>
+        <div class="route">
+          <div class="num">05</div>
+          <h4>「弱さ・脆弱性」軸</h4>
+          <div class="path">ブラウン『本当の勇気は弱さを認めること』 <span class="arrow">→</span> TED Brené Brown <span class="arrow">→</span> 勝手にやる × 愚行権</div>
+        </div>
+        <div class="route">
+          <div class="num">06</div>
+          <h4>「Why から始める」軸</h4>
+          <div class="path">7つの習慣 <span class="arrow">→</span> ナヴァル <span class="arrow">→</span> TED Simon Sinek <span class="arrow">→</span> おけもんカンパニー Why</div>
+        </div>
+        <div class="route">
+          <div class="num">07</div>
+          <h4>「お金とブロック」軸</h4>
+          <div class="path">本田健シリーズ <span class="arrow">→</span> ゆきの『神様にお任せ』 <span class="arrow">→</span> しーちゃんCFO/おけもん再生への道</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WISHLIST -->
+    <section id="wishlist">
+      <h2><span class="ic">🔥</span>読みたい本リスト（30+冊）</h2>
+      <p class="h2-sub">未購入・気になってる本のジャンル別ストック</p>
+      <div class="theme-grid">
+        <div class="theme wood"><h3>💼 仕事術・影響力</h3><div class="count">12冊</div><p>影響力の武器 ／ 人を動かす ／ 夢と金（西野） ／ 生成AI戦力化 ／ noteで年収1000万円 他</p></div>
+        <div class="theme rose"><h3>💡 自己表現・境界線</h3><div class="count">7冊</div><p>NVC ／ アサーション入門 ／ 拒絶される恐怖を克服する100日計画 ／ 愛着障害</p></div>
+        <div class="theme sky"><h3>🧠 神経科学・哲学</h3><div class="count">4冊</div><p>ミラーニューロンの発見 ／ 共感の時代へ ／ ポリヴェーガル理論 ／ 自省録（マルクス・アウレリウス）</p></div>
+        <div class="theme rose"><h3>💔 ジェーン・スー周り</h3><div class="count">5冊</div><p>おつかれ、今日の私 ／ これでもいいのだ ／ へこたれてなんかいられない ／ 闘いの庭 咲く女 他</p></div>
+        <div class="theme leaf"><h3>📖 エッセイ</h3><div class="count">数冊</div><p>西加奈子のエッセイ ／ 宮崎駿『出発点』 ／ 夏目漱石『倫敦塔』 ／ 仏教の縁起</p></div>
+        <div class="theme"><h3>🎌 漫画・アニメ</h3><div class="count">3作品</div><p>メダリスト ／ 葬送のフリーレン（続き） ／ 薬屋のひとりごと</p></div>
+      </div>
+    </section>
+
+    <!-- VAULT LINKS -->
+    <section id="vault">
+      <h2><span class="ic">🔗</span>Vault 全文導線（おけ森内）</h2>
+      <p class="h2-sub">ハブMD・OCRフォルダ・読書メモへの直行リンク</p>
+      <div class="vault-links">
+        <h4>🌳 ハブ・索引</h4>
+        <ul>
+          <li>コンテキスト/学び/読書ノート/<strong>おけもんの本棚.md</strong>（このページの母艦）</li>
+          <li>コンテキスト/学び/読書ノート/<strong>読みたい本リスト.md</strong></li>
+          <li>コンテキスト/学び/読書ノート/<strong>オススメ本　2025年10月2日.md</strong></li>
+          <li>コンテキスト/学び/<strong>Zettelkasten永久ノート.md</strong></li>
+        </ul>
+        <h4 style="margin-top:18px">📕 OCR完備フォルダ</h4>
+        <ul>
+          <li>コンテキスト/学び/<strong>おけもんの図書館_西野亮廣/</strong>（全155頁）</li>
+          <li>コンテキスト/学び/<strong>おけもんの図書館_世界は自分で創造する/</strong>（全284頁）</li>
+          <li>コンテキスト/学び/<strong>Kindle PDF保管庫/</strong>（PDF＋OCRスクリプト一式）</li>
+        </ul>
+        <h4 style="margin-top:18px">💭 読書メモ・個別ノート</h4>
+        <ul>
+          <li>コンテキスト/学び/読書ノート/<strong>Kindle読書メモ/</strong>（130+冊）</li>
+          <li>コンテキスト/学び/読書ノート/<strong>読書メモ/</strong>（別バージョン）</li>
+          <li>コンテキスト/学び/読書ノート/<strong>書籍データ/</strong>（PDFアーカイブ）</li>
+          <li>コンテキスト/学び/読書ノート/直下の個別MD（7つの習慣／ナヴァル／タルムード／まこなり 等）</li>
+        </ul>
+        <h4 style="margin-top:18px">🔗 横串ハブ（横方向に繋がる森）</h4>
+        <ul>
+          <li>コンテキスト/学び/TED/<strong>TEDハブ.md</strong></li>
+          <li>コンテキスト/学び/TED/<strong>プレイリスト_おけちゃんの好きな話者.md</strong>（8話者厳選）</li>
+          <li>コンテキスト/学び/<strong>勝手にやる × 愚行権.md</strong>（永久ノート）</li>
+          <li>コンテキスト/学び/<strong>ノウハウ図書館/</strong>（リベ ノウハウ図書館 活用事例）</li>
+          <li>コンテキスト/学び/<strong>学長マガジン/</strong>（学長ライブ要約アーカイブ）</li>
+        </ul>
+      </div>
+
+      <a href="okemori-square.html" class="back-btn">🌳 おけ森広場に戻る</a>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>📚 おけもんの本棚 — Personal Bookshelf Hub ／ おけ森広場 ブランチ</p>
+    <p style="margin-top:6px;font-size:11px;opacity:.7">完全非公開（noindex,nofollow）／ 130+冊の知識の森を歩くための地図 ／ Built with care, 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
