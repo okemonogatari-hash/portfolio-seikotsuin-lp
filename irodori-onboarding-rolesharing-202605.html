@@ -291,6 +291,116 @@ section { margin-bottom: 36px; }
 .stance-box p:last-child { margin-bottom: 0; }
 .stance-box .accent { color: #e76f51; font-weight: 700; }
 
+/* 自己開示セクション */
+.disclose-intro {
+  background: linear-gradient(135deg, #fef9f5 0%, #faf5fd 100%);
+  border-radius: 14px;
+  padding: 22px 28px;
+  margin-bottom: 20px;
+  border-left: 5px solid #d896c4;
+}
+.disclose-intro p { font-size: 13px; line-height: 1.8; color: #4a4a4a; margin-bottom: 8px; }
+.disclose-intro p:last-child { margin-bottom: 0; }
+.disclose-intro .accent { color: #d896c4; font-weight: 700; }
+
+.disclose-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 14px;
+}
+.disclose-card {
+  background: white;
+  border-radius: 14px;
+  padding: 22px 24px;
+  border-top: 4px solid;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.disclose-card.d-strength { border-top-color: #2a9d8f; }
+.disclose-card.d-weakness { border-top-color: #e9c46a; }
+.disclose-card h4 {
+  font-size: 15px;
+  color: #264653;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.disclose-card h4 .emoji { font-size: 20px; }
+.disclose-card ul {
+  list-style: none;
+  padding: 0;
+}
+.disclose-card ul li {
+  font-size: 13px;
+  color: #4a4a4a;
+  padding: 8px 0 8px 22px;
+  line-height: 1.7;
+  position: relative;
+  border-bottom: 1px dashed #f0f0f0;
+}
+.disclose-card ul li:last-child { border-bottom: none; }
+.disclose-card.d-strength ul li::before {
+  content: '🌱';
+  position: absolute;
+  left: 0;
+  font-size: 12px;
+}
+.disclose-card.d-weakness ul li::before {
+  content: '🍃';
+  position: absolute;
+  left: 0;
+  font-size: 12px;
+}
+.disclose-card ul li strong { color: #264653; }
+
+.disclose-handling {
+  background: linear-gradient(135deg, #f0faf7 0%, #e8f5f1 100%);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-top: 18px;
+  border-left: 5px solid #2a9d8f;
+}
+.disclose-handling h4 {
+  color: #264653;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+.disclose-handling ul {
+  list-style: none;
+  padding: 0;
+}
+.disclose-handling ul li {
+  font-size: 13px;
+  color: #4a4a4a;
+  padding: 8px 0 8px 24px;
+  line-height: 1.8;
+  position: relative;
+}
+.disclose-handling ul li::before {
+  content: '💗';
+  position: absolute;
+  left: 0;
+  font-size: 12px;
+}
+.disclose-handling ul li strong { color: #264653; }
+
+.disclose-closing {
+  background: #fff8f3;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-top: 14px;
+  border-left: 4px solid #f4a261;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #4a4a4a;
+}
+.disclose-closing strong { color: #264653; }
+
+@media (max-width: 700px) {
+  .disclose-grid { grid-template-columns: 1fr; }
+}
+
 footer {
   text-align: center;
   margin-top: 40px;
@@ -425,6 +535,70 @@ footer {
         <div class="role-note">📍 オリエン後の<strong>実務段階で発生する「これどうやるんだっけ」</strong>を都度伴走する。</div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- おけもんの自己開示 -->
+<section>
+  <div class="section-header" style="border-bottom-color:#d896c4;">
+    <div class="icon" style="background:linear-gradient(135deg,#d896c4,#e8b4d5);">💗</div>
+    <h2>おけもんの自己開示（先に開いておきたいこと）</h2>
+  </div>
+  <div class="section-body">
+    <div class="disclose-intro">
+      <p>役割分担を考える前に、まず <span class="accent">おけもんがどういう人間で、何が得意で、何が苦手か</span> をフラットに開いておきたくて、ここに書いておきます🌸</p>
+      <p>これは <strong>泉田さん・りえさんに「私の特性を知っておいてもらう」のが目的</strong>。お二人にも同じことを書いてもらいたいわけじゃなく、まず私から開示します。</p>
+      <p>理由は、<strong>特性に合わないことを頑張ろうとしても応えられない</strong>からです。最初に知ってもらえれば、お互い無理のない関わり方ができるなと思って🌱</p>
+    </div>
+
+    <div class="disclose-grid">
+
+      <div class="disclose-card d-strength">
+        <h4><span class="emoji">🌟</span>こういうのが得意です</h4>
+        <ul>
+          <li><strong>AI活用・業務効率化・データ集約</strong>　ツールを使い倒して仕組み化するのが好き。新メンバーのキャッチアップ自動化など、ここなら前のめりで動けます</li>
+          <li><strong>最新情報のキャッチ</strong>　AI業界・ツール・働き方の新しい流れを掴むのは得意領域</li>
+          <li><strong>対面コミュニケーション・ヒアリング</strong>　コーチング軸で「相手の話を引き出す」のは積み上げてきた強み</li>
+          <li><strong>場づくり・空気の温度感づくり</strong>　オフ会・コーチング・1on1など「人が安心して話せる場」を作るのが好きです</li>
+          <li><strong>人の特性をフラットに観察する</strong>　「この人はこういう傾向あるな」を決めつけずに見る視点を持ってます</li>
+          <li><strong>質問・問いかけ</strong>　答えを出すより「何が大事？」を一緒に考えるのが得意</li>
+          <li><strong>異質な人をつなぐハブ機能</strong>　立場や属性の違う人を、場で繋ぐ動きはやれます</li>
+          <li><strong>「楽しさで巻き込む」発信</strong>　売り込みじゃなく「楽しい場に誘う」温度感が私のベース</li>
+          <li><strong>受け止める力</strong>　長年の対人支援経験があり、人の感情をそのまま受け取るのは慣れてます</li>
+        </ul>
+      </div>
+
+      <div class="disclose-card d-weakness">
+        <h4><span class="emoji">🍃</span>こういうのは苦手です</h4>
+        <ul>
+          <li><strong>細やかなフォロー・連絡・進捗管理</strong>　ここは正直、抜けます。意識してもサラッと忘れます</li>
+          <li><strong>継続・積み上げ的なタスク</strong>　毎日コツコツ同じことをするのが本当に苦手。スパイク的に集中するタイプです</li>
+          <li><strong>抜け漏れ確認・タスクの最終チェック</strong>　ダブルチェック役は私には向きません</li>
+          <li><strong>マルチタスク</strong>　複数の案件を並行で持つと、必ずどこか落ちます。1つに集中する形が一番動けます</li>
+          <li><strong>反復作業・定型業務</strong>　同じ手順を繰り返すのが続きません。だからAIで自動化に走る傾向があります</li>
+          <li><strong>数字管理・経理処理</strong>　ここは別の人に頼っているのが正直なところ</li>
+          <li><strong>境界線を引きづらい</strong>　「自分の領域じゃない」と言いづらく、巻き取りすぎる傾向あり。指摘してもらえると助かります</li>
+          <li><strong>スケジュール管理</strong>　ツール頼みで運用しています</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="disclose-handling">
+      <h4>🤝 だから、こういう関わり方になります</h4>
+      <ul>
+        <li><strong>定期リマインドは大歓迎です</strong>　「あれどうなりました？」を遠慮なく投げてもらえると助かります。私から能動的にフォローし続けるのは苦手なので</li>
+        <li><strong>細やかな抜け漏れチェックや進捗管理は、お二人の領域として任せたい</strong>　お二人の細やかさに頼らせてもらえると、私は得意領域に集中できます</li>
+        <li><strong>業務指示・定型運用は得意な方にお任せしたいです</strong>　その代わり、AI活用・人の話を聞く・場づくり・観察記録は前のめりで担当します</li>
+        <li><strong>マルチタスクで詰まったら正直に言います</strong>　「今これに集中したい」と言わせてください。複数並行で持つと必ず落ちるので</li>
+        <li><strong>「ここまでで止めて」と言ってもらえると安心です</strong>　巻き取りすぎる傾向があるので、境界線を引いてもらえると助かります</li>
+      </ul>
+    </div>
+
+    <div class="disclose-closing">
+      <p>👀 <strong>これは「自分の特性に合わないことを求められても応えられない」という事前共有</strong>であって、お二人に何か求めてるわけじゃないです。</p>
+      <p>もし「私もこういう特性あるよ」って開いてもらえる場面があれば、その時に一緒に整理できたら嬉しいです。<strong>「お互いの得意を持ち寄って、苦手を補完する」</strong>のが、結局はチームの力になると思っています🌸</p>
     </div>
   </div>
 </section>
