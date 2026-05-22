@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌳 おけ森広場 — おけもんの脳内コンテキストハブ（非公開）</title>
+<meta name="description" content="おけもんカンパニーの私設コンテキスト広場。学長ライブ・AI仙人・TED・本棚・オフ会・コーチング、各テーマへのブランチ入口。完全非公開・個人管理用ダッシュボード。">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2a241e;
+  --muted:#6e645a;
+  --bg-warm:#fdf7ec;
+  --bg-warm2:#fbeeda;
+  --line:#e3cea5;
+  --line-soft:#f0dfc0;
+  --leaf:#7aa874;
+  --leaf-deep:#558257;
+  --leaf-light:#b4d2ad;
+  --wood:#a87555;
+  --wood-deep:#7a4f33;
+  --sun:#e4b572;
+  --sun-deep:#c08840;
+  --rose:#d88aa0;
+  --sky:#82a8c4;
+  --moon:#a89a6a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Sans JP",sans-serif;
+  background:
+    radial-gradient(ellipse at top left, rgba(180,210,173,.25) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(228,181,114,.2) 0%, transparent 50%),
+    linear-gradient(180deg,var(--bg-warm) 0%,var(--bg-warm2) 60%,#fff 100%);
+  color:var(--ink);line-height:1.85;min-height:100vh;
+}
+a{color:var(--wood-deep);font-weight:700;text-underline-offset:4px;text-decoration:none}
+a:hover{color:var(--leaf-deep)}
+.wrap{width:min(1180px,94vw);margin:0 auto}
+
+/* HEADER */
+header{padding:64px 0 36px;position:relative;overflow:hidden;text-align:center}
+header::before{content:"🌳";position:absolute;top:30px;left:6%;font-size:80px;opacity:.18;transform:rotate(-8deg)}
+header::after{content:"🍃";position:absolute;bottom:0;right:5%;font-size:70px;opacity:.22;transform:rotate(12deg)}
+.eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--leaf-deep);font-weight:900;margin-bottom:14px;position:relative;z-index:2}
+.eyebrow .dot{display:inline-block;width:8px;height:8px;background:var(--leaf);border-radius:50%;margin-right:8px;vertical-align:middle}
+h1{font-family:"Noto Serif JP",serif;font-size:clamp(34px,5.8vw,52px);line-height:1.28;color:var(--ink);position:relative;z-index:2;letter-spacing:-.01em}
+.title-em{color:var(--leaf-deep)}
+.tagline{font-family:"Caveat",cursive;font-size:26px;color:var(--wood-deep);margin-top:14px;position:relative;z-index:2}
+.lead{margin-top:22px;font-size:15.5px;color:var(--muted);max-width:760px;margin-left:auto;margin-right:auto;position:relative;z-index:2;line-height:1.95}
+
+/* PRIVATE BANNER */
+.private-banner{margin:30px auto 0;display:inline-flex;align-items:center;gap:10px;padding:10px 22px;background:#fff;border:1.5px solid var(--line);border-radius:999px;font-size:12px;color:var(--wood-deep);font-weight:700;letter-spacing:.06em;position:relative;z-index:2;box-shadow:0 4px 14px rgba(168,117,85,.1)}
+.private-banner .lock{font-size:16px}
+
+/* QUOTE */
+.quote-box{margin:48px auto 0;max-width:720px;background:linear-gradient(135deg,#fff,#fdf3df);border:1.5px solid var(--line);border-left:6px solid var(--leaf);border-radius:14px;padding:24px 30px;position:relative;text-align:left;box-shadow:0 8px 22px rgba(168,117,85,.08)}
+.quote-box::before{content:"❝";position:absolute;top:-14px;left:14px;font-size:48px;color:var(--leaf);background:var(--bg-warm);padding:0 6px;line-height:1}
+.quote-box p{font-family:"Noto Serif JP",serif;font-size:15px;color:#4a4035;line-height:1.95;font-weight:500}
+.quote-box .source{display:block;margin-top:10px;font-family:"Noto Sans JP",sans-serif;font-size:12px;color:var(--muted);text-align:right;font-weight:700}
+
+/* BRANCHES */
+main{padding:42px 0 60px}
+section.branches{padding:36px 0}
+h2.section-title{font-family:"Noto Serif JP",serif;font-size:24px;margin-bottom:8px;color:var(--ink);display:flex;align-items:center;gap:12px;justify-content:center}
+h2.section-title .ic{font-size:24px}
+.section-sub{font-size:13.5px;color:var(--muted);text-align:center;margin-bottom:36px;font-weight:400}
+
+.branch-grid{display:grid;grid-template-columns:1fr;gap:22px}
+@media(min-width:680px){.branch-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.branch-grid{grid-template-columns:1fr 1fr 1fr}}
+
+.branch{position:relative;background:#fff;border:2px solid var(--line);border-radius:20px;padding:28px 28px 24px;transition:all .3s;display:flex;flex-direction:column;box-shadow:0 6px 20px rgba(168,117,85,.08);overflow:hidden}
+.branch::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--leaf),var(--sun))}
+.branch:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(168,117,85,.18);border-color:var(--leaf)}
+.branch .emoji{font-size:48px;line-height:1;margin-bottom:14px}
+.branch h3{font-family:"Noto Serif JP",serif;font-size:20px;color:var(--ink);margin-bottom:8px;line-height:1.4}
+.branch .subtitle{font-size:12px;color:var(--leaf-deep);font-weight:700;letter-spacing:.08em;margin-bottom:14px;text-transform:uppercase}
+.branch p{font-size:13.5px;color:#5a5048;line-height:1.78;margin-bottom:16px;flex:1}
+.branch .meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.branch .meta .tag{font-size:11px;background:var(--bg-warm2);color:var(--wood-deep);padding:4px 10px;border-radius:999px;font-weight:700;letter-spacing:.02em}
+.branch .links{display:flex;flex-direction:column;gap:8px}
+.branch .links a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;background:linear-gradient(135deg,var(--leaf),var(--leaf-deep));color:#fff;border-radius:999px;font-size:12.5px;font-weight:700;text-decoration:none;transition:.2s;border:1.5px solid transparent}
+.branch .links a:hover{background:linear-gradient(135deg,var(--leaf-deep),#3f6c41);transform:translateX(3px)}
+.branch .links a.alt{background:#fff;color:var(--wood-deep);border-color:var(--line)}
+.branch .links a.alt:hover{background:var(--bg-warm2);color:var(--wood-deep)}
+.branch .links a.pending{background:#f4ebd9;color:#8e7a52;cursor:default;border-color:var(--line-soft);font-weight:600}
+.branch .links a.pending:hover{transform:none;background:#f4ebd9}
+.branch .status{position:absolute;top:14px;right:14px;background:var(--leaf);color:#fff;font-size:10px;padding:3px 9px;border-radius:999px;font-weight:700;letter-spacing:.08em}
+.branch .status.preparing{background:var(--sun-deep)}
+
+/* FOOTER MAP */
+.footer-map{margin-top:50px;padding:28px 30px;background:linear-gradient(135deg,#fff,var(--bg-warm2));border:1.5px dashed var(--line);border-radius:18px}
+.footer-map h3{font-family:"Noto Serif JP",serif;font-size:16px;color:var(--wood-deep);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.footer-map ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr;gap:8px}
+@media(min-width:680px){.footer-map ul{grid-template-columns:1fr 1fr}}
+.footer-map li{font-size:13px;color:#5a5048;padding:6px 0 6px 22px;position:relative;line-height:1.65}
+.footer-map li::before{content:"🍃";position:absolute;left:0;top:6px;font-size:13px}
+
+footer{padding:34px 0 56px;color:var(--muted);font-size:13px;text-align:center;border-top:1px dashed var(--line);margin-top:40px}
+footer a{color:var(--wood-deep)}
+footer .small{display:block;margin-top:8px;font-size:11px;opacity:.7}
+
+@media(max-width:680px){
+  header{padding-top:48px}
+  .branch{padding:24px 22px 22px}
+  .branch .emoji{font-size:42px}
+  .branch h3{font-size:18px}
+  .quote-box{padding:20px 22px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>OKEMORI SQUARE ✦ 2026.05.22 ✦ PRIVATE</div>
+    <h1>🌳 <span class="title-em">おけ森広場</span>へようこそ</h1>
+    <p class="tagline">おけもんの脳内コンテキストハブ — 学びと出会いの中央広場</p>
+    <p class="lead">
+      ここはおけちゃんの "脳内に置いてある森" の中央広場。<br>
+      各テーマ（学長ライブ・AI仙人・TED・本棚・オフ会・コーチング）への入口が、<br>
+      ベンチ周りに散らばっています。気が向いた方向へ、ふらっと歩いてみて。
+    </p>
+    <div class="private-banner">
+      <span class="lock">🔒</span>
+      <span>完全非公開 / noindex / おけもん専用 個人管理ダッシュボード</span>
+    </div>
+
+    <div class="quote-box">
+      <p>
+        「最高に可愛い彼女と仲間とワクワク喋っていたら、<br>
+        いつの間にか夢が叶っていた」── そのための森。<br>
+        ここはおけちゃんが歩いた道の <strong>記憶の地図</strong>。
+      </p>
+      <span class="source">── おけもんカンパニー コアコンセプト</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section class="branches">
+      <h2 class="section-title"><span class="ic">🌿</span>6つのブランチ</h2>
+      <p class="section-sub">それぞれの森を歩いて、気になった木の下で立ち止まろう</p>
+
+      <div class="branch-grid">
+
+        <!-- 1. 学長ライブ -->
+        <article class="branch">
+          <span class="status">運用中</span>
+          <div class="emoji">📺</div>
+          <h3>学長ライブ</h3>
+          <div class="subtitle">毎朝10:30 ・ 自動取得 & 要約</div>
+          <p>両学長リベラルアーツ大学の朝ライブを毎朝10:30に自動キャッチ→字幕→要約→活用事例抽出→LINE通知まで一気通貫。30日分のデータベースが常に最新。</p>
+          <div class="meta">
+            <span class="tag">YouTube</span>
+            <span class="tag">自動化</span>
+            <span class="tag">毎日更新</span>
+          </div>
+          <div class="links">
+            <a href="#" class="pending">📊 30日DBダッシュボード（Vault: あおいCDO/制作物/HTML制作物/gakucho-live-30days-database.html）</a>
+            <a href="#" class="pending" onclick="return false;">🌲 Vault: YouTube要約ハブ</a>
+          </div>
+        </article>
+
+        <!-- 2. AI仙人 -->
+        <article class="branch">
+          <span class="status">運用中</span>
+          <div class="emoji">🧙‍♂️</div>
+          <h3>AI仙人</h3>
+          <div class="subtitle">最新AI動向 ・ 全動画キャッチ</div>
+          <p>AI仙人チャンネルの全動画を要約運用中。Codex超入門・GPT脳のAIエージェント、Claude最新動向など、AI界隈の最前線情報をストック。</p>
+          <div class="meta">
+            <span class="tag">AI最新</span>
+            <span class="tag">技術深掘り</span>
+            <span class="tag">要約資産</span>
+          </div>
+          <div class="links">
+            <a href="#" class="pending" onclick="return false;">🌲 Vault: YouTube要約ハブ → AI仙人</a>
+          </div>
+        </article>
+
+        <!-- 3. TEDトーク -->
+        <article class="branch">
+          <span class="status">新設</span>
+          <div class="emoji">🎤</div>
+          <h3>TEDトーク</h3>
+          <div class="subtitle">いつかおけちゃんが登壇する日のために</div>
+          <p>2年前にスタッフしてた TEDxKobe に観客で戻った 2026-05-22 を起点に開設。Salon #28 ダッシュボード＋愛する話者プレイリスト8選（小池陽人さん／植松努／ブレネー・ブラウン他）。</p>
+          <div class="meta">
+            <span class="tag">夢: 登壇</span>
+            <span class="tag">8話者厳選</span>
+            <span class="tag">2026-05-22 開設</span>
+          </div>
+          <div class="links">
+            <a href="tedxkobe-salon28-2026-05-22.html">🎤 TEDxKobe Salon #28 ダッシュボード →</a>
+            <a href="gukouken-diagram-2026-05-22.html" class="alt">📚 派生図解：愚行権ってなに？ →</a>
+            <a href="#" class="pending" onclick="return false;">🌲 Vault: TEDハブ＋話者プレイリスト</a>
+          </div>
+        </article>
+
+        <!-- 4. 本棚 -->
+        <article class="branch">
+          <span class="status preparing">育成中</span>
+          <div class="emoji">📚</div>
+          <h3>おけもんの本棚</h3>
+          <div class="subtitle">読んだ本 ・ Kindle PDF保管庫</div>
+          <p>「あとで戻ってきたい本」をKindleからPDF化してVaultに保管。読書会の記録、本から得た学びノートも繋ぎ込む。西野亮廣の図書館・世界は自分で創造する系も格納。</p>
+          <div class="meta">
+            <span class="tag">Kindle</span>
+            <span class="tag">読書会</span>
+            <span class="tag">図書館</span>
+          </div>
+          <div class="links">
+            <a href="book-club-2026-04-17.html">📖 読書会 2026-04-17 →</a>
+            <a href="#" class="pending" onclick="return false;">🌲 Vault: Kindle PDF保管庫 / おけもんの図書館</a>
+          </div>
+        </article>
+
+        <!-- 5. オフ会記録 -->
+        <article class="branch">
+          <span class="status preparing">育成中</span>
+          <div class="emoji">🍻</div>
+          <h3>オフ会記録</h3>
+          <div class="subtitle">わくわく・貢献・つながり 20回超</div>
+          <p>リベ・TOKU ICCA・irodori 他コミュニティで20回超主催／参加してきたオフ会の記録。「ゆかさん案件もここから生まれた」生実証。会場・参加者・発生した縁を後から辿れる地図。</p>
+          <div class="meta">
+            <span class="tag">20回+</span>
+            <span class="tag">縁の源泉</span>
+            <span class="tag">案件発掘</span>
+          </div>
+          <div class="links">
+            <a href="tokuichika-offkai-venues.html">🍶 特一花オフ会会場一覧 →</a>
+            <a href="#" class="pending" onclick="return false;">🌲 Vault: オフ会記録ハブ（要新設）</a>
+          </div>
+        </article>
+
+        <!-- 6. コーチング -->
+        <article class="branch">
+          <span class="status">運用中</span>
+          <div class="emoji">💗</div>
+          <h3>コーチング</h3>
+          <div class="subtitle">ゆいCPO ・ ストレングス × 質問の型</div>
+          <p>ゆいCPO主導のコーチング事業。ストレングスファインダー診断シート・取扱説明書HP・AI業務棚卸し相談メニュー（ゆかさん試運転1号）。介護福祉16年×質問力の独自ポジション。</p>
+          <div class="meta">
+            <span class="tag">ストレングス</span>
+            <span class="tag">事業化進行</span>
+            <span class="tag">本丸第一号</span>
+          </div>
+          <div class="links">
+            <a href="coaching.html">💗 コーチング事業LP →</a>
+            <a href="#" class="pending" onclick="return false;">🌲 Vault: ゆいCPO/コーチング事業</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- FUTURE BRANCHES -->
+    <div class="footer-map">
+      <h3>🌱 これから育つかもしれないブランチ（メモ）</h3>
+      <ul>
+        <li><strong>irodori / クライアント事例</strong> — まなCSO配下の案件ナレッジ</li>
+        <li><strong>AI11人カンパニー紹介</strong> — プロフィールハブ → 各CxOフォルダ</li>
+        <li><strong>事業ロードマップ</strong> — 介護医療×AI本丸 × 補助金事業</li>
+        <li><strong>破産→再生の道</strong> — しーちゃんCFO配下の再生ロードマップ</li>
+        <li><strong>おけもんルーツ</strong> — 福祉キャリア16年・自己理解・MVV</li>
+        <li><strong>家族・人間関係マップ</strong> — プロフィールハブの人物索引</li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>🌳 おけ森広場 — おけもんカンパニー Private Context Square</p>
+    <p class="small">完全非公開（noindex,nofollow）／ おけもん本人のみが歩く森です ／ Built with care, 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
