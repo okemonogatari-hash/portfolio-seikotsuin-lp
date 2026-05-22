@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEDxKobe Salon #28「Broken into Becoming」｜2026-05-22 視聴ダッシュボード</title>
+<meta name="description" content="2026年5月22日 Anchor KobeにてTEDxKobe Salon #28に参加。テーマ『Broken into Becoming』のゲスト2名（小田崇さん／武藤北斗さん）のトークをサムネと要旨で振り返るダッシュボード。">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --main:#E62B1E;        /* TED RED */
+  --main-deep:#B71C13;
+  --accent:#FF6B5B;
+  --accent-deep:#D94A3D;
+  --ink:#1e1a18;
+  --muted:#6c6560;
+  --line:#ead9d6;
+  --bg-cream:#fdfaf7;
+  --bg-cream2:#fbf5f1;
+  --hl:#fff2ec;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans JP",sans-serif;background:linear-gradient(180deg,var(--bg-cream) 0%,var(--bg-cream2) 50%,#fff 100%);color:var(--ink);line-height:1.85}
+a{color:var(--main-deep);font-weight:700;text-underline-offset:4px;text-decoration:none}
+a:hover{color:var(--accent-deep);text-decoration:underline}
+.wrap{width:min(1120px,94vw);margin:0 auto}
+
+/* HEADER */
+header{padding:60px 0 36px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+header::before{content:"";position:absolute;top:-60px;right:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(230,43,30,.18),transparent 70%);border-radius:50%}
+header::after{content:"";position:absolute;bottom:-40px;left:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,107,91,.14),transparent 70%);border-radius:50%}
+.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--main);font-weight:900;margin-bottom:12px;position:relative;z-index:2}
+.eyebrow .dot{display:inline-block;width:8px;height:8px;background:var(--main);border-radius:50%;margin-right:8px;vertical-align:middle}
+h1{font-family:"Noto Serif JP",serif;font-size:clamp(28px,4.8vw,46px);line-height:1.3;color:var(--ink);position:relative;z-index:2}
+.title-em{background:linear-gradient(180deg,transparent 60%,#ffd7d0 60%);padding:0 4px}
+.tagline{font-family:"Caveat",cursive;font-size:22px;color:var(--main-deep);margin-top:14px;position:relative;z-index:2}
+.lead{margin-top:22px;font-size:16px;color:var(--muted);max-width:820px;position:relative;z-index:2}
+.metrics{display:flex;gap:32px;flex-wrap:wrap;margin-top:26px;position:relative;z-index:2}
+.metric{display:flex;flex-direction:column;gap:4px}
+.metric .v{font-family:"Noto Serif JP",serif;font-size:32px;font-weight:900;color:var(--main-deep);line-height:1}
+.metric .l{font-size:12px;color:var(--muted);letter-spacing:.06em}
+
+main{padding:42px 0 60px}
+section{padding:42px 0;border-bottom:1px solid var(--line)}
+section:last-child{border-bottom:none}
+h2{font-family:"Noto Serif JP",serif;font-size:26px;line-height:1.45;margin-bottom:6px;color:var(--ink);display:flex;align-items:center;gap:12px}
+h2 .ic{font-size:24px}
+.h2-sub{font-size:14px;color:var(--muted);margin-bottom:24px;font-weight:400}
+
+/* THEME CALLOUT */
+.theme-box{background:linear-gradient(135deg,#fff5f1,#ffe9e3);border:1px solid var(--line);border-radius:18px;padding:30px 34px;margin-top:20px;position:relative;overflow:hidden}
+.theme-box::before{content:"";position:absolute;top:-30px;right:-30px;width:160px;height:160px;background:radial-gradient(circle,rgba(230,43,30,.16),transparent 70%);border-radius:50%}
+.theme-label{font-size:11px;letter-spacing:.22em;color:var(--main);font-weight:900;margin-bottom:8px;text-transform:uppercase}
+.theme-title{font-family:"Noto Serif JP",serif;font-size:24px;color:var(--main-deep);margin-bottom:14px;font-weight:900;position:relative;z-index:2}
+.theme-body{font-size:15px;color:#5b4f4c;line-height:1.95;position:relative;z-index:2}
+.theme-body em{font-style:normal;background:linear-gradient(180deg,transparent 60%,#ffd7d0 60%);font-weight:700}
+
+/* TALK CARDS */
+.talks{display:grid;grid-template-columns:1fr;gap:30px;margin-top:24px}
+@media(min-width:900px){.talks{grid-template-columns:1fr 1fr}}
+.talk{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(230,43,30,.08);transition:.3s;display:flex;flex-direction:column}
+.talk:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(230,43,30,.14)}
+.thumb-wrap{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:#000}
+.thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.talk:hover .thumb-wrap img{transform:scale(1.06)}
+.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:rgba(230,43,30,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.3s;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.play-btn::before{content:"";display:block;width:0;height:0;border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+.talk:hover .play-btn{transform:translate(-50%,-50%) scale(1.1);background:var(--main)}
+.no{position:absolute;top:12px;left:12px;background:var(--main);color:#fff;font-family:"Noto Serif JP",serif;font-weight:900;font-size:13px;padding:5px 11px;border-radius:6px;letter-spacing:.08em;z-index:2}
+.duration{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.82);color:#fff;font-size:12px;padding:4px 10px;border-radius:4px;font-weight:700}
+.talk-body{padding:24px 26px 26px;flex:1;display:flex;flex-direction:column}
+.speaker-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.speaker{font-size:13px;font-weight:700;color:var(--main-deep);letter-spacing:.04em}
+.speaker .en{color:var(--muted);font-weight:500;margin-left:4px;font-size:12px}
+.tag{font-size:11px;background:var(--hl);color:var(--main-deep);padding:3px 9px;border-radius:999px;font-weight:700;letter-spacing:.04em}
+.talk h3{font-family:"Noto Serif JP",serif;font-size:19px;line-height:1.5;margin-bottom:6px;color:var(--ink)}
+.talk h3 a{color:var(--ink)}
+.talk h3 a:hover{color:var(--main-deep);text-decoration:none}
+.talk .en-title{font-size:12.5px;color:var(--muted);font-style:italic;margin-bottom:18px;line-height:1.5}
+.summary-label{font-size:11px;color:var(--main);letter-spacing:.18em;font-weight:900;margin-bottom:10px;text-transform:uppercase}
+.summary{font-size:14.5px;color:#3d3936;line-height:1.85;margin-bottom:18px}
+.points{list-style:none;padding:0;margin:0 0 20px;border-top:1px dashed var(--line);padding-top:16px}
+.points li{font-size:14px;color:#4a4540;padding:8px 0 8px 26px;position:relative;line-height:1.65}
+.points li::before{content:"●";position:absolute;left:6px;top:8px;color:var(--main);font-size:10px}
+.quote{background:var(--hl);border-left:3px solid var(--main);padding:14px 18px;border-radius:4px;margin:0 0 18px;font-family:"Noto Serif JP",serif;font-size:14.5px;color:var(--main-deep);font-weight:700;line-height:1.7;font-style:italic}
+.link-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+.link-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;font-size:12.5px;font-weight:700;transition:.2s;text-decoration:none;border:1px solid transparent}
+.link-yt{background:var(--main);color:#fff}
+.link-yt:hover{background:var(--main-deep);color:#fff;text-decoration:none}
+.link-tx{background:#fff;color:var(--main-deep);border-color:var(--line)}
+.link-tx:hover{background:var(--hl);text-decoration:none}
+
+/* CONTEXT */
+.context-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px}
+@media(min-width:780px){.context-grid{grid-template-columns:1fr 1fr 1fr}}
+.ctx-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;box-shadow:0 6px 18px rgba(230,43,30,.05)}
+.ctx-card h4{font-family:"Noto Serif JP",serif;font-size:16px;color:var(--main-deep);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.ctx-card p{font-size:13.5px;color:#5a544f;line-height:1.78}
+
+/* Memo */
+.memo{background:linear-gradient(135deg,#fff8ef,#fef2e2);border-radius:16px;padding:28px 32px;margin-top:24px;border:1px dashed #f0c89c}
+.memo h3{font-family:"Noto Serif JP",serif;font-size:18px;color:#8a5a1a;margin-bottom:10px}
+.memo p{font-size:14.5px;color:#5e4628;line-height:1.85}
+.memo .pen{font-family:"Caveat",cursive;font-size:18px;color:#a06820;margin-top:8px}
+
+footer{padding:34px 0 56px;color:var(--muted);font-size:13px;text-align:center;border-top:1px solid var(--line)}
+footer a{color:var(--main-deep)}
+
+@media(max-width:680px){
+  header{padding-top:46px}
+  .metrics{gap:18px}
+  .metric .v{font-size:24px}
+  .theme-box{padding:22px 22px}
+  .theme-title{font-size:19px}
+  .talk-body{padding:20px 20px 22px}
+  .talk h3{font-size:17px}
+  .play-btn{width:54px;height:54px}
+  .ctx-card{padding:18px 20px}
+  .memo{padding:22px 22px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>TEDxKobe Salon #28 ・ 2026.05.22 ・ Anchor Kobe</div>
+    <h1><span class="title-em">Broken into Becoming</span><br>壊れながら、別のかたちになり続ける夜。</h1>
+    <p class="tagline">Salon #28 視聴ダッシュボード ✦ ゲスト2名のトークまとめ</p>
+    <p class="lead">2年前にスタッフをしていた TEDxKobe に、今度は観客で戻ってきた夜。<br>当日テーマ「<strong>Broken into Becoming</strong>」とゲスト2名のトークを、サムネと要旨でまとめた個人ダッシュボード。<br>「いつかTEDのステージに立つ」という夢に向けて、まずは見たもの・感じたものをここに残していく。</p>
+    <div class="metrics">
+      <div class="metric"><div class="v">#28</div><div class="l">Salon No.</div></div>
+      <div class="metric"><div class="v">2</div><div class="l">ゲストトーク</div></div>
+      <div class="metric"><div class="v">17min<br><span style="font-size:14px">+15min</span></div><div class="l">合計尺（おおよそ）</div></div>
+      <div class="metric"><div class="v">2026.05.22</div><div class="l">参加日</div></div>
+      <div class="metric"><div class="v">Anchor Kobe</div><div class="l">会場</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- THEME -->
+    <section>
+      <h2><span class="ic">✨</span>当日テーマ</h2>
+      <p class="h2-sub">主催者から会場へのオープニングメッセージ</p>
+      <div class="theme-box">
+        <div class="theme-label">Theme of the night</div>
+        <div class="theme-title">Broken into Becoming</div>
+        <p class="theme-body">
+          新しいアイデアに触れると、これまで疑わなかった<em>前提が揺らぎはじめる</em>。<br>
+          戸惑い、壊れ、組み直しての繰り返し。<br>
+          私たちは完成に向かうのではなく、<em>壊れながら別のかたちになり続けているのではないか</em>。<br><br>
+          TEDトークは単なるプレゼンの教科書ではない。<br>
+          今日は、TEDxトークが作られていったのかを垣間見るとともに、<br>
+          アイデアに触れて考えが変わったり揺らいだりする<em>渦に飛び込む夜</em>を、共に体験しませんか？
+        </p>
+      </div>
+    </section>
+
+    <!-- TALKS -->
+    <section>
+      <h2><span class="ic">🎤</span>ゲストトーク</h2>
+      <p class="h2-sub">サムネ・登壇者・要旨・気になったフレーズ／クリックで本編へ</p>
+      <div class="talks">
+
+        <!-- TALK 1: Takashi ODA -->
+        <article class="talk">
+          <a class="thumb-wrap" href="https://youtu.be/15Bag_4v7uA" target="_blank" rel="noopener">
+            <img src="https://i.ytimg.com/vi/15Bag_4v7uA/maxresdefault.jpg" alt="Takashi ODA - A future guided by 'doing things on one's own accord'" loading="lazy">
+            <span class="no">TALK 01</span>
+            <span class="duration">17:00</span>
+            <div class="play-btn"></div>
+          </a>
+          <div class="talk-body">
+            <div class="speaker-row">
+              <span class="speaker">小田 崇<span class="en">／ Takashi ODA</span></span>
+              <span class="tag">アーティスト × 神戸市職員</span>
+            </div>
+            <h3><a href="https://youtu.be/15Bag_4v7uA" target="_blank" rel="noopener">小さな"勝手にやる"が連れていく未来</a></h3>
+            <p class="en-title">A future guided by 'doing things on one's own accord' in a small way</p>
+
+            <div class="summary-label">SUMMARY</div>
+            <p class="summary">
+              「コマを1万回回す」「絵をSNSに上げる」「クラウドファンディングしてオーストラリアの路上で絵を売る」── 誰にも頼まれてない、1円にもならない、生産性ゼロの<strong>「勝手にやる」</strong>。意味は分からないけどワクワクしたから、ただやっただけ。<br>
+              でもその"小さな勝手"が、いつの間にか<strong>自分の望む未来へ連れていってくれた</strong>という体感の話。
+            </p>
+
+            <div class="quote">「ワクワクしたは、<br>自分の感性が示す<br>オリジナルの未来への予感」</div>
+
+            <ul class="points">
+              <li>大事なのは <strong>小さく</strong> 勝手にやること（自己責任で管理できる範囲）</li>
+              <li>「指標で測れるもの」より、<strong>指標で測れない自分の感性</strong>を信じる</li>
+              <li>勝手にやって得たスキル（発信・販売・クラファン・企画）が、結果的に仕事の魅力に変わった</li>
+              <li>会社員 → 路上画家 → 神戸市職員、アート授業、起業相談…全部「勝手にやる」が連れてきた</li>
+              <li>最後は会場全員で「リトル・コマ」を一緒にやる体感クロージング</li>
+            </ul>
+
+            <div class="link-row">
+              <a class="link-btn link-yt" href="https://youtu.be/15Bag_4v7uA" target="_blank" rel="noopener">▶ YouTubeで見る</a>
+              <a class="link-btn link-tx" href="#" onclick="return false;">📜 トランスクリプト原液（Vault内）</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- TALK 2: Hokuto MUTOU -->
+        <article class="talk">
+          <a class="thumb-wrap" href="https://youtu.be/7lPV0JHozU0" target="_blank" rel="noopener">
+            <img src="https://i.ytimg.com/vi/7lPV0JHozU0/maxresdefault.jpg" alt="Hokuto MUTOU - 痛みを受け容れる" loading="lazy">
+            <span class="no">TALK 02</span>
+            <span class="duration">15:30</span>
+            <div class="play-btn"></div>
+          </a>
+          <div class="talk-body">
+            <div class="speaker-row">
+              <span class="speaker">武藤 北斗<span class="en">／ Hokuto MUTOU</span></span>
+              <span class="tag">パプアニューギニア海産 工場長</span>
+            </div>
+            <h3><a href="https://youtu.be/7lPV0JHozU0" target="_blank" rel="noopener">理解せず、ただ受け容れる ── 痛みを受け容れる</a></h3>
+            <p class="en-title">Accepting Without Understanding: The Invisible Pain We All Carry</p>
+
+            <div class="summary-label">SUMMARY</div>
+            <p class="summary">
+              社員3名・パート320名の小さな水産工場の話。かつては <strong>監視カメラで従業員を管理</strong> していた工場長が、東日本大震災で工場を失い、大阪移住で再建する中で「人を大切にする」ことに気づく。<br>
+              「<strong>嫌い表</strong>」（嫌いな作業はやってはいけないルール）・好きな時間に休む・忘年会廃止・お土産禁止…と独自の働き方を進めるうち、<strong>社交不安障害で「挨拶ができない時がある」社員</strong> との出会いから、もう一段深いテーマへ。
+            </p>
+
+            <div class="quote">「彼の苦しみを<br>理解するのをやめる。<br>ただ受け入れる」</div>
+
+            <ul class="points">
+              <li>かつての自分：監視カメラで管理 → 震災 → 1億4000万円の負債 → 古参社員も去る</li>
+              <li>気づき：周りにいる人を大切にすることから全てが始まる</li>
+              <li>「嫌い表」発明：嫌いな作業は禁止／好きは聞かない（責める気持ちが出るから）</li>
+              <li>挨拶も嫌い表に入れた → 翌月、彼以外にも数人がバツをつけていた</li>
+              <li>結論：<strong>人を受け入れること＝自分の苦しみに向き合う道</strong>。社会には言葉にできない内側の苦しみを抱えた人が多すぎる</li>
+            </ul>
+
+            <div class="link-row">
+              <a class="link-btn link-yt" href="https://youtu.be/7lPV0JHozU0" target="_blank" rel="noopener">▶ YouTubeで見る</a>
+              <a class="link-btn link-tx" href="#" onclick="return false;">📜 トランスクリプト原液（Vault内）</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CONTEXT -->
+    <section>
+      <h2><span class="ic">🌱</span>このイベントと私</h2>
+      <p class="h2-sub">なぜここに居たか／何を持ち帰るか</p>
+      <div class="context-grid">
+        <div class="ctx-card">
+          <h4>📌 きっかけ</h4>
+          <p>久しぶりに <strong>Facebookを動かした瞬間</strong> に、この案内が降ってきた。「楽しくてやってる延長」をブランドの芯に置いたタイミングの、生実証になった夜。</p>
+        </div>
+        <div class="ctx-card">
+          <h4>🔁 2年前との対比</h4>
+          <p>2年前、私はここで <strong>スタッフとして</strong> 動いていた。今日は観客で戻ってきて、両ゲストの言葉に揺さぶられている。次は登壇側で立ちたい。</p>
+        </div>
+        <div class="ctx-card">
+          <h4>🎤 テーマとの共鳴</h4>
+          <p>「壊れながら別のかたちになり続けている」── 今の自分の物語そのもの。壊れた先で <strong>新しい自分の輪郭が立ち上がる</strong> 過程を、ちょうど生きている。</p>
+        </div>
+      </div>
+
+      <div class="memo">
+        <h3>🍃 メモ欄（イベント後に追記）</h3>
+        <p>心が動いた瞬間／引用したいフレーズ／自分のテーマに通じる言葉を、ここに溜める。<br>
+        小田さんの「勝手にやる」と、武藤さんの「理解せず受け容れる」は、表現は違うけど <strong>"指標で測れないものを信じる"</strong> という一点で繋がっている気がする。</p>
+        <p class="pen">　── 後で書き足す ✏️</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>個人視聴メモ／非公開ダッシュボード ✦ おけもんカンパニー × TEDxKobe Salon #28</p>
+    <p style="margin-top:6px;font-size:11px;color:#aaa">サムネ・トーク内容の権利は各登壇者および TEDxKobe / TED Conferences LLC に帰属します</p>
+  </div>
+</footer>
+
+</body>
+</html>
