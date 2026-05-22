@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow">
+<title>役割分担・すり合わせ案 - irodori オンボーディング</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', sans-serif;
+  background: linear-gradient(135deg, #fef9f5 0%, #fef3ec 50%, #faf5fd 100%);
+  color: #2c2c2c;
+  line-height: 1.7;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 40px 32px;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 8px;
+  background: linear-gradient(90deg, #f4a261, #e76f51, #e9c46a, #2a9d8f, #76c1b3);
+}
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: #2a9d8f;
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+h1 {
+  font-size: 22px;
+  color: #264653;
+  margin-bottom: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.subtitle { color: #6b6b6b; font-size: 14px; max-width: 760px; margin: 0 auto; line-height: 1.8; }
+.meta {
+  display: inline-block;
+  background: #fef3ec;
+  color: #e76f51;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-top: 14px;
+  font-weight: 500;
+}
+
+.back-link {
+  display: inline-block;
+  padding: 8px 18px;
+  background: white;
+  color: #2a9d8f;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.15s;
+}
+.back-link:hover { transform: translateY(-1px); }
+
+section { margin-bottom: 36px; }
+.section-header {
+  background: white;
+  padding: 20px 28px;
+  border-radius: 16px 16px 0 0;
+  border-bottom: 3px solid #2a9d8f;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.section-header h2 { color: #264653; font-size: 19px; }
+.section-header .icon {
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, #2a9d8f, #76c1b3);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.section-body {
+  background: white;
+  padding: 28px;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+/* 前提ブロック */
+.premise-box {
+  background: #fef9f5;
+  border-left: 5px solid #e76f51;
+  padding: 20px 24px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+.premise-box .premise-title {
+  font-weight: 700;
+  color: #264653;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.premise-box p { font-size: 13px; line-height: 1.8; color: #4a4a4a; margin-bottom: 8px; }
+.premise-box p:last-child { margin-bottom: 0; }
+.premise-box .quote {
+  background: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-style: italic;
+  color: #555;
+  margin-top: 10px;
+  border-left: 3px solid #e9c46a;
+}
+
+/* 役割カード（5人版） */
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+.role-card {
+  background: linear-gradient(135deg, #fef9f5, #fff);
+  border-radius: 14px;
+  padding: 22px;
+  border-top: 4px solid;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.role-card.r-okemon { border-top-color: #e76f51; }
+.role-card.r-izumida { border-top-color: #e9c46a; }
+.role-card.r-rie { border-top-color: #d896c4; }
+.role-card.r-pm { border-top-color: #2a9d8f; }
+.role-card.r-natsutsun { border-top-color: #f4a261; }
+.role-card .role-emoji { font-size: 24px; margin-bottom: 6px; display: block; }
+.role-card h4 { font-size: 16px; color: #264653; margin-bottom: 4px; }
+.role-card .role-owner-label {
+  font-size: 11px;
+  color: #2a9d8f;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.role-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+}
+.role-card ul li {
+  font-size: 12px;
+  color: #4a4a4a;
+  padding: 4px 0 4px 18px;
+  line-height: 1.6;
+  position: relative;
+}
+.role-card ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #2a9d8f;
+  font-weight: 700;
+}
+.role-card .role-note {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: #fafbfd;
+  border-radius: 8px;
+  font-size: 11px;
+  color: #888;
+  line-height: 1.6;
+}
+
+/* タイムライン（オリエン中身） */
+.orient-timeline {
+  margin-top: 14px;
+  background: #fafbfd;
+  border-radius: 12px;
+  padding: 18px;
+}
+.orient-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px dashed #e0e0e0;
+  align-items: flex-start;
+}
+.orient-row:last-child { border-bottom: none; }
+.orient-time {
+  background: white;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #2a9d8f;
+  text-align: center;
+}
+.orient-content { font-size: 13px; color: #4a4a4a; line-height: 1.7; }
+.orient-content strong { color: #264653; }
+
+/* 棲み分けマトリクス */
+.matrix-wrap { overflow-x: auto; margin-top: 10px; }
+.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 700px;
+}
+.matrix th, .matrix td {
+  border: 1px solid #f0f0f0;
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+.matrix th {
+  background: #f7faf9;
+  color: #264653;
+  font-weight: 700;
+  font-size: 12px;
+}
+.matrix td .topic { font-weight: 600; color: #264653; margin-bottom: 4px; display: block; }
+.matrix td .source { font-size: 11px; color: #888; font-style: italic; }
+.matrix .cell-o { background: #e8f5f1; color: #2a9d8f; font-weight: 700; text-align: center; }
+.matrix .cell-c { background: #fef9e6; color: #b78c0c; text-align: center; }
+.matrix .cell-x { background: #f4f4f4; color: #999; text-align: center; }
+.matrix .cell-q { background: #f3eaf7; color: #9b59b6; text-align: center; font-weight: 700; }
+
+/* 問いかけブロック */
+.question-box {
+  background: linear-gradient(135deg, #f0faf7 0%, #e8f5f1 100%);
+  border-radius: 14px;
+  padding: 26px 30px;
+  border-left: 5px solid #2a9d8f;
+  margin-top: 14px;
+}
+.question-box h3 {
+  color: #264653;
+  font-size: 17px;
+  margin-bottom: 14px;
+}
+.question-box ul {
+  list-style: none;
+  padding: 0;
+}
+.question-box ul li {
+  font-size: 14px;
+  color: #4a4a4a;
+  padding: 10px 0 10px 26px;
+  line-height: 1.7;
+  position: relative;
+  border-bottom: 1px dashed rgba(42,157,143,0.2);
+}
+.question-box ul li:last-child { border-bottom: none; }
+.question-box ul li::before {
+  content: '❓';
+  position: absolute;
+  left: 0;
+  font-size: 14px;
+}
+.question-box ul li strong { color: #264653; }
+
+/* スタンスメモ */
+.stance-box {
+  background: #fff8f3;
+  border-radius: 12px;
+  padding: 22px 26px;
+  margin-top: 14px;
+  border-left: 4px solid #f4a261;
+}
+.stance-box h4 { color: #264653; font-size: 15px; margin-bottom: 10px; }
+.stance-box p { font-size: 13px; line-height: 1.8; color: #4a4a4a; margin-bottom: 6px; }
+.stance-box p:last-child { margin-bottom: 0; }
+.stance-box .accent { color: #e76f51; font-weight: 700; }
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  color: #999;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  body { padding: 20px 12px; }
+  h1 { font-size: 18px; }
+  header { padding: 28px 18px; }
+  .section-body { padding: 18px; }
+  .orient-row { grid-template-columns: 60px 1fr; gap: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="./irodori-onboarding-report-202605.html" class="back-link">← メインダッシュボードへ戻る</a>
+
+<header>
+  <div class="logo">🌱 irodori</div>
+  <h1>オリエン × オンボーディング 役割分担・すり合わせ案</h1>
+  <p class="subtitle">なっつん・泉田さん・りえさん・PM・おけもんの役割をすみ分けして、<br>「ここまではこっちで喋ります／優先度高く入れて欲しいことあれば言ってください」を伝えるための叩き台。<br><strong>境界線を引くためじゃなく、お互いに開いて見せて、すり合わせるため</strong>のページです。</p>
+  <div class="meta">📅 2026-05-22 作成 ／ おけもん（カウンセラー枠）から</div>
+</header>
+
+<!-- 前提 -->
+<section>
+  <div class="section-header">
+    <div class="icon">🤔</div>
+    <h2>前提：いま「オリエン／オンボ／OJT」が混ざってる</h2>
+  </div>
+  <div class="section-body">
+    <div class="premise-box">
+      <div class="premise-title">📌 現状認識</div>
+      <p>なっつんが「これ伝えてほしい」と言ってくれる項目には、<strong>理念寄り・運用ルール寄り・技術操作寄り</strong>の3種類が混ざっている。</p>
+      <p>これは「区分けが甘いから悪い」ではなく、<strong>みんな現場の課題感から本気で出してくれてる証拠</strong>。だからこそ受け取り側でうまく仕分けて、各工程に最適な形で配置していくのが筋。</p>
+      <div class="quote">「オンボーディングなり、理念のスライドなり、なんか語れたらなあ」<br>── なっつん 5/20 17:35 PM部屋</div>
+      <p style="margin-top:12px;">↑ <strong>「オンボーディング」と「理念スライド」が同じ箱で発言されている</strong>のが、いま整理が必要なことを示してる。</p>
+    </div>
+
+    <div class="premise-box" style="border-left-color: #2a9d8f; background: #f0faf7;">
+      <div class="premise-title">📌 オリエンテーションの本来の意味</div>
+      <p><strong>現場にスムーズに入っていくための前準備</strong>＝<strong>理念・思想・心構え</strong>を伝える場。<br>技術操作の習得（カレンダー共有・Notion個別タスク・日報の書き方）は、本来は別の工程＝<strong>オンボーディング</strong>や<strong>OJT</strong>で巻き取るもの。</p>
+      <p>でも今は3つの工程が <strong>「とりあえずおけもんオリエン1時間」</strong> に詰め込まれそうになっている。<br>→ <strong>3層に切り分けて、誰が何を扱うかを開いて見せる</strong> のが今やりたいこと。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 役割分担 -->
+<section>
+  <div class="section-header">
+    <div class="icon">🤝</div>
+    <h2>役割分担マップ（5人版）</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">いま irodori に新メンバーが入ってから現場に出るまでに関わる5人の役割を、おけもん視点で整理した叩き台。<strong>「ここはこっちで喋りますね」「ここはお願いしたいです」</strong>の境界をクリアにする目的。</p>
+
+    <div class="role-grid">
+
+      <div class="role-card r-natsutsun">
+        <span class="role-emoji">🔥</span>
+        <div class="role-owner-label">代表者枠</div>
+        <h4>なっつん（小川さん）</h4>
+        <ul>
+          <li>代表者MTG（応募者との最終面談）</li>
+          <li>採用判断・配属判断</li>
+          <li>IRODORIの理念・「優秀」の定義の発信</li>
+          <li>朝礼・週次の組織観メッセージ</li>
+          <li>大きな運用方針の最終決定</li>
+        </ul>
+        <div class="role-note">📍 オリエンとは別物の「初回面談（TimeRex経由）」を担当。ここでは代表として会社の方針・期待を伝える。</div>
+      </div>
+
+      <div class="role-card r-izumida">
+        <span class="role-emoji">💎</span>
+        <div class="role-owner-label">オンボーディング担当</div>
+        <h4>泉田さん</h4>
+        <ul>
+          <li>スタートアップガイド（19項目）作成・更新</li>
+          <li>新メンバー個別Chatworkルーム作成</li>
+          <li>契約書・IRODORIメール・LINE公式招待</li>
+          <li>作業管理表・Notion個人ページ受け渡し</li>
+          <li>Notion個人ページ操作の動画解説（5/21宣言）</li>
+          <li>権限関係のフロー設計（自己紹介シート等）</li>
+        </ul>
+        <div class="role-note">📍 入会〜実務直前までの<strong>事務・ツール・手順の自走支援</strong>。技術操作の習得はここに集約するのが自然。</div>
+      </div>
+
+      <div class="role-card r-rie">
+        <span class="role-emoji">🌸</span>
+        <div class="role-owner-label">PM補助・スキルレクチャー</div>
+        <h4>りえさん（日馬さん）</h4>
+        <ul>
+          <li>PMマニュアル運用・覚書作成</li>
+          <li>Zoom発行レクチャー（5/22 池田・錫谷向け）</li>
+          <li>銀行残高閲覧など PM周辺業務</li>
+          <li>新人の個別フォロー（実務手前のスキル）</li>
+        </ul>
+        <div class="role-note">📍 5月から本格化。「PMマニュアルに沿った業務スキル」を個別レクチャーで巻き取ってくれてる存在。</div>
+      </div>
+
+      <div class="role-card r-okemon">
+        <span class="role-emoji">🌷</span>
+        <div class="role-owner-label">カウンセラー枠（オリエン）</div>
+        <h4>おけもん</h4>
+        <ul>
+          <li>オリエン30〜60分（スタガイ最終ステップ19）</li>
+          <li>理念・思想・心構えのハイライト</li>
+          <li>本人の夢・目標・温度感を聞く</li>
+          <li>不安・心配の受け止め</li>
+          <li>AI活用相談窓口</li>
+          <li>ハラスメント・小川さんとの距離感の受け皿</li>
+        </ul>
+        <div class="role-note">📍 マニュアル第1章「カウンセラー」枠で公式定義済。<strong>業務内容や個別ツール操作は扱わない</strong>のが本来の役割。</div>
+      </div>
+
+      <div class="role-card r-pm">
+        <span class="role-emoji">🌳</span>
+        <div class="role-owner-label">配属先PM（OJT）</div>
+        <h4>配属先のPM・先輩</h4>
+        <ul>
+          <li>クライアント別の案件運用</li>
+          <li>案件MTGでのダブルチェック</li>
+          <li>実務での操作・暗黙知の伝達</li>
+          <li>稼働時間の判断・配分相談</li>
+          <li>日報・週報の現場フィードバック</li>
+        </ul>
+        <div class="role-note">📍 オリエン後の<strong>実務段階で発生する「これどうやるんだっけ」</strong>を都度伴走する。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- オリエン中身 叩き台 -->
+<section>
+  <div class="section-header" style="border-bottom-color:#e76f51;">
+    <div class="icon" style="background:linear-gradient(135deg,#e76f51,#f4a261);">🌷</div>
+    <h2>おけもん側オリエン枠の中身（叩き台・30分〜60分）</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">「おけもんはここまで扱います」のたたき台。本来のオリエン＝<strong>理念・思想・心構え＋カウンセラー枠</strong>に絞ってる。技術操作は意図的に外している（オンボ・OJTに任せる前提）。</p>
+
+    <h3 style="color:#264653; font-size:15px; margin-bottom:10px;">⏱ 30分版（基本形）</h3>
+    <div class="orient-timeline">
+      <div class="orient-row">
+        <div class="orient-time">0-3分</div>
+        <div class="orient-content"><strong>オープニング・立ち位置説明</strong><br>カウンセラー枠／業務は触らない／メンタル＋AI相談窓口</div>
+      </div>
+      <div class="orient-row">
+        <div class="orient-time">3-8分</div>
+        <div class="orient-content"><strong>🌟 IRODORIの軸</strong><br>「クライアントを勝たせる異常なこだわり」「朝礼の意義」「人の話を聞く態度」を一気に語る</div>
+      </div>
+      <div class="orient-row">
+        <div class="orient-time">8-13分</div>
+        <div class="orient-content"><strong>📞 4つの約束ルール</strong><br>①期日守れない時は何があっても連絡 ②タスクには必ず期日 ③稼働時間の計上ルール ④日報の目的</div>
+      </div>
+      <div class="orient-row">
+        <div class="orient-time">13-18分</div>
+        <div class="orient-content"><strong>🗺 情報の地図＋ツールの地雷</strong><br>どのチャットに何が流れるか／カレンダー共有・Zoom発行・LINE公式すみわけ・FBメッセンジャーは<strong>「ここで詰まりやすい」のポインタだけ渡す（深入りしない）</strong></div>
+      </div>
+      <div class="orient-row">
+        <div class="orient-time">18-25分</div>
+        <div class="orient-content"><strong>🌱 本人の話を聞く</strong><br>夢・目標／不安・心配／温度感3パターン論（小川さん特性のフラットな共有含む）</div>
+      </div>
+      <div class="orient-row">
+        <div class="orient-time">25-30分</div>
+        <div class="orient-content"><strong>締め</strong><br>「困ったらおけもんに、いつでも」／カウンセラー＋AI相談窓口の使い方</div>
+      </div>
+    </div>
+
+    <h3 style="color:#264653; font-size:15px; margin: 26px 0 10px;">⏱ 60分版（深掘り版・能動性高い相手・受動型で不安強い相手向け）</h3>
+    <div class="orient-timeline">
+      <div class="orient-row">
+        <div class="orient-time">0-5分</div>
+        <div class="orient-content"><strong>オープニング</strong>（境界線明示）</div>
+      </div>
+      <div class="orient-row">
+        <div class="orient-time">5-15分</div>
+        <div class="orient-content"><strong>🌟 IRODORIの軸（厚め）</strong>　なっつん発言ベース＋合う/合わない3パターン論</div>
+      </div>
+      <div class="orient-row">
+        <div class="orient-time">15-25分</div>
+        <div class="orient-content"><strong>📞 約束・運用ルール</strong>　①期日連絡 ②タスク期日 ③稼働時間（自己研鑽外・マニュアル読込議論中）④日報目的</div>
+      </div>
+      <div class="orient-row">
+        <div class="orient-time">25-35分</div>
+        <div class="orient-content"><strong>🗺 情報の地図＋ツール地雷</strong>　チャット使い分け／カレンダー構造バグ／Zoom発行／LINE公式すみわけ／FBメッセンジャー必須／Notion通知の習慣／個人ページタスク管理（録画解説リンクのみ渡す）</div>
+      </div>
+      <div class="orient-row">
+        <div class="orient-time">35-50分</div>
+        <div class="orient-content"><strong>🌱 本人の話を聞く（厚め）</strong>　夢・目標・経歴・IRODORIに期待してること・AI活用の現在地・不安・温度感3パターン</div>
+      </div>
+      <div class="orient-row">
+        <div class="orient-time">50-57分</div>
+        <div class="orient-content"><strong>💗 おけもん独自貢献</strong>　小川さん特性のフラット共有／AI活用相談の窓口</div>
+      </div>
+      <div class="orient-row">
+        <div class="orient-time">57-60分</div>
+        <div class="orient-content"><strong>締め</strong>　雑談ネタ振り</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- すみ分けマトリクス -->
+<section>
+  <div class="section-header" style="border-bottom-color:#e9c46a;">
+    <div class="icon" style="background:linear-gradient(135deg,#e9c46a,#f4a261);">📋</div>
+    <h2>「これは誰が伝える？」すみ分けマトリクス</h2>
+  </div>
+  <div class="section-body">
+    <p style="font-size:13px; color:#6b6b6b; margin-bottom:14px;">なっつんが「伝えてほしい」と言ってくれた項目を、<strong>どの工程で誰が扱うのが自然か</strong>でマトリクス化。<br>○＝ここでメインで扱う／△＝触れる（ポインタ程度）／—＝扱わない／❓＝なっつんに聞きたい</p>
+
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th style="width: 30%;">伝えたいこと（なっつん発言起点）</th>
+            <th>🔥 代表者MTG（なっつん）</th>
+            <th>🌷 オリエン（おけもん）</th>
+            <th>💎 オンボーディング（泉田さん）</th>
+            <th>🌸 PM補助（りえさん）</th>
+            <th>🌳 OJT（配属PM）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span class="topic">人の話を聞く態度</span>
+              <span class="source">なっつん 5/20「オンボーディングなり、理念のスライドなり、なんか語れたらなあ」</span>
+            </td>
+            <td class="cell-o">○ 理念として</td>
+            <td class="cell-o">○ 心構えとして</td>
+            <td class="cell-x">—</td>
+            <td class="cell-x">—</td>
+            <td class="cell-c">△ 現場フィードバック</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">朝礼の意義・目的・価値</span>
+              <span class="source">なっつん 5/8「朝礼も、意義や目的、価値、重要性が伝わってないかも」</span>
+            </td>
+            <td class="cell-o">○ 朝礼内で発信</td>
+            <td class="cell-o">○ オリエンで一言</td>
+            <td class="cell-c">△ ガイド冒頭</td>
+            <td class="cell-x">—</td>
+            <td class="cell-x">—</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">IRODORIの「優秀」の定義（クライアントを勝たせるこだわり）</span>
+              <span class="source">なっつん 5/7「優秀の定義あたりもう少し明確に打ち出せたら」</span>
+            </td>
+            <td class="cell-o">○ 募集要項＋採用面談</td>
+            <td class="cell-o">○ オリエンで再強化</td>
+            <td class="cell-x">—</td>
+            <td class="cell-x">—</td>
+            <td class="cell-x">—</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">日報の目的（なっつんが何を見てるか）</span>
+              <span class="source">なっつん 5/14「日報の目的って説明ないんでしたっけ？」</span>
+            </td>
+            <td class="cell-c">△ 朝礼で時々触れる</td>
+            <td class="cell-o">○ オリエンで言及</td>
+            <td class="cell-o">○ 日報の書き方ガイド</td>
+            <td class="cell-x">—</td>
+            <td class="cell-c">△ 現場フィードバック</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">情報の流れる地図（変更はどのチャットに流れるか）</span>
+              <span class="source">5/19 朝礼ZOOM変更が PM部屋にだけ流れて木本さんキャッチアップ漏れ</span>
+            </td>
+            <td class="cell-c">△ 運用方針として</td>
+            <td class="cell-o">○ オリエンで地図を渡す</td>
+            <td class="cell-o">○ ガイドに明文化</td>
+            <td class="cell-x">—</td>
+            <td class="cell-x">—</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">自己紹介シートの目的・閲覧範囲</span>
+              <span class="source">なっつん 5/15「目的や運用方法、認識がブレてきてる」</span>
+            </td>
+            <td class="cell-q">❓ 運用方針</td>
+            <td class="cell-c">△ オリエンで一言</td>
+            <td class="cell-o">○ ガイドに再定義</td>
+            <td class="cell-x">—</td>
+            <td class="cell-x">—</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">稼働時間の計上ルール（マニュアル読込含む）</span>
+              <span class="source">なっつん 5/14「マニュアル読込時間も稼働扱い（最大月3時間）」提案</span>
+            </td>
+            <td class="cell-q">❓ 最終ルール決定</td>
+            <td class="cell-o">○ オリエンで原則</td>
+            <td class="cell-o">○ ガイドに明文化</td>
+            <td class="cell-x">—</td>
+            <td class="cell-o">○ 現場判断</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">Notion個別タスク管理・期日入力</span>
+              <span class="source">小川さん 4/27「タスクには必ず期日」「個人ページからのタスク管理教わってる？」</span>
+            </td>
+            <td class="cell-x">—</td>
+            <td class="cell-c">△ 原則だけ言及</td>
+            <td class="cell-o">○ 動画解説（5/21宣言）</td>
+            <td class="cell-c">△ PMマニュアル運用</td>
+            <td class="cell-o">○ 案件タスクで現場習得</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">Googleカレンダー共有・対応不可枠運用</span>
+              <span class="source">永井さん 5/13「対応不可とMTGを分けて入力して」</span>
+            </td>
+            <td class="cell-x">—</td>
+            <td class="cell-c">△ 「ここで詰まりやすい」</td>
+            <td class="cell-o">○ ガイド・動画</td>
+            <td class="cell-c">△ レクチャー余地</td>
+            <td class="cell-x">—</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">Zoom発行手順</span>
+              <span class="source">永井さん 5/20 notion手順書／日馬さん 5/22 レクチャー</span>
+            </td>
+            <td class="cell-x">—</td>
+            <td class="cell-x">—</td>
+            <td class="cell-c">△ ガイド誘導</td>
+            <td class="cell-o">○ レクチャー実施</td>
+            <td class="cell-c">△ 案件で使う</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">LINE公式とプライベートLINEのすみわけ</span>
+              <span class="source">泉田さん 5/20 解説／小川さん 5/21「マニュアル追記」</span>
+            </td>
+            <td class="cell-x">—</td>
+            <td class="cell-c">△ 一言触れる</td>
+            <td class="cell-o">○ ガイド・マニュアル</td>
+            <td class="cell-x">—</td>
+            <td class="cell-c">△ クライアント対応で使う</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">FBメッセンジャースマホアプリ必須</span>
+              <span class="source">5/7 錫谷さん約束破り事案</span>
+            </td>
+            <td class="cell-x">—</td>
+            <td class="cell-o">○ オリエンで強調</td>
+            <td class="cell-o">○ ガイドStep1で明示</td>
+            <td class="cell-x">—</td>
+            <td class="cell-x">—</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">約束守れない時の連絡ルール</span>
+              <span class="source">小川さん 5/7「期限ある約束は何があっても連絡」</span>
+            </td>
+            <td class="cell-c">△ 朝礼で発信</td>
+            <td class="cell-o">○ オリエンで明示</td>
+            <td class="cell-o">○ ガイドに明文化</td>
+            <td class="cell-x">—</td>
+            <td class="cell-o">○ 現場フィードバック</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">ファイル作成は IRODORI共有/Notion格納</span>
+              <span class="source">なっつん 5/22 齊藤さん事案（濱田さん退職→OneDrive消滅）</span>
+            </td>
+            <td class="cell-q">❓ ルール最終決定</td>
+            <td class="cell-c">△ 原則だけ言及</td>
+            <td class="cell-o">○ ガイドに明文化</td>
+            <td class="cell-x">—</td>
+            <td class="cell-o">○ 案件運用で適用</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="topic">Chatwork二段階認証・1Password導入</span>
+              <span class="source">4/23 乗っ取り対策／永井さん 5/14 1Password検討</span>
+            </td>
+            <td class="cell-x">—</td>
+            <td class="cell-x">—</td>
+            <td class="cell-o">○ ガイドで実施確認</td>
+            <td class="cell-c">△ 必要時フォロー</td>
+            <td class="cell-x">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size:12px; color:#888; margin-top:14px;">💡 <strong>❓セル＝なっつんに聞きたい項目</strong>：運用方針として最終決定が必要だが、まだ確定していないもの。</p>
+  </div>
+</section>
+
+<!-- なっつんへの問いかけ -->
+<section>
+  <div class="section-header" style="border-bottom-color:#2a9d8f;">
+    <div class="icon" style="background:linear-gradient(135deg,#2a9d8f,#76c1b3);">❓</div>
+    <h2>なっつんに聞きたいこと（情報共有＋すり合わせ）</h2>
+  </div>
+  <div class="section-body">
+    <div class="question-box">
+      <h3>📣 まずこの叩き台を見てもらった上で</h3>
+      <ul>
+        <li><strong>境界線でズレてるところある？</strong><br>「いや、これはおけもんで扱ってほしい」「これは別の人に頼みたい」あれば教えてほしい</li>
+        <li><strong>優先度高く入れて欲しいことある？</strong><br>オリエン枠の中でも「これは必ず触れて」「これは順番上に」みたいなのあれば</li>
+        <li><strong>代表者MTGで何を扱っているか</strong>を改めて共有してほしい<br>→ おけもんオリエンとの住み分け・重複を避けるため</li>
+        <li><strong>マトリクスの❓セル</strong>（自己紹介シート目的・稼働時間ルール・ファイル作成ルール）について、運用方針を一緒に詰めたい</li>
+        <li><strong>泉田さん・りえさんとの分担</strong>でズレてる認識あれば教えてほしい<br>→ 現状はおけもん視点での推定なので、現場感覚と合わせたい</li>
+      </ul>
+    </div>
+
+    <div class="stance-box">
+      <h4>🌬 おけもんからのスタンス</h4>
+      <p><span class="accent">「どっちが悪いじゃなく、すり合わせ」</span>のつもりでこの叩き台を作っています。</p>
+      <p>境界線を引いて「こっち来ないで」と言いたいわけじゃなくて、<strong>お互いに何を抱えてるか開いて見せて、風通しよくしたい</strong>のが目的です。</p>
+      <p>「ここまでは私で巻き取れます」「ここから先は別工程で扱いたいです」を <strong>事前に見える化</strong> しておけば、なっつんが「これも言わなきゃ」を抱え込まずに済む、という設計。</p>
+      <p>追加・修正・「いやそうじゃない」、全部歓迎です🌸</p>
+    </div>
+  </div>
+</section>
+
+<!-- ぶつ切り問題への効き目 -->
+<section>
+  <div class="section-header" style="border-bottom-color:#d62828;">
+    <div class="icon" style="background:linear-gradient(135deg,#e76f51,#d62828);">🔥</div>
+    <h2>このすり合わせが「ぶつ切り問題」にどう効くか</h2>
+  </div>
+  <div class="section-body">
+    <div class="premise-box" style="border-left-color:#d62828; background:#fef0e8;">
+      <div class="premise-title">📌 5/21 小川さん明言</div>
+      <p>「おけもんさんがどこまで何を話してるのか、今日私が何を話したのか、<strong>全てぶつ切りになってしまっている</strong>ので、中村さんとかに相談して、もう少し流れが綺麗に見えて連携取れるといいと思います！」</p>
+    </div>
+
+    <p style="font-size:13px; color:#4a4a4a; line-height:1.8; margin-top:14px;">この役割分担マップが共通言語になれば、<strong>「あ、これはおけもんが扱う領域だな」「これは泉田さんに頼もう」「これは配属PMで」</strong>が事前に判断できる。</p>
+    <p style="font-size:13px; color:#4a4a4a; line-height:1.8; margin-top:8px;">事後に「ぶつ切り」と気付くんじゃなく、<strong>事前に「役割分担→情報共有→すり合わせ」のループが回る</strong> 構造に変わる、というのが狙い。</p>
+
+    <div style="margin-top:18px; padding:18px 22px; background:#f7faf9; border-radius:10px;">
+      <p style="font-size:13px; color:#4a4a4a; line-height:1.8;">💡 <strong>このページ自体が「ぶつ切り問題」の第一歩</strong>：おけもんが何を抱えてるかを開いて見せる→他の人も同じように開いて見せれば、自然に流れが見えるようになる。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>📋 役割分担・すり合わせ叩き台 v0.1（モック）<br>
+  作成: 三又謙次郎（おけもん）<br>
+  2026-05-22 12:00 作成<br>
+  メインダッシュボード: <a href="./irodori-onboarding-report-202605.html" style="color:#2a9d8f;">新メンバー進行ダッシュボード</a></p>
+</footer>
+
+</div>
+</body>
+</html>
