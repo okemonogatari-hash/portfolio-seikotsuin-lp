@@ -1,0 +1,44 @@
+{
+  "processed": [
+    "6cORd47qTYyrVhjfmAQ9tw==",
+    "6eRiRv3SRy6dWuTquZdyXg==",
+    "U/YGFNUTTvWa1AppLeiGeQ=="
+  ],
+  "notion_uploaded": [],
+  "last_run": "2026-05-23T20:13:35.665847+09:00",
+  "history": [
+    {
+      "uuid": "6eRiRv3SRy6dWuTquZdyXg==",
+      "topic": "マイミーティング",
+      "category": "client",
+      "host_email": "zoom@irodori-slide.com",
+      "start_time": "2026-05-23 09:55 JST",
+      "file": "irodori_zoom_archive/2026-05-23/2026-05-23_09-55_JST_マイミーティング.md",
+      "segments": 1003,
+      "notion_target": false,
+      "notion_url": null
+    },
+    {
+      "uuid": "6cORd47qTYyrVhjfmAQ9tw==",
+      "topic": "マイミーティング",
+      "category": "client",
+      "host_email": "zoom@irodori-slide.com",
+      "start_time": "2026-05-22 16:00 JST",
+      "file": "irodori_zoom_archive/2026-05-23/2026-05-22_16-00_JST_マイミーティング.md",
+      "segments": 331,
+      "notion_target": false,
+      "notion_url": null
+    },
+    {
+      "uuid": "U/YGFNUTTvWa1AppLeiGeQ==",
+      "topic": "AnswerSmile様",
+      "category": "client",
+      "host_email": "zoom@irodori-slide.com",
+      "start_time": "2026-05-22 10:58 JST",
+      "file": "irodori_zoom_archive/2026-05-23/2026-05-22_10-58_JST_AnswerSmile様.md",
+      "segments": 707,
+      "notion_target": false,
+      "notion_url": null
+    }
+  ]
+}
