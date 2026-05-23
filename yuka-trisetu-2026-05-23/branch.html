@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ゆかさん 資質図解ブランチ | StrengthsFinder TOP10</title>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@400;500;700;800&family=Noto+Serif+JP:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #342c27;
+    --muted: #72655c;
+    --paper: #fffdf7;
+    --wash: #f7efe3;
+    --line: rgba(132,103,78,.18);
+    --latte: #bd8250;
+    --latte-deep: #79523b;
+    --gold: #b8872b;
+    --rel: #0b74d1;
+    --exec: #7d2f8f;
+    --infl: #ef7d00;
+    --strat: #0f8a60;
+    --rose: #b45b5f;
+    --green-soft: #edf6e8;
+    --blue-soft: #eef7fb;
+    --rose-soft: #fff1ec;
+    --gold-soft: #fff7df;
+    --purple-soft: #f3eefb;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    background:
+      linear-gradient(90deg, rgba(128,88,60,.035) 1px, transparent 1px) 0 0 / 36px 36px,
+      linear-gradient(180deg, #fbf4e8 0%, #f4eadc 100%);
+    font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    line-height: 1.75;
+  }
+  a { color: inherit; }
+
+  .hero {
+    position: relative;
+    min-height: 86vh;
+    display: grid;
+    place-items: center;
+    padding: 72px 20px 54px;
+    color: #fffdf7;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,.42), transparent 22%),
+      radial-gradient(circle at 78% 18%, rgba(245,223,184,.75), transparent 24%),
+      linear-gradient(135deg, rgba(128,88,60,.92), rgba(198,145,93,.72) 48%, rgba(138,166,141,.76));
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero::before {
+    content: "THEME BRANCH";
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    font-family: "Noto Serif JP", serif;
+    font-size: clamp(42px, 8vw, 110px);
+    letter-spacing: .16em;
+    color: rgba(255,255,255,.13);
+    transform: rotate(7deg);
+    white-space: nowrap;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 120px;
+    background: linear-gradient(to top, #fbf4e8, transparent);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    width: min(1160px, 100%);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, .68fr);
+    gap: 32px;
+    align-items: center;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: .16em;
+    font-weight: 800;
+    color: rgba(255,253,247,.78);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-family: "Noto Serif JP", serif;
+    font-size: clamp(34px, 5vw, 64px);
+    line-height: 1.16;
+    letter-spacing: 0;
+    margin: 0 0 18px;
+  }
+  .lead {
+    max-width: 760px;
+    margin: 0 0 24px;
+    color: rgba(255,253,247,.9);
+    font-size: clamp(16px, 2vw, 19px);
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: rgba(255,253,247,.94);
+    color: var(--latte-deep);
+    text-decoration: none;
+    font-weight: 800;
+    border: 1px solid rgba(255,255,255,.55);
+    box-shadow: 0 8px 24px rgba(53,45,39,.12);
+  }
+  .btn.subtle {
+    color: #fffdf7;
+    background: rgba(255,255,255,.16);
+    border-color: rgba(255,255,255,.32);
+  }
+  .result-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 18px 44px rgba(53,45,39,.20);
+    color: var(--ink);
+  }
+  .result-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+  .result-card figcaption {
+    margin: 10px 2px 0;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .toc {
+    position: fixed;
+    top: 22px;
+    left: 18px;
+    z-index: 20;
+    width: 222px;
+    max-height: calc(100vh - 44px);
+    overflow: auto;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255,253,247,.9);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 34px rgba(53,45,39,.12);
+  }
+  .toc-title {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .toc ol { list-style: none; margin: 0; padding: 0; }
+  .toc a,
+  .toc-mobile a {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 8px;
+    align-items: center;
+    padding: 7px 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.35;
+  }
+  .toc a.active,
+  .toc a:hover,
+  .toc-mobile a.active {
+    color: var(--latte-deep);
+    background: rgba(245,223,184,.65);
+    font-weight: 800;
+  }
+  .num {
+    color: var(--latte);
+    font-weight: 800;
+    font-size: 11px;
+  }
+  .toc-top {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+  .toc-mobile {
+    display: none;
+    position: sticky;
+    top: 10px;
+    z-index: 30;
+    width: min(720px, calc(100% - 24px));
+    margin: -26px auto 18px;
+    background: rgba(255,253,247,.96);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(53,45,39,.12);
+    overflow: hidden;
+  }
+  .toc-mobile summary {
+    cursor: pointer;
+    padding: 13px 16px;
+    font-weight: 800;
+    color: var(--latte-deep);
+  }
+  .toc-mobile summary::-webkit-details-marker { display: none; }
+  .toc-mobile ol { list-style: none; margin: 0; padding: 0 10px 12px; }
+
+  .back-to-top {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 40;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--latte-deep);
+    color: #fffdf7;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 10px 26px rgba(53,45,39,.20);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s, transform .2s;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; }
+  .back-to-top:hover { transform: translateY(-3px); }
+
+  main {
+    width: min(1160px, calc(100% - 32px));
+    margin: 0 auto;
+  }
+  section {
+    scroll-margin-top: 80px;
+    padding: 68px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: minmax(0, .72fr) minmax(280px, .28fr);
+    gap: 26px;
+    align-items: end;
+    margin-bottom: 24px;
+  }
+  .chapter {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--latte);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .18em;
+  }
+  h2 {
+    margin: 0 0 8px;
+    font-family: "Noto Serif JP", serif;
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.35;
+    letter-spacing: 0;
+  }
+  .section-lead {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .note {
+    border-left: 4px solid var(--gold);
+    background: #fffaf0;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 16px;
+    color: #56432a;
+    font-size: 14px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .card,
+  .theme-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 6px 22px rgba(53,45,39,.06);
+  }
+  .card { padding: 18px; }
+  .card h3 { margin: 0 0 8px; font-size: 18px; }
+  .card p, .card li { color: var(--muted); font-size: 14px; }
+  .card ul { margin: 10px 0 0; padding-left: 1.2em; }
+  .domain-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 30px;
+    border-radius: 999px;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .rel { background: var(--rel); }
+  .exec { background: var(--exec); }
+  .infl { background: var(--infl); }
+  .strat { background: var(--strat); }
+  .map {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(78px, 1fr));
+    gap: 8px;
+  }
+  .map a {
+    min-height: 96px;
+    padding: 10px;
+    border-radius: 8px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0 6px 18px rgba(53,45,39,.05);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .map a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(53,45,39,.12);
+  }
+  .map b { font-size: 12px; line-height: 1.35; }
+  .map small { color: var(--muted); line-height: 1.35; }
+
+  .theme-card {
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .theme-head {
+    display: grid;
+    grid-template-columns: 82px minmax(0, 1fr) auto;
+    gap: 18px;
+    align-items: center;
+    padding: 22px;
+    background:
+      linear-gradient(135deg, rgba(255,250,240,.95), rgba(245,223,184,.62)),
+      var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .rank-no {
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: var(--latte-deep);
+    color: #fffdf7;
+    font-family: "Noto Serif JP", serif;
+    font-size: 26px;
+    font-weight: 700;
+  }
+  .theme-head h3 {
+    margin: 0 0 4px;
+    font-family: "Noto Serif JP", serif;
+    font-size: clamp(24px, 3vw, 36px);
+    line-height: 1.25;
+  }
+  .theme-head p {
+    margin: 0;
+    color: var(--muted);
+  }
+  .metaphor {
+    min-width: 110px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255,253,247,.86);
+    border: 2px dashed var(--latte);
+    text-align: center;
+    color: var(--latte-deep);
+    font-weight: 800;
+    font-size: 14px;
+  }
+  .theme-body {
+    padding: 22px;
+    display: grid;
+    gap: 16px;
+  }
+  .branch-grid {
+    display: grid;
+    grid-template-columns: minmax(0, .98fr) minmax(300px, .72fr);
+    gap: 16px;
+  }
+  .subbox {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px;
+    background: #fffefb;
+  }
+  .subbox h4 {
+    margin: 0 0 8px;
+    font-size: 15px;
+    color: var(--latte-deep);
+  }
+  .subbox p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .subbox ul {
+    margin: 8px 0 0;
+    padding-left: 1.15em;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .yuka {
+    background: var(--green-soft);
+  }
+  .question {
+    background: var(--rose-soft);
+  }
+  .compare {
+    background: var(--blue-soft);
+  }
+  .source {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+  .route {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .route-step {
+    position: relative;
+    min-height: 150px;
+    padding: 16px;
+    border-radius: 8px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: 0 6px 20px rgba(53,45,39,.06);
+  }
+  .route-step b {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--latte-deep);
+  }
+  .route-step p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  @media (max-width: 1180px) {
+    .toc { display: none; }
+    .toc-mobile { display: block; }
+  }
+  @media (min-width: 1181px) {
+    .hero-inner,
+    main {
+      width: min(1160px, calc(100vw - 340px));
+      margin-left: max(300px, calc((100vw - 1160px) / 2));
+      margin-right: auto;
+    }
+  }
+  @media (max-width: 860px) {
+    .hero { min-height: auto; }
+    .hero-inner,
+    .section-head,
+    .grid-2,
+    .grid-3,
+    .branch-grid,
+    .route {
+      grid-template-columns: 1fr;
+    }
+    .map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .theme-head {
+      grid-template-columns: 70px minmax(0, 1fr);
+    }
+    .metaphor { grid-column: 1 / -1; text-align: left; }
+    section { padding: 44px 0; }
+  }
+  @media (max-width: 520px) {
+    .map { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">YUKA / TOP10 THEME BRANCH / 2026-05-23</div>
+      <h1>ゆかさんの<br>資質図解ブランチ</h1>
+      <p class="lead">ユーザー作成PDF「001ストレングス資質図解ガイド」を、ゆかさんの上位10資質に合わせてHTML化した補足ページです。取扱説明書の本文で気になった資質を、ここで深掘りできます。10資質ぜんぶに「ゆかさん接続」と「セッションで聞くこと」を1問ずつ添えてあります。</p>
+      <div class="hero-actions">
+        <a class="btn" href="index.html">取扱説明書へ戻る</a>
+        <a class="btn subtle" href="#theme-map">TOP10から選ぶ</a>
+      </div>
+    </div>
+    <figure class="result-card">
+      <img src="yuka-sf-page1.png" alt="ゆかさんのStrengthsFinder 34資質順位画像">
+      <figcaption>TOP10: ポジティブ / 適応性 / 収集心 / 共感性 / 成長促進 / 未来志向 / 最上志向 / 学習欲 / 着想 / 達成欲</figcaption>
+    </figure>
+  </div>
+</header>
+
+<nav class="toc" aria-label="目次">
+  <div class="toc-title">Branch 目次</div>
+  <ol>
+    <li><a href="#howto" data-target="howto"><span class="num">00</span>使い方</a></li>
+    <li><a href="#theme-map" data-target="theme-map"><span class="num">01</span>TOP10地図</a></li>
+    <li><a href="#domains" data-target="domains"><span class="num">02</span>4領域</a></li>
+    <li><a href="#positivity" data-target="positivity"><span class="num">1</span>ポジティブ</a></li>
+    <li><a href="#adaptability" data-target="adaptability"><span class="num">2</span>適応性</a></li>
+    <li><a href="#input" data-target="input"><span class="num">3</span>収集心</a></li>
+    <li><a href="#empathy" data-target="empathy"><span class="num">4</span>共感性</a></li>
+    <li><a href="#developer" data-target="developer"><span class="num">5</span>成長促進</a></li>
+    <li><a href="#futuristic" data-target="futuristic"><span class="num">6</span>未来志向</a></li>
+    <li><a href="#maximizer" data-target="maximizer"><span class="num">7</span>最上志向</a></li>
+    <li><a href="#learner" data-target="learner"><span class="num">8</span>学習欲</a></li>
+    <li><a href="#ideation" data-target="ideation"><span class="num">9</span>着想</a></li>
+    <li><a href="#achiever" data-target="achiever"><span class="num">10</span>達成欲</a></li>
+    <li><a href="#route" data-target="route"><span class="num">03</span>稼ぐ力への順番</a></li>
+    <li><a href="#sources" data-target="sources"><span class="num">04</span>出典</a></li>
+  </ol>
+  <div class="toc-top"><a href="#top">最初に戻る</a></div>
+</nav>
+
+<details class="toc-mobile" aria-label="目次">
+  <summary>Branch 目次</summary>
+  <ol>
+    <li><a href="#howto" data-target="howto"><span class="num">00</span>使い方</a></li>
+    <li><a href="#theme-map" data-target="theme-map"><span class="num">01</span>TOP10地図</a></li>
+    <li><a href="#domains" data-target="domains"><span class="num">02</span>4領域</a></li>
+    <li><a href="#positivity" data-target="positivity"><span class="num">1</span>ポジティブ</a></li>
+    <li><a href="#adaptability" data-target="adaptability"><span class="num">2</span>適応性</a></li>
+    <li><a href="#input" data-target="input"><span class="num">3</span>収集心</a></li>
+    <li><a href="#empathy" data-target="empathy"><span class="num">4</span>共感性</a></li>
+    <li><a href="#developer" data-target="developer"><span class="num">5</span>成長促進</a></li>
+    <li><a href="#futuristic" data-target="futuristic"><span class="num">6</span>未来志向</a></li>
+    <li><a href="#maximizer" data-target="maximizer"><span class="num">7</span>最上志向</a></li>
+    <li><a href="#learner" data-target="learner"><span class="num">8</span>学習欲</a></li>
+    <li><a href="#ideation" data-target="ideation"><span class="num">9</span>着想</a></li>
+    <li><a href="#achiever" data-target="achiever"><span class="num">10</span>達成欲</a></li>
+    <li><a href="#route" data-target="route"><span class="num">03</span>稼ぐ力への順番</a></li>
+    <li><a href="#sources" data-target="sources"><span class="num">04</span>出典</a></li>
+  </ol>
+</details>
+
+<button class="back-to-top" aria-label="最初に戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<main>
+  <section id="howto">
+    <div class="section-head">
+      <div>
+        <span class="chapter">00 / HOW TO USE</span>
+        <h2>このページは、資質の辞書ではなく「話を深める枝」です</h2>
+        <p class="section-lead">取扱説明書の本文で気になった資質だけを開き、ゆかさん本人の実感と照らし合わせるためのページです。</p>
+      </div>
+      <div class="note">セッションでは、資質説明を全部読むより「どの言葉が当たっていて、どの言葉が違うか」を確認するのがおすすめです。</div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>基本説明を見る</h3>
+        <p>PDF内の「どういう人？」「自然な行動・貢献」を、HTMLで読みやすく整理しています。</p>
+      </div>
+      <div class="card">
+        <h3>喜ぶこと・苦手を見る</h3>
+        <p>本人の力が出る条件と、疲れやすい条件を見つけるためのメモとして使います。バーンアウト予防の早期警報にも。</p>
+      </div>
+      <div class="card">
+        <h3>ゆかさん接続を見る</h3>
+        <p>看護21年・産業保健師・2025独立・阪神間中小企業・AI業務サポート共同進行・家族とどう繋がっていそうかを仮説化しています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="theme-map">
+    <div class="section-head">
+      <div>
+        <span class="chapter">01 / TOP10 MAP</span>
+        <h2>ゆかさんの上位10資質だけを、すぐ開けるようにする</h2>
+        <p class="section-lead">気になる資質をクリックすると、その説明へ移動します。</p>
+      </div>
+      <div class="note">1位から順に読む必要はありません。セッションで話題に出た資質から開くと使いやすいです。</div>
+    </div>
+    <div class="map">
+      <a href="#positivity"><span class="num">01</span><b>ポジティブ</b><small>太陽 / 明るく元気</small></a>
+      <a href="#adaptability"><span class="num">02</span><b>適応性</b><small>川の流れ / 今ここ</small></a>
+      <a href="#input"><span class="num">03</span><b>収集心</b><small>図書館 / 集めて蓄える</small></a>
+      <a href="#empathy"><span class="num">04</span><b>共感性</b><small>心の温度計 / 感情察知</small></a>
+      <a href="#developer"><span class="num">05</span><b>成長促進</b><small>コーチ / 可能性を引き出す</small></a>
+      <a href="#futuristic"><span class="num">06</span><b>未来志向</b><small>望遠鏡 / 先を見通す</small></a>
+      <a href="#maximizer"><span class="num">07</span><b>最上志向</b><small>職人 / より良く</small></a>
+      <a href="#learner"><span class="num">08</span><b>学習欲</b><small>スポンジ / 学ぶプロセス</small></a>
+      <a href="#ideation"><span class="num">09</span><b>着想</b><small>発明家 / 概念を結ぶ</small></a>
+      <a href="#achiever"><span class="num">10</span><b>達成欲</b><small>マラソンランナー / やりきる</small></a>
+    </div>
+  </section>
+
+  <section id="domains">
+    <div class="section-head">
+      <div>
+        <span class="chapter">02 / FOUR DOMAINS</span>
+        <h2>4領域で見ると「人を信じて、学び続けて、未来を描く」人</h2>
+        <p class="section-lead">PDFの分類を、ゆかさんのTOP10に合わせて読み替えます。</p>
+      </div>
+      <div class="note">上位10の内訳は、人間関係構築力4・戦略的思考力4・影響力1・実行力1。「人を信じる力」と「学び続ける力」が同点トップ。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <span class="domain-chip rel">人間関係構築力</span>
+        <h3>ポジティブ・適応性・共感性・成長促進</h3>
+        <p>働く人の前向きさを引き出し、今この瞬間の感情に寄り添い、その人の可能性を信じて育てる領域。ゆかさんの保健師の核装備。20年以上の現場で磨かれてきた利き手です。</p>
+      </div>
+      <div class="card">
+        <span class="domain-chip strat">戦略的思考力</span>
+        <h3>収集心・未来志向・学習欲・着想</h3>
+        <p>情報を集め、未来を描き、学び続け、新しいアイデアを結びつける領域。看護→訪問→地域→産業保健→AI業務サポートまでテーマを跨いで動ける根っこ。</p>
+      </div>
+      <div class="card">
+        <span class="domain-chip infl">影響力</span>
+        <h3>最上志向</h3>
+        <p>「ふつう」で満足せず「よりよく」を諦めない領域。40代未経験で産業保健師、2025年独立という選択を後押しした力です。</p>
+      </div>
+      <div class="card">
+        <span class="domain-chip exec">実行力</span>
+        <h3>達成欲</h3>
+        <p>今日の一歩を着実に終わらせる粘り。長距離を走り続けるスタミナで、20年以上現場に立ち続けた背骨です。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="themes">
+    <div class="section-head">
+      <div>
+        <span class="chapter">TOP10 / THEME DETAIL</span>
+        <h2>資質別の図解メモ</h2>
+        <p class="section-lead">PDFの説明をベースに、ゆかさんの文脈へつなぎます。</p>
+      </div>
+      <div class="note">各カードの最後に「セッションで聞くこと」を置いています。ここから本人語を引き出します。</div>
+    </div>
+
+    <article class="theme-card" id="positivity">
+      <div class="theme-head">
+        <div class="rank-no">1</div>
+        <div>
+          <span class="domain-chip rel">人間関係構築力</span>
+          <h3>ポジティブ</h3>
+          <p>周囲を明るく元気にする前向きな力</p>
+        </div>
+        <div class="metaphor">☀️ 太陽</div>
+      </div>
+      <div class="theme-body">
+        <div class="branch-grid">
+          <div class="subbox">
+            <h4>PDFではこういう資質</h4>
+            <p>楽観的で周囲を明るくする人。熱意と明るさを持ち、その前向きさが人に伝染する。どんな状況でも良い面を見つけ出し、ポジティブなエネルギーを発散する。場を盛り上げ、能動的に周囲を元気づける。</p>
+          </div>
+          <div class="subbox yuka">
+            <h4>ゆかさんに接続すると</h4>
+            <p>プロフィール冒頭の「今日が一番若い日！」がこの資質そのもの。40代未経験で産業保健師に転換し、2025年独立まで運べたのは、この明るさが暗い局面を照らし続けたからに見えます。重い面談・しんどい組織でも、自然に前向きな一言が出るタイプです。</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="subbox">
+            <h4>喜ぶこと</h4>
+            <ul>
+              <li>楽しく精一杯生きること</li>
+              <li>笑顔や前向きな雰囲気</li>
+              <li>人々の気持ちを高める活動</li>
+              <li>明るいイベントや集まり</li>
+            </ul>
+          </div>
+          <div class="subbox">
+            <h4>苦手なこと</h4>
+            <ul>
+              <li>ネガティブな人や愚痴</li>
+              <li>暗い雰囲気や重苦しい環境</li>
+              <li>批判的な会話や議論</li>
+              <li>問題点ばかりに集中すること</li>
+            </ul>
+          </div>
+          <div class="subbox compare">
+            <h4>他資質との比較</h4>
+            <ul>
+              <li>ポジティブ: 明るい面を見る・意味づける</li>
+              <li>回復志向: 問題点を見つけ解決する（ゆかさん31位）</li>
+              <li>コミュニケーション: 言葉で表現・伝える</li>
+            </ul>
+          </div>
+        </div>
+        <div class="subbox question">
+          <h4>セッションで聞くこと</h4>
+          <p>「今日が一番若い日！」という合言葉が一番効くのは、自分のどんな瞬間ですか。逆に、ポジティブを出せない・出したくない場面はありますか？</p>
+          <div class="source">PDF参照: 27ページ</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="theme-card" id="adaptability">
+      <div class="theme-head">
+        <div class="rank-no">2</div>
+        <div>
+          <span class="domain-chip rel">人間関係構築力</span>
+          <h3>適応性</h3>
+          <p>変化や予測不可能にも柔軟に対応する力</p>
+        </div>
+        <div class="metaphor">≈ 川の流れ</div>
+      </div>
+      <div class="theme-body">
+        <div class="branch-grid">
+          <div class="subbox">
+            <h4>PDFではこういう資質</h4>
+            <p>「今ここ」を大切にする人。変化や予測不可能な状況に柔軟に対応でき、緊急事態にもすぐ対応できる。流れに身を任せながら状況に合わせて動くことが得意。状況に合わせて素早く動き、変化を受け入れ、迅速に対処することで周囲に安心感を与える。</p>
+          </div>
+          <div class="subbox yuka">
+            <h4>ゆかさんに接続すると</h4>
+            <p>訪問看護11年は「家ごとに状況が違う・予測不可能」の連続。緊急対応もある現場で磨かれた利き手。長期計画でガチガチ縛るより、その日の利用者・面談者・職場ごとに最適解を出す形が自然です。バーンアウト後の立ち直りでも、計画通りより「今日できることをやる」が回復線になった可能性があります。</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="subbox">
+            <h4>喜ぶこと</h4>
+            <ul>
+              <li>自由・自分で選べる裁量がある環境</li>
+              <li>「今」に集中できること</li>
+              <li>変化ある環境や多様な状況</li>
+              <li>自発的に取り組める課題</li>
+            </ul>
+          </div>
+          <div class="subbox">
+            <h4>苦手なこと</h4>
+            <ul>
+              <li>決めつけや型にはめられること</li>
+              <li>予測済みのことばかり</li>
+              <li>厳格なスケジュールや変更できないルール</li>
+              <li>長期的な計画に縛られること</li>
+            </ul>
+          </div>
+          <div class="subbox compare">
+            <h4>他資質との比較</h4>
+            <ul>
+              <li>適応性: 柔軟に状況に合わせて変化する</li>
+              <li>規律性: 秩序や予測可能性を好む（ゆかさん29位）</li>
+              <li>目標志向: 明確な方向性を持ち続ける（ゆかさん12位）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="subbox question">
+          <h4>セッションで聞くこと</h4>
+          <p>独立後、長期計画を立てるのと、「今この目の前の相手」に集中するのとでは、どちらの方が自然に力が出ますか？</p>
+          <div class="source">PDF参照: 31ページ</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="theme-card" id="input">
+      <div class="theme-head">
+        <div class="rank-no">3</div>
+        <div>
+          <span class="domain-chip strat">戦略的思考力</span>
+          <h3>収集心</h3>
+          <p>気になった情報やモノをとにかく集める力</p>
+        </div>
+        <div class="metaphor">📚 図書館</div>
+      </div>
+      <div class="theme-body">
+        <div class="branch-grid">
+          <div class="subbox">
+            <h4>PDFではこういう資質</h4>
+            <p>実用本位のリソースコレクター。情報や資料、モノなどが増えていくと幸せを感じる人。集めたものが誰かの役に立つと喜びを感じる。データや資料が日々増えていき、必要に応じて活用する。情報・ツール提供役として、チームに価値ある知識やリソースを共有できる。</p>
+          </div>
+          <div class="subbox yuka">
+            <h4>ゆかさんに接続すると</h4>
+            <p>急性期→訪問→地域→産業保健、というキャリアが「現場の知を集めてきた21年」そのもの。「これまでの経験はすべてつながっている」というプロフィール本人語と直結。集めた知が、独立後のサービス設計・補助金スキーム理解・AI活用の即応性につながっています。</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="subbox">
+            <h4>喜ぶこと</h4>
+            <ul>
+              <li>新しい情報やモノを集めること</li>
+              <li>ストックしたものが役立った時</li>
+              <li>自分のコレクションを整理・分類すること</li>
+              <li>誰かが知りたいことに答えられること</li>
+            </ul>
+          </div>
+          <div class="subbox">
+            <h4>苦手なこと</h4>
+            <ul>
+              <li>集めたまま活かせないこと</li>
+              <li>大切な情報を捨てることを強制される</li>
+              <li>整理や共有の時間がないこと</li>
+              <li>役立たない情報だと思われること</li>
+            </ul>
+          </div>
+          <div class="subbox compare">
+            <h4>他資質との比較</h4>
+            <ul>
+              <li>収集心: 集めたい・蓄える重視</li>
+              <li>分析思考: 活用・検証重視（ゆかさん30位）</li>
+              <li>学習欲: 知識を得たい・理解したい（ゆかさん8位）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="subbox question">
+          <h4>セッションで聞くこと</h4>
+          <p>21年で集めた現場知の中で、「これは絶対に他の人にも伝えたい」と感じるものは何ですか？</p>
+          <div class="source">PDF参照: 42ページ</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="theme-card" id="empathy">
+      <div class="theme-head">
+        <div class="rank-no">4</div>
+        <div>
+          <span class="domain-chip rel">人間関係構築力</span>
+          <h3>共感性</h3>
+          <p>他人の感情を察し柔軟に対応できる力</p>
+        </div>
+        <div class="metaphor">🌡 心の温度計</div>
+      </div>
+      <div class="theme-body">
+        <div class="branch-grid">
+          <div class="subbox">
+            <h4>PDFではこういう資質</h4>
+            <p>場の空気や人の気持ちに敏感で、感情豊か。他者の感情や状況を察知するアンテナを持ち、周りの感情の変化に自然と反応できる人。相手の感情をよく察して対応を変える。言葉にされていない気持ちを汲み取り、寄り添うことで他者との信頼関係を構築できる。</p>
+          </div>
+          <div class="subbox yuka">
+            <h4>ゆかさんに接続すると</h4>
+            <p>保健師としての中核。面談で相手が言葉にする前に「あ、この人しんどいな」が分かる装備。5/22 DM「うちの事務所の雰囲気におけもんさんはやっぱりぴったり」も、人と場の相性を瞬時に見抜くこの資質の現れ。一方で、感情を持ち帰る量が増えるとバーンアウトリスク（2021年の経験）に直結する両刃。</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="subbox">
+            <h4>喜ぶこと</h4>
+            <ul>
+              <li>素直な感情表現ができる環境</li>
+              <li>感情や心情を大切にする場</li>
+              <li>人の気持ちを考慮した丁寧なコミュニケーション</li>
+              <li>感情的なつながりを感じられる関係性</li>
+            </ul>
+          </div>
+          <div class="subbox">
+            <h4>苦手なこと</h4>
+            <ul>
+              <li>感情を抑制・制限される環境</li>
+              <li>冷たい態度や無関心な反応</li>
+              <li>データや論理だけで人を判断すること</li>
+              <li>感情を無視した効率優先の場</li>
+            </ul>
+          </div>
+          <div class="subbox compare">
+            <h4>他資質との比較</h4>
+            <ul>
+              <li>共感性: 感情を重視、直感的に反応</li>
+              <li>分析思考: データや事実重視（ゆかさん30位）</li>
+              <li>コミュニケーション: 言葉で表現（ゆかさん16位）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="subbox question">
+          <h4>セッションで聞くこと</h4>
+          <p>面談後に「持ち帰ってしまう感情」はありますか？ 2021年バーンアウト時に出ていた最初のサインは何でしたか？</p>
+          <div class="source">PDF参照: 26ページ</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="theme-card" id="developer">
+      <div class="theme-head">
+        <div class="rank-no">5</div>
+        <div>
+          <span class="domain-chip rel">人間関係構築力</span>
+          <h3>成長促進</h3>
+          <p>人の成長や変化を見守りサポートする力</p>
+        </div>
+        <div class="metaphor">🌱 コーチ</div>
+      </div>
+      <div class="theme-body">
+        <div class="branch-grid">
+          <div class="subbox">
+            <h4>PDFではこういう資質</h4>
+            <p>未経験者にも忍耐強く、人の可能性を信じる人。小さな進歩や成長を見逃さず、相手の成長を自分のことのように喜べる。人が力を発揮する瞬間に立ち会うことが好き。人の潜在能力を見つけて引き出す。学びや挑戦を応援し、相手が主役で自分は裏方に徹し、成長のプロセスを大切にしながら支援する。</p>
+          </div>
+          <div class="subbox yuka">
+            <h4>ゆかさんに接続すると</h4>
+            <p>「働く人の健康をサポート」という産業保健師の仕事と完全一致。「治す」より「育てる」の姿勢。AI業務サポート案件でも「皆さんが自分たちでルールを作って運用できる状態が理想」というおけもんと共鳴する設計思想。クライアントの中小企業も「サービス受給者」ではなく「育てる相手」として見ている可能性が高い。</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="subbox">
+            <h4>喜ぶこと</h4>
+            <ul>
+              <li>誰かの成長や変化に立ち会うこと</li>
+              <li>人の「できた！」という瞬間を見ること</li>
+              <li>教える・育てる・サポートする役割</li>
+              <li>赤ちゃんの成長を見守るような忍耐</li>
+            </ul>
+          </div>
+          <div class="subbox">
+            <h4>苦手なこと</h4>
+            <ul>
+              <li>可能性を潰すような環境や言動</li>
+              <li>成長の機会を奪うこと</li>
+              <li>人の失敗を否定的に評価すること</li>
+              <li>すぐに結果だけを求める風潮</li>
+            </ul>
+          </div>
+          <div class="subbox compare">
+            <h4>他資質との比較</h4>
+            <ul>
+              <li>成長促進: 成長のプロセスを重視</li>
+              <li>達成欲: 結果や成果を重視（ゆかさん10位）</li>
+              <li>最上志向: 優秀さを追求（ゆかさん7位）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="subbox question">
+          <h4>セッションで聞くこと</h4>
+          <p>面談で「この人、ここを応援したら絶対伸びる」と感じる瞬間、相手のどこを見ていますか？</p>
+          <div class="source">PDF参照: 32ページ</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="theme-card" id="futuristic">
+      <div class="theme-head">
+        <div class="rank-no">6</div>
+        <div>
+          <span class="domain-chip strat">戦略的思考力</span>
+          <h3>未来志向</h3>
+          <p>未来を想像しワクワクする・先を見通す力</p>
+        </div>
+        <div class="metaphor">🔭 望遠鏡</div>
+      </div>
+      <div class="theme-body">
+        <div class="branch-grid">
+          <div class="subbox">
+            <h4>PDFではこういう資質</h4>
+            <p>未来に思いを馳せるのが好きで、明日のことを考えるとワクワクする。可能性を見出し、「あんな未来があったらいいな」と夢見ることが得意。現状に満足せず、常に先を見ている。先を見通して計画や提案を行う。未来の展望を提示することでチームに方向性を与え、周囲にひらめきやエネルギーをもたらす。</p>
+          </div>
+          <div class="subbox yuka">
+            <h4>ゆかさんに接続すると</h4>
+            <p>プロフィールの「誰もが心身ともに健康で働き続けられる社会をつくりたい」がこの資質の声。原点思考34位（最下位）と対をなしていて、過去原因より「ここからどうする」に頭が向く。2025年独立も、過去の経験積み上げではなく、これからの未来から逆算した決断だった可能性が高いです。</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="subbox">
+            <h4>喜ぶこと</h4>
+            <ul>
+              <li>夢や希望、ビジョンについて話し合うこと</li>
+              <li>新しいアイデアや将来のプロジェクトを考えること</li>
+              <li>未来を見据えた計画を立てること</li>
+              <li>夢見ることでひらめきを得ること</li>
+            </ul>
+          </div>
+          <div class="subbox">
+            <h4>苦手なこと</h4>
+            <ul>
+              <li>過去ばかり振り返ること</li>
+              <li>現状に満足して停滞すること</li>
+              <li>可能性を狭める否定的な意見</li>
+              <li>「前例がない」という理由で新しい取り組みを拒むこと</li>
+            </ul>
+          </div>
+          <div class="subbox compare">
+            <h4>他資質との比較</h4>
+            <ul>
+              <li>未来志向: ビジョンを描き、将来に目を向ける</li>
+              <li>原点思考: 過去の歴史や経験に学ぶ（ゆかさん34位 最下位）</li>
+              <li>戦略性: 未来への道筋を考え、選択肢を探る（ゆかさん23位）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="subbox question">
+          <h4>セッションで聞くこと</h4>
+          <p>「誰もが心身ともに健康で働き続けられる社会」を、5年後の阪神間でひとつだけ実現するなら、どの絵から描きますか？</p>
+          <div class="source">PDF参照: 35ページ</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="theme-card" id="maximizer">
+      <div class="theme-head">
+        <div class="rank-no">7</div>
+        <div>
+          <span class="domain-chip infl">影響力</span>
+          <h3>最上志向</h3>
+          <p>より良い・最高を求める、強みに着目する</p>
+        </div>
+        <div class="metaphor">🛠 職人</div>
+      </div>
+      <div class="theme-body">
+        <div class="branch-grid">
+          <div class="subbox">
+            <h4>PDFではこういう資質</h4>
+            <p>卓越したものにコミットする。「良い」で満足せず「最高」を追求する。強みを見出し、それを磨き上げるのが得意。質と効率にこだわり、常に改善の余地を探している。強みに集中し、弱みにうまく対処する。質へのこだわりを持ち、個人や集団の卓越性を高め、効果を最大化するための手段を常に追求する。</p>
+          </div>
+          <div class="subbox yuka">
+            <h4>ゆかさんに接続すると</h4>
+            <p>「ふつう」の保健師業務で満足せず、独立して「自分らしい産業保健サービス」を組み立てている動機がここ。AI業務サポートに飛びついたのも「より良い形」を求める最上志向の発動。一方で、回復志向31位なので「弱みを直す」より「強みを磨く」が自然な向き。</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="subbox">
+            <h4>喜ぶこと</h4>
+            <ul>
+              <li>投資効果の最大化・効率化</li>
+              <li>最高・一流のものに触れる機会</li>
+              <li>強みを活かせる環境</li>
+              <li>量だけでなく質も重視してくれる環境</li>
+            </ul>
+          </div>
+          <div class="subbox">
+            <h4>苦手なこと</h4>
+            <ul>
+              <li>弱みの矯正に取り憑かれること</li>
+              <li>無駄なこと・非効率な作業</li>
+              <li>妥協や「程々で良い」という考え方</li>
+              <li>平均点で満足すること</li>
+            </ul>
+          </div>
+          <div class="subbox compare">
+            <h4>他資質との比較</h4>
+            <ul>
+              <li>最上志向: より良いものを作りたい</li>
+              <li>目標志向: 目標を成し遂げたい（ゆかさん12位）</li>
+              <li>回復志向: 壊れたものを直したい（ゆかさん31位）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="subbox question">
+          <h4>セッションで聞くこと</h4>
+          <p>独立後のサービスで「ここはまだ程々」と感じてる箇所はありますか？ それを「最高」に磨くなら、何から動かしますか？</p>
+          <div class="source">PDF参照: 12ページ</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="theme-card" id="learner">
+      <div class="theme-head">
+        <div class="rank-no">8</div>
+        <div>
+          <span class="domain-chip strat">戦略的思考力</span>
+          <h3>学習欲</h3>
+          <p>知らないことにワクワクし新しいことに挑戦</p>
+        </div>
+        <div class="metaphor">💧 スポンジ</div>
+      </div>
+      <div class="theme-body">
+        <div class="branch-grid">
+          <div class="subbox">
+            <h4>PDFではこういう資質</h4>
+            <p>興味のある分野を深く探求し、常に新しい知識や発見を求め続ける人。学ぶプロセス自体に喜びを感じ、好奇心が旺盛。好奇心の赴くまま情報収集し、新しい領域に挑戦。学んだことを共有することでチームや周囲の人の成長にも貢献する。</p>
+          </div>
+          <div class="subbox yuka">
+            <h4>ゆかさんに接続すると</h4>
+            <p>40代未経験で産業保健師に転換できた中核装備。リベシティに入会したのもこの資質。AI・補助金・スプシ・GAS、未知のテーマに飛び込めるスポンジ気質が、おけもんとの共同進行を支えています。「知らないからやらない」ではなく「知らないから知りたい」が自然な構え。</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="subbox">
+            <h4>喜ぶこと</h4>
+            <ul>
+              <li>新しい知識や発見に出会うこと</li>
+              <li>学びのプロセスそのもの</li>
+              <li>未知の分野に足を踏み入れる冒険</li>
+              <li>学んだことを活かせる機会</li>
+            </ul>
+          </div>
+          <div class="subbox">
+            <h4>苦手なこと</h4>
+            <ul>
+              <li>同じことばかりの繰り返し</li>
+              <li>知ったかぶりをする人や環境</li>
+              <li>学びが止まる状況</li>
+              <li>学んだことを活かせない環境</li>
+            </ul>
+          </div>
+          <div class="subbox compare">
+            <h4>他資質との比較</h4>
+            <ul>
+              <li>学習欲: 知識を得るプロセスを大切にする</li>
+              <li>収集心: 情報やモノを集めることが重要（ゆかさん3位）</li>
+              <li>着想: 新しいアイデアを生み出すことが主目的（ゆかさん9位）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="subbox question">
+          <h4>セッションで聞くこと</h4>
+          <p>最近「学び始めて止まらなくなった」テーマは何ですか？ それは仕事に活きそうですか、それとも単に楽しいだけですか？</p>
+          <div class="source">PDF参照: 41ページ</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="theme-card" id="ideation">
+      <div class="theme-head">
+        <div class="rank-no">9</div>
+        <div>
+          <span class="domain-chip strat">戦略的思考力</span>
+          <h3>着想</h3>
+          <p>新しいアイデアを生み出すのが楽しい・概念を結びつける</p>
+        </div>
+        <div class="metaphor">💡 発明家</div>
+      </div>
+      <div class="theme-body">
+        <div class="branch-grid">
+          <div class="subbox">
+            <h4>PDFではこういう資質</h4>
+            <p>既成概念に捉われず、常に新しい視点やアイデアを考えるのが好きな人。異なる分野の知識を結びつけて独創的な発想ができる。既存の枠を越え自由な発想をする。革新的なソリューションを提供し、チームに新しい視点をもたらす。物事を違った角度から見ることができる。</p>
+          </div>
+          <div class="subbox yuka">
+            <h4>ゆかさんに接続すると</h4>
+            <p>保健師×AI業務サポート×補助金の組み合わせを楽しめている時点で、着想は完全に機能しています。看護→訪問→地域→産業保健の経験を「すべてつながっている」と統合する力もここ。一方で、回復志向31位・規律性29位なので、思いついたあとの「実行段階の細かい作業」は別の人と組むのが向いてそう（おけもんと組む構図がまさにこれ）。</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="subbox">
+            <h4>喜ぶこと</h4>
+            <ul>
+              <li>斬新な発見や提案をすること</li>
+              <li>まったく新しいことに挑戦すること</li>
+              <li>アイデアをひらめいた瞬間の興奮</li>
+              <li>異なる概念を結びつけて考えること</li>
+            </ul>
+          </div>
+          <div class="subbox">
+            <h4>苦手なこと</h4>
+            <ul>
+              <li>同じやり方の繰り返し</li>
+              <li>既知の手法を再演すること</li>
+              <li>「前例がないからダメ」と制限されること</li>
+              <li>アイデアの実行段階での細かい作業</li>
+            </ul>
+          </div>
+          <div class="subbox compare">
+            <h4>他資質との比較</h4>
+            <ul>
+              <li>着想: 新しいアイデアや発想を生み出す</li>
+              <li>回復志向: 問題を見つけて解決する（ゆかさん31位）</li>
+              <li>戦略性: 最適な選択肢や道筋を見つける（ゆかさん23位）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="subbox question">
+          <h4>セッションで聞くこと</h4>
+          <p>「これとこれを組み合わせたら面白い」と最近ピンときたアイデアはありますか？ 実行で詰まってるのはどこですか？</p>
+          <div class="source">PDF参照: 40ページ</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="theme-card" id="achiever">
+      <div class="theme-head">
+        <div class="rank-no">10</div>
+        <div>
+          <span class="domain-chip exec">実行力</span>
+          <h3>達成欲</h3>
+          <p>並外れたスタミナで目標に向かって走り続ける</p>
+        </div>
+        <div class="metaphor">🏃 マラソンランナー</div>
+      </div>
+      <div class="theme-body">
+        <div class="branch-grid">
+          <div class="subbox">
+            <h4>PDFではこういう資質</h4>
+            <p>長い距離も諦めずにやり遂げる力がある。働き者で、常に生産性を高めるペースを設定する。一日の終わりに何かを成し遂げたという実感がないと満足できない。常に前進し続ける継続力があり、チームを引っ張る持続力を持つ。目標達成に向けて着実に歩み続け、「やり遂げる」ことに価値を見出す。完了することに大きな喜びを感じる。</p>
+          </div>
+          <div class="subbox yuka">
+            <h4>ゆかさんに接続すると</h4>
+            <p>看護21年・産業保健師4年目・2025独立、すべて「長距離を諦めずに走り続けた」結果。1日の終わりに「今日もちゃんとやった」感が欲しいタイプ。一方で、ポジティブ1位＆適応性2位が前にあるので、ガチガチの数値ノルマより「今日できる粒度」で日々進捗を実感できる設計が合いそう。バーンアウトに走りすぎないブレーキも兼ねて。</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="subbox">
+            <h4>喜ぶこと</h4>
+            <ul>
+              <li>仕事を完遂すること・成し遂げた実感</li>
+              <li>ゴールや成果の積み重ね</li>
+              <li>生産性の高い一日を過ごすこと</li>
+              <li>目に見える成果が出ること</li>
+            </ul>
+          </div>
+          <div class="subbox">
+            <h4>苦手なこと</h4>
+            <ul>
+              <li>途中で止まること・中断されること</li>
+              <li>怠惰な態度や勤勉さの欠如</li>
+              <li>何も達成できない日</li>
+              <li>仕事が遅い人と協働すること</li>
+            </ul>
+          </div>
+          <div class="subbox compare">
+            <h4>他資質との比較</h4>
+            <ul>
+              <li>達成欲: 自分との戦い・やりきることが大事</li>
+              <li>競争性: 他人と比べて勝つことが大事（ゆかさん22位）</li>
+              <li>活発性: 物事を始めることに喜びを感じる（ゆかさん27位）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="subbox question">
+          <h4>セッションで聞くこと</h4>
+          <p>「今日もちゃんとやった」と思える基準は何ですか？ 走り続けてしまうあまり、休む基準を作るとしたら？</p>
+          <div class="source">PDF参照: 25ページ</div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="route">
+    <div class="section-head">
+      <div>
+        <span class="chapter">03 / EARNING ROUTE</span>
+        <h2>ゆかさんが「稼ぐ力」に変える順番</h2>
+        <p class="section-lead">資質の流れを、独立後のサービスに変換する順番として置きます。</p>
+      </div>
+      <div class="note">どこから入っても良いですが、ゆかさんの場合は「太陽で相手と場を温める → 川の流れで現場に入る → 図書館の知を出す → 望遠鏡で未来図を渡す」が自然そうです。</div>
+    </div>
+    <div class="route">
+      <div class="route-step">
+        <b>① 入口：太陽 ☀️</b>
+        <p>ポジティブで場を明るくして安心感を作る。「うちの事務所の雰囲気にぴったり」と感じてもらえる温度感。</p>
+      </div>
+      <div class="route-step">
+        <b>② 現場：川の流れ ≈</b>
+        <p>適応性と共感性で、その日その人の状況に合わせる。型より「今ここ」を優先。</p>
+      </div>
+      <div class="route-step">
+        <b>③ 中身：図書館 📚 × コーチ 🌱</b>
+        <p>21年の経験ストックを、目の前の相手の成長プロセスに合わせて取り出す。「治す」より「育てる」。</p>
+      </div>
+      <div class="route-step">
+        <b>④ 未来：望遠鏡 🔭 × 職人 🛠</b>
+        <p>未来志向と最上志向で「ここから何ができるか」を示し、相手のビジョンに接続する。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sources">
+    <div class="section-head">
+      <div>
+        <span class="chapter">04 / SOURCES</span>
+        <h2>このページの出典</h2>
+        <p class="section-lead">PDFの言葉はベースとして、ゆかさん文脈の接続は仮説です。</p>
+      </div>
+      <div class="note">セッション中に違和感が出たら、本人語で上書きしていきます。</div>
+    </div>
+    <ul class="grid-2" style="list-style:none;padding:0;margin:0;">
+      <li class="card"><b>ユーザー作成PDF:</b><br>001ストレングス資質図解ガイド（全42ページ）<br>該当ページ：12 / 25 / 26 / 27 / 31 / 32 / 35 / 40 / 41 / 42</li>
+      <li class="card"><b>本人情報:</b><br>リベシティプロフィール（ゆか@産業保健師_働く人の健康サポート✨）／DM履歴（2026-04〜05）／StrengthsFinder 34資質順位画像（2026-05-04受検）</li>
+      <li class="card"><b>関連ファイル:</b><br>まなCSO/顧客対応/ゆかさん_AI職場サポート相談/ 配下のSTATE.md／2026-05-14初回訪問結果まとめ／2026-05-22 2回目訪問要約</li>
+      <li class="card"><b>参照フォーマット:</b><br>なぎさん完成版HTML（2026-05-20）／みつさん完成版HTML（2026-05-18）／診断シート生成仕様書</li>
+    </ul>
+    <div class="footer-links">
+      <a class="btn" href="index.html">取扱説明書へ戻る</a>
+      <a class="btn subtle" href="#top">先頭に戻る</a>
+    </div>
+  </section>
+</main>
+
+<script>
+const tocLinks = document.querySelectorAll('.toc a[data-target], .toc-mobile a[data-target]');
+const tocSections = Array.from(tocLinks)
+  .map(link => document.getElementById(link.dataset.target))
+  .filter(Boolean);
+
+function updateActiveToc() {
+  const offset = window.innerHeight * 0.32;
+  let currentId = tocSections[0]?.id;
+  for (const section of tocSections) {
+    if (section.getBoundingClientRect().top - offset <= 0) currentId = section.id;
+  }
+  tocLinks.forEach(link => {
+    link.classList.toggle('active', link.dataset.target === currentId);
+  });
+}
+
+let tocTicking = false;
+window.addEventListener('scroll', () => {
+  if (!tocTicking) {
+    requestAnimationFrame(() => {
+      updateActiveToc();
+      document.querySelector('.back-to-top')?.classList.toggle('visible', window.scrollY > 520);
+      tocTicking = false;
+    });
+    tocTicking = true;
+  }
+}, { passive: true });
+
+document.querySelectorAll('.toc-mobile a').forEach(link => {
+  link.addEventListener('click', () => {
+    const mobileToc = document.querySelector('.toc-mobile');
+    if (mobileToc) mobileToc.open = false;
+  });
+});
+
+updateActiveToc();
+</script>
+</body>
+</html>
