@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ゆかさんのトリセツ｜今日が一番若い日、灯をともす保健師</title>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  /* ─────────────────────────────────────────────
+     ゆかさんカラー：朝陽 × 新緑 × 阪神間の海と山。
+     「働く人の朝に灯をともす保健師」のあたたかいパレット。
+     ───────────────────────────────────────────── */
+  --asahi-deep:  #C7693D;   /* 朝陽の深いオレンジ */
+  --asahi-mid:   #E8A57A;   /* コーラル */
+  --asahi-light: #F5DBC1;   /* 朝もや */
+  --asahi-glow:  #FBEEDF;   /* 朝霧 */
+  --leaf-deep:   #3F7A5A;   /* 木陰の深緑 */
+  --leaf-mid:    #7AAE85;   /* 新緑 */
+  --leaf-light:  #C7E0CE;   /* 若葉 */
+  --sea-mid:     #5E8FAA;   /* 阪神の海 */
+  --sea-light:   #BCD3DF;   /* 凪の海 */
+  --warm-bg:     #FCF8F0;   /* 生成り */
+  --warm-white:  #FFFDF6;   /* 卵殻 */
+  --text:        #38302A;   /* 焙じ茶 */
+  --text-muted:  #6C5F54;   /* 薄墨 */
+  --text-light:  #A8998C;   /* 古紙 */
+  --line:        rgba(199,105,61,0.13);
+  --shadow-sm:   0 2px 12px rgba(199,105,61,0.08);
+  --shadow-md:   0 8px 30px rgba(199,105,61,0.11);
+  --shadow-lg:   0 16px 48px rgba(199,105,61,0.16);
+  --radius:      12px;
+  --radius-lg:   20px;
+
+  /* SF 4領域カラー */
+  --d-rel:  #5B95C7;   /* 人間関係構築力 */
+  --d-exec: #9B7BB8;   /* 実行力 */
+  --d-infl: #E8A85C;   /* 影響力 */
+  --d-str:  #6FAA88;   /* 戦略的思考力 */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text);
+  background: var(--warm-bg);
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── 朝陽グラデHERO（ゆかさん専用：水じゃなく朝陽） ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 18%, rgba(255,236,196,0.55), transparent 55%),
+    linear-gradient(170deg, rgba(199,105,61,0.85) 0%, rgba(232,165,122,0.65) 38%, rgba(122,174,133,0.78) 100%),
+    linear-gradient(135deg, #C7693D 0%, #E8A57A 50%, #7AAE85 100%);
+  color: #fff;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 50% 22%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 14%),
+    radial-gradient(circle at 16% 80%, rgba(255,255,255,0.10) 0%, transparent 9%),
+    radial-gradient(circle at 84% 76%, rgba(255,255,255,0.08) 0%, transparent 7%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 140px;
+  background: linear-gradient(to top, var(--warm-bg), transparent);
+}
+.hero-inner { position: relative; z-index: 2; padding: 60px 24px; max-width: 760px; }
+.hero-sun {
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #FFEDC7 0%, #FFD18A 55%, #F2A35C 100%);
+  margin: 0 auto 24px;
+  box-shadow:
+    0 0 0 14px rgba(255,237,199,0.18),
+    0 0 0 28px rgba(255,237,199,0.10),
+    0 0 0 42px rgba(255,237,199,0.06),
+    0 12px 40px rgba(199,105,61,0.28);
+  animation: sunPulse 4.5s ease-in-out infinite;
+}
+@keyframes sunPulse {
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.04); }
+}
+.hero-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.82;
+  margin-bottom: 18px;
+  animation: heroFadeIn 0.8s 0.2s both;
+}
+.hero-name {
+  font-size: clamp(28px, 6vw, 54px);
+  font-weight: 700;
+  margin-bottom: 18px;
+  animation: heroSlideUp 0.9s 0.3s both;
+  letter-spacing: 0.04em;
+}
+.hero-name span { color: #FFEDC7; }
+.hero-tagline {
+  font-family: 'Klee One', 'Noto Serif JP', serif;
+  font-size: clamp(15px, 3vw, 22px);
+  font-weight: 400;
+  opacity: 0.96;
+  margin-bottom: 12px;
+  line-height: 1.85;
+  animation: heroSlideUp 0.9s 0.5s both;
+}
+.hero-sub {
+  font-size: 14px;
+  opacity: 0.72;
+  margin-top: 18px;
+  animation: heroFadeIn 0.8s 0.7s both;
+  line-height: 1.85;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: heroFadeIn 0.8s 1s both, bounce 2s 1.5s infinite;
+  opacity: 0.55;
+}
+@keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes heroSlideUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+/* ─── 浮遊するTOCナビ（ゆかさん専用：右下に常時表示） ─── */
+.float-toc {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 60;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+}
+.float-toc summary {
+  cursor: pointer;
+  list-style: none;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--asahi-deep), var(--leaf-deep));
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  box-shadow: var(--shadow-md);
+  transition: transform .2s;
+}
+.float-toc summary:hover { transform: translateY(-3px); }
+.float-toc summary::-webkit-details-marker { display: none; }
+.float-toc[open] summary { box-shadow: var(--shadow-lg); }
+.float-toc .toc-body {
+  position: absolute;
+  right: 0;
+  bottom: 64px;
+  width: 268px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: rgba(255,253,246,0.97);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  padding: 16px 14px;
+  backdrop-filter: blur(10px);
+}
+.float-toc h5 {
+  font-family: 'Noto Serif JP', serif;
+  color: var(--asahi-deep);
+  font-size: 13px;
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+  border-bottom: 1px dashed rgba(199,105,61,0.28);
+}
+.float-toc ol { list-style: none; display: grid; gap: 2px; }
+.float-toc a {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+.float-toc a:hover { background: rgba(232,165,122,0.18); color: var(--asahi-deep); }
+.float-toc a .num { color: var(--asahi-mid); font-weight: 700; font-size: 11px; }
+.float-toc .toc-divider {
+  margin: 8px 0;
+  border-top: 1px dashed rgba(199,105,61,0.22);
+}
+
+/* ─── SECTIONS ─── */
+section { padding: 80px 0; }
+section:nth-of-type(even) { background: var(--warm-white); }
+
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--asahi-mid);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.section-title {
+  font-size: clamp(22px, 4vw, 32px);
+  color: var(--asahi-deep);
+  margin-bottom: 16px;
+  position: relative;
+  display: inline-block;
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: var(--leaf-mid);
+  margin-top: 8px;
+  transition: width 0.6s ease 0.2s;
+}
+.fade-in.is-visible .section-title::after { width: 48px; }
+.section-lead {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin-bottom: 48px;
+}
+
+/* ─── ABOUT YOU ─── */
+.what-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.what-text p { margin-bottom: 16px; font-size: 15px; color: var(--text-muted); }
+.what-text p:first-child::first-letter {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 38px;
+  float: left;
+  line-height: 1;
+  margin-right: 8px;
+  color: var(--asahi-deep);
+}
+.what-text strong { color: var(--text); font-weight: 700; }
+.what-text em {
+  font-style: normal;
+  background: linear-gradient(transparent 65%, rgba(245,219,193,0.85) 65%);
+  padding: 0 2px;
+}
+.what-card {
+  background: var(--warm-white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+.what-card .big-icon { font-size: 44px; color: var(--asahi-mid); margin-bottom: 18px; }
+.what-card h3 { font-size: 18px; color: var(--asahi-deep); margin-bottom: 4px; }
+.what-card .role { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; }
+.what-card .meta {
+  display: flex; flex-direction: column; gap: 6px;
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  font-size: 12.5px; color: var(--text-light);
+  text-align: left;
+  line-height: 1.65;
+}
+
+/* ─── DOMAIN ─── */
+.domain-summary {
+  margin-top: 56px;
+  background: var(--warm-white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+.domain-summary h3 {
+  font-size: 16px;
+  color: var(--asahi-deep);
+  margin-bottom: 20px;
+  text-align: center;
+}
+.domain-bar {
+  display: flex;
+  height: 36px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+.domain-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.domain-seg.rel  { background: var(--d-rel);  flex: 4; }
+.domain-seg.str  { background: var(--d-str);  flex: 4; }
+.domain-seg.infl { background: var(--d-infl); flex: 1; }
+.domain-seg.exec { background: var(--d-exec); flex: 1; }
+.domain-legend {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  justify-content: center; font-size: 12px;
+  color: var(--text-muted);
+}
+.domain-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.domain-legend .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.domain-legend .dot.rel  { background: var(--d-rel); }
+.domain-legend .dot.exec { background: var(--d-exec); }
+.domain-legend .dot.infl { background: var(--d-infl); }
+.domain-legend .dot.str  { background: var(--d-str); }
+.domain-note {
+  margin-top: 18px;
+  padding: 14px 18px;
+  background: rgba(122,174,133,0.10);
+  border-left: 3px solid var(--leaf-mid);
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.9;
+}
+.domain-note strong { color: var(--leaf-deep); }
+
+/* ─── DIVIDER（朝陽×新緑のグラデーション帯） ─── */
+.sun-divider {
+  height: 180px;
+  background:
+    linear-gradient(135deg, rgba(199,105,61,0.45), rgba(232,165,122,0.35), rgba(122,174,133,0.45)),
+    radial-gradient(ellipse at 50% 30%, rgba(255,237,199,0.55), transparent 55%),
+    linear-gradient(160deg, #C7693D 0%, #E8A57A 50%, #7AAE85 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.92);
+  font-family: 'Klee One', 'Noto Serif JP', serif;
+  font-size: clamp(14px, 2vw, 18px);
+  letter-spacing: 0.14em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.22);
+}
+.sun-divider .quote { padding: 0 24px; max-width: 720px; text-align: center; line-height: 1.85; }
+
+/* ─── 資質ブロック ─── */
+.shitsu-block {
+  background: var(--warm-white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+.shitsu-block.is-top3 { box-shadow: var(--shadow-md); border-color: rgba(199,105,61,0.25); }
+.shitsu-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.shitsu-rank {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+.shitsu-rank.exec { background: linear-gradient(135deg, var(--d-exec), #BCA3D2); }
+.shitsu-rank.infl { background: linear-gradient(135deg, var(--d-infl), #F3C68A); }
+.shitsu-rank.rel  { background: linear-gradient(135deg, var(--d-rel),  #95BCDD); }
+.shitsu-rank.str  { background: linear-gradient(135deg, var(--d-str),  #9DC2A8); }
+.shitsu-name { flex: 1; }
+.shitsu-name h3 {
+  font-size: 22px;
+  color: var(--asahi-deep);
+  margin-bottom: 4px;
+}
+.shitsu-name .meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+.shitsu-name .metaphor-tag {
+  display: inline-block;
+  font-family: 'Klee One', 'Noto Serif JP', sans-serif;
+  font-size: 13px;
+  margin-left: 8px;
+  padding: 2px 9px;
+  background: rgba(232,165,122,0.16);
+  border-radius: 999px;
+  color: var(--asahi-deep);
+  letter-spacing: 0.06em;
+}
+.shitsu-domain {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+  color: #fff;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+.shitsu-domain.exec { background: var(--d-exec); }
+.shitsu-domain.infl { background: var(--d-infl); }
+.shitsu-domain.rel  { background: var(--d-rel); }
+.shitsu-domain.str  { background: var(--d-str); }
+
+.shitsu-tokucho {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  line-height: 2;
+}
+.shitsu-tokucho strong { color: var(--text); font-weight: 700; }
+
+.shitsu-episode {
+  background: linear-gradient(135deg, rgba(245,219,193,0.50), rgba(199,224,206,0.30));
+  border-left: 3px solid var(--asahi-mid);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.shitsu-episode .ep-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--asahi-deep);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.shitsu-episode .ep-text {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.95;
+}
+.shitsu-episode .ep-text em {
+  font-style: normal;
+  background: linear-gradient(transparent 65%, rgba(255,229,191,0.85) 65%);
+  padding: 0 2px;
+  font-weight: 500;
+}
+
+/* ─── 6-10位 ─── */
+.shitsu-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.shitsu-mini {
+  background: var(--warm-white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.shitsu-mini:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.shitsu-mini-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px;
+}
+.shitsu-mini-rank {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.shitsu-mini-rank.exec { background: var(--d-exec); }
+.shitsu-mini-rank.infl { background: var(--d-infl); }
+.shitsu-mini-rank.rel  { background: var(--d-rel); }
+.shitsu-mini-rank.str  { background: var(--d-str); }
+.shitsu-mini h4 { font-size: 15px; color: var(--text); margin: 0; flex: 1; }
+.shitsu-mini .meta-mini {
+  font-family: 'Klee One', 'Noto Serif JP', sans-serif;
+  font-size: 12px;
+  color: var(--asahi-deep);
+  margin-bottom: 6px;
+}
+.shitsu-mini p { font-size: 12.5px; color: var(--text-muted); line-height: 1.78; }
+.shitsu-mini .ep-mini {
+  margin-top: 10px; padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  font-size: 12px; color: var(--text-light);
+  line-height: 1.78;
+}
+.shitsu-mini .ep-mini em {
+  font-style: normal;
+  background: linear-gradient(transparent 65%, rgba(255,229,191,0.78) 65%);
+  padding: 0 2px;
+  color: var(--text);
+}
+
+/* ─── ARUARU ─── */
+.aruaru-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.aruaru-card {
+  background: var(--warm-white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.aruaru-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.aruaru-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--asahi-mid), var(--leaf-mid));
+}
+.aruaru-card .aruaru-emoji { font-size: 28px; margin-bottom: 8px; }
+.aruaru-card h4 { font-size: 15px; color: var(--text); margin-bottom: 4px; }
+.aruaru-card p { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+.aruaru-card p em {
+  font-style: normal;
+  background: linear-gradient(transparent 65%, rgba(255,229,191,0.7) 65%);
+  padding: 0 2px;
+  color: var(--text);
+}
+
+/* ─── DISCOVERY（コア発見） ─── */
+.discovery-box {
+  background: linear-gradient(135deg, var(--warm-white), rgba(245,219,193,0.45));
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  border: 1px solid rgba(199,105,61,0.20);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+.discovery-box .lbl {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--asahi-deep);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.discovery-box h3 {
+  font-size: clamp(20px, 3vw, 26px);
+  color: var(--asahi-deep);
+  margin-bottom: 14px;
+  line-height: 1.55;
+}
+.discovery-box p {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 2;
+  margin-bottom: 12px;
+}
+.discovery-box p:last-child { margin-bottom: 0; }
+.discovery-box .pull {
+  font-family: 'Klee One', 'Noto Serif JP', serif;
+  font-size: 17px;
+  color: var(--text);
+  background: rgba(255,253,246,0.78);
+  padding: 16px 20px;
+  border-left: 3px solid var(--asahi-deep);
+  border-radius: 6px;
+  margin: 16px 0;
+  line-height: 1.95;
+}
+
+/* ─── KASEGU PROOF ─── */
+.kasegu-headline {
+  background: linear-gradient(135deg, rgba(255,229,191,0.40), rgba(199,224,206,0.30));
+  border-radius: var(--radius-lg);
+  padding: 30px 34px;
+  margin-bottom: 36px;
+  font-size: clamp(15px, 2.3vw, 18px);
+  line-height: 2.05;
+  color: var(--text);
+  text-align: center;
+  border: 1px solid rgba(199,105,61,0.22);
+}
+.kasegu-headline .strike {
+  color: var(--text-light);
+  text-decoration: line-through;
+  text-decoration-color: rgba(199,105,61,0.45);
+  text-decoration-thickness: 2px;
+  font-size: 0.93em;
+}
+.kasegu-headline .arrow {
+  font-family: 'Inter', sans-serif;
+  color: var(--asahi-mid);
+  font-size: 1.1em;
+  margin: 4px 0;
+  display: block;
+  font-weight: 700;
+}
+.kasegu-headline strong { color: var(--asahi-deep); font-weight: 700; }
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 32px;
+}
+.proof-card {
+  background: var(--warm-white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 24px;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-top: 4px solid var(--asahi-mid);
+}
+.proof-card:nth-child(2n) { border-top-color: var(--leaf-mid); }
+.proof-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.proof-coin {
+  position: absolute;
+  top: -16px;
+  right: 18px;
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, var(--asahi-deep), var(--leaf-deep));
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+.proof-card h4 {
+  font-size: 15.5px;
+  color: var(--asahi-deep);
+  margin-bottom: 10px;
+  line-height: 1.55;
+  padding-right: 36px;
+}
+.proof-card p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.9;
+  margin-bottom: 12px;
+}
+.proof-card p strong { color: var(--text); font-weight: 700; }
+.proof-card p em {
+  font-style: normal;
+  background: linear-gradient(transparent 65%, rgba(255,229,191,0.78) 65%);
+  padding: 0 2px;
+}
+.proof-words {
+  background: rgba(255,229,191,0.18);
+  border-left: 3px solid var(--asahi-mid);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  color: var(--text);
+  line-height: 1.85;
+  font-family: 'Klee One', 'Noto Serif JP', serif;
+}
+.kasegu-clincher {
+  background: linear-gradient(135deg, var(--warm-white), rgba(245,219,193,0.40));
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  border: 1px solid rgba(199,105,61,0.20);
+  box-shadow: var(--shadow-sm);
+}
+.kasegu-clincher p {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 2.1;
+  margin-bottom: 14px;
+}
+.kasegu-clincher p:last-child { margin-bottom: 0; }
+.kasegu-clincher strong { color: var(--asahi-deep); font-weight: 700; }
+.kasegu-clincher em {
+  font-style: normal;
+  color: var(--text);
+  font-weight: 500;
+  background: linear-gradient(transparent 65%, rgba(255,229,191,0.30) 65%);
+  padding: 0 2px;
+}
+.kasegu-light {
+  display: block;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(199,105,61,0.25);
+  font-family: 'Klee One', 'Noto Serif JP', serif;
+  font-size: clamp(16px, 2.5vw, 19px);
+  color: var(--asahi-deep);
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.85;
+}
+
+/* ─── MANUAL ─── */
+.manual-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+.manual-box {
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+.manual-box.joy {
+  background: rgba(255,229,191,0.20);
+  border: 1px solid rgba(232,165,122,0.30);
+}
+.manual-box.pain {
+  background: rgba(199,224,206,0.20);
+  border: 1px solid rgba(122,174,133,0.28);
+}
+.manual-box h3 { font-size: 16px; margin-bottom: 16px; }
+.manual-box.joy h3 { color: var(--asahi-deep); }
+.manual-box.pain h3 { color: var(--leaf-deep); }
+.manual-box ul { list-style: none; }
+.manual-box li {
+  font-size: 14px;
+  color: var(--text-muted);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  padding-left: 28px;
+  position: relative;
+  line-height: 1.85;
+}
+.manual-box li:last-child { border-bottom: none; }
+.manual-box.joy li::before  { content: '\f185'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: var(--asahi-mid); font-size: 12px; top: 12px; }
+.manual-box.pain li::before { content: '\f06c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: var(--leaf-mid); font-size: 12px; top: 12px; }
+
+/* ─── COMBOS ─── */
+.combo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.combo-card {
+  background: var(--warm-white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.combo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.combo-pair {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--asahi-mid);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.combo-card h4 { font-size: 15px; color: var(--text); margin-bottom: 8px; }
+.combo-card p { font-size: 13px; color: var(--text-muted); line-height: 1.9; }
+
+/* ─── QUOTES ─── */
+.quote-list { display: flex; flex-direction: column; gap: 16px; }
+.quote-card {
+  background: var(--warm-white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 28px 26px 64px;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s;
+}
+.quote-card:hover { transform: translateX(3px); }
+.quote-card::before {
+  content: '\201C';
+  font-family: 'Noto Serif JP', serif;
+  position: absolute;
+  left: 20px; top: 14px;
+  font-size: 56px;
+  color: var(--asahi-light);
+  line-height: 1;
+}
+.quote-card p {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--text);
+  font-weight: 400;
+  margin: 0;
+}
+.quote-card .from {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-light);
+  text-align: right;
+}
+.quote-card.pin {
+  background: linear-gradient(135deg, rgba(255,229,191,0.30), rgba(199,224,206,0.18));
+  border-color: rgba(199,105,61,0.25);
+}
+.quote-card.pin::before { color: var(--asahi-deep); }
+.quote-card em {
+  font-style: normal;
+  background: linear-gradient(transparent 65%, rgba(255,229,191,0.85) 65%);
+  padding: 0 2px;
+  font-weight: 500;
+}
+
+/* ─── STATE MAP ─── */
+.state-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+.state-cell {
+  background: var(--warm-white);
+  border: 2px dashed rgba(199,105,61,0.30);
+  border-radius: var(--radius);
+  padding: 20px 14px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.state-cell:hover { border-style: solid; transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.state-cell .em { font-size: 28px; display: block; margin-bottom: 8px; }
+.state-cell .lbl { font-size: 14px; font-weight: 700; color: var(--text); }
+.state-cell .sub { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+.state-conclusion {
+  background: linear-gradient(135deg, rgba(255,237,199,0.55), rgba(199,224,206,0.45));
+  border-radius: var(--radius-lg);
+  padding: 26px 30px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 2;
+}
+.state-conclusion strong { color: var(--asahi-deep); }
+
+/* ─── MOYA ─── */
+.moya-box {
+  background: linear-gradient(135deg, rgba(199,224,206,0.18), rgba(199,105,61,0.06));
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  border: 1px dashed rgba(122,174,133,0.32);
+}
+.moya-box .head {
+  font-size: 14px;
+  color: var(--leaf-deep);
+  font-weight: 700;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+}
+.moya-list { display: flex; flex-direction: column; gap: 10px; }
+.moya-item {
+  background: rgba(255,253,246,0.78);
+  padding: 14px 18px 14px 44px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.9;
+  position: relative;
+}
+.moya-item::before {
+  content: '\2601';
+  position: absolute;
+  left: 14px; top: 12px;
+  font-size: 18px;
+  color: var(--leaf-mid);
+  opacity: 0.85;
+}
+.moya-foot {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(122,174,133,0.28);
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.9;
+}
+.moya-foot strong { color: var(--leaf-deep); }
+
+/* ─── STEPS ─── */
+.step-list { display: flex; flex-direction: column; gap: 14px; }
+.step-item {
+  display: flex;
+  gap: 18px;
+  padding: 22px 24px;
+  background: var(--warm-white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform 0.3s, box-shadow 0.3s;
+  align-items: flex-start;
+}
+.step-item:hover { transform: translateX(4px); box-shadow: var(--shadow-sm); }
+.step-num {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--asahi-mid), var(--asahi-deep));
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+.step-text h4 {
+  font-size: 15.5px;
+  color: var(--text);
+  margin-bottom: 4px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 700;
+}
+.step-text p { font-size: 13px; color: var(--text-muted); line-height: 1.85; }
+
+/* ─── BRANCH BUTTON ─── */
+.branch-card {
+  background: linear-gradient(135deg, rgba(199,105,61,0.12), rgba(122,174,133,0.10));
+  border: 1px solid rgba(199,105,61,0.25);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-top: 30px;
+  text-align: center;
+}
+.branch-card h3 { font-size: 18px; color: var(--asahi-deep); margin-bottom: 10px; }
+.branch-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.9; margin-bottom: 18px; }
+.branch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--asahi-deep), var(--leaf-deep));
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: var(--shadow-md);
+  transition: transform .2s, box-shadow .2s;
+}
+.branch-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+/* ─── MESSAGE ─── */
+.message-box {
+  background: linear-gradient(135deg, var(--asahi-deep), var(--leaf-deep));
+  border-radius: var(--radius-lg);
+  padding: 52px 40px;
+  color: #fff;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.message-box::before {
+  content: '\1F305';
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--warm-bg);
+  padding: 0 14px;
+  font-size: 28px;
+}
+.message-box h3 { font-size: 20px; margin-bottom: 22px; color: #FFEDC7; }
+.message-box p { font-size: 15px; line-height: 2.15; opacity: 0.95; }
+.message-box .sign { margin-top: 24px; font-size: 13px; opacity: 0.75; font-family: 'Klee One', serif; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--asahi-deep);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 40px 24px;
+  font-size: 13px;
+}
+footer .brand {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+/* ─── ANIMATIONS ─── */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in.is-visible { opacity: 1; transform: translateY(0); }
+.stagger > * { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: none; }
+.stagger.is-visible > *:nth-child(2) { transition-delay: 0.12s; opacity: 1; transform: none; }
+.stagger.is-visible > *:nth-child(3) { transition-delay: 0.19s; opacity: 1; transform: none; }
+.stagger.is-visible > *:nth-child(4) { transition-delay: 0.26s; opacity: 1; transform: none; }
+.stagger.is-visible > *:nth-child(5) { transition-delay: 0.33s; opacity: 1; transform: none; }
+.stagger.is-visible > *:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: none; }
+.stagger.is-visible > *:nth-child(7) { transition-delay: 0.47s; opacity: 1; transform: none; }
+.stagger.is-visible > *:nth-child(8) { transition-delay: 0.54s; opacity: 1; transform: none; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .what-grid, .manual-two, .aruaru-grid, .combo-grid, .proof-grid { grid-template-columns: 1fr; }
+  .sun-divider { height: 140px; }
+  section { padding: 60px 0; }
+  .message-box { padding: 36px 24px; }
+  .shitsu-block { padding: 26px 22px; }
+  .shitsu-head { gap: 12px; flex-wrap: wrap; }
+  .shitsu-rank { width: 48px; height: 48px; font-size: 18px; }
+  .shitsu-name h3 { font-size: 18px; }
+  .quote-card { padding: 22px 20px 22px 54px; font-size: 14px; }
+  .quote-card::before { font-size: 44px; left: 16px; top: 10px; }
+  .discovery-box { padding: 28px 22px; }
+  .discovery-box .pull { font-size: 15px; padding: 14px 16px; }
+  .float-toc .toc-body { width: calc(100vw - 60px); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-sun"></div>
+    <div class="hero-label">STRENGTHSFINDER 34 REVIEW · 2026.05.23</div>
+    <h1 class="hero-name"><span>ゆかさん</span>のトリセツ</h1>
+    <p class="hero-tagline">「今日が一番若い日」を合言葉に、<br><strong>働く人の朝に、灯をともす保健師</strong>。</p>
+    <p class="hero-sub">21年の現場と、独立3年目の朝。<br>「自分を好きにならなくていい、自分と仲良くなろう」が決まった日に</p>
+  </div>
+  <div class="hero-scroll"><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<!-- ═══ FLOATING TOC ═══ -->
+<details class="float-toc">
+  <summary><i class="fas fa-list-ul"></i></summary>
+  <div class="toc-body">
+    <h5>📖 目次 — Contents</h5>
+    <ol>
+      <li><a href="#about"><span class="num">01</span>ゆかさんって、どんな人？</a></li>
+      <li><a href="#discovery"><span class="num">02</span>セッションで立ち上がった発見</a></li>
+      <li><a href="#top5"><span class="num">03</span>上位5資質、ひとつずつ</a></li>
+      <li><a href="#sub5"><span class="num">04</span>6〜10位も、ちゃんと働いてる</a></li>
+      <li><a href="#aruaru"><span class="num">05</span>ゆかさんあるある</a></li>
+      <li><a href="#kasegu"><span class="num">06</span>稼ぐ力は、もう動いている</a></li>
+      <li><a href="#manual"><span class="num">07</span>ゆかさんの取扱説明書</a></li>
+      <li><a href="#combo"><span class="num">08</span>資質コンボ</a></li>
+      <li><a href="#voice"><span class="num">09</span>あなたが言ってた言葉</a></li>
+      <li><a href="#state"><span class="num">10</span>いま、いる場所</a></li>
+      <li><a href="#moya"><span class="num">11</span>そっと置く雲</a></li>
+      <li><a href="#steps"><span class="num">12</span>次の一歩</a></li>
+      <li class="toc-divider"></li>
+      <li><a href="#branch"><span class="num">🌿</span>資質図解ブランチへ</a></li>
+      <li><a href="#message"><span class="num">💌</span>ゆかさんへの手紙</a></li>
+    </ol>
+  </div>
+</details>
+
+<!-- ═══ 01 ABOUT YOU ═══ -->
+<section id="about">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">ABOUT YOU</div>
+      <h2 class="section-title">ゆかさんって、どんな人？</h2>
+      <p class="section-lead">セッション中の言葉と、ストレングスファインダー34の結果から見えてきた、ゆかさんの輪郭です。</p>
+    </div>
+
+    <div class="what-grid fade-in">
+      <div class="what-text">
+        <p>ゆかさんは、<strong>「今日が一番若い日」を本気で生きている保健師</strong>です。看護師として急性期7年、訪問看護11年、地域保健師3年、そして産業保健師4年目。21年の現場のあと、2025年に開業保健師として独立した方。</p>
+
+        <p>上位10資質を並べると、ある特徴がはっきり浮かびます。<strong>人間関係構築力4 × 戦略的思考力4 が同点トップ</strong>。"<em>みんなが幸せであってほしい</em>" と "<em>新しいことを取り込むのに、不安よりワクワクが先に出る</em>" が、ゆかさんの中で同じ強さで走っている並びです。</p>
+
+        <p>そこに <strong>1位ポジティブ・2位適応性</strong> が乗って、「めっちゃへこむけど、最終なんとかなるって思える」「死んでない、生きてる、最終そこに持っていける」という、<em>20年現場を続けてきた根拠のない自信</em>が出来上がっています。</p>
+
+        <p>そして7位最上志向。「<em>自分たちにあったいい形の会社にしたい。普通のやつじゃなくて、二人の特性を合わせた、最大限活かせる会社</em>」。2026年7月、合同会社設立予定。"<em>2年で今の年収に並ぶ</em>"を本気で言える人です。</p>
+      </div>
+      <div class="what-card">
+        <div class="big-icon">🌅</div>
+        <h3>ゆかさん（山本ゆかこさん）</h3>
+        <p class="role">産業保健師／開業保健師<br>兵庫県・神戸生まれ阪神間在住</p>
+        <div class="meta">
+          <span>👩‍⚕️ 看護師20年（急性期7・訪問看護11・地域3）</span>
+          <span>🌿 2022年 産業保健師へ転換／2025年 独立</span>
+          <span>🌅 合言葉「今日が一番若い日！」</span>
+          <span>🏢 2026年7月 合同会社設立予定</span>
+          <span>🎯 2年で年収を事業で並ばせる目標</span>
+          <span>🪻 阪神・淡路大震災経験／訪問看護で先輩を看取った原点</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="domain-summary fade-in">
+      <h3>4つの灯（上位10資質ベース）</h3>
+      <div class="domain-bar">
+        <div class="domain-seg rel">人間関係構築力 × 4</div>
+        <div class="domain-seg str">戦略的思考力 × 4</div>
+        <div class="domain-seg infl">影響力 × 1</div>
+        <div class="domain-seg exec">実行力 × 1</div>
+      </div>
+      <div class="domain-legend">
+        <span><i class="dot rel"></i> 人間関係構築力（ポジティブ・適応性・共感性・成長促進）</span>
+        <span><i class="dot str"></i> 戦略的思考力（収集心・未来志向・学習欲・着想）</span>
+        <span><i class="dot infl"></i> 影響力（最上志向）</span>
+        <span><i class="dot exec"></i> 実行力（達成欲）</span>
+      </div>
+      <div class="domain-note">
+        <strong>人間関係構築力4 × 戦略的思考力4 が同点トップ</strong>。これは <strong>「人を信じる力」と「学び続ける力」が同じ強さでエンジンになっている人</strong> のサイン。<br><br>
+        産業保健師という仕事は、まさにこの配線そのもの。<strong>働く人の前向きさを引き出しながら、新しい知識（AI・補助金・カウンセリング・栄養学）を吸収して、現場で形にする</strong>動きが、ゆかさんの中ではぜんぶ自然なリズムです。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIVIDER ═══ -->
+<div class="sun-divider">
+  <div class="quote">「今日が一番若い日」<br>— ゆかさんが20年動き続けてこられた、たったひとつの呪文</div>
+</div>
+
+<!-- ═══ 03 DISCOVERY ═══ -->
+<section id="discovery">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">CORE DISCOVERY</div>
+      <h2 class="section-title">セッションで立ち上がった、3つの発見</h2>
+      <p class="section-lead">朝のセッションで、ゆかさん自身の言葉から立ち上がった「これ、自分の場所かも」の瞬間。</p>
+    </div>
+
+    <div class="discovery-box fade-in">
+      <div class="lbl">CORE 01 — "自分を好きになる" より、もう少し近い距離</div>
+      <h3>「自分を好きになる」じゃなくて「自分と仲良くなる」がしっくり来た</h3>
+      <p>自己啓発本で「自分を好きになろう」を何度も読んで、何度も挫折してきたゆかさん。受け入れるところまでは行けたけど、「好きになる」までは届かなかった。そこにふっと出てきた言葉が、<strong>「自分と仲良くなる」</strong>。</p>
+      <div class="pull">「好きになるって、めっちゃハードル高いと思うんですよ。自分を愛せる、愛しそう、みたいな。無理と思う。だって嫌なとこしか今思い浮かばないしって思ってた。<br>"自分と仲良くなる"っていう言葉が、今すごいしっくり来たな。」</div>
+      <p>好きにならなくていい、けど、放っておかなくていい。<strong>「資質に名前をつけて、隣で暮らす」</strong> の距離感が、ゆかさんが探していたちょうどいい温度でした。</p>
+    </div>
+
+    <div class="discovery-box fade-in" style="margin-top:24px;">
+      <div class="lbl">CORE 02 — 二人で同時に、降りてきた事業</div>
+      <h3>「保健師のAI人材を育てる」が、10秒で着火した</h3>
+      <p>セッション終盤、おけちゃんが「AIと保健師さんのやり方を、ケースにしたら面白い」と振った瞬間、ゆかさんが秒で返した言葉。</p>
+      <div class="pull">「<em>私たちの保健師のAI人材を育てる</em>、それめっちゃいけますよ！<br><em>めっちゃいけますよね！ ニーズしかないから、ニーズしかない！</em> それやりましょう！」</div>
+      <p>そのまま具体策まで一気に出てきた：<em>「まず私らでちょっと試してもらって、こういうところに仕事で使えるんやっていう、保健師の仕事の使いどころをどんどん教えてもらって」</em><br>これは「これあり」じゃなくて、<strong>「これやろう」モードに10秒で入った瞬間</strong>。新規事業の輪郭が、二人のあいだで同時に立ち上がりました。</p>
+    </div>
+
+    <div class="discovery-box fade-in" style="margin-top:24px;">
+      <div class="lbl">CORE 03 — 軸になっている、娘の一言</div>
+      <h3>「お母さんは今のままでいいやん」</h3>
+      <p>コロナ禍でバーンアウト、家でワンワン泣いていた時期。リセットしたい、消えたい、と思っていたゆかさんに、当時小学4-5年生の娘さんがふっと言った一言。</p>
+      <div class="pull">「<em>お母さんは今のままでいいやん、それで十分やん</em>って言ってくれたんですよ。<br>それが、私の今の支え。"私、今のままでいいやん"って。それを娘に言われたんです。」</div>
+      <p>それまで看護師としては「<em>申し上げなきゃ</em>」と力が入っていた。でもこの一言を境に、<strong>面談でも「あなたはあなたで、十分やん」と返せるようになった</strong>。<br>ゆかさんが面談・コーチング・産業保健の現場で生み出している温度の原点は、ここに眠っています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIVIDER ═══ -->
+<div class="sun-divider">
+  <div class="quote">「自分を好きになる」じゃなくていい。<br>名前をつけて、隣で暮らすぐらいで、ちょうどいい。</div>
+</div>
+
+<!-- ═══ 04 TOP 5 ═══ -->
+<section id="top5">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">TOP 5 STRENGTHS</div>
+      <h2 class="section-title">ゆかさんの上位5資質、ひとつずつ。</h2>
+      <p class="section-lead">それぞれの資質がどんな手ざわりで、ゆかさんの中でどう動いているか。セッションで出てきた本人の言葉と一緒に並べました。</p>
+    </div>
+
+    <!-- 1. ポジティブ -->
+    <div class="shitsu-block is-top3 fade-in">
+      <div class="shitsu-head">
+        <div class="shitsu-rank rel">1</div>
+        <div class="shitsu-name">
+          <h3>ポジティブ<span class="metaphor-tag">☀️ 太陽</span></h3>
+          <div class="meta">POSITIVITY ／ 人間関係構築力</div>
+        </div>
+        <div class="shitsu-domain rel">人間関係</div>
+      </div>
+      <div class="shitsu-tokucho">
+        場の空気をやわらかくし、その場にいるみんなの前向きさを引き出す資質。ゆかさんの場合、<strong>「同じ働くなら楽しく明るく働きたい」「みんなが幸せになってほしい」が勝手に動いてしまう</strong>のが特徴。意識して笑顔を作っているわけじゃなく、それが好きだからやってる。20年の看護師生活を続けてこれた根っこの灯。
+      </div>
+      <div class="shitsu-episode">
+        <div class="ep-label">YUKA'S EPISODE</div>
+        <div class="ep-text">
+          ゆかさん本人の言葉：「<em>仕事でもやっぱりみんなが幸せになってほしいんですよ。同じ働くなら楽しく明るく働きたいから。ネタ提供するとか、常にみんなが笑えるようなことは、別に意識してるわけじゃない、それが好きだからやってる</em>」<br><br>
+          ただし、本人は「<em>めっちゃ悩むしへこむし、ネガティブな面めっちゃある</em>」と即座に補足。<strong>「悩まない人」じゃなくて、「みんなを楽しく明るくしたい」が止まらない人</strong>。落ち込んだあとに「ネタ見できる」「最終なんとかなる」と立ち戻れるのも、この資質の働き方です。
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 適応性 -->
+    <div class="shitsu-block is-top3 fade-in">
+      <div class="shitsu-head">
+        <div class="shitsu-rank rel">2</div>
+        <div class="shitsu-name">
+          <h3>適応性<span class="metaphor-tag">≈ 川の流れ</span></h3>
+          <div class="meta">ADAPTABILITY ／ 人間関係構築力</div>
+        </div>
+        <div class="shitsu-domain rel">人間関係</div>
+      </div>
+      <div class="shitsu-tokucho">
+        「<strong>今ここ</strong>」を大切にする資質。長期計画でガチガチに縛るより、その日その場の状況で動ける柔らかさ。訪問看護11年は「家ごとに状況が違う」の連続だったし、急性期では緊急対応の連続だった。<strong>「最終なんとかなるかって、いつも思えちゃう」</strong>がこの資質の声です。
+      </div>
+      <div class="shitsu-episode">
+        <div class="ep-label">YUKA'S EPISODE</div>
+        <div class="ep-text">
+          「<em>一旦めっちゃへこみます、トラブルあった時。でも後でネタ見できる、必ずって感じ。なんとかなるかって、いつも最終思えちゃう</em>」<br><br>
+          「<em>過去の根拠のない自信みたいな。なんとかなってきたっていうよりも</em>」<br><br>
+          バーンアウト後の立ち直りの根っこも、ここ：「<em>私死んでないし、死なへんし、病気じゃないし、私生きてるし。最終そこに持っていけるんですよね。最悪の場面、死と間近にいたから、生きてるしなんとかなると思ってます</em>」。<strong>訪問看護で命を看取ってきた経験が、いちばん深い「適応性の根拠」になっています。</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 収集心 -->
+    <div class="shitsu-block is-top3 fade-in">
+      <div class="shitsu-head">
+        <div class="shitsu-rank str">3</div>
+        <div class="shitsu-name">
+          <h3>収集心<span class="metaphor-tag">📚 図書館</span></h3>
+          <div class="meta">INPUT ／ 戦略的思考力</div>
+        </div>
+        <div class="shitsu-domain str">戦略思考</div>
+      </div>
+      <div class="shitsu-tokucho">
+        情報・経験・知識を集めて、<strong>必要な誰かに渡すために</strong>蓄えておく資質。ゆかさんの場合、<strong>「面談やセミナーで活きる形」</strong>に変換するパターンが特徴。栄養カウンセラー30万円も、結果として今の保健指導の素材になっている。<em>急性期→訪問→地域→産業保健</em>のキャリアが、すべて「集めてきた21年」そのもの。
+      </div>
+      <div class="shitsu-episode">
+        <div class="ep-label">YUKA'S EPISODE</div>
+        <div class="ep-text">
+          「<em>今、面談とかセミナーとかするから、いろいろアンテナ張って、あくまでも資料を使えそうっていうのは置いていって、また自分のセミナーで話そうとか</em>」<br><br>
+          栄養カウンセラーの話も：「<em>私も栄養カウンセラーを取るのに30万かけたんですよ、それも"頭おかしいな"って。みんなに"えー"ってドン引きされる</em>」「<em>でもそこで得た知識が今の保健指導とかセミナーのベースになってる</em>」<br><br>
+          <strong>収集 → 自分の中で熟成 → 必要な誰かに渡す</strong>の流れが、ゆかさんの稼ぎ口の本体構造になっています。
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 共感性 -->
+    <div class="shitsu-block fade-in">
+      <div class="shitsu-head">
+        <div class="shitsu-rank rel">4</div>
+        <div class="shitsu-name">
+          <h3>共感性<span class="metaphor-tag">🌡 心の温度計</span></h3>
+          <div class="meta">EMPATHY ／ 人間関係構築力</div>
+        </div>
+        <div class="shitsu-domain rel">人間関係</div>
+      </div>
+      <div class="shitsu-tokucho">
+        言葉になる前の気持ちを察知する資質。<strong>「人をケアする立場の人」の独特のしんどさ</strong>を、自分の感覚として分かってあげられるのが特徴です。ただし、看護師時代は <em>「申し上げなきゃ」</em> と力が入りすぎて消耗していた時期もあった。娘さんの一言を境に「ただ受け止めて返す」モードに切り替わったのが大きな転換点。
+      </div>
+      <div class="shitsu-episode">
+        <div class="ep-label">YUKA'S EPISODE</div>
+        <div class="ep-text">
+          「<em>わかる、人をケアする立場の人。独特のしんどさだったり、やりがいとのなんか攻め合い</em>」<br><br>
+          娘さんの「お母さんは今のままでいいやん」の話から、ゆかさん自身の変化が言葉になった瞬間：「<em>それまで看護師してた時は、その人にプラスになる何かを"申し上げなきゃ"みたいなのがあったけど、それからは力が抜けて、今は面談でも"あなたはあなたで、十分やん"って言ってあげれるようになった</em>」<br><br>
+          <strong>共感性は使い方を変えると、消耗装置ではなく、温度を渡す装置になる。</strong>ゆかさんはこの転換を、もう自分の中で完了させています。
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. 成長促進 -->
+    <div class="shitsu-block fade-in">
+      <div class="shitsu-head">
+        <div class="shitsu-rank rel">5</div>
+        <div class="shitsu-name">
+          <h3>成長促進<span class="metaphor-tag">🌱 コーチ</span></h3>
+          <div class="meta">DEVELOPER ／ 人間関係構築力</div>
+        </div>
+        <div class="shitsu-domain rel">人間関係</div>
+      </div>
+      <div class="shitsu-tokucho">
+        相手の可能性に光を当て、「楽しんでほしい・怖がってほしくない」が動機になる資質。ゆかさんの場合、<strong>「教えるのが好きだから教える」じゃなくて、「学ぶことを楽しんでもらいたいから教える」</strong>のが特徴。看護実習生に「看護師って楽しそう」と思ってもらいたい教育をやってきた人。
+      </div>
+      <div class="shitsu-episode">
+        <div class="ep-label">YUKA'S EPISODE</div>
+        <div class="ep-text">
+          「<em>実習で学生さんたちめっちゃいじめられたりとか、私そういうことが大嫌いだから、実習に来たからには"看護師楽しそう"と思ってもらいたいっていう教育をちょっとやってたんですよ</em>」<br><br>
+          「<em>どうやったらその人に伝わるんだろうとか。そこもやっぱり"楽しい"が入ってきて、楽しんでほしいって思うんですよ、学ぶというか</em>」<br><br>
+          そして周りからの評価：「<em>すごく評価される、教えるの上手だねとか</em>」<br><br>
+          <strong>「保健師のAI人材を育てる」事業の根っこ</strong>は、ぜんぶこの資質から立ち上がっています。教えるんじゃなく、楽しんでもらう設計。
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ DIVIDER ═══ -->
+<div class="sun-divider">
+  <div class="quote">「ニーズしかない！ それやりましょう！」<br>— 保健師×AI、二人で同時に降ってきた事業</div>
+</div>
+
+<!-- ═══ 05 6-10 ═══ -->
+<section id="sub5">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">6 - 10</div>
+      <h2 class="section-title">続く5資質も、ちゃんと働いてる</h2>
+      <p class="section-lead">トップ5の影に見えるけど、6〜10位がゆかさんの「ワクワク」「磨く」「学び」「ひらめき」「やりきる」を裏で支えています。</p>
+    </div>
+
+    <div class="shitsu-mini-grid stagger">
+      <div class="shitsu-mini">
+        <div class="shitsu-mini-head">
+          <div class="shitsu-mini-rank str">6</div>
+          <h4>未来志向 / FUTURISTIC</h4>
+        </div>
+        <div class="meta-mini">🔭 望遠鏡</div>
+        <p>過去より「ここからどうする？」に頭が向く資質。「新しいことを取り込むのに、不安よりワクワクが先に出る」がそのまま声。</p>
+        <div class="ep-mini">→ 「<em>新しいことを取り込むのに、不安よりかはワクワクが先に出るタイプだなと思ってました</em>」「今AI知ったから、めっちゃワクワクする」</div>
+      </div>
+      <div class="shitsu-mini">
+        <div class="shitsu-mini-head">
+          <div class="shitsu-mini-rank infl">7</div>
+          <h4>最上志向 / MAXIMIZER</h4>
+        </div>
+        <div class="meta-mini">🛠 職人</div>
+        <p>「ふつう」で満足せず「自分たちらしい形」を求める資質。40代未経験で産業保健師に転換し、2025年独立した動機がここ。</p>
+        <div class="ep-mini">→ 「<em>自分たちにあったいい形の会社にしたいんですよ。普通のやつじゃなくて、二人の特性、それを合わせた、そこが最大限活かせる会社。無理をしたくない</em>」</div>
+      </div>
+      <div class="shitsu-mini">
+        <div class="shitsu-mini-head">
+          <div class="shitsu-mini-rank str">8</div>
+          <h4>学習欲 / LEARNER</h4>
+        </div>
+        <div class="meta-mini">💧 スポンジ</div>
+        <p>学ぶプロセス自体が好物。栄養カウンセラー30万・AI・補助金、未知の領域に飛び込めるスポンジ気質。</p>
+        <div class="ep-mini">→ 「<em>栄養カウンセラーを取るのに30万かけたんですよ、それも"頭おかしいな"って。みんなに"えー"ってドン引きされる</em>」「でも今の保健指導のベース」</div>
+      </div>
+      <div class="shitsu-mini">
+        <div class="shitsu-mini-head">
+          <div class="shitsu-mini-rank str">9</div>
+          <h4>着想 / IDEATION</h4>
+        </div>
+        <div class="meta-mini">💡 発明家</div>
+        <p>離れた情報を結びつけてアイデアを生む資質。保健師×AI×補助金の組み合わせを楽しめている時点で、もう発動中。</p>
+        <div class="ep-mini">→ 「<em>今の職場でも、大体私が全部アイディアだったんですよ。でも実行力がないから、誰かやってるんじゃないですか、一人で実行できない</em>」</div>
+      </div>
+      <div class="shitsu-mini">
+        <div class="shitsu-mini-head">
+          <div class="shitsu-mini-rank exec">10</div>
+          <h4>達成欲 / ACHIEVER</h4>
+        </div>
+        <div class="meta-mini">🏃 マラソンランナー</div>
+        <p>今日の一歩をやりきる資質。トゥードゥリストを消す快感に支えられて、看護師20年・産業保健師4年を継続。</p>
+        <div class="ep-mini">→ 「<em>職場のパソコンを仕事始まる前に必ず今日やること、ポストイットに書き出すんですよ。それを消す、これに何か快感を覚えるんです</em>」</div>
+      </div>
+    </div>
+
+    <!-- ブランチページ誘導カード -->
+    <div class="branch-card fade-in" id="branch">
+      <h3>🌿 もっと資質を深掘りするブランチページ</h3>
+      <p>ユーザー作成PDF「001ストレングス資質図解ガイド」をベースに、ゆかさんのTOP10ぜんぶに「メタファー＋PDF解説＋ゆかさん接続＋セッションで聞いたこと」を1枚ずつ展開した別ページです。気になる資質を深く読みたい時にどうぞ。</p>
+      <a class="branch-btn" href="branch.html">
+        <i class="fas fa-seedling"></i> ゆかさん 資質図解ブランチへ進む
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 06 ARUARU ═══ -->
+<section id="aruaru">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">YUKA ARUARU</div>
+      <h2 class="section-title">ゆかさんあるある</h2>
+      <p class="section-lead">セッション中、「<em>これ私や</em>」って何回か出てきたパターン。ぜんぶ、上位資質の自然な合わせ技です。</p>
+    </div>
+
+    <div class="aruaru-grid stagger">
+      <div class="aruaru-card">
+        <div class="aruaru-emoji">📔</div>
+        <h4>手帳、1ヶ月で書かなくなる</h4>
+        <p>「<em>手帳とかで計画立てるんですけど、もう1ヶ月で終わってる。買うときが一番わくわくする</em>」。着想 × 達成欲。<strong>計画より「今ここ」で動く</strong>、適応性2位の人の典型あるある。</p>
+      </div>
+      <div class="aruaru-card">
+        <div class="aruaru-emoji">💪</div>
+        <h4>ジム、辞めては続けて、辞めては続けて</h4>
+        <p>「<em>コツコツ言える人を、決めたことをめっちゃ恨むしな</em>」。適応性 × 達成欲。コツコツが向いてないんじゃなく、<strong>義務感より楽しさで動く回路</strong>になっている、というだけのこと。</p>
+      </div>
+      <div class="aruaru-card">
+        <div class="aruaru-emoji">📝</div>
+        <h4>テスト前だけ全集中、普段はゼロ</h4>
+        <p>「<em>テスト前とかめっちゃやるんですよ、めっちゃ集中して一人もぐもぐって。でも普段コツコツやるかというと一切しない</em>」。着想 × 適応性 × 達成欲のキラリ型。</p>
+      </div>
+      <div class="aruaru-card">
+        <div class="aruaru-emoji">🌍</div>
+        <h4>英語ドリル買って即挫折、アプリも即挫折</h4>
+        <p>「<em>ドリル買っては挫折、アプリ入れては挫折なの。コツコツできない、どうしたらいいの、誰か助けて</em>」。<strong>1人で続けるより、誰かと一緒の場で「楽しんで学ぶ」</strong>のが向いている合図。</p>
+      </div>
+      <div class="aruaru-card">
+        <div class="aruaru-emoji">🤝</div>
+        <h4>面談で「あなたはあなたで、十分やん」と返せる</h4>
+        <p>娘さんの一言を境に変わった、ゆかさんの面談スタイル。共感性 × 成長促進。<strong>「申し上げなきゃ」を手放した今が、ゆかさん自身が一番好きな自分</strong>のはず。</p>
+      </div>
+      <div class="aruaru-card">
+        <div class="aruaru-emoji">🛌</div>
+        <h4>休んでる自分が許せない</h4>
+        <p>「<em>休んでると罪悪感があって、何もやってない自分がまだ嫌なんで。なんで私今日なんもしてへんの</em>」。達成欲＋成長促進の裏面。<strong>休むことを「次に動くための投資」</strong>と意味づけ直すと楽になる。</p>
+      </div>
+      <div class="aruaru-card">
+        <div class="aruaru-emoji">🌀</div>
+        <h4>過去のことを覚えてない／旦那と価値観が合わない</h4>
+        <p>「<em>旦那はいつも過去のことを言ってくる、それが一番嫌</em>」「<em>全く覚えてないんですよ、ごめんなさい、ほんま覚えてない</em>」。<strong>適応性 × 未来志向 × 原点思考最下位</strong>の合わせ技。過去より「今と未来」で生きてる証。</p>
+      </div>
+      <div class="aruaru-card">
+        <div class="aruaru-emoji">✨</div>
+        <h4>「できる人感」で得して生きてきた</h4>
+        <p>「<em>大して賢くもないのに、すごくできる人に見られる。これで得して生きてきてるんですよ</em>」。ポジティブ × 共感性 × 最上志向の表出。<strong>場の空気を読んで、相手に届く言葉を選べる能力</strong>がそのまま信頼の貯金になっている。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIVIDER ═══ -->
+<div class="sun-divider">
+  <div class="quote">「私死んでないし、生きてるし、最終そこに持っていけるんですよね」<br>— 訪問看護11年で看取ってきた人にしか言えない、根っこの強さ</div>
+</div>
+
+<!-- ═══ 07 KASEGU PROOF ═══ -->
+<section id="kasegu">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">YOUR EARNING POWER</div>
+      <h2 class="section-title">「稼ぐ力」は、もう21年動いている</h2>
+      <p class="section-lead">「2年で今の年収に並ぶ」と言い切ったゆかさん。これは大きな目標だけど、<strong>「ゼロから始める」じゃなくて「すでにあるものに名前をつけて並べ直す」だけ</strong>。21年の現場で、ゆかさんはもう、十分すぎる稼ぎを生み出してきています。</p>
+    </div>
+
+    <div class="kasegu-headline fade-in">
+      <span class="strike">稼ぐ力 ＝ ゼロから新しい商品を作って、知らない人に売る</span>
+      <span class="arrow">↓ 書き換えてみる</span>
+      <strong>稼ぐ力 ＝ 21年で集めた現場知を、必要な人へ届く形に整え直すこと。</strong>
+    </div>
+
+    <div class="proof-grid stagger">
+      <div class="proof-card">
+        <div class="proof-coin">¥</div>
+        <h4>看護師として20年、ちゃんと給料を稼いできた事実</h4>
+        <p>急性期7年・訪問看護11年・地域保健師3年。<strong>20年続けてきた = 社会から20年稼ぎ続けた</strong>ということ。「<em>OLさんと言われても悪いわけじゃない</em>」と本人も自覚済み。これは21年分の信用残高です。</p>
+        <div class="proof-words">「ずっと看護師しててしんどかったんですよ。それで20年、何がしんどいかわからないし」</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-coin">¥</div>
+        <h4>40代未経験で「狭き門」産業保健師に飛び込んだ</h4>
+        <p>「<em>もう最後の最後を受けたのが、うちの今の会社やったんですよ、あきらめずに</em>」。<strong>めっちゃ落ちた、しんどかった、でも折れずに勝ち取った</strong>のが今のキャリア基盤。これだけで「稼ぐ力を新しい場所で証明できる人」と立証済み。</p>
+        <div class="proof-words">「めっちゃ採用試験落ちるし、もうちょっとね、人生の中で一番しんどかった」</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-coin">¥</div>
+        <h4>大企業健診センターで「絶対マイナスじゃない」と戦った</h4>
+        <p>プロのプライドが高い場所でも、<strong>自分のキャリアを商品として価値づけして戦えた</strong>事実。これは「自分の経験を稼ぎに変える力」が既にあることの何よりの証拠。</p>
+        <div class="proof-words">「私の今までのキャリアと今からやろうとすることはちょっと違うけど、絶対マイナスではないはずだから、この人たちにできて、私にできないことはないはずやねん」</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-coin">¥</div>
+        <h4>面談で「来てよかった」「相談してよかった」と言われ続けている</h4>
+        <p>「<em>面談した後に、今日話せてよかったって言ってもらえると、相談してよかったって言ってもらえると、結構嬉しいですよね</em>」。<strong>これ、面談単価ビジネスの「サービス提供価値」が既に立証されている</strong>サイン。AI人材育成事業のベース。</p>
+        <div class="proof-words">「相談してよかったですって言ってもらえると、結構嬉しいですよね」</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-coin">¥</div>
+        <h4>新人・実習生に「教えるのが上手」と評価され続けてきた</h4>
+        <p>「<em>すごく評価される、教えるの上手だねとか</em>」。看護師実習指導・新人教育・産業保健面談で、<strong>「教える」というスキルだけで20年現場の信頼を得てきた</strong>。AI人材育成事業の「商品力」は、もう手の中にある。</p>
+        <div class="proof-words">「どうやったらその人に伝わるんだろうとか。そこもやっぱり"楽しい"が入ってきて、楽しんでほしいって思うんですよ」</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-coin">¥</div>
+        <h4>栄養カウンセラー30万円が、今の保健指導の素地</h4>
+        <p>「<em>30万かけたんですよ、それも"頭おかしいな"って、みんなにドン引きされる</em>」。当時の周りには分からなかったけど、<strong>今の保健指導とセミナーのベースになっている知識</strong>。学習欲8位は、ちゃんと回収されています。</p>
+        <div class="proof-words">「そこで得た知識が今の保健指導とかセミナーのベースになってる」</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-coin">¥</div>
+        <h4>阪神・淡路大震災を生き延びた経験、訪問看護で看取ってきた経験</h4>
+        <p>「<em>私死んでないし、死なへんし、私生きてるし。最終そこに持っていけるんですよね</em>」。<strong>誰も真似できない実体験</strong>。「働く中で命を落とす人をなくしたい」というミッションの背骨。コンテンツとしての重みは、他のどんな保健師にも作れない。</p>
+        <div class="proof-words">「最悪の場面、死と間近にいたり、病気と間近にいたから、生きてるしなんとかなると思ってます」</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-coin">¥</div>
+        <h4>「保健師のAI人材を育てる」事業の素地、ぜんぶ揃ってる</h4>
+        <p>21年の現場知 + 教える力 + AI への学習欲 + 補助金理解。<strong>セッション中に二人で「これいける」と即決した事業の素材は、すでにゆかさんの手の中にある</strong>。あとは、合同会社設立のタイミングで一気に並べるだけ。</p>
+        <div class="proof-words">「私たちの保健師のAI人材を育てる、それめっちゃいけますよ！ ニーズしかないから、ニーズしかない！」</div>
+      </div>
+    </div>
+
+    <div class="kasegu-clincher fade-in">
+      <p>「2年で今の年収に並ぶ」って大きな目標。でも、<strong>ゆかさんはゼロから稼ぎ始めるんじゃなくて、もう21年「人の命と健康」で稼ぎ続けてきた人</strong>。あとは、いま手の中にある経験を「合同会社」「保健師×AI」「補助金活用」の3点で並べ直すだけ。</p>
+      <p>事業を作るんじゃない。<em>すでに自分の中にあるものに、名前をつけて、必要な誰かへ届けられる形にする</em>。それが、最上志向7位 × 成長促進5位 × 学習欲8位 × 着想9位の、いちばん自然な「稼ぐ動き」です。</p>
+      <span class="kasegu-light">🌅 「今日が一番若い日」は、ゆかさんが自分の稼ぐ力を見つけ直す呪文。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 08 MANUAL ═══ -->
+<section id="manual">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">YOUR MANUAL</div>
+      <h2 class="section-title">ゆかさんの取扱説明書</h2>
+      <p class="section-lead">エンジンが気持ちよく回る環境と、消耗してしまう環境。<strong>バーンアウト経験者だからこそ、この線引きが大事</strong>。両方を知っておくと、自分を扱いやすくなります。</p>
+    </div>
+
+    <div class="manual-two fade-in">
+      <div class="manual-box joy">
+        <h3><i class="fas fa-sun"></i> こうするとゆかさんは満たされる</h3>
+        <ul>
+          <li>「楽しい」「ワクワク」「面白い」を判断軸にして動ける時。事業判断の3語、ぜんぶこれで決めていい</li>
+          <li>働く人の前向きさを引き出せる現場・面談・セミナー。共感性 × 成長促進が同時に発動する場</li>
+          <li>新しい知識・テーマを吸収できる余白がある時（AI・補助金・栄養・カウンセリング）</li>
+          <li>「自分たちにあった会社」を、二人で組める時。最上志向の自然な出口</li>
+          <li>面談で「話せてよかった」と返ってきた時。これがいちばん大きな栄養</li>
+          <li>1日のおわりに「今日もちゃんとやった」と思える達成感がある</li>
+          <li>大好きな人たちと、楽しく笑いながら仕事ができる場</li>
+          <li>阪神間の海・山・地元に根づいた仕事ができる時</li>
+        </ul>
+      </div>
+      <div class="manual-box pain">
+        <h3><i class="fas fa-cloud-rain"></i> こうなるとゆかさんが消耗する</h3>
+        <ul>
+          <li>「申し上げなきゃ」モードが戻ってきて、面談で力みすぎる時</li>
+          <li>長期計画でガチガチに縛られる場（適応性2位は、その日の流れで動きたい）</li>
+          <li>過去原因の追及・規律のための規律を求められる現場（原点思考34位 × 規律性29位）</li>
+          <li>共感性が暴走して、感情を持ち帰り続けてしまう時（2021年バーンアウトの再演リスク）</li>
+          <li>「ふつう」「みんな同じ」を強要される場（最上志向7位が窒息する）</li>
+          <li>家族・体力・健康を犠牲にして「2年で年収」を追ってしまう時</li>
+          <li>休んでる自分を責めてしまう時（達成欲の裏面）</li>
+          <li>家計管理・経理など「楽しさがない事務作業」だけが積み上がる時</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 09 COMBOS ═══ -->
+<section id="combo">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">YOUR COMBINATIONS</div>
+      <h2 class="section-title">ゆかさんの「資質コンボ」</h2>
+      <p class="section-lead">資質は単体じゃなく、組み合わせで化学反応を起こします。ゆかさんの上位資質が掛け算されると、こんな動き方になります。</p>
+    </div>
+
+    <div class="combo-grid stagger">
+      <div class="combo-card">
+        <div class="combo-pair">ポジティブ × 共感性 × 成長促進</div>
+        <h4>「働く人の朝に、灯をともす人」</h4>
+        <p>前向きさを引き出しつつ、しんどさも見逃さず、その人の伸びる方向を見る。<strong>産業保健師としての中核装備</strong>。面談で「来てよかった」と言ってもらえる仕組みはここ。</p>
+      </div>
+      <div class="combo-card">
+        <div class="combo-pair">適応性 × 未来志向 × 着想</div>
+        <h4>「ワクワクで道を選ぶ人」</h4>
+        <p>過去の延長線じゃなく、その時その瞬間の「ワクワクするほう」で動ける。<strong>40代未経験で産業保健師に転換、2025独立、2026合同会社設立。全部この組み合わせから生まれている。</strong></p>
+      </div>
+      <div class="combo-card">
+        <div class="combo-pair">収集心 × 学習欲 × 最上志向</div>
+        <h4>「経験を商品に変える人」</h4>
+        <p>21年で集めた現場知 + 栄養カウンセラー30万 + AI / 補助金 を、<strong>「自分たちにあった会社」の中で並べ直す</strong>。これが「2年で年収に並ぶ」事業設計の素材です。</p>
+      </div>
+      <div class="combo-card">
+        <div class="combo-pair">成長促進 × 学習欲 × 着想</div>
+        <h4>「保健師AI人材育成」事業の核</h4>
+        <p>教える × 学ぶ × 新しいアイデアを結ぶ。<strong>「保健師×AI」事業はゆかさんの資質配線がそのまま事業として立ち上がる場所</strong>。10秒で「ニーズしかない」と即決できた理由。</p>
+      </div>
+      <div class="combo-card">
+        <div class="combo-pair">ポジティブ × 適応性 × 達成欲</div>
+        <h4>「最終なんとかなる、と握って20年走った人」</h4>
+        <p>めっちゃへこむけど、ネタ見できる。一日の終わりにポストイットを消す快感。<strong>看護師20年・産業保健師4年を続けてこられた根っこの3点セット。</strong></p>
+      </div>
+      <div class="combo-card">
+        <div class="combo-pair">共感性 × 成長促進 × ポジティブ</div>
+        <h4>「あなたはあなたで、十分やんと返せる人」</h4>
+        <p>娘さんの一言で完成したゆかさんの面談スタイル。<strong>「申し上げなきゃ」を手放した今のゆかさんが、いちばん自然に発動する</strong>のがこの組み合わせ。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 10 QUOTES ═══ -->
+<section id="voice">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">YOUR VOICE</div>
+      <h2 class="section-title">ゆかさんが、自分で言ってた言葉</h2>
+      <p class="section-lead">朝のセッションのなかで、ふっと出てきた本音たち。あとで読み返したい一節を残しておきます。</p>
+    </div>
+
+    <div class="quote-list fade-in">
+      <div class="quote-card pin">
+        <p>"自分と仲良くなる"っていう言葉が、<em>今すごいしっくり来たな</em>。</p>
+        <div class="from">— セッション中盤、ゆかさんがいちばんほっとした瞬間</div>
+      </div>
+      <div class="quote-card pin">
+        <p>私たちの保健師のAI人材を育てる、<em>それめっちゃいけますよ！ ニーズしかないから、ニーズしかない！</em> それやりましょう！</p>
+        <div class="from">— 事業の輪郭が立ち上がった10秒</div>
+      </div>
+      <div class="quote-card pin">
+        <p>娘が小学校4、5年生くらいの時に、「<em>お母さんは今のままでいいやん、それで十分やん</em>」って言ってくれた。それが私の今の支え。</p>
+        <div class="from">— ゆかさんの面談スタイルの原点</div>
+      </div>
+      <div class="quote-card">
+        <p>新しいことを取り込むのに、<em>不安よりかはワクワクが先に出る</em>タイプだなと思ってました。</p>
+        <div class="from">— 未来志向6位 × 学習欲8位の自覚</div>
+      </div>
+      <div class="quote-card">
+        <p>一旦めっちゃへこみます、トラブルあった時。でも<em>後でネタ見できる、必ずって感じ</em>。なんとかなるかって、いつも最終思えちゃう。</p>
+        <div class="from">— 適応性2位の働き方</div>
+      </div>
+      <div class="quote-card">
+        <p>その場にいる人は<em>みんな幸せであってほしい</em>でしょ。</p>
+        <div class="from">— ポジティブ1位を1秒で表すと、これ</div>
+      </div>
+      <div class="quote-card">
+        <p>私死んでないし、死なへんし、病気じゃないし、私生きてるし。<em>最終そこに持っていけるんですよね、最悪の場面</em>。</p>
+        <div class="from">— 訪問看護で看取ってきた人の、根っこの強さ</div>
+      </div>
+      <div class="quote-card">
+        <p><em>大好きな人たちと楽しく笑いながら仕事がしたい</em>。そこに向かっていける土台を今作ってるって思うとワクワクします。</p>
+        <div class="from">— 2026年7月合同会社設立の本音</div>
+      </div>
+      <div class="quote-card">
+        <p>自分たちにあったいい形の会社にしたいんですよ。普通のやつじゃなくて、自分たちらしさが出せる、<em>二人の特性、それを合わせた、そこが最大限活かせる会社。無理をしたくない</em>。</p>
+        <div class="from">— 最上志向7位の事業設計</div>
+      </div>
+      <div class="quote-card">
+        <p>面談した後に、<em>今日話せてよかったって言ってもらえると、相談してよかったって言ってもらえると、結構嬉しい</em>ですよね。</p>
+        <div class="from">— ゆかさんの稼ぐ力の証</div>
+      </div>
+      <div class="quote-card">
+        <p>あなたはあんなもの守っていいじゃない、<em>十分じゃない</em>って言ってあげれるようになった。</p>
+        <div class="from">— 「申し上げなきゃ」を手放したあとの面談スタイル</div>
+      </div>
+      <div class="quote-card">
+        <p>できない自分もOKやなってなって。<em>できない自分も愛おしく思えたらいいんやな</em>って。</p>
+        <div class="from">— セッションの終盤、ゆかさんが自分にかけた言葉</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 11 STATE MAP ═══ -->
+<section id="state">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">WHERE YOU ARE</div>
+      <h2 class="section-title">いま、ゆかさんがいる場所</h2>
+      <p class="section-lead">産業保健師業務・面談・セミナー・医療法人福命会の業務委託・AI業務サポートの共同進行・夫と娘との暮らし。一見ばらばらに見える活動が、ひとつの灯から出ています。</p>
+    </div>
+
+    <div class="state-grid fade-in">
+      <div class="state-cell">
+        <span class="em">👩‍⚕️</span>
+        <div class="lbl">産業保健師</div>
+        <div class="sub">独立3年目<br>中小企業向けサービス</div>
+      </div>
+      <div class="state-cell">
+        <span class="em">🏥</span>
+        <div class="lbl">医療法人福命会</div>
+        <div class="sub">業務委託<br>健康管理支援室</div>
+      </div>
+      <div class="state-cell">
+        <span class="em">🤖</span>
+        <div class="lbl">AI業務サポート</div>
+        <div class="sub">おけもんと<br>8月本格スタート</div>
+      </div>
+      <div class="state-cell">
+        <span class="em">🏢</span>
+        <div class="lbl">合同会社</div>
+        <div class="sub">2026年7月<br>設立予定</div>
+      </div>
+      <div class="state-cell">
+        <span class="em">🌱</span>
+        <div class="lbl">保健師×AI人材育成</div>
+        <div class="sub">セッションで<br>同時に降りた事業</div>
+      </div>
+      <div class="state-cell">
+        <span class="em">🌷</span>
+        <div class="lbl">家族との暮らし</div>
+        <div class="sub">夫と娘と<br>阪神間で</div>
+      </div>
+    </div>
+
+    <div class="state-conclusion fade-in">
+      ばらばらに見えるけど、ぜんぶ<strong>「働く人と家族の、健康と命を支える灯」</strong>。<br>
+      <strong>「2年で年収」は、ゼロから作るんじゃなくて、すでに手の中にあるものを並べ直す目標。</strong><br>
+      「楽しい」「ワクワク」「面白い」の3語を判断軸にして、半年走ってみていい時期です。
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 12 MOYA ═══ -->
+<section id="moya">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">SOFT CLOUDS</div>
+      <h2 class="section-title">そっと、置いておく雲</h2>
+      <p class="section-lead">セッション中に出てきた「不安・ブロック」たち。消そうとしなくて大丈夫。気づいておくだけで、振り回されにくくなります。</p>
+    </div>
+
+    <div class="moya-box fade-in">
+      <div class="head">☁ 今、こういう気持ちが浮かんでる</div>
+      <div class="moya-list">
+        <div class="moya-item">家計管理が大嫌い、なのにやらなあかん。「やらなあかんな」だけで動くのが、いちばん気持ち悪い。</div>
+        <div class="moya-item">コツコツできない自分への自責。「決めたことを、なんで私それでき ひんのやろって、すごい思って生きてきました」</div>
+        <div class="moya-item">旦那との価値観の衝突（過去回帰タイプ vs 未来志向タイプ）。15年経っても解決しない。</div>
+        <div class="moya-item">コロナ禍で限界が来た記憶。「子供がちょうど小学校1年生になった時で、もう大変で、フツフツとしてたものが」</div>
+        <div class="moya-item">「できない自分」に目が向きすぎる。「自分ができてることって気づかない。だからできてないことの方に今も結構ある」</div>
+        <div class="moya-item">未来像の解像度が上がりきらない。「なりたい未来言えるんだけど、サイドの精度が明確じゃない、もや、若干してる」</div>
+        <div class="moya-item">「2年で今の年収に並ぶ」プレッシャーと達成欲のせめぎ合い。</div>
+      </div>
+      <div class="moya-foot">
+        <strong>これは「治すもの」じゃなくて「気づいておくもの」。</strong><br>
+        浮かんできたら「お、また来たな〜」って眺めるだけでOK。<br>
+        雲は流れていくし、流れていかなくてもそこにあっていい🌥<br><br>
+        <em>家計管理・コツコツ・規律性…<br>
+        ゆかさん一人で背負わなくていい場所です。「面白い仕組み」に翻訳できる人を仲間に入れていい。</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 13 STEPS ═══ -->
+<section id="steps">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">TINY STEPS</div>
+      <h2 class="section-title">半年、楽しんで踏める小さな一歩</h2>
+      <p class="section-lead">全部やる必要なし。「これならできるかも」「楽しそう」を1個だけ選んでみて。<strong>ゆかさんは、ワクワクを軸にしたら勝手に走り出す人。</strong>1ヶ月後にやってみた感想を、また聞かせて🌷</p>
+    </div>
+
+    <div class="step-list fade-in">
+      <div class="step-item">
+        <div class="step-num">01</div>
+        <div class="step-text">
+          <h4>2026年7月の合同会社設立に向けて、二人で「最大限活かせる形」を言葉にする</h4>
+          <p>本人が言ってた「<em>二人の特性を合わせた、そこが最大限活かせる会社</em>」を、具体的な役割分担として書き出す。「ふつう」じゃなくて「私たち独自」をどこに置くか。最上志向7位の自然な出口。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">02</div>
+        <div class="step-text">
+          <h4>「保健師AI人材育成」事業を、まず自分たち2人でテスト運用</h4>
+          <p>セッションで二人で同時に降りた事業。「<em>まず私らで試してもらって、保健師の仕事の使いどころをどんどん教えてもらって</em>」とゆかさんが言ってた流れ、そのまま実行に移してOK。事業の素材はもう揃ってる。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">03</div>
+        <div class="step-text">
+          <h4>もともといた医療法人・社会福祉法人にAI活用の話を持って行く</h4>
+          <p>ゆかさん本人発言：「<em>もともといた医療法、社会福祉法人西宮の法官の管理者やってる人とか定期的に会ったりするんですよ。あと言っときますよ</em>」。21年のキャリアの中で築いてきたネットワークを、ここで稼働させる。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">04</div>
+        <div class="step-text">
+          <h4>沖縄ワーケーション（石垣島）を予定に入れる</h4>
+          <p>「<em>最終的にワーケーションしたいんですよ。沖縄、海の綺麗な海を見ながらね、ウェブ面談して、セミナーのシリーズを作って</em>」。<strong>「楽しんでる延長」</strong>の景色をいま予約しておくと、走り続けられる燃料になる。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">05</div>
+        <div class="step-text">
+          <h4>家計管理を「面白い仕組み」に翻訳する</h4>
+          <p>本人の言葉：「<em>これをおもろい仕組みに変えたら多分私できるんやろうなって思ってる</em>」「<em>1ヶ月決めたお金のフローが守れたら楽しい</em>」。ガチガチに縛るんじゃなく、ゲーム化・可視化で<strong>適応性が嫌がらないリズム</strong>に変換する。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">06</div>
+        <div class="step-text">
+          <h4>「2年で年収に並ぶ」を、月次の小さな数字に分解する</h4>
+          <p>達成欲10位の人にとって「2年で年収」は大きすぎるゴール。月の面談数・セミナー回数・新規法人契約数など、<strong>「今日のポストイットを消せる粒度」</strong>まで割っておく。これがゆかさんの自然なリズム。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">07</div>
+        <div class="step-text">
+          <h4>合同会社メンバー全員でストレングスを受ける</h4>
+          <p>ゆかさん本人の宣言：「<em>ぜひうちの自分から、また言う。一人一人受けてもらって</em>」。チーム全員が同じ言語を共有すると、「<em>無理をしたくない</em>」会社運営が一気に楽になる。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">08</div>
+        <div class="step-text">
+          <h4>1年に1回、ストレングスのフォローセッションを定期化する</h4>
+          <p>本人の宣言：「<em>また来てください。1年1回ぐらいね、自分で見直しておこうか</em>」。ゆかさんの上位資質配線で、「<em>自分と仲良くなる</em>」進度を年1で確認する場をスケジュールに固定する。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIVIDER ═══ -->
+<div class="sun-divider">
+  <div class="quote">「できない自分も愛おしく思えたらいい」<br>— "好きになる"までは遠くても、"愛おしい"なら、もう手が届く</div>
+</div>
+
+<!-- ═══ MESSAGE ═══ -->
+<section id="message" style="background:var(--warm-bg);">
+  <div class="container">
+    <div class="message-box fade-in">
+      <h3>ゆかさんへ</h3>
+      <p>
+        朝のセッション、ありがとうございました🌅<br>
+        「<strong>今日が一番若い日</strong>」っていう合言葉、めっちゃ似合ってます。<br>
+        ポジティブ1位 × 適応性2位の人が、20年現場を走り続けて、<br>
+        40代で独立して、2026年7月に合同会社を立ち上げる。<br>
+        ぜんぶこの一言の中に、ちゃんと畳まれてる気がしました。<br><br>
+
+        ——でね、今日いちばん伝えたかったのは、これです。<br>
+        <strong>「自分と仲良くなる」</strong>っていう言葉、ゆかさん自身が見つけてくれた。<br>
+        わたしが言ったんじゃなくて、ゆかさんが探していた中間項を、<br>
+        セッションのなかで自分でつかんでくれました。<br>
+        「好きになる」までは遠い、「受け入れる」じゃ手前すぎる。<br>
+        その間に <strong>「仲良くなる」</strong> があるって、見つけ直せた朝でした。<br><br>
+
+        21年の現場で集めてきた経験、栄養カウンセラー30万円の知識、<br>
+        看護実習生に「楽しそう」と思ってもらいたかった教える力、<br>
+        娘さんの一言で「<em>あなたはあなたで十分やん</em>」と返せるようになった面談スタイル、<br>
+        そして「<em>私死んでないし、生きてるし</em>」で20年立ち続けてきた根拠のない強さ。<br>
+        <strong>ぜんぶ、すでにゆかさんの「稼ぐ力」になっています。</strong><br><br>
+
+        「保健師×AI人材育成」は、10秒で<em>「ニーズしかない」</em>と即決できました。<br>
+        二人で同時に降りてきたあの瞬間、<br>
+        わたしも「これは絶対いける」と思った。<br>
+        ゆかさんの21年と、わたしの11人カンパニーが、<br>
+        ちょうどここで噛み合う場所が見えた。<br><br>
+
+        「2年で今の年収に並ぶ」って、大きな目標。<br>
+        でも、<strong>ゆかさんはゼロから始めるんじゃなくて、<br>
+        もう手の中にあるものに、名前をつけて並べ直すだけ</strong>です。<br><br>
+
+        合同会社、楽しみにしてます。<br>
+        7月、また会いましょ🌅<br>
+        阪神間の海と山を眺めながら、灯をともす保健師の話、<br>
+        ずっと続けていきましょうね。
+      </p>
+      <div class="sign">— 2026年5月23日 朝のセッションのあとで / おけもんより</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="brand">寄り添い型 個性診断師 おけもん</div>
+  <p>ゆかさん（山本ゆかこさん） / ストレングスファインダー34 個別レビュー / 2026.05.23</p>
+</footer>
+
+<script>
+const animEls = document.querySelectorAll('.fade-in, .stagger');
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      animObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+animEls.forEach(el => {
+  const r = el.getBoundingClientRect();
+  if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+  else animObs.observe(el);
+});
+
+// 浮遊TOCを外クリックで閉じる
+document.addEventListener('click', (e) => {
+  const toc = document.querySelector('.float-toc');
+  if (!toc.contains(e.target) && toc.open) {
+    toc.open = false;
+  }
+});
+// TOCリンククリック後、自動で閉じる
+document.querySelectorAll('.float-toc a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelector('.float-toc').open = false;
+  });
+});
+</script>
+</body>
+</html>
