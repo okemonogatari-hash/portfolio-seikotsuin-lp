@@ -61,16 +61,33 @@ jobs:
           TZ: Asia/Tokyo
         run: python3 scripts/generate_dashboard.py
 
+      - name: Fetch Zoom transcripts (irodori archive・2026-05-23 追加・launchd廃止候補)
+        # どらさん5/19合意「金曜15時案件MTGを取りたい」対応。
+        # クラウド完結（PC閉じてても動く）に移行。launchdの暫定実装はこれが安定したら廃止。
+        # ローカル退避は全件・Notion自動投入はおけちゃん判断でオフ（5/23）。
+        env:
+          ZOOM_ACCOUNT_ID: ${{ secrets.ZOOM_ACCOUNT_ID }}
+          ZOOM_CLIENT_ID: ${{ secrets.ZOOM_CLIENT_ID }}
+          ZOOM_CLIENT_SECRET: ${{ secrets.ZOOM_CLIENT_SECRET }}
+          TZ: Asia/Tokyo
+          SAVE_DIR: irodori_zoom_archive
+          PROCESSED_FILE: irodori_zoom_archive/_processed.json
+          NOTION_AUTO_UPLOAD: 'false'
+          TRANSCRIPT_LOOKBACK_HOURS: '48'
+        run: |
+          TODAY=$(TZ=Asia/Tokyo date '+%Y-%m-%d')
+          SAVE_DIR="irodori_zoom_archive/${TODAY}" python3 scripts/zoom_transcript_local_save.py
+
       - name: Commit & push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add irodori-zoom-dashboard.html irodori-zoom-tomorrow.html
+          git add irodori-zoom-dashboard.html irodori-zoom-tomorrow.html irodori_zoom_archive/
           if git diff --cached --quiet; then
             echo "差分なし → commitスキップ"
           else
             STAMP=$(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M JST')
-            git commit -m "auto: Zoomダッシュボード更新 ($STAMP)"
+            git commit -m "auto: Zoomダッシュボード更新＋文字起こし退避 ($STAMP)"
             git push
             echo "✅ push完了"
           fi
