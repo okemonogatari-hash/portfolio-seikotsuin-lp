@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>名古屋、味噌と神様と夜景。— 福岡発・1泊2日の五感旅</title>
+  <meta name="description" content="福岡から名古屋へ。熱田神宮で運を整え、ひつまぶしで魂を満たし、オアシス21の夜景でぼーっとする。1泊2日で名古屋を味わい尽くす旅のプレゼンHP。">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --primary: #8B2C2C;       /* 朱赤：鳥居・神社 */
+      --primary-light: #F5E6E6;
+      --primary-dark: #6B1F1F;
+      --accent: #C4915E;        /* 金：金シャチ */
+      --accent-light: #F5EBDC;
+      --accent-deep: #A07142;
+      --warm: #F7F3EC;          /* クリーム */
+      --warm-dark: #ECE5D7;
+      --text: #2B2420;
+      --text-muted: #7A6E6A;
+      --white: #FDFCFA;
+      --ink: #1A1410;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--warm);
+      line-height: 1.85;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      color: var(--accent);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 18px;
+    }
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+      line-height: 1.5;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -10px;
+      width: 0; height: 2px;
+      background: var(--accent);
+      transition: width 0.7s ease 0.2s;
+    }
+    .fade-in.is-visible .section-title::after,
+    .stagger.is-visible .section-title::after { width: 56px; }
+
+    /* ========== HEADER ========== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(253, 252, 250, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(139, 44, 44, 0.12);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      justify-content: space-between;
+    }
+    .header-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem;
+      color: var(--primary);
+      letter-spacing: 0.12em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+    .header-logo i { color: var(--accent); font-size: 0.95rem; }
+    .header-nav {
+      display: flex;
+      gap: 28px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .header-nav a { transition: color 0.25s; }
+    .header-nav a:hover { color: var(--primary); }
+    .header-cta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+      padding: 8px 20px;
+      border-radius: 2px;
+      transition: all 0.3s;
+      text-transform: uppercase;
+    }
+    .header-cta:hover { background: var(--primary); color: var(--white); transform: translateY(-2px); }
+    @media (max-width: 768px) { .header-nav { display: none; } }
+
+    /* ========== HERO ========== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: var(--white);
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1554188248-986adbb73be4?w=2000&q=85');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.55);
+      z-index: 0;
+      animation: heroZoom 18s ease-out forwards;
+    }
+    @keyframes heroZoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(26,20,16,0.2) 0%, rgba(26,20,16,0.35) 60%, rgba(26,20,16,0.7) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 24px;
+      max-width: 880px;
+    }
+    .hero-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.42em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: heroFadeIn 1s 0.3s both;
+    }
+    .hero-label i { margin: 0 14px; font-size: 0.7rem; }
+    .hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2rem, 5.4vw, 3.8rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.45;
+      margin-bottom: 28px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.4);
+      opacity: 0;
+      animation: heroSlideUp 1.1s 0.5s both;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--accent);
+      display: inline-block;
+      transform: scale(1.05);
+    }
+    .hero-sub {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1rem, 1.6vw, 1.18rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      line-height: 1.95;
+      color: rgba(255,255,255,0.92);
+      max-width: 620px;
+      margin: 0 auto 40px;
+      opacity: 0;
+      animation: heroSlideUp 1.1s 0.8s both;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 44px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: heroFadeIn 1s 1.1s both;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 8px; }
+    .hero-meta i { color: var(--accent); }
+    .hero-cta {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: var(--white);
+      background: var(--primary);
+      padding: 18px 44px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      transition: all 0.4s;
+      box-shadow: 0 10px 30px rgba(139,44,44,0.4);
+      opacity: 0;
+      animation: heroSlideUp 1s 1.3s both;
+    }
+    .hero-cta:hover {
+      background: var(--accent);
+      color: var(--ink);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(196,145,94,0.5);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: rgba(255,255,255,0.7);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: heroFadeIn 1s 1.6s both, scrollBounce 2s 2s ease-in-out infinite;
+    }
+    @keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes heroSlideUp { from { opacity: 0; transform: translateY(34px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scrollBounce { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
+
+    /* ========== CONCEPT ========== */
+    .concept {
+      padding: 130px 32px 120px;
+      max-width: 940px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .concept-quote {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.6rem, 3.8vw, 2.6rem);
+      font-weight: 500;
+      line-height: 1.85;
+      color: var(--ink);
+      letter-spacing: 0.06em;
+      margin: 32px 0 40px;
+    }
+    .concept-quote em {
+      font-style: normal;
+      color: var(--primary);
+      font-weight: 700;
+      position: relative;
+    }
+    .concept-quote em::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: -4px;
+      height: 8px;
+      background: var(--accent-light);
+      z-index: -1;
+    }
+    .concept-body {
+      font-size: 1.02rem;
+      line-height: 2.1;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .concept-signature {
+      margin-top: 48px;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.95rem;
+      color: var(--primary);
+      letter-spacing: 0.18em;
+    }
+    .concept-signature i { color: var(--accent); margin: 0 8px; }
+
+    /* ========== TRUST BAR ========== */
+    .trust-bar {
+      background: var(--primary);
+      color: var(--white);
+      padding: 60px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .trust-bar::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1600&q=80') center/cover;
+      opacity: 0.08;
+    }
+    .trust-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .trust-item { text-align: center; }
+    .trust-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2.2rem, 4.6vw, 3.4rem);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .trust-num small {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      margin-left: 4px;
+    }
+    .trust-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.85);
+      text-transform: uppercase;
+    }
+    @media (max-width: 768px) {
+      .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    }
+
+    /* ========== TIMELINE (1日目・2日目) ========== */
+    .day {
+      padding: 130px 32px 120px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .day-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .day-num {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(4rem, 9vw, 6rem);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      opacity: 0.85;
+      margin-bottom: 12px;
+    }
+    .day-num small {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.42em;
+      color: var(--primary);
+      margin-top: 12px;
+    }
+    .day-tag {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.4rem;
+      color: var(--ink);
+      letter-spacing: 0.08em;
+      margin-top: 6px;
+    }
+    .timeline {
+      position: relative;
+      padding-left: 56px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px; top: 12px; bottom: 12px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--primary) 50%, var(--accent) 100%);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 64px;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .timeline-item.is-visible { opacity: 1; transform: translateX(0); }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -52px; top: 8px;
+      width: 40px; height: 40px;
+      background: var(--white);
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1rem;
+      box-shadow: 0 4px 16px rgba(139,44,44,0.15);
+    }
+    .timeline-time {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .timeline-place {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+    .timeline-place .place-en {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.28em;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+    .timeline-body {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 32px;
+      align-items: center;
+      background: var(--white);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(43,36,32,0.06);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .timeline-body:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(43,36,32,0.12); }
+    .timeline-text { padding: 32px 36px; }
+    .timeline-text p { color: var(--text-muted); line-height: 2; font-size: 0.96rem; }
+    .timeline-text .highlight {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 4px 14px;
+      background: var(--accent-light);
+      color: var(--accent-deep);
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.86rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      border-left: 3px solid var(--accent);
+    }
+    .timeline-img {
+      height: 100%;
+      min-height: 240px;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s;
+    }
+    .timeline-body:hover .timeline-img { transform: scale(1.04); }
+    @media (max-width: 768px) {
+      .timeline-body { grid-template-columns: 1fr; }
+      .timeline-img { min-height: 200px; order: -1; }
+      .timeline { padding-left: 40px; }
+      .timeline::before { left: 14px; }
+      .timeline-dot { left: -42px; width: 32px; height: 32px; font-size: 0.85rem; }
+    }
+
+    /* ========== PHOTO DIVIDER ========== */
+    .divider {
+      height: 280px;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-align: center;
+    }
+    .divider::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(139,44,44,0.5), rgba(26,20,16,0.55));
+    }
+    .divider-text {
+      position: relative;
+      z-index: 1;
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.4);
+      padding: 0 24px;
+    }
+    .divider-text i { color: var(--accent); margin: 0 18px; }
+    @media (max-width: 768px) {
+      .divider { background-attachment: scroll; height: 220px; }
+    }
+
+    /* ========== GOURMET HIGHLIGHT ========== */
+    .gourmet {
+      padding: 130px 32px 120px;
+      background: var(--warm-dark);
+    }
+    .gourmet-inner { max-width: 1100px; margin: 0 auto; }
+    .gourmet-head { text-align: center; margin-bottom: 72px; }
+    .gourmet-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .gourmet-card {
+      background: var(--white);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 10px 32px rgba(43,36,32,0.08);
+      transition: transform 0.4s, box-shadow 0.4s;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .stagger.is-visible .gourmet-card { opacity: 1; transform: translateY(0); }
+    .stagger.is-visible .gourmet-card:nth-child(1) { transition: opacity 0.7s 0.1s, transform 0.7s 0.1s; }
+    .stagger.is-visible .gourmet-card:nth-child(2) { transition: opacity 0.7s 0.25s, transform 0.7s 0.25s; }
+    .stagger.is-visible .gourmet-card:nth-child(3) { transition: opacity 0.7s 0.4s, transform 0.7s 0.4s; }
+    .stagger.is-visible .gourmet-card:nth-child(4) { transition: opacity 0.7s 0.55s, transform 0.7s 0.55s; }
+    .gourmet-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 44px rgba(43,36,32,0.14);
+    }
+    .gourmet-img {
+      height: 240px;
+      background-size: cover;
+      background-position: center;
+    }
+    .gourmet-content { padding: 32px 32px 36px; }
+    .gourmet-tag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      color: var(--accent-deep);
+      background: var(--accent-light);
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .gourmet-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+    .gourmet-shop {
+      font-size: 0.92rem;
+      color: var(--primary);
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+    .gourmet-shop i { color: var(--accent); margin-right: 6px; }
+    .gourmet-desc { color: var(--text-muted); line-height: 2; font-size: 0.94rem; }
+    .gourmet-price {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--warm-dark);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      letter-spacing: 0.04em;
+    }
+    .gourmet-price strong { color: var(--primary); font-weight: 700; }
+    @media (max-width: 768px) {
+      .gourmet-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========== POWER SPOT ========== */
+    .power {
+      padding: 130px 32px 120px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .power-head { text-align: center; margin-bottom: 72px; }
+    .power-list { display: grid; gap: 60px; }
+    .power-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    .power-item.is-visible { opacity: 1; transform: translateX(0); }
+    .power-item:nth-child(even) {
+      direction: rtl;
+      transform: translateX(30px);
+    }
+    .power-item:nth-child(even) > * { direction: ltr; }
+    .power-img {
+      height: 380px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 4px;
+      box-shadow: 0 14px 40px rgba(43,36,32,0.14);
+      transition: transform 0.5s;
+    }
+    .power-item:hover .power-img { transform: scale(1.02); }
+    .power-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.32em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .power-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    .power-desc {
+      color: var(--text-muted);
+      line-height: 2.1;
+      font-size: 0.98rem;
+      margin-bottom: 24px;
+    }
+    .power-meta {
+      display: grid;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text);
+      padding-top: 22px;
+      border-top: 1px solid var(--warm-dark);
+    }
+    .power-meta span { display: flex; align-items: center; gap: 10px; }
+    .power-meta i { color: var(--accent); width: 18px; }
+    @media (max-width: 768px) {
+      .power-item, .power-item:nth-child(even) { grid-template-columns: 1fr; gap: 28px; direction: ltr; transform: translateY(20px); }
+      .power-item.is-visible { transform: translateY(0); }
+      .power-img { height: 240px; }
+    }
+
+    /* ========== ACCESS / 福岡→名古屋 ========== */
+    .access {
+      padding: 130px 32px 120px;
+      background: var(--ink);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .access::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=1800&q=80') center/cover;
+      opacity: 0.15;
+    }
+    .access-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .access-head { text-align: center; margin-bottom: 72px; }
+    .access-head .section-label { color: var(--accent); }
+    .access-head .section-title { color: var(--white); }
+    .access-routes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .route-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 36px 32px;
+      border-radius: 4px;
+      backdrop-filter: blur(8px);
+      transition: transform 0.4s, background 0.4s;
+    }
+    .route-card:hover {
+      transform: translateY(-6px);
+      background: rgba(196,145,94,0.08);
+      border-color: var(--accent);
+    }
+    .route-icon {
+      width: 56px; height: 56px;
+      background: var(--accent);
+      color: var(--ink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 24px;
+    }
+    .route-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+    .route-time {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .route-detail {
+      color: rgba(255,255,255,0.78);
+      line-height: 2;
+      font-size: 0.92rem;
+      margin-bottom: 20px;
+    }
+    .route-price {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .route-price small {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 400;
+      margin-left: 8px;
+      letter-spacing: 0.08em;
+    }
+    @media (max-width: 768px) {
+      .access-routes { grid-template-columns: 1fr; }
+    }
+
+    /* ========== BUDGET & CHECKLIST ========== */
+    .pack {
+      padding: 130px 32px 120px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .pack-head { text-align: center; margin-bottom: 72px; }
+    .pack-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .pack-card {
+      background: var(--white);
+      padding: 48px 44px;
+      border-radius: 6px;
+      box-shadow: 0 10px 32px rgba(43,36,32,0.06);
+      border-top: 4px solid var(--accent);
+    }
+    .pack-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 28px;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .pack-title i { color: var(--accent); font-size: 1.2rem; }
+    .pack-list { list-style: none; }
+    .pack-list li {
+      padding: 14px 0;
+      border-bottom: 1px dashed var(--warm-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.96rem;
+    }
+    .pack-list li:last-child { border-bottom: none; }
+    .pack-list li span:first-child { color: var(--text); display: flex; align-items: center; gap: 12px; }
+    .pack-list li i { color: var(--primary); width: 16px; font-size: 0.85rem; }
+    .pack-list li .amount {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.02em;
+    }
+    .pack-total {
+      margin-top: 28px;
+      padding: 24px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Noto Serif JP', serif;
+    }
+    .pack-total span:first-child { font-size: 0.95rem; letter-spacing: 0.12em; }
+    .pack-total span:last-child {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    @media (max-width: 768px) {
+      .pack-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* ========== FINAL CTA ========== */
+    .final {
+      padding: 140px 32px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1545569310-c55c5d5224da?w=1800&q=80') center/cover;
+      opacity: 0.12;
+    }
+    .final-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+    .final-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.42em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .final-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.55;
+      letter-spacing: 0.06em;
+      margin-bottom: 32px;
+    }
+    .final-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .final-body {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      line-height: 2.1;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 48px;
+    }
+    .final-cta {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      color: var(--ink);
+      background: var(--accent);
+      padding: 22px 56px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      transition: all 0.4s;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+    }
+    .final-cta:hover {
+      background: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.4);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.6);
+      padding: 56px 32px 32px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      margin-bottom: 16px;
+    }
+    .footer-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 28px;
+    }
+    .footer-copy {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.35);
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ========== ANIMATIONS ========== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+    .stagger { opacity: 0; transition: opacity 0.6s ease; }
+    .stagger.is-visible { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header>
+    <div class="header-logo">
+      <i class="fa-solid fa-torii-gate"></i>
+      <span>NAGOYA 1N2D</span>
+    </div>
+    <nav class="header-nav">
+      <a href="#concept">Concept</a>
+      <a href="#day1">Day 1</a>
+      <a href="#day2">Day 2</a>
+      <a href="#access">Access</a>
+    </nav>
+    <a href="#final" class="header-cta">行こう</a>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-label">
+        <i class="fa-solid fa-plane-departure"></i>
+        FUKUOKA <i class="fa-solid fa-arrow-right-long"></i> NAGOYA
+        <i class="fa-solid fa-location-dot"></i>
+      </div>
+      <h1 class="hero-title">名古屋、<em>味噌</em>と<em>神様</em>と<em>夜景</em>。</h1>
+      <p class="hero-sub">福岡を朝に発って、ひつまぶしで魂を満たし、夜景でぼーっとして、味噌煮込みで目を覚ます。<br>1泊2日で名古屋を、五感ぜんぶで味わい尽くす旅。</p>
+      <div class="hero-meta">
+        <span><i class="fa-solid fa-calendar-days"></i> 1泊2日</span>
+        <span><i class="fa-solid fa-utensils"></i> 食 4本柱</span>
+        <span><i class="fa-solid fa-torii-gate"></i> パワスポ 2社</span>
+        <span><i class="fa-solid fa-camera"></i> 映え 多数</span>
+      </div>
+      <a href="#concept" class="hero-cta">この旅、見てみる</a>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+  </section>
+
+  <!-- ========== CONCEPT ========== -->
+  <section class="concept fade-in" id="concept">
+    <span class="section-label">Concept</span>
+    <h2 class="concept-quote">
+      ふらっと行って、<em>運を整えて</em>、<br>
+      ぜんぶ美味しくて、<em>夜は静かに光る</em>。<br>
+      そんな1泊2日、名古屋なら作れる。
+    </h2>
+    <p class="concept-body">
+      行きたい場所が決まってない日でも、名古屋は許してくれる街。<br>
+      千年以上ずっと続いてる神様と、戦国武将の本拠地と、地元しか食べない味噌文化と、<br>
+      未来っぽい夜景が、半径10kmにぜんぶ詰まってる。<br>
+      <br>
+      迷ったら名古屋。今回はそういう旅。
+    </p>
+    <div class="concept-signature">
+      <i class="fa-solid fa-torii-gate"></i> 味噌 <i class="fa-solid fa-bowl-rice"></i> 神様 <i class="fa-solid fa-star"></i> 夜景 <i class="fa-solid fa-torii-gate"></i>
+    </div>
+  </section>
+
+  <!-- ========== TRUST BAR ========== -->
+  <section class="trust-bar">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="trust-num">2<small>日間</small></div>
+        <div class="trust-label">Days</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">6<small>スポット</small></div>
+        <div class="trust-label">Spots</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">1900<small>年</small></div>
+        <div class="trust-label">熱田神宮 創建</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">5<small>万円〜</small></div>
+        <div class="trust-label">Budget</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DAY 1 ========== -->
+  <section class="day" id="day1">
+    <div class="day-header fade-in">
+      <div class="day-num">01<small>DAY ONE</small></div>
+      <div class="day-tag">運を整える日。</div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fa-solid fa-plane-departure"></i></div>
+        <div class="timeline-time">10:00 / Departure</div>
+        <h3 class="timeline-place">福岡発<span class="place-en">From Fukuoka</span></h3>
+        <div class="timeline-body">
+          <div class="timeline-text">
+            <p>福岡空港 → 中部国際空港セントレアへ。フライト1時間20分、あっという間。<br>機内で熱田神宮の参拝順序だけ予習しておく。スマホで見れば十分。</p>
+            <div class="highlight">機内で予習する欲張りタイム</div>
+          </div>
+          <div class="timeline-img" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80');"></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fa-solid fa-torii-gate"></i></div>
+        <div class="timeline-time">13:30 / Power Spot</div>
+        <h3 class="timeline-place">熱田神宮<span class="place-en">Atsuta-jingu Shrine</span></h3>
+        <div class="timeline-body">
+          <div class="timeline-text">
+            <p>三種の神器のひとつ「草薙剣」が祀られる、約1900年の歴史を持つ大社。<br>名古屋駅から地下鉄で20分。境内の楠木は樹齢千年級。深呼吸して、運を整える。<br>御朱印は本宮で。所要1時間〜90分。</p>
+            <div class="highlight">運を整える、神話の森</div>
+          </div>
+          <div class="timeline-img" style="background-image: url('https://images.unsplash.com/photo-1583515137580-be36e0e6c5cf?w=1200&q=80');"></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fa-solid fa-utensils"></i></div>
+        <div class="timeline-time">15:30 / Lunch</div>
+        <h3 class="timeline-place">蓬莱軒（熱田神宮南店）<span class="place-en">Houraiken — Hitsumabushi</span></h3>
+        <div class="timeline-body">
+          <div class="timeline-text">
+            <p>ひつまぶし発祥の店、明治6年創業。神宮参拝のあと、徒歩7分でこの伝説に着く。<br>1杯目はそのまま、2杯目は薬味、3杯目はだし茶漬け。最後の4杯目は好きな食べ方で。<br>並ぶけど整理券制。先に取って、神宮散歩しながら戻るのが正解。</p>
+            <div class="highlight">魂が満たされる、4杯の儀式</div>
+          </div>
+          <div class="timeline-img" style="background-image: url('https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=1200&q=80');"></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fa-solid fa-mug-hot"></i></div>
+        <div class="timeline-time">17:00 / Cafe Break</div>
+        <h3 class="timeline-place">栄でひと休み<span class="place-en">Sakae Coffee Stop</span></h3>
+        <div class="timeline-body">
+          <div class="timeline-text">
+            <p>地下鉄で栄へ。名古屋名物「喫茶モーニング文化」は朝じゃなくても楽しめる。<br>コメダ珈琲のシロノワール、コンパルのエビフライサンド、KAKO三蔵のあんトーストetc.<br>カフェイン補給して、夜のオアシス21に備える。</p>
+            <div class="highlight">名古屋人の喫茶愛に触れる</div>
+          </div>
+          <div class="timeline-img" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80');"></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fa-solid fa-star"></i></div>
+        <div class="timeline-time">19:30 / Night View</div>
+        <h3 class="timeline-place">オアシス21「水の宇宙船」<span class="place-en">Oasis 21 Spaceship-Aqua</span></h3>
+        <div class="timeline-body">
+          <div class="timeline-text">
+            <p>地上14m、ガラスの大屋根に薄く水が張られた近未来空間。<br>無料で上れる。LEDが季節色に光り、名古屋テレビ塔と一緒に夜空に浮かぶ。<br>名古屋で一番ぼーっとできる場所。30分の静寂タイム。</p>
+            <div class="highlight">名古屋の夜は、静かに光る</div>
+          </div>
+          <div class="timeline-img" style="background-image: url('https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1200&q=80');"></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fa-solid fa-bed"></i></div>
+        <div class="timeline-time">22:00 / Hotel Check-in</div>
+        <h3 class="timeline-place">名駅 or 栄エリアのホテル<span class="place-en">Hotel Check-in</span></h3>
+        <div class="timeline-body">
+          <div class="timeline-text">
+            <p>翌朝の動線を考えて、名駅周辺がおすすめ。デビット使えるホテルで予約。<br>1泊朝食付き 6,000〜10,000円帯で十分。ベタなビジホで充分快適。<br>翌朝の味噌煮込みうどんに備えて早めに寝る。</p>
+            <div class="highlight">明日に備えて、ぐっすり</div>
+          </div>
+          <div class="timeline-img" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80');"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DIVIDER 1 ========== -->
+  <section class="divider" style="background-image: url('https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1800&q=80');">
+    <div class="divider-text">
+      <i class="fa-solid fa-star"></i> 1日目、夜が更けて、運を整え終えた頃。 <i class="fa-solid fa-star"></i>
+    </div>
+  </section>
+
+  <!-- ========== GOURMET ========== -->
+  <section class="gourmet stagger">
+    <div class="gourmet-inner">
+      <div class="gourmet-head">
+        <span class="section-label">Gourmet Highlight</span>
+        <h2 class="section-title">名古屋めし、四天王。</h2>
+      </div>
+      <div class="gourmet-grid">
+        <div class="gourmet-card">
+          <div class="gourmet-img" style="background-image: url('https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=1200&q=80');"></div>
+          <div class="gourmet-content">
+            <span class="gourmet-tag">Day 1 Lunch</span>
+            <h3 class="gourmet-name">ひつまぶし</h3>
+            <p class="gourmet-shop"><i class="fa-solid fa-location-dot"></i>あつた蓬莱軒 神宮南店</p>
+            <p class="gourmet-desc">うなぎを刻んでご飯に乗せ、4杯の食べ方で楽しむ名古屋発祥スタイル。明治の創業者の遊び心が、150年続いてる味になった。</p>
+            <div class="gourmet-price">
+              <span>所要 60分・予約推奨</span>
+              <span><strong>¥4,600</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="gourmet-card">
+          <div class="gourmet-img" style="background-image: url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1200&q=80');"></div>
+          <div class="gourmet-content">
+            <span class="gourmet-tag">Day 2 Breakfast</span>
+            <h3 class="gourmet-name">味噌煮込みうどん</h3>
+            <p class="gourmet-shop"><i class="fa-solid fa-location-dot"></i>山本屋本店 or 山本屋総本家</p>
+            <p class="gourmet-desc">硬麺×八丁味噌、土鍋でぐつぐつ。朝から食べるのが本場流。汁を最後まで飲み干せる人は名古屋人の素質あり。</p>
+            <div class="gourmet-price">
+              <span>所要 40分</span>
+              <span><strong>¥1,600</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="gourmet-card">
+          <div class="gourmet-img" style="background-image: url('https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=1200&q=80');"></div>
+          <div class="gourmet-content">
+            <span class="gourmet-tag">Day 1 Snack</span>
+            <h3 class="gourmet-name">手羽先</h3>
+            <p class="gourmet-shop"><i class="fa-solid fa-location-dot"></i>世界の山ちゃん or 風来坊</p>
+            <p class="gourmet-desc">胡椒バチバチの「幻の味」か、甘ダレ濃いめの「元祖」か。両店をハシゴするのが正解。ビールが止まらん。</p>
+            <div class="gourmet-price">
+              <span>所要 60分</span>
+              <span><strong>¥1,800</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="gourmet-card">
+          <div class="gourmet-img" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80');"></div>
+          <div class="gourmet-content">
+            <span class="gourmet-tag">Day 1 Cafe</span>
+            <h3 class="gourmet-name">小倉トースト</h3>
+            <p class="gourmet-shop"><i class="fa-solid fa-location-dot"></i>コメダ珈琲 or 喫茶モーニング</p>
+            <p class="gourmet-desc">名古屋人の朝〜昼の聖域、喫茶モーニング文化。バターと小倉あんが乗った、罪のないトースト。コーヒー1杯にナゾの小宇宙。</p>
+            <div class="gourmet-price">
+              <span>所要 30分</span>
+              <span><strong>¥600</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DAY 2 ========== -->
+  <section class="day" id="day2">
+    <div class="day-header fade-in">
+      <div class="day-num">02<small>DAY TWO</small></div>
+      <div class="day-tag">街と歴史と、寄り道。</div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fa-solid fa-bowl-rice"></i></div>
+        <div class="timeline-time">08:00 / Breakfast</div>
+        <h3 class="timeline-place">朝の味噌煮込みうどん<span class="place-en">Miso Nikomi Udon</span></h3>
+        <div class="timeline-body">
+          <div class="timeline-text">
+            <p>名古屋人は朝から味噌を食う。山本屋本店の朝メニューはコスパも良し。<br>八丁味噌の真っ黒な汁、土鍋から立ちのぼる湯気、硬麺の歯ごたえ。<br>朝でこれを食えたら、もう半分名古屋人。</p>
+            <div class="highlight">朝から味噌で目を覚ます</div>
+          </div>
+          <div class="timeline-img" style="background-image: url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1200&q=80');"></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fa-solid fa-shop"></i></div>
+        <div class="timeline-time">10:00 / Stroll</div>
+        <h3 class="timeline-place">大須商店街<span class="place-en">Osu Shopping District</span></h3>
+        <div class="timeline-body">
+          <div class="timeline-text">
+            <p>名古屋のディープゾーン。1200店舗の商店街に、古着、アジア食材、レトロ家電、コスプレ、占い、骨董、なんでもある。<br>大須観音にお参りしてから、適当に路地を曲がる。地図見なくていい。<br>2時間あれば「これだ！」が必ず1個見つかる。</p>
+            <div class="highlight">寄り道の達人になる時間</div>
+          </div>
+          <div class="timeline-img" style="background-image: url('https://images.unsplash.com/photo-1528164344705-47542687000d?w=1200&q=80');"></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fa-solid fa-fish"></i></div>
+        <div class="timeline-time">13:00 / Castle</div>
+        <h3 class="timeline-place">名古屋城・金シャチ<span class="place-en">Nagoya Castle & Kinshachi</span></h3>
+        <div class="timeline-body">
+          <div class="timeline-text">
+            <p>1612年、徳川家康が天下普請で築いた城。屋根には黄金の鯱。<br>2018年に復元された本丸御殿は、襖絵が眩しいレベルで再現されている。<br>金シャチを拝んで、福岡へ持って帰る運気を仕上げる。</p>
+            <div class="highlight">金シャチで運気を仕上げる</div>
+          </div>
+          <div class="timeline-img" style="background-image: url('https://images.unsplash.com/photo-1545569310-c55c5d5224da?w=1200&q=80');"></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fa-solid fa-plane-arrival"></i></div>
+        <div class="timeline-time">16:30 / Departure</div>
+        <h3 class="timeline-place">セントレアから福岡へ<span class="place-en">Back to Fukuoka</span></h3>
+        <div class="timeline-body">
+          <div class="timeline-text">
+            <p>セントレアの展望デッキで最後の夕焼け。空港内の「えびせんべいの里」で、家族用のお土産だけ抑える。<br>機内で2日間を振り返り、もう一回行きたい場所を1つだけ決める。<br>それが、次の旅の入口になる。</p>
+            <div class="highlight">次の旅の予約をする時間</div>
+          </div>
+          <div class="timeline-img" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80');"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DIVIDER 2 ========== -->
+  <section class="divider" style="background-image: url('https://images.unsplash.com/photo-1545569310-c55c5d5224da?w=1800&q=80');">
+    <div class="divider-text">
+      <i class="fa-solid fa-fish"></i> 屋根の金シャチが、福岡まで運を持って帰してくれる。 <i class="fa-solid fa-fish"></i>
+    </div>
+  </section>
+
+  <!-- ========== POWER SPOTS ========== -->
+  <section class="power">
+    <div class="power-head fade-in">
+      <span class="section-label">Power Spots</span>
+      <h2 class="section-title">運を整える、二つの聖域。</h2>
+    </div>
+    <div class="power-list">
+      <div class="power-item">
+        <div class="power-img" style="background-image: url('https://images.unsplash.com/photo-1583515137580-be36e0e6c5cf?w=1200&q=80');"></div>
+        <div>
+          <span class="power-tag"><i class="fa-solid fa-torii-gate"></i> Spot 01 — Day 1</span>
+          <h3 class="power-name">熱田神宮<br><span style="font-size: 0.78rem; letter-spacing: 0.3em; color: var(--text-muted); font-weight: 500;">ATSUTA-JINGU</span></h3>
+          <p class="power-desc">三種の神器のひとつ「草薙剣」を祀る、創建約1900年の大社。境内は19万㎡の杜。樹齢千年の楠の前に立つと、時間の感覚が変になる。御朱印は本宮にて。</p>
+          <div class="power-meta">
+            <span><i class="fa-solid fa-clock"></i> 参拝所要 60〜90分</span>
+            <span><i class="fa-solid fa-train"></i> 名鉄「神宮前」徒歩3分</span>
+            <span><i class="fa-solid fa-yen-sign"></i> 参拝無料・宝物館 500円</span>
+          </div>
+        </div>
+      </div>
+      <div class="power-item">
+        <div class="power-img" style="background-image: url('https://images.unsplash.com/photo-1545569310-c55c5d5224da?w=1200&q=80');"></div>
+        <div>
+          <span class="power-tag"><i class="fa-solid fa-fish"></i> Spot 02 — Day 2</span>
+          <h3 class="power-name">名古屋城<br><span style="font-size: 0.78rem; letter-spacing: 0.3em; color: var(--text-muted); font-weight: 500;">NAGOYA CASTLE</span></h3>
+          <p class="power-desc">徳川家康が天下普請で築いた城。屋根の金鯱は名古屋のシンボル。本丸御殿は2018年に完全復元、襖絵の金箔が眩しい。庭園を歩くだけでも整う。</p>
+          <div class="power-meta">
+            <span><i class="fa-solid fa-clock"></i> 見学所要 90〜120分</span>
+            <span><i class="fa-solid fa-train"></i> 地下鉄「市役所」徒歩5分</span>
+            <span><i class="fa-solid fa-yen-sign"></i> 観覧料 500円</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ACCESS ========== -->
+  <section class="access" id="access">
+    <div class="access-inner">
+      <div class="access-head fade-in">
+        <span class="section-label">Access</span>
+        <h2 class="section-title">福岡から名古屋へ。三つの行き方。</h2>
+      </div>
+      <div class="access-routes">
+        <div class="route-card">
+          <div class="route-icon"><i class="fa-solid fa-plane"></i></div>
+          <h3 class="route-name">飛行機</h3>
+          <div class="route-time">1h 20m — Recommended</div>
+          <p class="route-detail">福岡空港 → 中部国際空港セントレア。<br>ANA・JAL・ジェットスター・スカイマークが毎日複数便。<br>朝イチ便で行けば10時には名古屋着。</p>
+          <div class="route-price">¥10,000<small>〜 / 早割 / 片道</small></div>
+        </div>
+        <div class="route-card">
+          <div class="route-icon"><i class="fa-solid fa-train-subway"></i></div>
+          <h3 class="route-name">新幹線</h3>
+          <div class="route-time">3h 20m</div>
+          <p class="route-detail">博多 → 名古屋。のぞみで一直線。<br>窓側で本読みながら、駅弁食べながら、ゆっくり移動派におすすめ。<br>名古屋駅は地下鉄2路線が直結で便利。</p>
+          <div class="route-price">¥18,500<small>〜 / 自由席 / 片道</small></div>
+        </div>
+        <div class="route-card">
+          <div class="route-icon"><i class="fa-solid fa-bus"></i></div>
+          <h3 class="route-name">夜行バス</h3>
+          <div class="route-time">10h overnight</div>
+          <p class="route-detail">博多バスターミナル → 名古屋。<br>寝てる間に着く。コスト最重視ならコレ。<br>ただし往復で2日潰れるので、1泊2日ではあまり推奨しない。</p>
+          <div class="route-price">¥7,000<small>〜 / 片道</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BUDGET & CHECKLIST ========== -->
+  <section class="pack">
+    <div class="pack-head fade-in">
+      <span class="section-label">Budget & Pack</span>
+      <h2 class="section-title">予算ざっくり、持ち物ざっくり。</h2>
+    </div>
+    <div class="pack-grid">
+      <div class="pack-card">
+        <h3 class="pack-title"><i class="fa-solid fa-wallet"></i> 予算の目安（1人）</h3>
+        <ul class="pack-list">
+          <li><span><i class="fa-solid fa-plane"></i> 往復航空券（早割）</span><span class="amount">¥20,000</span></li>
+          <li><span><i class="fa-solid fa-bed"></i> ホテル1泊朝食付き</span><span class="amount">¥8,000</span></li>
+          <li><span><i class="fa-solid fa-utensils"></i> 食事 4食</span><span class="amount">¥10,000</span></li>
+          <li><span><i class="fa-solid fa-mug-hot"></i> 喫茶・スナック</span><span class="amount">¥3,000</span></li>
+          <li><span><i class="fa-solid fa-train"></i> 名古屋市内交通</span><span class="amount">¥1,500</span></li>
+          <li><span><i class="fa-solid fa-ticket"></i> 観覧料・参拝料</span><span class="amount">¥1,000</span></li>
+          <li><span><i class="fa-solid fa-gift"></i> お土産・予備</span><span class="amount">¥6,500</span></li>
+        </ul>
+        <div class="pack-total">
+          <span>TOTAL</span>
+          <span>¥50,000</span>
+        </div>
+      </div>
+      <div class="pack-card">
+        <h3 class="pack-title"><i class="fa-solid fa-suitcase"></i> 持ち物リスト</h3>
+        <ul class="pack-list">
+          <li><span><i class="fa-solid fa-check"></i> デビットカード（必須）</span><span class="amount">最重要</span></li>
+          <li><span><i class="fa-solid fa-check"></i> モバイルバッテリー</span><span class="amount">10000mAh+</span></li>
+          <li><span><i class="fa-solid fa-check"></i> 御朱印帳</span><span class="amount">熱田神宮用</span></li>
+          <li><span><i class="fa-solid fa-check"></i> 歩きやすい靴</span><span class="amount">大須対策</span></li>
+          <li><span><i class="fa-solid fa-check"></i> 軽い上着</span><span class="amount">夜景対策</span></li>
+          <li><span><i class="fa-solid fa-check"></i> エコバッグ</span><span class="amount">お土産用</span></li>
+          <li><span><i class="fa-solid fa-check"></i> 心の余裕</span><span class="amount">最重要</span></li>
+        </ul>
+        <div class="pack-total" style="background: var(--accent); color: var(--ink);">
+          <span style="color: var(--ink);">忘れていいもの</span>
+          <span style="color: var(--white);">「予定通り」</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <section class="final" id="final">
+    <div class="final-inner">
+      <div class="final-label"><i class="fa-solid fa-plane-departure"></i> &nbsp; 行こう &nbsp; <i class="fa-solid fa-torii-gate"></i></div>
+      <h2 class="final-title">
+        どこへ行くか、決まってなくていい。<br>
+        ただ「<em>名古屋へ</em>」って<br>言うだけで十分。
+      </h2>
+      <p class="final-body">
+        熱田神宮の楠木がそよぐ。蓬莱軒の重箱が出てくる。<br>
+        オアシス21の水面が光る。金シャチが屋根で笑ってる。<br>
+        ぜんぶ、ふらっと行った人のために待ってる。<br>
+        <br>
+        1泊2日、約5万円。次の週末、空けてみる？
+      </p>
+      <a href="#concept" class="final-cta">もう一度、旅を眺める</a>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-logo">NAGOYA 1N2D — 味噌と神様と夜景</div>
+    <div class="footer-tag">PRESENTED BY OKEMON, GUIDED BY HARUKA</div>
+    <div class="footer-copy">© 2026 おけもんカンパニー — 旅のプレゼンHP / 名古屋マスター監修</div>
+  </footer>
+
+  <script>
+    // ========== SCROLL ANIMATIONS ==========
+    const animEls = document.querySelectorAll('.fade-in, .stagger, .timeline-item, .power-item');
+    const animObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          animObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    animEls.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+      else animObs.observe(el);
+    });
+
+    // ========== SMOOTH SCROLL ==========
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const tgt = document.querySelector(a.getAttribute('href'));
+        if (tgt) {
+          e.preventDefault();
+          tgt.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
