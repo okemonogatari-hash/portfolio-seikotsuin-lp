@@ -2,10 +2,11 @@
   "processed": [
     "6cORd47qTYyrVhjfmAQ9tw==",
     "6eRiRv3SRy6dWuTquZdyXg==",
+    "8u8om1cqT3CJXcY4sI2ipQ==",
     "U/YGFNUTTvWa1AppLeiGeQ=="
   ],
   "notion_uploaded": [],
-  "last_run": "2026-05-23T20:13:35.665847+09:00",
+  "last_run": "2026-05-25T20:13:42.973408+09:00",
   "history": [
     {
       "uuid": "6eRiRv3SRy6dWuTquZdyXg==",
@@ -37,6 +38,17 @@
       "start_time": "2026-05-22 10:58 JST",
       "file": "irodori_zoom_archive/2026-05-23/2026-05-22_10-58_JST_AnswerSmile様.md",
       "segments": 707,
+      "notion_target": false,
+      "notion_url": null
+    },
+    {
+      "uuid": "8u8om1cqT3CJXcY4sI2ipQ==",
+      "topic": "マニュアル作成MTG",
+      "category": "internal",
+      "host_email": "oyama.m@irodori-slide.com",
+      "start_time": "2026-05-25 16:58 JST",
+      "file": "irodori_zoom_archive/2026-05-25/2026-05-25_16-58_JST_マニュアル作成MTG.md",
+      "segments": 700,
       "notion_target": false,
       "notion_url": null
     }
