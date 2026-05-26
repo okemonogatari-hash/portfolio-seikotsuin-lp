@@ -94,8 +94,12 @@ jobs:
             echo "✅ push完了"
           fi
 
+      # 2026-05-26 修正：朝のcron（11:00 JST = UTC 02:00）はZoom録画退避のみ目的のため
+      # PMチャットへの運行表投稿はスキップ。
+      # PMチャット投稿は夕方のcron（16:00 JST = UTC 07:00）と手動実行時のみ。
+      # 経緯：5/23に「録画退避を1日2回に増やした」副作用でPMチャット投稿も2回になっていた問題の修正。
       - name: Post brief image to Chatwork
-        if: ${{ github.event.inputs.skip_post != 'true' }}
+        if: ${{ github.event.inputs.skip_post != 'true' && github.event.schedule != '0 2 * * *' }}
         env:
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
           CHATWORK_ROOM_ID: ${{ secrets.CHATWORK_ROOM_ID }}
