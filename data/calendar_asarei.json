@@ -1,7 +1,7 @@
 {
-  "_comment": "なっつん（小川さん）＋飯田さん のGoogleカレンダーからZoom関連予定（朝礼/Z①Z②/ZOOM/内部ZOOM/ズーム/zoom1./zoom2.等のキーワード一致）を抽出したスナップショット。Zoom APIで取れないPMI使い回し運用の予定を補完するため。承認カレンダー：なっつん（naaa.gwgw@gmail.com）／飯田（iida.m.irodori@gmail.com）。事案#34（2026-05-26）でsnapshot 11日凍結発覚→MCP経由で再生成。",
-  "_source": "Google Calendar API (naaa.gwgw@gmail.com + iida.m.irodori@gmail.com) via MCP",
-  "_fetched_at": "2026-05-26T11:26:36.058559",
+  "_comment": "なっつん（小川さん）＋飯田さん＋泉田さん のGoogleカレンダーからZoom関連予定（朝礼/Z①Z②/ZOOM/内部ZOOM/ズーム/zoom1./zoom2.等のキーワード一致）を抽出したスナップショット。Zoom APIで取れないPMI使い回し運用の予定を補完するため。",
+  "_source": "Google Calendar API (naaa.gwgw@gmail.com + iida.m.irodori@gmail.com + izumida.h.irodori@gmail.com) via MCP",
+  "_fetched_at": "2026-05-26T11:48:35.699461",
   "_keywords": [
     "朝礼",
     "Z①",
@@ -29,13 +29,22 @@
     "zoom1.",
     "zoom2.",
     "ZOOM1.",
-    "ZOOM2."
+    "ZOOM2.",
+    "zoom1：",
+    "zoom2：",
+    "ZOOM1：",
+    "ZOOM2：",
+    "zoom1:",
+    "zoom2:",
+    "ZOOM1:",
+    "ZOOM2:"
   ],
   "_calendars_taken": [
     "naaa.gwgw@gmail.com",
-    "iida.m.irodori@gmail.com"
+    "iida.m.irodori@gmail.com",
+    "izumida.h.irodori@gmail.com"
   ],
-  "_incident_note": "事案#34・2026-05-26 まな×あおい二人羽織てへぺろ修復。前回更新2026-05-15 19:39 → 今回更新2026-05-26 11時頃。GOOGLE_TOKEN_JSON Secret未登録のためGitHub Actions側はfallback経路のみ動作、本snapshot自動再生成機構なしのため手動MCP経由で再生成した応急修理。詳細→ はるかCEO/PDCA成長記録/事案サンプル_2026-05-26_事案#34_*.md",
+  "_incident_note": "事案#34・2026-05-26 まな×あおい二人羽織てへぺろ修復。前回更新2026-05-15 19:39 → 今回 2026-05-26（11:26 飯田まで／11:46 泉田追加）。泉田さん共有承認確認のため IRODORI_CALENDAR_IDS に izumida.h.irodori@gmail.com 追加。CAL_KEYWORDSにコロン表記（zoom1:/zoom2:）を追加（泉田さん書式対応）。詳細→ はるかCEO/PDCA成長記録/事案サンプル_2026-05-26_事案#34_*.md",
   "events": [
     {
       "id": "calendar:naaa:lqfotv85937rj6knvvneikd8kv_20260526T010000Z",
@@ -164,6 +173,20 @@
       "type": 8
     },
     {
+      "id": "calendar:naaa:oq12vchddh1dg701ls818cpqqq_20260601T060000Z",
+      "topic": "zoom1：広報MTG",
+      "start_time": "2026-06-01T14:00:00+09:00",
+      "duration": 30,
+      "type": 8
+    },
+    {
+      "id": "calendar:naaa:1vir2dvgus04tnoio75d5lj1ko_20260601T053000Z",
+      "topic": "zoom1：泉田担当案件MTG",
+      "start_time": "2026-06-01T14:30:00+09:00",
+      "duration": 30,
+      "type": 8
+    },
+    {
       "id": "calendar:naaa:lqfotv85937rj6knvvneikd8kv_20260602T010000Z",
       "topic": "ZOOM②IRODORI 朝礼",
       "start_time": "2026-06-02T10:00:00+09:00",
@@ -281,6 +304,48 @@
       "start_time": "2026-06-05T15:00:00+09:00",
       "duration": 60,
       "type": 8
+    },
+    {
+      "id": "calendar:izumida.h.irodori:2hgj96qr5otg7paavu4p5n6bv6",
+      "topic": "zoom2:高谷さんMTG",
+      "start_time": "2026-05-27T10:00:00+09:00",
+      "duration": 60,
+      "type": 2
+    },
+    {
+      "id": "calendar:izumida.h.irodori:63va8c6kags8cffsbme6v6lr6m",
+      "topic": "zoom1:清美環MTG",
+      "start_time": "2026-05-28T09:30:00+09:00",
+      "duration": 60,
+      "type": 2
+    },
+    {
+      "id": "calendar:izumida.h.irodori:a579la8oqese9vm9khlnujmaqf_20260601T060000Z",
+      "topic": "zoom1:広報MTG",
+      "start_time": "2026-06-01T14:00:00+09:00",
+      "duration": 30,
+      "type": 8
+    },
+    {
+      "id": "calendar:izumida.h.irodori:331agtcj7cltcfdm1a1gm5j3d5_20260601T053000Z",
+      "topic": "zoom1:泉田担当案件MTG",
+      "start_time": "2026-06-01T14:30:00+09:00",
+      "duration": 30,
+      "type": 8
+    },
+    {
+      "id": "calendar:izumida.h.irodori:0bdop0927mgcnhp5vk60tgnt92",
+      "topic": "zoom2:清美環MTG",
+      "start_time": "2026-06-01T15:00:00+09:00",
+      "duration": 60,
+      "type": 2
+    },
+    {
+      "id": "calendar:izumida.h.irodori:6h248u66iv6ooolpq5e20cgct7",
+      "topic": "zoom1:清美環MTG（SNSの件）",
+      "start_time": "2026-06-03T10:00:00+09:00",
+      "duration": 60,
+      "type": 2
     }
   ]
 }

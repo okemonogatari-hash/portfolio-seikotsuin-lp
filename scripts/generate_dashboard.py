@@ -23,10 +23,11 @@ HOST_KOYAMA = "aAUji7r9QqWo-9JSS5yEFA"
 
 # Google Calendar 補完取得（Zoom APIで漏れる予定を補う）
 # 朝礼に加え、TimeRex+PMI使い回し運用で Zoom APIに登録されない予定（【内部ZOOM②】AI MTG等）も拾う
-# 承認済みカレンダー: なっつん（小川さん）／飯田さん（2026-05-15時点）
+# 承認済みカレンダー: なっつん（小川さん）／飯田さん（2026-05-15）／泉田さん（2026-05-26）
 IRODORI_CALENDAR_IDS = (
     "naaa.gwgw@gmail.com",       # なっつん（小川さん）
     "iida.m.irodori@gmail.com",  # 飯田さん（2026-05-15共有承認）
+    "izumida.h.irodori@gmail.com",  # 泉田さん（2026-05-26共有承認・事案#34修復セッションで取り込み）
 )
 NAEO_CALENDAR_ID = IRODORI_CALENDAR_IDS[0]  # 後方互換のため
 
