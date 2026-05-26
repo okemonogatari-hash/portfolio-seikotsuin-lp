@@ -3,10 +3,12 @@
     "6cORd47qTYyrVhjfmAQ9tw==",
     "6eRiRv3SRy6dWuTquZdyXg==",
     "8u8om1cqT3CJXcY4sI2ipQ==",
+    "IVa5O1ijSpibYMTJFerFzw==",
+    "Kf4YgrHMSfCHYeSI2wl63g==",
     "U/YGFNUTTvWa1AppLeiGeQ=="
   ],
   "notion_uploaded": [],
-  "last_run": "2026-05-25T20:13:42.973408+09:00",
+  "last_run": "2026-05-26T15:09:08.357213+09:00",
   "history": [
     {
       "uuid": "6eRiRv3SRy6dWuTquZdyXg==",
@@ -49,6 +51,28 @@
       "start_time": "2026-05-25 16:58 JST",
       "file": "irodori_zoom_archive/2026-05-25/2026-05-25_16-58_JST_マニュアル作成MTG.md",
       "segments": 700,
+      "notion_target": false,
+      "notion_url": null
+    },
+    {
+      "uuid": "IVa5O1ijSpibYMTJFerFzw==",
+      "topic": "ケアビズラボ株式会社 天野陽介さん：zoom① 1on1ミーティング【50min】",
+      "category": "client",
+      "host_email": "zoom@irodori-slide.com",
+      "start_time": "2026-05-26 12:59 JST",
+      "file": "irodori_zoom_archive/2026-05-26/2026-05-26_12-59_JST_ケアビズラボ株式会社 天野陽介さん：zoom① 1on1ミーティング【50min】.md",
+      "segments": 658,
+      "notion_target": false,
+      "notion_url": null
+    },
+    {
+      "uuid": "Kf4YgrHMSfCHYeSI2wl63g==",
+      "topic": "CFホーム様",
+      "category": "client",
+      "host_email": "oyama.m@irodori-slide.com",
+      "start_time": "2026-05-26 12:55 JST",
+      "file": "irodori_zoom_archive/2026-05-26/2026-05-26_12-55_JST_CFホーム様.md",
+      "segments": 455,
       "notion_target": false,
       "notion_url": null
     }
