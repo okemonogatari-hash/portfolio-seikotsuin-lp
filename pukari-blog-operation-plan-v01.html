@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ブログ運用・SEO活用プラン v0.1</title>
+  <style>
+    :root {
+      --ink: #25313b;
+      --muted: #64717f;
+      --line: #dfe6ed;
+      --paper: #f7f9fb;
+      --white: #ffffff;
+      --navy: #155171;
+      --teal: #1f8a8a;
+      --green: #2f7d53;
+      --amber: #b7791f;
+      --red: #b54848;
+      --shadow: 0 18px 45px rgba(35, 49, 59, .09);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #eef4f7 0, #f7f9fb 360px, #ffffff 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: var(--navy); text-decoration-thickness: .08em; text-underline-offset: .18em; }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 56px;
+    }
+
+    .hero,
+    .panel,
+    .plan,
+    .price-row,
+    .flow-step {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .94);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 28px;
+      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
+      gap: 22px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 19px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      line-height: 1.4;
+      letter-spacing: 0;
+    }
+
+    p { margin: 0; }
+
+    .lead {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-box {
+      padding: 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(47, 125, 83, .24);
+      background: #f1faf4;
+    }
+
+    .hero-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-size: 14px;
+    }
+
+    .hero-box p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .badge.ready { color: var(--green); background: #f1faf4; border-color: rgba(47, 125, 83, .28); }
+    .badge.wait { color: var(--amber); background: #fff8ec; border-color: rgba(183, 121, 31, .3); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .panel,
+    .plan {
+      padding: 20px;
+    }
+
+    .panel.recommend,
+    .plan.recommend {
+      border-left: 4px solid var(--green);
+    }
+
+    .panel.caution,
+    .plan.caution {
+      border-left: 4px solid var(--amber);
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .68em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .plan {
+      box-shadow: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .plan-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .plan-label {
+      min-width: 58px;
+      text-align: center;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #edf5f8;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .price {
+      margin: 0;
+      color: var(--navy);
+      font-size: 22px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .flow-step {
+      box-shadow: none;
+      padding: 16px;
+      min-height: 138px;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      background: #edf5f8;
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .price-table {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .price-row {
+      box-shadow: none;
+      display: grid;
+      grid-template-columns: 1.1fr .75fr 1.25fr;
+      gap: 16px;
+      padding: 14px 16px;
+      align-items: start;
+    }
+
+    .price-row strong {
+      font-size: 14px;
+    }
+
+    .price-row span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .wide {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    footer {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .grid,
+      .plans,
+      .flow,
+      .wide,
+      .price-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .page { padding: 18px 12px 42px; }
+      .hero,
+      .panel,
+      .plan { padding: 18px; }
+      .badge { white-space: normal; }
+      .plan-head { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Branch Page v0.1 / 2026-05-28</p>
+        <h1 id="page-title">ブログ運用・SEO活用プラン</h1>
+        <p class="lead">
+          ブログ運用は、甲斐さん向けの「noteで更新する形」と、会社内でノウハウを育てる「社内ブログ運用」を分けて考えます。
+          ここでは、今すぐ提案しやすいカードと、会社のナレッジ運用に活かせるカードを整理します。
+        </p>
+        <div class="badge-row" aria-label="このページの要点">
+          <span class="badge ready">甲斐さん向け: note運用</span>
+          <span class="badge ready">会社向け: 社内ブログ候補</span>
+          <span class="badge wait">SEO本格運用は別枠</span>
+        </div>
+      </div>
+      <aside class="hero-box">
+        <strong>結論</strong>
+        <p>
+          甲斐さん案件では、現時点も「noteで記事を書く → HPには新着として表示」がおすすめです。
+          会社内では、この仕組みを社内ブログや事例ストックにも転用できます。
+        </p>
+      </aside>
+    </section>
+
+    <section class="grid" aria-label="まず分けること">
+      <article class="panel recommend">
+        <h2>甲斐さん向け</h2>
+        <ul class="list">
+          <li>WordPressを一度挫折しているため、管理画面を増やしすぎない。</li>
+          <li>記事はnoteで書き、HPには日付・タイトル・リンクを表示する。</li>
+          <li>新着感と相談導線を作るのが主目的。</li>
+          <li>HP内に記事本文を蓄積するSEO施策とは分けて説明する。</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2>会社内で活かす</h2>
+        <ul class="list">
+          <li>日報、事例、制作メモ、AI活用ノウハウをブログ形式で残す。</li>
+          <li>あとから社員・AI・関係者が読み返せる入口を作る。</li>
+          <li>公開前提ではなく、まず内部用の社内ブログとして試す。</li>
+          <li>カンパニー日記やリサーチ記事と相性がよい。</li>
+        </ul>
+      </article>
+
+      <article class="panel caution">
+        <h2>SEOの扱い</h2>
+        <ul class="list">
+          <li>検索で見つけてもらうには、記事を増やすだけでは足りない。</li>
+          <li>検索語、専門性、内部リンク、公開後の見直しが必要。</li>
+          <li>士業系は正確性が重要なので、AI下書きは本人確認が必須。</li>
+          <li>本格SEOは保守・伴走メニューとして別枠にする。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="plans" aria-label="運用カード">
+      <article class="plan recommend">
+        <div class="plan-head">
+          <div>
+            <span class="plan-label">A案</span>
+            <h2>noteで更新する</h2>
+          </div>
+          <p class="price">0円から</p>
+        </div>
+        <p class="sub">甲斐さん向けの現時点おすすめ。記事を書く場所をnoteにして、HPには新着として見せる。</p>
+        <ul class="list">
+          <li>本人が記事を書きやすい。</li>
+          <li>HP本体を直接触らなくてよい。</li>
+          <li>HPには更新感と入口を作れる。</li>
+          <li>note本文はHP内のSEO資産にはならない点だけ説明する。</li>
+        </ul>
+      </article>
+
+      <article class="plan">
+        <div class="plan-head">
+          <div>
+            <span class="plan-label">B案</span>
+            <h2>社内ブログに育てる</h2>
+          </div>
+          <p class="price">内部試験 0円</p>
+        </div>
+        <p class="sub">会社内のナレッジや制作過程を、読み物として残す。まずは内部用で十分。</p>
+        <ul class="list">
+          <li>日報や進捗メモを、あとで読める記事にする。</li>
+          <li>お客様対応や制作ノウハウを事例化できる。</li>
+          <li>HTML化すれば、関係者が見やすい形にできる。</li>
+          <li>外部公開する場合は、固有名詞と権利確認が必要。</li>
+        </ul>
+      </article>
+
+      <article class="plan">
+        <div class="plan-head">
+          <div>
+            <span class="plan-label">C案</span>
+            <h2>静的ブログにする</h2>
+          </div>
+          <p class="price">33,000円から</p>
+        </div>
+        <p class="sub">WordPressを使わず、軽くて壊れにくいブログ置き場を作る。会社側の運用候補。</p>
+        <ul class="list">
+          <li>表示が速く、毎月のサーバー代を抑えやすい。</li>
+          <li>社内ブログや事例集には相性がよい。</li>
+          <li>自分で触るには少し慣れが必要。</li>
+          <li>外部公開するなら、ドメイン費用は年3,000円から5,000円程度を見ておく。</li>
+        </ul>
+      </article>
+
+      <article class="plan caution">
+        <div class="plan-head">
+          <div>
+            <span class="plan-label">D案</span>
+            <h2>本格SEO運用にする</h2>
+          </div>
+          <p class="price">月22,000円から</p>
+        </div>
+        <p class="sub">検索流入を狙うなら、記事作成だけでなく、設計と見直しが必要。</p>
+        <ul class="list">
+          <li>検索される言葉を先に決める。</li>
+          <li>記事テーマ、見出し、内部リンクを整える。</li>
+          <li>Search Consoleを見て改善する。</li>
+          <li>法律・制度まわりは本人確認を必須にする。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="panel" aria-label="おすすめフロー">
+      <h2>おすすめの進め方</h2>
+      <div class="flow">
+        <article class="flow-step">
+          <span class="step-number">1</span>
+          <h3>まずnote運用</h3>
+          <p class="sub">甲斐さん案件では、記事更新の負担を下げる。HPには新着として表示する。</p>
+        </article>
+        <article class="flow-step">
+          <span class="step-number">2</span>
+          <h3>HPの土台を整える</h3>
+          <p class="sub">相談内容、プロフィール、FAQ、問い合わせ導線を分かりやすくする。</p>
+        </article>
+        <article class="flow-step">
+          <span class="step-number">3</span>
+          <h3>会社内で試す</h3>
+          <p class="sub">社内ブログとして、日報・事例・AI活用ノウハウを記事化してみる。</p>
+        </article>
+        <article class="flow-step">
+          <span class="step-number">4</span>
+          <h3>必要ならSEO運用</h3>
+          <p class="sub">検索流入を狙う段階で、キーワード設計・リライト・月次点検を別枠化する。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wide" aria-label="使い分け">
+      <article class="panel recommend">
+        <h2>今すぐ使える説明</h2>
+        <ul class="list">
+          <li>記事更新はnoteを使う形が、いちばん始めやすいです。</li>
+          <li>HPには新着として表示できるので、更新されている印象を出せます。</li>
+          <li>ただし、SEOまで本格的に狙う場合は、記事テーマ設計や公開後の見直しが必要です。</li>
+          <li>まずは初期制作でHPの土台を作り、運用は必要に応じて育てる形が安全です。</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2>会社で活かすなら</h2>
+        <ul class="list">
+          <li>irodori内の進捗や成功事例を、社内ブログとして残す。</li>
+          <li>ノウハウ図書館の下書き、制作メモ、AI活用事例を記事に転用する。</li>
+          <li>社内向けに試して、公開できるものだけ外に出す。</li>
+          <li>将来的に営業資料や事例集へつなげる。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="panel" aria-label="費用一覧">
+      <h2>費用のたたき台</h2>
+      <div class="price-table">
+        <div class="price-row">
+          <strong>note運用</strong>
+          <span>0円から</span>
+          <span>noteアカウントで記事を書く。HP側の新着表示は制作範囲内で調整。</span>
+        </div>
+        <div class="price-row">
+          <strong>note反映の点検</strong>
+          <span>月5,500円</span>
+          <span>既存の軽い保守に含める想定。表示確認、リンク確認、軽微修正。</span>
+        </div>
+        <div class="price-row">
+          <strong>社内ブログ化</strong>
+          <span>33,000円から</span>
+          <span>内部HTMLや静的ブログとして、日報・事例・ノウハウを見やすく整理。</span>
+        </div>
+        <div class="price-row">
+          <strong>SEO月次改善</strong>
+          <span>月22,000円から</span>
+          <span>記事テーマ案、内部リンク、Search Console確認、簡易リライト案。</span>
+        </div>
+        <div class="price-row">
+          <strong>本格CMS</strong>
+          <span>80,000円から</span>
+          <span>HP内に記事本文を貯める管理画面つき構成。今回は初期提案では優先度低め。</span>
+        </div>
+      </div>
+      <p class="sub" style="margin-top: 14px;">
+        金額は税別の目安です。正式見積ではなく、MTGや社内検討で選択肢を整理するためのたたき台です。
+      </p>
+    </section>
+
+    <footer>
+      ブログリサーチの詳細は内部メモに保存し、このページでは関係者に説明しやすい選択肢だけを整理しています。
+    </footer>
+  </main>
+</body>
+</html>
