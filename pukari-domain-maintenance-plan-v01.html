@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>公開先・ドメイン・保守プラン v0.1</title>
+  <style>
+    :root {
+      --ink: #25313b;
+      --muted: #64717f;
+      --line: #dfe6ed;
+      --paper: #f7f9fb;
+      --white: #ffffff;
+      --navy: #155171;
+      --teal: #1f8a8a;
+      --green: #2f7d53;
+      --amber: #b7791f;
+      --red: #b54848;
+      --shadow: 0 18px 45px rgba(35, 49, 59, .09);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #eef4f7 0, #f7f9fb 360px, #ffffff 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: var(--navy); text-decoration-thickness: .08em; text-underline-offset: .18em; }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 56px;
+    }
+
+    .hero,
+    .panel,
+    .plan,
+    .price-row {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .94);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 28px;
+      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr);
+      gap: 22px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 19px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      line-height: 1.4;
+      letter-spacing: 0;
+    }
+
+    p { margin: 0; }
+
+    .lead {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-box {
+      padding: 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(31, 138, 138, .22);
+      background: #f1faf8;
+    }
+
+    .hero-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-size: 14px;
+    }
+
+    .hero-box p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .badge.ready { color: var(--green); background: #f1faf4; border-color: rgba(47, 125, 83, .28); }
+    .badge.wait { color: var(--amber); background: #fff8ec; border-color: rgba(183, 121, 31, .3); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .panel,
+    .plan {
+      padding: 20px;
+    }
+
+    .panel.recommend {
+      border-left: 4px solid var(--green);
+    }
+
+    .panel.caution {
+      border-left: 4px solid var(--amber);
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .68em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .plan {
+      box-shadow: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .plan-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .plan-label {
+      min-width: 58px;
+      text-align: center;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #edf5f8;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .price {
+      margin: 0;
+      color: var(--navy);
+      font-size: 22px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .price-table {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .price-row {
+      box-shadow: none;
+      display: grid;
+      grid-template-columns: 1.1fr .7fr 1.2fr;
+      gap: 16px;
+      padding: 14px 16px;
+      align-items: start;
+    }
+
+    .price-row strong {
+      font-size: 14px;
+    }
+
+    .price-row span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .wide {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    footer {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .grid,
+      .plans,
+      .wide,
+      .price-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .page { padding: 18px 12px 42px; }
+      .hero,
+      .panel,
+      .plan { padding: 18px; }
+      .badge { white-space: normal; }
+      .plan-head { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Branch Page v0.1 / 2026-05-27</p>
+        <h1 id="page-title">公開先・ドメイン・保守プラン</h1>
+        <p class="lead">
+          HPを本番公開する時に決めることは、大きく「住所」「置き場」「公開後の管理」の3つです。
+          ここでは、甲斐さん側に説明しやすいように、選べるカードと費用感をまとめます。
+        </p>
+        <div class="badge-row" aria-label="このページの要点">
+          <span class="badge ready">おすすめ: 独自ドメイン</span>
+          <span class="badge ready">公開場所: 低コストで可</span>
+          <span class="badge wait">保守は別枠で確認</span>
+        </div>
+      </div>
+      <aside class="hero-box">
+        <strong>結論</strong>
+        <p>
+          本番は甲斐さん側で持つ独自ドメインに載せるのが自然です。
+          公開場所は無料から始められる軽い環境で十分ですが、公開後の修正や点検は保守範囲として別に決めます。
+        </p>
+      </aside>
+    </section>
+
+    <section class="grid" aria-label="まず分けること">
+      <article class="panel">
+        <h2>住所</h2>
+        <ul class="list">
+          <li>例: `pukari-legal.jp` のようなHPのURL。</li>
+          <li>本番は甲斐さん側の名義で持つのが安全。</li>
+          <li>確認用URLは制作途中だけの仮置き場。</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <h2>置き場</h2>
+        <ul class="list">
+          <li>HPのデータを置いて表示する場所。</li>
+          <li>今回のような軽いHPなら無料から始められる。</li>
+          <li>アクセスが増えた時だけ有料化を検討する。</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <h2>管理</h2>
+        <ul class="list">
+          <li>公開後の点検、軽微修正、リンク切れ確認。</li>
+          <li>note更新とHP本体修正は別物として考える。</li>
+          <li>どこまで自分で触るかを先に決める。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="plans" aria-label="提案カード">
+      <article class="plan">
+        <div class="plan-head">
+          <div>
+            <span class="plan-label">A案</span>
+            <h2>確認用URLのまま見る</h2>
+          </div>
+          <p class="price">0円</p>
+        </div>
+        <p class="sub">制作途中の確認には十分。本番運用には使わない。</p>
+        <ul class="list">
+          <li>今のGitHub Pages URLで確認する。</li>
+          <li>甲斐さん側の正式な住所にはならない。</li>
+          <li>SEOや名刺掲載には向かない。</li>
+        </ul>
+      </article>
+
+      <article class="plan">
+        <div class="plan-head">
+          <div>
+            <span class="plan-label">B案</span>
+            <h2>既存ドメインに載せる</h2>
+          </div>
+          <p class="price">15,000円</p>
+        </div>
+        <p class="sub">既にドメインがある場合の初期設定目安。ドメイン実費は既存契約に準じる。</p>
+        <ul class="list">
+          <li>甲斐さん側が既に持つURLを使う。</li>
+          <li>名義が明確で、引き継ぎもしやすい。</li>
+          <li>おすすめ度は高い。まず有無を確認する。</li>
+        </ul>
+      </article>
+
+      <article class="plan">
+        <div class="plan-head">
+          <div>
+            <span class="plan-label">C案</span>
+            <h2>新規ドメインで公開</h2>
+          </div>
+          <p class="price">22,000円</p>
+        </div>
+        <p class="sub">初期設定目安。別途、ドメイン実費は年3,000円から5,000円程度を見ておく。</p>
+        <ul class="list">
+          <li>甲斐さん側の名義で新しいURLを取る。</li>
+          <li>長く使うHPの住所として育てやすい。</li>
+          <li>公開場所は無料から始める想定。</li>
+        </ul>
+      </article>
+
+      <article class="plan">
+        <div class="plan-head">
+          <div>
+            <span class="plan-label">D案</span>
+            <h2>軽い保守をつける</h2>
+          </div>
+          <p class="price">月5,500円</p>
+        </div>
+        <p class="sub">公開後の不安を減らす最低限の点検プラン。</p>
+        <ul class="list">
+          <li>月1回の表示確認、リンク確認。</li>
+          <li>30分以内の軽微修正を含む。</li>
+          <li>note新着欄の動作確認も含める。</li>
+        </ul>
+      </article>
+
+      <article class="plan">
+        <div class="plan-head">
+          <div>
+            <span class="plan-label">E案</span>
+            <h2>しっかり保守にする</h2>
+          </div>
+          <p class="price">月11,000円</p>
+        </div>
+        <p class="sub">毎月の軽微修正や相談を含めたい場合。</p>
+        <ul class="list">
+          <li>月1回の点検と1時間までの修正。</li>
+          <li>表示崩れ、リンク、note反映の確認。</li>
+          <li>文章差し替えや小さな導線修正に対応。</li>
+        </ul>
+      </article>
+
+      <article class="plan">
+        <div class="plan-head">
+          <div>
+            <span class="plan-label">F案</span>
+            <h2>本格ブログ運用にする</h2>
+          </div>
+          <p class="price">別見積</p>
+        </div>
+        <p class="sub">HP内に記事本文を貯めていく場合。今回は優先度低め。</p>
+        <ul class="list">
+          <li>WordPressなどの管理画面つき構成。</li>
+          <li>初期追加費用は80,000円からを目安。</li>
+          <li>SEO設計まで行う場合は専門家相談が安全。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="wide" aria-label="おすすめと注意点">
+      <article class="panel recommend">
+        <h2>今回のおすすめ</h2>
+        <ul class="list">
+          <li>既存ドメインがあるならB案。</li>
+          <li>なければC案で、甲斐さん名義の新規ドメインを取る。</li>
+          <li>公開場所は無料から始める。</li>
+          <li>不安があればD案の軽い保守をつける。</li>
+        </ul>
+      </article>
+
+      <article class="panel caution">
+        <h2>先に確認したいこと</h2>
+        <ul class="list">
+          <li>既に持っているドメインがあるか。</li>
+          <li>名刺やチラシに載せたいURLがあるか。</li>
+          <li>公開後の修正を誰が行うか。</li>
+          <li>note更新だけでよいか、HP本体も自分で触りたいか。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="panel" aria-label="価格一覧">
+      <h2>費用のたたき台</h2>
+      <div class="price-table">
+        <div class="price-row">
+          <strong>確認用URL</strong>
+          <span>0円</span>
+          <span>制作中の確認だけに使う。本番運用にはしない。</span>
+        </div>
+        <div class="price-row">
+          <strong>既存ドメイン接続</strong>
+          <span>15,000円</span>
+          <span>DNS設定、公開先への接続、表示確認。ドメイン実費は既存契約分。</span>
+        </div>
+        <div class="price-row">
+          <strong>新規ドメイン取得サポート</strong>
+          <span>22,000円 + 年3,000円から5,000円程度</span>
+          <span>取得補助、DNS設定、公開確認。ドメイン代は契約先へ支払い。</span>
+        </div>
+        <div class="price-row">
+          <strong>軽い保守</strong>
+          <span>月5,500円</span>
+          <span>月1点検、リンク確認、30分以内の軽微修正、note反映確認。</span>
+        </div>
+        <div class="price-row">
+          <strong>しっかり保守</strong>
+          <span>月11,000円</span>
+          <span>月1点検、1時間までの修正、簡単な相談、軽い導線調整。</span>
+        </div>
+        <div class="price-row">
+          <strong>都度修正</strong>
+          <span>5,500円から</span>
+          <span>保守なしの場合のスポット対応。内容が大きい場合は事前見積。</span>
+        </div>
+      </div>
+      <p class="sub" style="margin-top: 14px;">
+        金額は税別の目安です。実際の請求可否・金額・契約形態は、IRODORI側のルールと甲斐さん側の希望を確認してから確定します。
+      </p>
+    </section>
+
+    <section class="panel" aria-label="説明文">
+      <h2>MTGでの説明例</h2>
+      <ul class="list">
+        <li>今のURLは確認用なので、本番は甲斐さん側で持つ正式なURLに載せるのがおすすめです。</li>
+        <li>既にドメインがあればそれを使えます。なければ新しく取る形が自然です。</li>
+        <li>公開場所は無料から始められるので、最初から大きなサーバー代は不要です。</li>
+        <li>ただし公開後の修正や点検は、制作とは別に保守範囲として決めておくと安心です。</li>
+      </ul>
+    </section>
+
+    <footer>
+      価格は検討用のたたき台です。正式見積ではなく、MTGで認識合わせをするための整理として使用します。
+    </footer>
+  </main>
+</body>
+</html>
