@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>プカリ司法書士法人 HP制作 進捗ダッシュボード v0.2</title>
+  <style>
+    :root {
+      --ink: #25313b;
+      --muted: #64717f;
+      --line: #dfe6ed;
+      --paper: #f7f9fb;
+      --white: #ffffff;
+      --navy: #155171;
+      --teal: #1f8a8a;
+      --amber: #b7791f;
+      --green: #2f7d53;
+      --red: #b54848;
+      --shadow: 0 18px 45px rgba(35, 49, 59, .09);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #eef4f7 0, #f7f9fb 320px, #ffffff 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: var(--navy); text-decoration-thickness: .08em; text-underline-offset: .18em; }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 56px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(260px, .8fr);
+      gap: 22px;
+      align-items: stretch;
+      margin-bottom: 22px;
+    }
+
+    .headline,
+    .visual,
+    .panel,
+    .item,
+    .timeline li {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .92);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .headline {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 265px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .badge.ready { border-color: rgba(47, 125, 83, .3); color: var(--green); background: #f1faf4; }
+    .badge.wait { border-color: rgba(183, 121, 31, .33); color: var(--amber); background: #fff8ec; }
+
+    .visual {
+      overflow: hidden;
+      min-height: 265px;
+      display: grid;
+      grid-template-rows: 1fr auto;
+    }
+
+    .visual img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .visual-note {
+      padding: 14px 16px 16px;
+      font-size: 13px;
+      color: var(--muted);
+      background: var(--white);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 18px 0;
+    }
+
+    .panel {
+      padding: 20px;
+      min-height: 100%;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+
+    p { margin: 0; }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list li {
+      padding-left: 16px;
+      position: relative;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .68em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .item {
+      box-shadow: none;
+      padding: 16px;
+      min-height: 132px;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .value {
+      font-size: 21px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .value.small { font-size: 16px; }
+
+    .wide {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .timeline {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .timeline li {
+      box-shadow: none;
+      padding: 14px 16px;
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .date {
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .decision {
+      border-left: 4px solid var(--green);
+      padding-left: 14px;
+    }
+
+    .risk {
+      border-left: 4px solid var(--amber);
+      padding-left: 14px;
+    }
+
+    .links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .link-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .link-row:last-child { border-bottom: 0; }
+
+    .link-row span {
+      color: var(--muted);
+      min-width: 88px;
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      header,
+      .grid,
+      .wide,
+      .status-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .headline,
+      .visual {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .page { padding: 18px 12px 42px; }
+      .headline { padding: 20px; }
+      .timeline li { grid-template-columns: 1fr; }
+      .link-row { flex-direction: column; }
+      .badge { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <section class="headline" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Project Dashboard v0.2 / 2026-05-27 10:51</p>
+          <h1 id="page-title">プカリ司法書士法人 HP制作</h1>
+          <p class="lead">
+            現在は、甲斐さん希望のCodex版をベースに、受領済みの文章・画像・note導線・Facebook・LINE・プライバシーポリシーを反映する前段階です。
+            電話番号・LINE入りの確認用URLを作成済みで、あわせて保守管理と自主管理の範囲を確認する段階です。
+            このページは関係者が「今どこか」「次に何を決めるか」を一目で確認するための共有用ダッシュボードです。
+          </p>
+        </div>
+        <div class="meta-row" aria-label="現在の重要ステータス">
+          <span class="badge ready">方針: Codex版ベース</span>
+          <span class="badge ready">note埋め込み方向</span>
+          <span class="badge ready">確認用URL公開済み</span>
+          <span class="badge wait">回答期限: 2026-05-27</span>
+          <span class="badge wait">完成目標: 2026-06-05</span>
+        </div>
+      </section>
+
+      <aside class="visual" aria-label="使用予定の雰囲気素材">
+        <img src="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/pukari-codex-v011/assets/pukari-logo-horizontal.jpg" alt="プカリ司法書士法人HP制作で使用予定のロゴ・素材イメージ">
+        <p class="visual-note">
+          画像・本文はNotion/Google Drive/Google Docで受領済み。電話番号・LINE導線・本番ドメイン・保守範囲を確認します。
+        </p>
+      </aside>
+    </header>
+
+    <section class="status-grid" aria-label="プロジェクト概要">
+      <div class="item">
+        <span class="label">現在フェーズ</span>
+        <p class="value">要件受領</p>
+        <p class="note">本制作着手前の確認段階</p>
+      </div>
+      <div class="item">
+        <span class="label">優先デザイン</span>
+        <p class="value small">Codex版<br>v0.1.1確認用</p>
+      </div>
+      <div class="item">
+        <span class="label">制作対象</span>
+        <p class="value small">文章・画像反映<br>各種導線追加</p>
+      </div>
+      <div class="item">
+        <span class="label">未確定</span>
+        <p class="value small">電話番号<br>本番ドメイン</p>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="主要ポイント">
+      <article class="panel decision">
+        <h2>決まっていること</h2>
+        <ul class="list">
+          <li>甲斐さん希望はCodex版の案。</li>
+          <li>noteを埋め込む方式で進行。</li>
+          <li>電話番号・LINE入りの確認用URLを作成済み。</li>
+          <li>HP記事本文は甲斐さん用意の文面をそのまま使用。</li>
+          <li>画像素材はDrive内の8点を使用。</li>
+          <li>Facebook、LINE、プライバシーポリシー導線を入れる。</li>
+        </ul>
+      </article>
+
+      <article class="panel risk">
+        <h2>確認が必要なこと</h2>
+        <ul class="list">
+          <li>電話番号が2種類あるため、掲載する番号を確認する。</li>
+          <li>LINEボタンの表示位置を決める。</li>
+          <li>本番公開用のドメインがあるか確認する。</li>
+          <li>軽微な修正をどこまで本人対応にするか整理する。</li>
+          <li>保守管理の範囲を確認する。</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2>次に返す内容</h2>
+        <ul class="list">
+          <li>制作は進められる。</li>
+          <li>初稿目安は5/30から6/1頃、完成目標は6/5頃。</li>
+          <li>LINE追加ボタンは対応可能。Notionにボタン用コードあり。</li>
+          <li>軽微な修正は、管理画面編集ではなく修正対応またはAIエージェント改修デモとして説明。</li>
+          <li>電話番号の正本確認を依頼する。</li>
+          <li>本番ドメインと保守範囲の認識合わせをする。</li>
+        </ul>
+      </article>
+
+      <article class="panel risk">
+        <h2>保守管理の考え方</h2>
+        <ul class="list">
+          <li>note投稿からHP新着欄へ表示する形での納品は可能。</li>
+          <li>HP本体を自主管理するには、CodexやClaude CodeなどAIエージェントを軽く触れる知識が必要。</li>
+          <li>noteや自動反映は外部サービスを使うため、永続的に無保守で動く保証はしない。</li>
+          <li>安心運用にする場合は、月1点検や軽微修正対応などの保守範囲を別途決める。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="wide" aria-label="進捗とリンク">
+      <article class="panel">
+        <h2>進捗タイムライン</h2>
+        <ol class="timeline">
+          <li>
+            <span class="date">2026-05-09</span>
+            <p class="note">HP制作相談を受け、Codex版・Claude版の初回モックを作成。</p>
+          </li>
+          <li>
+            <span class="date">2026-05-13</span>
+            <p class="note">新着記事更新方式について、note等で記事を書く案を一次回答。</p>
+          </li>
+          <li>
+            <span class="date">2026-05-16</span>
+            <p class="note">note投稿からHP新着欄へ自動反映する流れを実地確認。</p>
+          </li>
+          <li>
+            <span class="date">2026-05-25</span>
+            <p class="note">note埋め込み方向で進みそうとの連絡。Notionに本文・画像・要望が整理される。</p>
+          </li>
+          <li>
+            <span class="date">2026-05-26</span>
+            <p class="note">完成目処とLINE追加ボタンの質問が追加。LINEボタン用コードもNotionで確認。</p>
+          </li>
+          <li>
+            <span class="date">2026-05-27</span>
+            <p class="note">電話番号・LINE入り確認用URLを公開。保守管理と自主管理の範囲も整理。</p>
+          </li>
+        </ol>
+      </article>
+
+      <aside class="panel">
+        <h2>共有リンク</h2>
+        <div class="links">
+          <div class="link-row">
+            <span>確認用</span>
+            <a href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/pukari-codex-v011/">電話番号・LINE入り v0.1.1</a>
+          </div>
+          <div class="link-row">
+            <span>初回案</span>
+            <a href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/pukari-codex-v01/#services">Codex版HP案 v0.1</a>
+          </div>
+          <div class="link-row">
+            <span>比較案</span>
+            <a href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/pukari-claude-v05/#access">Claude版HP案</a>
+          </div>
+          <div class="link-row">
+            <span>画像</span>
+            <a href="https://drive.google.com/drive/u/1/folders/1gClD8W007nGyXmF9Jy5aSl1izVGMiSU_">HP用画像Drive</a>
+          </div>
+          <div class="link-row">
+            <span>本文</span>
+            <a href="https://docs.google.com/document/d/1jUaVYciKzJPkbhWQu_Arf1p9cJMgxgQ3Z1kYF9CwLwo/edit?tab=t.yv6gbdjnsfxc">HP記事本文・プライバシーポリシー</a>
+          </div>
+          <div class="link-row">
+            <span>LINE</span>
+            <a href="https://lin.ee/sHrclxM">LINE友だち追加リンク</a>
+          </div>
+          <div class="link-row">
+            <span>Facebook</span>
+            <a href="https://www.facebook.com/profile.php?id=61590254672506">甲斐さんFacebook</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid" aria-label="関係者別に見るポイント">
+      <article class="panel">
+        <h2>おけもん側</h2>
+        <ul class="list">
+          <li>飯田さんへ5/27中に回答。</li>
+          <li>電話番号・LINE表示位置・本番ドメインを確認。</li>
+          <li>本制作に入る前に、作業範囲・完成目安・保守範囲を明確にする。</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2>制作側</h2>
+        <ul class="list">
+          <li>Codex版をベースに本文・画像を反映。</li>
+          <li>note、Facebook、LINE、プライバシーポリシーを追加。</li>
+          <li>note自動反映は、無保守保証ではなく点検前提の仕組みとして扱う。</li>
+          <li>公開前にスマホ表示とリンク切れを確認。</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2>クライアント確認</h2>
+        <ul class="list">
+          <li>掲載電話番号の確定。</li>
+          <li>LINEボタンの場所とリンク先の確認。</li>
+          <li>本番公開用ドメインの有無。</li>
+          <li>自主管理したい範囲と、保守対応が必要な範囲。</li>
+          <li>初稿確認後、文章や写真の微修正をまとめて返す。</li>
+        </ul>
+      </article>
+    </section>
+
+    <footer>
+      内部評価や個別チャットの細かい温度感は含めず、関係者共有に必要な進捗だけを整理しています。
+    </footer>
+  </main>
+</body>
+</html>
