@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プカリ司法書士法人 | ぷかりと浮かぶ安心感を。</title>
+  <meta name="description" content="プカリ司法書士法人の提案用ホームページモック。相続、登記、成年後見、会社・法人手続きまで、暮らしと事業の法務相談をやさしく支えます。">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #075f8e;
+      --blue-dark: #06486f;
+      --blue-soft: #eaf6fb;
+      --blue-mist: #f4fbff;
+      --orange: #f2a900;
+      --orange-dark: #d98b00;
+      --ink: #1f2d3a;
+      --muted: #647280;
+      --line: #dce8ee;
+      --paper: #ffffff;
+      --bg: #f7fbfd;
+      --shadow: 0 16px 42px rgba(7, 95, 142, 0.12);
+      --shadow-soft: 0 8px 24px rgba(7, 95, 142, 0.08);
+      --sans: "Noto Sans JP", system-ui, sans-serif;
+      --serif: "Noto Serif JP", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.9;
+      letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      width: min(1180px, calc(100% - 40px));
+      min-height: 82px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 250px 1fr auto;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .logo img {
+      width: 214px;
+      height: 52px;
+      object-fit: contain;
+      object-position: left center;
+      mix-blend-mode: multiply;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav a {
+      padding: 12px 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav a:hover {
+      color: var(--blue);
+      border-bottom-color: var(--orange);
+    }
+
+    .header-contact {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tel {
+      line-height: 1.25;
+      text-align: right;
+    }
+
+    .tel-label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .tel-num {
+      color: var(--blue-dark);
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 13px 24px 15px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--blue);
+      box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.16);
+      color: #fff;
+      font-weight: 900;
+      line-height: 1.35;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #0870a8;
+      box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.18), var(--shadow-soft);
+    }
+
+    .btn-orange {
+      background: var(--orange);
+      color: #18313f;
+    }
+
+    .btn-orange:hover {
+      background: #ffc039;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 8% 12%, rgba(242, 169, 0, 0.16), transparent 28%),
+        linear-gradient(105deg, #e8f8ff 0%, #f9fcff 42%, #fff8e7 100%);
+    }
+
+    .hero::before {
+      content: "PUKARI";
+      position: absolute;
+      right: -18px;
+      bottom: -80px;
+      color: rgba(7, 95, 142, 0.055);
+      font-size: clamp(88px, 17vw, 230px);
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      width: min(1180px, calc(100% - 40px));
+      min-height: 610px;
+      margin: 0 auto;
+      padding: 62px 0 54px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 2px;
+      background: var(--orange);
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .hero-lead {
+      max-width: 560px;
+      margin: 24px 0 0;
+      color: #3e5160;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .hero-badges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 34px;
+      max-width: 610px;
+    }
+
+    .hero-badge {
+      min-height: 88px;
+      padding: 14px 10px;
+      border: 2px solid rgba(7, 95, 142, 0.13);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.82);
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-badge strong {
+      display: block;
+      color: var(--blue);
+      font-size: 21px;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .hero-badge span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 470px;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-photo {
+      position: relative;
+      width: min(520px, 100%);
+      aspect-ratio: 1.08 / 1;
+      border: 12px solid #fff;
+      border-radius: 26px;
+      background: #edf8fd;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(115deg, rgba(255, 255, 255, 0.22), transparent 42%),
+        linear-gradient(rgba(7, 95, 142, 0.04), rgba(7, 95, 142, 0.12));
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-photo-layer {
+      position: absolute;
+      inset: 0;
+      background-position: center;
+      background-size: cover;
+      transform: scale(1.04);
+      will-change: opacity, transform;
+    }
+
+    .hero-photo-layer.pattern-a {
+      background-image: url("assets/hero-image2-consultation.png");
+      animation: heroPatternA 18s ease-in-out infinite;
+    }
+
+    .hero-photo-layer.pattern-b {
+      background-image: url("assets/hero-image2-pattern-b.png");
+      animation: heroPatternB 18s ease-in-out infinite;
+    }
+
+    @keyframes heroPatternA {
+      0% {
+        opacity: 1;
+        transform: scale(1.04) translate3d(0, 0, 0);
+      }
+      43% {
+        opacity: 1;
+        transform: scale(1.09) translate3d(-8px, -4px, 0);
+      }
+      51%,
+      92% {
+        opacity: 0;
+        transform: scale(1.1) translate3d(-12px, -5px, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.04) translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes heroPatternB {
+      0%,
+      43% {
+        opacity: 0;
+        transform: scale(1.04) translate3d(8px, 4px, 0);
+      }
+      51% {
+        opacity: 1;
+        transform: scale(1.05) translate3d(4px, 2px, 0);
+      }
+      92% {
+        opacity: 1;
+        transform: scale(1.1) translate3d(-6px, -4px, 0);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.1) translate3d(-8px, -4px, 0);
+      }
+    }
+
+    .hero-card {
+      position: absolute;
+      left: 0;
+      bottom: 32px;
+      width: min(310px, 72%);
+      padding: 22px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card-label {
+      color: var(--orange-dark);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .hero-card-main {
+      margin-top: 5px;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .hero-card-text {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .floating-logo {
+      position: absolute;
+      right: 12px;
+      top: 8px;
+      width: 112px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      animation: logoFloat 5.8s ease-in-out infinite;
+    }
+
+    .floating-logo img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    @keyframes logoFloat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .top-news {
+      position: relative;
+      z-index: 3;
+      width: min(1080px, calc(100% - 40px));
+      margin: -28px auto 0;
+      padding: 20px 28px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 132px 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .top-news-title {
+      color: var(--blue);
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .top-news-item {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .top-news-item strong {
+      margin-right: 12px;
+      color: var(--ink);
+    }
+
+    section {
+      position: relative;
+      padding: 92px 0;
+    }
+
+    .section-bg {
+      background: var(--blue-mist);
+    }
+
+    .inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      position: relative;
+      margin-bottom: 42px;
+      text-align: center;
+    }
+
+    .section-en {
+      position: absolute;
+      inset: -52px 0 auto;
+      color: rgba(7, 95, 142, 0.07);
+      font-size: clamp(54px, 10vw, 132px);
+      font-weight: 900;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .section-kicker {
+      position: relative;
+      margin: 0 0 10px;
+      color: var(--orange-dark);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .section-title {
+      position: relative;
+      margin: 0;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .section-lead {
+      position: relative;
+      max-width: 760px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      overflow: hidden;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .service-image {
+      height: 210px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .service-image.personal {
+      background-image: url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1000&q=82");
+    }
+
+    .service-image.business {
+      background-image: url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=82");
+    }
+
+    .service-body {
+      padding: 30px;
+    }
+
+    .service-label {
+      display: inline-flex;
+      padding: 4px 13px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .service-card h3 {
+      margin: 16px 0 8px;
+      color: var(--blue-dark);
+      font-size: 26px;
+      line-height: 1.35;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .service-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .service-list li {
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #f6fbfd;
+      color: #385061;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .reason-card {
+      min-height: 248px;
+      padding: 28px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .reason-num {
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .reason-card h3 {
+      margin: 12px 0 10px;
+      color: var(--blue-dark);
+      font-size: 21px;
+      line-height: 1.45;
+    }
+
+    .reason-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .case-intro {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .case-intro-note {
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .case-scroll-wrap {
+      position: relative;
+    }
+
+    .case-scroll-controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .case-scroll-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--blue);
+      font: inherit;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .case-scroll-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange-dark);
+    }
+
+    .case-rail {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(290px, 360px);
+      gap: 18px;
+      overflow-x: auto;
+      padding: 4px 4px 18px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: var(--blue) #e9f4f9;
+    }
+
+    .case-card {
+      min-height: 330px;
+      padding: 26px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+      scroll-snap-align: start;
+    }
+
+    .case-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .case-card-num {
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .case-card-label {
+      display: inline-flex;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .case-card h3 {
+      margin: 0 0 12px;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.45;
+    }
+
+    .case-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .case-card dl {
+      margin: 20px 0 0;
+      padding-top: 16px;
+      border-top: 1px dashed var(--line);
+    }
+
+    .case-card dt {
+      color: var(--orange-dark);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .case-card dd {
+      margin: 4px 0 0;
+      color: #385061;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .case-limits {
+      margin-top: 30px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .case-limits-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .case-limits-head h3 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-size: 22px;
+      line-height: 1.4;
+    }
+
+    .case-limits-head span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .case-limits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .case-limit-box {
+      padding: 20px;
+      border-radius: 16px;
+      background: #f7fbfd;
+    }
+
+    .case-limit-box h4 {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: 16px;
+    }
+
+    .case-limit-box ul {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .case-limit-box li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .case-limit-box li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.78em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .flow-step {
+      position: relative;
+      padding: 26px 20px;
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    .flow-step::after {
+      content: "";
+      position: absolute;
+      right: -15px;
+      top: 50%;
+      width: 14px;
+      height: 2px;
+      background: var(--orange);
+    }
+
+    .flow-step:last-child::after {
+      display: none;
+    }
+
+    .flow-step span {
+      color: var(--orange-dark);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .flow-step h3 {
+      margin: 8px 0;
+      color: var(--blue-dark);
+      font-size: 18px;
+    }
+
+    .flow-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .news-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .news-panel,
+    .column-panel {
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .news-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .news-tab {
+      flex: 1;
+      padding: 17px 12px;
+      border: 0;
+      border-right: 1px solid var(--line);
+      background: #fff;
+      color: var(--blue);
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .news-tab:last-child {
+      border-right: 0;
+    }
+
+    .news-tab.active {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .news-list {
+      padding: 8px 28px 24px;
+    }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 100px 82px 1fr;
+      gap: 12px;
+      align-items: baseline;
+      padding: 18px 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 14px;
+    }
+
+    .news-item:last-child {
+      border-bottom: 0;
+    }
+
+    .news-date {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .news-tag {
+      display: inline-flex;
+      justify-content: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .column-panel {
+      overflow: hidden;
+    }
+
+    .column-photo {
+      height: 180px;
+      background:
+        linear-gradient(rgba(7, 95, 142, 0.08), rgba(7, 95, 142, 0.08)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=82") center/cover;
+    }
+
+    .column-body {
+      padding: 28px;
+    }
+
+    .column-body h3 {
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+      font-size: 23px;
+      line-height: 1.4;
+    }
+
+    .column-body p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .profile-photo {
+      position: relative;
+      min-height: 420px;
+      border-radius: 22px;
+      background:
+        linear-gradient(rgba(7, 95, 142, 0.06), rgba(7, 95, 142, 0.06)),
+        url("https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=82") center/cover;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-note {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      max-width: 280px;
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--blue-dark);
+      font-weight: 900;
+    }
+
+    .profile-text h2 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.35;
+    }
+
+    .profile-text p {
+      margin: 20px 0 0;
+      color: var(--muted);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .faq-item {
+      padding: 24px;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .faq-item h3 {
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+      font-size: 17px;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact {
+      padding: 82px 0;
+      background:
+        radial-gradient(circle at 16% 20%, rgba(242, 169, 0, 0.2), transparent 24%),
+        linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: #fff;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .contact h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.35;
+    }
+
+    .contact p {
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .contact-actions {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-card {
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-card span {
+      display: block;
+      font-size: 13px;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .contact-card strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 26px;
+      line-height: 1.25;
+    }
+
+    .line-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: #fff;
+      color: #18313f;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .line-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .line-card strong {
+      display: block;
+      margin-top: 2px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .line-card img {
+      width: 116px;
+      height: 36px;
+      flex: 0 0 auto;
+      object-fit: contain;
+    }
+
+    .contact-note {
+      margin: -2px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .site-footer {
+      padding: 42px 0 32px;
+      background: #fff;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .footer-brand {
+      color: var(--blue-dark);
+      font-weight: 900;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1080px) {
+      .header-inner {
+        grid-template-columns: 220px 1fr;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .header-contact {
+        justify-content: end;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .hero-visual {
+        min-height: 390px;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .header-inner {
+        width: min(100% - 24px, 1180px);
+        min-height: 72px;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+      }
+
+      .logo img {
+        width: 185px;
+        height: 46px;
+      }
+
+      .tel {
+        display: none;
+      }
+
+      .header-contact .btn {
+        min-height: 44px;
+        padding: 10px 16px 12px;
+        font-size: 13px;
+      }
+
+      .hero-inner,
+      .inner,
+      .top-news,
+      .footer-inner {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 42px 0 34px;
+      }
+
+      .hero-lead {
+        font-size: 16px;
+      }
+
+      .hero-badges,
+      .service-grid,
+      .reason-grid,
+      .case-intro,
+      .case-limits-grid,
+      .flow,
+      .news-layout,
+      .profile,
+      .faq-grid,
+      .contact-box,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-badges {
+        gap: 10px;
+      }
+
+      .hero-visual {
+        min-height: 310px;
+      }
+
+      .hero-photo {
+        width: 100%;
+        border-width: 8px;
+        border-radius: 20px;
+      }
+
+      .hero-card {
+        left: 14px;
+        bottom: 12px;
+      }
+
+      .floating-logo {
+        width: 86px;
+      }
+
+      .floating-logo img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .top-news {
+        margin-top: 14px;
+        padding: 18px;
+        grid-template-columns: 1fr;
+      }
+
+      .top-news .btn {
+        width: 100%;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .service-list {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-step::after {
+        display: none;
+      }
+
+      .case-scroll-controls {
+        justify-content: flex-start;
+      }
+
+      .case-rail {
+        grid-auto-columns: minmax(260px, 84vw);
+      }
+
+      .case-limits {
+        padding: 22px;
+      }
+
+      .case-limits-head {
+        display: block;
+      }
+
+      .case-limits-head span {
+        display: block;
+        margin-top: 6px;
+        white-space: normal;
+      }
+
+      .news-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .profile-photo {
+        min-height: 340px;
+      }
+
+      .contact-card strong {
+        font-size: 22px;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-photo-layer,
+      .floating-logo {
+        animation: none;
+      }
+
+      .hero-photo-layer.pattern-b {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#top" aria-label="プカリ司法書士法人 トップへ">
+        <img src="assets/pukari-logo-horizontal.jpg" alt="プカリ司法書士法人">
+      </a>
+      <nav class="nav" aria-label="主要ナビゲーション">
+        <a href="#services">業務内容</a>
+        <a href="#reason">選ばれる理由</a>
+        <a href="#cases">解決事例</a>
+        <a href="#flow">相談の流れ</a>
+        <a href="#news">お知らせ・コラム</a>
+        <a href="#profile">代表あいさつ</a>
+      </nav>
+      <div class="header-contact">
+        <div class="tel">
+          <span class="tel-label">平日 9:00-18:00</span>
+          <span class="tel-num">03-6821-6852</span>
+        </div>
+        <a class="btn btn-orange" href="#contact">初回相談はこちら</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">相続・登記・暮らしの法務相談</p>
+          <h1 id="hero-title">ぷかりと浮かぶ<br>安心感を。</h1>
+          <p class="hero-lead">
+            不安な手続きも、ひとつずつ見える形へ。相続、遺言、不動産登記、会社・法人手続きまで、地域の皆さまに寄り添って丁寧にサポートします。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-orange" href="#contact">無料相談を予約する</a>
+            <a class="btn" href="#services">業務内容を見る</a>
+          </div>
+          <div class="hero-badges" aria-label="主な特徴">
+            <div class="hero-badge"><strong>初回相談</strong><span>方針確認まで丁寧に</span></div>
+            <div class="hero-badge"><strong>相続・登記</strong><span>暮らしに近い手続き</span></div>
+            <div class="hero-badge"><strong>記事更新</strong><span>運用方式は相談可</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-photo">
+            <span class="hero-photo-layer pattern-a"></span>
+            <span class="hero-photo-layer pattern-b"></span>
+          </div>
+          <div class="floating-logo">
+            <img src="assets/pukari-logo-square.jpg" alt="">
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-label">FOR LIFE AND BUSINESS</div>
+            <div class="hero-card-main">暮らしと事業の<br>身近な相談窓口</div>
+            <div class="hero-card-text">法律用語をやさしくほどき、次に何をすればよいかを整理します。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="top-news" aria-label="最新情報">
+      <div class="top-news-title">NEWS</div>
+      <div class="top-news-item"><strong>2026.05.09</strong>ホームページ制作に向けた初回モックを準備中です。</div>
+      <a class="btn" href="#news">一覧を見る</a>
+    </aside>
+
+    <section id="services">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">service</div>
+          <p class="section-kicker">個人のお客様にも、事業者様にも</p>
+          <h2 class="section-title">必要な手続きを、わかりやすく整理します</h2>
+          <p class="section-lead">相続や登記は、普段なじみがないからこそ不安になりやすいもの。状況を伺い、必要書類・期限・費用感をひとつずつ確認します。</p>
+        </header>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-image personal"></div>
+            <div class="service-body">
+              <span class="service-label">個人のお客様</span>
+              <h3>相続・遺言・成年後見</h3>
+              <p>ご家族の状況や財産の整理から、相続登記、遺言書、成年後見まで。迷いやすい手続きを、落ち着いて進められるよう支えます。</p>
+              <ul class="service-list">
+                <li>相続登記</li>
+                <li>遺言書作成</li>
+                <li>成年後見</li>
+                <li>不動産名義変更</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-image business"></div>
+            <div class="service-body">
+              <span class="service-label">法人・事業者様</span>
+              <h3>会社・法人登記</h3>
+              <p>会社設立、役員変更、本店移転、定款変更など、事業の節目で必要になる登記をサポート。経営者の身近な相談先を目指します。</p>
+              <ul class="service-list">
+                <li>会社設立</li>
+                <li>役員変更</li>
+                <li>本店移転</li>
+                <li>各種変更登記</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reason" class="section-bg">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">reason</div>
+          <p class="section-kicker">選ばれる理由</p>
+          <h2 class="section-title">相談前の不安を、相談後の見通しへ</h2>
+        </header>
+
+        <div class="reason-grid">
+          <article class="reason-card">
+            <div class="reason-num">01</div>
+            <h3>専門用語をかみくだいて説明</h3>
+            <p>難しい制度や書類の意味を、生活者の目線で整理。何を判断すべきかが見えるようにします。</p>
+          </article>
+          <article class="reason-card">
+            <div class="reason-num">02</div>
+            <h3>地域と暮らしに近い相談姿勢</h3>
+            <p>司法書士業務だけでなく、地域の困りごとに触れてきた視点を活かして、現実的な進め方を考えます。</p>
+          </article>
+          <article class="reason-card">
+            <div class="reason-num">03</div>
+            <h3>初回相談で全体像を整理</h3>
+            <p>まずは状況を伺い、手続きの流れ、必要書類、費用感、今後の確認事項を整理します。</p>
+          </article>
+          <article class="reason-card">
+            <div class="reason-num">04</div>
+            <h3>個人・法人の手続きを横断</h3>
+            <p>相続、不動産、会社登記など、暮らしと事業の両方で発生する法務手続きに対応します。</p>
+          </article>
+          <article class="reason-card">
+            <div class="reason-num">05</div>
+            <h3>記事やお知らせで継続発信</h3>
+            <p>日記、コラム、新着情報を通じて、相談前に知っておきたい情報へアクセスしやすくします。</p>
+          </article>
+          <article class="reason-card">
+            <div class="reason-num">06</div>
+            <h3>外部コラムとも連携可能</h3>
+            <p>note等の外部サイトで発信する場合も、HPから自然に導線をつくる設計にできます。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">case</div>
+          <p class="section-kicker">解決事例の見せ方デモ</p>
+          <h2 class="section-title">よくあるご相談を、カードで見やすく紹介できます</h2>
+          <p class="section-lead">下記は表示イメージです。実際の掲載時は、個人情報や具体的な事情が特定されないように内容を整えてから公開します。</p>
+        </header>
+
+        <div class="case-intro">
+          <div class="case-intro-note">
+            スマホでは横にスワイプ、パソコンでは複数の事例を横並びで確認できる形です。SWELLの事例カードに近い見え方を、今のHPにも入れられます。
+          </div>
+          <div class="case-scroll-controls" aria-label="解決事例の横スクロール操作">
+            <button class="case-scroll-btn" type="button" data-case-scroll="-1" aria-label="前の事例を見る">‹</button>
+            <button class="case-scroll-btn" type="button" data-case-scroll="1" aria-label="次の事例を見る">›</button>
+          </div>
+        </div>
+
+        <div class="case-scroll-wrap">
+          <div class="case-rail" id="caseRail" tabindex="0" aria-label="解決事例一覧">
+            <article class="case-card">
+              <div class="case-card-meta">
+                <span class="case-card-num">CASE 01</span>
+                <span class="case-card-label">相続登記</span>
+              </div>
+              <h3>親御さん名義の不動産を、相続人名義へ整理</h3>
+              <p>必要書類や関係者の確認が多く、何から始めるべきか分からない状態から、手続きの順番を整理したモデルケースです。</p>
+              <dl>
+                <dt>見せ方の例</dt>
+                <dd>相談内容、進め方、完了までの流れを3行程度で紹介</dd>
+              </dl>
+            </article>
+
+            <article class="case-card">
+              <div class="case-card-meta">
+                <span class="case-card-num">CASE 02</span>
+                <span class="case-card-label">遺言書作成</span>
+              </div>
+              <h3>ご家族が迷わないよう、公正証書遺言を準備</h3>
+              <p>財産の分け方や想いを事前に整理し、将来の不安を減らすための相談例です。正式掲載時は詳細をぼかして表現します。</p>
+              <dl>
+                <dt>見せ方の例</dt>
+                <dd>不安、相談後に見えた方針、必要な準備をカード化</dd>
+              </dl>
+            </article>
+
+            <article class="case-card">
+              <div class="case-card-meta">
+                <span class="case-card-num">CASE 03</span>
+                <span class="case-card-label">成年後見</span>
+              </div>
+              <h3>一人暮らしの親族の手続きや財産管理を相談</h3>
+              <p>ご本人の生活を守りながら、家族だけで抱え込まない進め方を確認するモデルケースです。守秘性に配慮して掲載します。</p>
+              <dl>
+                <dt>見せ方の例</dt>
+                <dd>制度説明よりも、相談前後の安心感が伝わる文章にする</dd>
+              </dl>
+            </article>
+
+            <article class="case-card">
+              <div class="case-card-meta">
+                <span class="case-card-num">CASE 04</span>
+                <span class="case-card-label">会社登記</span>
+              </div>
+              <h3>役員変更や本店移転など、事業の節目を整理</h3>
+              <p>会社の変更手続きで必要な書類や期限を確認し、事業を止めずに進めるための相談例です。</p>
+              <dl>
+                <dt>見せ方の例</dt>
+                <dd>法人向け相談もあることを、一覧の中で自然に伝える</dd>
+              </dl>
+            </article>
+          </div>
+        </div>
+
+        <div class="case-limits">
+          <div class="case-limits-head">
+            <h3>この方式でできること・別対応になること</h3>
+            <span>確認用デモ v0.1.2</span>
+          </div>
+          <div class="case-limits-grid">
+            <div class="case-limit-box">
+              <h4>今のHPでもできること</h4>
+              <ul>
+                <li>解決事例を横スクロールのカードで見せる</li>
+                <li>カードの件数、順番、文言をあとから差し替える</li>
+                <li>note等の記事や詳しいページへリンクする</li>
+                <li>スマホでは横スワイプ、PCでは横並びで表示する</li>
+              </ul>
+            </div>
+            <div class="case-limit-box">
+              <h4>別対応・確認が必要なこと</h4>
+              <ul>
+                <li>管理画面から本人が自由に追加する仕組みは別設計</li>
+                <li>実案件の掲載は、個人情報や守秘性の確認が必要</li>
+                <li>本格的にSEOを狙うなら、HP内に本文を蓄積する設計も検討</li>
+                <li>外部サービス連携は、永続的に無保守で動く保証まではしない</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">flow</div>
+          <p class="section-kicker">ご相談の流れ</p>
+          <h2 class="section-title">はじめてでも、順番に進められます</h2>
+        </header>
+
+        <div class="flow">
+          <article class="flow-step">
+            <span>STEP 1</span>
+            <h3>お問い合わせ</h3>
+            <p>電話またはフォームから、相談内容を簡単にお知らせください。</p>
+          </article>
+          <article class="flow-step">
+            <span>STEP 2</span>
+            <h3>初回相談</h3>
+            <p>状況を伺い、手続きの全体像と次に必要な確認を整理します。</p>
+          </article>
+          <article class="flow-step">
+            <span>STEP 3</span>
+            <h3>お見積り</h3>
+            <p>必要な業務範囲と費用感を確認し、納得いただいてから進めます。</p>
+          </article>
+          <article class="flow-step">
+            <span>STEP 4</span>
+            <h3>手続き開始</h3>
+            <p>書類収集、申請、関係先との確認などを丁寧に進めます。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="section-bg">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">column</div>
+          <p class="section-kicker">お知らせ・日記・コラム</p>
+          <h2 class="section-title">発信の場所は、運用に合わせて選べます</h2>
+          <p class="section-lead">HP内に記事を蓄積するのか、note等の外部サイトへリンクするのか。更新者・頻度・SEO方針に合わせて、最適な形を決めます。</p>
+        </header>
+
+        <div class="news-layout">
+          <div class="news-panel">
+            <div class="news-tabs" role="tablist" aria-label="記事カテゴリ">
+              <button class="news-tab active" type="button">新着情報</button>
+              <button class="news-tab" type="button">日記</button>
+              <button class="news-tab" type="button">コラム</button>
+            </div>
+            <div class="news-list">
+              <article class="news-item">
+                <span class="news-date">2026.05.09</span>
+                <span class="news-tag">新着</span>
+                <a href="#">ホームページ開設準備中です</a>
+              </article>
+              <article class="news-item">
+                <span class="news-date">2026.05.01</span>
+                <span class="news-tag">コラム</span>
+                <a href="#">相続登記の義務化で確認したいこと</a>
+              </article>
+              <article class="news-item">
+                <span class="news-date">2026.04.20</span>
+                <span class="news-tag">日記</span>
+                <a href="#">地域相談会で多かったご質問</a>
+              </article>
+            </div>
+          </div>
+
+          <aside class="column-panel">
+            <div class="column-photo"></div>
+            <div class="column-body">
+              <h3>外部コラムサイトへの導線</h3>
+              <p>noteや別サイトで継続的にコラムを書く場合は、HP側には最新記事へのリンクや紹介枠を設けます。自サイト内投稿が必要な場合は、WordPress等を検討します。</p>
+              <a class="btn btn-orange" href="#" onclick="alert('外部コラムサイトURLに差し替え予定です。'); return false;">コラムサイトへ</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="profile">
+      <div class="inner">
+        <div class="profile">
+          <div class="profile-photo">
+            <div class="profile-note">代表写真・プロフィールは正式素材に差し替え予定</div>
+          </div>
+          <div class="profile-text">
+            <p class="eyebrow">MESSAGE</p>
+            <h2>相談する前より、少し安心して帰っていただけるように。</h2>
+            <p>
+              法律の手続きは、何から始めればよいかわからないことが少なくありません。私たちは、制度や書類の説明だけでなく、ご本人やご家族が納得して進められることを大切にしています。
+            </p>
+            <p>
+              相続、登記、成年後見、会社に関する手続きなど、暮らしと事業の節目でお困りの際は、まずはお気軽にご相談ください。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-bg" aria-labelledby="faq-title">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">faq</div>
+          <p class="section-kicker">よくある質問</p>
+          <h2 id="faq-title" class="section-title">相談前に確認したいこと</h2>
+        </header>
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3>初回相談では何を準備すればよいですか？</h3>
+            <p>まずは現在の状況がわかる範囲で大丈夫です。必要な資料は相談内容に応じてご案内します。</p>
+          </article>
+          <article class="faq-item">
+            <h3>費用は事前にわかりますか？</h3>
+            <p>業務範囲を確認した上で、費用感を事前にご説明します。納得いただいてから進めます。</p>
+          </article>
+          <article class="faq-item">
+            <h3>日記やコラムは自分で更新できますか？</h3>
+            <p>外部サイトへのリンク運用、WordPress、軽量CMSなど、更新頻度と担当者に合わせて選べます。</p>
+          </article>
+          <article class="faq-item">
+            <h3>オンライン相談はできますか？</h3>
+            <p>対応可否や予約方法は本制作時に確認し、必要であれば導線を追加します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="inner contact-box">
+        <div>
+          <h2>ご相談・お問い合わせはこちら</h2>
+          <p>相続、登記、会社手続きなど、まずは現在の状況をお聞かせください。必要な手続きと進め方を整理します。</p>
+        </div>
+        <div class="contact-actions">
+          <a class="contact-card" href="tel:0368216852">
+            <span>お電話でのお問い合わせ</span>
+            <strong>03-6821-6852</strong>
+          </a>
+          <a class="line-card" href="https://lin.ee/sHrclxM" target="_blank" rel="noopener">
+            <span>
+              <span>LINEでのお問い合わせ</span>
+              <strong>友だち追加して相談する</strong>
+            </span>
+            <img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加">
+          </a>
+          <p class="contact-note">※電話番号・LINEの表示位置は確認用の仮配置です。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">プカリ司法書士法人</div>
+        <div>所在地・登録番号・営業時間は正式情報に差し替え予定</div>
+      </div>
+      <nav class="footer-links" aria-label="フッターナビゲーション">
+        <a href="#services">業務内容</a>
+        <a href="#reason">選ばれる理由</a>
+        <a href="#news">お知らせ</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </footer>
+  <script>
+    const caseRail = document.getElementById("caseRail");
+    const caseButtons = document.querySelectorAll("[data-case-scroll]");
+
+    caseButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!caseRail) return;
+        const direction = Number(button.dataset.caseScroll);
+        const distance = Math.min(380, caseRail.clientWidth * 0.82);
+        caseRail.scrollBy({ left: direction * distance, behavior: "smooth" });
+      });
+    });
+  </script>
+</body>
+</html>
