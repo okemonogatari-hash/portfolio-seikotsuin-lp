@@ -1,0 +1,7 @@
+
+# === 2026-05-28 セキュリティ強化（事案#39対応） ===
+data/
+scripts/__pycache__/
+scripts/zoom_transcript_*.py
+*.pyc
+.DS_Store
