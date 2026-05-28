@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>📊 清美環さま案件 進捗ダッシュボード / おけもんカンパニー</title>
+<style>
+:root{
+  --sakura:#FFE4EC; --sakura-deep:#FFB7C5; --sakura-darker:#E89BB0;
+  --cream:#FFF8EB; --cream-deep:#FFE9C2;
+  --mint:#D4F1E8; --mint-deep:#7DC9B3;
+  --sky:#E3EDF2; --sky-deep:#7FA5B5;
+  --peach:#FBE4D6; --peach-deep:#E2825E;
+  --gold:#D4A85B; --rose:#C25A7C; --warn:#B8492E;
+  --done:#7DC9B3; --doing:#E2825E; --waiting:#D4A85B; --pending:#A8A8A8;
+  --ink:#3C3741; --ink-soft:#6B6373; --ink-faint:#9A93A0;
+  --shadow:0 6px 22px rgba(60,55,65,.08);
+  --shadow-deep:0 12px 36px rgba(60,55,65,.14);
+  --radius:18px; --radius-sm:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Hiragino Maru Gothic Pro","Yu Gothic UI","Hiragino Sans",sans-serif;
+  background:linear-gradient(135deg,#FFF8EB 0%,#FFE4EC 50%,#D4F1E8 100%);
+  color:var(--ink);
+  line-height:1.75;
+  min-height:100vh;
+  padding:20px 12px 80px;
+}
+.wrap{max-width:1100px;margin:0 auto}
+
+/* ──── トップナビ ──── */
+.topnav{
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(8px);
+  border-radius:999px;
+  padding:10px 22px;margin-bottom:20px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+  box-shadow:var(--shadow);font-size:.85rem;
+}
+.topnav .crumbs{color:var(--ink-soft)}
+.topnav .crumbs a{color:var(--rose);text-decoration:none;font-weight:600}
+.topnav .badge-nav{
+  background:var(--mint);color:#3A7461;
+  padding:3px 12px;border-radius:999px;font-weight:600;
+}
+
+/* ──── ヒーロー ──── */
+header.hero{
+  text-align:center;padding:38px 24px 30px;
+  background:linear-gradient(135deg,#fff 0%,var(--sakura) 100%);
+  border-radius:var(--radius);box-shadow:var(--shadow);
+  margin-bottom:20px;border:2px solid var(--sakura-deep);
+  position:relative;
+}
+header.hero::before{
+  content:"📊";position:absolute;top:-20px;left:50%;transform:translateX(-50%);
+  font-size:32px;background:#fff;width:56px;height:56px;border-radius:50%;
+  line-height:56px;box-shadow:var(--shadow);
+}
+header.hero .meta-top{
+  display:inline-block;background:var(--mint);color:#3A7461;
+  padding:3px 12px;border-radius:999px;font-size:.78rem;font-weight:600;
+  margin-top:10px;margin-bottom:14px;
+}
+header.hero h1{
+  font-size:clamp(1.4rem,3.5vw,2.0rem);
+  color:var(--rose);font-weight:700;line-height:1.5;
+}
+header.hero .subtitle{font-size:.92rem;color:var(--ink-soft);margin-top:8px}
+header.hero .meta{
+  margin-top:16px;font-size:.82rem;color:var(--ink-soft);line-height:1.7;
+}
+
+/* ──── KPI バー ──── */
+.kpi-bar{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;
+  margin-bottom:24px;
+}
+.kpi{
+  background:#fff;padding:16px;border-radius:var(--radius-sm);
+  box-shadow:var(--shadow);text-align:center;
+  border-top:3px solid var(--sakura-deep);
+}
+.kpi .v{font-size:1.6rem;font-weight:700;color:var(--rose);display:block;margin-bottom:2px}
+.kpi .l{font-size:.74rem;color:var(--ink-soft)}
+.kpi.done{border-top-color:var(--done)} .kpi.done .v{color:#3A7461}
+.kpi.doing{border-top-color:var(--doing)} .kpi.doing .v{color:#A65232}
+.kpi.waiting{border-top-color:var(--waiting)} .kpi.waiting .v{color:#8B6B33}
+
+/* ──── セクション ──── */
+section{
+  background:#fff;border-radius:var(--radius);padding:24px 22px;
+  margin-bottom:18px;box-shadow:var(--shadow);
+}
+section h2{
+  font-size:1.18rem;color:var(--rose);margin-bottom:16px;
+  padding-bottom:8px;border-bottom:2px dashed var(--sakura-deep);
+  display:flex;align-items:center;gap:8px;
+}
+section h3{
+  font-size:.98rem;color:var(--ink);margin:18px 0 10px;
+  padding-left:10px;border-left:4px solid var(--mint-deep);
+}
+
+/* ──── 案件構造図 ──── */
+.structure{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  flex-wrap:wrap;
+}
+.struct-box{
+  background:linear-gradient(135deg,#fff,var(--cream));
+  border:2px solid var(--cream-deep);
+  border-radius:12px;padding:14px;
+  flex:1;min-width:200px;text-align:center;
+  box-shadow:0 3px 10px rgba(0,0,0,.04);
+}
+.struct-box.irodori{border-color:var(--peach-deep);background:linear-gradient(135deg,#fff,var(--peach))}
+.struct-box.okemon{border-color:var(--sakura-darker);background:linear-gradient(135deg,#fff,var(--sakura))}
+.struct-box.client{border-color:var(--sky-deep);background:linear-gradient(135deg,#fff,var(--sky))}
+.struct-box .role{
+  font-size:.72rem;color:var(--ink-soft);
+  padding:2px 8px;background:rgba(255,255,255,.7);border-radius:999px;display:inline-block;
+  margin-bottom:6px;
+}
+.struct-box .name{font-size:1rem;font-weight:700;margin:4px 0}
+.struct-box .desc{font-size:.78rem;color:var(--ink-soft);line-height:1.6}
+.struct-arrow{
+  font-size:1.4rem;color:var(--rose);font-weight:700;
+}
+
+/* ──── 軸タブ ──── */
+.axis-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:780px){.axis-grid{grid-template-columns:1fr 1fr}}
+.axis-card{
+  border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);
+}
+.axis-card.a{background:linear-gradient(135deg,#fff,var(--sakura));border:2px solid var(--sakura-deep)}
+.axis-card.b{background:linear-gradient(135deg,#fff,var(--mint));border:2px solid var(--mint-deep)}
+.axis-card.add{background:linear-gradient(135deg,#fff,var(--cream));border:2px solid var(--cream-deep)}
+.axis-card .axis-head{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:10px;
+}
+.axis-card .axis-id{
+  font-size:1.4rem;font-weight:700;
+}
+.axis-card.a .axis-id{color:var(--rose)}
+.axis-card.b .axis-id{color:#3A7461}
+.axis-card.add .axis-id{color:var(--gold)}
+.axis-card .axis-title{
+  font-size:1rem;font-weight:600;color:var(--ink);
+  margin-bottom:4px;
+}
+.axis-card .axis-status{
+  display:inline-block;padding:3px 12px;border-radius:999px;
+  font-size:.72rem;font-weight:700;
+}
+.status-doing{background:var(--doing);color:#fff}
+.status-waiting{background:var(--waiting);color:#fff}
+.status-done{background:var(--done);color:#fff}
+.status-pending{background:var(--pending);color:#fff}
+
+/* ──── タスクリスト ──── */
+.task-list{margin-top:12px}
+.task{
+  background:rgba(255,255,255,.7);
+  border-radius:10px;padding:10px 12px;margin-bottom:8px;
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:.84rem;line-height:1.6;
+}
+.task .check{
+  flex-shrink:0;width:22px;height:22px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;font-weight:700;color:#fff;
+  margin-top:2px;
+}
+.task .check.done{background:var(--done)}
+.task .check.doing{background:var(--doing)}
+.task .check.waiting{background:var(--waiting);color:#fff;font-size:.7rem}
+.task .check.pending{background:var(--pending)}
+.task .body strong{font-size:.9rem;color:var(--ink);display:block;margin-bottom:2px}
+.task .body span{color:var(--ink-soft);font-size:.78rem}
+
+/* ──── データフロー図 ──── */
+.flow{
+  background:linear-gradient(135deg,#fff,var(--cream));
+  border-radius:var(--radius-sm);padding:18px;
+  font-family:"SF Mono","Menlo",monospace;font-size:.82rem;
+  line-height:1.9;color:var(--ink);
+  white-space:pre;overflow-x:auto;
+  border:1px dashed var(--sakura-deep);
+}
+
+/* ──── 役割分担 ──── */
+.roles{
+  display:grid;grid-template-columns:1fr;gap:10px;
+}
+@media (min-width:640px){.roles{grid-template-columns:1fr 1fr}}
+.role-card{
+  background:linear-gradient(135deg,#fff,var(--cream));
+  border-radius:var(--radius-sm);padding:14px;
+  border-left:5px solid var(--rose);
+}
+.role-card.izumida{border-left-color:var(--peach-deep)}
+.role-card.okemon{border-left-color:var(--sakura-darker)}
+.role-card.kobayashi{border-left-color:var(--sky-deep)}
+.role-card.matsuura{border-left-color:var(--mint-deep)}
+.role-card .who{font-weight:700;font-size:.95rem;margin-bottom:4px}
+.role-card .what{font-size:.84rem;color:var(--ink-soft);line-height:1.6}
+
+/* ──── 次アクション ──── */
+.next-actions{
+  background:linear-gradient(135deg,var(--mint) 0%,#fff 60%);
+  border:2px solid var(--mint-deep);
+  border-radius:var(--radius);padding:22px;
+}
+.next-actions h2{color:#3A7461;border-bottom-color:var(--mint-deep)}
+.next-list{counter-reset:nx;list-style:none}
+.next-list li{
+  counter-increment:nx;
+  padding:12px 0 12px 48px;
+  border-bottom:1px dashed var(--mint-deep);
+  position:relative;
+  font-size:.9rem;line-height:1.7;
+}
+.next-list li:last-child{border-bottom:none}
+.next-list li::before{
+  content:counter(nx);
+  position:absolute;left:8px;top:50%;transform:translateY(-50%);
+  width:30px;height:30px;
+  background:var(--mint-deep);color:#fff;
+  border-radius:50%;text-align:center;line-height:30px;
+  font-weight:700;font-size:.85rem;
+}
+
+/* ──── 関連リンク ──── */
+.link-grid{display:grid;gap:10px;grid-template-columns:1fr}
+@media (min-width:640px){.link-grid{grid-template-columns:1fr 1fr}}
+.link-card{
+  background:linear-gradient(135deg,#fff,var(--cream));
+  border-radius:var(--radius-sm);padding:12px 14px;
+  text-decoration:none;color:var(--ink);
+  border-left:4px solid var(--sakura-deep);
+  display:block;
+  transition:transform .15s,box-shadow .15s;
+}
+.link-card:hover{transform:translateX(3px);box-shadow:var(--shadow)}
+.link-card.master{border-left-color:var(--mint-deep)}
+.link-card.evidence{border-left-color:var(--peach-deep)}
+.link-card.skill{border-left-color:var(--gold)}
+.link-card .lbl{
+  display:inline-block;font-size:.68rem;font-weight:700;
+  padding:2px 8px;border-radius:999px;margin-bottom:3px;
+  background:var(--sakura);color:var(--rose);
+}
+.link-card.master .lbl{background:var(--mint);color:#3A7461}
+.link-card.evidence .lbl{background:var(--peach);color:#A65232}
+.link-card.skill .lbl{background:var(--cream-deep);color:#8B6B33}
+.link-card .title-l{font-size:.88rem;font-weight:600;margin:3px 0 2px}
+.link-card .desc{font-size:.74rem;color:var(--ink-soft)}
+
+/* ──── 散発化防止 ──── */
+.anti-scatter{
+  background:linear-gradient(135deg,var(--cream) 0%,var(--sakura) 100%);
+  border-radius:var(--radius);padding:22px;
+  border:2px solid var(--gold);
+}
+.anti-scatter h2{color:#8B6B33;border-bottom-color:var(--gold)}
+.anti-scatter ul{list-style:none;padding-left:0}
+.anti-scatter li{
+  padding:8px 0 8px 32px;position:relative;
+  font-size:.88rem;line-height:1.6;
+}
+.anti-scatter li::before{
+  content:"🛡";position:absolute;left:0;top:8px;
+}
+
+/* ──── フッター ──── */
+footer.foot{
+  margin-top:30px;padding:18px;text-align:center;
+  font-size:.74rem;color:var(--ink-soft);line-height:1.7;
+}
+footer.foot code{background:#fff;padding:1px 6px;border-radius:4px;font-size:.7rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ──── トップナビ ──── -->
+<nav class="topnav">
+  <div class="crumbs">
+    🍑 <a href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/">おけもんカンパニー</a>
+    ▸ <a href="#">irodori案件</a>
+    ▸ 清美環さま 進捗ダッシュボード
+  </div>
+  <span class="badge-nav">📊 ダッシュボード</span>
+</nav>
+
+<!-- ──── ヒーロー ──── -->
+<header class="hero">
+  <div class="meta-top">同一PJ運用・散発化させない設計</div>
+  <h1>清美環さま 案件 進捗ダッシュボード</h1>
+  <div class="subtitle">写真帳AI活用 ＋ 手書き記録表OCR — 2軸同一PJ運用</div>
+  <div class="meta">
+    最終更新: 2026-05-28 11:35 JST<br>
+    PJ owner: はるかCEO（実務：🔥 まなCSO ／ 技術：🐱 あおいCDO）
+  </div>
+</header>
+
+<!-- ──── KPI ──── -->
+<div class="kpi-bar">
+  <div class="kpi done"><span class="v">5/2</span><div class="l">PoC成功（窪田MTG VTT 15,936文字）</div></div>
+  <div class="kpi done"><span class="v">5/28</span><div class="l">本日デモ再現＋トランスクリプト取得成功</div></div>
+  <div class="kpi doing"><span class="v">2軸</span><div class="l">同時進行（A:写真帳 / B:手書きOCR）</div></div>
+  <div class="kpi waiting"><span class="v">3つ</span><div class="l">清美環からデータ受領待ち（手書きOCR用）</div></div>
+</div>
+
+<!-- ──── 案件構造図 ──── -->
+<section>
+  <h2>🏢 案件の構造</h2>
+  <div class="structure">
+    <div class="struct-box irodori">
+      <span class="role">発注元</span>
+      <div class="name">株式会社彩り（irodori）</div>
+      <div class="desc">進行：泉田さん<br>窓口・MTG進行・データ仲介</div>
+    </div>
+    <div class="struct-arrow">→</div>
+    <div class="struct-box okemon">
+      <span class="role">技術担当</span>
+      <div class="name">おけもん</div>
+      <div class="desc">業務委託（5,500円×10h/月パック・9月〜）<br>Skill化・PoC・修正対応</div>
+    </div>
+    <div class="struct-arrow">→</div>
+    <div class="struct-box client">
+      <span class="role">エンドクライアント</span>
+      <div class="name">株式会社清美環</div>
+      <div class="desc">社長層：小林千尋さん<br>現場：松浦さん（seibikan）</div>
+    </div>
+  </div>
+</section>
+
+<!-- ──── 2軸＋追加 ──── -->
+<section>
+  <h2>🛤 進行中の2軸 ＋ 追加検討</h2>
+  <div class="axis-grid">
+
+    <!-- A: 写真帳PJ -->
+    <div class="axis-card a">
+      <div class="axis-head">
+        <span class="axis-id">🅰️</span>
+        <span class="axis-status status-doing">スキル化フェーズ</span>
+      </div>
+      <div class="axis-title">写真帳PJ（既存・クロージング）</div>
+      <div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:10px">Mock v0.2 完成 → スキル化 → 清美環納品 → 伴走</div>
+
+      <div class="task-list">
+        <div class="task">
+          <span class="check done">✓</span>
+          <div class="body"><strong>5/2 Mock v0.2 完成</strong><span>窪田さんMTGで VTT 15,936文字 PoC成功</span></div>
+        </div>
+        <div class="task">
+          <span class="check done">✓</span>
+          <div class="body"><strong>5/28 本日デモ再現</strong><span>新スプシで `=IMAGE()` 関数版 Mock v0.2 を完全再現＋#REF! エラーをChrome自動操作で「アクセスを許可」突破</span></div>
+        </div>
+        <div class="task">
+          <span class="check doing">▶</span>
+          <div class="body"><strong>スクリプトのクリーンアップ</strong><span>v3スクリプトを再現性ある形に整理→Skill化前準備</span></div>
+        </div>
+        <div class="task">
+          <span class="check doing">▶</span>
+          <div class="body"><strong>Claude Skill 化（2層構造）</strong><span>`photo-album-build`（本体）＋ `photo-album-setup`（清美環Claude Pro環境への対話セットアップ）</span></div>
+        </div>
+        <div class="task">
+          <span class="check doing">▶</span>
+          <div class="body"><strong>3枚仕様対応（修正リクエスト）</strong><span>1ページ写真3枚仕様・余白枠で対応（seibikan発・本日MTG発言）</span></div>
+        </div>
+        <div class="task">
+          <span class="check pending">⏳</span>
+          <div class="body"><strong>清美環納品</strong><span>スキル受け渡し・実環境で動作確認</span></div>
+        </div>
+        <div class="task">
+          <span class="check pending">⏳</span>
+          <div class="body"><strong>エラー時 簡易相談対応</strong><span>清美環側で運用しながら、エラー出たらおけもんへ相談</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- B: 手書きOCR -->
+    <div class="axis-card b">
+      <div class="axis-head">
+        <span class="axis-id">🅱️</span>
+        <span class="axis-status status-waiting">サンプル受領待ち</span>
+      </div>
+      <div class="axis-title">手書き記録表OCR（新規PoC）</div>
+      <div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:10px">1日30枚書いてる現場負荷→AIで転記</div>
+
+      <div class="task-list">
+        <div class="task">
+          <span class="check done">✓</span>
+          <div class="body"><strong>5/28 MTG で議題浮上</strong><span>小林さん「線が多くてOCRが読まない」「1日30枚」「異常があれば異常写真帳に振り分け」</span></div>
+        </div>
+        <div class="task">
+          <span class="check waiting">⏳</span>
+          <div class="body"><strong>清美環から3つのサンプル受領</strong><span>①フォーマット元データ ②手書き記録写真 ③完成イメージ（スプシ/エクセル）</span></div>
+        </div>
+        <div class="task">
+          <span class="check pending">⏳</span>
+          <div class="body"><strong>PoC実装（実装ルート要判断）</strong><span>Cloud Vision API（既実績あり）or Claude直叩き（マルチモーダル）</span></div>
+        </div>
+        <div class="task">
+          <span class="check pending">⏳</span>
+          <div class="body"><strong>「フォーマット固定・書き込み部分だけ読む」方針で精度上げ</strong><span>テンプレマスク差分抽出（小林さん発・本日MTG発言）</span></div>
+        </div>
+        <div class="task">
+          <span class="check pending">⏳</span>
+          <div class="body"><strong>結果報告</strong><span>「ここまで読める／ここから不可」を可視化して清美環へ</span></div>
+        </div>
+        <div class="task">
+          <span class="check pending">⏳</span>
+          <div class="body"><strong>継続 or 撤退判断</strong><span>清美環の反応・精度水準次第</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 追加: 記録表内写真欄 -->
+    <div class="axis-card add" style="grid-column:1/-1">
+      <div class="axis-head">
+        <span class="axis-id">＋</span>
+        <span class="axis-status status-pending">B案PoCの拡張として扱う</span>
+      </div>
+      <div class="axis-title">追加リクエスト：記録表内の写真貼り付け欄判定</div>
+      <div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:10px">seibikan「黄色塗りの欄に写真が判定できるか？」→ おけもん「写真積み分け判定との合わせ技で技術的に可能・精度は試行」</div>
+
+      <div class="task-list">
+        <div class="task">
+          <span class="check pending">⏳</span>
+          <div class="body"><strong>B案のPoC実装と合わせて検証</strong><span>記録表のテンプレマスク × 写真振り分けロジックの組み合わせ</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ──── データフロー ──── -->
+<section>
+  <h2>📦 データ受け渡し経路（要確認）</h2>
+  <div class="flow">[現状想定]
+
+  清美環（小林さん・松浦さん）
+        ↓ サンプル3つ
+  irodori 泉田さん（仲介）  ←── ⚠️ 経路の最終確認要
+        ↓ 共有
+  おけもん（実装着手）
+        ↓ PoC結果
+  irodori 泉田さん（仲介）
+        ↓ 報告
+  清美環（フィードバック）</div>
+  <div style="font-size:.84rem;color:var(--ink-soft);margin-top:10px">
+    ⚠️ <strong>現時点で「清美環 → おけもん」の直接共有チャネルは未確定</strong>。泉田さん経由が基本ルート想定だが、確認しておくと安全。
+  </div>
+</section>
+
+<!-- ──── 役割分担 ──── -->
+<section>
+  <h2>👥 役割分担</h2>
+  <div class="roles">
+    <div class="role-card izumida">
+      <div class="who">🔥 irodori 泉田さん</div>
+      <div class="what">クライアント窓口・MTG進行・データ受け渡し仲介・契約まわり</div>
+    </div>
+    <div class="role-card okemon">
+      <div class="who">🍑 おけもん（三又謙次郎）</div>
+      <div class="what">技術実装：Skill化（A）／PoC（B）／修正対応／簡易相談伴走</div>
+    </div>
+    <div class="role-card kobayashi">
+      <div class="who">🏢 清美環 小林千尋さん</div>
+      <div class="what">社内AI推進判断・全体決裁・他案件展開のキーパーソン</div>
+    </div>
+    <div class="role-card matsuura">
+      <div class="who">📷 清美環 松浦さん（seibikan）</div>
+      <div class="what">現場運用・写真帳作成担当・実際にツール触る側・修正リクエスト発信元</div>
+    </div>
+  </div>
+</section>
+
+<!-- ──── 次アクション ──── -->
+<section class="next-actions">
+  <h2>🎯 次のアクション（優先順）</h2>
+  <ol class="next-list">
+    <li><strong>写真帳v3 スクリプトのクリーンアップ</strong> — 再現性のある形に整理。デモ用ハードコード部分を引数化</li>
+    <li><strong>Claude Skill 化（photo-album-build + photo-album-setup）</strong> — おけもん主担当・前ターン設計済</li>
+    <li><strong>3枚仕様対応</strong> — 1ページ写真3枚（余白枠あり）対応・seibikan発のリクエスト反映</li>
+    <li><strong>納品方法の確定</strong> — Skillファイル・手順書・困った時シートをまとめて清美環へ受け渡し</li>
+    <li><strong>清美環からサンプル3つ受領を待つ</strong>（B案）— 受領経路は泉田さん経由想定</li>
+    <li><strong>B案PoC着手（受領後）</strong> — Cloud Vision API or Claude直叩き、実装ルート判断＋実行</li>
+  </ol>
+</section>
+
+<!-- ──── 散発化防止 ──── -->
+<section class="anti-scatter">
+  <h2>🛡 散発化させない運用ルール（おけちゃん哲学）</h2>
+  <ul>
+    <li><strong>同一PJ運用</strong>：A（写真帳）も B（手書きOCR）も同じ <code>PJ_泉田さん写真帳自動化</code> 配下で管理。別PJ化しない</li>
+    <li><strong>進捗の単一情報源</strong>：[[まなCSO/irodori/STATE]] §current ＋ このダッシュボード HTML の2点で完結。STATE.md が正本・HTMLは視覚化</li>
+    <li><strong>動きあったら即更新</strong>：MTG発言・受領・実装着手の各イベントで STATE.md とこのHTML両方更新</li>
+    <li><strong>新規ファイル増設は最小限</strong>：仕組み増やすとカオス化。既存PJフォルダ・既存STATE.mdへの統合優先</li>
+    <li><strong>「なぜ」を残す</strong>：日報・STATE.md 更新時に「目的/理由」も併記。3ヶ月後の誰かが理解できる形で</li>
+  </ul>
+</section>
+
+<!-- ──── 関連リンク ──── -->
+<section>
+  <h2>🔗 関連リンク</h2>
+  <div class="link-grid">
+    <a href="#" class="link-card master" onclick="alert('Vault: まなCSO/irodori/STATE.md');return false;">
+      <span class="lbl">📕 STATE 単一入口</span>
+      <div class="title-l">まなCSO/irodori/STATE.md</div>
+      <div class="desc">irodori全体の単一入口・住所録セクション統合済</div>
+    </a>
+    <a href="#" class="link-card master" onclick="alert('Vault: まなCSO/irodori/PJ_泉田さん写真帳自動化/PJハブ_泉田さん写真帳自動化.md');return false;">
+      <span class="lbl">📕 PJハブ</span>
+      <div class="title-l">PJハブ_泉田さん写真帳自動化</div>
+      <div class="desc">写真帳PJの司令塔・既存ファイル群への入口</div>
+    </a>
+    <a href="#" class="link-card evidence" onclick="alert('Vault: まなCSO/irodori/PJ_Zoom文字起こし自動Docs化/ローカル退避/2026-05-28_清美環さまMTG_写真帳AI活用.md');return false;">
+      <span class="lbl">📋 トランスクリプト</span>
+      <div class="title-l">2026-05-28 清美環さまMTG_写真帳AI活用</div>
+      <div class="desc">本日MTG全文 225発言（取得経路：Zoom S2S OAuth）</div>
+    </a>
+    <a href="https://docs.google.com/spreadsheets/d/1-bzTBc8X-j-hNwWK1V29RQ7K8uC5H86kVbdHtIv64zo/edit" target="_blank" class="link-card evidence">
+      <span class="lbl">📊 デモ再現スプシ</span>
+      <div class="title-l">K1903042 写真帳 デモ再現 2026-05-28</div>
+      <div class="desc">本日のデモ再現先・全画像表示済</div>
+    </a>
+    <a href="#" class="link-card master" onclick="alert('Vault: あおいCDO/AI運用/【マスター】Zoom API 接続・運用ガイド.md');return false;">
+      <span class="lbl">📕 マスター</span>
+      <div class="title-l">【マスター】Zoom API 接続・運用ガイド</div>
+      <div class="desc">irodoriアカウント S2S OAuth 認証情報・運用方法</div>
+    </a>
+    <a href="g-TnMYRYjLhsuntLzb.html" class="link-card">
+      <span class="lbl">📝 関連てへぺろ</span>
+      <div class="title-l">事案#40 — Zoom文字起こしAPI前提把握ゼロ</div>
+      <div class="desc">本日 3人共作てへぺろ日記（API取得経路の発見経緯）</div>
+    </a>
+    <a href="#" class="link-card skill" onclick="alert('未作成・スキル化フェーズで新設予定');return false;">
+      <span class="lbl">🛠 スキル（予定）</span>
+      <div class="title-l">photo-album-build（本体）</div>
+      <div class="desc">写真帳自動生成スキル本体・着手予定</div>
+    </a>
+    <a href="#" class="link-card skill" onclick="alert('未作成・スキル化フェーズで新設予定');return false;">
+      <span class="lbl">🛠 スキル（予定）</span>
+      <div class="title-l">photo-album-setup（環境構築）</div>
+      <div class="desc">清美環Claude Pro環境への対話セットアップスキル</div>
+    </a>
+  </div>
+</section>
+
+<!-- ──── フッター ──── -->
+<footer class="foot">
+  おけもんカンパニー 社内ダッシュボード / 清美環さま案件<br>
+  📌 noindex 設定済（検索エンジン掲載なし・リンク知ってる人のみ閲覧）<br>
+  <br>
+  正本MD：<code>まなCSO/irodori/STATE.md</code> ／ <code>まなCSO/irodori/PJ_泉田さん写真帳自動化/PJハブ_泉田さん写真帳自動化.md</code><br>
+  関連事案：#39（2026-05-28・3人共作てへぺろ／irodoriアカウント所有関係見落とし）
+</footer>
+
+</div>
+</body>
+</html>
