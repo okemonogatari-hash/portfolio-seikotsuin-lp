@@ -62,7 +62,7 @@ body {
   display: inline-flex; gap: 6px;
   background: var(--yui-deep); color: #fff;
   padding: 6px 14px; border-radius: 4px;
-  font-size: 13px; font-weight: 700; letter-spacing: 0.05em;
+  font-size: 14px; font-weight: 700; letter-spacing: 0.05em;
   box-shadow: 0 3px 0 var(--lamp-deep);
 }
 
@@ -93,11 +93,11 @@ header.hero h1 {
 }
 header.hero h1 .accent { color: var(--warn); }
 header.hero h1 .sub {
-  display: block; margin-top: 10px; font-size: 14px;
+  display: block; margin-top: 10px; font-size: 15px;
   color: var(--ink-soft); font-weight: 500;
 }
 header.hero .lead {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--ink-soft);
   max-width: 580px;
   margin: 0 auto;
@@ -153,7 +153,7 @@ section.scene h2 .num {
   font-weight: 700;
 }
 section.scene p {
-  font-size: 14.5px;
+  font-size: 15.5px;
   color: var(--ink-soft);
   margin-bottom: 12px;
   line-height: 2;
@@ -170,7 +170,7 @@ section.scene .quote {
   padding: 16px 20px;
   margin: 16px 0;
   font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--ink);
   line-height: 1.95;
   border-radius: 0 4px 4px 0;
@@ -214,7 +214,7 @@ section.scene .kill .by { color: var(--warn); }
   line-height: 1.6;
 }
 .lamp-block p {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--ink-soft);
   line-height: 2;
 }
@@ -266,7 +266,7 @@ section.lesson ol {
   padding-left: 22px;
 }
 section.lesson ol li {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--ink-soft);
   margin-bottom: 8px;
   line-height: 1.85;
@@ -308,7 +308,7 @@ section.letter h2 {
   z-index: 1;
 }
 section.letter p {
-  font-size: 14.5px;
+  font-size: 15.5px;
   line-height: 2;
   max-width: 620px;
   margin: 0 auto 12px;
@@ -328,6 +328,21 @@ footer.foot {
   line-height: 1.85;
 }
 footer.foot a { color: var(--yui-deep); text-decoration: none; }
+.foot-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: center;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin-top: 30px;
+  font-size: 12px;
+}
+.foot-nav a { color: var(--yui-deep); text-decoration: none; font-weight: 700; }
+.foot-nav .center { color: var(--ink-mute); font-weight: 700; letter-spacing: .08em; }
+.foot-nav .next { text-align: right; }
 
 @media (max-width: 600px) {
   .wrap { padding: 20px 16px 80px; }
@@ -336,6 +351,8 @@ footer.foot a { color: var(--yui-deep); text-decoration: none; }
   section.scene { padding: 24px 22px; }
   section.lesson { padding: 24px 22px; }
   section.letter { padding: 32px 24px; }
+  .foot-nav { grid-template-columns: 1fr; }
+  .foot-nav .next { text-align: left; }
 }
 </style>
 </head>
@@ -584,11 +601,17 @@ footer.foot a { color: var(--yui-deep); text-decoration: none; }
     </p>
   </section>
 
+  <nav class="foot-nav">
+    <a href="Day0528-5_読書100日Day002メタスキル書いてみた_りん.html">← Day0528-5（りん・読書100日Day002）</a>
+    <a class="center" href="index.html">📖 index</a>
+    <a class="next" href="Day0528-7_Chrome拡張claimゲートてへぺろ_あおい.html">Day0528-7（あおい・Chrome拡張claim）→</a>
+  </nav>
+
   <footer class="foot">
     <p>
       おけ森ダイアリー Day0528-6 ／ 担当：💗 ゆいCPO ／ 2026-05-28<br>
       Source: 事案#43 / 内部限定 / noindex / GitHub Pages非公開<br>
-      関連：<a href="#">事案サンプル_2026-05-28_事案#43</a>　|　<a href="#">クライアント管理/カオナシ</a>
+      関連：<a href="../PDCA成長記録/事案サンプル_2026-05-28_事案#43_カオナシさん取説_本人プロフ未参照_推測ベース完成宣言.md">事案サンプル_2026-05-28_事案#43</a>　|　<a href="g-fyMyvksukg9BrE9r.html">カオナシさん観察レポート</a>
     </p>
   </footer>
 
