@@ -1,1201 +1,378 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>おけもん｜仕組みとAIで人助け・業務の自動化</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --bg-color: #0b1329;
-            --card-bg: rgba(23, 37, 84, 0.6); /* 深い藍色で信頼感と温かみを両立 */
-            --border-color: rgba(255, 255, 255, 0.08);
-            --primary: #10b981; /* 優しさと成長のエメラルドグリーン */
-            --secondary: #fb923c; /* 太陽のような温かいオレンジ */
-            --accent: #a78bfa; /* 知的なパープル */
-            --text-main: #f8fafc;
-            --text-sub: #cbd5e1;
-            --glow-primary: rgba(16, 185, 129, 0.3);
-            --glow-secondary: rgba(251, 146, 60, 0.3);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Noto Sans JP', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(251, 146, 60, 0.08) 0%, transparent 40%);
-        }
-
-        header {
-            padding: 1.25rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            background: rgba(11, 19, 41, 0.85);
-            backdrop-filter: blur(12px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 1.3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.02em;
-        }
-
-        .status-badge {
-            background: rgba(16, 185, 129, 0.12);
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            color: var(--primary);
-            padding: 0.3rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.85); opacity: 0.6; }
-            50% { transform: scale(1.15); opacity: 1; }
-            100% { transform: scale(0.85); opacity: 0.6; }
-        }
-
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 2rem 1.25rem 5rem 1.25rem;
-        }
-
-        /* 導入部（ヒーロー） */
-        .hero {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero h1 {
-            font-size: 1.8rem;
-            font-weight: 900;
-            line-height: 1.4;
-            margin-bottom: 1.25rem;
-            letter-spacing: -0.02em;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(135deg, #6ee7b7, #fdba74);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: var(--text-sub);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin: 0 auto;
-            text-align: left;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 1.25rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
-
-        .profile-summary {
-            display: flex;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            padding: 0.4rem 0.9rem;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        /* お悩み解決ナビゲーション */
-        .nav-tabs {
-            display: flex;
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 0.3rem;
-            margin-bottom: 2rem;
-            gap: 0.2rem;
-        }
-
-        .tab-btn {
-            flex: 1;
-            background: none;
-            border: none;
-            color: var(--text-sub);
-            padding: 0.8rem 0.3rem;
-            font-size: 0.8rem;
-            font-weight: 700;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .tab-btn i {
-            font-size: 1rem;
-        }
-
-        .tab-btn.active {
-            background: var(--card-bg);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .tab-btn:nth-child(1).active { border-bottom: 2px solid var(--primary); }
-        .tab-btn:nth-child(2).active { border-bottom: 2px solid var(--secondary); }
-        .tab-btn:nth-child(3).active { border-bottom: 2px solid var(--accent); }
-
-        /* 実物パネル */
-        .demo-panel {
-            display: none;
-            animation: fadeIn 0.4s ease-out forwards;
-        }
-
-        .demo-panel.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(12px);
-            margin-bottom: 1.5rem;
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .card-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            color: #fff;
-        }
-
-        .card-title-group h2 {
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .card-title-group p {
-            font-size: 0.75rem;
-            color: var(--text-sub);
-            margin-top: 0.1rem;
-        }
-
-        /* お悩み解決ボックス */
-        .problem-solution-box {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 1rem 1.25rem;
-            margin-bottom: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .problem-line, .solution-line {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        .problem-line i { color: #f87171; margin-top: 0.2rem; }
-        .solution-line i { color: #34d399; margin-top: 0.2rem; }
-
-        .problem-line span strong { color: #fca5a5; font-weight: 700; }
-        .solution-line span strong { color: #a7f3d0; font-weight: 700; }
-
-        /* ①音声の仕組み */
-        .voice-demo-container {
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.25rem;
-        }
-
-        .mic-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem 0;
-            gap: 0.75rem;
-        }
-
-        .mic-btn {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), #059669);
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.35);
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .mic-btn.recording {
-            background: #ef4444;
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
-            animation: pulse-red 1.5s infinite;
-        }
-
-        @keyframes pulse-red {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .wave-container {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            height: 20px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .wave-container.active {
-            opacity: 1;
-        }
-
-        .wave-bar {
-            width: 3px;
-            height: 100%;
-            background-color: var(--primary);
-            border-radius: 3px;
-            animation: wave 1.2s ease-in-out infinite alternate;
-        }
-
-        .wave-bar:nth-child(2) { animation-delay: 0.1s; }
-        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
-        .wave-bar:nth-child(4) { animation-delay: 0.3s; }
-        .wave-bar:nth-child(5) { animation-delay: 0.2s; }
-        .wave-bar:nth-child(6) { animation-delay: 0.1s; }
-
-        @keyframes wave {
-            0% { transform: scaleY(0.2); }
-            100% { transform: scaleY(1); }
-        }
-
-        .speech-box {
-            margin-top: 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .bubble {
-            padding: 0.85rem;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            line-height: 1.5;
-            position: relative;
-            opacity: 0.6;
-            transition: all 0.5s;
-        }
-
-        .bubble.active {
-            opacity: 1;
-            transform: scale(1.01);
-        }
-
-        .bubble-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 0.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-        }
-
-        .bubble-input {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            border-left: 3px solid var(--secondary);
-        }
-
-        .bubble-output {
-            background: rgba(16, 185, 129, 0.06);
-            border: 1px solid rgba(16, 185, 129, 0.15);
-            color: var(--text-main);
-            border-left: 3px solid var(--primary);
-            display: none;
-        }
-
-        /* ②自動で動く仕組み */
-        .terminal {
-            background: #020617;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1rem;
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.8);
-        }
-
-        .terminal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.75rem;
-            padding-bottom: 0.4rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .dots {
-            display: flex;
-            gap: 6px;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-        .dot-red { background-color: #ef4444; }
-        .dot-yellow { background-color: #f59e0b; }
-        .dot-green { background-color: #10b981; }
-
-        .terminal-title {
-            font-size: 0.7rem;
-            color: var(--text-sub);
-        }
-
-        .terminal-body {
-            height: 180px;
-            overflow-y: auto;
-            font-size: 0.75rem;
-            line-height: 1.5;
-            color: #34d399;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-            padding-right: 0.5rem;
-        }
-
-        .terminal-body::-webkit-scrollbar {
-            width: 3px;
-        }
-        .terminal-body::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-        }
-
-        .log-entry {
-            margin: 0;
-            word-break: break-all;
-        }
-        .log-entry .time { color: #64748b; }
-        .log-entry .agent { font-weight: 700; }
-        .log-entry.manager .agent { color: #fdba74; } /* 進行管理AI */
-        .log-entry.sync .agent { color: #38bdf8; }    /* 連携システム */
-        .log-entry.analyst .agent { color: #f472b6; } /* 分析・企画AI */
-        .log-entry.system { color: #64748b; }
-
-        /* ③仲間を助ける仕組み */
-        .dashboard-mock {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .db-row {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 0.75rem;
-        }
-
-        @media (max-width: 600px) {
-            .db-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .db-widget {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1rem;
-        }
-
-        .db-widget-title {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-sub);
-            margin-bottom: 0.75rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .member-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .member-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .member-info {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .member-avatar {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 700;
-        }
-
-        .member-name {
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .member-role {
-            font-size: 0.65rem;
-            color: var(--text-sub);
-        }
-
-        .progress-bar-container {
-            width: 60px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            border-radius: 3px;
-        }
-
-        .stumble-badge {
-            background: rgba(239, 68, 68, 0.12);
-            border: 1px solid rgba(239, 68, 68, 0.25);
-            color: #fca5a5;
-            padding: 0.1rem 0.3rem;
-            border-radius: 4px;
-            font-size: 0.6rem;
-            font-weight: 700;
-        }
-
-        /* 強みマップ */
-        .strength-map {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .strength-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.7rem;
-        }
-
-        .strength-bar {
-            flex-grow: 1;
-            height: 6px;
-            margin: 0 0.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 3px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .strength-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--secondary), #f97316);
-            border-radius: 3px;
-        }
-
-        /* 案内カード */
-        .intro-card h3 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .intro-card p {
-            font-size: 0.85rem;
-            line-height: 1.5;
-            color: var(--text-sub);
-        }
-
-        /* ボタン・問い合わせエリア */
-        .action-area {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: 1.25rem;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 0.75rem;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #059669);
-            color: white;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        footer {
-            margin-top: 2.5rem;
-            text-align: center;
-            padding: 1.5rem 0;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-sub);
-            font-size: 0.75rem;
-        }
-
-        .pulse-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: var(--primary);
-            opacity: 0.15;
-            z-index: -1;
-            transform: scale(1);
-            animation: pulse-ring 2s infinite;
-        }
-
-        @keyframes pulse-ring {
-            0% { transform: scale(1); opacity: 0.2; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>おけもん｜現場16年 × AIチームで、業務を回す。</title>
+<meta name="description" content="福祉・介護の現場16年。AIメンバー11人と一緒に、医療・福祉の現場の業務をやさしく自動化しています。声で記録、自走するチーム、補助金を活用したAI研修まで。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@500;700&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --bg:#0b1329; --bg2:#0e1838;
+  --card:rgba(23,37,84,0.45);
+  --border:rgba(255,255,255,0.09);
+  --primary:#10b981; --primary-l:#6ee7b7;
+  --secondary:#fb923c; --accent:#a78bfa;
+  --text:#f8fafc; --sub:#aab4c5; --faint:#7c879b;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--text);
+  line-height:1.8; overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 15% 0%, rgba(16,185,129,0.10), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 90% 20%, rgba(251,146,60,0.08), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(167,139,250,0.08), transparent 55%);
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.5rem;}
+.sp{display:none;}
+.eyebrow{font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.28em;color:var(--primary);text-transform:uppercase;margin-bottom:0.9rem;display:block;}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:1.6rem;font-weight:700;line-height:1.5;letter-spacing:0.01em;margin-bottom:1rem;}
+@media(min-width:768px){.sec-title{font-size:2rem;}}
+section{padding:5.5rem 0;position:relative;}
+.grad-text{background:linear-gradient(120deg,var(--primary-l),var(--secondary));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+
+header{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);background:rgba(11,19,41,0.72);border-bottom:1px solid var(--border);}
+.nav{max-width:1080px;margin:0 auto;padding:0.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.15rem;letter-spacing:-0.01em;}
+.logo span{color:var(--primary);}
+.nav-cta{font-size:0.8rem;font-weight:700;padding:0.5rem 1.1rem;border-radius:999px;background:linear-gradient(120deg,var(--primary),#059669);color:#04231a;text-decoration:none;transition:transform .25s,box-shadow .25s;}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(16,185,129,0.3);}
+
+.hero{padding-top:9rem;padding-bottom:4rem;text-align:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.74rem;font-weight:700;color:var(--primary-l);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.28);padding:0.4rem 1rem;border-radius:999px;margin-bottom:1.8rem;}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--primary);animation:pulse 2.2s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5);}70%{box-shadow:0 0 0 9px rgba(16,185,129,0);}100%{box-shadow:0 0 0 0 rgba(16,185,129,0);}}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:2.1rem;font-weight:700;line-height:1.5;letter-spacing:0.01em;margin-bottom:1.5rem;}
+@media(min-width:768px){.hero h1{font-size:3rem;line-height:1.45;}}
+.hero h1 .ln{display:block;}
+.hero-lead{max-width:620px;margin:0 auto 2.4rem;color:var(--sub);font-size:0.98rem;line-height:2;}
+.hero-cta{display:flex;gap:0.9rem;justify-content:center;flex-wrap:wrap;}
+.btn{font-size:0.9rem;font-weight:700;padding:0.85rem 1.7rem;border-radius:999px;text-decoration:none;transition:transform .25s,box-shadow .25s;display:inline-flex;align-items:center;gap:0.55rem;}
+.btn-primary{background:linear-gradient(120deg,var(--primary),#059669);color:#04231a;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(16,185,129,0.32);}
+.btn-ghost{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text);}
+.btn-ghost:hover{transform:translateY(-3px);border-color:rgba(255,255,255,0.25);}
+
+.trust{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-top:1rem;}
+@media(min-width:768px){.trust{grid-template-columns:repeat(4,1fr);}}
+.trust-cell{background:var(--bg2);padding:1.7rem 1rem;text-align:center;}
+.trust-num{font-family:'Outfit',sans-serif;font-size:2rem;font-weight:900;line-height:1;}
+.trust-num small{font-size:0.95rem;font-weight:700;}
+.trust-lbl{font-size:0.74rem;color:var(--sub);margin-top:0.55rem;}
+
+.about-grid{display:grid;gap:1rem;margin-top:2rem;}
+@media(min-width:768px){.about-grid{grid-template-columns:1fr 1fr;gap:1.4rem;}}
+.prob{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--secondary);border-radius:0 14px 14px 0;padding:1.4rem 1.5rem;backdrop-filter:blur(8px);}
+.prob i{color:var(--secondary);font-size:1.1rem;margin-bottom:0.6rem;display:block;}
+.prob h3{font-size:0.98rem;font-weight:700;margin-bottom:0.4rem;}
+.prob p{font-size:0.85rem;color:var(--sub);line-height:1.75;}
+
+.arch{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2.4rem;align-items:stretch;}
+@media(min-width:880px){.arch{grid-template-columns:1fr auto 1.15fr auto 1fr;align-items:center;}}
+.arch-col{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;backdrop-filter:blur(8px);}
+.arch-col.brain{border-color:rgba(16,185,129,0.4);background:linear-gradient(160deg,rgba(16,185,129,0.12),rgba(23,37,84,0.5));}
+.arch-h{font-family:'Outfit',sans-serif;font-size:0.72rem;letter-spacing:0.2em;color:var(--faint);font-weight:700;margin-bottom:0.9rem;}
+.arch-col.brain .arch-h{color:var(--primary-l);}
+.arch-item{font-size:0.82rem;color:var(--sub);padding:0.35rem 0;display:flex;align-items:center;gap:0.5rem;}
+.arch-item i{color:var(--primary);font-size:0.7rem;}
+.brain-title{font-size:1.05rem;font-weight:900;color:var(--text);margin-bottom:0.3rem;}
+.brain-sub{font-size:0.76rem;color:var(--sub);}
+.arch-arrow{display:flex;align-items:center;justify-content:center;color:var(--faint);font-size:1.2rem;}
+@media(max-width:879px){.arch-arrow{transform:rotate(90deg);padding:0.2rem 0;}}
+
+.pb{text-align:center;}
+.pb-tags{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-top:1.5rem;}
+.pb-tag{font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:600;color:var(--sub);background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:0.5rem 1.05rem;border-radius:10px;display:inline-flex;align-items:center;gap:0.5rem;transition:.25s;}
+.pb-tag:hover{border-color:rgba(16,185,129,0.4);color:var(--primary-l);transform:translateY(-2px);}
+.pb-tag i{color:var(--primary);font-size:0.8rem;}
+.pb-tag.lead{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.32);color:var(--primary-l);}
+
+.svc{display:grid;gap:1.2rem;margin-top:2.4rem;}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.8rem;backdrop-filter:blur(8px);position:relative;overflow:hidden;transition:.3s;}
+.svc-card:hover{transform:translateY(-4px);border-color:rgba(16,185,129,0.3);box-shadow:0 18px 44px rgba(0,0,0,0.3);}
+.svc-no{font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;color:var(--primary);}
+.svc-card h3{font-size:1.1rem;font-weight:700;margin:0.5rem 0 1rem;line-height:1.5;}
+.svc-row{display:grid;gap:0.7rem;}
+@media(min-width:680px){.svc-row{grid-template-columns:1fr 1fr;gap:1.4rem;}}
+.svc-need,.svc-do{font-size:0.86rem;line-height:1.8;}
+.svc-tag{display:inline-block;font-size:0.7rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:6px;margin-bottom:0.5rem;}
+.svc-need .svc-tag{background:rgba(251,146,60,0.13);color:var(--secondary);}
+.svc-do .svc-tag{background:rgba(16,185,129,0.13);color:var(--primary-l);}
+.svc-need p{color:var(--sub);} .svc-do p{color:var(--text);}
+.svc-figure{margin-top:1.2rem;padding:0.9rem 1.1rem;background:rgba(16,185,129,0.07);border:1px dashed rgba(16,185,129,0.3);border-radius:10px;font-size:0.82rem;color:var(--primary-l);}
+.svc-figure b{font-family:'Outfit',sans-serif;font-size:1.05rem;}
+.svc-note{font-size:0.72rem;color:var(--faint);margin-top:0.5rem;line-height:1.6;}
+
+.method{text-align:center;background:linear-gradient(160deg,rgba(167,139,250,0.08),transparent);border-radius:24px;padding:3.5rem 1.5rem;border:1px solid var(--border);}
+.method blockquote{font-family:'Noto Serif JP',serif;font-size:1.5rem;font-weight:700;line-height:1.7;letter-spacing:0.01em;}
+@media(min-width:768px){.method blockquote{font-size:2rem;}}
+.method p{max-width:560px;margin:1.6rem auto 0;color:var(--sub);font-size:0.92rem;}
+
+.msg{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:2.5rem 1.8rem;backdrop-filter:blur(8px);}
+@media(min-width:768px){.msg{padding:3rem 3rem;}}
+.msg p{color:var(--sub);font-size:0.93rem;line-height:2.05;margin-bottom:1.1rem;}
+.msg p strong{color:var(--text);font-weight:700;}
+.msg-sign{margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:0.9rem;}
+.msg-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:1.3rem;color:#04231a;}
+.msg-name b{font-size:1rem;} .msg-name span{display:block;font-size:0.74rem;color:var(--faint);}
+
+.voice{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.8rem;backdrop-filter:blur(8px);max-width:680px;margin:2rem auto 0;}
+.voice .qmark{font-family:'Outfit',serif;font-size:2.4rem;color:var(--primary);line-height:0.6;}
+.voice p{font-size:0.95rem;line-height:1.9;margin:0.6rem 0 1rem;}
+.voice cite{font-size:0.78rem;color:var(--faint);font-style:normal;}
+
+.faq{margin-top:2rem;display:grid;gap:0.8rem;}
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;backdrop-filter:blur(8px);}
+.faq summary{padding:1.1rem 1.3rem;font-size:0.92rem;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary i{color:var(--primary);transition:.3s;flex-shrink:0;}
+.faq details[open] summary i{transform:rotate(45deg);}
+.faq .ans{padding:0 1.3rem 1.2rem;font-size:0.85rem;color:var(--sub);line-height:1.85;}
+
+.final{text-align:center;background:linear-gradient(160deg,rgba(16,185,129,0.13),rgba(251,146,60,0.06));border-radius:26px;padding:4rem 1.5rem;border:1px solid rgba(16,185,129,0.22);}
+.final h2{font-family:'Noto Serif JP',serif;font-size:1.7rem;font-weight:700;line-height:1.55;margin-bottom:1rem;}
+@media(min-width:768px){.final h2{font-size:2.2rem;}}
+.final p{color:var(--sub);margin-bottom:2rem;font-size:0.92rem;}
+
+footer{border-top:1px solid var(--border);padding:2.5rem 0;text-align:center;}
+.footer-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.05rem;margin-bottom:0.5rem;}
+.footer-logo span{color:var(--primary);}
+footer p{font-size:0.74rem;color:var(--faint);}
+
+.fade{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
+.fade.vis{opacity:1;transform:none;}
+.fade-r{opacity:0;transform:translateX(32px);transition:opacity .8s ease,transform .8s ease;}
+.fade-r.vis{opacity:1;transform:none;}
+.stg>*{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.stg.vis>*{opacity:1;transform:none;}
+.stg.vis>*:nth-child(2){transition-delay:.12s;}
+.hero-badge{animation:hin .8s .1s both;}
+.hero h1{animation:hup .9s .25s both;}
+.hero-lead{animation:hup .9s .45s both;}
+.hero-cta{animation:hup .9s .6s both;}
+@keyframes hin{from{opacity:0;}to{opacity:1;}}
+@keyframes hup{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">おけもん｜仕組みとAIで人助け</div>
-        <div class="status-badge">
-            <div class="status-dot"></div>
-            <span>自動化システム稼働中</span>
-        </div>
-    </header>
+<header>
+  <div class="nav">
+    <div class="logo">oke<span>mon</span></div>
+    <a href="#contact" class="nav-cta">ちょっと話してみる</a>
+  </div>
+</header>
 
-    <div class="container">
-        
-        <!-- 導入部 -->
-        <section class="hero">
-            <h1>現場の「困った」を、<br>やさしい <span>仕組み</span> と <span>AI</span> で解決。</h1>
-            <p>
-                福祉や介護の現場で16年、施設長やサービス管理責任者として働いてきました。<br>
-                現場の大変さを知っているからこそ、がんばる人の手助けになる「本当に現場で使えるやさしい自動化システム」を作って、自社や仲間のチームで実際に運用しています。
-            </p>
-            <div class="profile-summary">
-                <span class="tag"><i class="fa-solid fa-heart-pulse" style="color: #ef4444;"></i> 福祉現場16年の安心感</span>
-                <span class="tag"><i class="fa-solid fa-wand-magic-sparkles" style="color: #fdba74;"></i> パソコンいらずの自動化</span>
-                <span class="tag"><i class="fa-solid fa-people-carry-box" style="color: #a78bfa;"></i> 助け合うチーム作り</span>
-            </div>
-        </section>
-
-        <!-- 実績数字（いまの動きの土台・全て実データ） -->
-        <section style="margin-bottom: 2rem;">
-            <p style="font-size: 0.7rem; letter-spacing: 0.18em; text-align: center; color: var(--text-sub); margin-bottom: 0.85rem;">TRACK RECORD</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center;">
-                <div style="flex: 1; min-width: 140px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 0.9rem 0.6rem; text-align: center;">
-                    <div style="font-size: 1.7rem; font-weight: 900; color: var(--primary); font-family: 'Outfit', sans-serif;">16<span style="font-size: 0.85rem; font-weight: 700;">年</span></div>
-                    <div style="font-size: 0.72rem; color: var(--text-sub); margin-top: 0.3rem;">福祉・介護の現場</div>
-                </div>
-                <div style="flex: 1; min-width: 140px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 0.9rem 0.6rem; text-align: center;">
-                    <div style="font-size: 1.7rem; font-weight: 900; color: var(--secondary); font-family: 'Outfit', sans-serif;">11<span style="font-size: 0.85rem; font-weight: 700;">人</span></div>
-                    <div style="font-size: 0.72rem; color: var(--text-sub); margin-top: 0.3rem;">一緒に働くAIメンバー</div>
-                </div>
-                <div style="flex: 1; min-width: 140px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 0.9rem 0.6rem; text-align: center;">
-                    <div style="font-size: 1.7rem; font-weight: 900; color: var(--accent); font-family: 'Outfit', sans-serif;">20<span style="font-size: 0.85rem; font-weight: 700;">回+</span></div>
-                    <div style="font-size: 0.72rem; color: var(--text-sub); margin-top: 0.3rem;">オフ会・交流会の主催</div>
-                </div>
-                <div style="flex: 1; min-width: 140px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 0.9rem 0.6rem; text-align: center;">
-                    <div style="font-size: 1.7rem; font-weight: 900; color: var(--primary); font-family: 'Outfit', sans-serif;">'26.3<span style="font-size: 0.85rem; font-weight: 700;">〜</span></div>
-                    <div style="font-size: 0.72rem; color: var(--text-sub); margin-top: 0.3rem;">AIカンパニーを毎日実運用</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- POWERED BY（実際に毎日使っている道具） -->
-        <section style="margin-bottom: 2rem; text-align: center;">
-            <p style="font-size: 0.7rem; letter-spacing: 0.18em; color: var(--text-sub); margin-bottom: 0.7rem;">POWERED BY — 実際に毎日使っている道具</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
-                <span style="font-size: 0.75rem; font-weight: 700; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: #6ee7b7; padding: 0.35rem 0.75rem; border-radius: 9999px;">Claude Code</span>
-                <span style="font-size: 0.75rem; font-weight: 700; background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-sub); padding: 0.35rem 0.75rem; border-radius: 9999px;">Claude</span>
-                <span style="font-size: 0.75rem; font-weight: 700; background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-sub); padding: 0.35rem 0.75rem; border-radius: 9999px;">Obsidian</span>
-                <span style="font-size: 0.75rem; font-weight: 700; background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-sub); padding: 0.35rem 0.75rem; border-radius: 9999px;">Codex</span>
-                <span style="font-size: 0.75rem; font-weight: 700; background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-sub); padding: 0.35rem 0.75rem; border-radius: 9999px;">Hermes</span>
-                <span style="font-size: 0.75rem; font-weight: 700; background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-sub); padding: 0.35rem 0.75rem; border-radius: 9999px;">Notion</span>
-            </div>
-        </section>
-
-        <!-- 強みとニーズの交差点セクション -->
-        <section class="card intersection-section" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(16, 185, 129, 0.2); margin-bottom: 2rem;">
-            <h2 style="font-size: 1.1rem; text-align: center; margin-bottom: 1.25rem; color: #a7f3d0;">
-                <i class="fa-solid fa-arrows-to-circle"></i> 経営者様の「求め」と私の「強み」の交差点
-            </h2>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <!-- 交点① -->
-                <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.9rem; border-radius: 10px;">
-                    <div style="font-weight: 700; font-size: 0.85rem; color: var(--secondary); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
-                        <i class="fa-solid fa-puzzle-piece"></i> ① 現場の「人手不足」と「IT苦手」の交点
-                    </div>
-                    <div style="font-size: 0.8rem; line-height: 1.5; color: var(--text-sub);">
-                        <strong style="color: var(--text-main);">【経営者様の求め】</strong> 業務を効率化したいが、現場がITアレルギーで使ってくれない…<br>
-                        <span style="color: var(--primary); font-weight: bold;">➡【おけもんの強み】</span> 16年の福祉現場の知見で、スマホに<strong>「喋るだけ」で裏でAIが自動で書類を作る</strong>、世界一やさしい入力システムを構築。
-                    </div>
-                </div>
-                <!-- 交点② -->
-                <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.9rem; border-radius: 10px;">
-                    <div style="font-weight: 700; font-size: 0.85rem; color: var(--secondary); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
-                        <i class="fa-solid fa-people-arrows"></i> ② 「指示待ちチーム」と「リモートの不安」の交点
-                    </div>
-                    <div style="font-size: 0.8rem; line-height: 1.5; color: var(--text-sub);">
-                        <strong style="color: var(--text-main);">【経営者様の求め】</strong> 自分が指示を出し続けなくても、自律して動くチームになってほしい…<br>
-                        <span style="color: var(--primary); font-weight: bold;">➡【おけもんの強み】</span> AIとチームを繋ぎ、各自の<strong>強み・苦手（ストレングス）と「つまずき」を可視化</strong>して、お互いに補い合いながら自走するチームの仕組みを設計。
-                    </div>
-                </div>
-                <!-- 交点③ 補助金活用AI研修（今動いている案件） -->
-                <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.9rem; border-radius: 10px;">
-                    <div style="font-weight: 700; font-size: 0.85rem; color: var(--secondary); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
-                        <i class="fa-solid fa-hand-holding-dollar"></i> ③ 「AIを根付かせたい」と「研修予算が不安」の交点
-                    </div>
-                    <div style="font-size: 0.8rem; line-height: 1.5; color: var(--text-sub);">
-                        <strong style="color: var(--text-main);">【経営者様の求め】</strong> 現場にAIを根付かせたいが、研修にかける予算が不安…<br>
-                        <span style="color: var(--primary); font-weight: bold;">➡【おけもんの動き】</span> <strong>人材開発支援助成金（経費助成75％＋賃金助成）</strong>を活用したAI研修を設計・実施。たとえば<strong>研修費30万円なら、助成活用で法人の実質負担は約5万円</strong>。いま医療・福祉の現場で、実際に導入支援が進行中です。
-                    </div>
-                </div>
-            </div>
-            <p style="font-size: 0.75rem; text-align: center; color: var(--text-sub); margin-top: 1rem; font-style: italic;">
-                ※実際の動作や仕組みは、下の3つの項目からその場でお見せできます！👇
-            </p>
-        </section>
-
-        <!-- お悩み解決ナビゲーション -->
-        <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab(0)">
-                <i class="fa-solid fa-microphone-lines"></i>
-                <span>①声でつながる記録</span>
-            </button>
-            <button class="tab-btn" onclick="switchTab(1)">
-                <i class="fa-solid fa-shuffle"></i>
-                <span>②勝手に働くチーム</span>
-            </button>
-            <button class="tab-btn" onclick="switchTab(2)">
-                <i class="fa-solid fa-hands-holding-child"></i>
-                <span>③仲間が迷わない設計</span>
-            </button>
-        </div>
-
-        <!-- ①声でつながる記録 -->
-        <div id="panel-0" class="demo-panel active">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon" style="background: linear-gradient(135deg, var(--primary), #059669);">
-                        <i class="fa-solid fa-microphone"></i>
-                    </div>
-                    <div class="card-title-group">
-                        <h2>声だけでできる自動の記録システム</h2>
-                        <p>話しかけるだけで、専門的な報告書を自動で作ります</p>
-                    </div>
-                </div>
-
-                <!-- お悩み解決ボックス -->
-                <div class="problem-solution-box">
-                    <div class="problem-line">
-                        <i class="fa-solid fa-circle-question"></i>
-                        <span><strong>お困りごと：</strong> 書類仕事が多すぎて、入居者さんとゆっくりお喋りする時間が作れない…パソコンも苦手。</span>
-                    </div>
-                    <div class="solution-line">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <span><strong>こうやって解決：</strong> スマホに話しかけるだけ。AIが業界の専門用語を理解して、きれいに整理された記録を数秒で作ります。</span>
-                    </div>
-                </div>
-
-                <div class="voice-demo-container">
-                    <div class="mic-section">
-                        <button class="mic-btn" id="micBtn" onclick="toggleRecording()">
-                            <i class="fa-solid fa-microphone" id="micIcon"></i>
-                            <div class="pulse-glow" id="micGlow" style="display:none;"></div>
-                        </button>
-                        <p id="micStatus" style="font-size: 0.8rem; color: var(--text-sub);">上のボタンを押して、話し言葉がどう変わるか試す</p>
-                        
-                        <div class="wave-container" id="waveContainer">
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                        </div>
-                    </div>
-
-                    <div class="speech-box">
-                        <div class="bubble bubble-input" id="speechInput">
-                            <div class="bubble-label"><i class="fa-solid fa-comment-dots"></i> 現場の話し言葉（そのまま録音）</div>
-                            <span id="inputText">マイクボタンを押すと、お試し用の話し言葉がここに入力されます。</span>
-                        </div>
-                        <div class="bubble bubble-output" id="speechOutput">
-                            <div class="bubble-label"><i class="fa-solid fa-wand-magic-sparkles"></i> 整理された記録（システムが自動作成）</div>
-                            <span id="outputText"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="intro-card" style="margin-top: 1.25rem;">
-                    <h3>「キーボード入力」すら不要にする手助け</h3>
-                    <p>今日、実際の福祉現場で試運転を開始した仕組みです。面倒な書類作業をほぼゼロにし、スタッフの皆様が本来の「人との関わり」に専念できる環境を目指しています。</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ②自動で動く仕組み -->
-        <div id="panel-1" class="demo-panel">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon" style="background: linear-gradient(135deg, var(--secondary), #ea580c);">
-                        <i class="fa-solid fa-shuffle"></i>
-                    </div>
-                    <div class="card-title-group">
-                        <h2>裏で自動連携する「AIチーム」の様子</h2>
-                        <p>それぞれの役割を持ったAIが連携し、仕事を進めます</p>
-                    </div>
-                </div>
-
-                <!-- お悩み解決ボックス -->
-                <div class="problem-solution-box">
-                    <div class="problem-line">
-                        <i class="fa-solid fa-circle-question"></i>
-                        <span><strong>お困りごと：</strong> AIを使ってみたいけど、毎回文章をコピペして指示を出すのが面倒で続かない。</span>
-                    </div>
-                    <div class="solution-line">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <span><strong>こうやって解決：</strong> 進行管理、システム連携、情報分析など、役割を持ったAIが裏で自動でバトンを繋ぎ、業務を進めます。</span>
-                    </div>
-                </div>
-
-                <div class="terminal">
-                    <div class="terminal-header">
-                        <div class="dots">
-                            <div class="dot dot-red"></div>
-                            <div class="dot dot-yellow"></div>
-                            <div class="dot dot-green"></div>
-                        </div>
-                        <div class="terminal-title">自社専用自動化プログラム.sh</div>
-                    </div>
-                    <div class="terminal-body" id="terminalBody">
-                        <div class="log-entry system"><span class="time">[13:00:01]</span> システム起動...</div>
-                        <div class="log-entry manager"><span class="time">[13:00:03]</span> <span class="agent">進行管理AI:</span> 今日の予定とタスクの進み具合を確認します。</div>
-                        <div class="log-entry sync"><span class="time">[13:00:08]</span> <span class="agent">連携システム:</span> 今日の予定をカレンダーから取得。14:30より現場訪問があります。</div>
-                        <div class="log-entry analyst"><span class="time">[13:00:15]</span> <span class="agent">情報分析AI:</span> 昨日の現場の気づき・改善点を整理して社内日報に自動追記しました。</div>
-                    </div>
-                </div>
-
-                <div class="intro-card" style="margin-top: 1.25rem;">
-                    <h3>「何もしなくても業務が回る」仕組み作り</h3>
-                    <p>たとえばミーティングをするだけで、録音から要約、タスクの整理、ノートへの自動保存までが一切手を出さずに完了するような、そんな「自動で回る仕組み」を社内で実際に稼働させています。</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ③仲間を助ける仕組み -->
-        <div id="panel-2" class="demo-panel">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon" style="background: linear-gradient(135deg, var(--accent), #7c3aed);">
-                        <i class="fa-solid fa-hands-holding-child"></i>
-                    </div>
-                    <div class="card-title-group">
-                        <h2>仲間が迷わず活躍できるダッシュボード</h2>
-                        <p>リモートで働くメンバー同士が、お互いに助け合える環境を作ります</p>
-                    </div>
-                </div>
-
-                <!-- お悩み解決ボックス -->
-                <div class="problem-solution-box">
-                    <div class="problem-line">
-                        <i class="fa-solid fa-circle-question"></i>
-                        <span><strong>お困りごと：</strong> 離れて働くメンバーが「今どこで困っているか」が見えず、孤立や離脱が起きてしまう。</span>
-                    </div>
-                    <div class="solution-line">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <span><strong>こうやって解決：</strong> 全員の「現在の状況」と「つまずき」を共有し、お互いに補い合いながら役割表を作ります。</span>
-                    </div>
-                </div>
-
-                <div class="dashboard-mock">
-                    <div class="db-row">
-                        <!-- メンバーリスト -->
-                        <div class="db-widget">
-                            <div class="db-widget-title">
-                                <span>メンバーの進み具合</span>
-                                <span style="font-size: 0.7rem; color: var(--primary);">● 稼働中</span>
-                            </div>
-                            <div class="member-list">
-                                <div class="member-item">
-                                    <div class="member-info">
-                                        <div class="member-avatar" style="background-color: #38bdf8;">K</div>
-                                        <div>
-                                            <div class="member-name">小泉さん</div>
-                                            <div class="member-role">準備オリエンテーション完了</div>
-                                        </div>
-                                    </div>
-                                    <div style="display: flex; align-items: center; gap: 0.4rem;">
-                                        <div class="progress-bar-container">
-                                            <div class="progress-bar" style="width: 100%; background-color: var(--primary);"></div>
-                                        </div>
-                                        <span style="font-size: 0.7rem; font-weight: 700;">100%</span>
-                                    </div>
-                                </div>
-                                <div class="member-item">
-                                    <div class="member-info">
-                                        <div class="member-avatar" style="background-color: #fb7185;">M</div>
-                                        <div>
-                                            <div class="member-name">木本さん</div>
-                                            <div class="member-role">実務の流れをレクチャー中</div>
-                                        </div>
-                                    </div>
-                                    <div style="display: flex; align-items: center; gap: 0.4rem;">
-                                        <div class="progress-bar-container">
-                                            <div class="progress-bar" style="width: 60%; background-color: var(--secondary);"></div>
-                                        </div>
-                                        <span style="font-size: 0.7rem; font-weight: 700;">60%</span>
-                                    </div>
-                                </div>
-                                <div class="member-item">
-                                    <div class="member-info">
-                                        <div class="member-avatar" style="background-color: #a78bfa;">I</div>
-                                        <div>
-                                            <div class="member-name">池田さん</div>
-                                            <div class="member-role">マニュアル読み込み中</div>
-                                        </div>
-                                    </div>
-                                    <div style="display: flex; align-items: center; gap: 0.4rem;">
-                                        <span class="stumble-badge">要フォロー</span>
-                                        <div class="progress-bar-container">
-                                            <div class="progress-bar" style="width: 30%; background-color: #ef4444;"></div>
-                                        </div>
-                                        <span style="font-size: 0.7rem; font-weight: 700; color: #ef4444;">30%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 資質マップ -->
-                        <div class="db-widget">
-                            <div class="db-widget-title">
-                                <span>チーム全体の得意な資質</span>
-                            </div>
-                            <div class="strength-map">
-                                <div class="strength-row">
-                                    <span>共感する力</span>
-                                    <div class="strength-bar"><div class="strength-fill" style="width: 90%;"></div></div>
-                                    <span style="font-weight:700;">90%</span>
-                                </div>
-                                <div class="strength-row">
-                                    <span>目標に進む力</span>
-                                    <div class="strength-bar"><div class="strength-fill" style="width: 75%;"></div></div>
-                                    <span style="font-weight:700;">75%</span>
-                                </div>
-                                <div class="strength-row">
-                                    <span>状況に合わせる力</span>
-                                    <div class="strength-bar"><div class="strength-fill" style="width: 85%;"></div></div>
-                                    <span style="font-weight:700;">85%</span>
-                                </div>
-                                <div class="strength-row">
-                                    <span>分析して考える力</span>
-                                    <div class="strength-bar"><div class="strength-fill" style="width: 45%;"></div></div>
-                                    <span style="font-weight:700;">45%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="intro-card" style="margin-top: 1.25rem;">
-                    <h3>それぞれの強みを活かし、苦手は補い合う</h3>
-                    <p>メンバーごとの「得意なこと・苦手なこと」をあらかじめオープンにし、誰がどの役割を担当するかを明確にした仕組みを作っています。情報のすれ違いや、一人が抱え込んでしまう問題を未然に防ぎます。</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 問い合わせ・対話カード -->
-        <div class="card" style="background: rgba(255,255,255,0.02); border: 1px dashed var(--border-color);">
-            <h2 style="font-size: 1.1rem; margin-bottom: 0.5rem; text-align: center;">「ちょっと喋ってみたい！」と思されたら</h2>
-            <p style="font-size: 0.85rem; color: var(--text-sub); text-align: center; margin-bottom: 1.25rem;">
-                現場の「これ自動化できないかな？」「業務委託のやりとりで困っている」といったお悩み、お気軽にご相談ください。<br>
-                お渡しした名刺や連絡先、または下記のボタンから実際の取り組みレポートをご覧いただけます。
-            </p>
-            <div class="action-area">
-                <a href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/irodori-onboarding-report-202605.html" target="_blank" class="btn btn-secondary">
-                    <i class="fa-solid fa-file-lines"></i> 実際の運営レポートを見る
-                </a>
-                <button class="btn btn-primary" onclick="alert('ありがとうございます！お渡しした名刺の連絡チャットなどから、ぜひお気軽にお声がけください。情報交換だけでも大歓迎です！')">
-                    <i class="fa-solid fa-comments"></i> 雑談ベースで話してみる
-                </button>
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2026 おけもん｜仕組みとAIで人助け</p>
-        </footer>
-
+<section class="hero">
+  <div class="wrap">
+    <span class="hero-badge"><span class="dot"></span>AIカンパニー稼働中 — 2026.3〜毎日運用</span>
+    <h1><span class="ln">現場16年の「わかってる」と、</span><span class="ln grad-text">AIチーム11人</span><span class="ln">で、業務を回す。</span></h1>
+    <p class="hero-lead">福祉・介護の現場で16年。施設長やサービス管理責任者として、現場の大変さを内側から知っています。<br>その経験を、いま<strong style="color:var(--text)">AIと一緒に</strong>「本当に現場で使えるやさしい仕組み」に変えて、毎日動かしています。</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn btn-primary"><i class="fa-solid fa-arrow-down"></i>できることを見る</a>
+      <a href="#contact" class="btn btn-ghost"><i class="fa-regular fa-comment-dots"></i>雑談ベースで話す</a>
     </div>
+  </div>
+</section>
 
-    <!-- Script for Interactive Demos -->
-    <script>
-        // Tab switching logic
-        function switchTab(index) {
-            const tabs = document.querySelectorAll('.tab-btn');
-            const panels = document.querySelectorAll('.demo-panel');
-            
-            tabs.forEach((tab, i) => {
-                if (i === index) {
-                    tab.classList.add('active');
-                    panels[i].classList.add('active');
-                } else {
-                    tab.classList.remove('active');
-                    panels[i].classList.remove('active');
-                }
-            });
-        }
+<section style="padding-top:1rem;">
+  <div class="wrap">
+    <div class="trust fade">
+      <div class="trust-cell"><div class="trust-num" style="color:var(--primary)">16<small>年</small></div><div class="trust-lbl">福祉・介護の現場</div></div>
+      <div class="trust-cell"><div class="trust-num" style="color:var(--secondary)">11<small>人</small></div><div class="trust-lbl">一緒に働くAIメンバー</div></div>
+      <div class="trust-cell"><div class="trust-num" style="color:var(--accent)">20<small>回+</small></div><div class="trust-lbl">オフ会・交流会の主催</div></div>
+      <div class="trust-cell"><div class="trust-num" style="color:var(--primary)">'26.3<small>〜</small></div><div class="trust-lbl">AIで毎日実運用</div></div>
+    </div>
+  </div>
+</section>
 
-        // Demo 1: Recording Animation & Output Typing
-        let isRecording = false;
-        let recordingTimeout;
-        
-        function toggleRecording() {
-            const micBtn = document.getElementById('micBtn');
-            const micGlow = document.getElementById('micGlow');
-            const micIcon = document.getElementById('micIcon');
-            const micStatus = document.getElementById('micStatus');
-            const waveContainer = document.getElementById('waveContainer');
-            const speechInput = document.getElementById('speechInput');
-            const speechOutput = document.getElementById('speechOutput');
-            const inputText = document.getElementById('inputText');
-            const outputText = document.getElementById('outputText');
+<section>
+  <div class="wrap">
+    <div class="fade" style="text-align:center;max-width:640px;margin:0 auto;">
+      <span class="eyebrow">About</span>
+      <h2 class="sec-title">現場の知識は、気づけば<span class="grad-text">使い捨て</span>られている。</h2>
+      <p style="color:var(--sub);font-size:0.92rem;">毎日の記録、申し送り、顧客対応、面談メモ。現場では膨大な情報が生まれているのに、人に溜まったまま消えていく。おけもんは、その知識を<strong style="color:var(--text)">AIが参照できる形で蓄積</strong>し、現場の負担を減らす仕組みをつくっています。</p>
+    </div>
+    <div class="about-grid stg">
+      <div class="prob"><i class="fa-solid fa-user-clock"></i><h3>がんばる人ほど、すり減る</h3><p>書類仕事に追われて、本当に大事な「人との時間」が削られていく。IT導入も「現場が使ってくれない」で止まる。</p></div>
+      <div class="prob"><i class="fa-solid fa-diagram-project"></i><h3>知識が、人から離れない</h3><p>ベテランの判断や手順が共有されず属人化。新人が育ちにくく、誰かが抜けると一気に回らなくなる。</p></div>
+    </div>
+  </div>
+</section>
 
-            if (!isRecording) {
-                // Start Recording Demo
-                isRecording = true;
-                micBtn.classList.add('recording');
-                micGlow.style.display = 'block';
-                micIcon.className = 'fa-solid fa-square';
-                micStatus.innerText = '録音をシミュレート中...';
-                waveContainer.classList.add('active');
-                
-                inputText.innerText = '音声を読み取っています...';
-                speechInput.classList.add('active');
-                speechOutput.style.display = 'none';
-                speechOutput.classList.remove('active');
-                
-                // Simulate human speech input
-                recordingTimeout = setTimeout(() => {
-                    typeText(inputText, "「あ、今日、田中さんお昼ご飯のとき、ちょっとだけむせてはったわ。スプーン使うのもなんか少ししんどそうやったから、途中でちょっと手助けした。お水はしっかり飲めてたよ」", () => {
-                        // Speech stopped, now AI processing
-                        micStatus.innerText = 'AIが文章をきれいに整理中...';
-                        micBtn.classList.remove('recording');
-                        micIcon.className = 'fa-solid fa-wand-magic-sparkles';
-                        waveContainer.classList.remove('active');
-                        
-                        setTimeout(() => {
-                            speechOutput.style.display = 'block';
-                            speechOutput.classList.add('active');
-                            typeText(outputText, "【お食事時のご様子】\n■状況：昼食時、軽いむせ込みが見られたため一部介助を行いました。\n■動作：スプーンの使用にやや苦戦されている様子があり、今後の支援方法の確認が必要です。\n■水分：お水はしっかり摂取できております（約200ml完了）。", () => {
-                                micIcon.className = 'fa-solid fa-microphone';
-                                micStatus.innerText = '変換完了！もう一度試せます';
-                                isRecording = false;
-                                micGlow.style.display = 'none';
-                            }, 30);
-                        }, 1000);
-                    }, 50);
-                }, 800);
-                
-            } else {
-                // Cancel/Reset
-                clearTimeout(recordingTimeout);
-                isRecording = false;
-                micBtn.classList.remove('recording');
-                micGlow.style.display = 'none';
-                micIcon.className = 'fa-solid fa-microphone';
-                micStatus.innerText = 'リセットされました。ボタンを押して再開';
-                waveContainer.classList.remove('active');
-            }
-        }
+<section style="background:linear-gradient(180deg,transparent,rgba(16,185,129,0.04),transparent);">
+  <div class="wrap">
+    <div class="fade" style="text-align:center;max-width:640px;margin:0 auto;">
+      <span class="eyebrow">Knowledge Architecture</span>
+      <h2 class="sec-title">情報を集めて、<span class="grad-text">第二の脳</span>に変える。</h2>
+      <p style="color:var(--sub);font-size:0.92rem;">Obsidianで作った社内ナレッジ基盤「おけ森」に、日々の情報を集約。AIメンバーがそれを読んで、判断や制作を助けます。</p>
+    </div>
+    <div class="arch fade">
+      <div class="arch-col">
+        <div class="arch-h">INPUT</div>
+        <div class="arch-item"><i class="fa-solid fa-circle"></i>会議メモ・議事録</div>
+        <div class="arch-item"><i class="fa-solid fa-circle"></i>顧客・支援先ログ</div>
+        <div class="arch-item"><i class="fa-solid fa-circle"></i>面談・申し送り</div>
+        <div class="arch-item"><i class="fa-solid fa-circle"></i>現場のナレッジ</div>
+      </div>
+      <div class="arch-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+      <div class="arch-col brain">
+        <div class="arch-h"><i class="fa-solid fa-brain"></i> SECOND BRAIN</div>
+        <div class="brain-title">Obsidian「おけ森」</div>
+        <div class="brain-sub">文脈ごと構造化された、AIが読める知識基盤</div>
+      </div>
+      <div class="arch-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+      <div class="arch-col">
+        <div class="arch-h">OUTPUT</div>
+        <div class="arch-item"><i class="fa-solid fa-circle"></i>記録・書類の自動作成</div>
+        <div class="arch-item"><i class="fa-solid fa-circle"></i>リマインド・連絡</div>
+        <div class="arch-item"><i class="fa-solid fa-circle"></i>資料・図解の制作</div>
+        <div class="arch-item"><i class="fa-solid fa-circle"></i>AIメンバーの判断支援</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Helper to simulate typewriter effect
-        function typeText(element, text, callback, speed = 40) {
-            element.innerHTML = '';
-            let i = 0;
-            function type() {
-                if (i < text.length) {
-                    const char = text.charAt(i);
-                    if (char === '\n') {
-                        element.innerHTML += '<br>';
-                    } else {
-                        element.innerHTML += char;
-                    }
-                    i++;
-                    setTimeout(type, speed);
-                } else if (callback) {
-                    callback();
-                }
-            }
-            type();
-        }
+<section style="padding:3.5rem 0;">
+  <div class="wrap pb fade">
+    <span class="eyebrow">Powered By</span>
+    <p style="color:var(--sub);font-size:0.86rem;">実際に毎日使っている道具たち</p>
+    <div class="pb-tags">
+      <span class="pb-tag lead"><i class="fa-solid fa-terminal"></i>Claude Code</span>
+      <span class="pb-tag"><i class="fa-solid fa-comment"></i>Claude</span>
+      <span class="pb-tag"><i class="fa-solid fa-gem"></i>Obsidian</span>
+      <span class="pb-tag"><i class="fa-solid fa-code"></i>Codex</span>
+      <span class="pb-tag"><i class="fa-solid fa-feather"></i>Hermes</span>
+      <span class="pb-tag"><i class="fa-solid fa-n"></i>Notion</span>
+    </div>
+  </div>
+</section>
 
-        // Demo 2: Simulated Terminal Log Updates (No girl names)
-        const terminalBody = document.getElementById('terminalBody');
-        const agentClasses = ['manager', 'sync', 'analyst', 'system'];
-        const agentNames = ['進行管理AI', '連携システム', '情報分析AI', 'システム'];
-        const logs = [
-            "自動化用リポジトリの同期を確認しました。変更内容を適用します。",
-            "ミーティング文字起こし機能：エラーを回避する修正を自動適用しました。",
-            "直近の活動スケジュールを確認中。次のタスクとの整合性をとります。",
-            "新メンバー向けの役割分担ページを更新し、Webサイトにデプロイ完了しました。",
-            "IT導入に関する手土産情報の整理および自動まとめファイルを更新しました。",
-            "チャットツールの接続エラーを自動検知し、復旧処理を正常に行いました。"
-        ];
+<section id="services">
+  <div class="wrap">
+    <div class="fade" style="text-align:center;max-width:640px;margin:0 auto;">
+      <span class="eyebrow">Services</span>
+      <h2 class="sec-title">経営者の「求め」と、現場16年の「強み」の<span class="grad-text">交差点</span>。</h2>
+      <p style="color:var(--sub);font-size:0.92rem;">"AIの使い方講座"ではありません。現場を知っているからこそ届く、実際に回る仕組みです。</p>
+    </div>
+    <div class="svc">
+      <div class="svc-card fade">
+        <div class="svc-no">01</div>
+        <h3>現場の「人手不足」 × 「IT苦手」の交点</h3>
+        <div class="svc-row">
+          <div class="svc-need"><span class="svc-tag">経営者の求め</span><p>業務を効率化したいが、現場がITアレルギーで使ってくれない…</p></div>
+          <div class="svc-do"><span class="svc-tag">おけもんの強み</span><p>16年の現場知見で、スマホに<strong>「喋るだけ」で裏でAIが書類を作る</strong>、世界一やさしい入力の仕組みを構築。</p></div>
+        </div>
+      </div>
+      <div class="svc-card fade">
+        <div class="svc-no">02</div>
+        <h3>「指示待ちチーム」 × 「リモートの不安」の交点</h3>
+        <div class="svc-row">
+          <div class="svc-need"><span class="svc-tag">経営者の求め</span><p>自分が指示し続けなくても、自律して動くチームになってほしい…</p></div>
+          <div class="svc-do"><span class="svc-tag">おけもんの強み</span><p>各自の<strong>強み・苦手とつまずきを可視化</strong>し、AIと繋いで、補い合いながら自走するチーム設計。</p></div>
+        </div>
+      </div>
+      <div class="svc-card fade">
+        <div class="svc-no">03</div>
+        <h3>「AIを根付かせたい」 × 「研修予算が不安」の交点</h3>
+        <div class="svc-row">
+          <div class="svc-need"><span class="svc-tag">経営者の求め</span><p>現場にAIを根付かせたいが、研修にかける予算が不安…</p></div>
+          <div class="svc-do"><span class="svc-tag">おけもんの動き</span><p><strong>人材開発支援助成金（経費助成75％＋賃金助成）</strong>を活用したAI研修を設計・実施しています。</p></div>
+        </div>
+        <div class="svc-figure"><i class="fa-solid fa-hand-holding-dollar"></i> 例：研修費 <b>30万円</b> → 助成活用で法人の実質負担は <b>約5万円</b>
+          <div class="svc-note">※ いま医療・福祉の現場で導入支援が進行中。助成可否は管轄労働局・社労士の確認が前提です。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        setInterval(() => {
-            if (terminalBody) {
-                const now = new Date();
-                const timeStr = `[${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}]`;
-                
-                const randIndex = Math.floor(Math.random() * logs.length);
-                const randAgentIdx = Math.floor(Math.random() * 3);
-                
-                const newLog = document.createElement('div');
-                newLog.className = `log-entry ${agentClasses[randAgentIdx]}`;
-                newLog.innerHTML = `<span class="time">${timeStr}</span> <span class="agent">${agentNames[randAgentIdx]}:</span> ${logs[randIndex]}`;
-                
-                terminalBody.appendChild(newLog);
-                terminalBody.scrollTop = terminalBody.scrollHeight;
-                
-                if (terminalBody.children.length > 20) {
-                    terminalBody.removeChild(terminalBody.firstChild);
-                }
-            }
-        }, 5000);
-    </script>
+<section>
+  <div class="wrap">
+    <div class="method fade">
+      <span class="eyebrow" style="color:var(--accent)">My Way</span>
+      <blockquote>プロンプトは、一時的。<br><span class="grad-text">コンテキストは、武器になる。</span></blockquote>
+      <p>AIは賢くても、使い方が頭の中だけにあると消えてしまう。だから私は、文脈ごと知識を構造化して残す。それが積み上がるほど、AIチームは強くなる。横取りじゃなく、知見を増やしていく感覚です。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:760px;">
+    <div class="fade" style="text-align:center;">
+      <span class="eyebrow">Message</span>
+      <h2 class="sec-title">「AIを使いこなす人」じゃなく、<br><span class="grad-text">「AIと仲良くなった人」</span>です。</h2>
+    </div>
+    <div class="msg fade-r" style="margin-top:2rem;">
+      <p>はじめまして。福祉・介護の現場で16年、特別養護老人ホーム、障害福祉のサービス管理責任者、グループホームの施設長として働いてきました。</p>
+      <p>現場の「もう手が回らない」を、誰よりも知っています。だからこそ、AIを<strong>難しい最新技術としてではなく、一緒に働く仲間</strong>として迎えました。いまは11人のAIメンバーと、毎日ワイワイ会社みたいに業務を回しています。</p>
+      <p>大げさな効率化の話より、<strong>「気づいたら、しんどい作業がAIに乗っていた」</strong>——そんなやさしい変化を、同じ現場の人たちに届けたい。それが、いま私のやっていることです。</p>
+      <div class="msg-sign">
+        <div class="msg-avatar">お</div>
+        <div class="msg-name"><b>おけもん</b><span>福祉現場16年 / AIカンパニー運営</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="fade" style="text-align:center;max-width:640px;margin:0 auto;">
+      <span class="eyebrow">Voice</span>
+      <h2 class="sec-title">現場からの、<span class="grad-text">声</span>。</h2>
+    </div>
+    <div class="voice fade">
+      <div class="qmark">&ldquo;</div>
+      <p>すごくわかりやすいです、感動しました。これなら業務改善できると思います。みんなにも共有しておきますね。</p>
+      <cite>— 医療法人 保健師さま（AIリマインド導入時）</cite>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:760px;">
+    <div class="fade" style="text-align:center;">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="sec-title">よくあるご質問</h2>
+    </div>
+    <div class="faq fade">
+      <details><summary>AIの知識がなくても大丈夫ですか？<i class="fa-solid fa-plus"></i></summary><div class="ans">大丈夫です。むしろ「現場はITが苦手」を前提に仕組みを作っています。スマホに喋るだけ、ボタンを押すだけ、から始められます。</div></details>
+      <details><summary>うちの現場でも本当に使えますか？<i class="fa-solid fa-plus"></i></summary><div class="ans">福祉・介護・医療の現場を16年見てきた目線で設計しています。記録、申し送り、リマインド、請求まわりなど、現場の実務を題材に一緒に組み立てます。</div></details>
+      <details><summary>補助金は本当に使えるのですか？<i class="fa-solid fa-plus"></i></summary><div class="ans">人材開発支援助成金（事業展開等リスキリング支援コース）など、AI研修に使える制度があります。中小企業なら経費助成75％＋賃金助成が見込めますが、最終的な可否は管轄労働局・社労士の確認が前提です。</div></details>
+      <details><summary>個人情報・健康情報の扱いが心配です。<i class="fa-solid fa-plus"></i></summary><div class="ans">匿名化・番号化、人による確認工程を必ず設け、AIに判断を丸投げしない運用ルールを一緒に作ります。「AIに任せる範囲」と「人が決める範囲」を最初に線引きします。</div></details>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap" style="max-width:760px;">
+    <div class="final fade">
+      <span class="eyebrow">Let's Talk</span>
+      <h2>「これ、自動化できないかな？」<br>から、はじめましょう。</h2>
+      <p>現場のお悩みも、AIってどう始めるの？も、まずは雑談ベースで。<br>売り込みはしません。一緒におもしろがるところから。</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary"><i class="fa-regular fa-comment-dots"></i>ちょっと話してみる</a>
+      </div>
+      <p style="margin-top:1.5rem;font-size:0.74rem;color:var(--faint);">※ お渡しした名刺の連絡先、またはこのページのQRからご連絡ください。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">oke<span>mon</span></div>
+  <p>現場16年 × AIチームで、業務を回す。</p>
+  <p style="margin-top:0.4rem;">© 2026 おけもん</p>
+</footer>
+
+<script>
+const els=document.querySelectorAll('.fade,.fade-r,.stg');
+const obs=new IntersectionObserver((ents)=>{ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:0.15});
+els.forEach(el=>{const r=el.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>0){el.classList.add('vis');}else{obs.observe(el);}});
+</script>
 </body>
 </html>
