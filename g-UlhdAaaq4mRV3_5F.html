@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>ねこにゃんさんへ</title>
+<style>
+  :root{
+    --cream:#fbf6ef;
+    --paper:#fffdf9;
+    --pink:#e9a6a0;
+    --pink-soft:#f3d3cf;
+    --green:#9cb38a;
+    --green-soft:#dfe7d4;
+    --brown:#6b5648;
+    --brown-soft:#b6a394;
+    --ink:#5a4a3f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Hiragino Maru Gothic ProN","Hiragino Sans",-apple-system,"Yu Gothic",sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.95;
+    font-size:16px;
+    letter-spacing:.02em;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:600px;margin:0 auto;padding:0 22px;}
+  .serif{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;}
+
+  /* 足あと背景 */
+  .paw-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;}
+  .paw-bg span{position:absolute;font-size:20px;opacity:.16;}
+
+  /* ヒーロー */
+  .hero{
+    position:relative;z-index:1;
+    text-align:center;
+    padding:78px 22px 56px;
+  }
+  .hero .cat{font-size:54px;display:block;margin-bottom:14px;animation:bob 3.2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  .hero .to{
+    font-size:14px;color:var(--brown-soft);letter-spacing:.18em;margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:27px;font-weight:700;color:var(--brown);line-height:1.7;
+  }
+  .hero h1 .accent{color:var(--pink);}
+  .hero .lead{
+    margin-top:24px;font-size:15px;color:var(--ink);
+  }
+
+  /* セクション共通 */
+  section{position:relative;z-index:1;padding:30px 0;}
+  .card{
+    background:var(--paper);
+    border-radius:22px;
+    padding:34px 26px;
+    margin:18px 0;
+    box-shadow:0 8px 28px rgba(107,86,72,.07);
+    position:relative;
+  }
+  .card::before{
+    content:attr(data-emoji);
+    position:absolute;top:-18px;left:50%;transform:translateX(-50%);
+    font-size:30px;background:var(--cream);padding:0 10px;
+  }
+  .card h2{
+    font-size:19px;color:var(--brown);text-align:center;margin-bottom:18px;font-weight:700;
+  }
+  .card p{font-size:15px;}
+  .card p + p{margin-top:14px;}
+  .em{color:var(--pink);font-weight:700;}
+  .em-g{color:var(--green);font-weight:700;}
+
+  /* 実績タイル */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;}
+  .tile{
+    background:var(--cream);border-radius:16px;padding:18px 14px;text-align:center;
+  }
+  .tile .ico{font-size:26px;display:block;margin-bottom:8px;}
+  .tile .num{font-size:21px;font-weight:700;color:var(--brown);line-height:1.3;}
+  .tile .lbl{font-size:12.5px;color:var(--brown-soft);margin-top:5px;}
+
+  /* 引用ふきだし */
+  .quote{
+    background:var(--green-soft);
+    border-radius:20px;
+    padding:26px 24px;
+    text-align:center;
+    margin:18px 0;
+    position:relative;
+  }
+  .quote .mark{font-size:30px;color:var(--green);line-height:1;}
+  .quote .words{font-size:16px;color:var(--brown);font-weight:700;margin:8px 0;}
+  .quote .from{font-size:12.5px;color:var(--brown-soft);}
+
+  /* やわらかリスト */
+  .soft-list{list-style:none;margin-top:6px;}
+  .soft-list li{
+    background:var(--cream);border-radius:14px;padding:14px 16px;margin-bottom:10px;
+    font-size:14.5px;display:flex;gap:10px;align-items:flex-start;
+  }
+  .soft-list li .b{font-size:18px;flex-shrink:0;}
+
+  /* 締め */
+  .closing{
+    text-align:center;padding:54px 22px 30px;position:relative;z-index:1;
+  }
+  .closing .cat{font-size:42px;display:block;margin-bottom:18px;}
+  .closing h2{font-size:21px;color:var(--brown);line-height:1.8;font-weight:700;}
+  .closing p{margin-top:20px;font-size:15px;}
+  .sign{
+    margin-top:38px;font-size:13.5px;color:var(--brown-soft);
+  }
+  .sign .heart{color:var(--pink);}
+  footer{
+    text-align:center;font-size:11px;color:var(--brown-soft);
+    padding:26px 22px 50px;position:relative;z-index:1;opacity:.7;
+  }
+  .divider{text-align:center;font-size:18px;color:var(--pink-soft);margin:8px 0;letter-spacing:.4em;}
+  .fade{opacity:0;transform:translateY(22px);transition:all .9s ease;}
+  .fade.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<div class="paw-bg" id="pawBg"></div>
+
+<div class="hero">
+  <span class="cat">🐱</span>
+  <div class="to">― おつかれさまの、あなたへ ―</div>
+  <h1 class="serif">立ち止まってる今のあなたも、<br><span class="accent">ちゃんと前に進んでる</span>。</h1>
+  <p class="lead">なんだか少し疲れちゃった、<br>足が止まっちゃった今日。<br>そんな日のあなたに、これを読んでほしくて。</p>
+</div>
+
+<div class="divider">𓂃 🐾 𓂃 🐾 𓂃</div>
+
+<div class="wrap">
+
+  <section>
+    <div class="card fade" data-emoji="🍵">
+      <h2 class="serif">立ち止まるのは、こわれたんじゃない</h2>
+      <p>がんばり屋さんほど、ふっと足が止まる日があります。それは壊れたんじゃなくて、<span class="em">ここまで全力で歩いてきた</span>からこそ、体と心が「ちょっと休も」って教えてくれてるだけ。</p>
+      <p>あなた、最近こう書いてたよね。早朝に、<span class="em-g">何も考えずただ歩くだけ</span>って。それでね、<span class="em-g">体の不調が嘘みたいに消えた</span>って。<br>……それ、もう立ち止まってないんだよ。<span class="em">ちゃんと、自分で歩き出してる</span>。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="card fade" data-emoji="🌸">
+      <h2 class="serif">あなたが積み上げてきたもの</h2>
+      <p style="text-align:center;font-size:14px;color:var(--brown-soft);margin-bottom:20px;">「自己肯定感、低めで…」なんて言うけど。<br>あなたが歩いてきた道、ちょっと並べてみるね。</p>
+      <div class="grid">
+        <div class="tile"><span class="ico">📦</span><div class="num">30万円</div><div class="lbl">メルカリ、たった半年で</div></div>
+        <div class="tile"><span class="ico">⭐</span><div class="num">1500件</div><div class="lbl">積み重ねた評価の数</div></div>
+        <div class="tile"><span class="ico">🧮</span><div class="num">簿記2級</div><div class="lbl">職業訓練で、ちゃんと取得</div></div>
+        <div class="tile"><span class="ico">🏠</span><div class="num">中古住宅</div><div class="lbl">DIYのために、買っちゃう人</div></div>
+        <div class="tile"><span class="ico">🥟</span><div class="num">300個</div><div class="lbl">餃子、ひとりで包める</div></div>
+        <div class="tile"><span class="ico">🔰</span><div class="num">オフ会主催</div><div class="lbl">居場所を、自分でつくった</div></div>
+      </div>
+      <p style="margin-top:22px;text-align:center;">これ全部、<span class="em">あなたが本当にやってきたこと</span>。<br>豆腐みたいにやわらかい心の人が、<br>こんなに強い足あとを残してるんだよ。🐾</p>
+    </div>
+  </section>
+
+  <div class="quote fade">
+    <div class="mark">❝</div>
+    <div class="words serif">今日が人生でいちばん若い日</div>
+    <div class="from">― あなたが選んだ、大好きな言葉 ―</div>
+  </div>
+
+  <section>
+    <div class="card fade" data-emoji="🐾">
+      <h2 class="serif">あなたの中にある、やさしい強さ</h2>
+      <ul class="soft-list">
+        <li><span class="b">🛠️</span><div><b>ものづくりに、時間を忘れる人。</b><br>漆喰を塗って、棚を組んで、思い出をかたちにできる手を持ってる。</div></li>
+        <li><span class="b">🐢</span><div><b>亀スピードでも、ちゃんと進む人。</b><br>派手じゃなくていい。コツコツ続けられるのが、いちばん強い。</div></li>
+        <li><span class="b">🐱</span><div><b>安心できると、ぐっと懐ける人。</b><br>慎重なのは弱さじゃない。大事な場所を、ちゃんと見極めてる証拠。</div></li>
+        <li><span class="b">👧👧</span><div><b>怒らなかった日は、子どもに褒められる人。</b><br>鬼なんかじゃないよ。毎日ちゃんと向き合ってる、やさしいお母さん。</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider">𓂃 🌿 𓂃 🌿 𓂃</div>
+
+</div>
+
+<div class="closing">
+  <span class="cat">🐈</span>
+  <h2 class="serif">焦らなくて、いいよ。<br>あなたのペースで、また歩こ。</h2>
+  <p>今日できなくても大丈夫。<br>明日もできなくても、大丈夫。<br>朝、ちょっと歩くだけでいい。<br>猫みたいに、安心できる場所で、ゆっくり伸びをして。</p>
+  <p style="margin-top:22px;">あなたはもう、<span class="em">十分すぎるほどがんばってる</span>。<br>だからどうか、自分のこと、<br>もう少しだけ褒めてあげてね。🫶</p>
+  <div class="sign">
+    今日のオフ会で会えるの、楽しみにしてます。<br>
+    あなたの足あとが好きな人より <span class="heart">♡</span>
+  </div>
+</div>
+
+<footer>
+  この小さなページは、あなたのことを応援したくて作りました 🐾
+</footer>
+
+<script>
+  // 足あと背景をランダム配置
+  (function(){
+    const bg=document.getElementById('pawBg');
+    const paws=['🐾','🐾','🐾','🐾'];
+    for(let i=0;i<22;i++){
+      const s=document.createElement('span');
+      s.textContent=paws[i%paws.length];
+      s.style.left=Math.random()*96+'%';
+      s.style.top=Math.random()*100+'%';
+      s.style.fontSize=(14+Math.random()*16)+'px';
+      s.style.transform='rotate('+(Math.random()*60-30)+'deg)';
+      bg.appendChild(s);
+    }
+  })();
+  // フェードイン
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+  },{threshold:.15});
+  document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
