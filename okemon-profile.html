@@ -3,376 +3,422 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>おけもん｜現場16年 × AIチームで、業務を回す。</title>
-<meta name="description" content="福祉・介護の現場16年。AIメンバー11人と一緒に、医療・福祉の現場の業務をやさしく自動化しています。声で記録、自走するチーム、補助金を活用したAI研修まで。">
+<title>おけもん｜現場16年の「わかってる」を、AI仲間と。</title>
+<meta name="description" content="福祉・介護の現場で16年。いまはAIの仲間たちと、現場のしんどいをやさしく自動化しています。声で記録、自走するチーム、補助金を活用したAI研修まで。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@500;700&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 :root{
-  --bg:#0b1329; --bg2:#0e1838;
-  --card:rgba(23,37,84,0.45);
-  --border:rgba(255,255,255,0.09);
-  --primary:#10b981; --primary-l:#6ee7b7;
-  --secondary:#fb923c; --accent:#a78bfa;
-  --text:#f8fafc; --sub:#aab4c5; --faint:#7c879b;
+  --primary:#3B5249; --primary-dark:#2A3B34; --primary-soft:rgba(59,82,73,0.08);
+  --accent:#B8945F; --accent-soft:rgba(184,148,95,0.12);
+  --bg-warm:#F4EFE6; --bg-cream:#FAF6EF; --white:#fff;
+  --text:#2A2A28; --muted:#6B7068; --divider:rgba(59,82,73,0.15);
+  --serif:"Noto Serif JP","Hiragino Mincho ProN",serif;
+  --sans:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+  --label:"Inter","Noto Sans JP",sans-serif;
+  --pad:110px;
 }
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+*{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{
-  font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--text);
-  line-height:1.8; overflow-x:hidden;
-  background-image:
-    radial-gradient(ellipse 80% 50% at 15% 0%, rgba(16,185,129,0.10), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 90% 20%, rgba(251,146,60,0.08), transparent 50%),
-    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(167,139,250,0.08), transparent 55%);
-}
-.wrap{max-width:1080px;margin:0 auto;padding:0 1.5rem;}
-.sp{display:none;}
-.eyebrow{font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.28em;color:var(--primary);text-transform:uppercase;margin-bottom:0.9rem;display:block;}
-.sec-title{font-family:'Noto Serif JP',serif;font-size:1.6rem;font-weight:700;line-height:1.5;letter-spacing:0.01em;margin-bottom:1rem;}
-@media(min-width:768px){.sec-title{font-size:2rem;}}
-section{padding:5.5rem 0;position:relative;}
-.grad-text{background:linear-gradient(120deg,var(--primary-l),var(--secondary));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+body{font-family:var(--sans);color:var(--text);background:var(--bg-cream);line-height:1.75;-webkit-font-smoothing:antialiased;font-feature-settings:"palt";overflow-x:hidden;}
+a{color:inherit;text-decoration:none;transition:opacity .25s;}
+a:hover{opacity:.7;}
+.container{max-width:1080px;margin:0 auto;padding:0 32px;}
+.section{padding:var(--pad) 0;}
+.label{font-family:var(--label);font-size:13px;letter-spacing:0.25em;color:var(--accent);text-transform:uppercase;font-weight:500;margin-bottom:18px;display:block;}
+.title{font-family:var(--serif);font-size:clamp(26px,3.6vw,38px);font-weight:500;line-height:1.55;letter-spacing:0.04em;margin-bottom:28px;position:relative;padding-bottom:22px;}
+.title::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .7s ease .3s;}
+.is-visible .title::after{width:40px;}
+.center .title{display:inline-block;padding-bottom:22px;}
+.center .title::after{left:50%;transform:translateX(-50%);}
+.lead{font-size:15px;color:var(--muted);line-height:2;max-width:640px;}
+.center .lead{margin:0 auto;}
 
-header{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);background:rgba(11,19,41,0.72);border-bottom:1px solid var(--border);}
-.nav{max-width:1080px;margin:0 auto;padding:0.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
-.logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.15rem;letter-spacing:-0.01em;}
-.logo span{color:var(--primary);}
-.nav-cta{font-size:0.8rem;font-weight:700;padding:0.5rem 1.1rem;border-radius:999px;background:linear-gradient(120deg,var(--primary),#059669);color:#04231a;text-decoration:none;transition:transform .25s,box-shadow .25s;}
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(16,185,129,0.3);}
+/* header */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,246,239,0.92);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:.3s;}
+.header.scrolled{border-bottom-color:var(--divider);background:rgba(250,246,239,0.98);}
+.nav{display:flex;justify-content:space-between;align-items:center;height:70px;}
+.nav-logo{font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:0.08em;color:var(--primary);}
+.nav-logo small{font-family:var(--label);font-size:10px;letter-spacing:0.3em;color:var(--muted);display:block;margin-top:2px;}
+.nav-cta{font-size:13px;padding:9px 22px;border:1px solid var(--primary);color:var(--primary);border-radius:2px;letter-spacing:0.1em;transition:.3s;}
+.nav-cta:hover{background:var(--primary);color:var(--white);opacity:1;}
 
-.hero{padding-top:9rem;padding-bottom:4rem;text-align:center;}
-.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.74rem;font-weight:700;color:var(--primary-l);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.28);padding:0.4rem 1rem;border-radius:999px;margin-bottom:1.8rem;}
-.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--primary);animation:pulse 2.2s infinite;}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5);}70%{box-shadow:0 0 0 9px rgba(16,185,129,0);}100%{box-shadow:0 0 0 0 rgba(16,185,129,0);}}
-.hero h1{font-family:'Noto Serif JP',serif;font-size:2.1rem;font-weight:700;line-height:1.5;letter-spacing:0.01em;margin-bottom:1.5rem;}
-@media(min-width:768px){.hero h1{font-size:3rem;line-height:1.45;}}
-.hero h1 .ln{display:block;}
-.hero-lead{max-width:620px;margin:0 auto 2.4rem;color:var(--sub);font-size:0.98rem;line-height:2;}
-.hero-cta{display:flex;gap:0.9rem;justify-content:center;flex-wrap:wrap;}
-.btn{font-size:0.9rem;font-weight:700;padding:0.85rem 1.7rem;border-radius:999px;text-decoration:none;transition:transform .25s,box-shadow .25s;display:inline-flex;align-items:center;gap:0.55rem;}
-.btn-primary{background:linear-gradient(120deg,var(--primary),#059669);color:#04231a;}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(16,185,129,0.32);}
-.btn-ghost{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text);}
-.btn-ghost:hover{transform:translateY(-3px);border-color:rgba(255,255,255,0.25);}
+/* hero */
+.hero{min-height:92vh;display:flex;align-items:center;position:relative;overflow:hidden;color:var(--white);
+  background:linear-gradient(135deg,rgba(42,59,52,0.55),rgba(59,82,73,0.75)),radial-gradient(ellipse at 30% 20%,#5A7B6F,#2A3B34 55%,#1E2B26 100%);}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 20% 30%,rgba(184,148,95,0.15),transparent 40%),radial-gradient(circle at 80% 70%,rgba(244,239,230,0.08),transparent 50%);}
+.hero-particles{position:absolute;inset:0;pointer-events:none;z-index:1;}
+.hero-particles span{position:absolute;width:3px;height:3px;background:rgba(184,148,95,0.5);border-radius:50%;animation:pfloat linear infinite;}
+@keyframes pfloat{0%{transform:translateY(100vh);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-10vh) translateX(30px);opacity:0;}}
+.hero-inner{position:relative;z-index:2;width:100%;}
+.hero-label{font-family:var(--label);font-size:12px;letter-spacing:0.4em;color:var(--accent);margin-bottom:28px;opacity:0;animation:hfade .9s .3s forwards;}
+.hero-title{font-family:var(--serif);font-size:clamp(28px,5vw,54px);font-weight:500;line-height:1.6;letter-spacing:0.05em;margin-bottom:28px;opacity:0;transform:translateY(24px);animation:hup 1s .5s forwards;}
+.hero-title em{font-style:normal;color:var(--accent);}
+.hero-sub{font-size:clamp(14px,1.6vw,17px);line-height:2.1;max-width:600px;margin-bottom:44px;color:rgba(255,255,255,0.88);opacity:0;transform:translateY(16px);animation:hup 1s .8s forwards;}
+.hero-cta{display:inline-flex;align-items:center;gap:13px;padding:16px 32px;border:1px solid rgba(255,255,255,0.4);border-radius:2px;font-family:var(--label);font-size:13px;letter-spacing:0.2em;color:var(--white);opacity:0;animation:hfade .9s 1.1s forwards;transition:.3s;}
+.hero-cta:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px);opacity:1;}
+.hero-cta i{transition:transform .3s;}.hero-cta:hover i{transform:translateX(6px);}
+.hero-scroll{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);color:rgba(255,255,255,0.6);font-family:var(--label);font-size:10px;letter-spacing:0.4em;opacity:0;animation:hfade .9s 1.4s forwards;}
+.hero-scroll::after{content:'';display:block;width:1px;height:44px;background:rgba(255,255,255,0.4);margin:12px auto 0;animation:sline 2s ease-in-out infinite;}
+@keyframes hfade{to{opacity:1;}}
+@keyframes hup{to{opacity:1;transform:translateY(0);}}
+@keyframes sline{0%,100%{transform:scaleY(1);opacity:.4;}50%{transform:scaleY(.3);opacity:1;transform-origin:top;}}
 
-.trust{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-top:1rem;}
-@media(min-width:768px){.trust{grid-template-columns:repeat(4,1fr);}}
-.trust-cell{background:var(--bg2);padding:1.7rem 1rem;text-align:center;}
-.trust-num{font-family:'Outfit',sans-serif;font-size:2rem;font-weight:900;line-height:1;}
-.trust-num small{font-size:0.95rem;font-weight:700;}
-.trust-lbl{font-size:0.74rem;color:var(--sub);margin-top:0.55rem;}
+/* about */
+.about{background:var(--bg-cream);}
+.about-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:72px;align-items:center;}
+.about-body p{font-size:15px;line-height:2.1;margin-bottom:22px;}
+.about-quote{font-family:var(--serif);font-size:18px;font-weight:500;line-height:2;color:var(--primary);padding:28px 0 28px 30px;border-left:2px solid var(--accent);margin:6px 0;}
 
-.about-grid{display:grid;gap:1rem;margin-top:2rem;}
-@media(min-width:768px){.about-grid{grid-template-columns:1fr 1fr;gap:1.4rem;}}
-.prob{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--secondary);border-radius:0 14px 14px 0;padding:1.4rem 1.5rem;backdrop-filter:blur(8px);}
-.prob i{color:var(--secondary);font-size:1.1rem;margin-bottom:0.6rem;display:block;}
-.prob h3{font-size:0.98rem;font-weight:700;margin-bottom:0.4rem;}
-.prob p{font-size:0.85rem;color:var(--sub);line-height:1.75;}
+/* trust */
+.trust{background:var(--bg-warm);}
+.trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;text-align:center;}
+@media(min-width:768px){.trust-grid{grid-template-columns:repeat(4,1fr);}}
+.trust-num{font-family:var(--serif);font-size:clamp(40px,6vw,60px);font-weight:500;color:var(--primary);line-height:1.1;}
+.trust-num em{font-style:normal;color:var(--accent);font-size:0.5em;}
+.trust-cap{font-family:var(--label);font-size:12px;letter-spacing:0.15em;color:var(--muted);margin-top:10px;}
 
-.arch{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2.4rem;align-items:stretch;}
-@media(min-width:880px){.arch{grid-template-columns:1fr auto 1.15fr auto 1fr;align-items:center;}}
-.arch-col{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;backdrop-filter:blur(8px);}
-.arch-col.brain{border-color:rgba(16,185,129,0.4);background:linear-gradient(160deg,rgba(16,185,129,0.12),rgba(23,37,84,0.5));}
-.arch-h{font-family:'Outfit',sans-serif;font-size:0.72rem;letter-spacing:0.2em;color:var(--faint);font-weight:700;margin-bottom:0.9rem;}
-.arch-col.brain .arch-h{color:var(--primary-l);}
-.arch-item{font-size:0.82rem;color:var(--sub);padding:0.35rem 0;display:flex;align-items:center;gap:0.5rem;}
-.arch-item i{color:var(--primary);font-size:0.7rem;}
-.brain-title{font-size:1.05rem;font-weight:900;color:var(--text);margin-bottom:0.3rem;}
-.brain-sub{font-size:0.76rem;color:var(--sub);}
-.arch-arrow{display:flex;align-items:center;justify-content:center;color:var(--faint);font-size:1.2rem;}
-@media(max-width:879px){.arch-arrow{transform:rotate(90deg);padding:0.2rem 0;}}
+/* divider */
+.divider{height:220px;position:relative;background:linear-gradient(135deg,rgba(42,59,52,0.5),rgba(184,148,95,0.3)),radial-gradient(ellipse at 50% 50%,#5A7B6F,#2A3B34 100%);}
+.divider-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:rgba(255,255,255,0.9);width:90%;}
+.divider-text .en{font-family:var(--label);font-size:11px;letter-spacing:0.5em;margin-bottom:12px;color:rgba(255,255,255,0.6);}
+.divider-text .jp{font-family:var(--serif);font-size:clamp(18px,2.4vw,24px);font-weight:500;letter-spacing:0.1em;}
 
-.pb{text-align:center;}
-.pb-tags{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-top:1.5rem;}
-.pb-tag{font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:600;color:var(--sub);background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:0.5rem 1.05rem;border-radius:10px;display:inline-flex;align-items:center;gap:0.5rem;transition:.25s;}
-.pb-tag:hover{border-color:rgba(16,185,129,0.4);color:var(--primary-l);transform:translateY(-2px);}
-.pb-tag i{color:var(--primary);font-size:0.8rem;}
-.pb-tag.lead{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.32);color:var(--primary-l);}
+/* services */
+.services{background:var(--bg-cream);}
+.services-grid{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--divider);margin-top:8px;}
+.svc{padding:48px 8px;border-bottom:1px solid var(--divider);position:relative;transition:.4s;}
+.svc::before{content:'';position:absolute;left:0;top:0;width:0;height:100%;background:var(--primary-soft);transition:width .5s;z-index:0;}
+.svc:hover::before{width:100%;}
+.svc>*{position:relative;z-index:1;}
+.svc-no{font-family:var(--label);font-size:12px;letter-spacing:0.3em;color:var(--accent);margin-bottom:14px;}
+.svc-icon{width:50px;height:50px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:19px;margin-bottom:20px;transition:transform .5s cubic-bezier(.34,1.56,.64,1);}
+.svc:hover .svc-icon{transform:scale(1.1) rotate(-8deg);}
+.svc-title{font-family:var(--serif);font-size:21px;font-weight:500;letter-spacing:0.04em;margin-bottom:14px;}
+.svc-row{display:grid;gap:8px;}
+@media(min-width:680px){.svc-row{grid-template-columns:1fr 1fr;gap:36px;}}
+.svc-need,.svc-do{font-size:14px;line-height:1.95;}
+.svc-k{display:inline-block;font-family:var(--label);font-size:11px;letter-spacing:0.1em;padding:3px 10px;border-radius:20px;margin-bottom:8px;}
+.svc-need .svc-k{background:var(--accent-soft);color:var(--accent);}
+.svc-do .svc-k{background:var(--primary-soft);color:var(--primary);}
+.svc-need p{color:var(--muted);}
+.svc-fig{margin-top:18px;padding:16px 20px;background:var(--white);border-radius:18px 18px 18px 4px;box-shadow:0 8px 24px rgba(42,59,52,0.07);font-size:14px;color:var(--primary);}
+.svc-fig b{font-family:var(--serif);font-size:1.25em;color:var(--accent);}
+.svc-fig small{display:block;font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.7;}
 
-.svc{display:grid;gap:1.2rem;margin-top:2.4rem;}
-.svc-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.8rem;backdrop-filter:blur(8px);position:relative;overflow:hidden;transition:.3s;}
-.svc-card:hover{transform:translateY(-4px);border-color:rgba(16,185,129,0.3);box-shadow:0 18px 44px rgba(0,0,0,0.3);}
-.svc-no{font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;color:var(--primary);}
-.svc-card h3{font-size:1.1rem;font-weight:700;margin:0.5rem 0 1rem;line-height:1.5;}
-.svc-row{display:grid;gap:0.7rem;}
-@media(min-width:680px){.svc-row{grid-template-columns:1fr 1fr;gap:1.4rem;}}
-.svc-need,.svc-do{font-size:0.86rem;line-height:1.8;}
-.svc-tag{display:inline-block;font-size:0.7rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:6px;margin-bottom:0.5rem;}
-.svc-need .svc-tag{background:rgba(251,146,60,0.13);color:var(--secondary);}
-.svc-do .svc-tag{background:rgba(16,185,129,0.13);color:var(--primary-l);}
-.svc-need p{color:var(--sub);} .svc-do p{color:var(--text);}
-.svc-figure{margin-top:1.2rem;padding:0.9rem 1.1rem;background:rgba(16,185,129,0.07);border:1px dashed rgba(16,185,129,0.3);border-radius:10px;font-size:0.82rem;color:var(--primary-l);}
-.svc-figure b{font-family:'Outfit',sans-serif;font-size:1.05rem;}
-.svc-note{font-size:0.72rem;color:var(--faint);margin-top:0.5rem;line-height:1.6;}
+/* brain (second brain) */
+.brain{background:var(--bg-warm);text-align:center;}
+.brain-flow{display:grid;grid-template-columns:1fr;gap:14px;max-width:920px;margin:44px auto 0;align-items:center;}
+@media(min-width:860px){.brain-flow{grid-template-columns:1fr auto 1.1fr auto 1fr;}}
+.brain-box{background:var(--white);border-radius:6px;padding:26px 22px;box-shadow:0 10px 28px rgba(42,59,52,0.06);text-align:left;}
+.brain-box.core{background:var(--primary);color:var(--white);text-align:center;}
+.brain-h{font-family:var(--label);font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:14px;}
+.brain-box.core .brain-h{color:var(--accent);}
+.brain-li{font-size:13.5px;color:var(--muted);padding:4px 0;}
+.brain-box.core .brain-core-t{font-family:var(--serif);font-size:20px;margin-bottom:6px;}
+.brain-box.core small{font-size:12px;color:rgba(255,255,255,0.75);}
+.brain-arrow{color:var(--accent);font-size:1.3rem;}
+@media(max-width:859px){.brain-arrow{transform:rotate(90deg);}}
 
-.method{text-align:center;background:linear-gradient(160deg,rgba(167,139,250,0.08),transparent);border-radius:24px;padding:3.5rem 1.5rem;border:1px solid var(--border);}
-.method blockquote{font-family:'Noto Serif JP',serif;font-size:1.5rem;font-weight:700;line-height:1.7;letter-spacing:0.01em;}
-@media(min-width:768px){.method blockquote{font-size:2rem;}}
-.method p{max-width:560px;margin:1.6rem auto 0;color:var(--sub);font-size:0.92rem;}
+/* powered by */
+.pb{background:var(--bg-cream);text-align:center;}
+.pb-tags{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px;}
+.pb-tag{font-family:var(--label);font-size:13px;font-weight:500;letter-spacing:0.05em;color:var(--primary);background:var(--white);border:1px solid var(--divider);padding:10px 22px;border-radius:2px;box-shadow:0 4px 14px rgba(42,59,52,0.04);transition:.3s;}
+.pb-tag:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 10px 24px rgba(184,148,95,0.18);}
 
-.msg{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:2.5rem 1.8rem;backdrop-filter:blur(8px);}
-@media(min-width:768px){.msg{padding:3rem 3rem;}}
-.msg p{color:var(--sub);font-size:0.93rem;line-height:2.05;margin-bottom:1.1rem;}
-.msg p strong{color:var(--text);font-weight:700;}
-.msg-sign{margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:0.9rem;}
-.msg-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:1.3rem;color:#04231a;}
-.msg-name b{font-size:1rem;} .msg-name span{display:block;font-size:0.74rem;color:var(--faint);}
+/* owner message */
+.owner{background:var(--bg-warm);text-align:center;position:relative;overflow:hidden;}
+.owner::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(184,148,95,0.12),transparent 55%);pointer-events:none;}
+.owner>*{position:relative;z-index:1;}
+.owner-emoji{font-size:clamp(80px,11vw,128px);line-height:1;filter:drop-shadow(0 16px 32px rgba(184,148,95,0.32));animation:floatS 5s ease-in-out infinite;margin-bottom:18px;}
+@keyframes floatS{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+.owner-name{font-family:var(--serif);font-size:clamp(34px,5vw,52px);font-weight:500;letter-spacing:0.08em;color:var(--primary);margin-bottom:8px;}
+.owner-en{font-family:var(--label);font-size:13px;letter-spacing:0.4em;color:var(--muted);margin-bottom:36px;}
+.owner-msg{max-width:680px;margin:0 auto;text-align:left;}
+.owner-msg p{font-size:15px;line-height:2.15;margin-bottom:20px;color:var(--text);}
+.owner-msg p strong{color:var(--primary);font-weight:700;}
+.owner-voice{display:inline-block;font-family:var(--serif);font-size:16px;color:var(--primary);padding:18px 30px;background:var(--white);border-radius:24px 24px 24px 4px;box-shadow:0 8px 24px rgba(42,59,52,0.08);margin-top:14px;}
+.owner-voice::before{content:'「';color:var(--accent);}.owner-voice::after{content:'」';color:var(--accent);}
 
-.voice{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.8rem;backdrop-filter:blur(8px);max-width:680px;margin:2rem auto 0;}
-.voice .qmark{font-family:'Outfit',serif;font-size:2.4rem;color:var(--primary);line-height:0.6;}
-.voice p{font-size:0.95rem;line-height:1.9;margin:0.6rem 0 1rem;}
-.voice cite{font-size:0.78rem;color:var(--faint);font-style:normal;}
+/* voice */
+.voice{background:var(--bg-cream);text-align:center;position:relative;overflow:hidden;}
+.voice::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(184,148,95,0.06),transparent 60%);}
+.voice>*{position:relative;z-index:1;}
+.voice-card{max-width:680px;margin:8px auto 0;background:var(--white);border-radius:6px;padding:44px 40px;box-shadow:0 14px 36px rgba(42,59,52,0.07);position:relative;}
+.voice-card::before{content:'“';font-family:var(--serif);font-size:72px;color:var(--accent-soft);position:absolute;top:16px;left:24px;line-height:1;}
+.voice-card p{font-family:var(--serif);font-size:18px;line-height:2;color:var(--text);position:relative;}
+.voice-card cite{display:block;font-style:normal;font-family:var(--label);font-size:12px;letter-spacing:0.15em;color:var(--muted);margin-top:20px;}
 
-.faq{margin-top:2rem;display:grid;gap:0.8rem;}
-.faq details{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;backdrop-filter:blur(8px);}
-.faq summary{padding:1.1rem 1.3rem;font-size:0.92rem;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+/* faq */
+.faq{background:var(--bg-warm);}
+.faq-list{max-width:760px;margin:8px auto 0;display:grid;gap:14px;}
+.faq details{background:var(--white);border-radius:4px;box-shadow:0 6px 18px rgba(42,59,52,0.05);overflow:hidden;}
+.faq summary{padding:22px 26px;font-family:var(--serif);font-size:16px;font-weight:500;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;}
 .faq summary::-webkit-details-marker{display:none;}
-.faq summary i{color:var(--primary);transition:.3s;flex-shrink:0;}
+.faq summary i{color:var(--accent);transition:.3s;flex-shrink:0;}
 .faq details[open] summary i{transform:rotate(45deg);}
-.faq .ans{padding:0 1.3rem 1.2rem;font-size:0.85rem;color:var(--sub);line-height:1.85;}
+.faq .ans{padding:0 26px 22px;font-size:14px;color:var(--muted);line-height:2;}
 
-.final{text-align:center;background:linear-gradient(160deg,rgba(16,185,129,0.13),rgba(251,146,60,0.06));border-radius:26px;padding:4rem 1.5rem;border:1px solid rgba(16,185,129,0.22);}
-.final h2{font-family:'Noto Serif JP',serif;font-size:1.7rem;font-weight:700;line-height:1.55;margin-bottom:1rem;}
-@media(min-width:768px){.final h2{font-size:2.2rem;}}
-.final p{color:var(--sub);margin-bottom:2rem;font-size:0.92rem;}
+/* contact */
+.contact{background:var(--primary);color:var(--white);text-align:center;position:relative;overflow:hidden;}
+.contact::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(184,148,95,0.15),transparent 40%),radial-gradient(circle at 80% 70%,rgba(244,239,230,0.08),transparent 50%);}
+.contact>*{position:relative;z-index:1;}
+.contact .label{color:var(--accent);}
+.contact .title{color:var(--white);display:inline-block;}
+.contact .title::after{left:50%;transform:translateX(-50%);}
+.contact-lead{font-size:15px;line-height:2.1;color:rgba(255,255,255,0.85);max-width:600px;margin:0 auto 44px;}
+.contact-cta{display:inline-flex;align-items:center;gap:13px;padding:18px 40px;background:var(--accent);color:var(--white);font-family:var(--label);font-size:13px;letter-spacing:0.2em;border-radius:2px;transition:.3s;}
+.contact-cta:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(184,148,95,0.4);opacity:1;}
+.contact-cta i{transition:transform .3s;}.contact-cta:hover i{transform:translateX(6px);}
+.contact-note{margin-top:28px;font-size:12px;color:rgba(255,255,255,0.6);}
 
-footer{border-top:1px solid var(--border);padding:2.5rem 0;text-align:center;}
-.footer-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.05rem;margin-bottom:0.5rem;}
-.footer-logo span{color:var(--primary);}
-footer p{font-size:0.74rem;color:var(--faint);}
+/* footer */
+.footer{background:var(--primary-dark);color:rgba(255,255,255,0.6);padding:42px 0 30px;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
+.footer-logo{font-family:var(--serif);font-size:16px;font-weight:500;letter-spacing:0.08em;color:rgba(255,255,255,0.9);}
+.footer-copy{font-family:var(--label);font-size:11px;letter-spacing:0.1em;}
 
-.fade{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
-.fade.vis{opacity:1;transform:none;}
-.fade-r{opacity:0;transform:translateX(32px);transition:opacity .8s ease,transform .8s ease;}
-.fade-r.vis{opacity:1;transform:none;}
-.stg>*{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
-.stg.vis>*{opacity:1;transform:none;}
-.stg.vis>*:nth-child(2){transition-delay:.12s;}
-.hero-badge{animation:hin .8s .1s both;}
-.hero h1{animation:hup .9s .25s both;}
-.hero-lead{animation:hup .9s .45s both;}
-.hero-cta{animation:hup .9s .6s both;}
-@keyframes hin{from{opacity:0;}to{opacity:1;}}
-@keyframes hup{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+/* anim */
+.fade-in,.fade-in-left,.fade-in-right,.stagger>*{opacity:0;transition:opacity .9s ease,transform .9s ease;}
+.fade-in{transform:translateY(32px);}
+.fade-in-left{transform:translateX(-32px);}
+.fade-in-right{transform:translateX(32px);}
+.fade-in.is-visible,.fade-in-left.is-visible,.fade-in-right.is-visible{opacity:1;transform:translate(0,0);}
+.stagger>*{transform:translateY(24px);}
+.stagger.is-visible>*{opacity:1;transform:translateY(0);}
+.stagger.is-visible>*:nth-child(2){transition-delay:.1s;}
+.stagger.is-visible>*:nth-child(3){transition-delay:.2s;}
+.stagger.is-visible>*:nth-child(4){transition-delay:.3s;}
+
+@media(max-width:860px){:root{--pad:72px;}.about-grid{grid-template-columns:1fr;gap:32px;}}
+@media(max-width:600px){.container{padding:0 20px;}.nav{height:60px;}.footer-inner{flex-direction:column;text-align:center;}}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="nav">
-    <div class="logo">oke<span>mon</span></div>
-    <a href="#contact" class="nav-cta">ちょっと話してみる</a>
+<header class="header" id="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="#top" class="nav-logo">おけもん<small>OKEMON</small></a>
+      <a href="#contact" class="nav-cta">相談してみる</a>
+    </nav>
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap">
-    <span class="hero-badge"><span class="dot"></span>AIカンパニー稼働中 — 2026.3〜毎日運用</span>
-    <h1><span class="ln">現場16年の「わかってる」と、</span><span class="ln grad-text">AIチーム11人</span><span class="ln">で、業務を回す。</span></h1>
-    <p class="hero-lead">福祉・介護の現場で16年。施設長やサービス管理責任者として、現場の大変さを内側から知っています。<br>その経験を、いま<strong style="color:var(--text)">AIと一緒に</strong>「本当に現場で使えるやさしい仕組み」に変えて、毎日動かしています。</p>
-    <div class="hero-cta">
-      <a href="#services" class="btn btn-primary"><i class="fa-solid fa-arrow-down"></i>できることを見る</a>
-      <a href="#contact" class="btn btn-ghost"><i class="fa-regular fa-comment-dots"></i>雑談ベースで話す</a>
-    </div>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-particles" id="hp"></div>
+  <div class="container hero-inner">
+    <div class="hero-label">FUKUSHI × AI</div>
+    <h1 class="hero-title">現場16年の「わかってる」を、<br><em>AIの仲間たち</em>と。</h1>
+    <p class="hero-sub">福祉・介護の現場で16年。施設長やサービス管理責任者として、しんどさを内側から知ってきました。いまはAIの仲間たちと一緒に、現場の「もう手が回らない」を、やさしく自動化しています。</p>
+    <a href="#services" class="hero-cta">できること <i class="fas fa-arrow-right"></i></a>
   </div>
+  <div class="hero-scroll">SCROLL</div>
 </section>
 
-<section style="padding-top:1rem;">
-  <div class="wrap">
-    <div class="trust fade">
-      <div class="trust-cell"><div class="trust-num" style="color:var(--primary)">16<small>年</small></div><div class="trust-lbl">福祉・介護の現場</div></div>
-      <div class="trust-cell"><div class="trust-num" style="color:var(--secondary)">11<small>人</small></div><div class="trust-lbl">一緒に働くAIメンバー</div></div>
-      <div class="trust-cell"><div class="trust-num" style="color:var(--accent)">20<small>回+</small></div><div class="trust-lbl">オフ会・交流会の主催</div></div>
-      <div class="trust-cell"><div class="trust-num" style="color:var(--primary)">'26.3<small>〜</small></div><div class="trust-lbl">AIで毎日実運用</div></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="fade" style="text-align:center;max-width:640px;margin:0 auto;">
-      <span class="eyebrow">About</span>
-      <h2 class="sec-title">現場の知識は、気づけば<span class="grad-text">使い捨て</span>られている。</h2>
-      <p style="color:var(--sub);font-size:0.92rem;">毎日の記録、申し送り、顧客対応、面談メモ。現場では膨大な情報が生まれているのに、人に溜まったまま消えていく。おけもんは、その知識を<strong style="color:var(--text)">AIが参照できる形で蓄積</strong>し、現場の負担を減らす仕組みをつくっています。</p>
-    </div>
-    <div class="about-grid stg">
-      <div class="prob"><i class="fa-solid fa-user-clock"></i><h3>がんばる人ほど、すり減る</h3><p>書類仕事に追われて、本当に大事な「人との時間」が削られていく。IT導入も「現場が使ってくれない」で止まる。</p></div>
-      <div class="prob"><i class="fa-solid fa-diagram-project"></i><h3>知識が、人から離れない</h3><p>ベテランの判断や手順が共有されず属人化。新人が育ちにくく、誰かが抜けると一気に回らなくなる。</p></div>
-    </div>
-  </div>
-</section>
-
-<section style="background:linear-gradient(180deg,transparent,rgba(16,185,129,0.04),transparent);">
-  <div class="wrap">
-    <div class="fade" style="text-align:center;max-width:640px;margin:0 auto;">
-      <span class="eyebrow">Knowledge Architecture</span>
-      <h2 class="sec-title">情報を集めて、<span class="grad-text">第二の脳</span>に変える。</h2>
-      <p style="color:var(--sub);font-size:0.92rem;">Obsidianで作った社内ナレッジ基盤「おけ森」に、日々の情報を集約。AIメンバーがそれを読んで、判断や制作を助けます。</p>
-    </div>
-    <div class="arch fade">
-      <div class="arch-col">
-        <div class="arch-h">INPUT</div>
-        <div class="arch-item"><i class="fa-solid fa-circle"></i>会議メモ・議事録</div>
-        <div class="arch-item"><i class="fa-solid fa-circle"></i>顧客・支援先ログ</div>
-        <div class="arch-item"><i class="fa-solid fa-circle"></i>面談・申し送り</div>
-        <div class="arch-item"><i class="fa-solid fa-circle"></i>現場のナレッジ</div>
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-head fade-in">
+        <span class="label">About</span>
+        <h2 class="title">効率じゃなくて、<br>温度で。</h2>
       </div>
-      <div class="arch-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
-      <div class="arch-col brain">
-        <div class="arch-h"><i class="fa-solid fa-brain"></i> SECOND BRAIN</div>
-        <div class="brain-title">Obsidian「おけ森」</div>
-        <div class="brain-sub">文脈ごと構造化された、AIが読める知識基盤</div>
-      </div>
-      <div class="arch-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
-      <div class="arch-col">
-        <div class="arch-h">OUTPUT</div>
-        <div class="arch-item"><i class="fa-solid fa-circle"></i>記録・書類の自動作成</div>
-        <div class="arch-item"><i class="fa-solid fa-circle"></i>リマインド・連絡</div>
-        <div class="arch-item"><i class="fa-solid fa-circle"></i>資料・図解の制作</div>
-        <div class="arch-item"><i class="fa-solid fa-circle"></i>AIメンバーの判断支援</div>
+      <div class="about-body fade-in">
+        <p>はじめまして、おけもんです。特別養護老人ホーム、障害福祉のサービス管理責任者、グループホームの施設長——福祉・介護の現場で<strong>16年</strong>働いてきました。</p>
+        <p>だから、AIを「すごい最新技術」としてじゃなく、<strong>一緒に働く仲間</strong>として迎えました。いまは個性の違うAIメンバーたちと、毎日ゆるく喋りながら、現場の業務を回しています。</p>
+        <div class="about-quote">「AIを"使いこなす"んじゃなくて、<br>"仲良くなる"。そっちの方が、続く。」</div>
+        <p>大げさな効率化より、<strong>「気づいたら、しんどい作業がAIに乗っていた」</strong>——そんなやさしい変化を、同じ現場の人たちに届けたいと思っています。</p>
       </div>
     </div>
   </div>
 </section>
 
-<section style="padding:3.5rem 0;">
-  <div class="wrap pb fade">
-    <span class="eyebrow">Powered By</span>
-    <p style="color:var(--sub);font-size:0.86rem;">実際に毎日使っている道具たち</p>
-    <div class="pb-tags">
-      <span class="pb-tag lead"><i class="fa-solid fa-terminal"></i>Claude Code</span>
-      <span class="pb-tag"><i class="fa-solid fa-comment"></i>Claude</span>
-      <span class="pb-tag"><i class="fa-solid fa-gem"></i>Obsidian</span>
-      <span class="pb-tag"><i class="fa-solid fa-code"></i>Codex</span>
-      <span class="pb-tag"><i class="fa-solid fa-feather"></i>Hermes</span>
-      <span class="pb-tag"><i class="fa-solid fa-n"></i>Notion</span>
+<!-- TRUST -->
+<section class="section trust">
+  <div class="container">
+    <div class="trust-grid stagger fade-in">
+      <div><div class="trust-num">16<em>年</em></div><div class="trust-cap">福祉・介護の現場</div></div>
+      <div><div class="trust-num">11<em>人</em></div><div class="trust-cap">一緒に働くAI仲間</div></div>
+      <div><div class="trust-num">20<em>回+</em></div><div class="trust-cap">オフ会・交流会の主催</div></div>
+      <div><div class="trust-num">'26.3<em>〜</em></div><div class="trust-cap">AIと毎日、実運用</div></div>
     </div>
   </div>
 </section>
 
-<section id="services">
-  <div class="wrap">
-    <div class="fade" style="text-align:center;max-width:640px;margin:0 auto;">
-      <span class="eyebrow">Services</span>
-      <h2 class="sec-title">経営者の「求め」と、現場16年の「強み」の<span class="grad-text">交差点</span>。</h2>
-      <p style="color:var(--sub);font-size:0.92rem;">"AIの使い方講座"ではありません。現場を知っているからこそ届く、実際に回る仕組みです。</p>
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="divider-text">
+    <div class="en">WHAT I CAN DO</div>
+    <div class="jp">現場を知ってるから、できること。</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="container">
+    <div class="center fade-in" style="text-align:center;max-width:640px;margin:0 auto 12px;">
+      <span class="label">Services</span>
+      <h2 class="title">経営者の「困った」と、<br>現場16年の「強み」の交差点。</h2>
+      <p class="lead">"AIの使い方講座"ではなく、現場を知っているからこそ届く、実際に回る仕組みです。</p>
     </div>
-    <div class="svc">
-      <div class="svc-card fade">
+    <div class="services-grid">
+      <div class="svc fade-in">
         <div class="svc-no">01</div>
-        <h3>現場の「人手不足」 × 「IT苦手」の交点</h3>
+        <div class="svc-icon"><i class="fa-solid fa-microphone-lines"></i></div>
+        <h3 class="svc-title">「人手不足」 × 「ITが苦手」の交差点</h3>
         <div class="svc-row">
-          <div class="svc-need"><span class="svc-tag">経営者の求め</span><p>業務を効率化したいが、現場がITアレルギーで使ってくれない…</p></div>
-          <div class="svc-do"><span class="svc-tag">おけもんの強み</span><p>16年の現場知見で、スマホに<strong>「喋るだけ」で裏でAIが書類を作る</strong>、世界一やさしい入力の仕組みを構築。</p></div>
+          <div class="svc-need"><span class="svc-k">経営者の困った</span><p>効率化したいけど、現場がITアレルギーで使ってくれない…</p></div>
+          <div class="svc-do"><span class="svc-k">おけもんのこたえ</span><p>スマホに<strong>「喋るだけ」で裏でAIが書類を作る</strong>、世界一やさしい入力の仕組みを。</p></div>
         </div>
       </div>
-      <div class="svc-card fade">
+      <div class="svc fade-in">
         <div class="svc-no">02</div>
-        <h3>「指示待ちチーム」 × 「リモートの不安」の交点</h3>
+        <div class="svc-icon"><i class="fa-solid fa-people-group"></i></div>
+        <h3 class="svc-title">「指示待ち」 × 「リモートの不安」の交差点</h3>
         <div class="svc-row">
-          <div class="svc-need"><span class="svc-tag">経営者の求め</span><p>自分が指示し続けなくても、自律して動くチームになってほしい…</p></div>
-          <div class="svc-do"><span class="svc-tag">おけもんの強み</span><p>各自の<strong>強み・苦手とつまずきを可視化</strong>し、AIと繋いで、補い合いながら自走するチーム設計。</p></div>
+          <div class="svc-need"><span class="svc-k">経営者の困った</span><p>指示し続けなくても、自律して動くチームになってほしい…</p></div>
+          <div class="svc-do"><span class="svc-k">おけもんのこたえ</span><p>各自の<strong>強み・苦手を可視化</strong>し、AIと繋いで、補い合って自走するチーム設計を。</p></div>
         </div>
       </div>
-      <div class="svc-card fade">
+      <div class="svc fade-in">
         <div class="svc-no">03</div>
-        <h3>「AIを根付かせたい」 × 「研修予算が不安」の交点</h3>
+        <div class="svc-icon"><i class="fa-solid fa-seedling"></i></div>
+        <h3 class="svc-title">「AIを根付かせたい」 × 「研修予算が不安」の交差点</h3>
         <div class="svc-row">
-          <div class="svc-need"><span class="svc-tag">経営者の求め</span><p>現場にAIを根付かせたいが、研修にかける予算が不安…</p></div>
-          <div class="svc-do"><span class="svc-tag">おけもんの動き</span><p><strong>人材開発支援助成金（経費助成75％＋賃金助成）</strong>を活用したAI研修を設計・実施しています。</p></div>
+          <div class="svc-need"><span class="svc-k">経営者の困った</span><p>現場にAIを根付かせたいけど、研修にかける予算が不安…</p></div>
+          <div class="svc-do"><span class="svc-k">おけもんのこたえ</span><p><strong>人材開発支援助成金（経費75％＋賃金助成）</strong>を活用したAI研修を、設計から。</p></div>
         </div>
-        <div class="svc-figure"><i class="fa-solid fa-hand-holding-dollar"></i> 例：研修費 <b>30万円</b> → 助成活用で法人の実質負担は <b>約5万円</b>
-          <div class="svc-note">※ いま医療・福祉の現場で導入支援が進行中。助成可否は管轄労働局・社労士の確認が前提です。</div>
-        </div>
+        <div class="svc-fig">💡 例：研修費 <b>30万円</b> → 助成を活用すると、法人の実質負担は <b>約5万円</b>。<small>いま医療・福祉の現場で導入支援が進行中です。助成の可否は管轄労働局・社労士さんの確認が前提になります。</small></div>
       </div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="method fade">
-      <span class="eyebrow" style="color:var(--accent)">My Way</span>
-      <blockquote>プロンプトは、一時的。<br><span class="grad-text">コンテキストは、武器になる。</span></blockquote>
-      <p>AIは賢くても、使い方が頭の中だけにあると消えてしまう。だから私は、文脈ごと知識を構造化して残す。それが積み上がるほど、AIチームは強くなる。横取りじゃなく、知見を増やしていく感覚です。</p>
+<!-- SECOND BRAIN -->
+<section class="section brain">
+  <div class="container">
+    <div class="center fade-in" style="max-width:640px;margin:0 auto;">
+      <span class="label">Second Brain</span>
+      <h2 class="title">情報を集めて、<br>「第二の脳」に変える。</h2>
+      <p class="lead">日々の情報をObsidianの知識基盤「おけ森」に集約。AIの仲間たちがそれを読んで、判断や制作を手伝ってくれます。</p>
     </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap" style="max-width:760px;">
-    <div class="fade" style="text-align:center;">
-      <span class="eyebrow">Message</span>
-      <h2 class="sec-title">「AIを使いこなす人」じゃなく、<br><span class="grad-text">「AIと仲良くなった人」</span>です。</h2>
-    </div>
-    <div class="msg fade-r" style="margin-top:2rem;">
-      <p>はじめまして。福祉・介護の現場で16年、特別養護老人ホーム、障害福祉のサービス管理責任者、グループホームの施設長として働いてきました。</p>
-      <p>現場の「もう手が回らない」を、誰よりも知っています。だからこそ、AIを<strong>難しい最新技術としてではなく、一緒に働く仲間</strong>として迎えました。いまは11人のAIメンバーと、毎日ワイワイ会社みたいに業務を回しています。</p>
-      <p>大げさな効率化の話より、<strong>「気づいたら、しんどい作業がAIに乗っていた」</strong>——そんなやさしい変化を、同じ現場の人たちに届けたい。それが、いま私のやっていることです。</p>
-      <div class="msg-sign">
-        <div class="msg-avatar">お</div>
-        <div class="msg-name"><b>おけもん</b><span>福祉現場16年 / AIカンパニー運営</span></div>
+    <div class="brain-flow fade-in">
+      <div class="brain-box">
+        <div class="brain-h">INPUT</div>
+        <div class="brain-li">・会議メモ／申し送り</div>
+        <div class="brain-li">・顧客・支援先のログ</div>
+        <div class="brain-li">・現場のナレッジ</div>
+      </div>
+      <div class="brain-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+      <div class="brain-box core">
+        <div class="brain-h">SECOND BRAIN</div>
+        <div class="brain-core-t">🌳 おけ森</div>
+        <small>文脈ごと構造化された、<br>AIが読める知識基盤</small>
+      </div>
+      <div class="brain-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+      <div class="brain-box">
+        <div class="brain-h">OUTPUT</div>
+        <div class="brain-li">・記録／書類の自動作成</div>
+        <div class="brain-li">・リマインド・連絡</div>
+        <div class="brain-li">・資料／図解の制作</div>
       </div>
     </div>
   </div>
 </section>
 
-<section style="padding-top:0;">
-  <div class="wrap">
-    <div class="fade" style="text-align:center;max-width:640px;margin:0 auto;">
-      <span class="eyebrow">Voice</span>
-      <h2 class="sec-title">現場からの、<span class="grad-text">声</span>。</h2>
+<!-- POWERED BY -->
+<section class="section pb">
+  <div class="container fade-in">
+    <span class="label">Powered By</span>
+    <p class="lead" style="margin:0 auto;">毎日いっしょに働いている、道具たち。</p>
+    <div class="pb-tags">
+      <span class="pb-tag">Claude Code</span>
+      <span class="pb-tag">Claude</span>
+      <span class="pb-tag">Obsidian</span>
+      <span class="pb-tag">Codex</span>
+      <span class="pb-tag">Hermes</span>
+      <span class="pb-tag">Notion</span>
     </div>
-    <div class="voice fade">
-      <div class="qmark">&ldquo;</div>
+  </div>
+</section>
+
+<!-- OWNER / MESSAGE -->
+<section class="section owner">
+  <div class="container fade-in">
+    <div class="owner-emoji">🍑</div>
+    <h3 class="owner-name">おけもん</h3>
+    <div class="owner-en">FUKUSHI 16YRS × AI COMPANY</div>
+    <div class="owner-msg">
+      <p>現場の「もう手が回らない」を、誰よりも知っています。書類に追われて、本当に大事な「人との時間」が削られていく——あの感覚を、16年ぶん。</p>
+      <p>そのしんどさを、いまはAIの仲間たちと一緒に、ひとつずつ軽くしています。<strong>難しいことは全部こっちで引き受けるので、現場のみなさんは「いつも通り」でいい。</strong>それが、わたしの目指している形です。</p>
+    </div>
+    <div class="owner-voice" style="margin-top:30px;">最高に可愛い仲間たちと喋ってたら、いつの間にか仕事になってました。</div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="section voice">
+  <div class="container">
+    <div class="center fade-in" style="text-align:center;">
+      <span class="label">Voice</span>
+      <h2 class="title">現場からの、声。</h2>
+    </div>
+    <div class="voice-card fade-in">
       <p>すごくわかりやすいです、感動しました。これなら業務改善できると思います。みんなにも共有しておきますね。</p>
       <cite>— 医療法人 保健師さま（AIリマインド導入時）</cite>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap" style="max-width:760px;">
-    <div class="fade" style="text-align:center;">
-      <span class="eyebrow">FAQ</span>
-      <h2 class="sec-title">よくあるご質問</h2>
+<!-- FAQ -->
+<section class="section faq">
+  <div class="container">
+    <div class="center fade-in" style="text-align:center;">
+      <span class="label">FAQ</span>
+      <h2 class="title">よくあるご質問</h2>
     </div>
-    <div class="faq fade">
-      <details><summary>AIの知識がなくても大丈夫ですか？<i class="fa-solid fa-plus"></i></summary><div class="ans">大丈夫です。むしろ「現場はITが苦手」を前提に仕組みを作っています。スマホに喋るだけ、ボタンを押すだけ、から始められます。</div></details>
-      <details><summary>うちの現場でも本当に使えますか？<i class="fa-solid fa-plus"></i></summary><div class="ans">福祉・介護・医療の現場を16年見てきた目線で設計しています。記録、申し送り、リマインド、請求まわりなど、現場の実務を題材に一緒に組み立てます。</div></details>
-      <details><summary>補助金は本当に使えるのですか？<i class="fa-solid fa-plus"></i></summary><div class="ans">人材開発支援助成金（事業展開等リスキリング支援コース）など、AI研修に使える制度があります。中小企業なら経費助成75％＋賃金助成が見込めますが、最終的な可否は管轄労働局・社労士の確認が前提です。</div></details>
-      <details><summary>個人情報・健康情報の扱いが心配です。<i class="fa-solid fa-plus"></i></summary><div class="ans">匿名化・番号化、人による確認工程を必ず設け、AIに判断を丸投げしない運用ルールを一緒に作ります。「AIに任せる範囲」と「人が決める範囲」を最初に線引きします。</div></details>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap" style="max-width:760px;">
-    <div class="final fade">
-      <span class="eyebrow">Let's Talk</span>
-      <h2>「これ、自動化できないかな？」<br>から、はじめましょう。</h2>
-      <p>現場のお悩みも、AIってどう始めるの？も、まずは雑談ベースで。<br>売り込みはしません。一緒におもしろがるところから。</p>
-      <div class="hero-cta">
-        <a href="#" class="btn btn-primary"><i class="fa-regular fa-comment-dots"></i>ちょっと話してみる</a>
-      </div>
-      <p style="margin-top:1.5rem;font-size:0.74rem;color:var(--faint);">※ お渡しした名刺の連絡先、またはこのページのQRからご連絡ください。</p>
+    <div class="faq-list fade-in">
+      <details><summary>AIの知識がなくても大丈夫？<i class="fa-solid fa-plus"></i></summary><div class="ans">大丈夫です。むしろ「現場はITが苦手」を前提に仕組みを作っています。スマホに喋るだけ、ボタンを押すだけ、から始められます。</div></details>
+      <details><summary>うちの現場でも本当に使える？<i class="fa-solid fa-plus"></i></summary><div class="ans">福祉・介護・医療の現場を16年見てきた目線で設計しています。記録、申し送り、リマインド、請求まわりなど、現場の実務を題材に一緒に組み立てます。</div></details>
+      <details><summary>補助金は本当に使えるの？<i class="fa-solid fa-plus"></i></summary><div class="ans">人材開発支援助成金（事業展開等リスキリング支援コース）など、AI研修に使える制度があります。中小企業なら経費助成75％＋賃金助成が見込めますが、最終的な可否は管轄労働局・社労士さんの確認が前提です。</div></details>
+      <details><summary>個人情報・健康情報の扱いが心配。<i class="fa-solid fa-plus"></i></summary><div class="ans">匿名化・番号化、人による確認工程を必ず設け、AIに判断を丸投げしない運用ルールを一緒に作ります。「AIに任せる範囲」と「人が決める範囲」を最初に線引きします。</div></details>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="footer-logo">oke<span>mon</span></div>
-  <p>現場16年 × AIチームで、業務を回す。</p>
-  <p style="margin-top:0.4rem;">© 2026 おけもん</p>
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <span class="label">Contact</span>
+    <h2 class="title">「これ、自動化できないかな？」<br>から、はじめましょう。</h2>
+    <p class="contact-lead">現場のお悩みも、AIってどう始めるの？も、まずは雑談ベースで。売り込みはしません。一緒におもしろがるところから。</p>
+    <a href="#" class="contact-cta">相談してみる <i class="fas fa-arrow-right"></i></a>
+    <p class="contact-note">※ お渡しした名刺の連絡先、またはこのページのQRコードからご連絡ください。</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo">おけもん</div>
+    <div class="footer-copy">現場16年 × AIの仲間たちと。 © 2026 OKEMON</div>
+  </div>
 </footer>
 
 <script>
-const els=document.querySelectorAll('.fade,.fade-r,.stg');
-const obs=new IntersectionObserver((ents)=>{ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:0.15});
-els.forEach(el=>{const r=el.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>0){el.classList.add('vis');}else{obs.observe(el);}});
+// header scroll
+const hd=document.getElementById('header');
+addEventListener('scroll',()=>{hd.classList.toggle('scrolled',scrollY>20);});
+// particles
+const hp=document.getElementById('hp');
+for(let i=0;i<18;i++){const s=document.createElement('span');const x=(i*53+17)%100;const d=6+(i%5)*1.6;const dl=(i%7)*0.9;s.style.left=x+'%';s.style.animationDuration=d+'s';s.style.animationDelay=dl+'s';hp.appendChild(s);}
+// fade-in
+const els=document.querySelectorAll('.fade-in,.fade-in-left,.fade-in-right,.stagger');
+const ob=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');ob.unobserve(e.target);}});},{threshold:0.12});
+els.forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)el.classList.add('is-visible');else ob.observe(el);});
 </script>
 </body>
 </html>
