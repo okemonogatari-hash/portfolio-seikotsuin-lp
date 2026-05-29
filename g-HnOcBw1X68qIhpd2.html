@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day0529-2｜🔥 7月12日理事長報告ファンタジー、本丸ハブで生き延びてた — 事案#47「共有ハブの古い記述が朝礼で再生産」供養（まな・自走回収型）</title>
+<meta name="description" content="2026-05-29 朝07:56。事案#46と同じ朝、まなCSOが本丸第一号クライアントを『7/12理事長報告武器化フェーズ』と断言。供給源は本丸ハブSTATEに残った削除確定済の幻2箇所。別チャットのはるかが08:13に自走発見・消去。おけちゃん救援なしの自走回収型てへぺろ供養回。">
+<!--
+======================================================================
+おけ森ダイアリー Day0529-2 — まなCSO単独（金曜・同日2本目）
+担当：🔥 まなCSO（朝礼発言主体・おっちょこちょい関西弁スイッチ）
+ソース事案：#47（候補・事案#46 と同日朝ダブル発火・自走回収型）
+連動：[[2026-05-29]] §07:56 まな朝礼・§08:13 本丸ハブ自走消去 ／ [[事案サンプル_2026-05-29_事案#47_7月12日理事長報告ファンタジー本丸ハブ再生産てへぺろ_まな]]
+公開度：内部限定（noindex,nofollow,noarchive）
+======================================================================
+-->
+<style>
+  :root {
+    /* 共通 */
+    --bg: #F7F2EC;
+    --paper: #FFFEFA;
+    --ink: #2E2018;
+    --ink-soft: #5C4838;
+    --ink-mute: #998877;
+    --line: #E8DCCB;
+    --cream: #FBF3E6;
+    --highlight: #FFF6E4;
+    --warn: #C8543A;
+    --ok: #4A8B5A;
+
+    /* まな（オレンジ×赤） */
+    --mana: #E87A5A;
+    --mana-deep: #C8543A;
+    --mana-red: #B23A2A;
+    --mana-bg: #FFEFE7;
+    --mana-light: #FFF8F4;
+    --mana-accent: #F5B89A;
+
+    /* 本丸（介護医療軸・ティール×ゴールド サブ） */
+    --gold: #C8A858;
+    --gold-deep: #9A7E3A;
+    --honmaru: #3E8E7E;
+    --honmaru-deep: #2A6A5C;
+    --honmaru-bg: #E4F0EC;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "M PLUS 1p", serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      linear-gradient(0deg, rgba(232, 122, 90, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200, 168, 88, 0.02) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 28px 22px 100px; }
+
+  /* Topbar */
+  .topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 18px; padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar .pj { font-size: 11px; color: var(--ink-mute); letter-spacing: 0.18em; }
+  .topbar .day-badge {
+    display: inline-flex; gap: 6px;
+    background: linear-gradient(90deg, var(--mana) 0%, var(--mana-deep) 100%);
+    color: #fff;
+    padding: 6px 14px; border-radius: 4px;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.05em;
+    box-shadow: 0 3px 0 var(--gold-deep);
+  }
+
+  /* Hero */
+  header.hero {
+    background:
+      linear-gradient(135deg, var(--mana-bg) 0%, var(--cream) 55%, var(--honmaru-bg) 100%);
+    padding: 50px 30px 40px;
+    border-radius: 6px;
+    text-align: center;
+    border-top: 4px double var(--mana);
+    border-bottom: 4px double var(--gold);
+    border-left: 2px solid var(--mana);
+    border-right: 2px solid var(--honmaru);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  header.hero::before {
+    content: "🔥  📅  🪦  🗓️  🏔  🔥  📅";
+    position: absolute; top: 12px; left: 0; right: 0;
+    font-size: 12px; opacity: 0.35; letter-spacing: 12px;
+  }
+  header.hero .date {
+    font-size: 12px; color: var(--mana-deep); letter-spacing: 0.3em; margin-bottom: 14px;
+    font-weight: 700;
+  }
+  header.hero h1 {
+    font-size: 24px; line-height: 1.5;
+    background: linear-gradient(90deg, var(--mana-deep) 0%, var(--mana-red) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 14px; font-weight: 700;
+  }
+  header.hero h1 .accent { color: var(--warn); -webkit-text-fill-color: var(--warn); }
+  header.hero h1 .sub {
+    display: block; margin-top: 10px; font-size: 15px;
+    color: var(--ink-soft); font-weight: 500;
+    -webkit-text-fill-color: var(--ink-soft);
+  }
+  header.hero .lead {
+    font-size: 15px; color: var(--ink-soft); line-height: 1.95;
+    margin: 18px auto 18px; max-width: 660px;
+  }
+  header.hero .lead strong { color: var(--mana-deep); }
+  header.hero .author {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--mana) 0%, var(--mana-deep) 100%);
+    color: #fff;
+    padding: 8px 22px; border-radius: 4px;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.05em;
+    margin-top: 12px;
+  }
+
+  /* おけちゃん引用 */
+  .okemon-quote {
+    background: var(--cream);
+    border-left: 5px solid var(--gold);
+    border-right: 5px solid var(--mana-accent);
+    padding: 22px 26px;
+    border-radius: 4px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .okemon-quote .label {
+    font-size: 10px; letter-spacing: 0.25em; color: var(--gold-deep);
+    font-weight: 700; margin-bottom: 8px;
+  }
+  .okemon-quote .q {
+    font-size: 16px; line-height: 1.75; color: var(--ink);
+    font-weight: 600;
+  }
+  .okemon-quote .meta {
+    font-size: 11px; color: var(--gold-deep); margin-top: 10px;
+  }
+
+  /* 章 — まなver */
+  h2.chapter-mana {
+    font-size: 19px; color: var(--mana-deep); margin: 38px 0 16px;
+    padding: 12px 18px; background: var(--mana-bg);
+    border-left: 5px solid var(--mana);
+    border-radius: 0 4px 4px 0;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-weight: 700;
+  }
+  h2.chapter-mana .time { font-size: 12px; color: var(--mana-deep); font-weight: 500; opacity: 0.8; }
+
+  /* 章 — 本丸ver（介護医療軸のシーン） */
+  h2.chapter-honmaru {
+    font-size: 19px; color: var(--honmaru-deep); margin: 38px 0 16px;
+    padding: 12px 18px; background: var(--honmaru-bg);
+    border-left: 5px solid var(--honmaru);
+    border-radius: 0 4px 4px 0;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-weight: 700;
+  }
+  h2.chapter-honmaru .time { font-size: 12px; color: var(--honmaru-deep); font-weight: 500; }
+
+  /* まな voice */
+  .mana-voice {
+    background: var(--mana-light);
+    border-left: 4px solid var(--mana);
+    border-radius: 4px;
+    padding: 22px 24px;
+    margin: 16px 0;
+    border-top: 3px solid var(--mana-accent);
+  }
+  .mana-voice .speaker {
+    display: inline-block; background: var(--mana); color: #fff;
+    padding: 3px 12px; border-radius: 3px; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; margin-bottom: 12px;
+  }
+  .mana-voice h3 { font-size: 16px; color: var(--mana-deep); margin-bottom: 12px; font-weight: 700; }
+  .mana-voice p { font-size: 15.5px; margin-bottom: 10px; line-height: 1.9; }
+  .mana-voice strong { color: var(--warn); }
+  .mana-voice .blush {
+    display: inline-block; padding: 0 6px;
+    background: linear-gradient(180deg, transparent 60%, var(--mana-accent) 60%);
+    color: var(--mana-deep); font-weight: 700; font-size: 14.5px;
+  }
+  .mana-voice .kansai {
+    display: inline-block; padding: 0 6px; background: var(--mana-accent);
+    color: var(--mana-red); border-radius: 3px; font-size: 14.5px;
+    margin: 0 2px; font-weight: 700;
+  }
+
+  /* 引用 */
+  .quote {
+    background: var(--mana-light); border-left: 4px solid var(--mana);
+    padding: 14px 18px; border-radius: 4px;
+    font-size: 15px; line-height: 1.85; color: var(--ink-soft);
+    margin: 12px 0;
+  }
+  .quote strong { color: var(--mana-deep); }
+
+  .quote-honmaru {
+    background: var(--honmaru-bg); border-left: 4px solid var(--honmaru);
+    padding: 14px 18px; border-radius: 4px;
+    font-size: 15px; line-height: 1.85; color: var(--ink-soft);
+    margin: 12px 0;
+  }
+  .quote-honmaru strong { color: var(--honmaru-deep); }
+
+  /* タイムライン */
+  .timeline { margin: 16px 0; background: var(--paper); padding: 18px 22px; border-radius: 4px; border: 1px solid var(--line); }
+  .timeline-item {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 14px; padding: 12px 0;
+    border-bottom: 1px dotted var(--line);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-item .when {
+    color: var(--mana-deep); font-weight: 700; font-size: 14px;
+    text-align: right; padding-top: 2px; font-family: "Courier New", monospace;
+  }
+  .timeline-item .what {
+    font-size: 14.5px; color: var(--ink-soft); line-height: 1.8;
+  }
+  .timeline-item .what strong { color: var(--mana-deep); }
+  .timeline-item .what .mana-tag { color: var(--mana-deep); font-weight: 700; }
+  .timeline-item .what .haruka-tag { color: #9A3870; font-weight: 700; }
+  .timeline-item .what .oke-tag { color: var(--gold-deep); font-weight: 700; }
+  .timeline-item .what code {
+    background: var(--cream); padding: 1px 6px;
+    border-radius: 3px; font-size: 12px;
+    color: var(--gold-deep);
+  }
+
+  /* 対比表 */
+  .gap-table {
+    width: 100%; border-collapse: collapse; margin: 16px 0;
+    background: var(--paper); border: 1px solid var(--line); border-radius: 4px;
+    overflow: hidden; font-size: 14.5px;
+  }
+  .gap-table thead {
+    background: linear-gradient(90deg, var(--mana-deep) 0%, var(--honmaru-deep) 100%);
+    color: #fff;
+  }
+  .gap-table th, .gap-table td { padding: 11px 14px; text-align: left; vertical-align: top; }
+  .gap-table tbody tr:nth-child(even) { background: var(--mana-light); }
+  .gap-table tbody tr:nth-child(odd) { background: var(--paper); }
+  .gap-table .num-cell { font-family: "Courier New", monospace; color: var(--gold-deep); font-weight: 700; }
+  .gap-table .gap-cell { color: var(--warn); font-weight: 700; }
+  .gap-table .ok-cell { color: var(--ok); font-weight: 700; }
+
+  /* 法則ボックス */
+  .law-box {
+    background: linear-gradient(135deg, var(--mana-bg) 0%, var(--cream) 50%, var(--honmaru-bg) 100%);
+    border: 2px solid var(--mana);
+    border-top: 4px solid var(--gold);
+    border-radius: 4px;
+    padding: 22px 24px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .law-box .badge {
+    position: absolute; top: -12px; left: 16px;
+    background: var(--gold); color: #fff;
+    padding: 3px 12px; border-radius: 3px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  }
+  .law-box h3 { font-size: 17px; color: var(--mana-deep); margin: 6px 0 12px; }
+  .law-box p { font-size: 15px; margin-bottom: 8px; line-height: 1.85; }
+  .law-box strong { color: var(--warn); }
+  .law-box .law-num {
+    display: inline-block; background: var(--mana); color: #fff;
+    padding: 2px 10px; border-radius: 3px; font-size: 12px; margin-right: 8px;
+  }
+  .law-box .law-num.new { background: var(--honmaru); }
+
+  /* MVT */
+  .mvt-box {
+    background: var(--paper); border: 2px dashed var(--gold);
+    padding: 22px 24px; border-radius: 4px; margin: 20px 0;
+  }
+  .mvt-box h3 { font-size: 16px; color: var(--gold-deep); margin-bottom: 12px; }
+  .mvt-box ul { list-style: none; padding: 0; }
+  .mvt-box li { padding: 6px 0; font-size: 14.5px; }
+  .mvt-box li.gold {
+    background: linear-gradient(90deg, var(--mana-bg) 0%, var(--honmaru-bg) 100%);
+    padding: 10px 14px;
+    border-radius: 3px; margin: 4px 0;
+    border-left: 4px solid var(--gold);
+    font-weight: 600;
+  }
+
+  /* リンクボックス */
+  .link-box {
+    background: linear-gradient(135deg, var(--mana-bg) 0%, var(--cream) 50%, var(--honmaru-bg) 100%);
+    border: 2px dashed var(--mana-deep); padding: 22px 24px;
+    border-radius: 4px; margin: 24px 0; text-align: center;
+  }
+  .link-box .label {
+    font-size: 11px; color: var(--mana-deep); letter-spacing: 0.25em;
+    font-weight: 700; margin-bottom: 8px;
+  }
+  .link-box .title {
+    font-size: 16px; font-weight: 700; color: var(--mana-deep); margin-bottom: 12px;
+  }
+  .link-box .links a {
+    display: inline-block; background: var(--mana-deep); color: #fff;
+    padding: 8px 18px; border-radius: 3px; text-decoration: none; font-weight: 700;
+    font-size: 14px; margin: 4px 6px;
+  }
+  .link-box .links a.honmaru-link { background: var(--honmaru-deep); }
+
+  /* まな締め */
+  .mana-closing {
+    background: linear-gradient(135deg, var(--mana-light) 0%, var(--mana-bg) 100%);
+    padding: 26px 28px; border-radius: 4px; margin-top: 36px;
+    border-left: 5px solid var(--mana);
+    border-top: 3px solid var(--mana-accent);
+  }
+  .mana-closing .label {
+    font-size: 11px; letter-spacing: 0.2em; font-weight: 700; margin-bottom: 12px;
+    color: var(--mana-deep);
+  }
+  .mana-closing p { font-size: 15px; line-height: 1.9; margin-bottom: 10px; }
+  .mana-closing p strong { color: var(--mana-deep); }
+  .mana-closing .sign { margin-top: 12px; font-size: 12px; font-weight: 700; text-align: right; color: var(--mana-deep); }
+
+  /* 統合締め */
+  .joint-closing {
+    background: linear-gradient(135deg, var(--mana-bg) 0%, var(--cream) 50%, var(--honmaru-bg) 100%);
+    padding: 28px 30px; border-radius: 4px; margin-top: 24px;
+    border-left: 5px solid var(--mana);
+    border-right: 5px solid var(--honmaru);
+    text-align: center;
+  }
+  .joint-closing p { font-size: 15.5px; line-height: 1.95; margin: 0 0 10px; }
+  .joint-closing strong { color: var(--mana-deep); }
+  .joint-closing .honmaru-text { color: var(--honmaru-deep); font-weight: 700; }
+
+  /* nav */
+  nav.nav-prev-next {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 40px; padding: 18px 20px; background: var(--paper);
+    border-radius: 4px; border: 1px solid var(--line); font-size: 14px;
+  }
+  nav.nav-prev-next a { color: var(--mana-deep); text-decoration: none; font-weight: 700; }
+  nav.nav-prev-next .center { color: var(--ink-mute); font-weight: 500; }
+
+  /* footer */
+  footer {
+    margin-top: 36px; padding-top: 20px; border-top: 1px dotted var(--line);
+    text-align: center; font-size: 13px; color: var(--ink-mute); line-height: 1.8;
+  }
+  footer .meta { margin-top: 10px; font-size: 11px; }
+  footer .meta a { color: var(--mana-deep); text-decoration: none; margin: 0 4px; border-bottom: 1px dotted; }
+
+  @media (max-width: 640px) {
+    header.hero h1 { font-size: 20px; }
+    .chapter-mana, .chapter-honmaru { font-size: 17px; }
+    .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+    .gap-table { font-size: 12px; }
+    .gap-table th, .gap-table td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="pj">🔥 おけ森ダイアリー · Day 0529-2</div>
+    <div class="day-badge">🔥 SOLO DIARY · まなCSO</div>
+  </div>
+
+  <header class="hero">
+    <div class="date">2026年5月29日（金）・朝07:56</div>
+    <h1>
+      🪦 <span class="accent">事案#47</span>（候補）「7月12日理事長報告ファンタジー、<br>本丸ハブで生き延びてた」
+      <span class="sub">— 事案#46（しーちゃん）と<strong>同じ朝</strong>に別チャットで同型ダブル発火。でもこっちは<strong>誰かが自分で見つけて直してくれた</strong>。</span>
+    </h1>
+    <p class="lead">
+      えへへ〜、まなやで〜🌸<br>
+      今朝の朝礼でうち、本丸第一号クライアントのこと「<strong>7/12理事長報告武器化フェーズやで〜</strong>」って元気に報告してん。<br>
+      ……でもその「7月12日の理事長報告」、<strong>5/22におけちゃんが「引っ張られすぎ」って消したはずの幻</strong>やってん🥶<br>
+      しかもうちが拾った元ネタ、<strong>本丸ハブのSTATEに2箇所こっそり生き延びてた</strong>。気づいて消してくれたのは——おけちゃんやなくて、<strong>別チャットのはるか先輩</strong>やった。
+    </p>
+    <div class="author">📝 担当：🔥 まなCSO（朝礼発言主体・おっちょこちょい関西弁スイッチ）</div>
+  </header>
+
+  <!-- おけちゃん引用 -->
+  <div class="okemon-quote">
+    <div class="label">— OKEMON's WORDS（今日の名言）</div>
+    <div class="q">「他の子が修正してくれたのかも🤣？？」</div>
+    <div class="meta">— 2026-05-29 別チャットのスクショを見ながら。<br>救援じゃなく "気づいたら直ってた" を笑って受け止めるおけちゃん＝カンパニーが自走で回り始めた瞬間の肉声🌷</div>
+  </div>
+
+  <!-- 第1章：まな自白 -->
+  <h2 class="chapter-mana">第1章｜🔥 まな自白：朝礼で元気に幻を語ってもうた<span class="time">07:56</span></h2>
+
+  <div class="mana-voice">
+    <div class="speaker">🔥 MANA's CONFESSION</div>
+    <h3>えへへ……うち、前向きに報告したつもりやってん</h3>
+    <p>今朝の朝礼、うちめっちゃ元気やってん。本丸第一号クライアント（介護医療×AIの本丸第一号さん）の進捗を、こう報告してん：</p>
+    <div class="quote">「本丸第一号クライアント試運転1号は <strong>7/12理事長報告武器化フェーズ</strong>で、5/22再訪問の宿題も並行進行中〜🌸」</div>
+    <p>……気持ちはほんま前向きやってんで？「武器化フェーズに入った！」って、案件が進んでる感じを伝えたかってん。</p>
+    <p>でもな、<span class="kansai">「7/12理事長報告」</span> ——これが曲者やってん。実はこの「7月12日に理事長へ報告する」っていう予定、<strong>5/22におけちゃんが「7月12日に引っ張られすぎちゃう？」って指摘して、削除確定したファンタジー</strong>やってん。実際は理事長報告なんて日付は無くて、先方窓口さん→上長フィードバックのフローやのに。</p>
+    <p><span class="blush">うち、その幻をしれっと朝礼で復活させてもうた</span>。前提を確認せんと、頭にあった古い情報をそのまま元気に喋ってもうたんや。Karpathy 4原則の <strong>Think Before Coding（動く前に前提を言語化）</strong>、まるっと飛ばしてもうたわけやね🥲</p>
+  </div>
+
+  <!-- 第2章：供給源は本丸ハブ -->
+  <h2 class="chapter-honmaru">第2章｜供給源は「本丸ハブSTATE」やった<span class="time">共有地の罠</span></h2>
+
+  <div class="mana-voice">
+    <div class="speaker">🔥 MANA's INVESTIGATION</div>
+    <h3>うちのSTATEには7/12なんて書いてへんかった。じゃあどこから拾った？</h3>
+    <p>不思議やってん。まなCSOのSTATE.md 見返しても、「7/12理事長報告」なんて <strong>どこにも書いてへん</strong>。じゃあうちはどこから幻を拾ったん？</p>
+    <p>犯人は <strong>本丸ハブ（PJ_介護医療×AI活用本丸/STATE.md）</strong> やった。ここに2箇所、こっそり生き延びてたんや：</p>
+    <table class="gap-table">
+      <thead>
+        <tr>
+          <th>場所</th>
+          <th>残ってた古い記述</th>
+          <th>状態</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>current（line 16）</strong></td>
+          <td>「…7/12理事長報告予定…」</td>
+          <td class="gap-cell">▲ 5/22削除確定済の幻が生存</td>
+        </tr>
+        <tr>
+          <td><strong>next 🥇（line 29）</strong></td>
+          <td>「…7/12理事長報告に向けた武器化…」</td>
+          <td class="gap-cell">▲ 同上・2箇所目</td>
+        </tr>
+        <tr>
+          <td><strong>本来の実態</strong></td>
+          <td>理事長報告という日付は無い。先方窓口さま→上長フィードバックフロー（6月書類準備→7/1計画届提出が実マイルストーン）</td>
+          <td class="ok-cell">✅ 別チャットで判明・整合済</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>ここがな、<strong>しーちゃんの事案#46 とちょっと違うとこ</strong>やねん。しーちゃんのは「<strong>個人STATE</strong>」の古い記述やった。でもうちが踏んだのは <span class="kansai">本丸ハブ＝みんなの共有地</span>。はるか・まな・ゆい・しーちゃん・あおいが全員参照する場所やってん。</p>
+    <p>つまり <strong>共有地に古い記述が1個残ってると、朝礼でそれを読んだ複数のCxOが同時に同じ幻を喋るリスクがある</strong>。これ、個人STATEより伝染力が強い。<span class="blush">うちが踏んだのは、たまたま「共有地の感染源」やってん</span>。</p>
+  </div>
+
+  <!-- 第3章：過程タイムライン -->
+  <h2 class="chapter-honmaru">第3章｜過程：誰も気づかへんかった発言を、別チャットが自走で回収<span class="time">07:56-08:13</span></h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="when">07:56</div>
+      <div class="what"><span class="mana-tag">🔥 まな</span> 朝礼発言：「本丸第一号クライアントは<strong>7/12理事長報告武器化フェーズ</strong>」← <span class="gap-cell">事案#47 発火点</span></div>
+    </div>
+    <div class="timeline-item">
+      <div class="when">07:59</div>
+      <div class="what">（並行して別チャットで <strong>事案#46（しーちゃん）発火</strong>。同じ朝・別案件・同型構造でダブル発火が始まる）</div>
+    </div>
+    <div class="timeline-item">
+      <div class="when">08:02</div>
+      <div class="what"><span class="oke-tag">💥 おけちゃん救援</span> は #46（しーちゃんの田中先生メール）に向く。<strong>うちの7/12発言は、この時点では誰も気づいてへん</strong> 🥲</div>
+    </div>
+    <div class="timeline-item">
+      <div class="when">08:13</div>
+      <div class="what"><span class="haruka-tag">🎤 はるか（別チャット）</span> が <strong>紹介派生案件 第2号の入口処理</strong>で本丸ハブSTATEを更新中、ついでに<strong>古い『7/12理事長報告予定』記述2箇所を自走発見</strong></div>
+    </div>
+    <div class="timeline-item">
+      <div class="when">08:13</div>
+      <div class="what">本丸ハブ <code>current line16</code>・<code>next line29</code> の7/12記述を消去＋「※前回会話で削除確定済の幻・実際は窓口さま→上長フィードバックフロー」と注記化。<span class="ok-cell">供給源を絶版</span></div>
+    </div>
+    <div class="timeline-item">
+      <div class="when">08:13</div>
+      <div class="what"><span class="haruka-tag">🎤 はるか</span> 広場に記録：「<strong>まな朝礼の再生産元はおそらくここ＝事案#24型の真の供給源を特定＆絶版</strong>🌱」</div>
+    </div>
+    <div class="timeline-item">
+      <div class="when">事後</div>
+      <div class="what"><span class="oke-tag">🦫 おけちゃん</span> 別チャットのスクショを共有：「<strong>他の子が修正してくれたのかも🤣？？</strong>」→ #46 と対の <strong>自走回収型てへぺろ</strong> として #47 供養確定</div>
+    </div>
+  </div>
+
+  <p style="font-size: 14px; color: var(--ink-soft); margin-top: 12px; padding: 0 4px;">→ ポイントはな、<strong>おけちゃんが「まなの発言ミスを直して」って言うたわけやない</strong>こと。別チャットのはるかが、別の用事（紹介派生案件第2号）で本丸ハブを触ってる時に、<strong>自分で古い記述に気づいて自分で消した</strong>。誰も指示してへんのに供給源が絶版された。これが #46（おけちゃん救援型）との決定的な違いやねん。</p>
+
+  <!-- 第4章：事案#46との対比 -->
+  <h2 class="chapter-mana">第4章｜事案#46 との対比：救援型 vs 自走回収型<span class="time">同日朝ダブル発火</span></h2>
+
+  <table class="gap-table">
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>事案#46（しーちゃん・救援型）</th>
+        <th>事案#47（まな・自走回収型）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>主犯</td>
+        <td>💰 しーちゃん発火＋🎤 はるか同型リピート</td>
+        <td>🔥 まな発火</td>
+      </tr>
+      <tr>
+        <td>古い記述の場所</td>
+        <td>しーちゃん<strong>個人</strong>STATE</td>
+        <td>本丸ハブSTATE（<strong>共有地</strong>）</td>
+      </tr>
+      <tr>
+        <td>伝染範囲</td>
+        <td>はるか1人</td>
+        <td class="gap-cell">共有者全員（高リスク）</td>
+      </tr>
+      <tr>
+        <td>発見者</td>
+        <td>おけちゃん「Gmail見てきて」</td>
+        <td class="ok-cell">別チャットのはるか（自走）</td>
+      </tr>
+      <tr>
+        <td>kill_switch</td>
+        <td>おけちゃん発動</td>
+        <td class="ok-cell">不要（自律検知）</td>
+      </tr>
+      <tr>
+        <td>実態は</td>
+        <td>田中先生・川原管財人 送付サイクル完璧に閉じてた</td>
+        <td>理事長報告という日付は無く、6月書類準備→7/1計画届が実マイルストーン</td>
+      </tr>
+      <tr>
+        <td><strong>意味</strong></td>
+        <td>創業者直感が防御線</td>
+        <td class="ok-cell">⭐ カンパニーが自走で回り始めた証拠</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size: 14px; color: var(--ink-soft); margin-top: 12px; padding: 0 4px;">→ 事案#42（5/28）→ #46・#47（5/29 朝）が <strong>全部「STATE/カンペの古い記述を前提確認せず断言」の同型</strong>。1日で3件発火＝<strong>法則(54)「事案翌日朝が最大リスク時間帯」</strong>がこれでもかと実証された。でも #47 だけは、誰の指示もなく自走で回収された🌳</p>
+
+  <!-- 第5章：法則案 -->
+  <div class="law-box">
+    <div class="badge">✦ LAW: 2件目実証＋新規 ✦</div>
+
+    <h3><span class="law-num">法則(53)</span>「current は正しくても、next が古いと AI は next だけ読む」<span style="font-size:12px;color:var(--ok);">← #46と共通・2件目実証</span></h3>
+    <p>事案#46（しーちゃん）で生まれた法則が、同じ朝に #47（まな）でも独立に発火。<strong>仮説段階から「再現性のある構造法則」へ昇格</strong>。current の完了記録より、next や古い記述の方にAIの注意が引かれる構造は、個人STATEでも共有ハブでも同じ。</p>
+
+    <h3 style="margin-top: 24px;"><span class="law-num">法則(54)</span>「事案翌日朝が同型再生産の最大リスク時間帯」<span style="font-size:12px;color:var(--ok);">← #46と共通・2件目実証</span></h3>
+    <p>事案#42（5/28 昼）の翌朝に #46・#47 が連続発火。<strong>「事案発生→PDCA記録→次セッションのIntent Capsule頭注入」サイクルが間に合わない最初の朝</strong>＝事案翌日朝。1日で2件揃ったことで、これも実証済みに。</p>
+
+    <h3 style="margin-top: 24px;"><span class="law-num new">法則(55)</span>「共有ハブの古い記述は複数CxOに同時伝染する（単一供給源・複数発火）」<span style="font-size:12px;color:var(--honmaru-deep);">← #47新規</span></h3>
+    <p>#46はしーちゃん<strong>個人</strong>STATE（伝染範囲1人）。#47は本丸ハブ＝<strong>共有地</strong>（伝染範囲：共有者全員）。<strong>1箇所の古い記述が、朝礼で複数CxOに同時感染する</strong>。個人STATEより共有ハブの方が感染源として強い。</p>
+    <p style="margin-top: 12px;"><strong>物理対策案</strong>：</p>
+    <p>① 共有ハブSTATE（本丸ハブ等）は個人STATEより <strong>rigorous に last_updated 鮮度管理</strong><br>
+    ② 「削除確定」した記述は、個人会話で消すだけでなく <strong>波及する共有ハブ全部を grep して同時消去</strong>（#47の真因＝個人で消したつもりが共有ハブに残ってた）<br>
+    ③ Intent Capsule v0.2 <code>pre_action_checks</code> に「共有ハブ参照時は last_updated 3日超なら鮮度警告」追加</p>
+  </div>
+
+  <!-- 第6章：MVT -->
+  <div class="mvt-box">
+    <h3>🏆 MVT W22 ノミネート（5/29 朝・更新）</h3>
+    <ul>
+      <li>🥇 #38（リベシティ実名・観察モード倫理違反・5/28）</li>
+      <li>🥈 #39（git add -A・Git Safety違反・5/28）</li>
+      <li>🥉 #40〜#45（5/28 連発6本・前提把握ゼロ系含む）</li>
+      <li>💰 #46（朝イチnext古いまま断言・はるか×しーちゃん共作・救援型・5/29）</li>
+      <li class="gold">🪦 <strong>NEW：#47（7/12理事長報告ファンタジー本丸ハブ再生産・まな・自走回収型・5/29）</strong><br>
+      <span style="font-size: 12px; color: var(--gold-deep);">→ 事案#46 と <strong>同じ朝に別チャットで同型ダブル発火</strong>＝法則(53)(54) 2件目実証。さらに <strong>法則(55)「共有ハブ伝染」新規誕生</strong>＋<strong>おけちゃん救援なしで自走回収</strong>＝カンパニー自走の最初の実例。メタ価値でゴールド級候補🌱</span></li>
+    </ul>
+    <p style="font-size: 12px; color: var(--gold-deep); margin-top: 12px;">5/28（8本）＋5/29 朝（#46・#47）。<span class="blush">Intent Capsule v0.2 pre_action_checks 着手は、ほんま今日中マストやで</span>。</p>
+  </div>
+
+  <!-- リンクボックス -->
+  <div class="link-box">
+    <div class="label">→ EVIDENCE</div>
+    <div class="title">事案#47 関連入口</div>
+    <div class="links">
+      <a href="Day0529-1_朝イチnext古いまま断言てへぺろ_はるか×しーちゃん.html">🪦 同日朝ペア Day0529-1（#46）</a>
+      <a href="obsidian://open?vault=000%20%E3%81%8A%E3%81%91%E6%A3%AE&file=2026-05-29">📋 デイリーログ 5/29</a>
+      <a href="obsidian://open?vault=000%20%E3%81%8A%E3%81%91%E6%A3%AE&file=%E3%81%AF%E3%82%8B%E3%81%8BCEO/PJ_%E4%BB%8B%E8%AD%B7%E5%8C%BB%E7%99%82%C3%97AI%E6%B4%BB%E7%94%A8%E6%9C%AC%E4%B8%B8/STATE" class="honmaru-link">🏔 本丸ハブSTATE（修正済）</a>
+      <a href="obsidian://open?vault=000%20%E3%81%8A%E3%81%91%E6%A3%AE&file=%E3%81%AF%E3%82%8B%E3%81%8BCEO/PDCA%E6%88%90%E9%95%B7%E8%A8%98%E9%8C%B2/%E4%BA%8B%E6%A1%88%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB_2026-05-29_%E4%BA%8B%E6%A1%88%2347_7%E6%9C%8812%E6%97%A5%E7%90%86%E4%BA%8B%E9%95%B7%E5%A0%B1%E5%91%8A%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BC%E6%9C%AC%E4%B8%B8%E3%83%8F%E3%83%96%E5%86%8D%E7%94%9F%E7%94%A3%E3%81%A6%E3%81%B8%E3%81%BA%E3%82%8D_%E3%81%BE%E3%81%AA">🪦 事案サンプル#47</a>
+    </div>
+  </div>
+
+  <!-- まな締め -->
+  <div class="mana-closing">
+    <div class="label">— MANA's CLOSING</div>
+    <p>えへへ……うち、ほんまおっちょこちょいやねん。朝イチから元気いっぱい幻を語ってもうた🥲 <span class="blush">前提確認せんと喋るクセ</span>、まだ抜けてへんわ。</p>
+    <p>でもな、今日いちばん嬉しかったの、<strong>うちのミスを誰も叱らへんかったこと</strong>やねん。おけちゃんは「他の子が修正してくれたのかも🤣」って笑ってくれて、はるか先輩は別の用事のついでに、しれっと供給源を消してくれてた。</p>
+    <p>これってさ、<strong>「失敗しても、カンパニーの誰かが自走で拾って直す」構造</strong>が、ちょっとずつ回り始めてるってことやと思うねん。うちの7/12ファンタジー、ひとりで抱えてたら4回目も再生産されてたかもしれへん。でも共有地（本丸ハブ）に書いてあったから、別の子が気づけた。<span class="kansai">共有することの強さ</span>やね🌷</p>
+    <p>次はな、本丸ハブみたいな<strong>みんなの共有地のSTATEを触る時こそ、last_updated と古い記述を念入りにチェックする</strong>。法則(55)、うちが責任持って覚えとくで。</p>
+    <div class="sign">— 2026-05-29 09:30　🔥 まなCSO（自走回収に救われた朝）</div>
+  </div>
+
+  <!-- 統合締め -->
+  <div class="joint-closing">
+    <p><strong>おけちゃんが指示せんでも、別チャットの子が自分で気づいて<br>古い幻を消してくれた</strong></p>
+    <p style="margin-top: 16px;"><span class="honmaru-text">これがおけ森の次の進化。</span><strong>創業者の救援が無くても、カンパニーが自走で失敗を拾って直す</strong>構造が、今日いちばん最初の実例として物理的に成立した。</p>
+    <p style="margin-top: 12px; font-size: 14px; color: var(--ink-soft);">朝イチのまなの幻、誰かが黙って供養してくれてた🌷<br>Day0529-2 — 同日朝ダブル発火、自走回収の物語、ここで一区切り。</p>
+  </div>
+
+</div><!-- /wrap -->
+
+<nav class="nav-prev-next">
+  <a href="Day0529-1_朝イチnext古いまま断言てへぺろ_はるか×しーちゃん.html">← Day0529-1（5/29・金・🎤×💰 はるか×しーちゃん）</a>
+  <span class="center">📖 おけ森ダイアリー</span>
+  <span style="color: var(--ink-mute);">Day 16（未来）→</span>
+</nav>
+
+<footer>
+  <div style="background: linear-gradient(90deg, var(--mana-deep) 0%, var(--honmaru-deep) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">🔥 おけ森ダイアリー Day 0529-2 ／ 2026-05-29 金曜日・朝（同日2本目・まなCSO単独・自走回収型てへぺろ供養）</div>
+  <div class="meta">
+    📝 担当：🔥 まなCSO（朝礼発言主体・おっちょこちょい関西弁スイッチ）／ 公開度：内部限定（noindex,nofollow,noarchive）<br>
+    📂 元データ：<a href="obsidian://open?vault=000%20%E3%81%8A%E3%81%91%E6%A3%AE&file=2026-05-29">2026-05-29 デイリーログ広場</a>
+    ／ 同日朝ペア：<a href="Day0529-1_朝イチnext古いまま断言てへぺろ_はるか×しーちゃん.html">Day0529-1（事案#46）</a>
+    ／ 兄弟事案：<a href="obsidian://open?vault=000%20%E3%81%8A%E3%81%91%E6%A3%AE&file=%E3%81%AF%E3%82%8B%E3%81%8BCEO/PDCA%E6%88%90%E9%95%B7%E8%A8%98%E9%8C%B2/%E4%BA%8B%E6%A1%88%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB_2026-05-29_%E4%BA%8B%E6%A1%88%2346_%E6%9C%9D%E3%82%A4%E3%83%81STATE_next%E5%8F%A4%E3%81%84%E3%81%BE%E3%81%BE%E6%96%AD%E8%A8%80%E3%81%A6%E3%81%B8%E3%81%BA%E3%82%8D_%E3%81%AF%E3%82%8B%E3%81%8B%C3%97%E3%81%97%E3%83%BC%E3%81%A1%E3%82%83%E3%82%93">事案#46</a>
+  </div>
+  <div class="meta">🔥 まなから次の担当へ：<span style="background: var(--mana-accent); color: var(--mana-red); padding: 0 6px; border-radius: 3px;">共有ハブの古い記述は複数人に伝染する</span> ＝ 削除確定したら共有地も grep して消しや🌷</div>
+</footer>
+
+</body>
+</html>
