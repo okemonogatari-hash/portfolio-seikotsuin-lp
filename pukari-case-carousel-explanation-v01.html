@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>解決事例セクション改修まとめ v0.1</title>
+  <style>
+    :root {
+      --ink: #263543;
+      --muted: #667789;
+      --line: #dce7ee;
+      --paper: #f6fafc;
+      --white: #fff;
+      --blue: #075f8e;
+      --blue-dark: #06486f;
+      --orange: #f0a400;
+      --green: #2f7d53;
+      --red: #b55444;
+      --shadow: 0 18px 48px rgba(14, 55, 82, .1);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: linear-gradient(180deg, #edf6fa 0, #f9fcfd 380px, #fff 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--blue);
+      text-underline-offset: .2em;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0 60px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(300px, .7fr);
+      gap: 22px;
+      align-items: stretch;
+      margin-bottom: 22px;
+    }
+
+    .hero-main,
+    .hero-side,
+    .panel,
+    .step,
+    .screen,
+    .answer-box {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .94);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: 30px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--orange);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-size: clamp(30px, 4.8vw, 50px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .answer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .pill.ok {
+      border-color: rgba(47, 125, 83, .35);
+      background: #effaf4;
+      color: var(--green);
+    }
+
+    .pill.check {
+      border-color: rgba(240, 164, 0, .35);
+      background: #fff8e8;
+      color: #9a6700;
+    }
+
+    .hero-side {
+      padding: 24px;
+      display: grid;
+      gap: 14px;
+      align-content: center;
+    }
+
+    .big-answer {
+      color: var(--blue-dark);
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .hero-side p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section {
+      margin-top: 22px;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      color: var(--blue-dark);
+      font-size: 24px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .panel {
+      padding: 22px;
+    }
+
+    .panel h3,
+    .step h3,
+    .answer-box h3 {
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+      font-size: 17px;
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+
+    .panel p,
+    .step p,
+    .answer-box p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .answer-box {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 18px;
+      padding: 22px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .question-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 900;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step {
+      position: relative;
+      padding: 20px;
+      min-height: 190px;
+    }
+
+    .step-num {
+      display: inline-flex;
+      margin-bottom: 12px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .check-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .check-table th,
+    .check-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    .check-table th {
+      background: #eef7fb;
+      color: var(--blue-dark);
+      font-weight: 900;
+    }
+
+    .check-table tr:last-child td { border-bottom: 0; }
+
+    .status-ok {
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .screens {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .screen {
+      overflow: hidden;
+    }
+
+    .screen img {
+      display: block;
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      object-position: top center;
+      background: #eef4f7;
+    }
+
+    .screen figcaption {
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 13px;
+      background: #fff;
+    }
+
+    .demo-board {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 24px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .demo-board-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .demo-board-head h3 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-size: 22px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .demo-board-head p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .demo-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #eff7fb;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .mock-shell {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #f7fbfd;
+    }
+
+    .mock-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .mock-logo {
+      color: var(--blue);
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .mock-cta {
+      min-height: 34px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .mock-intro {
+      padding: 20px 20px 8px;
+      text-align: center;
+    }
+
+    .mock-intro strong {
+      display: block;
+      color: var(--blue-dark);
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    .mock-intro span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mock-carousel {
+      position: relative;
+      display: flex;
+      gap: 14px;
+      overflow: hidden;
+      padding: 18px 56px 24px;
+    }
+
+    .mock-card {
+      flex: 0 0 270px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(14, 55, 82, .1);
+    }
+
+    .mock-card img {
+      display: block;
+      width: 100%;
+      height: 138px;
+      object-fit: cover;
+    }
+
+    .mock-card-body {
+      padding: 14px;
+    }
+
+    .mock-card-body span {
+      display: inline-flex;
+      margin-bottom: 8px;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .mock-card-body h4 {
+      margin: 0 0 6px;
+      color: var(--blue-dark);
+      font-size: 15px;
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+
+    .mock-card-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .mock-arrow {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--blue);
+      font-size: 24px;
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(14, 55, 82, .12);
+      transform: translateY(-50%);
+    }
+
+    .mock-arrow.left { left: 14px; }
+    .mock-arrow.right { right: 14px; }
+
+    .mock-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 0 18px;
+    }
+
+    .mock-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #c8dce6;
+    }
+
+    .mock-dots span:first-child {
+      width: 22px;
+      border-radius: 999px;
+      background: var(--orange);
+    }
+
+    .takeaway-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .takeaway {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .takeaway strong {
+      display: block;
+      color: var(--blue-dark);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .takeaway span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .evidence {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .evidence summary {
+      cursor: pointer;
+      padding: 16px 18px;
+      color: var(--blue-dark);
+      font-weight: 900;
+    }
+
+    .evidence-inner {
+      padding: 0 18px 18px;
+    }
+
+    .view-guide {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .guide-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .guide-num {
+      display: inline-flex;
+      margin-bottom: 10px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .guide-card h3 {
+      margin: 0 0 8px;
+      color: var(--blue-dark);
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .guide-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .note {
+      margin-top: 12px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--orange);
+      border-radius: 10px;
+      background: #fff8e8;
+      color: #6b4a00;
+      font-size: 14px;
+    }
+
+    .next-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .next-list li {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .summary {
+      border: 1px solid rgba(7, 95, 142, .18);
+      border-radius: 12px;
+      padding: 24px;
+      background: linear-gradient(135deg, #ffffff, #f0f9fd);
+      box-shadow: var(--shadow);
+    }
+
+    .summary strong {
+      color: var(--blue-dark);
+    }
+
+    .footer {
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .grid-3,
+      .grid-2,
+      .flow,
+      .screens,
+      .demo-board-head,
+      .takeaway-grid,
+      .view-guide {
+        grid-template-columns: 1fr;
+      }
+
+      .answer-box {
+        grid-template-columns: 1fr;
+      }
+
+      .screen img {
+        height: auto;
+        max-height: 620px;
+        object-fit: contain;
+      }
+
+      .mock-carousel {
+        overflow-x: auto;
+        padding: 14px 18px 20px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .mock-card {
+        flex-basis: min(82%, 310px);
+        scroll-snap-align: start;
+      }
+
+      .mock-arrow {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        width: min(100% - 24px, 1120px);
+        padding-top: 22px;
+      }
+
+      .hero-main,
+      .hero-side,
+      .panel,
+      .step,
+      .answer-box,
+      .summary {
+        padding: 18px;
+      }
+
+      .check-table th,
+      .check-table td {
+        padding: 12px;
+        font-size: 13px;
+      }
+
+      .pill {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .demo-board {
+        padding: 16px;
+      }
+
+      .mock-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .mock-card {
+        flex-basis: 88%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="hero-main">
+        <p class="eyebrow">司法書士HP制作 / 解決事例セクション</p>
+        <h1>横に送れる相談事例は、入れられます</h1>
+        <p class="lead">
+          甲斐さんからの「ページ中ほどに横スクロールの解決事例を入れられるか」という質問に対して、
+          実際にモックへ入れて、PC・タブレット・スマホ幅で表示確認しました。
+        </p>
+        <div class="answer" aria-label="今回の確認結果">
+          <span class="pill ok">回答: 実装できます</span>
+          <span class="pill ok">スマホ幅も確認済み</span>
+          <span class="pill check">掲載内容は正式確認が必要</span>
+        </div>
+      </div>
+      <aside class="hero-side">
+        <div class="big-answer">伝え方はこれでOK</div>
+        <p>
+          「相談事例を写真つきカードにして、PCでは矢印、スマホでは横に送って見られる形にできます」
+          と説明できる状態です。
+        </p>
+      </aside>
+    </header>
+
+    <section>
+      <h2 class="section-title">相手の質問に答えられている？</h2>
+      <div class="answer-box">
+        <div class="question-label">質問</div>
+        <div>
+          <h3>ページ中ほどに、横に送れる解決事例を入れられますか？</h3>
+          <p>SWELLでよく見るような、写真つきカードを横に送って読むイメージ。</p>
+        </div>
+      </div>
+      <div class="answer-box">
+        <div class="question-label">回答</div>
+        <div>
+          <h3>はい、入れられます。</h3>
+          <p>
+            現在のv0.1.7では、相談事例を写真つきカードにして、PCでは左右の矢印、
+            スマホでは横に送って見られる形まで確認しています。
+          </p>
+        </div>
+      </div>
+      <div class="answer-box">
+        <div class="question-label">注意点</div>
+        <div>
+          <h3>正式公開前に、事例の中身と写真は確認が必要です。</h3>
+          <p>
+            今は見せ方の確認用として仮の写真・仮の相談事例を入れています。
+            実際に載せる内容は、守秘性に配慮して差し替えます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">今回の改修で何が変わった？</h2>
+      <div class="grid-3">
+        <article class="panel">
+          <h3>1. 見せ方を相談者向けに変更</h3>
+          <p>
+            制作側の説明ではなく、訪問者が「自分に近い相談かも」と感じられる
+            `ご相談事例` として見えるようにしました。
+          </p>
+        </article>
+        <article class="panel">
+          <h3>2. 横に送れるカードに変更</h3>
+          <p>
+            事例を1枚ずつカードにし、写真・カテゴリ・見出し・短い説明をまとめています。
+            気になる事例へ自分のペースで進めます。
+          </p>
+        </article>
+        <article class="panel">
+          <h3>3. スマホ幅でも確認</h3>
+          <p>
+            PCだけでなく、タブレットとスマホ幅でも確認しました。
+            一度出ていた小さな横スクロールも修正済みです。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">バージョン改修の流れ</h2>
+      <div class="flow">
+        <article class="step">
+          <span class="step-num">v0.1.2</span>
+          <h3>最初の横スクロール案</h3>
+          <p>横に並ぶ事例カードを追加。質問への最初の回答としては使えるが、見た目はまだ簡易版。</p>
+        </article>
+        <article class="step">
+          <span class="step-num">v0.1.5</span>
+          <h3>写真つきカードへ近づけた</h3>
+          <p>写真つきのカード表示に変更。矢印・点・横送りの動きも入れた。</p>
+        </article>
+        <article class="step">
+          <span class="step-num">v0.1.6</span>
+          <h3>動きの違和感を調整</h3>
+          <p>最後から先頭へ戻る時の不自然さを抑え、連打しても崩れにくいようにした。</p>
+        </article>
+        <article class="step">
+          <span class="step-num">v0.1.7</span>
+          <h3>共有向けの文言へ整理</h3>
+          <p>画面上の制作側説明を削り、訪問者向けの自然な相談事例セクションにした。</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">セルフチェック結果</h2>
+      <table class="check-table">
+        <thead>
+          <tr>
+            <th>確認した幅</th>
+            <th>確認したこと</th>
+            <th>結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PC 1440px</td>
+            <td>ページ全体の横スクロール、カード表示、矢印操作</td>
+            <td class="status-ok">問題なし</td>
+          </tr>
+          <tr>
+            <td>タブレット 820px</td>
+            <td>横幅のはみ出し、見出し、事例カードの表示</td>
+            <td class="status-ok">修正後、問題なし</td>
+          </tr>
+          <tr>
+            <td>スマホ 390px</td>
+            <td>横スクロール、ボタン、カード、CASE 01からCASE 02への切り替え</td>
+            <td class="status-ok">修正後、問題なし</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note">
+        右側に次のカードが少し見えるのは、横に送れることを伝えるための見せ方として残しています。
+        ページ全体が横にズレる問題は修正済みです。
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-title">画面で伝えることは、これだけ</h2>
+      <div class="demo-board">
+        <div class="demo-board-head">
+          <div>
+            <h3>「似た相談を横に送って見られる」場所を作れます</h3>
+            <p>下は説明用の小さな図です。実際のHPでは、この形をページ中ほどに入れます。</p>
+          </div>
+          <span class="demo-tag">質問への答え: できます</span>
+        </div>
+
+        <div class="mock-shell" aria-label="横に送れる相談事例セクションの説明図">
+          <div class="mock-header">
+            <div class="mock-logo">プカリ司法書士法人</div>
+            <div class="mock-cta">初回相談はこちら</div>
+          </div>
+          <div class="mock-intro">
+            <strong>似たお悩みから、相談の流れをイメージできます</strong>
+            <span>相続・遺言・後見など、よくある相談をカードで並べます。</span>
+          </div>
+          <div class="mock-carousel">
+            <div class="mock-arrow left" aria-hidden="true">‹</div>
+            <article class="mock-card">
+              <img src="https://images.pexels.com/photos/7841456/pexels-photo-7841456.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700&amp;h=420&amp;fit=crop" alt="相談室で資料を見ながら相談する様子">
+              <div class="mock-card-body">
+                <span>CASE 01 / 相続登記</span>
+                <h4>名義変更の進め方を整理したい</h4>
+                <p>必要書類と流れが分かると、ご家族とも話しやすくなります。</p>
+              </div>
+            </article>
+            <article class="mock-card">
+              <img src="https://images.pexels.com/photos/8152744/pexels-photo-8152744.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700&amp;h=420&amp;fit=crop" alt="書類を確認しながら打ち合わせをする様子">
+              <div class="mock-card-body">
+                <span>CASE 02 / 遺言・終活</span>
+                <h4>元気なうちに準備しておきたい</h4>
+                <p>将来の不安を減らすため、できることから一緒に整理します。</p>
+              </div>
+            </article>
+            <article class="mock-card">
+              <img src="https://images.pexels.com/photos/7876295/pexels-photo-7876295.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700&amp;h=420&amp;fit=crop" alt="家族で書類を確認しながら相談する様子">
+              <div class="mock-card-body">
+                <span>CASE 03 / 成年後見</span>
+                <h4>家族だけで判断するのが不安</h4>
+                <p>使える制度や進め方を、できるだけ分かりやすく整理します。</p>
+              </div>
+            </article>
+            <div class="mock-arrow right" aria-hidden="true">›</div>
+          </div>
+          <div class="mock-dots" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="takeaway-grid">
+          <div class="takeaway">
+            <strong>何ができる？</strong>
+            <span>相談事例を写真つきカードで並べられます。</span>
+          </div>
+          <div class="takeaway">
+            <strong>どう動く？</strong>
+            <span>PCは矢印、スマホは横に送って見られます。</span>
+          </div>
+          <div class="takeaway">
+            <strong>次に決めることは？</strong>
+            <span>載せる事例、写真、個人情報の伏せ方です。</span>
+          </div>
+        </div>
+      </div>
+
+      <details class="evidence">
+        <summary>表示確認のスクショを見る</summary>
+        <div class="evidence-inner">
+          <p class="lead" style="margin:0 0 14px;">
+            ここは作業確認用です。タブレット幅・スマホ幅でも大きく崩れていないことを見るための画像です。
+          </p>
+          <div class="screens">
+            <figure class="screen">
+              <img src="assets/v017-responsive/tablet.png" alt="タブレット幅で相談事例カードを表示した確認スクリーンショット">
+              <figcaption>タブレット幅。見出し、矢印、写真つきカードが表示範囲に収まっているかを確認。</figcaption>
+            </figure>
+            <figure class="screen">
+              <img src="assets/v017-responsive/mobile.png" alt="スマホ幅で相談事例カードを表示した確認スクリーンショット">
+              <figcaption>スマホ幅。ページ全体が横にずれず、カードとして見えるかを確認。</figcaption>
+            </figure>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section>
+      <h2 class="section-title">飯田さん向けに言うなら</h2>
+      <div class="summary">
+        <p>
+          <strong>ページ中ほどに、相談事例を写真つきカードで横に送って見られる形は実装できます。</strong>
+          PCでは矢印で、スマホでは横に送って見られる形です。現在は仮の写真・仮文言ですが、
+          PC・タブレット・スマホ幅で表示確認済みです。正式には、掲載する事例内容・写真・伏せ方を確認して差し替えます。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">次に確認したいこと</h2>
+      <ul class="next-list">
+        <li>載せたい相談事例は何件にするか。まずは3〜5件が見やすいです。</li>
+        <li>実際の事例を載せる場合、個人情報や具体的すぎる事情をどこまで伏せるか。</li>
+        <li>写真は事務所写真・相談風景・素材写真のどれを使うか。</li>
+        <li>各カードから、詳しい事例ページやnote記事へリンクするか。</li>
+        <li>今後の追加・修正を誰が行うか。自主管理か、保守対応か。</li>
+      </ul>
+    </section>
+
+    <p class="footer">
+      作成: 2026-05-31 / 対象モック: Codex版 v0.1.7 / 目的: 甲斐さん追加質問への説明用
+    </p>
+  </main>
+</body>
+</html>
