@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>photo-album｜現場写真から写真帳エクセルを作る道具一式</title>
+<style>
+  :root{
+    --bg:#faf7f2; --text:#2b2a26; --sub:#6b6862;
+    --accent:#3d5a3c; --accent-light:#e8efe6; --card:#fffdf9;
+    --border:#e5e0d6; --code-bg:#f0ede5;
+    --warn-bg:#fdf4e3; --warn-border:#e0c280;
+  }
+  *{margin:0; padding:0; box-sizing:border-box;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","Helvetica Neue",sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.8; font-size:15px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .layout{display:flex; min-height:100vh;}
+  .sidebar{
+    width:260px; background:var(--card); border-right:1px solid var(--border);
+    padding:30px 0; position:sticky; top:0; height:100vh; overflow-y:auto; flex-shrink:0;
+  }
+  .sidebar h1{padding:0 24px 8px; font-size:16px; color:var(--accent); font-weight:700;}
+  .sidebar .subtitle{padding:0 24px 24px; font-size:12px; color:var(--sub); border-bottom:1px solid var(--border);}
+  .sidebar nav{padding:16px 0;}
+  .sidebar nav a{
+    display:block; padding:10px 24px; color:var(--text); text-decoration:none;
+    font-size:13px; border-left:3px solid transparent; transition:all .15s;
+  }
+  .sidebar nav a:hover{background:var(--accent-light); border-left-color:var(--accent);}
+  .main{flex:1; padding:60px 80px; max-width:880px;}
+  section{margin-bottom:80px; scroll-margin-top:20px;}
+  h2{font-size:26px; color:var(--accent); margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid var(--accent-light);}
+  h3{font-size:18px; margin-top:32px; margin-bottom:12px; color:var(--text);}
+  h4{font-size:15px; margin-top:20px; margin-bottom:8px; color:var(--accent);}
+  p{margin-bottom:16px;}
+  ul,ol{margin:12px 0 16px 24px;}
+  li{margin-bottom:6px;}
+  code{background:var(--code-bg); padding:2px 6px; border-radius:3px; font-size:13px; font-family:"SF Mono",Consolas,monospace;}
+  pre{background:var(--code-bg); padding:16px; border-radius:6px; overflow-x:auto; font-size:13px; line-height:1.6; margin:12px 0 20px;}
+  pre code{background:none; padding:0;}
+  blockquote{border-left:3px solid var(--accent); padding:8px 16px; margin:12px 0 16px; background:var(--accent-light); font-style:normal;}
+  blockquote p:last-child{margin-bottom:0;}
+  .callout{background:var(--warn-bg); border:1px solid var(--warn-border); padding:16px 20px; border-radius:6px; margin:20px 0; font-size:14px;}
+  .callout strong{color:#8a5a00;}
+  table{width:100%; border-collapse:collapse; margin:16px 0 20px; font-size:14px;}
+  th,td{text-align:left; padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:top;}
+  th{background:var(--accent-light); color:var(--accent); font-weight:600;}
+  .lead{font-size:16px; color:var(--sub); margin-bottom:32px;}
+  .tree{background:var(--code-bg); padding:20px; border-radius:6px; font-family:"SF Mono",Consolas,monospace; font-size:13px; line-height:1.7; white-space:pre; overflow-x:auto;}
+  .you{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:16px 0 22px;}
+  .you .box{background:var(--card); border:1px solid var(--border); border-radius:8px; padding:18px 16px; text-align:center;}
+  .you .num{display:inline-flex; width:30px; height:30px; align-items:center; justify-content:center; background:var(--accent-light); color:var(--accent); border-radius:50%; font-weight:700; margin-bottom:8px;}
+  .you .box b{display:block; color:var(--accent); font-size:14px; margin-bottom:5px;}
+  .you .box span{color:var(--sub); font-size:12.5px; line-height:1.65;}
+  .album-preview{background:var(--card); border:1px solid var(--border); border-radius:8px; padding:28px 32px; margin:20px 0;}
+  .album-preview .pageblock{border:1px solid var(--border); border-radius:6px; padding:14px 16px; margin:10px 0; background:var(--bg);}
+  .album-preview .pageblock b{color:var(--accent);}
+  .copy-block{position:relative; margin:12px 0 20px;}
+  .copy-block pre{margin:0; padding-right:110px;}
+  .copy-btn{position:absolute; top:10px; right:10px; background:var(--accent); color:#fff; border:none; padding:6px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-family:inherit; transition:all .15s;}
+  .copy-btn:hover{background:#2e4a2d;}
+  .copy-btn.copied{background:#6b8e6a;}
+  details{background:var(--card); border:1px solid var(--border); border-radius:6px; padding:0 20px; margin:20px 0;}
+  details summary{cursor:pointer; color:var(--accent); font-weight:600; padding:14px 0;}
+  details[open] summary{border-bottom:1px solid var(--border); margin-bottom:16px;}
+  details>*:last-child{padding-bottom:16px;}
+  .footer{margin-top:80px; padding-top:32px; border-top:1px solid var(--border); color:var(--sub); font-size:13px; text-align:center;}
+  hr{border:none; border-top:1px solid var(--border); margin:24px 0;}
+  @media(max-width:900px){
+    .layout{flex-direction:column;}
+    .sidebar{width:100%; height:auto; position:relative; padding:16px 0;}
+    .sidebar nav{display:flex; flex-wrap:wrap; gap:4px; padding:8px 16px;}
+    .sidebar nav a{border-left:none; border-bottom:2px solid transparent; padding:6px 10px; font-size:12px;}
+    .main{padding:30px 20px;}
+    h2{font-size:22px;}
+    .you{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <h1>photo-album</h1>
+    <div class="subtitle">現場写真から写真帳エクセルを作る道具一式</div>
+    <nav>
+      <a href="#intro">🌱 はじめに</a>
+      <a href="#what">📋 どんなことができるか</a>
+      <a href="#how">🛠 どうやって作ったか</a>
+      <a href="#structure">🏗 中身の構成</a>
+      <a href="#rule">🔎 写真の判定ルール</a>
+      <a href="#demo">📝 サンプルで作るとこうなる</a>
+      <a href="#receive">📂 受け取り方</a>
+      <a href="#first">🚶 最初の使い方</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+
+    <section id="intro">
+      <h2>🌱 はじめに</h2>
+      <p class="lead">清美環さんへ。先日のお打ち合わせで伺った「現場写真をエクセルの写真帳に貼り付ける作業を、もっとラクにしたい」を受けて、土台を作ってお試し版として用意したものです。</p>
+      <p>このページは、道具一式の中身・できること・受け取り方・実際の動きが、ぜんぶ1ページで分かるようにまとめてあります。気になるところからどうぞ。</p>
+      <div class="callout">
+        <strong>📦 名前：</strong> <code>photo-album</code><br>
+        <strong>🔖 これは何？</strong> Claude Code（AIに自分用の道具を作らせる仕組み）に、写真帳づくりの進め方を覚えさせた"道具一式"です<br>
+        <strong>🎯 想定：</strong> Google等の外部サービスは使わず、お使いのパソコンの中だけで完結します
+      </div>
+      <div class="callout">
+        <strong>⚠️ 大事なお知らせ：入れたら必ず一発で完璧に動く、というものではありません。</strong><br>
+        この道具一式は、Claude Code（AIエージェント）が写真帳づくりを進めるための「手順・部品・確認方法」をまとめたものです。パソコン環境や写真の撮り方、ファイル名の違いによって、最初は調整が必要になることがあります。エラーが出た場合も、画面の内容を見ながら、AIエージェントが原因を確認し、必要な修正案を出しながら進めていく前提の叩き台です。
+      </div>
+
+      <div style="background:#fff8e1; border:1px solid var(--warn-border); border-radius:8px; padding:20px 24px; margin:20px 0;">
+        <p style="font-weight:700; color:#8a5a00; margin-bottom:12px;">📌 こちらでも何度もチェックしてお渡ししていますが、次のような理由で「最初から完璧に動く」とは限りません。正直にお伝えしておきます。</p>
+        <ul style="margin:0 0 0 22px; line-height:1.85;">
+          <li><strong>パソコンの状態が、こちらと清美環さんとで違います</strong><br>
+              <span style="color:var(--sub); font-size:14px;">Mac／Windowsの違い、入っているPythonの種類やバージョン、必要な部品があるかどうか——これが少し違うだけで、最初の起動で止まることがあります。</span></li>
+          <li style="margin-top:10px;"><strong>Claude Codeが入っていても、つないでいる道具の組み合わせが違います</strong><br>
+              <span style="color:var(--sub); font-size:14px;">同じClaude Codeでも、人によって設定や接続している道具が違うので、こちらと同じ動きになるとは限りません。</span></li>
+          <li style="margin-top:10px;"><strong>現場のお写真は、毎回少しずつ違います</strong><br>
+              <span style="color:var(--sub); font-size:14px;">ファイル名のつけ方・写真のサイズ・中に焼き込まれた文字などが現場ごとに違うため、最初の試運転で「ここだけ自動で判定できなかった」という箇所が出ることがあります（黄色いマスでお知らせします）。</span></li>
+          <li style="margin-top:10px;"><strong>叩き台版なので、現場ルールに合わせた追い込みはこれからです</strong><br>
+              <span style="color:var(--sub); font-size:14px;">写真の高さの単位や、位置コードの決め方など、清美環さんの現場のやり方をうかがいながら、これから一緒に整えていく前提です。</span></li>
+        </ul>
+        <p style="margin-top:14px; margin-bottom:0; font-size:14px;">→ 止まったときは、画面の様子を Claude Code に見せながら、一緒に原因を確認して進めるのが、いちばん早くて確実です🌱</p>
+      </div>
+    </section>
+
+    <section id="what">
+      <h2>📋 どんなことができるか</h2>
+      <p>現場で撮ったお写真のフォルダを渡すだけで、写真帳のエクセル（<code>写真帳_出力.xlsx</code>）が自動で組み上がります。手で写真を貼り、サイズを揃え、文字を打ち込んでいた部分を、道具が代わりに整えます。</p>
+      <ol>
+        <li><strong>写真の仕分け</strong>（取付管系／異常箇所系を見分ける）</li>
+        <li><strong>配置</strong>（写真帳の枠に、決まったレイアウトで並べる）</li>
+        <li><strong>サイズ揃え</strong>（写真を枠に合わせて自動リサイズして埋め込む）</li>
+        <li><strong>文字の書き入れ</strong>（「No.」「カテゴリ」「位置」「J番号」「メーター数」を記入）</li>
+        <li><strong>確認ポイントの見える化</strong>（自動で判断できない所は黄色いマスで「ここ見て」と示す）</li>
+      </ol>
+      <h3>大事なルール</h3>
+      <ul>
+        <li><strong>お写真は外に出ません</strong> — すべてパソコンの中だけで処理します。自動でどこかに送信されることはありません</li>
+        <li><strong>ごまかさず、黄色で見せます</strong> — 読み取れない所をそれっぽく埋めず、確認してほしい場所を黄色で残します</li>
+        <li><strong>100%の完成保証ではありません</strong> — 環境差や写真の状態によって、AIエージェント側で確認・修正しながら進めることがあります</li>
+        <li><strong>まずは叩き台</strong> — いきなり完璧な全自動ではなく、「実際の現場写真でどこまで使えそうか」を確かめるための初版です</li>
+      </ul>
+    </section>
+
+    <section id="how">
+      <h2>🛠 どうやって作ったか</h2>
+      <p>大きく3段階で作りました。</p>
+      <h3>① お預かりした実物を読み解いた</h3>
+      <p>お預かりしたエクセルの写真帳テンプレ（K1903042）と、現場写真10枚の中身（焼き込み文字・撮影角度・構図）を1枚ずつ確認し、「どの写真をどこに、どんな文字と一緒に貼るか」のルールを抽出しました。</p>
+      <h3>② Claude Codeで道具一式に組み上げた</h3>
+      <p>抽出したルールをもとに、環境チェック・写真帳生成・手引きをひとまとめのスキルにしました。出力は、Google等を介さずパソコンの中だけで完結する形（エクセル直）にしています。</p>
+      <h3>③ 素人マシンでも動くよう「環境ドクター」を付けた</h3>
+      <p>AIに詳しくない方のパソコンでも詰まらないよう、初回に環境を自分で診断して、足りないものをやさしく案内する <strong>環境ドクター（<code>setup_check.py</code>）</strong> を入れてあります。ここが、この道具一式の特徴です。</p>
+    </section>
+
+    <section id="structure">
+      <h2>🏗 中身の構成</h2>
+      <p>道具一式は1つのフォルダで完結します。中身はWindowsでも扱いやすいようにまとめています：</p>
+<div class="tree">photo-album/
+├── SKILL.md                ← 起動したときに最初に読まれる主役ファイル
+│                              何をやって、何をやらないか
+│
+├── setup_check.py          ← 🩺 環境ドクター（初回診断）
+│                              パソコンの準備OKかを1つずつ確認
+│
+├── build_album_xlsx.py     ← 写真帳のエクセルを作る本体
+│
+├── verify_album_xlsx.py    ← できたExcelに写真が入っているか確認
+│
+├── README_JA.md            ← Windowsでも開きやすい補助メモ
+│
+└── sample/                 ← 動作確認用のサンプル写真（10枚）
+                               まず動きを見るためのお試し素材</div>
+      <table>
+        <thead><tr><th>ファイル</th><th>役割</th></tr></thead>
+        <tbody>
+          <tr><td><code>SKILL.md</code></td><td>道具一式が動き出すときに最初に読む主役。何ができて何をやらないか・進め方・守るルール</td></tr>
+          <tr><td><code>setup_check.py</code></td><td>🩺 環境ドクター。Python・必要な部品・画像読込・エクセル作成ができるかを初回に診断し、足りないものを案内</td></tr>
+          <tr><td><code>build_album_xlsx.py</code></td><td>写真帳のエクセルを作る本体。仕分け→配置→文字記入→黄色マスまで</td></tr>
+          <tr><td><code>verify_album_xlsx.py</code></td><td>できたExcelの中に、写真が実体として入っているかを確認する道具。WindowsでもMacでも動きます</td></tr>
+          <tr><td><code>README_JA.md</code></td><td>Windowsでもファイル名が分かりやすい補助メモ</td></tr>
+          <tr><td><code>sample/</code></td><td>動作確認用のサンプル写真10枚（K1903042）。まず動きを見るためのもの</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="rule">
+      <h2>🔎 写真の判定ルール</h2>
+      <p>道具が写真帳を組むときに使っている、現時点のルールです。これが「写真の自動仕分け」の核です。</p>
+      <h3>取付管 or 異常箇所の見分け方</h3>
+      <ul>
+        <li>ファイル名の末尾「<strong>S</strong>」→ 取付管・精密写真</li>
+        <li>ファイル名の末尾「<strong>F</strong>」→ 異常箇所・全体写真</li>
+        <li>写真内の文字読み取りは、今後の改善ポイントです。このお試し版では、まずファイル名と固定配置で確認します</li>
+      </ul>
+      <h3>写真の組み合わせ・配置</h3>
+      <ul>
+        <li>1組＝「全体写真」＋「アップ写真」の2枚</li>
+        <li>1ページ＝上段に全体・下段にアップ／左右2ペアの構成</li>
+        <li>写真がない枠には「余白」と書き入れます</li>
+      </ul>
+      <h3>文字の書き入れ方</h3>
+      <ul>
+        <li>取付管の枠：「No.」「取付管」「位置」</li>
+        <li>異常箇所の枠：「No.」「異常箇所」「No.X」「浸入水b」「J番号」「メーター数」</li>
+        <li>お預かりしたエクセルの書き方を、そのまま踏襲します</li>
+      </ul>
+    </section>
+
+    <section id="demo">
+      <h2>📝 サンプルで作るとこうなる</h2>
+      <div class="callout">
+        <strong>⚠️ これはお試し出力です。</strong> 同梱のサンプル写真10枚（K1903042）だけを材料に、道具が実際にどう動くかを見ていただくためのものです。
+      </div>
+      <p><strong>入力：</strong> サンプル写真10枚（取付管系7枚＋異常箇所系3枚）<br>
+      <strong>所要時間：</strong> 数秒<br>
+      <strong>出力：</strong> 写真が貼り込まれた3ページ構成の写真帳エクセル（画像はファイルの中に実体として埋め込み。ExcelでもNumbersでも開けます）</p>
+
+      <p style="text-align:center; margin:24px 0;"><a href="サンプル写真帳.xlsx" download style="display:inline-block; background:var(--accent); color:#fff; padding:12px 28px; border-radius:6px; text-decoration:none; font-size:14px; font-weight:600;">⬇️ 出来上がりサンプルを見る（サンプル写真帳.xlsx／約1.2MB）</a></p>
+      <p style="text-align:center; color:var(--sub); font-size:13px; margin-top:-8px;">↑ ダウンロードして ExcelまたはNumbers で開くと、実物の見た目が確認できます。</p>
+
+      <div class="album-preview">
+        <div class="pageblock"><b>ページ1</b>：取付管L-1（全体／アップ）— 右ペアに2枚、左ペアは余白</div>
+        <div class="pageblock"><b>ページ2</b>：取付管L-1（左ペア）＋ 異常箇所 No.1（J1・3.67m／右ペア）</div>
+        <div class="pageblock"><b>ページ3</b>：異常箇所 No.2（J2・6.02m）＋ No.3（J3・8.33m）</div>
+      </div>
+      <p>このように、同じ取付管L-1を角度違いの4枚で1セットにする構造まで再現しています。読み取れない所が出たら、その枠は黄色いマスで「確認してください」と残します。</p>
+    </section>
+
+    <section id="receive">
+      <h2>📂 受け取り方</h2>
+      <p>今回はWindowsでのご利用を想定しています。ZIPをダウンロードして、Claude Codeのスキル用フォルダに置けば使える形です。</p>
+      <p><strong>ただし、ZIPを入れた時点で、どんなパソコン・どんな写真でも必ず完成することを保証するものではありません。</strong> スキルは、AIエージェントに作業の進め方を渡すためのものです。実際には、同梱サンプルや本番写真で動きを確認しながら、環境差・ファイル名・写真の状態に合わせて調整していきます。</p>
+
+      <div style="background:#fff8e1; border:2px solid #e0a800; padding:22px 26px; border-radius:10px; margin:24px 0;">
+        <p style="font-size:16px; font-weight:700; color:#8a5a00; margin-bottom:10px;">🌟 大事な前提：AIエージェントと確認しながら育てる道具です</p>
+        <p style="margin-bottom:10px;">下の手順どおりに進めても、パソコンの状態や写真フォルダの中身によって止まることがあります。<strong>その場合は失敗ではなく、Claude Code に画面の内容を見せて、原因を確認しながら直していく流れです。</strong></p>
+        <p style="margin-bottom:10px;">たとえば、こんなふうに話しかけるだけで大丈夫です：</p>
+        <ul style="margin:6px 0 10px 24px; color:var(--text);">
+          <li>「Windowsで、ダウンロードした photo-album.zip をClaude Codeのスキルとして使えるようにしてください」</li>
+          <li>「画面にこんなメッセージが出ました（スクショを貼る）。どうしたらいいですか？」</li>
+          <li>「ここの意味が分かりません。やさしく教えてください」</li>
+        </ul>
+        <p style="margin-bottom:0;"><strong>「入れたら100%自動で完成する道具」というより、「AIと確認しながら現場用に整えていく土台」です。</strong>分からないところは Claude Code に状況を渡しながら進めてください。</p>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#e8efe6 0%,#d4e0d3 100%); border:2px solid var(--accent); padding:28px 28px 24px; border-radius:10px; margin:30px 0;">
+        <p style="font-size:17px; font-weight:600; color:var(--accent); margin-bottom:8px;">✅ Windowsで設置する</p>
+        <p style="font-size:13px; color:var(--sub); margin-bottom:20px;">止まった場合は、Claude Codeにエラー内容を見せて原因確認します</p>
+
+        <p style="text-align:center; margin:12px 0 24px;"><a href="photo-album.zip" download style="display:inline-block; background:var(--accent); color:#fff; padding:14px 32px; border-radius:6px; text-decoration:none; font-size:15px; font-weight:600;">⬇️ photo-album.zip をダウンロード（約1.6MB）</a></p>
+
+        <ol style="line-height:1.9;">
+          <li>ダウンロードしたZIPを<strong>右クリック → すべて展開</strong>します（<code>photo-album</code> フォルダができます）</li>
+          <li>Claude Codeに、下の文章をそのまま貼ります</li>
+          <li>初回だけ、環境ドクターで準備を確認します：
+            <div class="copy-block" style="margin-top:10px;">
+              <pre id="cmd-check">py -3 setup_check.py</pre>
+              <button class="copy-btn" onclick="copyText('cmd-check', this)">📋 コピー</button>
+            </div>
+          </li>
+          <li>Claude Codeを開いて、合言葉を話しかける：
+            <div class="copy-block" style="margin-top:10px;">
+              <pre id="cmd-run">写真帳作って</pre>
+              <button class="copy-btn" onclick="copyText('cmd-run', this)">📋 コピー</button>
+            </div>
+          </li>
+        </ol>
+        <p style="color:var(--sub); font-size:13px; margin-top:12px;">※ <code>py -3</code> が動かない場合は、Claude Codeが <code>python</code> で動くか確認して進めます。</p>
+      </div>
+
+      <p>Claude Codeが「了解、まず環境を確認しますね」「写真フォルダはどれですか？」のように返してくれたら、確認の流れに入れています。</p>
+
+      <div class="callout">
+        <strong>💬 詰まったとき：</strong> 変なメッセージが出たり、うまく動かないときは、その画面のスクショや表示文を Claude Code に見せて、原因を確認しながら進めます。
+      </div>
+
+      <details style="margin-top:30px;">
+        <summary>⚡ Claude Codeに設置確認を頼みたい方向け（環境によっては安全機構で止まります）</summary>
+        <p style="margin-top:12px;">下の指示文をコピーして、Claude Codeに貼り付ければ、Windows向けに解凍〜設置〜確認まで進めてくれます。</p>
+        <p style="margin-top:8px; color:var(--sub); font-size:13px;">※ バージョン・設定によっては「外部からの取得は実行できません」と止まることがあります（安全のための正常な動作）。その場合は上の手動ルートで入れてください。</p>
+        <div class="copy-block" style="margin-top:16px;">
+          <pre id="cmd-magic">Windowsで、ダウンロードした photo-album.zip を解凍して、
+Claude Codeのスキルとして使えるようにしてください。
+
+手順：
+1. ダウンロードフォルダにある photo-album.zip を展開
+2. %USERPROFILE%\.claude\skills\photo-album に置く
+3. py -3 setup_check.py sample を実行
+4. py -3 build_album_xlsx.py を実行
+5. py -3 verify_album_xlsx.py で、Excel内に写真が埋め込まれているか確認
+6. 結果をやさしく教えて</pre>
+          <button class="copy-btn" onclick="copyText('cmd-magic', this)">📋 コピー</button>
+        </div>
+      </details>
+    </section>
+
+    <section id="first">
+      <h2>🚶 最初の使い方の提案</h2>
+      <p>最初は、いきなり本番運用に入らず、次の順で少しずつ確認するのがおすすめです：</p>
+      <ol>
+        <li>まず<strong>同梱のサンプル写真</strong>で、写真帳エクセルが作れるか見てみる</li>
+        <li>つぎに<strong>本番の写真フォルダ</strong>を1つ選んで、写真帳を作ってもらう</li>
+        <li>出てきたエクセルを開いて、<strong>写真の入り方と黄色マス</strong>を見る</li>
+        <li>「現場のやり方とここが違う」「この並びはこうしたい」を教える</li>
+        <li>その感想を<strong>道具一式に反映して、清美環さん専用としてどんどん育てる</strong></li>
+      </ol>
+      <h3>清美環さんへのお願い</h3>
+      <p>この道具一式は、使えば使うほど精度が上がる仕組みになっています。「ここが違和感あった」「もっとこうしてほしい」みたいな感想を教えてもらえると、<strong>清美環さん専用としてもっと磨ける</strong>ので、ぜひ遠慮なく言ってください。</p>
+      <div class="callout">
+        <strong>🌿 この版の正直なお知らせ：</strong> これは、単体で置いたら必ず完成形として動くことを保証する納品物ではなく、AIエージェントが確認・修正しながら写真帳づくりを進めるための叩き台です。写真内の文字（取付管L-1・J番号・メーター数）の自動読み取りや、全体写真とアップ写真の自動ペア化は、まだ入れていません。今は、いただいたサンプル（K1903042）に合わせた並びになっています。<strong>まずは「この流れなら現場で使えそうか」を確認するための初版です。</strong>
+      </div>
+      <p>これはお試し版です。まずは実際の現場のお写真で触っていただき、「この方向で進められそうか」を見ていただけたら嬉しいです。気になる点や、現場のやり方と違うところを教えていただければ、そこから整えていきます。</p>
+    </section>
+
+    <div class="footer">
+      <p>irodori ／ 写真帳づくりのお試し版</p>
+      <p>このページは清美環さん向けの限定共有です。検索エンジンには表示されません。</p>
+    </div>
+
+  </main>
+</div>
+<script>
+function copyText(id, btn){
+  const text=document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    const o=btn.textContent; btn.textContent='✅ コピーした！'; btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent=o; btn.classList.remove('copied');},2000);
+  }).catch(()=>{btn.textContent='⚠️ 失敗'; setTimeout(()=>{btn.textContent='📋 コピー';},2000);});
+}
+</script>
+</body>
+</html>
