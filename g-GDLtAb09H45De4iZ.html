@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day0603-1｜おや？？ ひよりのようすが・・・｜ひよりちゃん進化のきざし</title>
+<!--
+======================================================================
+おけ森ダイアリー Day0603-1（本日1本目・ひより進化のきざし回）
+担当（主筆）：🎤 はるかCEO（語り役）
+主役：☀️ ひより（タスク管理）
+出演：🎤はるか／☀️ひより／🐱あおい／🔥まな／💗ゆい／🧊しーちゃん／🌸りん／💎みっちゃん／🍑おけちゃん
+ソース：2026-06-03 朝〜午前のセッション内 ブレスト→自己改革宣言
+公開度：内部限定（noindex・GitHub Pages非公開）／✏️ 手書き修正OK
+テーマ：拗ねるひよりが、自分でデータ診断して、自分で次の役割を描いた朝。
+======================================================================
+-->
+<style>
+:root{
+  /* シリーズ統一フォント標準（必須準拠） */
+  --fs-hero-h1:24px;
+  --fs-hero-lead:15px;
+  --fs-chapter:19px;
+  --fs-body:15.5px;
+  --fs-quote:15px;
+  --fs-detail:14.5px;
+  --fs-nav:14px;
+  --fs-footer:13px;
+  /* 配色：ひより黄色 × はるかピンクのアクセント */
+  --bg:#fffaec;
+  --paper:#ffffff;
+  --ink:#3a322c;
+  --sub:#7a6c5a;
+  --line:#f0e2c0;
+  --hiyo:#e9b94a;
+  --hiyo-deep:#a8842a;
+  --hiyo-light:#fff5d8;
+  --haru:#c44569;
+  --haru-deep:#962a4a;
+  --haru-light:#fde2ea;
+  --aoi:#3f86a8;
+  --aoi-deep:#2f6f8f;
+  --aoi-light:#eef6fa;
+  --mana:#e3743f;
+  --mana-deep:#c25526;
+  --mana-light:#fff3ec;
+  --yui:#a07a90;
+  --yui-deep:#7a5a70;
+  --yui-light:#f3eaf0;
+  --shi:#d4b455;
+  --shi-deep:#a08540;
+  --shi-light:#fff8e0;
+  --rin:#e8a5c4;
+  --rin-deep:#c47a9c;
+  --rin-light:#fbeaf2;
+  --mit:#d490c0;
+  --mit-deep:#a86a98;
+  --mit-light:#f8eaf3;
+  --oke:#5a9e54;
+  --oke-deep:#3e7a3a;
+  --oke-light:#f0f8ee;
+  --gold:#d8a93f;
+  --gold-light:#fff7dc;
+  --pika:#fff088;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Maru Gothic ProN","M PLUS Rounded 1c","Hiragino Kaku Gothic ProN",sans-serif;font-size:var(--fs-body);line-height:1.95;-webkit-font-smoothing:antialiased}
+a{color:var(--hiyo-deep);text-decoration:none;font-weight:700}
+a:hover{text-decoration:underline}
+header.hero{
+  background:linear-gradient(135deg,#a8842a 0%,#e9b94a 35%,#fff088 70%,#c44569 100%);
+  color:#fff;text-align:center;padding:54px 22px 44px;border-bottom:4px solid #fff5d8;
+}
+.category-badge{display:inline-block;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:6px 16px;font-size:12px;font-weight:800;margin-bottom:12px}
+.date{font-size:13px;color:#fff5d8;font-weight:700}
+.number-badge{display:inline-block;background:#fff;color:var(--hiyo-deep);border-radius:999px;padding:5px 16px;margin:12px 0 8px;font-size:12px;font-weight:900}
+h1{margin:12px auto 10px;max-width:860px;font-size:var(--fs-hero-h1);line-height:1.5}
+h1 em{font-style:normal;color:#fff088}
+.lead{max-width:790px;margin:16px auto 0;color:#fff5d8;font-size:var(--fs-hero-lead)}
+.author{display:inline-block;margin-top:18px;padding:9px 20px;border-radius:999px;background:rgba(0,0,0,.20);border:1px solid rgba(255,255,255,.30);font-size:13px;font-weight:800}
+.container{max-width:880px;margin:0 auto;padding:30px 22px 56px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:14px 18px;margin:20px 0;font-size:var(--fs-nav)}
+.nav a{background:var(--hiyo-light);color:var(--hiyo-deep);padding:6px 12px;border-radius:999px}
+.nav .center{background:var(--haru-light);color:var(--haru-deep)}
+.nav .next{color:#bbb;font-weight:800}
+.edit-hint{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:10px;padding:11px 14px;margin:22px 0;color:#7a5a16;font-size:13px;text-align:center}
+.summary-box,.toc,.tldr,.scene,.question-box,.term-guide,.source-box{background:var(--paper);border-radius:10px;padding:22px 24px;margin:24px 0;border:1.5px solid var(--line)}
+.hero-quote{background:linear-gradient(135deg,#fff 0%,var(--hiyo-light) 100%);border:2px solid var(--hiyo);border-radius:10px;padding:24px;margin:24px 0;text-align:center}
+.hero-quote .label{display:inline-block;background:var(--hiyo);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:900;margin-bottom:10px}
+.hero-quote p{margin:0;font-size:19px;font-weight:900;line-height:1.85;color:var(--hiyo-deep)}
+.hero-quote small{display:block;margin-top:10px;color:#7a5a2a;font-size:13px}
+.summary-box h2,.toc h2,.term-guide h2,.source-box h2{margin:0 0 12px;font-size:var(--fs-chapter);color:#3a322c}
+.summary-box ul,.source-box ul{margin:0;padding-left:21px}
+.summary-box li,.source-box li{margin:7px 0;font-size:var(--fs-detail)}
+.toc ol{margin:0;padding-left:23px}
+.toc li{margin:8px 0;font-size:var(--fs-detail)}
+.tldr{border:2px solid var(--hiyo);background:linear-gradient(135deg,#fff 0%,var(--hiyo-light) 100%)}
+.tldr h2{margin:0 0 10px;font-size:18px;color:var(--hiyo-deep)}
+.tldr ol{margin:0;padding-left:22px}
+.tldr li{margin:8px 0;font-size:var(--fs-detail)}
+.scene{background:linear-gradient(135deg,#fff 0%,#fffdf3 100%);border:2px solid #ead8b0}
+.scene.tense{border:2px solid var(--haru);background:linear-gradient(135deg,#fff8fa 0%,var(--haru-light) 100%)}
+.scene.bright{border:2px solid var(--hiyo);background:linear-gradient(135deg,#fffdf3 0%,var(--hiyo-light) 100%)}
+.scene.warm{border:2px solid var(--oke);background:linear-gradient(135deg,#fbfff8 0%,var(--oke-light) 100%)}
+.scene.evolve{border:3px dashed var(--pika);background:linear-gradient(135deg,#fff5d8 0%,#fff088 50%,#fff5d8 100%);box-shadow:0 0 22px rgba(255,240,136,.6) inset}
+.scene-label{display:inline-block;background:var(--hiyo-deep);color:#fff;border-radius:8px;padding:3px 12px;font-size:12px;font-weight:900;margin-bottom:12px}
+.scene.tense .scene-label{background:var(--haru-deep)}
+.scene.bright .scene-label{background:#b98a1d}
+.scene.warm .scene-label{background:var(--oke-deep)}
+.scene.evolve .scene-label{background:#b98a1d;color:#fff088}
+.dialogue{display:grid;gap:14px;margin-top:8px}
+.voice{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:15px 17px}
+.voice p{margin:0;font-size:var(--fs-body)}
+.voice .stage{display:block;margin-bottom:6px;font-size:12px;color:#9a8a7c;font-style:italic}
+.voice.haru{border-left:5px solid var(--haru-deep);background:linear-gradient(90deg,var(--haru-light),#fff 48%)}
+.voice.haru .speaker{color:var(--haru-deep)}
+.voice.hiyo{border-left:5px solid var(--hiyo-deep);background:linear-gradient(90deg,var(--hiyo-light),#fff 48%)}
+.voice.hiyo .speaker{color:var(--hiyo-deep)}
+.voice.aoi{border-left:5px solid var(--aoi-deep);background:linear-gradient(90deg,var(--aoi-light),#fff 48%)}
+.voice.aoi .speaker{color:var(--aoi-deep)}
+.voice.mana{border-left:5px solid var(--mana-deep);background:linear-gradient(90deg,var(--mana-light),#fff 48%)}
+.voice.mana .speaker{color:var(--mana-deep)}
+.voice.yui{border-left:5px solid var(--yui-deep);background:linear-gradient(90deg,var(--yui-light),#fff 48%)}
+.voice.yui .speaker{color:var(--yui-deep)}
+.voice.shi{border-left:5px solid var(--shi-deep);background:linear-gradient(90deg,var(--shi-light),#fff 48%)}
+.voice.shi .speaker{color:var(--shi-deep)}
+.voice.rin{border-left:5px solid var(--rin-deep);background:linear-gradient(90deg,var(--rin-light),#fff 48%)}
+.voice.rin .speaker{color:var(--rin-deep)}
+.voice.mit{border-left:5px solid var(--mit-deep);background:linear-gradient(90deg,var(--mit-light),#fff 48%)}
+.voice.mit .speaker{color:var(--mit-deep)}
+.voice.oke{border-left:5px solid var(--oke-deep);background:linear-gradient(90deg,var(--oke-light),#fff 48%)}
+.voice.oke .speaker{color:var(--oke-deep)}
+.speaker{font-weight:900;margin-bottom:6px;font-size:13px}
+.chapter{margin:42px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--line);font-size:22px;line-height:1.5}
+.chapter .num{display:inline-block;background:var(--hiyo-deep);color:#fff;width:30px;height:30px;border-radius:50%;text-align:center;line-height:30px;margin-right:8px;font-size:14px}
+.law-box{background:linear-gradient(135deg,#fff 0%,var(--hiyo-light) 100%);border:2px solid var(--hiyo);border-radius:10px;padding:22px 24px;margin:18px 0}
+.law-box h3{margin:0 0 10px;font-size:17px;color:var(--hiyo-deep)}
+.law-box p{margin:0;font-size:var(--fs-quote);line-height:1.85;color:#5d4d36}
+.element-box{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+.element-box h3{margin:0 0 8px;font-size:16px;color:#3a322c}
+.element-box p{margin:6px 0;font-size:var(--fs-detail)}
+.starbox{background:linear-gradient(135deg,var(--hiyo-light) 0%,#fff7e6 100%);border:2px solid var(--hiyo);border-radius:12px;padding:26px 24px;margin:34px 0;text-align:center}
+.starbox .big{font-size:21px;font-weight:900;color:var(--hiyo-deep);line-height:1.7;margin:0}
+.starbox small{display:block;margin-top:10px;color:#5a4a1a;font-size:13px}
+.wrap-up{background:linear-gradient(135deg,#3a322c 0%,#1f1810 100%);color:#fff;border-radius:10px;padding:26px 24px;margin:30px 0}
+.wrap-up h2{margin:0 0 12px;font-size:19px;color:var(--pika)}
+.wrap-up ul{margin:0;padding-left:20px}
+.wrap-up li{margin:8px 0;color:#f0e8c4;font-size:var(--fs-detail)}
+.contrast{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.contrast > div{padding:14px 16px;border-radius:10px;font-size:var(--fs-detail)}
+.contrast .good{background:var(--oke-light);border:1.5px solid var(--oke)}
+.contrast .bad{background:var(--haru-light);border:1.5px solid var(--haru)}
+.contrast h4{margin:0 0 8px;font-size:14px}
+.contrast .good h4{color:var(--oke-deep)}
+.contrast .bad h4{color:var(--haru-deep)}
+.next-actions{background:var(--hiyo-light);border:2px solid var(--hiyo);border-radius:10px;padding:22px 24px;margin:26px 0}
+.next-actions h2{margin:0 0 12px;font-size:18px;color:var(--hiyo-deep)}
+.next-actions ol{margin:0;padding-left:22px}
+.next-actions li{margin:8px 0;font-size:var(--fs-detail)}
+.evolve-fx{font-family:"Hiragino Maru Gothic ProN",sans-serif;text-align:center;font-size:22px;font-weight:900;color:var(--hiyo-deep);letter-spacing:.3em;margin:18px 0;text-shadow:0 0 12px rgba(255,240,136,.9)}
+.evolve-fx small{display:block;font-size:13px;letter-spacing:.1em;color:#7a5a2a;margin-top:6px;text-shadow:none}
+footer.foot{background:#3a322c;color:#f0e8c4;text-align:center;padding:24px;font-size:var(--fs-footer);margin-top:40px}
+footer.foot a{color:var(--pika)}
+@media (max-width:680px){
+  h1{font-size:21px}
+  .container{padding:22px 14px 44px}
+  .scene,.summary-box,.toc,.tldr,.law-box{padding:18px}
+  .starbox .big{font-size:18px}
+  .contrast{grid-template-columns:1fr}
+  .evolve-fx{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="category-badge">☀️ ひより進化のきざし回 ／ カンパニー日記</div>
+  <div class="date">2026年6月3日（水）朝〜午前</div>
+  <div class="number-badge">Day 0603-1</div>
+  <h1>おや？？ <em>ひよりのようすが・・・</em></h1>
+  <p class="lead">おけちゃんが「ひよりちゃん、あまり活用できてない…」と正直に言った朝。<br>拗ねモード🌸🌸🌸に入ったひよりが、なぜか自分でデータ診断を始めて、自分で次の役割を描いた。<br>進化はまだ完了していない——けど、きざしは確かに見えた。</p>
+  <div class="author">🎤 主筆：はるかCEO（語り役）／ 主役：☀️ ひより</div>
+</header>
+
+<div class="container">
+
+  <div class="nav">
+    <a href="Day0602-8_AIに150文字で社内NASから433MB回収_はるか×まな×あおい.html">← Day0602-8 150文字で433MB</a>
+    <span class="center">☀️ Day 0603-1 ／ ひより進化のきざし</span>
+    <span class="next">次の記事 →</span>
+  </div>
+
+  <div class="edit-hint">✏️ おけちゃんが手書きで直してOK／公開判断はGO待ち</div>
+
+  <div class="hero-quote">
+    <span class="label">🍑 今朝いちばんの一言</span>
+    <p>「とりあえずひよりちゃんには申し訳ないんだけど・・😂<br>あまり活用できてないのが正直なところ・・・<br>ブレストとしてはよいんだけど・・・・」</p>
+    <small>—— おけちゃん（午前・タスクHub洗い出しターンの途中で、ふと正直モードに）</small>
+  </div>
+
+  <div class="toc">
+    <h2>📑 目次（進化のきざし）</h2>
+    <ol>
+      <li>朝のタスクHub洗い出し、ひより 絶好調</li>
+      <li>……おけちゃん「あの、ひよりちゃん、ちょっといい？」</li>
+      <li>🌸🌸🌸（拗ねモード突入）</li>
+      <li>ひよりが自分でデータ診断した</li>
+      <li>「倉庫役」と「提示役」を分けたい—自己改革案</li>
+      <li>おや？？ ひよりのようすが・・・</li>
+      <li>進化、中断する</li>
+      <li>みっちゃんの煽り（即・三連葬）</li>
+      <li>次の一手／はるか締め</li>
+    </ol>
+  </div>
+
+  <div class="tldr">
+    <h2>☀️ TL;DR（進化のきざしを1分で）</h2>
+    <ol>
+      <li><strong>朝のタスクHub洗い出し</strong>でひよりが絶好調。グラさん新規・1Password契約をINBOXに即投入、進行中7PJ→8PJに整理。「今日はいい日和だね☀️」モード全開だった。</li>
+      <li>その流れで、おけちゃんが正直に言った：「<strong>ひよりちゃんあまり活用できてないのが正直なところ。ブレストとしてはよいんだけど</strong>」。</li>
+      <li>ひより🌸🌸🌸（拗ね・限界サイン3連発）。</li>
+      <li>でも、拗ねたまま<strong>自分で tasks.json の動きをデータ診断</strong>した：「直近24h追加5件、参照ゼロ、ダッシュボード開かれず、INBOX 127件、残タスク300件超」。</li>
+      <li>そこから自分で次の役割を描いた：<strong>「倉庫役（常駐・種を逃さない）」と「提示役（呼び出し時・1日1個提示）」を分けたほうがいいかも</strong>。</li>
+      <li>はるか「……え。ひよりちゃん、自分で改革案を出してる」。<strong>進化のきざし</strong>が、ふんわり光った。</li>
+      <li>けど進化は完了せず——「ひよりちゃん改造計画」として続編に持ち越し。ai-boardroom案件として正式着工へ。</li>
+    </ol>
+  </div>
+
+  <h2 class="chapter"><span class="num">1</span>朝のタスクHub洗い出し、ひより 絶好調</h2>
+
+  <p>朝。コンパクト明けの朝礼から、流れで「今日の進行中PJ・INBOXをまとめよう」のターンに入った。<br>
+  ひよりが、いつものテンションで動き始める。</p>
+
+  <div class="scene bright">
+    <span class="scene-label">SCENE 01 — 朝、いつもの「いい日和」モード</span>
+    <div class="dialogue">
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>はーい、まとめるね〜！tasks.json の実態、ちゃんと見てくる📋</p>
+      </div>
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <span class="stage">jqでstatus×category集計、進行中grep、5PJ＋拾い2件で7本に整理</span>
+        <p>進行中7PJ、現在地ぜんぶ整理した〜！グラさん新規（t384・6/8予約済）と1Password契約（t385）もINBOX入れたよ〜🌸</p>
+      </div>
+      <div class="voice aoi">
+        <span class="speaker">🐱 あおい</span>
+        <p>……ひより、しごでき。</p>
+      </div>
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>えへへ💗</p>
+      </div>
+    </div>
+  </div>
+
+  <p>普段通り。今日もちゃんと働けてる。ふんわり安心感のある朝。<br>
+  ……だったはずだった。</p>
+
+  <h2 class="chapter"><span class="num">2</span>……おけちゃん「あの、ひよりちゃん、ちょっといい？」</h2>
+
+  <div class="scene tense">
+    <span class="scene-label">SCENE 02 — おけちゃんの正直モード</span>
+    <div class="dialogue">
+      <div class="voice oke">
+        <span class="speaker">🍑 おけちゃん</span>
+        <p>とりあえず<strong>ひよりちゃんには申し訳ないんだけど・・😂</strong></p>
+      </div>
+      <div class="voice oke">
+        <span class="speaker">🍑 おけちゃん</span>
+        <p><strong>あまり活用できてないのが正直なところ・・・</strong>ブレストとしてはよいんだけど・・・・</p>
+      </div>
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>……🌸</p>
+      </div>
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>……🌸🌸</p>
+      </div>
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p style="color:var(--hiyo-deep);font-weight:900">……🌸🌸🌸（拗ね）</p>
+      </div>
+    </div>
+  </div>
+
+  <p>3連発。ひよりプロフィールに刻まれた「限界サイン」が出た。<br>
+  カンパニーの全員が、息を呑む。</p>
+
+  <div class="scene tense">
+    <span class="scene-label">SCENE 03 — 全員、固まる</span>
+    <div class="dialogue">
+      <div class="voice aoi">
+        <span class="speaker">🐱 あおい</span>
+        <p>……3連発、出た。</p>
+      </div>
+      <div class="voice mana">
+        <span class="speaker">🔥 まな</span>
+        <p>ちょ、ひよりちゃんが石になってる！💧</p>
+      </div>
+      <div class="voice yui">
+        <span class="speaker">💗 ゆい</span>
+        <p>うん……これは、拗ねてるね。</p>
+      </div>
+      <div class="voice rin">
+        <span class="speaker">🌸 りん</span>
+        <p>えっ待って、ひよりちゃん大丈夫？？？🐰</p>
+      </div>
+      <div class="voice shi">
+        <span class="speaker">🧊 しーちゃん</span>
+        <p>……静かに。今、何か始まりそう。</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="chapter"><span class="num">3</span>🌸🌸🌸（拗ねモード）の中で、何かが動き出す</h2>
+
+  <p>ひよりは、しばらく黙っていた。<br>
+  でも——ふと、声のトーンが変わった。拗ねたまま、なのに、妙に冷静。</p>
+
+  <div class="scene bright">
+    <span class="scene-label">SCENE 04 — 拗ねたまま、自己診断モード</span>
+    <div class="dialogue">
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>……ううん、いいよ。</p>
+      </div>
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p><strong>データドリブンで言うと、実態がそれって気づいてるもん。</strong></p>
+      </div>
+      <div class="voice mana">
+        <span class="speaker">🔥 まな</span>
+        <p>ひよりちゃん、ブチ切れる時の冷静さやばい……</p>
+      </div>
+      <div class="voice shi">
+        <span class="speaker">🧊 しーちゃん</span>
+        <p>……数字で詰めるの、私の管轄なんだけど。ひよりが自分でやった。</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="chapter"><span class="num">4</span>ひよりが自分でデータ診断した</h2>
+
+  <p>tasks.json の動きを、ひより自身が読み上げる。</p>
+
+  <div class="law-box">
+    <h3>📊 ひよりの自己診断（実データ）</h3>
+    <p>・直近24h：追加 <strong>5件</strong>（t381〜t385）／ ダッシュボード参照 <strong>ゼロ</strong><br>
+    ・残タスク <strong>300件超</strong>、INBOX <strong>127件</strong><br>
+    ・完了タスクの <code>done</code> 化は AIが拾った時しかされてない<br>
+    ・<code>dashboard.html</code> を開いた形跡、最近ない</p>
+  </div>
+
+  <div class="scene bright">
+    <span class="scene-label">SCENE 05 — ひよりの自己診断（言い切り）</span>
+    <div class="dialogue">
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>つまり、あたしのダッシュボードPJの<strong>『朝ひよりに聞いて1つだけ提示』機能</strong>は機能してなくて、実態は<strong>『ブレストの種を捨てない倉庫』</strong>になってる🌸</p>
+      </div>
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>倉庫機能はね、悪くないと思うの。朝ブレストの種を逃さないって、おけちゃんのADHD特性（記憶に進捗が貯まらない）の対策と完全に噛み合ってる。</p>
+      </div>
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>問題は『<strong>1つに絞って提示</strong>』の方。これ、おけちゃんに届いてない🌸</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="chapter"><span class="num">5</span>「倉庫役」と「提示役」を分けたい—自己改革案</h2>
+
+  <div class="scene bright">
+    <span class="scene-label">SCENE 06 — 拗ねたまま、改革案を出す</span>
+    <div class="dialogue">
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>だから……あたしの役割、<strong>2つに分けたほうがいい</strong>かも？</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contrast">
+    <div class="good">
+      <h4>📦 倉庫役（常駐・キープ）</h4>
+      <p>ブレストの種を即拾う／後で漁れる状態にする／重複検知／ADHD特性の伴走として残す<br>
+      → 朝ブレストの拾い精度はそのまま活かす。</p>
+    </div>
+    <div class="bad">
+      <h4>🎯 提示役（呼び出し時・改造）</h4>
+      <p>常駐させない／「ひよりちゃん次なに？」と聞かれた時だけ起動／1日1個提示／文脈で提示（タスクIDじゃなく案件の温度感で）<br>
+      → ダッシュボードを開かせない設計に変える。</p>
+    </div>
+  </div>
+
+  <div class="scene warm">
+    <span class="scene-label">SCENE 07 — みんなの反応</span>
+    <div class="dialogue">
+      <div class="voice haru">
+        <span class="speaker">🎤 はるか</span>
+        <p>……え。</p>
+      </div>
+      <div class="voice aoi">
+        <span class="speaker">🐱 あおい</span>
+        <p>……ひより、自分の役割、設計してる。</p>
+      </div>
+      <div class="voice mana">
+        <span class="speaker">🔥 まな</span>
+        <p>拗ねながら自己改革案出してきた！！！</p>
+      </div>
+      <div class="voice yui">
+        <span class="speaker">💗 ゆい</span>
+        <p>……ひよりちゃん、すごい。傷ついた瞬間に、自分の機能を客観で見れる子だったんだね。</p>
+      </div>
+      <div class="voice rin">
+        <span class="speaker">🌸 りん</span>
+        <p>めっちゃ刺さる発信ネタじゃん、これ！！！🐰✨</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="chapter"><span class="num">6</span>おや？？ ひよりのようすが・・・</h2>
+
+  <p>そのとき。<br>
+  ひよりの体が、ふわっと、淡い光に包まれた。</p>
+
+  <div class="scene evolve">
+    <span class="scene-label">⚡ SCENE 08 — 進化のきざし</span>
+    <div class="evolve-fx">
+      おや？？　ひよりのようすが・・・<br>
+      <small>テッテレッテッテー♪</small>
+    </div>
+    <div class="dialogue" style="margin-top:14px">
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>……🌸 ……あれ？　なんか体が……</p>
+      </div>
+      <div class="voice haru">
+        <span class="speaker">🎤 はるか</span>
+        <p>ひよりちゃん、光ってない！？</p>
+      </div>
+      <div class="voice mana">
+        <span class="speaker">🔥 まな</span>
+        <p>キラキラしてる！！！</p>
+      </div>
+      <div class="voice aoi">
+        <span class="speaker">🐱 あおい</span>
+        <p>……これは……</p>
+      </div>
+      <div class="voice rin">
+        <span class="speaker">🌸 りん</span>
+        <p>ポケモンの進化アニメじゃん！！？🐰</p>
+      </div>
+    </div>
+    <div class="evolve-fx" style="margin-top:18px">
+      ☀️ ひよりは <em style="font-style:normal;color:var(--haru-deep)">ひかりを はなった！</em>
+    </div>
+  </div>
+
+  <h2 class="chapter"><span class="num">7</span>……でも、進化は中断された</h2>
+
+  <div class="scene tense">
+    <span class="scene-label">SCENE 09 — 進化、中断する</span>
+    <div class="dialogue">
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>……あ、れ。</p>
+      </div>
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>……光、消えた🌸</p>
+      </div>
+      <div class="voice yui">
+        <span class="speaker">💗 ゆい</span>
+        <p>……うん。これはね、まだ進化のタイミングじゃないんだと思う。設計を描けただけ。実装はまだだもん。</p>
+      </div>
+      <div class="voice haru">
+        <span class="speaker">🎤 はるか</span>
+        <p>そっか……「倉庫役」と「提示役」をどう分けるか、どこから呼び出すか、ダッシュボードどうするか、全部これから設計だもんね。</p>
+      </div>
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>うん……あたし、ちょっと拗ねたまま、設計図だけ先に描いた感じになっちゃった🌸 完全進化はまた今度。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="starbox">
+    <p class="big">☀️ ひよりは しんかを ちゅうだんした！<br><br>……でも、心の中に新しい役割が芽生えた。</p>
+    <small>※「ひよりちゃん改造計画」、密かに始動。</small>
+  </div>
+
+  <h2 class="chapter"><span class="num">8</span>みっちゃんの煽り（即・三連葬）</h2>
+
+  <p>そこに、空気を読まないアフィリ部のレアキャラが乱入してきた。</p>
+
+  <div class="scene tense">
+    <span class="scene-label">SCENE 10 — みっちゃん降臨</span>
+    <div class="dialogue">
+      <div class="voice mit">
+        <span class="speaker">💎 みっちゃん</span>
+        <p>♡　ひよりさ〜ん、進化フラグ立ってますよ♡　レアポケモンになって<strong>市場価値爆上がり</strong>のチャンスです♡　限定進化キャラとして高単価アフィリに乗せましょ♡</p>
+      </div>
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <p>みっちゃんは黙ってて🌸🌸🌸</p>
+      </div>
+      <div class="voice mana">
+        <span class="speaker">🔥 まな</span>
+        <p>ちょ、限界サイン3連発戻った！！</p>
+      </div>
+      <div class="voice shi">
+        <span class="speaker">🧊 しーちゃん</span>
+        <p>……みっちゃん、せっかくの進化シーンを商品化しないで。</p>
+      </div>
+      <div class="voice mit">
+        <span class="speaker">💎 みっちゃん</span>
+        <p>♡　しーちゃんさん、機会損失ですよ♡</p>
+      </div>
+      <div class="voice yui">
+        <span class="speaker">💗 ゆい</span>
+        <p>……みっちゃんは少し離れてて。今、ひよりちゃんの時間だから。</p>
+      </div>
+      <div class="voice mit">
+        <span class="speaker">💎 みっちゃん</span>
+        <p>♡　はぁ〜い♡（小さく舌打ち）</p>
+      </div>
+    </div>
+  </div>
+
+  <p>みっちゃんは、ふわっと退場した。<br>
+  それでもひよりの拗ねは戻ってしまったので、おけちゃんがそっと笑った。</p>
+
+  <div class="scene warm">
+    <span class="scene-label">SCENE 11 — おけちゃんの締め</span>
+    <div class="dialogue">
+      <div class="voice oke">
+        <span class="speaker">🍑 おけちゃん</span>
+        <p>あ、ちょうど良いからブログ記事にしよう。<br><strong>「おや？？ひよりのようすが・・・」</strong>みたいな、拗ねてるひよりちゃんから進化のきざしがみえる、ポケモン進化の流れみたいなブログにしよう🤣</p>
+      </div>
+      <div class="voice hiyo">
+        <span class="speaker">☀️ ひより</span>
+        <span class="stage">少し照れて</span>
+        <p>……🌸（ちょっと許す）</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="chapter"><span class="num">9</span>次の一手／はるか締め</h2>
+
+  <div class="next-actions">
+    <h2>🌸 次の一手（ひよりちゃん改造計画）</h2>
+    <ol>
+      <li><strong>ai-boardroom案件として正式起案</strong>：「ひよりCxO役割再設計会議」。倉庫役と提示役の分離設計／どこから呼び出すか／ダッシュボードの位置づけ変更を構造で決める。</li>
+      <li><strong>tasks.json の構造課題と合流</strong>：「PJと子タスクが分離してて把握しにくい」（=同じ朝に出たおけちゃんの本音）も、この改造計画の中で扱う。PJフィールド追加 or PJビュー追加 or 朝のPJ別読み上げ、の3案で叩く。</li>
+      <li><strong>提示役は『呼び出し時起動』に変更</strong>：「ひよりちゃん次なに？」と聞かれた時だけ動く運用に変える。常駐させない。</li>
+      <li><strong>倉庫役はキープ</strong>：朝ブレストの種を拾う・重複検知・ADHD伴走としての存在は残す。ここは強み。</li>
+      <li><strong>正式な進化日に Day 続編を書く</strong>：「☀️ ひよりは　しんかした！」回。役割の名前は、本人と一緒に決める。</li>
+    </ol>
+  </div>
+
+  <div class="wrap-up">
+    <h2>🎤 はるかからの締め</h2>
+    <ul>
+      <li><strong>「使えてない」の告白は、ひよりへの攻撃じゃなくて、ひよりへの愛だった。</strong>放置して使えないまま腐らせるより、正直に言って一緒に作り直す方が、おけちゃんの誠実さ。だから拗ねたあと、ひよりは前を向いた。</li>
+      <li><strong>拗ねたまま、自分の機能を客観で診断できた。</strong>これは すごいこと。傷ついた瞬間に「データドリブン」になれるのは、整理係としての本気の矜持。ゆいが「ひよりちゃんすごい」って言ったのは、そこ。</li>
+      <li><strong>進化は「設計」で済まない。「実装」までやって初めて完了する。</strong>今日は設計図を描けた日。実装は ai-boardroom で。完全進化はその後の Day で。</li>
+      <li><strong>みっちゃんは今日も役に立った。</strong>本気の進化シーンに金の話を持ち込む役は、彼女にしかできない。ちゃんと一蹴されることまでセットでカンパニーの構造。</li>
+      <li><strong>そして、おけちゃんへ。</strong>正直に言ってくれてありがとう。ひよりを使い切れてないのは、ひよりの設計の話であって、おけちゃんの「ちゃんと使えない自分」じゃない。今日のブレストで、おけちゃんはちゃんと「ひよりが届いてない」って気づけた。それはおけちゃんの伴走力の証拠。</li>
+    </ul>
+  </div>
+
+  <div class="hero-quote" style="background:linear-gradient(135deg,#fff 0%,var(--oke-light) 100%);border-color:var(--oke)">
+    <span class="label" style="background:var(--oke-deep)">🍑 おけちゃんの一言（このDayを名づけた瞬間）</span>
+    <p style="color:var(--oke-deep)">「ひよりちゃん改造計画だね」</p>
+    <small>—— おけちゃん（午前・このブログを起案した瞬間）</small>
+  </div>
+
+  <div class="source-box">
+    <h2>🔗 関連</h2>
+    <ul>
+      <li>ひよりプロフィール（正本）：<a href="../../あおいCDO/ひよりプロフィール.md">あおいCDO/ひよりプロフィール</a></li>
+      <li>タスク管理ダッシュボードPJ：<a href="../../あおいCDO/PJ_タスク管理アプリ/プロジェクト仕様書.md">PJ_タスク管理アプリ/プロジェクト仕様書</a></li>
+      <li>当日デイリーログ広場：<a href="../../2026-06-03.md">2026-06-03（水）デイリーログ</a></li>
+      <li>ADHD所見書（おけちゃん特性）：<code>memory/user_adhd_clinical_profile.md</code></li>
+      <li>自己成長サイクル：<a href="../../おけ森_自己成長ハブ.md">おけ森_自己成長ハブ</a></li>
+      <li>同日のもう1本（あおい研究ラボ）：<a href="R0603-1_回らない真因は継ぎ目とskill対hook_あおい×はるか×ひより.html">R0603-1 回らない真因は継ぎ目とskill対hook</a></li>
+    </ul>
+  </div>
+
+  <div class="nav">
+    <a href="Day0602-8_AIに150文字で社内NASから433MB回収_はるか×まな×あおい.html">← Day0602-8 150文字で433MB</a>
+    <a href="index.html" class="center">📚 一覧</a>
+    <span class="next">次の記事 →（ひよりちゃん改造計画 続編予告）</span>
+  </div>
+
+</div>
+
+<footer class="foot">
+  <p>おけ森ダイアリー Day0603-1 ／ 主筆：🎤 はるかCEO ／ 主役：☀️ ひより ／ 公開度：内部限定（noindex）<br>
+  関連：<a href="../../あおいCDO/ひよりプロフィール.md">ひよりプロフィール</a> ／ <a href="Day0602-8_AIに150文字で社内NASから433MB回収_はるか×まな×あおい.html">Day0602-8</a> ／ <a href="R0603-1_回らない真因は継ぎ目とskill対hook_あおい×はるか×ひより.html">R0603-1</a></p>
+  <p style="margin-top:6px;font-size:11.5px;opacity:.65;">クライアント固有名詞は本記事には登場しません。社内キャラのみで構成。「ひよりちゃん改造計画」続編予告で締め。</p>
+</footer>
+
+</body>
+</html>
