@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>¥100,000,000 GRAND TOUR ― 7日間で地球を一周する、ドリーム・ジャーニー</title>
+<meta name="description" content="1億円・7日間・プライベートジェットで地球を一周する、世界最高峰のホテルと体験だけを繋いだ夢の旅。ブルジュ・アル・アラブ／ソネバ ジャニ／フォーシーズンズ セレンゲティ／リッツ パリ／アマン ニューヨーク／フォーシーズンズ ボラボラ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root{
+  --ink:        #0a0a10;
+  --ink-2:      #12121b;
+  --ink-3:      #1a1a26;
+  --line:       rgba(201,169,97,.22);
+  --gold:       #c9a961;
+  --gold-soft:  #d8c290;
+  --champagne:  #ece2c5;
+  --paper:      #f4efe4;
+  --paper-warm: #ebe4d2;
+  --text:       #ece6d5;
+  --text-mute:  #9a937f;
+  --serif-en:   'Cormorant Garamond', 'Noto Serif JP', serif;
+  --serif-jp:   'Noto Serif JP', 'Cormorant Garamond', serif;
+  --sans-jp:    'Noto Sans JP', sans-serif;
+  --label:      'Inter', sans-serif;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans-jp);
+  background:var(--ink);
+  color:var(--text);
+  line-height:1.9;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:22px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:rgba(10,10,16,.55);
+  border-bottom:1px solid rgba(255,255,255,.04);
+  transition:all .4s;
+}
+.nav-logo{
+  font-family:var(--serif-en);font-weight:500;font-size:1.4rem;letter-spacing:.18em;
+  color:var(--champagne);
+}
+.nav-logo i{color:var(--gold);margin-right:10px;font-size:1.1rem}
+.nav-links{display:flex;gap:34px;align-items:center}
+.nav-links a{
+  font-family:var(--label);font-size:.78rem;font-weight:400;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--text-mute);transition:color .3s;
+}
+.nav-links a:hover{color:var(--gold-soft)}
+.nav-cta{
+  font-family:var(--label);font-size:.75rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  padding:11px 22px;border:1px solid var(--gold);color:var(--gold-soft);
+  border-radius:999px;transition:.3s;
+}
+.nav-cta:hover{background:var(--gold);color:var(--ink)}
+@media(max-width:780px){
+  .nav{padding:16px 20px}
+  .nav-links{display:none}
+}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:120px 24px 60px;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(201,169,97,.18), transparent 60%),
+    linear-gradient(180deg, rgba(10,10,16,.55) 0%, rgba(10,10,16,.85) 70%, rgba(10,10,16,1) 100%),
+    url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2400&q=85") center/cover no-repeat;
+}
+.hero-eyebrow{
+  font-family:var(--label);font-size:.78rem;font-weight:400;letter-spacing:.42em;
+  color:var(--gold-soft);text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:18px;margin-bottom:38px;
+  opacity:0;animation:fadeIn 1.2s .3s forwards;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{
+  content:'';width:48px;height:1px;background:var(--gold);
+}
+.hero h1{
+  font-family:var(--serif-en);font-weight:300;
+  font-size:clamp(3rem, 9vw, 7.2rem);
+  line-height:.98;letter-spacing:.01em;
+  background:linear-gradient(180deg,#fff 0%, var(--champagne) 50%, var(--gold) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  opacity:0;animation:slideUp 1.3s .55s forwards;
+}
+.hero h1 .yen{
+  display:block;font-family:var(--serif-en);font-weight:300;
+  font-size:clamp(1.6rem,4.5vw,3rem);letter-spacing:.08em;margin-bottom:6px;
+  color:var(--gold-soft);-webkit-text-fill-color:var(--gold-soft);
+}
+.hero h1 .sub{
+  display:block;font-family:var(--serif-jp);font-weight:300;
+  font-size:clamp(.95rem,2vw,1.35rem);letter-spacing:.5em;margin-top:24px;
+  color:var(--text);-webkit-text-fill-color:var(--text);
+}
+.hero-lead{
+  margin-top:38px;max-width:640px;font-family:var(--serif-jp);font-weight:300;
+  font-size:clamp(.95rem,1.7vw,1.1rem);line-height:2.2;color:#d9d2bf;
+  opacity:0;animation:slideUp 1.3s .8s forwards;
+}
+.hero-stats{
+  margin-top:54px;display:flex;gap:42px;flex-wrap:wrap;justify-content:center;
+  opacity:0;animation:slideUp 1.3s 1s forwards;
+}
+.hero-stat{text-align:center;min-width:90px}
+.hero-stat .num{
+  font-family:var(--serif-en);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;
+  color:var(--gold-soft);line-height:1;
+}
+.hero-stat .lbl{
+  font-family:var(--label);font-size:.68rem;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--text-mute);margin-top:10px;
+}
+.hero-scroll{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  font-family:var(--label);font-size:.68rem;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--text-mute);display:flex;flex-direction:column;align-items:center;gap:14px;
+}
+.hero-scroll::after{
+  content:'';width:1px;height:50px;
+  background:linear-gradient(180deg,var(--gold) 0%, transparent 100%);
+  animation:scrollLine 2.2s ease-in-out infinite;
+}
+@keyframes scrollLine{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.4);opacity:.4}}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+
+/* ============ SHARED SECTION ============ */
+section{padding:130px 24px;position:relative}
+.wrap{max-width:1180px;margin:0 auto}
+.section-eyebrow{
+  font-family:var(--label);font-size:.72rem;letter-spacing:.42em;font-weight:500;
+  text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:18px;justify-content:center;
+  margin-bottom:24px;
+}
+.section-eyebrow::before,.section-eyebrow::after{
+  content:'';width:34px;height:1px;background:var(--gold);opacity:.5;
+}
+.section-title{
+  font-family:var(--serif-en);font-weight:300;line-height:1.1;
+  font-size:clamp(2.2rem,5.5vw,4rem);
+  text-align:center;color:var(--champagne);
+}
+.section-title .jp{
+  display:block;font-family:var(--serif-jp);font-weight:300;
+  font-size:clamp(.95rem,1.7vw,1.15rem);letter-spacing:.42em;
+  color:var(--text-mute);margin-top:18px;
+}
+.section-lead{
+  max-width:680px;margin:30px auto 0;text-align:center;
+  font-family:var(--serif-jp);font-weight:300;line-height:2.1;color:#cfc8b4;
+  font-size:1rem;
+}
+
+/* ============ CONCEPT ============ */
+.concept{background:linear-gradient(180deg,var(--ink) 0%, var(--ink-2) 100%)}
+.concept-grid{
+  margin-top:80px;display:grid;grid-template-columns:repeat(3,1fr);gap:48px;
+}
+.concept-item{text-align:center;padding:0 12px}
+.concept-icon{
+  font-size:1.6rem;color:var(--gold);
+  width:78px;height:78px;border:1px solid var(--line);border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;margin-bottom:22px;
+  transition:.4s;
+}
+.concept-item:hover .concept-icon{background:rgba(201,169,97,.08);transform:translateY(-4px)}
+.concept-item h3{
+  font-family:var(--serif-jp);font-weight:400;font-size:1.15rem;
+  color:var(--champagne);margin-bottom:14px;letter-spacing:.05em;
+}
+.concept-item p{
+  font-size:.92rem;color:var(--text-mute);line-height:2;font-weight:300;
+}
+@media(max-width:760px){.concept-grid{grid-template-columns:1fr;gap:40px}}
+
+/* ============ DIVIDER ============ */
+.divider{
+  height:340px;background-size:cover;background-position:center;background-attachment:fixed;
+  position:relative;
+}
+.divider::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,10,16,.55),rgba(10,10,16,.85));
+}
+.divider-quote{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:0 24px;z-index:1;
+}
+.divider-quote .mark{font-family:var(--serif-en);font-size:4rem;color:var(--gold);line-height:.5;opacity:.7}
+.divider-quote p{
+  font-family:var(--serif-jp);font-weight:300;font-size:clamp(1.05rem,2.2vw,1.4rem);
+  line-height:2;color:#f0eada;margin-top:28px;max-width:700px;letter-spacing:.04em;
+}
+.divider-quote .by{
+  font-family:var(--label);font-size:.7rem;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--gold-soft);margin-top:24px;
+}
+@media(max-width:760px){.divider{background-attachment:scroll;height:300px}}
+
+/* ============ ROUTE ============ */
+.route{background:var(--ink-2)}
+.route-map{
+  margin-top:70px;padding:46px;border:1px solid var(--line);
+  background:linear-gradient(135deg, rgba(201,169,97,.04), rgba(0,0,0,0));
+  border-radius:4px;
+}
+.route-line{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:14px 12px;align-items:center;
+}
+.route-stop{
+  padding:13px 22px;border:1px solid var(--line);border-radius:999px;
+  font-family:var(--serif-jp);font-size:.95rem;letter-spacing:.08em;
+  background:rgba(201,169,97,.05);color:var(--champagne);
+  transition:.3s;cursor:default;
+}
+.route-stop.start{border-color:var(--gold);color:var(--gold-soft);background:rgba(201,169,97,.12)}
+.route-stop:hover{background:rgba(201,169,97,.12);border-color:var(--gold-soft)}
+.route-stop .flag{margin-right:8px}
+.route-arrow{color:var(--gold);font-size:.85rem;opacity:.7}
+.route-meta{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:54px;
+  border-top:1px solid var(--line);padding-top:34px;
+}
+.route-meta-item{text-align:center;border-right:1px solid var(--line)}
+.route-meta-item:last-child{border-right:none}
+.route-meta-item .v{
+  font-family:var(--serif-en);font-size:1.8rem;color:var(--gold-soft);font-weight:400;
+}
+.route-meta-item .l{
+  font-family:var(--label);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--text-mute);margin-top:6px;
+}
+@media(max-width:760px){
+  .route-meta{grid-template-columns:repeat(2,1fr);gap:24px 0}
+  .route-meta-item{padding:12px 0;border-right:none;border-bottom:1px solid var(--line)}
+  .route-meta-item:nth-last-child(-n+2){border-bottom:none}
+  .route-map{padding:30px 20px}
+}
+
+/* ============ DAYS (the stars of the show) ============ */
+.days{background:var(--ink);padding-bottom:60px}
+.day{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:0;margin-bottom:130px;
+  align-items:stretch;
+}
+.day:nth-child(even){grid-template-columns:.95fr 1.05fr}
+.day:nth-child(even) .day-img{order:2}
+.day:nth-child(even) .day-text{order:1}
+.day-img{
+  position:relative;overflow:hidden;min-height:540px;
+  background-size:cover;background-position:center;
+  border:1px solid var(--line);
+}
+.day-img::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(10,10,16,.15) 0%, rgba(10,10,16,.05) 50%, rgba(10,10,16,.4) 100%);
+  z-index:1;transition:.6s;
+}
+.day-img:hover::before{background:linear-gradient(135deg,rgba(10,10,16,.05) 0%, transparent 50%, rgba(10,10,16,.25) 100%)}
+.day-img-tag{
+  position:absolute;top:30px;left:30px;z-index:2;
+  display:flex;align-items:center;gap:14px;
+}
+.day-img-tag .num{
+  font-family:var(--serif-en);font-size:3.6rem;font-weight:300;color:var(--gold-soft);line-height:1;
+  text-shadow:0 4px 24px rgba(0,0,0,.55);
+}
+.day-img-tag .day-label{
+  font-family:var(--label);font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;
+  color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);line-height:1.6;
+}
+.day-img-tag .day-label .country{display:block;color:var(--gold-soft);font-size:.65rem;margin-top:4px}
+.day-text{
+  padding:50px 56px;background:var(--ink-2);
+  display:flex;flex-direction:column;justify-content:center;
+  border:1px solid var(--line);border-left:none;
+}
+.day:nth-child(even) .day-text{border-left:1px solid var(--line);border-right:none}
+.day-place{
+  font-family:var(--label);font-size:.72rem;letter-spacing:.38em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:18px;
+}
+.day-title{
+  font-family:var(--serif-jp);font-weight:400;
+  font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.55;color:var(--champagne);
+  margin-bottom:18px;letter-spacing:.02em;
+}
+.day-hotel{
+  font-family:var(--serif-en);font-style:italic;font-size:1.1rem;font-weight:400;
+  color:var(--gold-soft);margin-bottom:24px;letter-spacing:.05em;
+}
+.day-desc{
+  font-size:.95rem;color:#c4bda8;line-height:2;font-weight:300;
+}
+.day-features{
+  margin-top:30px;display:flex;flex-wrap:wrap;gap:10px;
+}
+.day-features .feat{
+  font-family:var(--sans-jp);font-size:.78rem;letter-spacing:.06em;font-weight:400;
+  padding:7px 14px;border:1px solid var(--line);border-radius:2px;
+  color:var(--gold-soft);background:rgba(201,169,97,.04);
+}
+.day-features .feat i{color:var(--gold);margin-right:6px;font-size:.72rem}
+.day-foot{
+  margin-top:34px;padding-top:24px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;
+}
+.day-price{font-family:var(--serif-en);font-size:1.5rem;color:#fff;font-weight:400}
+.day-price small{
+  display:block;font-family:var(--label);font-size:.65rem;font-weight:400;
+  color:var(--text-mute);letter-spacing:.18em;margin-top:6px;
+}
+.day-link{
+  font-family:var(--label);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-soft);padding-bottom:4px;border-bottom:1px solid var(--gold);
+  transition:.3s;display:inline-flex;align-items:center;gap:10px;
+}
+.day-link:hover{color:#fff;gap:16px}
+@media(max-width:900px){
+  .day,.day:nth-child(even){grid-template-columns:1fr}
+  .day:nth-child(even) .day-img,.day:nth-child(even) .day-text{order:initial}
+  .day-text{border-left:1px solid var(--line);border-top:none;padding:40px 30px}
+  .day-img{min-height:340px}
+  .day{margin-bottom:80px}
+}
+
+/* ============ BUDGET ============ */
+.budget{background:var(--ink-2)}
+.budget-headline{
+  text-align:center;margin-top:48px;
+  font-family:var(--serif-en);font-size:clamp(3rem,8vw,5.5rem);font-weight:300;
+  background:linear-gradient(180deg,#fff,var(--gold));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:.04em;
+}
+.budget-sub{
+  text-align:center;font-family:var(--label);font-size:.78rem;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--text-mute);margin-top:14px;
+}
+.budget-list{margin-top:70px;border-top:1px solid var(--line)}
+.budget-row{
+  display:grid;grid-template-columns:60px 1fr 220px 180px;
+  align-items:center;gap:30px;padding:26px 0;border-bottom:1px solid var(--line);
+  transition:.3s;
+}
+.budget-row:hover{background:rgba(201,169,97,.04);padding-left:14px;padding-right:14px}
+.budget-row .icn{
+  width:48px;height:48px;border:1px solid var(--line);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1rem;
+}
+.budget-row .label{font-family:var(--serif-jp);font-size:.98rem;color:var(--champagne);font-weight:400}
+.budget-row .label small{display:block;color:var(--text-mute);font-size:.78rem;font-weight:300;margin-top:4px}
+.budget-row .bar{height:4px;background:rgba(201,169,97,.1);border-radius:2px;position:relative;overflow:hidden}
+.budget-row .bar::after{
+  content:'';position:absolute;left:0;top:0;height:100%;
+  background:linear-gradient(90deg,var(--gold) 0%, var(--champagne) 100%);
+  width:var(--w,0%);transition:width 1.2s ease;
+}
+.budget-row .amt{
+  font-family:var(--serif-en);font-size:1.35rem;color:#fff;text-align:right;font-weight:400;
+  letter-spacing:.02em;
+}
+.budget-total{
+  margin-top:50px;padding:34px;border:1px solid var(--gold);
+  background:linear-gradient(135deg,rgba(201,169,97,.08),transparent);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+}
+.budget-total .lbl{
+  font-family:var(--label);font-size:.78rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);
+}
+.budget-total .num{
+  font-family:var(--serif-en);font-size:clamp(2.2rem,5vw,3.4rem);color:#fff;font-weight:400;letter-spacing:.02em;
+}
+@media(max-width:760px){
+  .budget-row{grid-template-columns:40px 1fr 130px;gap:14px;padding:20px 0}
+  .budget-row .bar{display:none}
+  .budget-row .label{font-size:.88rem}
+  .budget-row .amt{font-size:1.1rem}
+}
+
+/* ============ REFERENCE ============ */
+.reference{background:var(--ink)}
+.ref-box{
+  margin-top:60px;padding:60px;border:1px solid var(--line);position:relative;
+  background:linear-gradient(135deg,rgba(201,169,97,.05),transparent 80%);
+}
+.ref-box::before{
+  content:'\f570';font-family:'Font Awesome 6 Free';font-weight:900;
+  position:absolute;top:30px;right:36px;font-size:3rem;color:var(--gold);opacity:.18;
+}
+.ref-eyebrow{font-family:var(--label);font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold)}
+.ref-box h3{
+  font-family:var(--serif-jp);font-weight:400;font-size:clamp(1.3rem,3vw,2rem);
+  color:var(--champagne);margin:18px 0 20px;line-height:1.6;
+}
+.ref-box p{font-size:.98rem;color:#c4bda8;line-height:2.1;font-weight:300}
+.ref-box p b{color:var(--gold-soft);font-weight:500}
+.ref-box .ref-link{
+  display:inline-flex;align-items:center;gap:12px;margin-top:30px;
+  font-family:var(--label);font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-soft);border-bottom:1px solid var(--gold);padding-bottom:4px;
+  transition:.3s;
+}
+.ref-box .ref-link:hover{color:#fff;gap:18px}
+@media(max-width:760px){.ref-box{padding:36px 24px}}
+
+/* ============ FINALE ============ */
+.finale{
+  text-align:center;padding:160px 24px;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(201,169,97,.15), transparent 60%),
+    linear-gradient(180deg,rgba(10,10,16,.7),rgba(10,10,16,.92)),
+    url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2400&q=85") center/cover;
+}
+.finale h2{
+  font-family:var(--serif-en);font-weight:300;
+  font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.1;
+  background:linear-gradient(180deg,#fff,var(--gold));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.finale h2 .jp{
+  display:block;font-family:var(--serif-jp);font-weight:300;
+  font-size:clamp(.95rem,2vw,1.2rem);letter-spacing:.42em;color:var(--text);
+  -webkit-text-fill-color:var(--text);margin-top:24px;
+}
+.finale p{
+  max-width:620px;margin:34px auto 0;font-family:var(--serif-jp);font-weight:300;
+  line-height:2.2;color:#d9d2bf;
+}
+.finale-sign{
+  margin-top:48px;font-family:var(--label);font-size:.78rem;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--gold-soft);
+}
+.finale-sign i{color:var(--gold);margin:0 12px}
+
+/* ============ FOOTER ============ */
+footer{
+  background:var(--ink-3);padding:60px 24px 40px;text-align:center;
+  border-top:1px solid var(--line);
+}
+.foot-logo{
+  font-family:var(--serif-en);font-weight:500;letter-spacing:.22em;color:var(--gold-soft);
+  font-size:1.2rem;
+}
+.foot-logo i{margin-right:8px;color:var(--gold)}
+.foot-links{
+  margin-top:30px;display:flex;gap:30px;justify-content:center;flex-wrap:wrap;
+  padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.foot-links a{
+  font-family:var(--label);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--text-mute);transition:color .3s;
+}
+.foot-links a:hover{color:var(--gold-soft)}
+.foot-note{
+  margin-top:28px;font-family:var(--sans-jp);font-size:.78rem;color:#6b6757;
+  font-weight:300;line-height:2;max-width:780px;margin-left:auto;margin-right:auto;
+}
+
+/* ============ ANIMATIONS ============ */
+.fade-in,.fade-in-left,.fade-in-right,.stagger{
+  opacity:0;transition:opacity .9s ease, transform .9s ease;
+}
+.fade-in{transform:translateY(40px)}
+.fade-in-left{transform:translateX(-50px)}
+.fade-in-right{transform:translateX(50px)}
+.fade-in.is-visible,.fade-in-left.is-visible,.fade-in-right.is-visible{opacity:1;transform:none}
+.stagger > *{opacity:0;transform:translateY(30px);transition:opacity .8s ease, transform .8s ease}
+.stagger.is-visible > *{opacity:1;transform:none}
+.stagger.is-visible > *:nth-child(1){transition-delay:.1s}
+.stagger.is-visible > *:nth-child(2){transition-delay:.2s}
+.stagger.is-visible > *:nth-child(3){transition-delay:.3s}
+.stagger.is-visible > *:nth-child(4){transition-delay:.4s}
+.stagger.is-visible > *:nth-child(5){transition-delay:.5s}
+.stagger.is-visible > *:nth-child(6){transition-delay:.6s}
+.stagger.is-visible > *:nth-child(7){transition-delay:.7s}
+.stagger.is-visible > *:nth-child(8){transition-delay:.8s}
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-logo"><i class="fa-solid fa-plane-up"></i>GRAND TOUR</div>
+  <div class="nav-links">
+    <a href="#concept">Concept</a>
+    <a href="#route">Route</a>
+    <a href="#days">Itinerary</a>
+    <a href="#budget">Investment</a>
+  </div>
+  <a href="#finale" class="nav-cta">Begin the journey</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-eyebrow">A once-in-a-lifetime journey</div>
+  <h1>
+    <span class="yen">¥100,000,000</span>
+    GRAND TOUR
+    <span class="sub">地球を、ひと巡り</span>
+  </h1>
+  <p class="hero-lead">
+    1億円・7日間・プライベートジェット。<br>
+    世界で最も美しい場所と、世界で最も豪奢なスイートだけを繋いだ、<br>
+    一生に一度だけ許される、ドリーム・ジャーニー。
+  </p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">7</div><div class="lbl">Days</div></div>
+    <div class="hero-stat"><div class="num">6</div><div class="lbl">Countries</div></div>
+    <div class="hero-stat"><div class="num">6</div><div class="lbl">Iconic Suites</div></div>
+    <div class="hero-stat"><div class="num">¥100M</div><div class="lbl">Investment</div></div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</header>
+
+<!-- ============ CONCEPT ============ -->
+<section class="concept" id="concept">
+  <div class="wrap">
+    <div class="fade-in">
+      <div class="section-eyebrow">Concept</div>
+      <h2 class="section-title">A Journey, Composed.<span class="jp">設計された、贅沢</span></h2>
+      <p class="section-lead">
+        「もしお金が問題でないなら、人生で一度、どんな旅をするだろう。」<br>
+        そんな問いから始まった、世界の最高峰だけを集めた7日間。<br>
+        観光ではなく、生涯記憶に刻まれる体験を。
+      </p>
+    </div>
+    <div class="concept-grid stagger">
+      <div class="concept-item">
+        <div class="concept-icon"><i class="fa-solid fa-plane-circle-check"></i></div>
+        <h3>Boundless Mobility</h3>
+        <p>Gulfstream G700／Global 7500 級のプライベートジェットを<br>7日間、まるごと貸切。空港の制約から自由になる。</p>
+      </div>
+      <div class="concept-item">
+        <div class="concept-icon"><i class="fa-solid fa-crown"></i></div>
+        <h3>The Finest Suites</h3>
+        <p>各都市で、世界が認める唯一無二のスイートのみ。<br>「泊まる」ではなく「住まう」感覚で過ごす一夜。</p>
+      </div>
+      <div class="concept-item">
+        <div class="concept-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+        <h3>Curated Moments</h3>
+        <p>気球で見るサバンナの朝焼け。砂漠でのプライベート晩餐。<br>その土地で最も美しい瞬間だけを、専属コンシェルジュが整える。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIVIDER 1 ============ -->
+<div class="divider" style="background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2400&q=85')">
+  <div class="divider-quote">
+    <div class="mark">"</div>
+    <p>旅とは、人生の余白に世界を描く行為である。</p>
+    <div class="by">— A Traveler's Note</div>
+  </div>
+</div>
+
+<!-- ============ ROUTE ============ -->
+<section class="route" id="route">
+  <div class="wrap">
+    <div class="fade-in">
+      <div class="section-eyebrow">The Route</div>
+      <h2 class="section-title">Around the Globe in 7 Days<span class="jp">地球をまるっと、ひと巡り</span></h2>
+      <p class="section-lead">
+        日本を発ち、西へ。砂漠の黄金都市から、インド洋のラグーンへ。<br>
+        サバンナの夜明けを越え、芸術の都パリへ。摩天楼を通り、南太平洋の楽園へ。
+      </p>
+    </div>
+    <div class="route-map fade-in">
+      <div class="route-line">
+        <span class="route-stop start"><span class="flag">🇯🇵</span>東京</span>
+        <span class="route-arrow"><i class="fa-solid fa-plane"></i></span>
+        <span class="route-stop"><span class="flag">🇦🇪</span>ドバイ</span>
+        <span class="route-arrow"><i class="fa-solid fa-plane"></i></span>
+        <span class="route-stop"><span class="flag">🇲🇻</span>モルディブ</span>
+        <span class="route-arrow"><i class="fa-solid fa-plane"></i></span>
+        <span class="route-stop"><span class="flag">🇹🇿</span>セレンゲティ</span>
+        <span class="route-arrow"><i class="fa-solid fa-plane"></i></span>
+        <span class="route-stop"><span class="flag">🇫🇷</span>パリ</span>
+        <span class="route-arrow"><i class="fa-solid fa-plane"></i></span>
+        <span class="route-stop"><span class="flag">🇺🇸</span>ニューヨーク</span>
+        <span class="route-arrow"><i class="fa-solid fa-plane"></i></span>
+        <span class="route-stop"><span class="flag">🇵🇫</span>ボラボラ</span>
+        <span class="route-arrow"><i class="fa-solid fa-plane"></i></span>
+        <span class="route-stop start"><span class="flag">🇯🇵</span>東京</span>
+      </div>
+      <div class="route-meta">
+        <div class="route-meta-item"><div class="v">7</div><div class="l">Days</div></div>
+        <div class="route-meta-item"><div class="v">6</div><div class="l">Countries</div></div>
+        <div class="route-meta-item"><div class="v">~40,000<small style="font-family:var(--label);font-size:.6rem;letter-spacing:.2em"> KM</small></div><div class="l">Total Distance</div></div>
+        <div class="route-meta-item"><div class="v">1</div><div class="l">Private Jet</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIVIDER 2 ============ -->
+<div class="divider" style="background-image:url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=2400&q=85')">
+  <div class="divider-quote">
+    <div class="mark">"</div>
+    <p>最高の旅とは、戻ってきた時の自分が、出発した時とは違う人間になっていることだ。</p>
+    <div class="by">— Pat Conroy</div>
+  </div>
+</div>
+
+<!-- ============ DAYS ============ -->
+<section class="days" id="days">
+  <div class="wrap">
+    <div class="fade-in" style="text-align:center;margin-bottom:90px">
+      <div class="section-eyebrow">The Itinerary</div>
+      <h2 class="section-title">Six Suites, One Lifetime<span class="jp">六つのスイート、一生分の物語</span></h2>
+    </div>
+
+    <!-- DAY 1 DUBAI -->
+    <article class="day">
+      <div class="day-img fade-in-left" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1400&q=85')">
+        <div class="day-img-tag">
+          <div class="num">01</div>
+          <div class="day-label">Day One<span class="country">United Arab Emirates ／ Dubai</span></div>
+        </div>
+      </div>
+      <div class="day-text fade-in-right">
+        <div class="day-place"><i class="fa-solid fa-location-dot"></i>&nbsp; Dubai, UAE</div>
+        <h3 class="day-title">"7つ星"の帆に泊まる、<br>砂漠の黄金都市</h3>
+        <div class="day-hotel">Burj Al Arab Jumeirah — Royal Suite</div>
+        <p class="day-desc">
+          海に浮かぶ帆の形をした、世界的アイコン。780㎡・2フロアの「ロイヤルスイート」は、24金のiPad、回転するキングサイズベッド、私的シネマ、専属バトラー24時間体制、ロールス・ロイス送迎付き。<br>
+          夕方は赤い砂丘でのプライベート・デザートサファリ。夜はヘリコプターで、煌めく未来都市の夜景を独占する。
+        </p>
+        <div class="day-features">
+          <span class="feat"><i class="fa-solid fa-crown"></i>Royal Suite 780㎡</span>
+          <span class="feat"><i class="fa-solid fa-helicopter"></i>ヘリ夜景遊覧</span>
+          <span class="feat"><i class="fa-solid fa-mountain-sun"></i>砂漠VIPサファリ</span>
+          <span class="feat"><i class="fa-solid fa-user-tie"></i>専属バトラー24h</span>
+        </div>
+        <div class="day-foot">
+          <div class="day-price">¥5,500,000<small>1泊・体験込 ／ 公式 US$25,000〜</small></div>
+          <a class="day-link" href="https://www.jumeirah.com/en/stay/dubai/burj-al-arab-jumeirah" target="_blank" rel="noopener">Visit Official <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- DAY 2 MALDIVES -->
+    <article class="day">
+      <div class="day-img fade-in-right" style="background-image:url('https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1400&q=85')">
+        <div class="day-img-tag">
+          <div class="num">02</div>
+          <div class="day-label">Day Two<span class="country">Republic of Maldives ／ Noonu Atoll</span></div>
+        </div>
+      </div>
+      <div class="day-text fade-in-left">
+        <div class="day-place"><i class="fa-solid fa-location-dot"></i>&nbsp; Noonu Atoll, Maldives</div>
+        <h3 class="day-title">ウォータースライダーで、<br>海へ滑り込む朝</h3>
+        <div class="day-hotel">Soneva Jani — Water Reserve with Slide</div>
+        <p class="day-desc">
+          ヌーヌ環礁の透き通ったラグーンに浮かぶ、世界屈指のオーバーウォーター・サンクチュアリ。<br>
+          客室から直接海へと滑り込むウォータースライダー、開閉式の天井で寝ながら望む満天の星空、専属メイトル「Mr/Ms Friday」がすべての願いを叶える。夜は水中レストラン、そして砂浜での野外シネマへ。
+        </p>
+        <div class="day-features">
+          <span class="feat"><i class="fa-solid fa-water-ladder"></i>水上スライダー直結</span>
+          <span class="feat"><i class="fa-solid fa-star"></i>開く天井／星空ベッド</span>
+          <span class="feat"><i class="fa-solid fa-fish"></i>水中ダイニング</span>
+          <span class="feat"><i class="fa-solid fa-film"></i>野外プライベートシネマ</span>
+        </div>
+        <div class="day-foot">
+          <div class="day-price">¥3,500,000<small>1泊・体験込 ／ 公式 US$1,550〜</small></div>
+          <a class="day-link" href="https://soneva.com/resorts/soneva-jani/" target="_blank" rel="noopener">Visit Official <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- DAY 3 SERENGETI -->
+    <article class="day">
+      <div class="day-img fade-in-left" style="background-image:url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1400&q=85')">
+        <div class="day-img-tag">
+          <div class="num">03</div>
+          <div class="day-label">Day Three<span class="country">United Republic of Tanzania ／ Serengeti</span></div>
+        </div>
+      </div>
+      <div class="day-text fade-in-right">
+        <div class="day-place"><i class="fa-solid fa-location-dot"></i>&nbsp; Serengeti National Park, Tanzania</div>
+        <h3 class="day-title">象の群れを見下ろす、<br>サバンナの朝焼け</h3>
+        <div class="day-hotel">Four Seasons Safari Lodge Serengeti</div>
+        <p class="day-desc">
+          国立公園のど真ん中、水場に集まる野生のゾウをインフィニティプールから眺める、唯一無二のロッジ。<br>
+          夜明け前に飛び立つ熱気球で、地平線まで続くサバンナと"ビッグファイブ"を空から見渡す。専属レンジャーのプライベート・ゲームドライブ、食事・ドリンクすべて込み。
+        </p>
+        <div class="day-features">
+          <span class="feat"><i class="fa-solid fa-circle-up"></i>サンライズ熱気球</span>
+          <span class="feat"><i class="fa-solid fa-paw"></i>Big Five サファリ</span>
+          <span class="feat"><i class="fa-solid fa-water"></i>水場ビュー インフィニティプール</span>
+          <span class="feat"><i class="fa-solid fa-utensils"></i>オールインクルーシブ</span>
+        </div>
+        <div class="day-foot">
+          <div class="day-price">¥4,000,000<small>1泊・気球＆ガイド込 ／ 公式 US$1,540〜</small></div>
+          <a class="day-link" href="https://www.fourseasons.com/serengeti/" target="_blank" rel="noopener">Visit Official <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- DAY 4 PARIS -->
+    <article class="day">
+      <div class="day-img fade-in-right" style="background-image:url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1400&q=85')">
+        <div class="day-img-tag">
+          <div class="num">04</div>
+          <div class="day-label">Day Four<span class="country">République Française ／ Paris</span></div>
+        </div>
+      </div>
+      <div class="day-text fade-in-left">
+        <div class="day-place"><i class="fa-solid fa-location-dot"></i>&nbsp; Place Vendôme, Paris</div>
+        <h3 class="day-title">ココ・シャネルが暮らした<br>部屋で目覚める</h3>
+        <div class="day-hotel">Ritz Paris — Suite Coco Chanel</div>
+        <p class="day-desc">
+          ヴァンドーム広場のリッツ・パリ。マドモアゼル・シャネルが30年以上を過ごした伝説のスイート（188㎡）に滞在。<br>
+          夜はミシュラン星付き「L'Espadon」のシェフズコース。翌朝は専属ガイドでルーヴル美術館を開館前に独占、午後はヴァンドームのハイジュエリーで時を忘れる。
+        </p>
+        <div class="day-features">
+          <span class="feat"><i class="fa-solid fa-bell-concierge"></i>Suite Coco Chanel</span>
+          <span class="feat"><i class="fa-solid fa-star"></i>Michelin L'Espadon</span>
+          <span class="feat"><i class="fa-solid fa-palette"></i>ルーヴル 開館前ツアー</span>
+          <span class="feat"><i class="fa-solid fa-gem"></i>Vendôme Haute Joaillerie</span>
+        </div>
+        <div class="day-foot">
+          <div class="day-price">¥7,000,000<small>1泊・美食込 ／ 公式 €40,000〜</small></div>
+          <a class="day-link" href="https://www.ritzparis.com/en/suite-coco-chanel" target="_blank" rel="noopener">Visit Official <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- DAY 5 NY -->
+    <article class="day">
+      <div class="day-img fade-in-left" style="background-image:url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=1400&q=85')">
+        <div class="day-img-tag">
+          <div class="num">05</div>
+          <div class="day-label">Day Five<span class="country">United States of America ／ New York</span></div>
+        </div>
+      </div>
+      <div class="day-text fade-in-right">
+        <div class="day-place"><i class="fa-solid fa-location-dot"></i>&nbsp; Fifth Avenue, Manhattan</div>
+        <h3 class="day-title">5番街の頂、<br>静寂のスカイラインステイ</h3>
+        <div class="day-hotel">Aman New York — Signature Suite</div>
+        <p class="day-desc">
+          5番街の歴史的クラウンビルに2022年開業した、ニューヨークで最も静かで、最も高価なホテル。<br>
+          市内最大級のスイートで暖炉を眺め、3フロア・25,000sqftのアマンスパへ。夜はブロードウェイのプレミア席、フィナーレはマンハッタンを横断するナイト・ヘリコプター遊覧。
+        </p>
+        <div class="day-features">
+          <span class="feat"><i class="fa-solid fa-fire"></i>暖炉付きスイート</span>
+          <span class="feat"><i class="fa-solid fa-spa"></i>25,000 sqft Aman Spa</span>
+          <span class="feat"><i class="fa-solid fa-masks-theater"></i>Broadway VIP席</span>
+          <span class="feat"><i class="fa-solid fa-helicopter"></i>夜景ヘリ遊覧</span>
+        </div>
+        <div class="day-foot">
+          <div class="day-price">¥4,500,000<small>1泊・体験込 ／ 公式 US$2,300〜</small></div>
+          <a class="day-link" href="https://www.aman.com/hotels/aman-new-york" target="_blank" rel="noopener">Visit Official <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- DAY 6-7 BORA BORA -->
+    <article class="day">
+      <div class="day-img fade-in-right" style="background-image:url('https://images.unsplash.com/photo-1589197331516-4d84b72ebde3?auto=format&fit=crop&w=1400&q=85')">
+        <div class="day-img-tag">
+          <div class="num">06</div>
+          <div class="day-label">Day Six – Seven<span class="country">French Polynesia ／ Bora Bora</span></div>
+        </div>
+      </div>
+      <div class="day-text fade-in-left">
+        <div class="day-place"><i class="fa-solid fa-location-dot"></i>&nbsp; Bora Bora, French Polynesia</div>
+        <h3 class="day-title">世界で一番きれいな海で、<br>旅を、締めくくる</h3>
+        <div class="day-hotel">Four Seasons Resort Bora Bora — Overwater Villa</div>
+        <p class="day-desc">
+          オテマヌ山を望むターコイズの海に浮かぶ、プランジプール付き水上ヴィラ。テラスから直接ラグーンへ。<br>
+          ガラス床から熱帯魚を眺め、サンセットクルーズでシャンパン、専属シェフのプライベートディナー。最後の2日間は、ただ何もしない贅沢を。そして東京へ。
+        </p>
+        <div class="day-features">
+          <span class="feat"><i class="fa-solid fa-umbrella-beach"></i>水上ヴィラ＋プランジプール</span>
+          <span class="feat"><i class="fa-solid fa-wine-glass"></i>サンセット・シャンパンクルーズ</span>
+          <span class="feat"><i class="fa-solid fa-fish-fins"></i>ラグーン シュノーケル</span>
+          <span class="feat"><i class="fa-solid fa-utensils"></i>プライベート・シェフディナー</span>
+        </div>
+        <div class="day-foot">
+          <div class="day-price">¥5,000,000<small>2泊・体験込 ／ 公式 US$1,081〜</small></div>
+          <a class="day-link" href="https://www.fourseasons.com/borabora/" target="_blank" rel="noopener">Visit Official <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ DIVIDER 3 ============ -->
+<div class="divider" style="background-image:url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=2400&q=85')">
+  <div class="divider-quote">
+    <div class="mark">"</div>
+    <p>世界は一冊の本である。旅をしない者は、その一頁しか読まない。</p>
+    <div class="by">— Saint Augustine</div>
+  </div>
+</div>
+
+<!-- ============ BUDGET ============ -->
+<section class="budget" id="budget">
+  <div class="wrap">
+    <div class="fade-in">
+      <div class="section-eyebrow">The Investment</div>
+      <h2 class="section-title">Where the ¥100M Goes<span class="jp">1億円の使い道</span></h2>
+      <div class="budget-headline">¥100,000,000</div>
+      <div class="budget-sub">Total Investment ／ for 2 guests</div>
+    </div>
+
+    <div class="budget-list fade-in">
+      <div class="budget-row">
+        <div class="icn"><i class="fa-solid fa-plane-up"></i></div>
+        <div class="label">プライベートジェット 世界一周チャーター<small>Global 7500 級・7日間貸切・燃料・パイロット・着陸料込</small></div>
+        <div class="bar" style="--w:100%"></div>
+        <div class="amt">¥55,000,000</div>
+      </div>
+      <div class="budget-row">
+        <div class="icn"><i class="fa-solid fa-bell-concierge"></i></div>
+        <div class="label">Ritz Paris ／ Suite Coco Chanel ＋ Michelin<small>1泊・三つ星 L'Espadon・ルーヴル開館前ツアー</small></div>
+        <div class="bar" style="--w:13%"></div>
+        <div class="amt">¥7,000,000</div>
+      </div>
+      <div class="budget-row">
+        <div class="icn"><i class="fa-solid fa-crown"></i></div>
+        <div class="label">Burj Al Arab ／ Royal Suite<small>1泊・砂漠サファリ・夜景ヘリ・ロールス送迎</small></div>
+        <div class="bar" style="--w:10%"></div>
+        <div class="amt">¥5,500,000</div>
+      </div>
+      <div class="budget-row">
+        <div class="icn"><i class="fa-solid fa-umbrella-beach"></i></div>
+        <div class="label">Four Seasons Bora Bora ／ 水上ヴィラ 2泊<small>サンセットクルーズ・専属シェフディナー</small></div>
+        <div class="bar" style="--w:9%"></div>
+        <div class="amt">¥5,000,000</div>
+      </div>
+      <div class="budget-row">
+        <div class="icn"><i class="fa-solid fa-paw"></i></div>
+        <div class="label">FS Serengeti ／ サファリ＋熱気球サンライズ<small>1泊・専属レンジャー・気球サンライズ・全食込</small></div>
+        <div class="bar" style="--w:7%"></div>
+        <div class="amt">¥4,000,000</div>
+      </div>
+      <div class="budget-row">
+        <div class="icn"><i class="fa-solid fa-city"></i></div>
+        <div class="label">Aman New York ／ Suite＋夜景ヘリ<small>1泊・Aman Spa・Broadway VIP席・ヘリ遊覧</small></div>
+        <div class="bar" style="--w:8%"></div>
+        <div class="amt">¥4,500,000</div>
+      </div>
+      <div class="budget-row">
+        <div class="icn"><i class="fa-solid fa-water-ladder"></i></div>
+        <div class="label">Soneva Jani ／ 水上ヴィラ<small>1泊・Mr/Ms Friday バトラー・野外シネマ</small></div>
+        <div class="bar" style="--w:6%"></div>
+        <div class="amt">¥3,500,000</div>
+      </div>
+      <div class="budget-row">
+        <div class="icn"><i class="fa-solid fa-champagne-glasses"></i></div>
+        <div class="label">専属コンシェルジュ・通訳・買い物・予備費<small>各都市の地上手配・チップ・ショッピング・為替予備</small></div>
+        <div class="bar" style="--w:28%"></div>
+        <div class="amt">¥15,500,000</div>
+      </div>
+    </div>
+
+    <div class="budget-total fade-in">
+      <div class="lbl">Grand Total</div>
+      <div class="num">¥100,000,000</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REFERENCE ============ -->
+<section class="reference">
+  <div class="wrap">
+    <div class="fade-in">
+      <div class="section-eyebrow">Reality Check</div>
+      <h2 class="section-title">これ、夢じゃありません<span class="jp">実在する世界一周ジェットツアー</span></h2>
+    </div>
+    <div class="ref-box fade-in">
+      <div class="ref-eyebrow"><i class="fa-solid fa-plane-up"></i>&nbsp; Four Seasons Private Jet Experience</div>
+      <h3>"International Intrigue" ／ 京都・モルディブ・セレンゲティ・パリを巡る21日間。</h3>
+      <p>
+        フォーシーズンズが運航するプライベートジェットによる世界一周ツアー <b>"International Intrigue"</b> は、2026年4月14日〜5月4日、シアトル→京都→ホイアン→モルディブ→セレンゲティ→マラケシュ→フィレンツェ→パリの全21日間。価格は <b>1人 US$219,000（約3,300万円・2名で約6,600万円）</b>。<br>
+        この『¥100,000,000 GRAND TOUR』は、それを「7日間・好きな場所だけ・最高峰スイートだけ」に再構成した、おけちゃんのためのスペシャル・エディションです。
+      </p>
+      <a class="ref-link" href="https://www.fourseasons.com/privatejet/" target="_blank" rel="noopener">
+        Four Seasons Private Jet 公式 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINALE ============ -->
+<section class="finale" id="finale">
+  <div class="fade-in">
+    <h2>
+      Now, let's circle the Earth.
+      <span class="jp">さあ、地球を、一周しよう。</span>
+    </h2>
+    <p>
+      砂漠の黄金、南国の星空、サバンナの朝焼け、芸術の都、眠らない街、そして世界で一番きれいな海。<br>
+      7日間で、人生で見たい景色を、ぜんぶ。<br>
+      これが、1億円の地球一周です。
+    </p>
+    <div class="finale-sign">
+      Designed <i class="fa-solid fa-heart"></i> for おけちゃん
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-logo"><i class="fa-solid fa-plane-up"></i>GRAND TOUR</div>
+  <div class="foot-links">
+    <a href="https://www.jumeirah.com/en/stay/dubai/burj-al-arab-jumeirah" target="_blank" rel="noopener">Burj Al Arab</a>
+    <a href="https://soneva.com/resorts/soneva-jani/" target="_blank" rel="noopener">Soneva Jani</a>
+    <a href="https://www.fourseasons.com/serengeti/" target="_blank" rel="noopener">FS Serengeti</a>
+    <a href="https://www.ritzparis.com/en/suite-coco-chanel" target="_blank" rel="noopener">Ritz Paris</a>
+    <a href="https://www.aman.com/hotels/aman-new-york" target="_blank" rel="noopener">Aman NY</a>
+    <a href="https://www.fourseasons.com/borabora/" target="_blank" rel="noopener">FS Bora Bora</a>
+    <a href="https://www.fourseasons.com/privatejet/" target="_blank" rel="noopener">FS Private Jet</a>
+  </div>
+  <div class="foot-note">
+    ※ 料金は各ホテル公式および主要旅行サイトの公開レート（2025–2026年・1泊あたり）を基にした概算です。実際の費用は時期・為替・空席状況・体験のカスタマイズ内容により変動します。<br>
+    写真：Unsplash ／ アイコン：Font Awesome ／ Designed with love.
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll for nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id.length > 1) {
+        const el = document.querySelector(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      }
+    });
+  });
+
+  // Reveal animations
+  const animEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  animEls.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+    else obs.observe(el);
+  });
+
+  // Nav background opacity on scroll
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) nav.style.background = 'rgba(10,10,16,.85)';
+    else nav.style.background = 'rgba(10,10,16,.55)';
+  });
+</script>
+</body>
+</html>
