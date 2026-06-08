@@ -1,0 +1,3198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プカリ司法書士法人 | 相続・成年後見・遺産整理・家族信託</title>
+  <meta name="description" content="プカリ司法書士法人のホームページ案。相続、成年後見、遺産整理、家族信託、遺言書作成まで、暮らしと事業の法務相談をやさしく支えます。">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Noto+Serif+JP:wght@600;700;900&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #075f8e;
+      --blue-dark: #06486f;
+      --blue-soft: #eaf6fb;
+      --blue-mist: #f4fbff;
+      --orange: #f2a900;
+      --orange-dark: #d98b00;
+      --ink: #1f2d3a;
+      --muted: #647280;
+      --line: #dce8ee;
+      --paper: #ffffff;
+      --bg: #f7fbfd;
+      --shadow: 0 16px 42px rgba(7, 95, 142, 0.12);
+      --shadow-soft: 0 8px 24px rgba(7, 95, 142, 0.08);
+      --sans: "Noto Sans JP", system-ui, sans-serif;
+      --serif: "Noto Serif JP", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 96px;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.9;
+      letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      width: min(1220px, calc(100% - 40px));
+      min-height: 82px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .logo img {
+      width: 214px;
+      height: 52px;
+      object-fit: contain;
+      object-position: left center;
+      mix-blend-mode: multiply;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav a {
+      padding: 12px 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav a:hover {
+      color: var(--blue);
+      border-bottom-color: var(--orange);
+    }
+
+    .header-contact {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .header-quick {
+      display: grid;
+      place-items: center;
+      min-width: 76px;
+      min-height: 58px;
+      padding: 8px 12px 9px;
+      border-left: 1px solid var(--line);
+      background: #fff;
+      color: var(--blue-dark);
+      font-weight: 900;
+      line-height: 1.2;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .header-quick span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .header-quick strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 14px;
+    }
+
+    .header-quick.phone {
+      min-width: 142px;
+    }
+
+    .header-quick.contact-main {
+      background: #d98574;
+      color: #fff;
+      border-left: 0;
+    }
+
+    .header-quick.contact-main span {
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    .header-menu-toggle {
+      display: none;
+      place-items: center;
+      min-width: 58px;
+      min-height: 58px;
+      padding: 7px;
+      border: 0;
+      border-left: 1px solid var(--line);
+      background: #fff;
+      color: var(--blue-dark);
+      font: inherit;
+      font-size: 10px;
+      font-weight: 900;
+      line-height: 1.2;
+      cursor: pointer;
+    }
+
+    .header-menu-icon {
+      display: grid;
+      gap: 4px;
+      width: 22px;
+      margin-bottom: 5px;
+    }
+
+    .header-menu-icon span {
+      display: block;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 74px;
+      left: 12px;
+      right: 12px;
+      z-index: 49;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow);
+    }
+
+    .mobile-nav[hidden] {
+      display: none;
+    }
+
+    .mobile-nav a {
+      display: block;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      color: var(--blue-dark);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .mobile-nav a:last-child {
+      border-bottom: 0;
+    }
+
+    .tel {
+      min-width: 138px;
+      line-height: 1.25;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .tel-label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .tel-num {
+      color: var(--blue-dark);
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 13px 24px 15px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--blue);
+      box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.16);
+      color: #fff;
+      font-weight: 900;
+      line-height: 1.35;
+      text-align: center;
+      white-space: nowrap;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #0870a8;
+      box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.18), var(--shadow-soft);
+    }
+
+    .btn-orange {
+      background: var(--orange);
+      color: #18313f;
+    }
+
+    .btn-orange:hover {
+      background: #ffc039;
+    }
+
+    .floating-consult {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 44;
+      display: none;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      height: 66px;
+      border-top: 1px solid rgba(7, 95, 142, 0.14);
+      background: #f7fbfd;
+      box-shadow: 0 -10px 30px rgba(7, 95, 142, 0.14);
+      backdrop-filter: blur(14px);
+    }
+
+    .floating-consult-item {
+      display: grid;
+      place-items: center;
+      min-width: 0;
+      padding: 8px 8px 9px;
+      border-right: 1px solid rgba(7, 95, 142, 0.12);
+      color: var(--blue-dark);
+      font-weight: 900;
+      line-height: 1.2;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .floating-consult-item span {
+      display: block;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .floating-consult-item strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .floating-consult-item:last-child {
+      border-right: 0;
+    }
+
+    .floating-consult-item.contact-main {
+      background: #d98574;
+      color: #fff;
+    }
+
+    .desktop-follow {
+      position: fixed;
+      right: 0;
+      top: 58%;
+      z-index: 43;
+      display: grid;
+      gap: 6px;
+      transform: translateY(-50%);
+    }
+
+    .desktop-follow-item {
+      display: grid;
+      place-items: center;
+      width: 76px;
+      min-height: 72px;
+      padding: 10px 6px;
+      border: 1px solid rgba(7, 95, 142, 0.16);
+      border-right: 0;
+      border-radius: 14px 0 0 14px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 8px 24px rgba(7, 95, 142, 0.16);
+      color: var(--blue);
+      font-weight: 900;
+      line-height: 1.2;
+      text-align: center;
+      white-space: nowrap;
+      backdrop-filter: blur(12px);
+    }
+
+    .desktop-follow-item span {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .desktop-follow-item strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .desktop-follow-contact {
+      min-height: 188px;
+      background: #d98574;
+      color: #fff;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+    }
+
+    .desktop-follow-contact span {
+      color: #fff067;
+      font-size: 21px;
+      line-height: 1;
+    }
+
+    .desktop-social {
+      position: fixed;
+      right: 18px;
+      bottom: 20px;
+      z-index: 42;
+      display: flex;
+      gap: 12px;
+    }
+
+    .desktop-social-link {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      aspect-ratio: 1;
+      border: 4px solid rgba(255, 255, 255, 0.86);
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(7, 95, 142, 0.16);
+      color: #1877f2;
+      font-family: Arial, sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .floating-consult-item.contact-main span,
+    .floating-consult-item.contact-main strong {
+      color: #fff;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 8% 12%, rgba(242, 169, 0, 0.16), transparent 28%),
+        linear-gradient(105deg, #e8f8ff 0%, #f9fcff 42%, #fff8e7 100%);
+    }
+
+    .hero::before {
+      content: "PUKARI";
+      position: absolute;
+      right: -18px;
+      bottom: -80px;
+      color: rgba(7, 95, 142, 0.055);
+      font-size: clamp(88px, 17vw, 230px);
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      width: min(1180px, calc(100% - 40px));
+      min-height: 610px;
+      margin: 0 auto;
+      padding: 62px 0 54px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 2px;
+      background: var(--orange);
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .hero-lead {
+      max-width: 560px;
+      margin: 24px 0 0;
+      color: #3e5160;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .hero-badges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 34px;
+      max-width: 610px;
+    }
+
+    .hero-badge {
+      min-height: 88px;
+      padding: 14px 10px;
+      border: 2px solid rgba(7, 95, 142, 0.13);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.82);
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-badge strong {
+      display: block;
+      color: var(--blue);
+      font-size: 21px;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .hero-badge span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 470px;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-photo {
+      position: relative;
+      width: min(520px, 100%);
+      aspect-ratio: 1.08 / 1;
+      border: 12px solid #fff;
+      border-radius: 26px;
+      background: #edf8fd;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(115deg, rgba(255, 255, 255, 0.22), transparent 42%),
+        linear-gradient(rgba(7, 95, 142, 0.04), rgba(7, 95, 142, 0.12));
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-photo-layer {
+      position: absolute;
+      inset: 0;
+      background-position: center;
+      background-size: cover;
+      transform: scale(1.04);
+      will-change: opacity, transform;
+    }
+
+    .hero-photo-layer.pattern-a {
+      background-image: url("assets/client/display/tacnews-1.jpg");
+      background-position: center 34%;
+      animation: heroPatternA 18s ease-in-out infinite;
+    }
+
+    .hero-photo-layer.pattern-b {
+      background-image: url("assets/client/office-2.jpg");
+      background-position: center 48%;
+      animation: heroPatternB 18s ease-in-out infinite;
+    }
+
+    @keyframes heroPatternA {
+      0% {
+        opacity: 1;
+        transform: scale(1.04) translate3d(0, 0, 0);
+      }
+      43% {
+        opacity: 1;
+        transform: scale(1.09) translate3d(-8px, -4px, 0);
+      }
+      51%,
+      92% {
+        opacity: 0;
+        transform: scale(1.1) translate3d(-12px, -5px, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.04) translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes heroPatternB {
+      0%,
+      43% {
+        opacity: 0;
+        transform: scale(1.04) translate3d(8px, 4px, 0);
+      }
+      51% {
+        opacity: 1;
+        transform: scale(1.05) translate3d(4px, 2px, 0);
+      }
+      92% {
+        opacity: 1;
+        transform: scale(1.1) translate3d(-6px, -4px, 0);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.1) translate3d(-8px, -4px, 0);
+      }
+    }
+
+    .hero-card {
+      position: absolute;
+      left: 0;
+      bottom: 32px;
+      width: min(310px, 72%);
+      padding: 22px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card-label {
+      color: var(--orange-dark);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .hero-card-main {
+      margin-top: 5px;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .hero-card-text {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-proof-points {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      right: 118px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .hero-proof-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 34px;
+      padding: 7px 11px;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 12px 30px rgba(7, 95, 142, 0.14);
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.2;
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-proof-pill strong {
+      color: #d98574;
+      font-size: 12px;
+      line-height: 1.2;
+    }
+
+    .floating-logo {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      width: 86px;
+      min-height: 76px;
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 14px 36px rgba(7, 95, 142, 0.14);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+      animation: logoFloat 5.8s ease-in-out infinite;
+    }
+
+    .floating-logo img {
+      width: 68px;
+      height: 58px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    @keyframes logoFloat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .top-news {
+      position: relative;
+      z-index: 3;
+      width: min(1080px, calc(100% - 40px));
+      margin: -28px auto 0;
+      padding: 20px 28px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 132px 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .top-news-title {
+      color: var(--blue);
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .top-news-item {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .top-news-item strong {
+      margin-right: 12px;
+      color: var(--ink);
+    }
+
+    section {
+      position: relative;
+      padding: 92px 0;
+      scroll-margin-top: 96px;
+    }
+
+    .section-bg {
+      background: var(--blue-mist);
+    }
+
+    .inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      position: relative;
+      margin-bottom: 42px;
+      text-align: center;
+    }
+
+    .section-en {
+      position: absolute;
+      inset: -52px 0 auto;
+      color: rgba(7, 95, 142, 0.07);
+      font-size: clamp(54px, 10vw, 132px);
+      font-weight: 900;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .section-kicker {
+      position: relative;
+      margin: 0 0 10px;
+      color: var(--orange-dark);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .section-title {
+      position: relative;
+      margin: 0;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .section-lead {
+      position: relative;
+      max-width: 760px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      overflow: hidden;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .service-image {
+      height: 210px;
+      background-size: cover;
+      background-position: center;
+      background-color: #eaf6fb;
+    }
+
+    .service-image.consult {
+      background-image:
+        linear-gradient(rgba(7, 95, 142, 0.08), rgba(7, 95, 142, 0.2)),
+        url("https://images.pexels.com/photos/7841456/pexels-photo-7841456.jpeg?auto=compress&cs=tinysrgb&w=1000&h=760&fit=crop");
+      background-position: center 48%;
+    }
+
+    .service-image.corporate {
+      background-image:
+        linear-gradient(rgba(7, 95, 142, 0.05), rgba(7, 95, 142, 0.18)),
+        url("https://images.pexels.com/photos/7841490/pexels-photo-7841490.jpeg?auto=compress&cs=tinysrgb&w=1000&h=760&fit=crop");
+      background-position: center 52%;
+    }
+
+    .service-image.guardianship {
+      background-image:
+        linear-gradient(rgba(7, 95, 142, 0.06), rgba(7, 95, 142, 0.2)),
+        url("https://images.pexels.com/photos/7876295/pexels-photo-7876295.jpeg?auto=compress&cs=tinysrgb&w=1000&h=760&fit=crop");
+      background-position: center 46%;
+    }
+
+    .service-image.inheritance {
+      background-image:
+        linear-gradient(rgba(7, 95, 142, 0.06), rgba(7, 95, 142, 0.2)),
+        url("https://images.pexels.com/photos/8152744/pexels-photo-8152744.jpeg?auto=compress&cs=tinysrgb&w=1000&h=760&fit=crop");
+      background-position: center 50%;
+    }
+
+    .service-image.trust {
+      background-image:
+        linear-gradient(rgba(7, 95, 142, 0.06), rgba(7, 95, 142, 0.2)),
+        url("https://images.pexels.com/photos/8152747/pexels-photo-8152747.jpeg?auto=compress&cs=tinysrgb&w=1000&h=760&fit=crop");
+      background-position: center 54%;
+    }
+
+    .service-image.will {
+      background-image:
+        linear-gradient(rgba(7, 95, 142, 0.06), rgba(7, 95, 142, 0.2)),
+        url("https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=1000&h=760&fit=crop");
+      background-position: center 50%;
+    }
+
+    .service-body {
+      padding: 30px;
+    }
+
+    .service-label {
+      display: inline-flex;
+      padding: 4px 13px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .service-card h3 {
+      margin: 16px 0 8px;
+      color: var(--blue-dark);
+      font-size: 26px;
+      line-height: 1.35;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .service-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .service-list li {
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #f6fbfd;
+      color: #385061;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .reason-card {
+      min-height: 248px;
+      padding: 28px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .reason-num {
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .reason-card h3 {
+      margin: 12px 0 10px;
+      color: var(--blue-dark);
+      font-size: 21px;
+      line-height: 1.45;
+    }
+
+    .reason-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .case-tech-note {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      margin-bottom: 24px;
+      padding: 18px 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .case-tech-note p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .case-tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .case-tech-badges span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .case-feature {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 0;
+      overflow: hidden;
+      margin-bottom: 30px;
+      border: 1px solid rgba(7, 95, 142, 0.12);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .case-feature-photo {
+      min-height: 340px;
+      background:
+        linear-gradient(rgba(7, 95, 142, 0.1), rgba(7, 95, 142, 0.1)),
+        url("https://images.pexels.com/photos/7841456/pexels-photo-7841456.jpeg?auto=compress&cs=tinysrgb&w=1000&h=760&fit=crop") center/cover;
+    }
+
+    .case-feature-body {
+      display: grid;
+      align-content: center;
+      padding: 38px;
+    }
+
+    .case-feature-label {
+      color: var(--orange-dark);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+    }
+
+    .case-feature h3 {
+      margin: 12px 0 14px;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: clamp(28px, 3.2vw, 42px);
+      line-height: 1.35;
+    }
+
+    .case-feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .case-feature-note {
+      display: inline-flex;
+      width: fit-content;
+      margin-top: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .case-list-title {
+      margin: 0 0 12px;
+      color: var(--blue-dark);
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .case-slider-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 14px;
+    }
+
+    .case-slider-help {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .case-scroll-controls {
+      display: flex;
+      flex-shrink: 0;
+      gap: 10px;
+    }
+
+    .case-scroll-btn {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--blue);
+      font: inherit;
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .case-scroll-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange-dark);
+      transform: translateY(-2px);
+    }
+
+    .case-carousel {
+      position: relative;
+    }
+
+    .case-carousel-viewport {
+      overflow: hidden;
+      margin: 0 -6px;
+      padding: 8px 6px 18px;
+      cursor: grab;
+      touch-action: pan-y;
+    }
+
+    .case-carousel-viewport.is-dragging {
+      cursor: grabbing;
+    }
+
+    .case-carousel-track {
+      display: flex;
+      gap: 22px;
+      align-items: stretch;
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.46s cubic-bezier(0.22, 0.8, 0.28, 1);
+      will-change: transform;
+    }
+
+    .case-dots {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+      margin-top: 4px;
+    }
+
+    .case-dot {
+      width: 9px;
+      height: 9px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: #c7dce8;
+      cursor: pointer;
+      transition: width 0.22s ease, background 0.22s ease;
+    }
+
+    .case-dot.is-active {
+      width: 28px;
+      background: var(--orange);
+    }
+
+    .case-card {
+      flex: 0 0 calc((100% - 44px) / 3);
+      overflow: hidden;
+      border: 1px solid rgba(16, 111, 159, 0.1);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 18px 48px rgba(6, 53, 84, 0.13);
+      opacity: 1;
+      transform: translateY(0);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .case-card.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      border-color: rgba(240, 151, 47, 0.38);
+      box-shadow: 0 24px 58px rgba(6, 53, 84, 0.18);
+    }
+
+    .case-card.is-near {
+      opacity: 1;
+    }
+
+    .case-card-photo {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: var(--blue-soft);
+    }
+
+    .case-card-photo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+
+    .case-card:hover .case-card-photo img {
+      transform: scale(1.05);
+    }
+
+    .case-card-label {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13);
+    }
+
+    .case-card-body {
+      padding: 22px 22px 24px;
+    }
+
+    .case-card-num {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .case-card h3 {
+      margin: 0 0 12px;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: 21px;
+      line-height: 1.45;
+    }
+
+    .case-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .case-card-voice {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-left: 3px solid var(--orange);
+      border-radius: 10px;
+      background: #f7fbfd;
+      color: #385061;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.75;
+    }
+
+    .case-card-voice span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .case-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .case-card-link::after {
+      content: "→";
+      color: var(--orange);
+      transition: transform 0.2s ease;
+    }
+
+    .case-card-link:hover::after {
+      transform: translateX(3px);
+    }
+
+    .case-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .case-detail-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .case-detail-card span {
+      display: inline-flex;
+      margin-bottom: 10px;
+      color: var(--orange-dark);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .case-detail-card h3 {
+      margin: 0 0 8px;
+      color: var(--blue-dark);
+      font-size: 19px;
+      line-height: 1.45;
+    }
+
+    .case-detail-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .case-limits {
+      margin-top: 30px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .case-limits-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .case-limits-head h3 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-size: 22px;
+      line-height: 1.4;
+    }
+
+    .case-limits-head span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .case-limits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .case-limit-box {
+      padding: 20px;
+      border-radius: 16px;
+      background: #f7fbfd;
+    }
+
+    .case-limit-box h4 {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: 16px;
+    }
+
+    .case-limit-box ul {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .case-limit-box li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .case-limit-box li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.78em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .flow-step {
+      position: relative;
+      padding: 26px 20px;
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    .flow-step::after {
+      content: "";
+      position: absolute;
+      right: -15px;
+      top: 50%;
+      width: 14px;
+      height: 2px;
+      background: var(--orange);
+    }
+
+    .flow-step:last-child::after {
+      display: none;
+    }
+
+    .flow-step span {
+      color: var(--orange-dark);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .flow-step h3 {
+      margin: 8px 0;
+      color: var(--blue-dark);
+      font-size: 18px;
+    }
+
+    .flow-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .news-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .news-panel,
+    .column-panel {
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .news-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .news-tab {
+      flex: 1;
+      padding: 17px 12px;
+      border: 0;
+      border-right: 1px solid var(--line);
+      background: #fff;
+      color: var(--blue);
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .news-tab:last-child {
+      border-right: 0;
+    }
+
+    .news-tab.active {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .news-list {
+      padding: 8px 28px 24px;
+    }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 100px 82px 1fr;
+      gap: 12px;
+      align-items: baseline;
+      padding: 18px 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 14px;
+    }
+
+    .news-item:last-child {
+      border-bottom: 0;
+    }
+
+    .news-date {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .news-tag {
+      display: inline-flex;
+      justify-content: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .news-placeholder {
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .column-panel {
+      overflow: hidden;
+    }
+
+    .column-photo {
+      height: 180px;
+      background:
+        linear-gradient(rgba(7, 95, 142, 0.08), rgba(7, 95, 142, 0.08)),
+        url("assets/client/office-2.jpg") center 46%/cover;
+    }
+
+    .column-body {
+      padding: 28px;
+    }
+
+    .column-body h3 {
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+      font-size: 23px;
+      line-height: 1.4;
+    }
+
+    .column-body p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .profile-photo {
+      position: relative;
+      min-height: 420px;
+      border-radius: 22px;
+      background:
+        linear-gradient(rgba(7, 95, 142, 0.06), rgba(7, 95, 142, 0.06)),
+        url("assets/client/display/kai-profile.jpg") center 34%/cover;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-note {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      max-width: 280px;
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--blue-dark);
+      font-weight: 900;
+    }
+
+    .profile-text h2 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.35;
+    }
+
+    .profile-text p {
+      margin: 20px 0 0;
+      color: var(--muted);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .faq-item {
+      padding: 24px;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .faq-item h3 {
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+      font-size: 17px;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .office-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .office-card,
+    .privacy-panel {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .office-card h3,
+    .privacy-panel h3 {
+      margin: 0 0 14px;
+      color: var(--blue-dark);
+      font-size: 22px;
+      line-height: 1.4;
+    }
+
+    .office-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .office-list strong {
+      display: inline-block;
+      min-width: 92px;
+      color: var(--blue-dark);
+      font-weight: 900;
+    }
+
+    .office-map {
+      min-height: 300px;
+      border-radius: 18px;
+      background:
+        linear-gradient(rgba(7, 95, 142, 0.1), rgba(7, 95, 142, 0.12)),
+        url("assets/client/office-2.jpg") center 48%/cover;
+      box-shadow: var(--shadow);
+    }
+
+    .privacy-panel {
+      margin-top: 22px;
+    }
+
+    .privacy-panel summary {
+      cursor: pointer;
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .privacy-panel p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .privacy-list {
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .privacy-list li {
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .privacy-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.82em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .contact {
+      padding: 82px 0;
+      background:
+        radial-gradient(circle at 16% 20%, rgba(242, 169, 0, 0.2), transparent 24%),
+        linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: #fff;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .contact h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.35;
+    }
+
+    .contact p {
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .contact-actions {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-card span {
+      display: block;
+      font-size: 13px;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .contact-card strong {
+      display: block;
+      margin-top: 0;
+      font-size: 26px;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+
+    .contact-sub {
+      display: block;
+      margin-top: 6px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .line-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: #fff;
+      color: #18313f;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .line-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .line-card strong {
+      display: block;
+      margin-top: 2px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .line-card img {
+      width: 116px;
+      height: 36px;
+      flex: 0 0 auto;
+      object-fit: contain;
+    }
+
+    .contact-link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .contact-link-card span {
+      display: block;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .contact-link-card strong {
+      display: block;
+      margin-top: 2px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .contact-link-card svg {
+      width: 24px;
+      height: 24px;
+      flex: 0 0 auto;
+    }
+
+    .contact-note {
+      margin: -2px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .facebook-card {
+      background: rgba(255, 255, 255, 0.95);
+      color: #18313f;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .facebook-card span {
+      color: var(--muted);
+    }
+
+    .facebook-card strong {
+      color: var(--blue-dark);
+    }
+
+    .site-footer {
+      padding: 42px 0 32px;
+      background: #fff;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .footer-brand {
+      color: var(--blue-dark);
+      font-weight: 900;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1080px) {
+      .header-inner {
+        grid-template-columns: 220px minmax(0, 1fr) auto;
+        gap: 14px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .header-contact {
+        justify-content: end;
+      }
+
+      .header-quick.phone {
+        min-width: 136px;
+      }
+
+      .header-menu-toggle {
+        display: grid;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .hero-visual {
+        min-height: 390px;
+      }
+
+      .case-card {
+        flex-basis: calc((100% - 22px) / 2);
+      }
+    }
+
+    @media (min-width: 1181px) and (max-width: 1360px) {
+      .hero-inner {
+        width: min(1120px, calc(100% - 136px));
+        gap: 38px;
+        grid-template-columns: minmax(0, 0.92fr) minmax(390px, 1.08fr);
+      }
+
+      .desktop-follow-item {
+        width: 72px;
+      }
+
+      .desktop-follow-contact {
+        min-height: 176px;
+        font-size: 20px;
+      }
+
+      .desktop-follow-contact span {
+        font-size: 20px;
+      }
+    }
+
+    @media (min-width: 821px) and (max-width: 1180px) {
+      body {
+        padding-bottom: 70px;
+      }
+
+      .floating-consult {
+        display: grid;
+      }
+
+      .desktop-follow,
+      .desktop-social {
+        display: none;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .header-inner {
+        grid-template-columns: 210px minmax(0, auto);
+      }
+
+      .header-contact {
+        gap: 8px;
+      }
+
+      .header-quick {
+        min-width: 68px;
+        min-height: 52px;
+        padding: 7px 10px 8px;
+      }
+
+      .header-quick.phone {
+        min-width: 128px;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .header-inner {
+        width: min(100% - 24px, 1180px);
+        min-height: 72px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+      }
+
+      .logo img {
+        width: 185px;
+        height: 46px;
+      }
+
+      .header-quick {
+        min-width: 58px;
+        min-height: 48px;
+        padding: 6px 8px 7px;
+      }
+
+      .header-quick.phone {
+        min-width: 64px;
+      }
+
+      .header-quick.phone strong {
+        font-size: 12px;
+      }
+
+      .header-menu-toggle {
+        min-width: 56px;
+        min-height: 48px;
+      }
+
+      .hero-inner,
+      .inner,
+      .top-news,
+      .footer-inner {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 42px 0 34px;
+      }
+
+      .hero-lead {
+        font-size: 16px;
+      }
+
+      .hero-badges,
+      .service-grid,
+      .reason-grid,
+      .case-tech-note,
+      .case-feature,
+      .case-limits-grid,
+      .case-detail-grid,
+      .office-grid,
+      .flow,
+      .news-layout,
+      .profile,
+      .faq-grid,
+      .contact-box,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-badges {
+        gap: 10px;
+      }
+
+      .hero-visual {
+        min-height: 310px;
+      }
+
+      .hero-photo {
+        width: 100%;
+        border-width: 8px;
+        border-radius: 20px;
+      }
+
+      .hero-card {
+        left: 14px;
+        bottom: 12px;
+      }
+
+      .floating-logo {
+        right: 12px;
+        top: 12px;
+        width: 72px;
+        min-height: 62px;
+        border-radius: 15px;
+      }
+
+      .hero-proof-points {
+        left: 12px;
+        top: 14px;
+        right: 92px;
+        gap: 6px;
+      }
+
+      .hero-proof-pill {
+        min-height: 30px;
+        padding: 6px 9px;
+        font-size: 12px;
+      }
+
+      .hero-proof-pill strong {
+        font-size: 12px;
+      }
+
+      .floating-logo img {
+        width: 58px;
+        height: 50px;
+      }
+
+      .top-news {
+        margin-top: 14px;
+        padding: 18px;
+        grid-template-columns: 1fr;
+      }
+
+      .top-news .btn {
+        width: 100%;
+      }
+
+      section {
+        padding: 70px 0;
+        scroll-margin-top: 128px;
+      }
+
+      .service-list {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-step::after {
+        display: none;
+      }
+
+      .case-tech-badges {
+        justify-content: flex-start;
+      }
+
+      .case-feature-photo {
+        min-height: 260px;
+      }
+
+      .case-feature-body {
+        padding: 26px;
+      }
+
+      .case-slider-head {
+        display: block;
+      }
+
+      .case-scroll-controls {
+        margin-top: 12px;
+      }
+
+      .case-carousel-viewport {
+        margin: 0;
+        padding: 8px 0 18px;
+      }
+
+      .case-scroll-btn {
+        width: 40px;
+        height: 40px;
+      }
+
+      .case-card {
+        flex-basis: 82vw;
+      }
+
+      .case-limits {
+        padding: 22px;
+      }
+
+      .case-limits-head {
+        display: block;
+      }
+
+      .case-limits-head span {
+        display: block;
+        margin-top: 6px;
+        white-space: normal;
+      }
+
+      .news-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .profile-photo {
+        min-height: 340px;
+      }
+
+      .contact-card strong {
+        font-size: 22px;
+      }
+
+      .contact-card,
+      .line-card,
+      .contact-link-card {
+        border-radius: 14px;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+
+      body {
+        padding-bottom: 70px;
+      }
+
+      .floating-consult {
+        display: grid;
+      }
+
+      .desktop-follow,
+      .desktop-social {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .header-inner {
+        grid-template-columns: minmax(0, 1fr) auto;
+        justify-items: stretch;
+        gap: 8px;
+        padding: 8px 0;
+      }
+
+      .header-contact {
+        width: 100%;
+        justify-content: flex-end;
+        gap: 0;
+      }
+
+      .logo img {
+        width: 126px;
+        height: 40px;
+      }
+
+      .header-quick {
+        min-width: 44px;
+        min-height: 52px;
+        padding: 6px 5px 7px;
+        border-left: 1px solid var(--line);
+      }
+
+      .header-quick.phone {
+        min-width: 48px;
+      }
+
+      .header-quick.contact-main {
+        min-width: 52px;
+      }
+
+      .header-menu-toggle {
+        min-width: 44px;
+        min-height: 52px;
+        padding: 6px 5px 7px;
+      }
+
+      .header-menu-icon {
+        width: 19px;
+        gap: 3px;
+        margin-bottom: 4px;
+      }
+
+      .header-quick span {
+        font-size: 10px;
+      }
+
+      .header-quick strong {
+        font-size: 12px;
+      }
+
+      .header-quick.phone strong {
+        font-size: 0;
+      }
+
+      .header-quick.phone strong::after {
+        content: "電話";
+        font-size: 12px;
+      }
+
+      .contact-card {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .contact-card strong {
+        margin-top: 6px;
+        font-size: 24px;
+      }
+
+      .line-card,
+      .contact-link-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .line-card img {
+        width: 128px;
+        height: 40px;
+      }
+
+      .floating-consult {
+        height: 64px;
+      }
+
+      .floating-consult-item {
+        padding: 7px 5px 8px;
+      }
+
+      .floating-consult-item span {
+        font-size: 10px;
+      }
+
+      .floating-consult-item strong {
+        font-size: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-photo-layer,
+      .floating-logo {
+        animation: none;
+      }
+
+      .hero-photo-layer.pattern-b {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#top" aria-label="プカリ司法書士法人 トップへ">
+        <img src="assets/pukari-logo-horizontal.jpg" alt="プカリ司法書士法人">
+      </a>
+      <nav class="nav" aria-label="主要ナビゲーション">
+        <a href="#services">業務内容</a>
+        <a href="#reason">選ばれる理由</a>
+        <a href="#flow">相談の流れ</a>
+        <a href="#cases">解決事例</a>
+        <a href="#profile">代表あいさつ</a>
+        <a href="#news">お知らせ・コラム</a>
+        <a href="#office">事務所案内</a>
+      </nav>
+      <div class="header-contact">
+        <a class="header-quick phone" href="tel:0368216852">
+          <span>電話</span>
+          <strong>03-6821-6852</strong>
+        </a>
+        <a class="header-quick" href="https://lin.ee/sHrclxM" target="_blank" rel="noopener">
+          <span>LINE</span>
+          <strong>相談</strong>
+        </a>
+        <a class="header-quick contact-main" href="contact.html">
+          <span>初回無料</span>
+          <strong>相談</strong>
+        </a>
+        <button class="header-menu-toggle" type="button" aria-expanded="false" aria-controls="mobileNav">
+          <span class="header-menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+          メニュー
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav" hidden aria-label="スマホ用ナビゲーション">
+    <a href="#services">業務内容</a>
+    <a href="#reason">選ばれる理由</a>
+    <a href="#flow">相談の流れ</a>
+    <a href="#cases">解決事例</a>
+    <a href="#profile">代表あいさつ</a>
+    <a href="#news">お知らせ・コラム</a>
+    <a href="#office">事務所案内</a>
+    <a href="#contact">お問い合わせ</a>
+  </nav>
+
+  <aside class="floating-consult" aria-label="初回相談への近道">
+    <a class="floating-consult-item" href="tel:0368216852">
+      <span>お電話</span>
+      <strong>03-6821-6852</strong>
+    </a>
+    <a class="floating-consult-item contact-main" href="contact.html">
+      <span>初回無料</span>
+      <strong>ご相談</strong>
+    </a>
+    <a class="floating-consult-item" href="https://lin.ee/sHrclxM" target="_blank" rel="noopener">
+      <span>LINE</span>
+      <strong>友だち追加</strong>
+    </a>
+  </aside>
+
+  <aside class="desktop-follow" aria-label="初回相談への追従導線">
+    <a class="desktop-follow-item desktop-follow-contact" href="contact.html">
+      <span>初回無料</span>ご相談
+    </a>
+    <a class="desktop-follow-item" href="tel:0368216852">
+      <span>電話</span>
+      <strong>03-6821<br>6852</strong>
+    </a>
+    <a class="desktop-follow-item" href="https://lin.ee/sHrclxM" target="_blank" rel="noopener">
+      <span>LINE</span>
+      <strong>相談する</strong>
+    </a>
+  </aside>
+
+  <aside class="desktop-social" aria-label="SNSリンク">
+    <a class="desktop-social-link" href="https://www.facebook.com/profile.php?id=61590254672506" target="_blank" rel="noopener" aria-label="Facebookで最新情報を見る">f</a>
+  </aside>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">相続・成年後見・遺産整理・家族信託</p>
+          <h1 id="hero-title">ぷかりと浮かぶ<br>安心感を。</h1>
+          <p class="hero-lead">
+            ご相続や不動産、将来の財産管理で迷ったときに、必要な手続きと相談の流れを見える形へ。個人のお客様にも法人のお客様にも、状況に合わせた進め方をご提案します。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-orange" href="contact.html">無料相談を予約する</a>
+            <a class="btn" href="#services">業務内容を見る</a>
+          </div>
+          <div class="hero-badges" aria-label="主な特徴">
+            <div class="hero-badge"><strong>初回相談</strong><span>無料でご案内</span></div>
+            <div class="hero-badge"><strong>森下・両国</strong><span>各駅から徒歩7分</span></div>
+            <div class="hero-badge"><strong>土日祝・夜間</strong><span>事前予約で対応</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-photo">
+            <span class="hero-photo-layer pattern-a"></span>
+            <span class="hero-photo-layer pattern-b"></span>
+          </div>
+          <div class="hero-proof-points">
+            <div class="hero-proof-pill"><strong>初回無料</strong>相談</div>
+            <div class="hero-proof-pill"><strong>女性代表</strong>が対応</div>
+          </div>
+          <div class="floating-logo">
+            <img src="assets/pukari-logo-square.jpg" alt="">
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-label">FOR LIFE AND BUSINESS</div>
+            <div class="hero-card-main">暮らしと事業の<br>身近な相談窓口</div>
+            <div class="hero-card-text">相続、成年後見、遺産整理、法人登記まで、次に何をすればよいかを整理します。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="top-news" aria-label="最新情報">
+      <div class="top-news-title">NEWS</div>
+      <div class="top-news-item"><strong>2026.04</strong>「日本のプロフェッショナル」掲載情報をご覧いただけます。</div>
+      <a class="btn" href="#news">一覧を見る</a>
+    </aside>
+
+    <section id="services">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">service</div>
+          <p class="section-kicker">個人のお客様にも、法人のお客様にも</p>
+          <h2 class="section-title">まずは、ご相談内容に近い入口から</h2>
+          <p class="section-lead">個人向け・法人向けの入口と、主な業務内容を分かりやすく整理しています。詳しい内容は、各ページへ展開できます。</p>
+        </header>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-image consult" role="img" aria-label="相談室で資料を見ながら相談するイメージ"></div>
+            <div class="service-body">
+              <span class="service-label">個人のお客様</span>
+              <h3>相続・成年後見・遺言のご相談</h3>
+              <p>ご家族の状況や財産の整理から、将来の備えまで。迷いやすい手続きを、落ち着いて進められるよう支えます。</p>
+              <ul class="service-list">
+                <li>成年後見</li>
+                <li>遺産承継</li>
+                <li>家族信託</li>
+                <li>遺言書作成</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-image corporate" role="img" aria-label="法人登記や契約書類を確認するイメージ"></div>
+            <div class="service-body">
+              <span class="service-label">法人のお客様</span>
+              <h3>法人登記・不動産決済のご相談</h3>
+              <p>法人設立、役員変更、不動産決済など、事業の節目で必要になる手続きも、経験豊富なスタッフが対応します。</p>
+              <ul class="service-list">
+                <li>会社設立</li>
+                <li>役員変更</li>
+                <li>不動産決済</li>
+                <li>各種法人登記</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-image guardianship" role="img" aria-label="家族で書類を確認しながら成年後見について相談するイメージ"></div>
+            <div class="service-body">
+              <span class="service-label">主な業務 01</span>
+              <h3>成年後見</h3>
+              <p>認知症や知的障害などにより財産管理や契約手続きが難しくなった方を、法的な側面から支える制度です。</p>
+              <ul class="service-list">
+                <li>法人受任</li>
+                <li>申立書類作成</li>
+                <li>財産管理</li>
+                <li>身上保護</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-image inheritance" role="img" aria-label="相続書類や財産整理の資料を確認するイメージ"></div>
+            <div class="service-body">
+              <span class="service-label">主な業務 02</span>
+              <h3>遺産承継・遺産整理</h3>
+              <p>預貯金や有価証券の解約、不動産の名義変更、相続人調査など、相続後の煩雑な手続きをまとめて整理します。</p>
+              <ul class="service-list">
+                <li>遺産整理</li>
+                <li>財産目録作成</li>
+                <li>金融機関手続き</li>
+                <li>相続登記</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-image trust" role="img" aria-label="家族信託の契約内容を打ち合わせするイメージ"></div>
+            <div class="service-body">
+              <span class="service-label">主な業務 03</span>
+              <h3>家族信託</h3>
+              <p>認知症による資産凍結を防ぎ、ご本人の意思に沿って財産を管理・承継できるよう、信託契約を設計します。</p>
+              <ul class="service-list">
+                <li>資産管理設計</li>
+                <li>信託契約書</li>
+                <li>家族会議サポート</li>
+                <li>将来の備え</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-image will" role="img" aria-label="遺言書や公正証書作成に関する書類を整えるイメージ"></div>
+            <div class="service-body">
+              <span class="service-label">主な業務 04</span>
+              <h3>遺言書作成</h3>
+              <p>ご自身の想いを確実に残し、相続時の争いを防ぐため、公正証書遺言の作成から遺言執行まで見据えて支援します。</p>
+              <ul class="service-list">
+                <li>公正証書遺言</li>
+                <li>付言事項</li>
+                <li>証人手配</li>
+                <li>遺言執行</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reason" class="section-bg">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">reason</div>
+          <p class="section-kicker">選ばれる理由</p>
+          <h2 class="section-title">ご相談前の不安を、相談後の見通しへ</h2>
+        </header>
+
+        <div class="reason-grid">
+          <article class="reason-card">
+            <div class="reason-num">01</div>
+            <h3>圧倒的な実績と解決力</h3>
+            <p>複雑な相続登記や急ぎの案件も、経験とノウハウをもとに、確実な解決へ向けて整理します。</p>
+          </article>
+          <article class="reason-card">
+            <div class="reason-num">02</div>
+            <h3>両国の地域密着の安心感</h3>
+            <p>地域の皆さまが困ったときに気軽に頼れる身近な法律家として、親身で細やかなサポートを大切にします。</p>
+          </article>
+          <article class="reason-card">
+            <div class="reason-num">03</div>
+            <h3>両国・森下駅から徒歩7分</h3>
+            <p>墨田区内からも都心からもアクセスしやすく、お仕事帰りやご都合のよいタイミングで相談しやすい場所です。</p>
+          </article>
+          <article class="reason-card">
+            <div class="reason-num">04</div>
+            <h3>土日祝・夜間にも対応</h3>
+            <p>事前にご予約いただくことで、土日祝日や夜間の法律相談にも柔軟に対応します。</p>
+          </article>
+          <article class="reason-card">
+            <div class="reason-num">05</div>
+            <h3>女性代表の事務所です</h3>
+            <p>家族のデリケートな問題も、緊張しすぎずに話せるよう、細やかな配慮を大切にします。</p>
+          </article>
+          <article class="reason-card">
+            <div class="reason-num">06</div>
+            <h3>不動産売却までワンストップ</h3>
+            <p>相続した不動産の売却や関係士業との連携など、あちこち回る手間を減らせるように支えます。</p>
+          </article>
+          <article class="reason-card">
+            <div class="reason-num">07</div>
+            <h3>あんしん明瞭会計</h3>
+            <p>複雑な事案も、初期費用と完了報酬を分けるなど、負担感が少ない形でご案内します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">flow</div>
+          <p class="section-kicker">ご相談の流れ</p>
+          <h2 class="section-title">はじめてでも、順番に進められます</h2>
+          <p class="section-lead">初回相談は無料です。お問い合わせから手続き開始までの流れを先に見せることで、相談前の不安を減らします。</p>
+        </header>
+
+        <div class="flow">
+          <article class="flow-step">
+            <span>STEP 1</span>
+            <h3>お問い合わせ</h3>
+            <p>電話、フォーム、LINEから、相談内容を簡単にお知らせください。</p>
+          </article>
+          <article class="flow-step">
+            <span>STEP 2</span>
+            <h3>初回相談</h3>
+            <p>初回相談は無料です。資料を見ながら状況を伺い、必要な確認を整理します。</p>
+          </article>
+          <article class="flow-step">
+            <span>STEP 3</span>
+            <h3>お見積り</h3>
+            <p>必要な業務範囲と費用感を確認し、納得いただいてから進めます。</p>
+          </article>
+          <article class="flow-step">
+            <span>STEP 4</span>
+            <h3>手続き開始</h3>
+            <p>書類収集、申請、関係先との確認などを丁寧に進めます。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">case</div>
+          <p class="section-kicker">解決事例</p>
+          <h2 class="section-title">実際の相談に近い例から、進め方を確認できます</h2>
+          <p class="section-lead">相続、成年後見、遺言、家族信託など、よくあるご相談を事例として整理します。似た状況を見つけることで、相談前の不安を減らします。</p>
+        </header>
+
+        <article class="case-feature">
+          <div class="case-feature-photo" role="img" aria-label="相談室で資料を見ながら相談する様子"></div>
+          <div class="case-feature-body">
+            <span class="case-feature-label">FEATURE CASE</span>
+            <h3>複雑な手続きも、全体像から整理します</h3>
+            <p>相続人の確認、必要書類、関係先との連絡、登記申請まで。はじめての方が迷いやすい流れを、状況に合わせて一つずつ整理します。</p>
+            <span class="case-feature-note">初回相談で、まず必要な手順を確認できます</span>
+          </div>
+        </article>
+
+        <div class="case-slider-head">
+          <div>
+            <h3 class="case-list-title">実績事例</h3>
+            <p class="case-slider-help">気になる事例を、左右の矢印でご覧いただけます。</p>
+          </div>
+          <div class="case-scroll-controls" aria-label="解決事例の横スクロール操作">
+            <button class="case-scroll-btn" type="button" data-case-scroll="-1" aria-label="前の事例を見る">‹</button>
+            <button class="case-scroll-btn" type="button" data-case-scroll="1" aria-label="次の事例を見る">›</button>
+          </div>
+        </div>
+
+        <div class="case-carousel" data-case-carousel aria-label="写真つき解決事例カルーセル">
+          <div class="case-carousel-viewport" id="caseViewport" tabindex="0" aria-label="解決事例一覧">
+            <div class="case-carousel-track" id="caseTrack">
+              <article class="case-card">
+                <div class="case-card-photo">
+                  <img src="https://images.pexels.com/photos/7841456/pexels-photo-7841456.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900&amp;h=620&amp;fit=crop" alt="相談室で資料を見ながら相談する様子">
+                  <span class="case-card-label">成年後見</span>
+                </div>
+                <div class="case-card-body">
+                  <span class="case-card-num">CASE 01</span>
+                  <h3>若くして認知機能が低下された方を長く支援</h3>
+                  <p>家庭裁判所に選任され、後見人として不動産売却、施設入所、ご親族の相続手続きまで継続的に支援します。</p>
+                  <div class="case-card-voice">法人受任と複数担当体制により、長期間のサポートも安定して続けられます。</div>
+                  <a class="case-card-link" href="case-guardianship.html">詳しく見る</a>
+                </div>
+              </article>
+
+              <article class="case-card">
+                <div class="case-card-photo">
+                  <img src="https://images.pexels.com/photos/8152744/pexels-photo-8152744.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900&amp;h=620&amp;fit=crop" alt="書類を確認しながら打ち合わせをする様子">
+                  <span class="case-card-label">遺産承継</span>
+                </div>
+                <div class="case-card-body">
+                  <span class="case-card-num">CASE 02</span>
+                  <h3>知らない親族が相続人になったケースを整理</h3>
+                  <p>相続人との連絡や説明を進め、配偶者様が無事に財産を受け取れるよう、手続きを整理します。</p>
+                  <div class="case-card-voice">連絡をとったことがない親族がいる場合も、手順を一つずつ確認できます。</div>
+                  <a class="case-card-link" href="case-inheritance.html">詳しく見る</a>
+                </div>
+              </article>
+
+              <article class="case-card">
+                <div class="case-card-photo">
+                  <img src="https://images.pexels.com/photos/7876295/pexels-photo-7876295.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900&amp;h=620&amp;fit=crop" alt="家族で書類を確認しながら相談する様子">
+                  <span class="case-card-label">遺言書作成</span>
+                </div>
+                <div class="case-card-body">
+                  <span class="case-card-num">CASE 03</span>
+                  <h3>財団への寄付も含めた公正証書遺言を準備</h3>
+                  <p>ご本人の想いを実現するため、下調べから公証人・証人の手配まで一括してサポートします。</p>
+                  <div class="case-card-voice">「なにがあっても大丈夫」と感じられる状態を目指して準備します。</div>
+                  <a class="case-card-link" href="case-will.html">詳しく見る</a>
+                </div>
+              </article>
+
+              <article class="case-card">
+                <div class="case-card-photo">
+                  <img src="https://images.pexels.com/photos/8152747/pexels-photo-8152747.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900&amp;h=620&amp;fit=crop" alt="ビジネス書類を囲んで打ち合わせをする様子">
+                  <span class="case-card-label">家族信託</span>
+                </div>
+                <div class="case-card-body">
+                  <span class="case-card-num">CASE 04</span>
+                  <h3>元気なうちに、将来の資産管理を設計</h3>
+                  <p>認知症による資産凍結を防ぐため、ご家族構成や将来の不安を伺い、信託の設計を整理します。</p>
+                  <div class="case-card-voice">ご本人の意思に沿った管理・承継を、家族で考えられる形へ整えます。</div>
+                  <a class="case-card-link" href="case-family-trust.html">詳しく見る</a>
+                </div>
+              </article>
+
+              <article class="case-card">
+                <div class="case-card-photo">
+                  <img src="https://images.pexels.com/photos/7841490/pexels-photo-7841490.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900&amp;h=620&amp;fit=crop" alt="契約書類を確認する相談風景">
+                  <span class="case-card-label">法人登記</span>
+                </div>
+                <div class="case-card-body">
+                  <span class="case-card-num">CASE 05</span>
+                  <h3>法人設立・役員変更・不動産決済にも対応</h3>
+                  <p>お急ぎの法人登記や不動産決済も、必要書類と期限を整理しながら進めます。</p>
+                  <div class="case-card-voice">最初の問い合わせから専門家が相談を受け、手続きを整理します。</div>
+                  <a class="case-card-link" href="case-corporate.html">詳しく見る</a>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="case-dots" id="caseDots" aria-label="解決事例のページ切り替え"></div>
+        </div>
+
+        <div class="case-detail-grid" aria-label="実績事例の補足カード">
+          <article class="case-detail-card">
+            <span>相続関係</span>
+            <h3>ご家族だけでは判断しにくい相続手続を整理</h3>
+            <p>不動産、金融機関、親族関係など、確認事項が多いケースでも、必要な順番を一緒に整理します。</p>
+          </article>
+          <article class="case-detail-card">
+            <span>成年後見</span>
+            <h3>長く続く支援も、法人として安定して対応</h3>
+            <p>財産管理や施設入所、不動産売却など、継続的なサポートが必要な場面にも対応します。</p>
+          </article>
+          <article class="case-detail-card">
+            <span>遺言・生前対策</span>
+            <h3>元気なうちに、将来の不安を見える形へ</h3>
+            <p>遺言書作成や家族信託など、将来の資産管理を早めに考えたい方の相談にも対応します。</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="profile">
+      <div class="inner">
+        <div class="profile">
+          <div class="profile-photo">
+            <div class="profile-note">代表司法書士 甲斐麻莉子</div>
+          </div>
+          <div class="profile-text">
+            <p class="eyebrow">MESSAGE</p>
+            <h2>士業としての視点と、行政制度への目線をあわせて。</h2>
+            <p>
+              プカリ司法書士法人代表の甲斐まりこです。最年少司法書士として独立して以来、個人によりそったサポートを実現してきました。
+            </p>
+            <p>
+              士業としての視点だけでなく、墨田区議会議員として「行政の制度やサポートを使えないか」という目線も大切にしながら、相続、登記、成年後見、会社に関する手続きなど、暮らしと事業の節目を支えます。
+            </p>
+            <p>
+              まずはお気軽にご相談いただき、今の状況で何から進めるとよいかを一緒に整理します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="section-bg">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">column</div>
+          <p class="section-kicker">お知らせ・最新情報</p>
+          <h2 class="section-title">掲載情報やコラムを、見やすく整理します</h2>
+          <p class="section-lead">外部記事、note、HP内コラムなど、更新しやすい方法を選びながら、HPには最新情報として分かりやすく表示します。</p>
+        </header>
+
+        <div class="news-layout">
+          <div class="news-panel">
+            <div class="news-tabs" role="tablist" aria-label="記事カテゴリ">
+              <button class="news-tab active" type="button">新着情報</button>
+              <button class="news-tab" type="button">日記</button>
+              <button class="news-tab" type="button">コラム</button>
+            </div>
+            <div class="news-list">
+              <article class="news-item">
+                <span class="news-date">2026.04</span>
+                <span class="news-tag">掲載</span>
+                <a href="https://www.tac-school.co.jp/tacnewsweb/professional/pro202604.html" target="_blank" rel="noopener">TACNEWS「日本のプロフェッショナル」に掲載されました</a>
+              </article>
+              <article class="news-item">
+                <span class="news-date">2026.06</span>
+                <span class="news-tag">コラム</span>
+                <span class="news-placeholder">相続・成年後見で相談前に確認したいこと（準備中）</span>
+              </article>
+              <article class="news-item">
+                <span class="news-date">2026.06</span>
+                <span class="news-tag">お知らせ</span>
+                <span class="news-placeholder">初回相談の流れを整理しました（準備中）</span>
+              </article>
+            </div>
+          </div>
+
+          <aside class="column-panel">
+            <div class="column-photo"></div>
+            <div class="column-body">
+              <h3>記事更新は、運用しやすい場所から</h3>
+              <p>noteや別サイトで継続的にコラムを書く場合は、HP側には最新記事へのリンクや紹介枠を設けます。HP内で記事を書く場合は、更新しやすい投稿欄を用意します。</p>
+              <a class="btn btn-orange" href="https://www.tac-school.co.jp/tacnewsweb/professional/pro202604.html" target="_blank" rel="noopener">掲載記事を見る</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="office">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">office</div>
+          <p class="section-kicker">事務所案内</p>
+          <h2 class="section-title">両国・森下から相談しやすい司法書士法人です</h2>
+          <p class="section-lead">ご相談前に、所在地・受付時間・相談方法が分かるように整理しています。</p>
+        </header>
+
+        <div class="office-grid">
+          <div class="office-card">
+            <h3>プカリ司法書士法人</h3>
+            <ul class="office-list">
+              <li><strong>代表</strong>甲斐麻莉子</li>
+              <li><strong>所在地</strong>〒130-0025 東京都墨田区千歳1丁目6番1号 田中ビル1階</li>
+              <li><strong>アクセス</strong>森下駅・JR両国駅から徒歩7分</li>
+              <li><strong>電話</strong>03-6821-6852</li>
+              <li><strong>初回相談</strong>個人様・法人様を問わず無料</li>
+              <li><strong>対応時間</strong>土日祝日・夜間も事前予約で相談可能</li>
+            </ul>
+          </div>
+          <div class="office-map" role="img" aria-label="都市部の事務所イメージ"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-bg" aria-labelledby="faq-title">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">faq</div>
+          <p class="section-kicker">よくある質問</p>
+          <h2 id="faq-title" class="section-title">相談前に確認したいこと</h2>
+        </header>
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3>初回相談では何を準備すればよいですか？</h3>
+            <p>不動産であれば固定資産税通知書、遺産整理であれば通帳の写し、ご親族関係が複雑な場合は手書きの家族図などがあると相談しやすくなります。</p>
+          </article>
+          <article class="faq-item">
+            <h3>オンライン相談はできますか？</h3>
+            <p>承っております。ただし個人のお客様は資料を見ながらの方が相談しやすい場合があるため、原則は対面相談をご案内します。</p>
+          </article>
+          <article class="faq-item">
+            <h3>法人の登記や不動産決済はしていますか？</h3>
+            <p>お急ぎの不動産決済、法人の設立や役員変更についても、経験豊富なスタッフが対応します。</p>
+          </article>
+          <article class="faq-item">
+            <h3>営業のお電話について</h3>
+            <p>個人様・法人様を問わず初回相談は無料です。営業のお電話については、通常の相談とは別の扱いになる旨を整理します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <div class="inner">
+        <header class="section-head">
+          <div class="section-en">privacy</div>
+          <p class="section-kicker">プライバシーポリシー</p>
+          <h2 class="section-title">個人情報の取り扱いについて</h2>
+          <p class="section-lead">お問い合わせや相談予約で取得する情報について、取り扱い方針を分かりやすく表示します。</p>
+        </header>
+
+        <div class="privacy-panel">
+          <h3>プカリ司法書士法人の個人情報保護方針</h3>
+          <p>当法人は、ウェブサイトで取得する個人情報について、個人情報保護法その他の関係法令を遵守し、適切な取扱いと保護に努めます。</p>
+          <details>
+            <summary>主な掲載内容を見る</summary>
+            <p>お問い合わせへの回答、相談予約、面談、業務連絡、登記・相続・成年後見などの司法書士業務、本人確認、関係機関への申請・届出、法令に基づく対応などに必要な範囲で利用します。</p>
+            <p>法令に定める場合を除き、ご本人の同意なく第三者へ提供しません。ただし、業務遂行に必要な範囲で、法務局、裁判所、金融機関、税理士、弁護士、その他関係機関等へ提供する場合があります。</p>
+            <ul class="privacy-list">
+              <li>取得した情報は、相談対応・本人確認・業務連絡・申請手続きに必要な範囲で利用します。</li>
+              <li>個人情報の漏えい、紛失、改ざんを防ぐため、必要な安全管理を行います。</li>
+              <li>開示、訂正、利用停止などのご希望がある場合は、本人確認のうえ適切に対応します。</li>
+              <li>方針の内容は、法令改正や運用変更に合わせて見直す場合があります。</li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="inner contact-box">
+        <div>
+          <h2>ご相談・お問い合わせはこちら</h2>
+          <p>相続、成年後見、遺産整理、家族信託、法人登記など、まずは現在の状況をお聞かせください。必要な手続きと進め方を整理します。</p>
+        </div>
+        <div class="contact-actions">
+          <a class="contact-card" href="tel:0368216852">
+            <span>
+              <span>お電話でのお問い合わせ</span>
+              <span class="contact-sub">平日 9:00-18:00</span>
+            </span>
+            <strong>03-6821-6852</strong>
+          </a>
+          <a class="contact-link-card" href="contact.html">
+            <span>
+              <span>フォームからのお問い合わせ</span>
+              <strong>ご相談内容を整理して送る</strong>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v13A2.5 2.5 0 0 1 17.5 21h-11A2.5 2.5 0 0 1 4 18.5v-13Zm2.5-.5a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5h-11ZM8 8h8v2H8V8Zm0 4h8v2H8v-2Zm0 4h5v2H8v-2Z"/>
+            </svg>
+          </a>
+          <a class="line-card" href="https://lin.ee/sHrclxM" target="_blank" rel="noopener">
+            <span>
+              <span>LINEでのお問い合わせ</span>
+              <strong>友だち追加して相談する</strong>
+            </span>
+            <img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加">
+          </a>
+          <a class="contact-link-card facebook-card" href="https://www.facebook.com/profile.php?id=61590254672506" target="_blank" rel="noopener">
+            <span>
+              <span>Facebookで最新情報を見る</span>
+              <strong>活動・お知らせを確認する</strong>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M14.1 8.4V6.7c0-.8.5-1 1-1h1.7V2.6c-.8-.1-1.8-.2-2.8-.2-2.8 0-4.6 1.7-4.6 4.8v1.2H6.3v3.5h3.1v8.7h3.8v-8.7h3l.5-3.5h-3.5Z"/>
+            </svg>
+          </a>
+          <p class="contact-note">※フォームでは、お名前・ご連絡先・ご相談内容を送っていただけます。お急ぎの場合はお電話をご利用ください。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">プカリ司法書士法人</div>
+        <div>〒130-0025 東京都墨田区千歳1丁目6番1号 田中ビル1階 / 森下駅・JR両国駅から徒歩7分</div>
+      </div>
+      <nav class="footer-links" aria-label="フッターナビゲーション">
+        <a href="#services">業務内容</a>
+        <a href="#reason">選ばれる理由</a>
+        <a href="#office">事務所案内</a>
+        <a href="#news">お知らせ</a>
+        <a href="#privacy">プライバシーポリシー</a>
+        <a href="#contact">お問い合わせ</a>
+        <a href="https://www.facebook.com/profile.php?id=61590254672506" target="_blank" rel="noopener">Facebook</a>
+      </nav>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const menuButton = document.querySelector(".header-menu-toggle");
+      const mobileNav = document.getElementById("mobileNav");
+      if (menuButton && mobileNav) {
+        menuButton.addEventListener("click", () => {
+          const willOpen = mobileNav.hasAttribute("hidden");
+          mobileNav.toggleAttribute("hidden", !willOpen);
+          menuButton.setAttribute("aria-expanded", String(willOpen));
+        });
+
+        mobileNav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileNav.setAttribute("hidden", "");
+            menuButton.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+
+      const carousel = document.querySelector("[data-case-carousel]");
+      if (!carousel) return;
+
+      const viewport = document.getElementById("caseViewport");
+      const track = document.getElementById("caseTrack");
+      const dotsRoot = document.getElementById("caseDots");
+      const buttons = document.querySelectorAll("[data-case-scroll]");
+      const originals = Array.from(track.querySelectorAll(".case-card"));
+      const originalCount = originals.length;
+      const cloneCount = Math.min(3, originalCount);
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      let currentIndex = cloneCount;
+      let step = 0;
+      let autoplayId = null;
+      let isDragging = false;
+      let isAnimating = false;
+      let dragStartX = 0;
+      let dragDelta = 0;
+      let startTranslate = 0;
+
+      const cloneSlide = (slide) => {
+        const clone = slide.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        clone.querySelectorAll("a, button").forEach((element) => {
+          element.setAttribute("tabindex", "-1");
+        });
+        return clone;
+      };
+
+      originals.slice(-cloneCount).reverse().forEach((slide) => {
+        track.insertBefore(cloneSlide(slide), track.firstChild);
+      });
+
+      originals.slice(0, cloneCount).forEach((slide) => {
+        track.appendChild(cloneSlide(slide));
+      });
+
+      const slides = Array.from(track.querySelectorAll(".case-card"));
+      const dots = originals.map((_, index) => {
+        const dot = document.createElement("button");
+        dot.className = "case-dot";
+        dot.type = "button";
+        dot.setAttribute("aria-label", `CASE ${index + 1}を見る`);
+        dot.addEventListener("click", () => {
+          pauseAutoplay();
+          goTo(cloneCount + index);
+          resumeAutoplay();
+        });
+        dotsRoot.appendChild(dot);
+        return dot;
+      });
+
+      const readStep = () => {
+        const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+        const width = parseFloat(window.getComputedStyle(slides[0]).width) || slides[0]?.offsetWidth || 0;
+        step = width + gap;
+      };
+
+      const getLogicalIndex = () => (
+        ((currentIndex - cloneCount) % originalCount + originalCount) % originalCount
+      );
+
+      const setTransition = (active) => {
+        track.style.transition = active ? "transform 0.46s cubic-bezier(0.22, 0.8, 0.28, 1)" : "none";
+      };
+
+      const updateState = () => {
+        const logical = getLogicalIndex();
+
+        slides.forEach((slide, index) => {
+          slide.classList.toggle("is-active", index === currentIndex);
+          slide.classList.toggle("is-near", index === currentIndex - 1 || index === currentIndex + 1);
+        });
+
+        dots.forEach((dot, index) => {
+          const active = index === logical;
+          dot.classList.toggle("is-active", active);
+          dot.setAttribute("aria-current", active ? "true" : "false");
+        });
+      };
+
+      const setPosition = (animate = true) => {
+        readStep();
+        setTransition(animate);
+        track.style.transform = `translate3d(${-currentIndex * step}px, 0, 0)`;
+        updateState();
+      };
+
+      const goTo = (index, animate = true) => {
+        if (isAnimating && animate) return;
+        currentIndex = index;
+        isAnimating = animate;
+        setPosition(animate);
+        if (!animate) isAnimating = false;
+      };
+
+      const jumpTo = (index) => {
+        currentIndex = index;
+        setPosition(false);
+        track.getBoundingClientRect();
+        window.setTimeout(() => setTransition(true), 40);
+        isAnimating = false;
+      };
+
+      const next = () => goTo(currentIndex + 1);
+      const prev = () => goTo(currentIndex - 1);
+
+      const pauseAutoplay = () => {
+        window.clearInterval(autoplayId);
+        autoplayId = null;
+      };
+
+      const resumeAutoplay = () => {
+        if (reduceMotion || autoplayId) return;
+        autoplayId = window.setInterval(next, 5200);
+      };
+
+      const isInteractiveTarget = (target) => (
+        target instanceof Element
+        && Boolean(target.closest("a, button, input, textarea, select, label"))
+      );
+
+      track.addEventListener("transitionend", (event) => {
+        if (event.target !== track || event.propertyName !== "transform") return;
+
+        if (currentIndex >= cloneCount + originalCount) {
+          jumpTo(cloneCount);
+          return;
+        }
+
+        if (currentIndex < cloneCount) {
+          jumpTo(cloneCount + originalCount - 1);
+          return;
+        }
+
+        isAnimating = false;
+      });
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const direction = Number(button.dataset.caseScroll);
+          pauseAutoplay();
+          direction > 0 ? next() : prev();
+          resumeAutoplay();
+        });
+      });
+
+      viewport.addEventListener("mouseenter", pauseAutoplay);
+      viewport.addEventListener("mouseleave", resumeAutoplay);
+      viewport.addEventListener("focusin", pauseAutoplay);
+      viewport.addEventListener("focusout", resumeAutoplay);
+
+      viewport.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+        event.preventDefault();
+        pauseAutoplay();
+        event.key === "ArrowRight" ? next() : prev();
+        resumeAutoplay();
+      });
+
+      viewport.addEventListener("pointerdown", (event) => {
+        if (event.button !== 0 && event.pointerType === "mouse") return;
+        if (isAnimating) return;
+        if (isInteractiveTarget(event.target)) {
+          pauseAutoplay();
+          return;
+        }
+        isDragging = true;
+        dragStartX = event.clientX;
+        dragDelta = 0;
+        startTranslate = -currentIndex * step;
+        viewport.classList.add("is-dragging");
+        setTransition(false);
+        pauseAutoplay();
+        viewport.setPointerCapture(event.pointerId);
+      });
+
+      viewport.addEventListener("pointermove", (event) => {
+        if (!isDragging) return;
+        dragDelta = event.clientX - dragStartX;
+        track.style.transform = `translate3d(${startTranslate + dragDelta}px, 0, 0)`;
+      });
+
+      const stopDrag = (event) => {
+        if (!isDragging) return;
+        isDragging = false;
+        viewport.classList.remove("is-dragging");
+
+        if (event?.pointerId && viewport.hasPointerCapture(event.pointerId)) {
+          viewport.releasePointerCapture(event.pointerId);
+        }
+
+        const threshold = Math.min(120, Math.max(48, step * 0.18));
+        if (Math.abs(dragDelta) > threshold) {
+          dragDelta < 0 ? next() : prev();
+        } else {
+          setPosition(true);
+        }
+
+        resumeAutoplay();
+      };
+
+      viewport.addEventListener("pointerup", stopDrag);
+      viewport.addEventListener("pointercancel", stopDrag);
+
+      window.addEventListener("resize", () => {
+        setPosition(false);
+      });
+
+      setPosition(false);
+      resumeAutoplay();
+    })();
+  </script>
+</body>
+</html>
