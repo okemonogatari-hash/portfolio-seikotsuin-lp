@@ -816,7 +816,9 @@
     (function () {
       var form = document.querySelector('form.form-body');
       if (!form) return;
+      var sending = false;
       form.addEventListener('submit', function (e) {
+        if (sending) { e.preventDefault(); return; }
         var email = document.getElementById('email-field');
         var replyto = document.getElementById('replyto-field');
         if (email && replyto) replyto.value = email.value;
@@ -826,7 +828,27 @@
           return n + '：' + (el && el.value ? el.value : '（未入力）');
         });
         var ok = window.confirm('以下の内容で送信します。よろしいですか？\n\n' + lines.join('\n'));
-        if (!ok) e.preventDefault();
+        if (!ok) { e.preventDefault(); return; }
+
+        e.preventDefault();
+        sending = true;
+        var btn = form.querySelector('.form-submit button');
+        if (btn) { btn.disabled = true; btn.textContent = '送信中…'; }
+        var data = new FormData(form);
+        fetch('https://formsubmit.co/ajax/09710bc1b41651ef7255b159959daaaf', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data
+        }).then(function (res) {
+          if (!res.ok) throw new Error('bad status');
+          return res.json();
+        }).then(function () {
+          window.location.href = 'contact-thanks.html';
+        }).catch(function () {
+          sending = false;
+          if (btn) { btn.disabled = false; btn.textContent = '送信内容を確認する'; }
+          form.submit();
+        });
       });
     })();
   </script>
