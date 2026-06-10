@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>送信完了 | プカリ司法書士法人</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Noto+Serif+JP:wght@600;700;900&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #075f8e;
+      --blue-dark: #06486f;
+      --blue-mist: #f4fbff;
+      --orange: #f2a900;
+      --ink: #1f2d3a;
+      --muted: #647280;
+      --line: #dce8ee;
+      --bg: #f7fbfd;
+      --shadow: 0 16px 42px rgba(7, 95, 142, 0.12);
+      --sans: "Noto Sans JP", system-ui, sans-serif;
+      --serif: "Noto Serif JP", serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      width: min(1120px, calc(100% - 36px));
+      min-height: 78px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo img {
+      width: 214px;
+      height: 52px;
+      object-fit: contain;
+      object-position: left center;
+      mix-blend-mode: multiply;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 10px 18px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--blue-dark);
+      font-size: 14px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    main {
+      width: min(760px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 64px 0 88px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      margin-bottom: 28px;
+    }
+
+    .step {
+      padding: 15px 10px;
+      border-right: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .step:last-child { border-right: 0; }
+
+    .step.current {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .thanks-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      padding: 44px 38px;
+      text-align: center;
+    }
+
+    .thanks-mark {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: var(--blue-mist);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      font-size: 30px;
+      font-weight: 900;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: clamp(26px, 4vw, 34px);
+      line-height: 1.35;
+    }
+
+    .thanks-text {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .thanks-note {
+      margin: 22px 0 0;
+      padding: 16px 18px;
+      border-radius: 8px;
+      background: var(--blue-mist);
+      color: var(--blue-dark);
+      font-size: 14px;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .thanks-actions {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 14px 28px 16px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--orange);
+      box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.16);
+      color: #073c5c;
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .site-footer {
+      background: #fff;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .footer-brand {
+      color: var(--blue-dark);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        width: min(100% - 24px, 1120px);
+        min-height: 70px;
+      }
+
+      .logo img { width: 170px; height: 44px; }
+
+      main, .footer-inner { width: min(100% - 24px, 1120px); }
+
+      .thanks-card { padding: 30px 20px; }
+
+      .footer-inner { display: grid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="プカリ司法書士法人トップへ">
+        <img src="assets/pukari-logo-horizontal.jpg" alt="プカリ司法書士法人">
+      </a>
+      <a class="back-link" href="index.html">トップへ戻る</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="steps" aria-label="送信までの流れ">
+      <div class="step">1. 入力</div>
+      <div class="step">2. 確認</div>
+      <div class="step current">3. 完了</div>
+    </div>
+
+    <section class="thanks-card">
+      <div class="thanks-mark">✓</div>
+      <h1>送信が完了しました</h1>
+      <p class="thanks-text">
+        ご相談予約フォームをお送りいただき、ありがとうございました。<br>
+        内容を確認のうえ、通常2営業日以内を目安に担当者よりご連絡いたします。
+      </p>
+      <div class="thanks-note">
+        お急ぎの場合は、お電話（03-6821-6852／平日 9:00-18:00）でも受け付けております。
+      </div>
+      <div class="thanks-actions">
+        <a class="btn" href="index.html">トップページへ戻る</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">プカリ司法書士法人</div>
+        <div>〒130-0025 東京都墨田区千歳1丁目6番1号 田中ビル1階</div>
+      </div>
+      <a class="back-link" href="index.html">トップページへ</a>
+    </div>
+  </footer>
+</body>
+</html>
