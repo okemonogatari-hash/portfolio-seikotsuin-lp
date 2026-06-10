@@ -83,7 +83,7 @@ def render_list(items: list[dict], limit: int) -> str:
         date = fmt_date(it['dt'])
         title = htmllib.escape(it['title'])
         link = htmllib.escape(it['link'], quote=True)
-        tag = '新着' if i == 0 else '日記'
+        tag = '新着' if i == 0 else '記事'
         out.append(f'              <article class="news-item">')
         out.append(f'                <span class="news-date">{date}</span>')
         out.append(f'                <span class="news-tag">{tag}</span>')
