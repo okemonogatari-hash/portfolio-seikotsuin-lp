@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お打ち合わせ資料｜2026-06-10 プカリ司法書士法人さま HP制作</title>
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Noto+Serif+JP:wght@600;700;900&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #075f8e;
+      --blue-dark: #06486f;
+      --blue-soft: #eaf6fb;
+      --blue-mist: #f4fbff;
+      --orange: #f2a900;
+      --orange-dark: #d98b00;
+      --ink: #1f2d3a;
+      --muted: #647280;
+      --line: #dce8ee;
+      --bg: #f7fbfd;
+      --shadow: 0 16px 42px rgba(7, 95, 142, 0.10);
+      --sans: "Noto Sans JP", system-ui, sans-serif;
+      --serif: "Noto Serif JP", serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--blue); }
+
+    .page {
+      width: min(860px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 80px;
+    }
+
+    .doc-head {
+      border-left: 6px solid var(--orange);
+      padding-left: 20px;
+      margin-bottom: 36px;
+    }
+
+    .doc-head .date {
+      color: var(--orange-dark);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      margin: 4px 0 6px;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: clamp(24px, 4.4vw, 34px);
+      line-height: 1.4;
+    }
+
+    .doc-head .meta {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    section {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 30px 32px;
+      margin-bottom: 26px;
+    }
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 18px;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.4;
+    }
+
+    .num {
+      flex: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 14.5px;
+      font-weight: 700;
+      margin: 0 0 14px;
+    }
+
+    ul.clean {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    ul.clean li { margin: 7px 0; }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 10px 3px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      vertical-align: 2px;
+      margin-right: 6px;
+    }
+
+    .pill.new { background: #fdeec9; color: #8a6100; }
+    .pill.ok { background: #e2f4e8; color: #1c7a3d; }
+    .pill.ask { background: #fbe8e4; color: #b9503e; }
+
+    table.agenda {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14.5px;
+    }
+
+    table.agenda th,
+    table.agenda td {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    table.agenda th {
+      background: var(--blue-mist);
+      color: var(--blue-dark);
+      white-space: nowrap;
+      font-weight: 900;
+    }
+
+    .link-card {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--blue-mist);
+      padding: 14px 18px;
+      margin: 10px 0;
+      text-decoration: none;
+    }
+
+    .link-card strong {
+      display: block;
+      color: var(--blue-dark);
+      font-size: 15px;
+    }
+
+    .link-card span {
+      color: var(--muted);
+      font-size: 13px;
+      word-break: break-all;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 16px 0 6px;
+    }
+
+    .flow-step {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--blue-mist);
+      padding: 12px 10px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--blue-dark);
+      position: relative;
+    }
+
+    .flow-step em {
+      display: block;
+      font-style: normal;
+      color: var(--orange-dark);
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+
+    .mailcap {
+      margin: 18px 0 0;
+    }
+
+    .mail-frame {
+      border: 1px solid #d4dde3;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(31, 45, 58, 0.08);
+    }
+
+    .mail-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      background: #f1f4f7;
+      border-bottom: 1px solid #e0e6ea;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .mail-toolbar .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.r { background: #f1707a; }
+    .dot.y { background: #f5c451; }
+    .dot.g { background: #5ec26a; }
+
+    .mail-body { padding: 22px 26px 26px; background: #fff; }
+
+    .mail-subject {
+      font-size: 17px;
+      font-weight: 900;
+      color: #202124;
+    }
+
+    .inbox-badge {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 1px 8px 2px;
+      border-radius: 4px;
+      background: #e8eaed;
+      color: #5f6368;
+      font-size: 11.5px;
+      font-weight: 700;
+      vertical-align: 2px;
+    }
+
+    .mail-from {
+      margin: 8px 0 16px;
+      font-size: 13px;
+      color: #5f6368;
+    }
+
+    .mail-from b { color: #202124; }
+
+    table.mail-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+
+    table.mail-table th,
+    table.mail-table td {
+      border: 1px solid #e0e0e0;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    table.mail-table th {
+      background: #3d5a96;
+      color: #fff;
+      width: 150px;
+      font-weight: 700;
+    }
+
+    .mail-stamp {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #80868b;
+      text-align: center;
+    }
+
+    .note-box {
+      margin-top: 16px;
+      padding: 14px 18px;
+      border-radius: 8px;
+      background: var(--blue-mist);
+      border: 1px solid var(--line);
+      color: var(--blue-dark);
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+
+    .q-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 12px 0;
+      background: #fff;
+    }
+
+    .q-item h3 {
+      margin: 0 0 6px;
+      color: var(--blue-dark);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .q-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+
+    .timeline {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .timeline li {
+      position: relative;
+      padding: 0 0 18px 28px;
+      border-left: 2px solid var(--line);
+      margin-left: 8px;
+    }
+
+    .timeline li:last-child { border-left-color: transparent; padding-bottom: 0; }
+
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--orange);
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--orange);
+    }
+
+    .timeline strong { color: var(--blue-dark); }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12.5px;
+      font-weight: 700;
+      margin-top: 36px;
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 22px 18px; }
+      .flow { grid-template-columns: repeat(2, 1fr); }
+      table.mail-table th { width: 110px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="doc-head">
+      <div class="date">2026年6月10日（水）13:00–14:00</div>
+      <h1>お打ち合わせ資料<br>プカリ司法書士法人さま ホームページ制作</h1>
+      <div class="meta">参加：甲斐さま ／ IRODORI 飯田 ／ HP制作担当 三又</div>
+    </div>
+
+    <section>
+      <h2><span class="num">1</span>本日の流れ（HPパート 約30分）</h2>
+      <table class="agenda">
+        <tr><th>① 5分</th><td>前回からの更新内容のご報告（このページの §2〜§3）</td></tr>
+        <tr><th>② 5分</th><td>確認用ホームページを画面共有で一緒に確認</td></tr>
+        <tr><th>③ 15分</th><td>本日決めていただきたいこと 5点（§4）</td></tr>
+        <tr><th>④ 5分</th><td>今後のスケジュール確認（§5）→ HPパート終了</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2><span class="num">2</span>前回（6/2）からの更新内容</h2>
+      <a class="link-card" href="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/pukari-codex-v0118/" target="_blank" rel="noopener">
+        <strong>▶ 確認用ホームページ（最新版）</strong>
+        <span>https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/pukari-codex-v0118/</span>
+      </a>
+      <ul class="clean">
+        <li><span class="pill ok">済</span>ページ全体の構成を、いただいた構成案に沿って整理（業務内容 → 選ばれる理由 → ご相談の流れ → 解決事例 → 代表あいさつ → お知らせ → 事務所案内 → FAQ → お問い合わせ）</li>
+        <li><span class="pill ok">済</span>写真を<strong>ご提供いただいた素材のみ</strong>で構成し直し（仮置きの海外フリー素材を全て撤去）</li>
+        <li><span class="pill ok">済</span>原稿ドキュメントの言い回しを再点検し、「リーガルサポート会員」など大切な表現を原文どおりに反映</li>
+        <li><span class="pill ok">済</span>解決事例 5件すべてに詳細ページを作成・カードから移動できることを確認</li>
+        <li><span class="pill ok">済</span>電話（03-6821-6852）→ フォーム → LINE の並びで問い合わせ導線を統一</li>
+        <li><span class="pill new">NEW</span><strong>初回相談予約フォームが実際に動くようになりました</strong>（詳細は次の §3）</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">3</span><span class="pill new">NEW</span>フォームの送信テスト結果のご報告</h2>
+      <p class="lead">本日午前、実際にフォームから送信し、メールが届くところまでの動作確認を完了しました。</p>
+
+      <div class="flow">
+        <div class="flow-step"><em>STEP 1</em>フォーム入力</div>
+        <div class="flow-step"><em>STEP 2</em>送信内容の確認</div>
+        <div class="flow-step"><em>STEP 3</em>送信完了ページ</div>
+        <div class="flow-step"><em>STEP 4</em>メールで受信 ✓</div>
+      </div>
+
+      <div class="mailcap">
+        <div class="mail-frame" aria-label="実際に届いたメールの再現">
+          <div class="mail-toolbar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            実際に届いたメール（2026-06-10 9:08 受信・再現表示）
+          </div>
+          <div class="mail-body">
+            <div class="mail-subject">【プカリHP】初回相談予約フォームから新着<span class="inbox-badge">受信トレイ</span></div>
+            <div class="mail-from"><b>FormSubmit</b> &lt;submissions@formsubmit.co&gt;　→　受付用メールアドレス宛</div>
+            <table class="mail-table">
+              <tr><th>お名前</th><td>おけもん テスト申込</td></tr>
+              <tr><th>フリガナ</th><td>オケモン テストモウシコミ</td></tr>
+              <tr><th>メールアドレス</th><td>magicpul***@gmail.com（テスト用・相談者役）</td></tr>
+              <tr><th>電話番号</th><td>090-0000-0000</td></tr>
+              <tr><th>相談種別</th><td>相続・遺産整理</td></tr>
+              <tr><th>希望連絡方法</th><td>メール</td></tr>
+              <tr><th>面談方法</th><td>対面</td></tr>
+              <tr><th>相談内容</th><td>【動作確認テスト 2026-06-10】フォーム送信がメールに届くかの内部テストです。実際の相談ではありません。</td></tr>
+            </table>
+            <div class="mail-stamp">Submitted at Wed, Jun 10, 2026（受信トレイに到着・迷惑メール振り分けなし）</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-box">
+        ✅ 確認できたこと：入力内容が日本語の項目名つきの表でメールに届く ／ 届いたメールに「返信」すると相談者さまへ直接返信できる ／ 送信後はホームページ内の完了ページが表示される<br>
+        📌 現在はテストとして制作担当のメールアドレスに届く設定です。<strong>本番でどこに届けるか</strong>を本日ご相談させてください（§4 の確認①）。
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">4</span>本日決めていただきたいこと（5点）</h2>
+
+      <div class="q-item">
+        <h3><span class="pill ask">確認①</span>フォームの通知は、どこに届けばよいですか？</h3>
+        <p>候補：(a) メール（甲斐さまのアドレス）／(b) LINE ／(c) その他。あわせて「お問い合わせありがとうございます」の自動返信を出すかもご相談。</p>
+      </div>
+
+      <div class="q-item">
+        <h3><span class="pill ask">確認②</span>本番の公開方法：既存サイト（kai-shihosyoshi.com）への組み込みで進めてよいですか？</h3>
+        <p>進め方：① 現サイトのバックアップ → ② テスト環境で組み込み・表示確認 → ③ ご確認後に本番切り替え。本番を直接さわることはしません。</p>
+      </div>
+
+      <div class="q-item">
+        <h3><span class="pill ask">確認③</span>Facebook ページの正式なURLを教えてください</h3>
+        <p>現在は仮のリンクを設定しています。正しいページを画面でご一緒に確認できれば、その場で控えて反映します。</p>
+      </div>
+
+      <div class="q-item">
+        <h3><span class="pill ask">確認④</span>業務カード・事例カードの写真の見せ方</h3>
+        <p>現在はご提供いただいた写真のみで構成しているため、同じ写真が複数の場所に登場しています。今後の方向：(A) フリー素材を追加 ／ (B) 写真を使わずアイコン＋色で表現 ／ (C) 現状ベース＋追加のお写真をご提供いただく。</p>
+      </div>
+
+      <div class="q-item">
+        <h3><span class="pill ask">確認⑤</span>公開後の記事更新は、どなたが・どのくらいの頻度で行いますか？</h3>
+        <p>候補：(a) 甲斐さまが note で記事を書き、HPの新着欄に自動表示 ／ (b) 更新したい内容を共有いただき、こちらで反映 ／ (c) その他。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">5</span>今後の流れ（6月中旬の完成に向けて）</h2>
+      <ul class="timeline">
+        <li><strong>本日（6/10）</strong>：上記5点の方針確定</li>
+        <li><strong>今週中</strong>：確定した方針を反映した更新版をお見せします（写真・フォーム通知先・Facebook）</li>
+        <li><strong>来週</strong>：本番公開の準備（バックアップ → テスト環境で組み込み → 表示確認）</li>
+        <li><strong>6月中旬</strong>：ご確認のうえ本番公開・納品 🎉</li>
+      </ul>
+      <div class="note-box" style="margin-top:18px">
+        💡 本日方針が決まりますと、上記の予定どおり進められます。ご不明点はその場で何でもお聞きください。
+      </div>
+    </section>
+
+    <footer>
+      プカリ司法書士法人さま HP制作 お打ち合わせ資料（2026-06-10）｜作成：HP制作担当 三又
+    </footer>
+  </div>
+</body>
+</html>
