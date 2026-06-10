@@ -650,21 +650,26 @@
           <div class="step">2. 確認</div>
           <div class="step">3. 完了</div>
         </div>
-        <form class="form-body">
+        <form class="form-body" action="https://formsubmit.co/09710bc1b41651ef7255b159959daaaf" method="POST">
+          <input type="hidden" name="_subject" value="【プカリHP】初回相談予約フォームから新着">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/pukari-codex-v0118/contact-thanks.html">
+          <input type="hidden" name="_replyto" id="replyto-field" value="">
           <div class="form-section">
             <h3>ご相談の概要</h3>
             <div class="form-grid">
               <div class="field full">
                 <span class="field-label">ご相談目的 <span class="required">必須</span></span>
                 <div class="choice-row" role="group" aria-label="ご相談目的">
-                  <label class="choice"><input type="radio" name="purpose" checked> 初回相談を予約したい</label>
-                  <label class="choice"><input type="radio" name="purpose"> 業務内容を確認したい</label>
-                  <label class="choice"><input type="radio" name="purpose"> 費用感を知りたい</label>
+                  <label class="choice"><input type="radio" name="ご相談目的" value="初回相談を予約したい" checked> 初回相談を予約したい</label>
+                  <label class="choice"><input type="radio" name="ご相談目的" value="業務内容を確認したい"> 業務内容を確認したい</label>
+                  <label class="choice"><input type="radio" name="ご相談目的" value="費用感を知りたい"> 費用感を知りたい</label>
                 </div>
               </div>
               <label class="field">
                 相談種別 <span class="required">必須</span>
-                <select>
+                <select name="相談種別" required>
                   <option>相続・遺産整理</option>
                   <option>成年後見</option>
                   <option>家族信託</option>
@@ -675,7 +680,7 @@
               </label>
               <label class="field">
                 希望連絡方法
-                <select>
+                <select name="希望連絡方法">
                   <option>電話</option>
                   <option>メール</option>
                   <option>LINE</option>
@@ -689,31 +694,31 @@
             <div class="form-grid">
               <label class="field">
                 お名前 <span class="required">必須</span>
-                <input type="text" placeholder="山田 花子">
+                <input type="text" name="お名前" placeholder="山田 花子" required>
               </label>
               <label class="field">
                 フリガナ
-                <input type="text" placeholder="ヤマダ ハナコ">
+                <input type="text" name="フリガナ" placeholder="ヤマダ ハナコ">
               </label>
               <label class="field">
                 メールアドレス <span class="required">必須</span>
-                <input type="email" placeholder="sample@example.com">
+                <input type="email" name="メールアドレス" id="email-field" placeholder="sample@example.com" required>
               </label>
               <label class="field">
                 電話番号 <span class="required">必須</span>
-                <input type="tel" placeholder="090-0000-0000">
+                <input type="tel" name="電話番号" placeholder="090-0000-0000" required>
               </label>
               <label class="field full">
                 企業・団体名
-                <input type="text" placeholder="法人のお客様のみご入力ください">
+                <input type="text" name="企業・団体名" placeholder="法人のお客様のみご入力ください">
               </label>
               <label class="field full">
                 ご住所
-                <input type="text" placeholder="東京都墨田区千歳1丁目6番1号">
+                <input type="text" name="ご住所" placeholder="東京都墨田区千歳1丁目6番1号">
               </label>
               <label class="field">
                 FAX番号
-                <input type="tel" placeholder="03-0000-0000">
+                <input type="tel" name="FAX番号" placeholder="03-0000-0000">
               </label>
             </div>
           </div>
@@ -724,22 +729,22 @@
               <div class="field full">
                 <span class="field-label">希望面談日時</span>
                 <div class="date-grid">
-                  <input type="text" placeholder="第1希望 例: 6/12 午前">
-                  <input type="text" placeholder="第2希望 例: 6/13 午後">
-                  <input type="text" placeholder="第3希望 例: 6/16 夕方">
+                  <input type="text" name="希望日時（第1希望）" placeholder="第1希望 例: 6/12 午前">
+                  <input type="text" name="希望日時（第2希望）" placeholder="第2希望 例: 6/13 午後">
+                  <input type="text" name="希望日時（第3希望）" placeholder="第3希望 例: 6/16 夕方">
                 </div>
               </div>
               <div class="field full">
                 <span class="field-label">面談方法</span>
                 <div class="choice-row" role="group" aria-label="面談方法">
-                  <label class="choice"><input type="radio" name="meeting" checked> 対面</label>
-                  <label class="choice"><input type="radio" name="meeting"> オンライン</label>
-                  <label class="choice"><input type="radio" name="meeting"> 相談して決めたい</label>
+                  <label class="choice"><input type="radio" name="面談方法" value="対面" checked> 対面</label>
+                  <label class="choice"><input type="radio" name="面談方法" value="オンライン"> オンライン</label>
+                  <label class="choice"><input type="radio" name="面談方法" value="相談して決めたい"> 相談して決めたい</label>
                 </div>
               </div>
               <label class="field">
                 希望オフィス
-                <select>
+                <select name="希望オフィス">
                   <option>両国・森下オフィス</option>
                   <option>オンライン相談</option>
                   <option>相談して決めたい</option>
@@ -752,22 +757,22 @@
             <h3>ご相談内容</h3>
             <label class="field full">
               現在の状況やお困りごと <span class="required">必須</span>
-              <textarea placeholder="例: 相続した不動産の名義変更をどう進めればよいか相談したいです。"></textarea>
+              <textarea name="ご相談内容" placeholder="例: 相続した不動産の名義変更をどう進めればよいか相談したいです。" required></textarea>
             </label>
           </div>
 
           <div class="form-section">
             <h3>同意事項</h3>
             <label class="choice consent">
-              <input type="checkbox">
+              <input type="checkbox" name="個人情報への同意" value="同意します" required>
               個人情報の取り扱いに同意します
             </label>
             <label class="choice consent">
-              <input type="checkbox">
+              <input type="checkbox" name="初回無料相談の対象・範囲" value="確認しました" required>
               初回無料相談の対象・範囲について確認しました
             </label>
             <div class="form-submit">
-              <button class="btn" type="button">送信内容を確認する</button>
+              <button class="btn" type="submit">送信内容を確認する</button>
               <span class="submit-note">送信前に、入力内容を一度確認できます。</span>
             </div>
           </div>
@@ -807,5 +812,23 @@
       <a class="back-link" href="index.html">トップページへ</a>
     </div>
   </footer>
+  <script>
+    (function () {
+      var form = document.querySelector('form.form-body');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        var email = document.getElementById('email-field');
+        var replyto = document.getElementById('replyto-field');
+        if (email && replyto) replyto.value = email.value;
+        var fields = ['お名前', 'メールアドレス', '電話番号', '相談種別'];
+        var lines = fields.map(function (n) {
+          var el = form.elements[n];
+          return n + '：' + (el && el.value ? el.value : '（未入力）');
+        });
+        var ok = window.confirm('以下の内容で送信します。よろしいですか？\n\n' + lines.join('\n'));
+        if (!ok) e.preventDefault();
+      });
+    })();
+  </script>
 </body>
 </html>
