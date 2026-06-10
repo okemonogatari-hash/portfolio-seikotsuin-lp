@@ -2431,7 +2431,9 @@
 
     <aside class="top-news" aria-label="最新情報">
       <div class="top-news-title">NEWS</div>
-      <div class="top-news-item"><strong>2026.04</strong>「日本のプロフェッショナル」掲載情報をご覧いただけます。</div>
+      <!-- AUTO_NEWS_TOP_START -->
+      <div class="top-news-item"><strong>2026.06.10</strong>テスト：HPおしらせ自動連携の動作確認（6/10）</div>
+      <!-- AUTO_NEWS_TOP_END -->
       <a class="btn" href="#news">一覧を見る</a>
     </aside>
 
@@ -2787,21 +2789,52 @@
               <button class="news-tab" type="button">日記</button>
               <button class="news-tab" type="button">コラム</button>
             </div>
-            <div class="news-list">
+            <div class="news-list news-tab-panel">
+              <!-- AUTO_NEWS_LIST_START -->
+              <article class="news-item">
+                <span class="news-date">2026.06.10</span>
+                <span class="news-tag">新着</span>
+                <a href="https://note.com/nice_gnu546/n/n47e697f3d37b" target="_blank" rel="noopener">テスト：HPおしらせ自動連携の動作確認（6/10）</a>
+              </article>
+              <article class="news-item">
+                <span class="news-date">2026.05.18</span>
+                <span class="news-tag">日記</span>
+                <a href="https://note.com/nice_gnu546/n/n1ccfa0dfb3e1" target="_blank" rel="noopener">テスト：雨上がりの散歩メモ</a>
+              </article>
+              <article class="news-item">
+                <span class="news-date">2026.05.16</span>
+                <span class="news-tag">日記</span>
+                <a href="https://note.com/nice_gnu546/n/n2848629ed0b5" target="_blank" rel="noopener">テスト：机の上を片づけた日</a>
+              </article>
+              <article class="news-item">
+                <span class="news-date">2026.05.14</span>
+                <span class="news-tag">日記</span>
+                <a href="https://note.com/nice_gnu546/n/n675755bf2863" target="_blank" rel="noopener">【実験】朝のコーヒー記録</a>
+              </article>
+              <article class="news-item">
+                <span class="news-date">2025.04.19</span>
+                <span class="news-tag">日記</span>
+                <a href="https://note.com/nice_gnu546/n/nfb300b492853" target="_blank" rel="noopener">毎日しゃけおにぎりにさようなら</a>
+              </article>
+              <!-- AUTO_NEWS_LIST_END -->
               <article class="news-item">
                 <span class="news-date">2026.04</span>
                 <span class="news-tag">掲載</span>
                 <a href="https://www.tac-school.co.jp/tacnewsweb/professional/pro202604.html" target="_blank" rel="noopener">TACNEWS「日本のプロフェッショナル」に掲載されました</a>
               </article>
+            </div>
+            <div class="news-list news-tab-panel" style="display:none">
               <article class="news-item">
-                <span class="news-date">2026.06</span>
-                <span class="news-tag">コラム</span>
-                <span class="news-placeholder">相続・成年後見で相談前に確認したいこと（準備中）</span>
+                <span class="news-date">—</span>
+                <span class="news-tag">準備中</span>
+                <span class="news-placeholder">日記カテゴリの表示は、記事の連携先が決まりしだい設定します。</span>
               </article>
+            </div>
+            <div class="news-list news-tab-panel" style="display:none">
               <article class="news-item">
-                <span class="news-date">2026.06</span>
-                <span class="news-tag">お知らせ</span>
-                <span class="news-placeholder">初回相談の流れを整理しました（準備中）</span>
+                <span class="news-date">—</span>
+                <span class="news-tag">準備中</span>
+                <span class="news-placeholder">コラムカテゴリの表示は、記事の連携先が決まりしだい設定します。</span>
               </article>
             </div>
           </div>
@@ -3192,6 +3225,21 @@
 
       setPosition(false);
       resumeAutoplay();
+    })();
+
+    (function () {
+      const tabs = Array.from(document.querySelectorAll(".news-tab"));
+      const panels = Array.from(document.querySelectorAll(".news-tab-panel"));
+      if (!tabs.length || tabs.length !== panels.length) return;
+      tabs.forEach((tab, i) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+          panels.forEach((p, j) => {
+            p.style.display = j === i ? "" : "none";
+          });
+        });
+      });
     })();
   </script>
 </body>
