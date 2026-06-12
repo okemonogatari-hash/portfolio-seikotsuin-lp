@@ -1918,6 +1918,32 @@
       }
     }
 
+    @media (min-width: 1081px) and (max-width: 1259px) {
+      .header-inner {
+        grid-template-columns: 196px minmax(0, 1fr) auto;
+        gap: 12px;
+      }
+
+      .logo img {
+        width: 178px;
+        height: 44px;
+      }
+
+      .nav {
+        gap: 9px;
+        font-size: 12px;
+      }
+
+      .header-quick {
+        min-width: 64px;
+        padding: 8px 9px 9px;
+      }
+
+      .header-quick.phone {
+        min-width: 126px;
+      }
+    }
+
     @media (min-width: 1181px) and (max-width: 1360px) {
       .hero-inner {
         width: min(1120px, calc(100% - 136px));
