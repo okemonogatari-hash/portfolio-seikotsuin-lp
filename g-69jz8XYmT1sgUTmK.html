@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>ロースイーツ体験会｜火を使わない、からだにやさしいおやつ教室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --green:#7C9070;
+  --green-deep:#5C7053;
+  --apricot:#E8A87C;
+  --apricot-deep:#D98E5F;
+  --cream:#FAF6EF;
+  --white:#FFFFFF;
+  --ink:#4A443A;
+  --ink-light:#857D6F;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.9;
+  font-size:16px;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+
+/* ===== header ===== */
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 5vw;
+  background:rgba(250,246,239,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(124,144,112,.18);
+}
+.logo{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.05rem;color:var(--green-deep);letter-spacing:.06em;}
+.logo small{display:block;font-size:.6rem;font-weight:500;color:var(--ink-light);letter-spacing:.22em;}
+.gnav{display:flex;gap:28px;align-items:center;font-size:.85rem;font-weight:500;}
+.gnav a{position:relative;padding:4px 0;}
+.gnav a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--apricot);transition:width .35s;}
+.gnav a:hover::after{width:100%;}
+.btn-line{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--green);color:#fff;
+  font-weight:700;font-size:.85rem;
+  padding:10px 22px;border-radius:999px;
+  box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 4px 14px rgba(92,112,83,.28);
+  transition:transform .25s,box-shadow .25s;
+}
+.btn-line:hover{transform:translateY(-2px);box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 8px 20px rgba(92,112,83,.35);}
+@media(max-width:768px){.gnav a:not(.btn-line){display:none;}}
+
+/* ===== hero ===== */
+.hero{
+  position:relative;
+  min-height:92vh;
+  display:flex;align-items:center;
+  padding:120px 5vw 80px;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:-2;
+  background:url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=1800&q=70') 78% center/cover;
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(250,246,239,.98) 0%,rgba(250,246,239,.94) 42%,rgba(250,246,239,.55) 62%,rgba(250,246,239,.08) 92%);
+}
+@media(max-width:768px){
+  .hero-bg::after{background:linear-gradient(180deg,rgba(250,246,239,.95) 0%,rgba(250,246,239,.88) 60%,rgba(250,246,239,.72) 100%);}
+}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;}
+.hero-label{
+  font-family:'Quicksand',sans-serif;
+  color:var(--apricot-deep);
+  letter-spacing:.3em;font-size:.78rem;font-weight:600;
+  margin-bottom:18px;
+  animation:fadeIn .9s .2s both;
+}
+.hero h1{
+  font-family:'Zen Maru Gothic',sans-serif;
+  font-size:clamp(1.7rem,4.2vw,3rem);
+  font-weight:700;line-height:1.65;
+  color:var(--ink);
+  letter-spacing:.04em;
+  animation:slideUp 1s .35s both;
+}
+.hero h1 em{font-style:normal;color:var(--green-deep);background:linear-gradient(transparent 68%,rgba(232,168,124,.45) 68%);}
+.hero p{
+  margin-top:22px;font-size:.98rem;color:var(--ink-light);max-width:30em;
+  animation:slideUp 1s .55s both;
+}
+.hero-cta{margin-top:36px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;animation:slideUp 1s .75s both;}
+.btn-main{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--apricot);color:#fff;
+  font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1rem;
+  padding:17px 38px;border-radius:999px;
+  box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 6px 18px rgba(217,142,95,.4);
+  transition:transform .25s,box-shadow .25s;
+}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 10px 24px rgba(217,142,95,.5);}
+.hero-note{font-size:.78rem;color:var(--ink-light);}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes slideUp{from{opacity:0;transform:translateY(28px);filter:blur(4px);}to{opacity:1;transform:translateY(0);filter:blur(0);}}
+
+/* ===== trust ===== */
+.trust{background:var(--white);padding:34px 5vw;border-top:1px solid rgba(124,144,112,.14);border-bottom:1px solid rgba(124,144,112,.14);}
+.trust-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-around;gap:20px;flex-wrap:wrap;}
+.trust-item{text-align:center;min-width:140px;}
+.trust-item .num{font-family:'Shippori Mincho',serif;font-size:1.5rem;color:var(--green-deep);font-weight:600;}
+.trust-item .label{font-size:.78rem;color:var(--ink-light);letter-spacing:.08em;}
+
+/* ===== common section ===== */
+.section{padding:110px 5vw;}
+.section-inner{max-width:1000px;margin:0 auto;}
+.sec-label{font-family:'Quicksand',sans-serif;font-size:.75rem;letter-spacing:.32em;color:var(--apricot-deep);font-weight:600;margin-bottom:10px;}
+.sec-title{
+  font-family:'Zen Maru Gothic',sans-serif;
+  font-size:clamp(1.4rem,3vw,2rem);font-weight:700;letter-spacing:.05em;
+  position:relative;display:inline-block;padding-bottom:14px;margin-bottom:42px;
+}
+.sec-title::after{content:'';position:absolute;left:2px;bottom:0;width:0;height:3px;border-radius:3px;background:var(--apricot);transition:width .7s cubic-bezier(0.22,1,0.36,1) .25s;}
+.is-visible .sec-title::after{width:46px;}
+
+/* ===== problems ===== */
+.problems{background:var(--cream);}
+.problem-list{display:flex;flex-direction:column;gap:18px;max-width:640px;}
+.problem-item{
+  background:var(--white);
+  border-left:4px solid var(--green);
+  padding:18px 24px;border-radius:0 14px 14px 0;
+  font-size:.95rem;
+  box-shadow:0 1px 2px rgba(74,68,58,.05),0 6px 16px rgba(74,68,58,.05);
+  display:flex;gap:14px;align-items:flex-start;
+}
+.problem-item i{color:var(--apricot-deep);margin-top:6px;font-size:.8rem;}
+.problems-close{margin-top:40px;font-family:'Zen Maru Gothic',sans-serif;font-size:1.15rem;font-weight:700;color:var(--green-deep);}
+
+/* ===== about ===== */
+.about{background:var(--white);}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+.about-photo{position:relative;}
+.about-photo img{border-radius:24px 80px 24px 24px;aspect-ratio:4/3.4;object-fit:cover;box-shadow:0 18px 40px rgba(74,68,58,.16);}
+.about-photo::before{
+  content:'';position:absolute;top:-22px;left:-22px;width:96px;height:96px;
+  background:radial-gradient(circle,rgba(232,168,124,.35) 0%,transparent 70%);
+  border-radius:50%;z-index:0;
+}
+.about-text h3{font-family:'Zen Maru Gothic',sans-serif;font-size:1.25rem;color:var(--green-deep);margin-bottom:18px;line-height:1.7;}
+.about-text p{font-size:.95rem;margin-bottom:16px;}
+.about-points{margin-top:26px;display:flex;flex-direction:column;gap:12px;}
+.about-points li{list-style:none;display:flex;gap:12px;align-items:center;font-size:.92rem;font-weight:500;}
+.about-points i{color:var(--green);font-size:1rem;width:22px;text-align:center;}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:34px;}}
+
+/* ===== divider ===== */
+.divider{
+  height:230px;
+  background:url('https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1800&q=70') center/cover fixed;
+  position:relative;
+}
+.divider::after{content:'';position:absolute;inset:0;background:linear-gradient(rgba(250,246,239,.25),rgba(250,246,239,.25));}
+@media(max-width:768px){.divider{background-attachment:scroll;height:170px;}}
+
+/* ===== features ===== */
+.features{background:var(--cream);}
+.feature-row{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-bottom:84px;}
+.feature-row:last-child{margin-bottom:0;}
+.feature-row.rev .feature-photo{order:2;}
+.feature-photo{overflow:hidden;border-radius:18px;box-shadow:0 14px 34px rgba(74,68,58,.13);}
+.feature-photo img{aspect-ratio:4/3;object-fit:cover;transition:transform .8s cubic-bezier(0.22,1,0.36,1);}
+.feature-row:hover .feature-photo img{transform:scale(1.05);}
+.feature-num{font-family:'Quicksand',sans-serif;font-size:.8rem;letter-spacing:.28em;color:var(--apricot-deep);font-weight:600;margin-bottom:10px;}
+.feature-text h3{font-family:'Zen Maru Gothic',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:16px;line-height:1.7;}
+.feature-text p{font-size:.93rem;color:var(--ink-light);}
+@media(max-width:768px){.feature-row{grid-template-columns:1fr;gap:24px;margin-bottom:60px;}.feature-row.rev .feature-photo{order:0;}}
+
+/* ===== flow ===== */
+.flow{background:var(--white);}
+.flow-list{display:flex;flex-direction:column;gap:0;max-width:620px;}
+.flow-item{display:flex;gap:24px;padding:26px 0;border-bottom:1px dashed rgba(124,144,112,.35);}
+.flow-item:last-child{border-bottom:none;}
+.flow-num{
+  flex-shrink:0;width:52px;height:52px;border-radius:50%;
+  background:var(--cream);border:2px solid var(--green);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Quicksand',sans-serif;font-weight:600;color:var(--green-deep);
+  transition:transform .3s;
+}
+.flow-item:hover .flow-num{transform:scale(1.1);}
+.flow-body h4{font-family:'Zen Maru Gothic',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:6px;}
+.flow-body p{font-size:.9rem;color:var(--ink-light);}
+
+/* ===== voice ===== */
+.voice{background:var(--cream);}
+.voice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
+.voice-card{
+  background:var(--white);border-radius:20px;padding:30px 28px;
+  box-shadow:0 1px 2px rgba(74,68,58,.04),0 10px 26px rgba(74,68,58,.07);
+  border:1px solid rgba(124,144,112,.12);
+  transition:transform .3s,box-shadow .3s;
+  position:relative;
+}
+.voice-card:hover{transform:translateY(-4px);box-shadow:0 1px 2px rgba(74,68,58,.04),0 16px 34px rgba(74,68,58,.12);}
+.voice-card .quote{position:absolute;top:18px;right:22px;color:rgba(232,168,124,.4);font-size:1.6rem;}
+.voice-meta{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.voice-meta .icon{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--green) 0%,var(--green-deep) 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;}
+.voice-meta .name{font-weight:700;font-size:.92rem;}
+.voice-meta .attr{font-size:.75rem;color:var(--ink-light);}
+.voice-card p{font-size:.9rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+
+/* ===== teacher ===== */
+.teacher{background:var(--white);}
+.teacher-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
+.teacher-photo{position:relative;}
+.teacher-photo img{border-radius:50% 50% 42% 58%/55% 48% 52% 45%;aspect-ratio:1/1.08;object-fit:cover;box-shadow:0 18px 40px rgba(74,68,58,.18);}
+.teacher-name{font-family:'Zen Maru Gothic',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:4px;}
+.teacher-name small{font-family:'Quicksand',sans-serif;font-size:.72rem;letter-spacing:.2em;color:var(--apricot-deep);display:block;margin-bottom:10px;}
+.teacher-role{font-size:.85rem;color:var(--ink-light);margin-bottom:22px;}
+.teacher-text p{font-size:.94rem;margin-bottom:14px;}
+.teacher-sign{margin-top:18px;font-family:'Shippori Mincho',serif;font-size:1.05rem;color:var(--green-deep);}
+@media(max-width:768px){.teacher-grid{grid-template-columns:1fr;gap:30px;}.teacher-photo{max-width:280px;margin:0 auto;}}
+
+/* ===== price ===== */
+.price{background:var(--cream);}
+.price-card{
+  max-width:560px;background:var(--white);
+  border-radius:26px;padding:46px 44px;text-align:center;
+  box-shadow:0 1px 2px rgba(74,68,58,.04),0 16px 40px rgba(74,68,58,.1);
+  border-top:5px solid var(--apricot);
+  margin:0 auto;
+}
+.price-card .course{font-family:'Zen Maru Gothic',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:8px;}
+.price-card .duration{font-size:.85rem;color:var(--ink-light);margin-bottom:24px;}
+.price-card .yen{font-family:'Shippori Mincho',serif;font-size:2.6rem;color:var(--green-deep);font-weight:600;}
+.price-card .yen small{font-size:1rem;}
+.price-card .tax{font-size:.78rem;color:var(--ink-light);margin-bottom:24px;}
+.price-includes{text-align:left;background:var(--cream);border-radius:14px;padding:20px 24px;margin-bottom:28px;}
+.price-includes li{list-style:none;font-size:.88rem;padding:5px 0;display:flex;gap:10px;align-items:center;}
+.price-includes i{color:var(--apricot-deep);font-size:.8rem;}
+
+/* ===== faq ===== */
+.faq{background:var(--white);}
+.faq-list{max-width:680px;}
+.faq-item{border-bottom:1px solid rgba(124,144,112,.2);}
+.faq-item summary{
+  list-style:none;cursor:pointer;padding:22px 8px;
+  display:flex;align-items:center;gap:16px;
+  font-weight:700;font-size:.95rem;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary .q{color:var(--apricot-deep);font-family:'Quicksand',sans-serif;font-weight:600;}
+.faq-item summary i{margin-left:auto;color:var(--green);transition:transform .3s;}
+.faq-item[open] summary i{transform:rotate(45deg);}
+.faq-a{padding:0 8px 22px 42px;font-size:.9rem;color:var(--ink-light);}
+
+/* ===== final cta ===== */
+.final{
+  position:relative;padding:120px 5vw;text-align:center;color:#fff;
+  background:url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1800&q=70') center/cover;
+}
+.final::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(92,112,83,.82),rgba(74,88,66,.88));}
+.final-inner{position:relative;max-width:640px;margin:0 auto;}
+.final h2{font-family:'Zen Maru Gothic',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:700;line-height:1.8;margin-bottom:18px;}
+.final p{font-size:.95rem;opacity:.92;margin-bottom:34px;}
+.final .btn-main{background:#fff;color:var(--green-deep);box-shadow:0 8px 24px rgba(0,0,0,.18);}
+.final .line-icon{color:#06C755;}
+
+/* ===== footer ===== */
+.footer{background:#4A443A;color:rgba(255,255,255,.75);padding:46px 5vw 30px;font-size:.8rem;}
+.footer-inner{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end;}
+.footer .logo{color:#fff;margin-bottom:8px;}
+.footer .logo small{color:rgba(255,255,255,.5);}
+.footer-note{font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.7;}
+.footer-sns{display:flex;gap:18px;font-size:1.2rem;}
+.footer-sns a{transition:opacity .3s;}
+.footer-sns a:hover{opacity:.6;}
+
+/* ===== anim ===== */
+.fade-in,.fade-in-left,.fade-in-right{opacity:0;transition:opacity .9s cubic-bezier(0.22,1,0.36,1),transform .9s cubic-bezier(0.22,1,0.36,1),filter .9s;}
+.fade-in{transform:translateY(30px);filter:blur(3px);}
+.fade-in-left{transform:translateX(-36px);}
+.fade-in-right{transform:translateX(36px);}
+.fade-in.is-visible,.fade-in-left.is-visible,.fade-in-right.is-visible{opacity:1;transform:translate(0,0);filter:blur(0);}
+.stagger>*{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(0.22,1,0.36,1),transform .7s cubic-bezier(0.22,1,0.36,1);}
+.stagger.is-visible>*{opacity:1;transform:translateY(0);}
+.stagger.is-visible>*:nth-child(1){transition-delay:.05s;}
+.stagger.is-visible>*:nth-child(2){transition-delay:.18s;}
+.stagger.is-visible>*:nth-child(3){transition-delay:.31s;}
+.stagger.is-visible>*:nth-child(4){transition-delay:.44s;}
+.stagger.is-visible>*:nth-child(5){transition-delay:.57s;}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">からだにやさしいおやつ教室<small>RAW SWEETS LESSON</small></div>
+  <nav class="gnav">
+    <a href="#about">ロースイーツとは</a>
+    <a href="#features">体験会でできること</a>
+    <a href="#voice">参加者の声</a>
+    <a href="#price">日程・参加費</a>
+    <a href="#cta" class="btn-line"><i class="fa-solid fa-envelope"></i>体験会に申し込む</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <p class="hero-label">RAW SWEETS TRIAL LESSON</p>
+    <h1>火を使わない、<br>お砂糖にたよらない。<br><em>からだが喜ぶおやつ</em>、<br>はじめてみませんか。</h1>
+    <p>オーブンなし・お菓子作り未経験でも大丈夫。混ぜて、冷やして、できあがり。あなたの台所が、小さな教室になる日まで。</p>
+    <div class="hero-cta">
+      <a href="#cta" class="btn-main"><i class="fa-solid fa-seedling"></i>体験会の日程をみる</a>
+      <span class="hero-note">オンライン参加OK／お子さま連れ歓迎</span>
+    </div>
+  </div>
+</section>
+
+<div class="trust fade-in">
+  <div class="trust-inner">
+    <div class="trust-item"><div class="num">60代</div><div class="label">からはじめた主宰者</div></div>
+    <div class="trust-item"><div class="num">3講座</div><div class="label">認定インストラクター制度</div></div>
+    <div class="trust-item"><div class="num">10,000+</div><div class="label">Instagramフォロワー</div></div>
+  </div>
+</div>
+
+<section class="section problems" id="problems">
+  <div class="section-inner fade-in">
+    <p class="sec-label">FOR YOU</p>
+    <h2 class="sec-title">こんな方に来てほしい体験会です</h2>
+    <div class="problem-list stagger">
+      <div class="problem-item"><i class="fa-solid fa-leaf"></i>甘いものは大好き。でも、からだのことが気になりはじめた</div>
+      <div class="problem-item"><i class="fa-solid fa-leaf"></i>子育てがひと段落して、「次の何か」を探している</div>
+      <div class="problem-item"><i class="fa-solid fa-leaf"></i>資格はあるのに、収入につながっていない</div>
+      <div class="problem-item"><i class="fa-solid fa-leaf"></i>お菓子作りはまったくの初心者。それでも何かを始めたい</div>
+    </div>
+    <p class="problems-close">ひとつでも当てはまったら、きっと楽しい2時間になります。</p>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photo fade-in-left"><img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=1200&q=70" alt="ロースイーツのイメージ"></div>
+      <div class="about-text fade-in-right">
+        <p class="sec-label">WHAT'S RAW SWEETS</p>
+        <h3>ロースイーツは、<br>「焼かない・砂糖を使わない」<br>あたらしいおやつ。</h3>
+        <p>ナッツやドライフルーツ、ココナッツなど自然の素材だけで作る、加熱しないスイーツです。酵素や栄養をそのままいただけるので、からだにやさしく、美容を気づかう方にも選ばれています。</p>
+        <p>むずかしい技術はいりません。だからこそ、「教える側」への一歩も踏み出しやすいのです。</p>
+        <ul class="about-points">
+          <li><i class="fa-solid fa-fire-burner"></i>オーブン・火を使わない</li>
+          <li><i class="fa-solid fa-candy-cane"></i>白砂糖・乳製品・小麦粉を使わない</li>
+          <li><i class="fa-solid fa-heart"></i>はじめてでも、その日に完成する</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section features" id="features">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="sec-label">EXPERIENCE</p>
+      <h2 class="sec-title">体験会でできる、3つのこと</h2>
+    </div>
+    <div class="feature-row">
+      <div class="feature-photo fade-in-left"><img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1200&q=70" alt="ロースイーツ作り"></div>
+      <div class="feature-text fade-in-right">
+        <p class="feature-num">01</p>
+        <h3>世界にひとつの、<br>自分のロースイーツを作る</h3>
+        <p>当日はロータルトを一緒に作ります。混ぜて、形をつくって、冷やすだけ。「あまりにも簡単で、うれしくなった」——そんな声がいちばん多い時間です。</p>
+      </div>
+    </div>
+    <div class="feature-row rev">
+      <div class="feature-photo fade-in-right"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=70" alt="自然素材"></div>
+      <div class="feature-text fade-in-left">
+        <p class="feature-num">02</p>
+        <h3>からだと食のはなしを、<br>ゆっくり聞ける</h3>
+        <p>なぜ「焼かない」ことに意味があるのか。腸とおやつの関係って？毎日の食卓にすぐ活かせる、小さな知識をお持ち帰りいただけます。</p>
+      </div>
+    </div>
+    <div class="feature-row">
+      <div class="feature-photo fade-in-left"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=70" alt="キッチンの様子"></div>
+      <div class="feature-text fade-in-right">
+        <p class="feature-num">03</p>
+        <h3>「好き」を仕事にした先輩の<br>リアルな話が聞ける</h3>
+        <p>主宰の富田は、60代でこの仕事をはじめました。「ゆる起業」という言葉にピンときた方には、資格やその先の働き方についても、体験会の最後に少しだけご紹介します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section flow">
+  <div class="section-inner fade-in">
+    <p class="sec-label">FLOW</p>
+    <h2 class="sec-title">体験会当日のながれ</h2>
+    <div class="flow-list stagger">
+      <div class="flow-item">
+        <div class="flow-num">01</div>
+        <div class="flow-body"><h4>じこしょうかい＆ティータイム</h4><p>ハーブティーを飲みながら、ゆるっとスタート。緊張はここで置いていってください。</p></div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">02</div>
+        <div class="flow-body"><h4>ロースイーツのきほん講座（30分）</h4><p>素材のこと、からだのこと。スライドを見ながらやさしく学びます。</p></div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">03</div>
+        <div class="flow-body"><h4>ロータルト作り（60分）</h4><p>実際に手を動かして、ひとり1ホール仕上げます。作ったものはお持ち帰りOK。</p></div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">04</div>
+        <div class="flow-body"><h4>試食＆質問タイム</h4><p>できたてを味わいながら、資格や教室開講のことなど、なんでもご質問ください。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section voice" id="voice">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="sec-label">VOICE</p>
+      <h2 class="sec-title">参加されたみなさんの声</h2>
+    </div>
+    <div class="voice-grid stagger">
+      <div class="voice-card">
+        <i class="fa-solid fa-quote-right quote"></i>
+        <div class="voice-meta"><div class="icon"><i class="fa-solid fa-mug-hot"></i></div><div><div class="name">Y・Hさん</div><div class="attr">60代・自営業</div></div></div>
+        <p>40年経営してきたお店を子どもに引き継ぐと決めて、次にやることを探していました。初めて作ったロースイーツがあまりにも簡単でうれしくて。同じ60代からのスタートを決められました。</p>
+      </div>
+      <div class="voice-card">
+        <i class="fa-solid fa-quote-right quote"></i>
+        <div class="voice-meta"><div class="icon"><i class="fa-solid fa-leaf"></i></div><div><div class="name">H・Tさん</div><div class="attr">40代・主婦</div></div></div>
+        <p>子どもが中学に入り、そろそろ何かしようと思っていたところで「ゆる起業」という言葉にピンときました。無理のないペースで始められそうなのが決め手です。</p>
+      </div>
+      <div class="voice-card">
+        <i class="fa-solid fa-quote-right quote"></i>
+        <div class="voice-meta"><div class="icon"><i class="fa-solid fa-seedling"></i></div><div><div class="name">E・Sさん</div><div class="attr">50代・パート</div></div></div>
+        <p>習ったことを家で7日間続けられた自分にびっくり。何も知らない夫が「最近、腸の調子がいい」と不思議そうに言っていて、心の中でガッツポーズしました。</p>
+      </div>
+      <div class="voice-card">
+        <i class="fa-solid fa-quote-right quote"></i>
+        <div class="voice-meta"><div class="icon"><i class="fa-solid fa-plane"></i></div><div><div class="name">K・Kさん</div><div class="attr">30代・ホテル勤務</div></div></div>
+        <p>海外留学を経てホテル勤務5年。自分でできる起業の種を探していて、この体験会でロースイーツと出会えたのが本当に良かったです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section teacher">
+  <div class="section-inner">
+    <div class="teacher-grid">
+      <div class="teacher-photo fade-in-left"><img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=900&q=70" alt="講師イメージ"></div>
+      <div class="teacher-text fade-in-right">
+        <p class="sec-label">TEACHER</p>
+        <h3 class="teacher-name"><small>RAW SWEETS INSTRUCTOR</small>富田 あけみ</h3>
+        <p class="teacher-role">日本起業アカデミー株式会社 代表／ロースイーツ・ローチョコレート・腸活酵素 認定講師</p>
+        <p>「もう歳だから」と言いかけた60代のはじめに、ロースイーツと出会いました。火を使わないお菓子が、わたしの人生の火を、もういちど点けてくれたのです。</p>
+        <p>いまは作ることだけでなく、「教えられる人」を育てることがわたしの仕事。あなたの台所から始まる小さな一歩を、隣で応援させてください。</p>
+        <p class="teacher-sign">— 体験会で、お会いしましょう。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section price" id="price">
+  <div class="section-inner">
+    <div class="fade-in" style="text-align:center;">
+      <p class="sec-label">PRICE</p>
+      <h2 class="sec-title">日程・参加費</h2>
+    </div>
+    <div class="price-card fade-in">
+      <p class="course">ロースイーツ体験会（120分）</p>
+      <p class="duration">毎月開催／対面・オンラインどちらも選べます</p>
+      <p class="yen"><small>¥</small>3,500</p>
+      <p class="tax">（税込・材料費込み）※価格はデモ用サンプルです</p>
+      <ul class="price-includes">
+        <li><i class="fa-solid fa-circle-check"></i>ロータルト1ホールのお持ち帰り</li>
+        <li><i class="fa-solid fa-circle-check"></i>きほんのレシピシートつき</li>
+        <li><i class="fa-solid fa-circle-check"></i>ハーブティー＆試食つき</li>
+        <li><i class="fa-solid fa-circle-check"></i>資格・開講についての個別相談（希望者のみ）</li>
+      </ul>
+      <a href="#cta" class="btn-main"><i class="fa-solid fa-calendar-check"></i>この内容で申し込む</a>
+    </div>
+  </div>
+</section>
+
+<section class="section faq">
+  <div class="section-inner fade-in">
+    <p class="sec-label">Q&A</p>
+    <h2 class="sec-title">よくあるご質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary><span class="q">Q1</span>お菓子作りがまったくの初心者でも大丈夫ですか？<i class="fa-solid fa-plus"></i></summary>
+        <p class="faq-a">はい、大丈夫です。ロースイーツは「混ぜる・形をつくる・冷やす」が基本なので、包丁もオーブンもほとんど使いません。これまでの参加者の半分以上が、お菓子作り未経験の方です。</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q">Q2</span>起業や資格に興味がなくても参加できますか？<i class="fa-solid fa-plus"></i></summary>
+        <p class="faq-a">もちろんです。「からだにいいおやつを作ってみたい」だけで十分。資格のご案内は希望された方にだけお話ししますので、勧誘などは一切ありません。</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q">Q3</span>オンライン参加の場合、材料はどうなりますか？<i class="fa-solid fa-plus"></i></summary>
+        <p class="faq-a">事前に材料キットをご自宅へお送りします。当日は画面ごしに一緒に作りましょう。発送の都合上、開催日の5日前までにお申し込みください。</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q">Q4</span>子ども連れでも参加できますか？<i class="fa-solid fa-plus"></i></summary>
+        <p class="faq-a">はい、歓迎です。火を使わないレッスンなので、お子さまと一緒に作っていただけます。これまでも親子でのご参加がたくさんありました。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="cta">
+  <div class="final-inner fade-in">
+    <h2>からだにやさしい一歩を、<br>いちばんやさしい形で。</h2>
+    <p>日程の確認・お申し込みは、公式LINEからどうぞ。<br>最新の開催情報と、おうちでできるかんたんレシピもお届けしています。</p>
+    <a href="#" class="btn-main"><i class="fa-brands fa-line line-icon"></i>公式LINEで日程をみる</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="logo">からだにやさしいおやつ教室<small>presented by 日本起業アカデミー</small></div>
+      <p class="footer-note">本ページはデザインデモです。掲載している価格・日程は仮のもの、写真はイメージ（Unsplash）です。<br>実際の公開時にはご本人写真・実価格に差し替えます。</p>
+    </div>
+    <div class="footer-sns">
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="LINE"><i class="fa-brands fa-line"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+if(location.search.includes('static')){const st=document.createElement('style');st.textContent='*{animation:none!important;transition:none!important;}.fade-in,.fade-in-left,.fade-in-right,.stagger,.stagger>*{opacity:1!important;transform:none!important;filter:none!important;}';document.head.appendChild(st);}
+const animEls=[...document.querySelectorAll('.fade-in,.fade-in-left,.fade-in-right,.stagger')];
+function reveal(){
+  animEls.forEach(el=>{
+    if(el.classList.contains('is-visible'))return;
+    const r=el.getBoundingClientRect();
+    if(r.top<window.innerHeight*0.92&&r.bottom>0)el.classList.add('is-visible');
+  });
+}
+let ticking=false;
+window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{reveal();ticking=false;});ticking=true;}},{passive:true});
+window.addEventListener('resize',reveal,{passive:true});
+const revealTimer=setInterval(()=>{reveal();if(animEls.every(el=>el.classList.contains('is-visible')))clearInterval(revealTimer);},500);
+reveal();
+</script>
+</body>
+</html>
