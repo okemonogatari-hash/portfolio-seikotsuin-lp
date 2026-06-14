@@ -167,6 +167,22 @@ header{position:sticky;top:0;background:rgba(250,246,239,.9);backdrop-filter:blu
 .faq-a{margin-top:12px;display:grid;grid-template-columns:36px 1fr;gap:12px;font-size:.92rem;color:var(--ink-60)}
 .faq-a::before{content:"A";font-family:'Quicksand';font-weight:300;color:var(--green);font-size:1.3rem}
 
+/* philosophy */
+.philosophy{background:var(--green-pale);padding:140px 0;position:relative;overflow:hidden}
+.philosophy::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(217,100,64,.08),transparent 70%);top:-80px;right:-80px;pointer-events:none}
+.philosophy h2{font-size:clamp(1.65rem,3.8vw,2.4rem);line-height:1.85;font-weight:900;margin-bottom:24px}
+.philosophy h2 em{font-style:normal;color:var(--peach);background:linear-gradient(transparent 72%,#f3c4ad 72%)}
+.philosophy .pl-lead{font-size:1rem;color:var(--ink-60);max-width:600px;margin-bottom:48px;line-height:2}
+.philo-gap{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:40px 0 50px}
+@media(max-width:680px){.philo-gap{grid-template-columns:1fr}}
+.philo-gap .gx{background:var(--paper);border:1px solid var(--line);border-radius:4px 22px 4px 22px;padding:30px 28px;box-shadow:0 16px 36px -22px rgba(38,37,33,.18)}
+.philo-gap .gx .glabel{font-family:'Quicksand';font-weight:500;font-size:.7rem;letter-spacing:.32em;color:var(--peach);text-transform:uppercase;margin-bottom:12px;display:block}
+.philo-gap .gx h3{font-size:1.06rem;font-weight:900;line-height:1.7;margin-bottom:10px}
+.philo-gap .gx p{font-size:.9rem;color:var(--ink-60);line-height:1.95}
+.philo-quote{font-family:'Zen Maru Gothic';font-size:clamp(1.15rem,2.6vw,1.5rem);font-weight:700;color:var(--green);line-height:2.1;margin:44px 0;padding:18px 0 18px 28px;border-left:3px solid var(--peach)}
+.philosophy .pl-close{font-size:.96rem;color:var(--ink-60);line-height:2;max-width:640px}
+.philosophy .pl-close b{color:var(--ink)}
+
 /* voice */
 .voice-card{border:1px solid var(--line);border-radius:4px 22px 4px 22px;background:var(--paper);padding:42px 38px;margin-top:46px;box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 1px 2px rgba(38,37,33,.05),0 16px 36px -22px rgba(38,37,33,.22)}
 .voice-card .vq{font-size:1rem;line-height:2.1;font-family:'Zen Maru Gothic';font-weight:600}
@@ -380,6 +396,34 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
   </div>
 </section>
 
+<!-- 7.5 PHILOSOPHY -->
+<section class="philosophy">
+  <div class="wrap-n">
+    <span class="kicker">Philosophy</span>
+    <h2>AIと、敵対しない。<br><em>仲良くなる。</em></h2>
+    <p class="pl-lead">これから先、現場には2つの格差が広がります。<br>その格差を、敵対ではなく「仲良くなる」で超えていく。それが私の立場です。</p>
+
+    <div class="philo-gap rv">
+      <div class="gx">
+        <span class="glabel">Gap 01</span>
+        <h3>AIを使う人と、使わない人</h3>
+        <p>記録が速くなる施設と、いつまでも紙とFAXで残業する施設。研修が整う施設と、新人教育が属人化したままの施設。差は静かに、でも確実に開いていきます。</p>
+      </div>
+      <div class="gx">
+        <span class="glabel">Gap 02</span>
+        <h3>AIを使いこなす人と、AIに使われる人</h3>
+        <p>道具として味方につけられる人と、振り回されて消耗する人。AIが現場に入ってくる時、どちら側に立つかは、最初の「触れ方」で決まります。</p>
+      </div>
+    </div>
+
+    <p class="pl-close">AIを禁止しても、この流れは止まりません。だから禁止じゃなく、<b>仲良くなる方法を一緒に設計する</b>のが私の仕事です。</p>
+
+    <blockquote class="philo-quote">AIに任せられることはAIに任せる。<br>人間は、人間にしかできないことに集中する。</blockquote>
+
+    <p class="pl-close">最期に手を握ること。家族の言葉を待つこと。表情から気持ちを汲むこと。<b>その時間を取り戻すために、AIを相棒にする。</b><br>AIは敵ではありません。あなたにしかできないことを守るための、最高の相棒です。</p>
+  </div>
+</section>
+
 <!-- 8. TOP MESSAGE -->
 <section id="message">
   <div class="wrap">
@@ -418,7 +462,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q">利用者さん・園児の個人情報をAIに入れるのは怖いです。</div>
-        <div class="faq-a">その感覚が正しいです。「個人情報を入れない」という曖昧な合言葉ではなく、どの情報を・どんな形に変えれば・安全な業務データとして使えるか——その変換ルールを貴施設の業務ごとに一緒に作ります。匿名化の手順とチェック方法まで、現場に残します。</div>
+        <div class="faq-a">その感覚が正しいです。ただ、情報はすでに紙・FAX・LINE・職員のメモなど、いろいろな場所を流れていることも事実です。「AIを使わない＝安全」ではなく、<b>散らばっている情報の流れを、管理できる形に整える</b>——それもAI定着の設計の一部です。「個人情報を入れない」という曖昧な合言葉ではなく、どの情報を・どんな形に変えれば・安全な業務データとして使えるか、変換ルールを貴施設の業務ごとに一緒に作ります。匿名化の手順とチェック方法まで、現場に残します。</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">職員が本当にITが苦手なのですが、大丈夫でしょうか。</div>
