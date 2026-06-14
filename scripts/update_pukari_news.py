@@ -22,7 +22,10 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 # 更新対象ページ（マーカー AUTO_NEWS_TOP / AUTO_NEWS_LIST を持つ index.html）
 HP_PATHS = [
     REPO_ROOT / 'pukari-codex-v01' / 'index.html',
-    REPO_ROOT / 'pukari-codex-v0118' / 'index.html',
+    # v0118（納品版）は本番noteの接続先が確定するまで自動更新を停止（2026-06-14）。
+    # 現在お知らせ欄は「準備中」で固定表示。テスト用note(nice_gnu546)の記事が
+    # 司法書士HPに出るのを防ぐため。本番で甲斐さんのnoteに接続する際に下行を復活させる。
+    # REPO_ROOT / 'pukari-codex-v0118' / 'index.html',
 ]
 
 NOTE_USER = os.environ.get('NOTE_USER', 'nice_gnu546')  # おけもんチャンネル
