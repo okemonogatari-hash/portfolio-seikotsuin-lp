@@ -744,7 +744,7 @@
               初回無料相談の対象・範囲について確認しました
             </label>
             <div class="form-submit">
-              <button class="btn" type="submit">送信内容を確認する</button>
+              <button class="btn" type="submit">送信する</button>
               <span class="submit-note">送信前に、入力内容を一度確認できます。</span>
             </div>
           </div>
@@ -818,7 +818,7 @@
           window.location.href = 'contact-thanks.html';
         }).catch(function () {
           sending = false;
-          if (btn) { btn.disabled = false; btn.textContent = '送信内容を確認する'; }
+          if (btn) { btn.disabled = false; btn.textContent = '送信する'; }
           form.submit();
         });
       });
