@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>点検記録表 写真埋め込みスキル｜現場写真をエクセルの写真欄に自動配置</title>
+<style>
+  :root{
+    --bg:#faf7f2; --text:#2b2a26; --sub:#6b6862;
+    --accent:#3d5a3c; --accent-light:#e8efe6; --card:#fffdf9;
+    --border:#e5e0d6; --code-bg:#f0ede5;
+    --warn-bg:#fdf4e3; --warn-border:#e0c280;
+  }
+  *{margin:0; padding:0; box-sizing:border-box;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","Helvetica Neue",sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.8; font-size:15px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .layout{display:flex; min-height:100vh;}
+  .sidebar{
+    width:260px; background:var(--card); border-right:1px solid var(--border);
+    padding:30px 0; position:sticky; top:0; height:100vh; overflow-y:auto; flex-shrink:0;
+  }
+  .sidebar h1{padding:0 24px 8px; font-size:16px; color:var(--accent); font-weight:700;}
+  .sidebar .subtitle{padding:0 24px 24px; font-size:12px; color:var(--sub); border-bottom:1px solid var(--border);}
+  .sidebar nav{padding:16px 0;}
+  .sidebar nav a{
+    display:block; padding:10px 24px; color:var(--text); text-decoration:none;
+    font-size:13px; border-left:3px solid transparent; transition:all .15s;
+  }
+  .sidebar nav a:hover{background:var(--accent-light); border-left-color:var(--accent);}
+  .main{flex:1; padding:60px 80px; max-width:880px;}
+  section{margin-bottom:80px; scroll-margin-top:20px;}
+  h2{font-size:26px; color:var(--accent); margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid var(--accent-light);}
+  h3{font-size:18px; margin-top:32px; margin-bottom:12px; color:var(--text);}
+  h4{font-size:15px; margin-top:20px; margin-bottom:8px; color:var(--accent);}
+  p{margin-bottom:16px;}
+  ul,ol{margin:12px 0 16px 24px;}
+  li{margin-bottom:6px;}
+  code{background:var(--code-bg); padding:2px 6px; border-radius:3px; font-size:13px; font-family:"SF Mono",Consolas,monospace;}
+  pre{background:var(--code-bg); padding:16px; border-radius:6px; overflow-x:auto; font-size:13px; line-height:1.6; margin:12px 0 20px;}
+  pre code{background:none; padding:0;}
+  blockquote{border-left:3px solid var(--accent); padding:8px 16px; margin:12px 0 16px; background:var(--accent-light); font-style:normal;}
+  blockquote p:last-child{margin-bottom:0;}
+  .callout{background:var(--warn-bg); border:1px solid var(--warn-border); padding:16px 20px; border-radius:6px; margin:20px 0; font-size:14px;}
+  .callout strong{color:#8a5a00;}
+  table{width:100%; border-collapse:collapse; margin:16px 0 20px; font-size:14px;}
+  th,td{text-align:left; padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:top;}
+  th{background:var(--accent-light); color:var(--accent); font-weight:600;}
+  .lead{font-size:16px; color:var(--sub); margin-bottom:32px;}
+  .tree{background:var(--code-bg); padding:20px; border-radius:6px; font-family:"SF Mono",Consolas,monospace; font-size:13px; line-height:1.7; white-space:pre; overflow-x:auto;}
+  .you{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:16px 0 22px;}
+  .you .box{background:var(--card); border:1px solid var(--border); border-radius:8px; padding:18px 16px; text-align:center;}
+  .you .num{display:inline-flex; width:30px; height:30px; align-items:center; justify-content:center; background:var(--accent-light); color:var(--accent); border-radius:50%; font-weight:700; margin-bottom:8px;}
+  .you .box b{display:block; color:var(--accent); font-size:14px; margin-bottom:5px;}
+  .you .box span{color:var(--sub); font-size:12.5px; line-height:1.65;}
+  .copy-block{position:relative; margin:12px 0 20px;}
+  .copy-block pre{margin:0; padding-right:110px;}
+  .copy-btn{position:absolute; top:10px; right:10px; background:var(--accent); color:#fff; border:none; padding:6px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-family:inherit; transition:all .15s;}
+  .copy-btn:hover{background:#2e4a2d;}
+  .copy-btn.copied{background:#6b8e6a;}
+  details{background:var(--card); border:1px solid var(--border); border-radius:6px; padding:0 20px; margin:20px 0;}
+  details summary{cursor:pointer; color:var(--accent); font-weight:600; padding:14px 0;}
+  details[open] summary{border-bottom:1px solid var(--border); margin-bottom:16px;}
+  details>*:last-child{padding-bottom:16px;}
+  .footer{margin-top:80px; padding-top:32px; border-top:1px solid var(--border); color:var(--sub); font-size:13px; text-align:center;}
+  hr{border:none; border-top:1px solid var(--border); margin:24px 0;}
+  @media(max-width:900px){
+    .layout{flex-direction:column;}
+    .sidebar{width:100%; height:auto; position:relative; padding:16px 0;}
+    .sidebar nav{display:flex; flex-wrap:wrap; gap:4px; padding:8px 16px;}
+    .sidebar nav a{border-left:none; border-bottom:2px solid transparent; padding:6px 10px; font-size:12px;}
+    .main{padding:30px 20px;}
+    h2{font-size:22px;}
+    .you{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <h1>🍳 写真をエクセルに入れるレシピ</h1>
+    <p class="subtitle">点検記録表 写真埋め込みスキル<br>清美環さま向け お試し版 / 2026-06-16</p>
+    <nav>
+      <a href="#intro">🌱 はじめに</a>
+      <a href="#what">📋 できること</a>
+      <a href="#structure">🏗 道具一式の中身</a>
+      <a href="#how">🍳 やる手順（4ステップ）</a>
+      <a href="#sample">📝 サンプル出力</a>
+      <a href="#receive">📂 受け取り方</a>
+      <a href="#trouble">🔧 詰まったとき</a>
+      <a href="#limits">⚠️ 限界と注意</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+
+    <section id="intro">
+      <h2>🌱 はじめに</h2>
+      <p class="lead">清美環さんへ。先日のお打ち合わせで伺った「手書きの点検記録表に、現場の写真を入れたい」というご要望を受けて、お試し版として用意したものです。</p>
+      <p>このページは、道具一式の中身・できること・受け取り方・実際の動きを、1ページで分かるようにまとめてあります。気になるところからどうぞ。</p>
+      <div class="callout">
+        <strong>📦 名前：</strong> <code>seibikan-photo-embed</code><br>
+        <strong>🔖 これは何？</strong> Claude Code（AIに自分用の道具を作らせる仕組み）に、「管きょ点検記録表の写真欄に現場写真を配置する」進め方を覚えさせた"道具一式"です<br>
+        <strong>🎯 想定：</strong> Google等の外部サービスは使わず、お使いのパソコンの中だけで完結します
+      </div>
+      <div class="callout">
+        <strong>⚠️ 大事なお知らせ：入れたら必ず一発で完璧に動く、というものではありません。</strong><br>
+        この道具一式は、Claude Code（AIエージェント）が写真埋め込みを進めるための「手順・部品・確認方法」をまとめたものです。パソコン環境や写真の状態によって、最初は調整が必要になることがあります。エラーが出た場合も、画面の内容を見ながら、AIエージェントと一緒に原因確認しながら進めていく前提の叩き台です。
+      </div>
+    </section>
+
+    <section id="what">
+      <h2>📋 できること</h2>
+      <p>現場で撮ったマンホールごとの写真フォルダを <code>photos_here/</code> に置くだけで、管きょ点検記録表のエクセルに <strong>写真3枚が自動で正しい欄に配置</strong>された状態で出てきます。</p>
+
+      <h3>埋め込みされる3つの写真欄</h3>
+      <table>
+        <thead><tr><th>位置</th><th>用途</th><th>写真サイズの目安</th></tr></thead>
+        <tbody>
+          <tr><td>上段中央</td><td>管きょ状況写真</td><td>約 730×290 px</td></tr>
+          <tr><td>下段左</td><td>マンホール蓋状況写真</td><td>約 730×370 px</td></tr>
+          <tr><td>下段右</td><td>マンホール蓋開口時 内部写真</td><td>約 660×370 px</td></tr>
+        </tbody>
+      </table>
+      <p>写真は <strong>アスペクト比を維持</strong> したまま、各欄にちょうど収まるサイズに自動リサイズされて埋め込まれます。</p>
+
+      <h3>大事なルール</h3>
+      <ul>
+        <li><strong>お写真は外に出ません</strong> — すべてパソコンの中だけで処理します。自動でどこかに送信されることはありません</li>
+        <li><strong>マンホール番号 = フォルダ名</strong> — <code>photos_here/056/</code> のように番号をフォルダ名にするだけで、Excel側の番号欄にも自動で書き込まれます</li>
+        <li><strong>まずは叩き台</strong> — いきなり完璧な全自動ではなく、「実際の現場記録でどこまで使えそうか」を確かめる初版です</li>
+      </ul>
+    </section>
+
+    <section id="structure">
+      <h2>🏗 道具一式の中身</h2>
+      <p>道具一式は1つのフォルダで完結します。中身はWindowsでも扱いやすいようにまとめています：</p>
+<div class="tree">skill_inspection_embed/
+├── SKILL.md                       ← Claude Code が最初に読む主役ファイル
+│                                     何をやって、何をやらないか
+│
+├── setup_check.py                 ← 🩺 環境ドクター（初回診断）
+│                                     パソコンの準備OKかを1つずつ確認
+│
+├── embed_photos.py                ← 写真埋め込みの本体スクリプト
+│
+├── template_管きょ点検記録表.xlsx ← 原本フォーマットのテンプレ
+│
+├── photos_here/                   ← 📂 ここに写真フォルダを入れます
+│   └── _お読みください.txt
+│
+├── output_excel/                  ← 📂 完成エクセルがここに出ます
+│
+├── sample/                        ← 動作確認用サンプル（マンホール056）
+│   └── 056/
+│       ├── R0017612.JPG
+│       ├── R0017613.JPG
+│       └── R0017614.JPG
+│
+└── はじめにお読みください.md      ← 紙のレシピ書（このページの簡易版）</div>
+    </section>
+
+    <section id="how">
+      <h2>🍳 やる手順（4ステップ）</h2>
+
+      <div class="you">
+        <div class="box"><span class="num">1</span><b>フォルダを置く</b><span>このフォルダ全体を、デスクトップなど好きな場所にコピー</span></div>
+        <div class="box"><span class="num">2</span><b>写真を入れる</b><span><code>photos_here/056/</code> のように、番号フォルダを入れる</span></div>
+        <div class="box"><span class="num">3</span><b>Claude Code に頼む</b><span>「写真をExcelに入れて」と話しかけるだけ</span></div>
+        <div class="box" style="grid-column:span 3;"><span class="num">4</span><b>結果を確認</b><span><code>output_excel/</code> に出てきた xlsx を Excel で開いて、写真の入り方を確認</span></div>
+      </div>
+
+      <h3>Step 2：写真の入れ方（イメージ）</h3>
+<div class="tree">photos_here/
+├── 056/             ← マンホール番号フォルダ
+│   ├── R0017612.JPG
+│   ├── R0017613.JPG
+│   └── R0017614.JPG
+├── 057/             ← 複数マンホールも一気に処理できます
+│   └── ...
+└── 058/
+    └── ...</div>
+
+      <p><strong>ポイント</strong>：</p>
+      <ul>
+        <li>マンホール番号を <strong>そのまま</strong> フォルダ名にしてください（<code>056</code>, <code>057</code>...）</li>
+        <li>写真は1フォルダにつき<strong>最低1枚、推奨3枚以上</strong></li>
+        <li>写真の中身は順不同でOK。<strong>ファイル名昇順で先頭3枚</strong>が自動で写真欄に配置されます</li>
+      </ul>
+
+      <h3>Step 3：Claude Code への話しかけ方</h3>
+
+      <p>全マンホール一気に処理する場合：</p>
+      <div class="copy-block">
+        <pre id="cmd-all">写真をExcelに入れて</pre>
+        <button class="copy-btn" onclick="copyText('cmd-all', this)">📋 コピー</button>
+      </div>
+
+      <p>特定のマンホールだけ処理する場合：</p>
+      <div class="copy-block">
+        <pre id="cmd-one">056番のマンホール処理して</pre>
+        <button class="copy-btn" onclick="copyText('cmd-one', this)">📋 コピー</button>
+      </div>
+
+      <p>→ Claude Code がこのスキルを自動で使って、<code>output_excel/</code> にエクセルを出してくれます。</p>
+
+      <h3>Step 4：出てきたファイルを開く</h3>
+<div class="tree">output_excel/
+├── 点検記録表_056_2026-06-16.xlsx
+├── 点検記録表_057_2026-06-16.xlsx
+└── 点検記録表_058_2026-06-16.xlsx</div>
+      <p>このエクセルを <strong>そのまま Excel で開くだけ</strong> でOK。3つの写真欄に、現場写真が枠ぴったりに配置されています。</p>
+    </section>
+
+    <section id="sample">
+      <h2>📝 サンプル出力（マンホール056・実物）</h2>
+      <p>同梱のサンプル写真（マンホール 056 の現場写真3枚）を使って、実際にこの道具で組み上げた出力例をご用意しました。</p>
+
+      <p style="text-align:center; margin:24px 0;">
+        <a href="sample_output_点検記録表_056.pdf" download style="display:inline-block; background:var(--accent); color:#fff; padding:12px 28px; border-radius:6px; text-decoration:none; font-size:14px; font-weight:600;">⬇️ サンプル出力PDFを見る（約 400KB）</a>
+      </p>
+      <p style="text-align:center; color:var(--sub); font-size:13px; margin-top:-8px;">↑ ダウンロードして開くと、3枚の写真がどう配置されるか実物が確認できます。</p>
+
+      <div class="callout">
+        <strong>⚠️ これはお試し出力です。</strong> 写真の中身を見ての自動仕分け（蓋／蓋開口時／管内）はしていません。ファイル名昇順の先頭3枚を、上から順に「管きょ状況」「マンホール蓋状況」「マンホール蓋開口時 内部」に配置しています。順番が違ったら、写真の名前を変えるか、Excel上で入れ替えてください。
+      </div>
+    </section>
+
+    <section id="receive">
+      <h2>📂 受け取り方</h2>
+      <p>今回はWindowsでのご利用を想定しています。下のZIPをダウンロードして、好きな場所に展開すれば使える形です。</p>
+
+      <div style="background:linear-gradient(135deg,#e8efe6 0%,#d4e0d3 100%); border:2px solid var(--accent); padding:28px 28px 24px; border-radius:10px; margin:30px 0;">
+        <p style="font-size:17px; font-weight:600; color:var(--accent); margin-bottom:8px;">✅ Windowsで設置する</p>
+        <p style="font-size:13px; color:var(--sub); margin-bottom:20px;">止まった場合は、Claude Codeにエラー内容を見せて原因確認しながら進めます</p>
+
+        <p style="text-align:center; margin:12px 0 24px;">
+          <a href="seibikan-photo-embed.zip" download style="display:inline-block; background:var(--accent); color:#fff; padding:14px 32px; border-radius:6px; text-decoration:none; font-size:15px; font-weight:600;">⬇️ seibikan-photo-embed.zip をダウンロード（約 3.8MB）</a>
+        </p>
+
+        <ol style="line-height:1.9;">
+          <li>ダウンロードしたZIPを <strong>右クリック → すべて展開</strong> します（<code>skill_inspection_embed</code> フォルダができます）</li>
+          <li>展開したフォルダを、デスクトップなど好きな場所に置きます</li>
+          <li>初回だけ、環境ドクターで準備を確認します：
+            <div class="copy-block" style="margin-top:10px;">
+              <pre id="cmd-check">py -3 setup_check.py</pre>
+              <button class="copy-btn" onclick="copyText('cmd-check', this)">📋 コピー</button>
+            </div>
+          </li>
+          <li>「<strong>はじめにお読みください.md</strong>」を開いて、写真の入れ方をご確認ください</li>
+          <li>写真を <code>photos_here/{マンホール番号}/</code> に入れたら、Claude Code を開いて：
+            <div class="copy-block" style="margin-top:10px;">
+              <pre id="cmd-run">写真をExcelに入れて</pre>
+              <button class="copy-btn" onclick="copyText('cmd-run', this)">📋 コピー</button>
+            </div>
+          </li>
+        </ol>
+        <p style="color:var(--sub); font-size:13px; margin-top:12px;">※ <code>py -3</code> が動かない場合は、Claude Codeが <code>python</code> で動くか確認して進めます。</p>
+      </div>
+
+      <details style="margin-top:30px;">
+        <summary>⚡ Claude Code にお願いする文章のテンプレ</summary>
+        <p style="margin-top:12px;">下の文章をコピーして、Claude Code に貼り付ければ、Windows向けに解凍～設置～動作確認まで進めてくれます。</p>
+        <div class="copy-block" style="margin-top:16px;">
+          <pre id="cmd-magic">Windowsで、ダウンロードした seibikan-photo-embed.zip を解凍して、
+Claude Codeのスキルとして使えるようにしてください。
+
+手順：
+1. ダウンロードフォルダにある seibikan-photo-embed.zip を展開
+2. 展開した skill_inspection_embed フォルダをデスクトップに置く
+3. py -3 setup_check.py を実行して環境を確認
+4. sample/056/ を photos_here/ にコピーして、py -3 embed_photos.py 056 でお試し実行
+5. output_excel/ に出てきたエクセルを開いて確認
+6. 結果をやさしく教えて</pre>
+          <button class="copy-btn" onclick="copyText('cmd-magic', this)">📋 コピー</button>
+        </div>
+      </details>
+    </section>
+
+    <section id="trouble">
+      <h2>🔧 詰まったとき</h2>
+
+      <div class="callout">
+        <strong>💬 困ったら、画面を Claude Code に見せる：</strong> 変なメッセージが出たり、うまく動かないときは、その画面のスクショや表示文を Claude Code に見せて、原因を確認しながら進めます。
+      </div>
+
+      <div class="callout" style="background:#fff8e6; border-left-color:#f59e0b;">
+        <strong>📸 よく使うスクショの撮り方（Windows）：</strong>
+        <ul style="margin-top:10px; padding-left:24px; line-height:1.8;">
+          <li><strong>Windows + Shift + S</strong> ⭐ ＝ 範囲選択スクショ（エラーの部分を四角で囲んで撮るのに便利）。撮ったあと、そのまま Claude Code のチャット欄に <strong>Ctrl + V</strong> で貼り付けできます</li>
+          <li><strong>PrtScn</strong>（Print Screen キー） ＝ 画面全体をコピー（ペイントなどに貼り付けて保存）</li>
+        </ul>
+      </div>
+
+      <h3>よくあるメッセージと対処</h3>
+      <table>
+        <thead><tr><th>こんなメッセージ</th><th>こうしてみる</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>python3: command not found</code> / <code>'py' は内部コマンドではありません</code></td>
+            <td>Python が入っていません。Microsoft Store で「Python 3.12」を検索してインストール。インストール時に <strong>「Add Python to PATH」を必ずチェック</strong></td>
+          </tr>
+          <tr>
+            <td><code>ModuleNotFoundError: No module named 'openpyxl'</code></td>
+            <td>必要な部品が足りません。<code>py -3 -m pip install openpyxl Pillow</code> をClaude Codeに貼り付けて実行してもらってください</td>
+          </tr>
+          <tr>
+            <td><code>テンプレが見つかりません</code></td>
+            <td>ZIPの展開に失敗しているかも。もう一度ZIPを展開し直してください</td>
+          </tr>
+          <tr>
+            <td><code>photos_here/056/ が見つかりません</code></td>
+            <td><code>photos_here/</code> の中に、番号フォルダ（例：<code>056</code>）が入っているかご確認ください</td>
+          </tr>
+          <tr>
+            <td>写真位置がズレている</td>
+            <td>原本フォーマットが変わっている可能性があります。エクセルの構造を見せていただければ、調整します</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="limits">
+      <h2>⚠️ 限界と注意</h2>
+
+      <h3>このスキルがやらないこと</h3>
+      <ul>
+        <li>判定欄（×／○）の自動入力は <strong>しません</strong></li>
+        <li>写真の中身を見ての自動仕分け（蓋／蓋開口時／管内）は <strong>しません</strong></li>
+        <li>手書き原本のOCR読み取りは <strong>このスキルとは別工程</strong> です</li>
+        <li>写真の選択順は「ファイル名昇順で先頭3枚」固定です</li>
+      </ul>
+
+      <p>→ 判定や写真の選び直しは、<strong>Excel上で清美環さんに行っていただく前提</strong>です。AIが「ここまでやって、ここからは人間が」という線引きを明確にしてあります。</p>
+
+      <h3>なぜこの設計にしているか</h3>
+      <p>「自動でできているように見えて、実は判定を間違えていた」が、現場では一番怖いと考えています。AIが「判定までやった顔」をするより、写真の埋め込みだけ確実に済ませて、<strong>判断は現場の方が責任を持って行える状態</strong>に整える設計にしました。</p>
+
+      <p>「ここまでなら任せてもいい」「ここは自分でやりたい」のラインを、ぜひ教えてください。育てていきます🌱</p>
+    </section>
+
+    <div class="footer">
+      <p>清美環さま向け お試し版 / 2026-06-16<br>
+      ご質問・ご要望は おけもん までお気軽に。</p>
+    </div>
+
+  </main>
+</div>
+
+<script>
+function copyText(id, btn){
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.classList.add('copied');
+    btn.textContent = '✅ コピー完了';
+    setTimeout(()=>{ btn.classList.remove('copied'); btn.textContent = '📋 コピー'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>
