@@ -771,8 +771,8 @@
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(90deg, rgba(244, 251, 253, 0.96) 0%, rgba(244, 251, 253, 0.86) 35%, rgba(244, 251, 253, 0.14) 64%, rgba(244, 251, 253, 0.02) 100%),
-        linear-gradient(180deg, rgba(7, 95, 142, 0.02), rgba(7, 95, 142, 0.16));
+        radial-gradient(ellipse at 18% 78%, rgba(7, 60, 92, 0.30) 0%, rgba(7, 60, 92, 0.10) 28%, rgba(7, 60, 92, 0.02) 52%, transparent 70%),
+        linear-gradient(180deg, rgba(7, 95, 142, 0.04), rgba(7, 95, 142, 0.18));
       pointer-events: none;
     }
 
@@ -792,20 +792,20 @@
     }
 
     .hero-slide--representative {
-      background-image: url("assets/client/display/tacnews-1.jpg?v=20260620-hero-slider");
-      background-position: center 40%;
+      background-image: url("assets/client/display/tacnews-1.jpg?v=20260621-pc-fix");
+      background-position: 78% 32%;
       animation-delay: 0s;
     }
 
     .hero-slide--consultation {
-      background-image: url("assets/generated/hero-team-office.jpg?v=20260620-hero-slider");
-      background-position: center 44%;
+      background-image: url("assets/generated/hero-team-office.jpg?v=20260621-pc-fix");
+      background-position: 64% 44%;
       animation-delay: 7s;
     }
 
     .hero-slide--team {
-      background-image: url("assets/generated/hero-office-three-women-kai-vibe-v0126.png?v=20260620-hero-slider");
-      background-position: center 30%;
+      background-image: url("assets/generated/hero-office-three-women-kai-vibe-v0126.png?v=20260621-pc-fix");
+      background-position: 62% 32%;
       animation-delay: 14s;
     }
 
@@ -829,72 +829,75 @@
     .hero-copy-panel {
       position: absolute;
       z-index: 2;
-      left: clamp(28px, 6vw, 76px);
-      top: 50%;
-      width: min(520px, calc(100% - 56px));
-      padding: clamp(24px, 3vw, 34px);
+      left: clamp(24px, 4vw, 56px);
+      top: auto;
+      bottom: clamp(40px, 5vw, 64px);
+      width: min(440px, calc(100% - 80px));
+      padding: 22px 24px 24px;
       border: 1px solid rgba(255, 255, 255, 0.78);
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.91);
-      box-shadow: 0 24px 58px rgba(7, 60, 92, 0.16);
-      transform: translateY(-50%);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 20px 52px rgba(7, 60, 92, 0.18);
+      transform: none;
       backdrop-filter: blur(10px);
     }
 
     .hero-copy-panel .eyebrow {
-      margin-bottom: 14px;
+      margin-bottom: 10px;
+      font-size: 12px;
     }
 
     .hero-copy-panel h1 {
-      max-width: 470px;
-      font-size: clamp(38px, 4.4vw, 58px);
+      max-width: 400px;
+      font-size: clamp(30px, 3.4vw, 44px);
+      line-height: 1.22;
     }
 
     .hero-copy-panel .hero-lead {
-      max-width: 480px;
-      margin-top: 18px;
-      font-size: 16px;
-      line-height: 1.85;
+      max-width: 380px;
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.7;
       font-weight: 650;
     }
 
     .hero-copy-panel .hero-actions {
-      margin-top: 24px;
+      margin-top: 18px;
     }
 
     .hero-feature-strip {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 18px;
+      gap: 6px;
+      margin-top: 14px;
     }
 
     .hero-feature {
-      min-height: 64px;
-      padding: 9px 7px;
+      min-height: 54px;
+      padding: 7px 5px;
       border: 1px solid rgba(7, 95, 142, 0.14);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.84);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.94);
       text-align: center;
-      box-shadow: 0 10px 24px rgba(7, 95, 142, 0.09);
+      box-shadow: 0 8px 18px rgba(7, 95, 142, 0.10);
     }
 
     .hero-feature strong {
       display: inline;
       color: var(--blue-dark);
-      font-size: 16px;
+      font-size: 13px;
       font-weight: 900;
-      line-height: 1.28;
+      line-height: 1.2;
       background: linear-gradient(transparent 62%, rgba(255, 245, 156, 0.92) 62%);
     }
 
     .hero-feature span {
       display: block;
-      margin-top: 5px;
+      margin-top: 2px;
       color: #506575;
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 800;
-      line-height: 1.35;
+      line-height: 1.3;
     }
 
     .hero-slider-dots {
