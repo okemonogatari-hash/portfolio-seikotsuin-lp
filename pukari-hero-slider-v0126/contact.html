@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初回相談予約フォーム | プカリ司法書士法人</title>
+  <meta name="description" content="プカリ司法書士法人の初回相談予約フォーム。相続、成年後見、遺産整理、家族信託、法人登記などのご相談を受け付けています。">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Noto+Serif+JP:wght@600;700;900&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #075f8e;
+      --blue-dark: #06486f;
+      --blue-soft: #eaf6fb;
+      --blue-mist: #f4fbff;
+      --orange: #f2a900;
+      --orange-dark: #d98b00;
+      --ink: #1f2d3a;
+      --muted: #647280;
+      --line: #dce8ee;
+      --paper: #fff;
+      --bg: #f7fbfd;
+      --shadow: 0 16px 42px rgba(7, 95, 142, 0.12);
+      --sans: "Noto Sans JP", system-ui, sans-serif;
+      --serif: "Noto Serif JP", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.85;
+      letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      width: min(1120px, calc(100% - 36px));
+      min-height: 78px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo img {
+      width: 214px;
+      height: 52px;
+      object-fit: contain;
+      object-position: left center;
+      mix-blend-mode: multiply;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--blue-dark);
+      font-weight: 900;
+    }
+
+    .header-phone {
+      padding: 8px 16px;
+      border-left: 1px solid var(--line);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .header-phone span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.2;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 10px 18px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--blue-dark);
+      font-size: 14px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 12% 30%, rgba(242, 169, 0, 0.14), transparent 32%),
+        linear-gradient(135deg, #fff, #eff9fc);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 76px 0 58px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.72fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 16px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 54px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--orange);
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .hero-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-panel img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .hero-panel-text {
+      padding: 24px;
+    }
+
+    .hero-panel-text strong {
+      display: block;
+      color: var(--blue-dark);
+      font-size: 20px;
+      line-height: 1.45;
+    }
+
+    .hero-panel-text span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    main {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 44px 0 72px;
+    }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .info-card {
+      min-height: 104px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(7, 95, 142, 0.06);
+    }
+
+    .info-card span {
+      display: block;
+      color: var(--orange-dark);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .info-card strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--blue-dark);
+      font-size: 20px;
+      line-height: 1.45;
+    }
+
+    .form-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .form-card,
+    .side-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .form-card {
+      overflow: hidden;
+    }
+
+    .form-head {
+      padding: 30px 34px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, var(--blue-mist), #fff);
+    }
+
+    .form-head h2,
+    .side-card h2 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1.35;
+    }
+
+    .form-head p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .step {
+      padding: 15px 10px;
+      background: #fff;
+      border-right: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .step:last-child {
+      border-right: 0;
+    }
+
+    .step.current {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .form-body {
+      padding: 30px 34px 36px;
+    }
+
+    .form-section {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .form-section:first-child {
+      padding-top: 0;
+    }
+
+    .form-section:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .form-section h3 {
+      margin: 0 0 18px;
+      color: var(--blue-dark);
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label,
+    .field-label {
+      color: var(--blue-dark);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .required {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 8px;
+      padding: 2px 8px 3px;
+      border-radius: 999px;
+      background: #fbe8e4;
+      color: #b9503e;
+      font-size: 11px;
+      font-weight: 900;
+      vertical-align: 1px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      border: 1px solid #c9dbe4;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .choice-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .choice {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--blue-mist);
+      color: var(--blue-dark);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .choice input {
+      width: auto;
+      min-height: auto;
+      accent-color: var(--blue);
+    }
+
+    .date-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .consent {
+      padding: 18px;
+      border-radius: 8px;
+      background: var(--blue-mist);
+    }
+
+    .form-submit {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 14px 28px 16px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--orange);
+      box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.16);
+      color: #073c5c;
+      font: inherit;
+      font-weight: 900;
+      line-height: 1.35;
+      cursor: pointer;
+    }
+
+    .submit-note {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .side-card {
+      padding: 24px;
+      position: sticky;
+      top: 100px;
+    }
+
+    .side-list {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .side-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .side-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .side-list span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .side-list strong {
+      display: block;
+      margin-top: 2px;
+      color: var(--blue-dark);
+      font-size: 18px;
+    }
+
+    .site-footer {
+      background: #fff;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .footer-brand {
+      color: var(--blue-dark);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner,
+      .form-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .info-row {
+        grid-template-columns: 1fr;
+      }
+
+      .side-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        width: min(100% - 24px, 1120px);
+        min-height: 70px;
+      }
+
+      .logo img {
+        width: 170px;
+        height: 44px;
+      }
+
+      .header-phone {
+        display: none;
+      }
+
+      .back-link {
+        padding-inline: 14px;
+        font-size: 13px;
+      }
+
+      .hero-inner {
+        width: min(100% - 24px, 1120px);
+        padding: 42px 0 34px;
+      }
+
+      main,
+      .footer-inner {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .hero-panel img {
+        height: 210px;
+      }
+
+      .form-head,
+      .form-body {
+        padding: 24px 18px;
+      }
+
+      .steps,
+      .form-grid,
+      .date-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .step:last-child {
+        border-bottom: 0;
+      }
+
+      .choice-row {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        display: grid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="プカリ司法書士法人トップへ">
+        <img src="assets/pukari-logo-horizontal.jpg" alt="プカリ司法書士法人">
+      </a>
+      <div class="header-actions">
+        <a class="back-link" href="index.html">トップへ戻る</a>
+        <div class="header-phone">
+          <span>電話</span>
+          03-6821-6852
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">初回相談予約フォーム</p>
+        <h1>ご相談内容を、先に整理してお送りいただけます</h1>
+        <p class="hero-copy">
+          相続、成年後見、遺産整理、家族信託、法人登記など、まずは現在の状況をお聞かせください。面談前に概要を確認し、必要な手続きと次の進め方を整理します。
+        </p>
+      </div>
+      <div class="hero-panel">
+        <img src="assets/client/display/office-1.jpg?v=20260609-1" alt="プカリ司法書士法人の事務所外観">
+        <div class="hero-panel-text">
+          <strong>初回相談は無料でご案内します</strong>
+          <span>通常2営業日以内を目安に、担当者よりご連絡します。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="info-row" aria-label="相談前の案内">
+      <div class="info-card">
+        <span>相談方法</span>
+        <strong>対面が基本（オンラインも対応）</strong>
+      </div>
+      <div class="info-card">
+        <span>相談内容</span>
+        <strong>相続・成年後見・家族信託など</strong>
+      </div>
+      <div class="info-card">
+        <span>お急ぎの場合</span>
+        <strong>お電話でも受け付けます</strong>
+      </div>
+    </div>
+
+    <div class="form-shell">
+      <section class="form-card" aria-labelledby="form-title">
+        <div class="form-head">
+          <h2 id="form-title">ご相談予約フォーム</h2>
+          <p>必要事項をご入力のうえ、送信内容の確認へお進みください。</p>
+        </div>
+        <div class="steps" aria-label="送信までの流れ">
+          <div class="step current">1. 入力</div>
+          <div class="step">2. 確認</div>
+          <div class="step">3. 完了</div>
+        </div>
+        <form class="form-body" action="#preview-form-disabled" method="POST" data-preview-only="true">
+          <input type="hidden" name="_subject" value="【プカリHP】初回相談予約フォームから新着">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/pukari-codex-v0118/contact-thanks.html">
+          <input type="hidden" name="_replyto" id="replyto-field" value="">
+          <div class="form-section">
+            <h3>ご相談の概要</h3>
+            <div class="form-grid">
+              <div class="field full">
+                <span class="field-label">ご相談目的 <span class="required">必須</span></span>
+                <div class="choice-row" role="group" aria-label="ご相談目的">
+                  <label class="choice"><input type="radio" name="ご相談目的" value="初回相談を予約したい" checked> 初回相談を予約したい</label>
+                  <label class="choice"><input type="radio" name="ご相談目的" value="業務内容を確認したい"> 業務内容を確認したい</label>
+                  <label class="choice"><input type="radio" name="ご相談目的" value="費用感を知りたい"> 費用感を知りたい</label>
+                </div>
+              </div>
+              <label class="field">
+                相談種別 <span class="required">必須</span>
+                <select name="相談種別" required>
+                  <option>相続・遺産整理</option>
+                  <option>成年後見</option>
+                  <option>家族信託</option>
+                  <option>遺言書作成</option>
+                  <option>法人登記</option>
+                  <option>その他</option>
+                </select>
+              </label>
+              <label class="field">
+                希望連絡方法
+                <select name="希望連絡方法">
+                  <option>電話</option>
+                  <option>メール</option>
+                  <option>LINE</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>お客様情報</h3>
+            <div class="form-grid">
+              <label class="field">
+                お名前 <span class="required">必須</span>
+                <input type="text" name="お名前" placeholder="山田 花子" required>
+              </label>
+              <label class="field">
+                フリガナ
+                <input type="text" name="フリガナ" placeholder="ヤマダ ハナコ">
+              </label>
+              <label class="field">
+                メールアドレス
+                <input type="email" name="メールアドレス" id="email-field" placeholder="sample@example.com">
+              </label>
+              <label class="field">
+                電話番号 <span class="required">必須</span>
+                <input type="tel" name="電話番号" placeholder="090-0000-0000" required>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>ご希望の日時</h3>
+            <div class="form-grid">
+              <div class="field full">
+                <span class="field-label">希望面談日時</span>
+                <div class="date-grid">
+                  <input type="text" name="希望日時（第1希望）" placeholder="第1希望 例: 6/12 午前">
+                  <input type="text" name="希望日時（第2希望）" placeholder="第2希望 例: 6/13 午後">
+                  <input type="text" name="希望日時（第3希望）" placeholder="第3希望 例: 6/16 夕方">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>ご相談内容</h3>
+            <label class="field full">
+              現在の状況やお困りごと <span class="required">必須</span>
+              <textarea name="ご相談内容" placeholder="例: 相続した不動産の名義変更をどう進めればよいか相談したいです。" required></textarea>
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h3>同意事項</h3>
+            <label class="choice consent">
+              <input type="checkbox" name="個人情報への同意" value="同意します" required>
+              個人情報の取り扱いに同意します
+            </label>
+            <label class="choice consent">
+              <input type="checkbox" name="初回無料相談の対象・範囲" value="確認しました" required>
+              初回無料相談の対象・範囲について確認しました
+            </label>
+            <div class="form-submit">
+              <button class="btn" type="submit">送信する</button>
+              <span class="submit-note">送信前に、入力内容を一度確認できます。</span>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <aside class="side-card" aria-labelledby="side-title">
+        <h2 id="side-title">お電話でも受付</h2>
+        <ul class="side-list">
+          <li>
+            <span>電話番号</span>
+            <strong>03-6821-6852</strong>
+          </li>
+          <li>
+            <span>受付時間</span>
+            <strong>土日祝・夜間も事前予約で対応</strong>
+          </li>
+          <li>
+            <span>所在地</span>
+            <strong>森下・両国 各駅から徒歩7分</strong>
+          </li>
+          <li>
+            <span>相談内容</span>
+            <strong>相続・成年後見・遺産整理など</strong>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">プカリ司法書士法人</div>
+        <div>〒130-0025 東京都墨田区千歳1丁目6番1号 田中ビル1階</div>
+      </div>
+      <a class="back-link" href="index.html">トップページへ</a>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var form = document.querySelector('form.form-body');
+      if (!form) return;
+      var sending = false;
+      form.addEventListener('submit', function (e) {
+        if (form.dataset.previewOnly === 'true') {
+          e.preventDefault();
+          alert('このページは共有確認用プレビューです。フォーム送信は停止しています。');
+          return;
+        }
+        if (sending) { e.preventDefault(); return; }
+        var email = document.getElementById('email-field');
+        var replyto = document.getElementById('replyto-field');
+        if (email && replyto) replyto.value = email.value;
+        var fields = ['お名前', 'メールアドレス', '電話番号', '相談種別'];
+        var lines = fields.map(function (n) {
+          var el = form.elements[n];
+          return n + '：' + (el && el.value ? el.value : '（未入力）');
+        });
+        var ok = window.confirm('以下の内容で送信します。よろしいですか？\n\n' + lines.join('\n'));
+        if (!ok) { e.preventDefault(); return; }
+
+        e.preventDefault();
+        sending = true;
+        var btn = form.querySelector('.form-submit button');
+        if (btn) { btn.disabled = true; btn.textContent = '送信中…'; }
+        var data = new FormData(form);
+        fetch('#preview-form-disabled', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data
+        }).then(function (res) {
+          if (!res.ok) throw new Error('bad status');
+          return res.json();
+        }).then(function () {
+          window.location.href = 'contact-thanks.html';
+        }).catch(function () {
+          sending = false;
+          if (btn) { btn.disabled = false; btn.textContent = '送信する'; }
+          form.submit();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
