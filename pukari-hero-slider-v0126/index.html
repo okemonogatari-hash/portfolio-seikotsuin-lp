@@ -1044,9 +1044,9 @@
     .hero-slider-shell--report-two-slides::after {
       z-index: 2;
       background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.13) 44%, rgba(255, 255, 255, 0.34) 56%, rgba(7, 122, 147, 0.58) 72%, rgba(7, 122, 147, 0.70) 100%),
         linear-gradient(180deg, rgba(232, 246, 249, 0) 0%, rgba(232, 246, 249, 0.02) 64%, rgba(232, 246, 249, 0.66) 100%),
-        linear-gradient(180deg, rgba(7, 95, 142, 0.02), rgba(7, 95, 142, 0.10));
+        linear-gradient(90deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.16) 46%, rgba(255, 255, 255, 0.06) 72%, rgba(255, 255, 255, 0.18) 100%),
+        linear-gradient(180deg, rgba(7, 95, 142, 0.02), rgba(7, 95, 142, 0.08));
     }
 
     .hero-slider-shell--report-two-slides .hero-copy-panel {
@@ -1106,7 +1106,21 @@
       transform: translateY(-50%);
       opacity: 0;
       color: #fff;
+      isolation: isolate;
       animation: heroReportSecond 14s ease-in-out infinite;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-consult-panel::before {
+      content: "";
+      position: absolute;
+      inset: -70px -76px -70px -86px;
+      z-index: -1;
+      border-radius: 48px 0 0 48px;
+      background:
+        linear-gradient(135deg, rgba(7, 122, 147, 0.88) 0%, rgba(8, 138, 158, 0.94) 48%, rgba(7, 122, 147, 0.96) 100%),
+        radial-gradient(circle at 92% 18%, rgba(255, 255, 255, 0.18) 0%, transparent 34%);
+      box-shadow: -32px 42px 90px rgba(7, 60, 92, 0.20);
+      pointer-events: none;
     }
 
     .hero-slider-shell--report-two-slides .hero-slider-dot:nth-child(1) {
@@ -3204,7 +3218,7 @@
 
       .hero-slider-shell--report-two-slides {
         background:
-          linear-gradient(180deg, #eff9fb 0%, #eff9fb 47%, #0b7a93 47.5%, #0786a0 100%);
+          linear-gradient(180deg, #eff9fb 0%, #f6fbf7 58%, #fff7e7 100%);
       }
 
       .hero-slider-shell--report-two-slides::before {
@@ -3215,7 +3229,7 @@
 
       .hero-slider-shell--report-two-slides::after {
         background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 38%, rgba(7, 122, 147, 0.18) 48%, rgba(7, 122, 147, 0.82) 62%, rgba(7, 122, 147, 0.92) 100%);
+          linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 42%, rgba(232, 246, 249, 0.28) 66%, rgba(232, 246, 249, 0.66) 100%);
       }
 
       .hero-slider-shell--report-two-slides .hero-slide,
@@ -3294,6 +3308,14 @@
         transform: none;
         backdrop-filter: none;
         animation: heroReportSecond 14s ease-in-out infinite;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-consult-panel::before {
+        inset: -34px -16px -170px;
+        border-radius: 0;
+        background:
+          linear-gradient(180deg, rgba(7, 122, 147, 0.70) 0%, rgba(7, 122, 147, 0.92) 44%, rgba(7, 134, 160, 0.96) 100%);
+        box-shadow: none;
       }
 
       .hero-slider-shell--report-two-slides .hero-consult-kicker,
