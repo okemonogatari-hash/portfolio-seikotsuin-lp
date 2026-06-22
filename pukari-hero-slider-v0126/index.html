@@ -765,6 +765,73 @@
       isolation: isolate;
     }
 
+    .hero-slider-shell--representative-focus {
+      background: linear-gradient(120deg, #edf8fa 0%, #f6fbf7 48%, #fff7e7 100%);
+    }
+
+    .hero-slider-shell--consultation-focus {
+      background:
+        radial-gradient(circle at 82% 22%, rgba(255, 245, 156, 0.28) 0 10%, transparent 22%),
+        radial-gradient(circle at 88% 82%, rgba(255, 255, 255, 0.14) 0 12%, transparent 24%),
+        linear-gradient(112deg, #f5fbfd 0%, #eef8fa 45%, #0b7a93 45.5%, #0786a0 100%);
+    }
+
+    .hero-slider-shell--team-focus {
+      width: min(1280px, calc(100% - 40px));
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 245, 156, 0.26) 0 9%, transparent 22%),
+        radial-gradient(circle at 86% 26%, rgba(7, 95, 142, 0.13) 0 10%, transparent 24%),
+        linear-gradient(115deg, #edf8fa 0%, #f8fbf4 48%, #fff6df 100%);
+    }
+
+    .hero-slider-shell--representative-focus::before {
+      content: "";
+      position: absolute;
+      inset: -22px;
+      z-index: 0;
+      background:
+        linear-gradient(90deg, rgba(239, 249, 250, 0.90) 0%, rgba(239, 249, 250, 0.78) 42%, rgba(255, 248, 232, 0.38) 100%),
+        url("assets/client/display/tacnews-1.jpg?v=20260622-composite-bg");
+      background-position: center;
+      background-size: cover;
+      filter: blur(18px) saturate(0.90);
+      opacity: 0.72;
+      transform: scale(1.04);
+      pointer-events: none;
+    }
+
+    .hero-slider-shell--consultation-focus::before {
+      content: "";
+      position: absolute;
+      inset: -24px;
+      z-index: 0;
+      background:
+        linear-gradient(90deg, rgba(246, 251, 252, 0.80) 0%, rgba(246, 251, 252, 0.38) 45%, rgba(7, 122, 147, 0.56) 100%),
+        url("assets/generated/hero-team-office.jpg?v=20260622-consult-bg");
+      background-position: 46% 48%;
+      background-size: cover;
+      filter: blur(18px) saturate(0.88);
+      opacity: 0.46;
+      transform: scale(1.04);
+      pointer-events: none;
+    }
+
+    .hero-slider-shell--team-focus::before {
+      content: "";
+      position: absolute;
+      inset: -28px;
+      z-index: 0;
+      background:
+        linear-gradient(90deg, rgba(239, 249, 250, 0.72) 0%, rgba(255, 255, 255, 0.28) 46%, rgba(255, 247, 226, 0.74) 100%),
+        url("assets/generated/hero-office-three-women-kai-vibe-v0126.png?v=20260622-team-bg");
+      background-position: center 34%;
+      background-size: cover;
+      filter: blur(20px) saturate(0.88);
+      opacity: 0.62;
+      transform: scale(1.05);
+      pointer-events: none;
+    }
+
     .hero-slider-shell::after {
       content: "";
       position: absolute;
@@ -785,6 +852,7 @@
     .hero-slide {
       background-position: center;
       background-size: cover;
+      background-repeat: no-repeat;
       opacity: 0;
       transform: scale(1.03);
       animation: heroSlideCycle 21s ease-in-out infinite;
@@ -797,16 +865,322 @@
       animation-delay: 0s;
     }
 
+    .hero-slider-shell--representative-focus .hero-slide,
+    .hero-slider-shell--representative-focus .hero-slider-dot {
+      animation: none;
+    }
+
+    .hero-slider-shell--representative-focus .hero-slide {
+      opacity: 0;
+      transform: scale(1);
+    }
+
+    .hero-slider-shell--representative-focus .hero-slides {
+      z-index: 1;
+    }
+
+    .hero-slider-shell--representative-focus .hero-slide--representative {
+      inset: 0 0 0 auto;
+      width: min(72%, 850px);
+      opacity: 1;
+      background-size: contain;
+      background-position: right center;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.18) 10%, #000 24%, #000 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.18) 10%, #000 24%, #000 100%);
+    }
+
+    .hero-slider-shell--representative-focus::after {
+      z-index: 2;
+      background:
+        linear-gradient(180deg, rgba(232, 246, 249, 0) 0%, rgba(232, 246, 249, 0.02) 64%, rgba(232, 246, 249, 0.66) 100%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.14) 46%, rgba(255, 255, 255, 0.02) 72%, rgba(255, 255, 255, 0) 100%),
+        linear-gradient(180deg, rgba(7, 95, 142, 0.02), rgba(7, 95, 142, 0.10));
+    }
+
+    .hero-slider-shell--representative-focus .hero-slider-dots {
+      display: none;
+    }
+
     .hero-slide--consultation {
       background-image: url("assets/generated/hero-team-office.jpg?v=20260621-pc-fix");
       background-position: 64% 44%;
       animation-delay: 7s;
     }
 
+    .hero-slider-shell--consultation-focus .hero-slide,
+    .hero-slider-shell--consultation-focus .hero-slider-dot {
+      animation: none;
+    }
+
+    .hero-slider-shell--consultation-focus .hero-slides {
+      z-index: 1;
+    }
+
+    .hero-slider-shell--consultation-focus .hero-slide {
+      opacity: 0;
+      transform: scale(1);
+    }
+
+    .hero-slider-shell--consultation-focus .hero-slide--consultation {
+      inset: 0 auto 0 0;
+      width: 66%;
+      opacity: 1;
+      background-size: cover;
+      background-position: 35% 48%;
+      clip-path: ellipse(78% 92% at 36% 50%);
+    }
+
+    .hero-slider-shell--consultation-focus::after {
+      z-index: 2;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 44%, rgba(255, 255, 255, 0.74) 55%, rgba(7, 122, 147, 0.92) 64%, rgba(7, 122, 147, 0.96) 100%),
+        linear-gradient(180deg, rgba(7, 95, 142, 0.02), rgba(7, 95, 142, 0.10));
+    }
+
+    .hero-slider-shell--consultation-focus .hero-copy-panel {
+      display: none;
+    }
+
     .hero-slide--team {
       background-image: url("assets/generated/hero-office-three-women-kai-vibe-v0126.png?v=20260621-pc-fix");
       background-position: 62% 32%;
       animation-delay: 14s;
+    }
+
+    .hero-slider-shell--team-focus .hero-slide,
+    .hero-slider-shell--team-focus .hero-slider-dot {
+      animation: none;
+    }
+
+    .hero-slider-shell--team-focus .hero-slides {
+      z-index: 1;
+    }
+
+    .hero-slider-shell--team-focus .hero-slide {
+      opacity: 0;
+      transform: scale(1);
+    }
+
+    .hero-slider-shell--team-focus .hero-slide--team {
+      opacity: 1;
+      background-size: min(900px, 82%) auto;
+      background-position: center 28%;
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 68%, rgba(0, 0, 0, 0.62) 82%, transparent 100%);
+      mask-image: linear-gradient(180deg, #000 0%, #000 68%, rgba(0, 0, 0, 0.62) 82%, transparent 100%);
+    }
+
+    .hero-slider-shell--team-focus::after {
+      z-index: 2;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 48%, rgba(255, 255, 255, 0.36) 71%, rgba(226, 243, 247, 0.78) 100%),
+        radial-gradient(ellipse at 50% 18%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 44%, rgba(7, 95, 142, 0.08) 100%);
+    }
+
+    .hero-slider-shell--team-focus .hero-copy-panel,
+    .hero-slider-shell--team-focus .hero-consult-panel {
+      display: none;
+    }
+
+    .hero-slider-shell--report-two-slides {
+      background: linear-gradient(120deg, #edf8fa 0%, #f6fbf7 48%, #fff7e7 100%);
+    }
+
+    .hero-slider-shell--report-two-slides::before {
+      content: "";
+      position: absolute;
+      inset: -22px;
+      z-index: 0;
+      background:
+        linear-gradient(90deg, rgba(239, 249, 250, 0.90) 0%, rgba(239, 249, 250, 0.64) 42%, rgba(255, 248, 232, 0.38) 100%),
+        url("assets/client/display/tacnews-1.jpg?v=20260622-report-bg");
+      background-position: center;
+      background-size: cover;
+      filter: blur(18px) saturate(0.90);
+      opacity: 0.58;
+      transform: scale(1.04);
+      pointer-events: none;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-slide,
+    .hero-slider-shell--report-two-slides .hero-slider-dot {
+      animation: none;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-slides {
+      z-index: 1;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-slide {
+      opacity: 0;
+      transform: scale(1);
+    }
+
+    .hero-slider-shell--report-two-slides .hero-slide--representative {
+      inset: 0 0 0 auto;
+      width: min(72%, 850px);
+      opacity: 1;
+      background-size: contain;
+      background-position: right center;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.18) 10%, #000 24%, #000 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.18) 10%, #000 24%, #000 100%);
+      animation: heroReportFirst 14s ease-in-out infinite;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-slide--consultation {
+      inset: 0 auto 0 0;
+      width: 66%;
+      opacity: 0;
+      background-size: cover;
+      background-position: 35% 48%;
+      clip-path: ellipse(78% 92% at 36% 50%);
+      animation: heroReportSecond 14s ease-in-out infinite;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-slide--team,
+    .hero-slider-shell--report-two-slides .hero-team-panel {
+      display: none;
+    }
+
+    .hero-slider-shell--report-two-slides::after {
+      z-index: 2;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.13) 44%, rgba(255, 255, 255, 0.34) 56%, rgba(7, 122, 147, 0.58) 72%, rgba(7, 122, 147, 0.70) 100%),
+        linear-gradient(180deg, rgba(232, 246, 249, 0) 0%, rgba(232, 246, 249, 0.02) 64%, rgba(232, 246, 249, 0.66) 100%),
+        linear-gradient(180deg, rgba(7, 95, 142, 0.02), rgba(7, 95, 142, 0.10));
+    }
+
+    .hero-slider-shell--report-two-slides .hero-copy-panel {
+      left: clamp(28px, 4.6vw, 64px);
+      top: 50%;
+      bottom: auto;
+      width: min(390px, calc(42% - 22px));
+      padding: 20px 22px 22px;
+      transform: translateY(-40%);
+      z-index: 3;
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.90);
+      animation: heroReportFirst 14s ease-in-out infinite;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-copy-panel h1 {
+      font-size: clamp(29px, 3vw, 40px);
+      line-height: 1.22;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-copy-panel .hero-lead {
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-copy-panel .hero-actions {
+      gap: 9px;
+      margin-top: 15px;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-copy-panel .hero-actions .btn {
+      min-height: 48px;
+      padding: 11px 17px 13px;
+      font-size: 13px;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-feature-strip {
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-feature {
+      min-height: 48px;
+      padding: 6px 5px;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-consult-panel {
+      position: absolute;
+      right: clamp(28px, 4.5vw, 62px);
+      top: 50%;
+      z-index: 3;
+      display: flex;
+      width: min(450px, 39%);
+      min-height: 420px;
+      flex-direction: column;
+      justify-content: center;
+      transform: translateY(-50%);
+      opacity: 0;
+      color: #fff;
+      animation: heroReportSecond 14s ease-in-out infinite;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-slider-dot:nth-child(1) {
+      animation: heroReportDotFirst 14s ease-in-out infinite;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-slider-dot:nth-child(2) {
+      animation: heroReportDotSecond 14s ease-in-out infinite;
+    }
+
+    .hero-slider-shell--report-two-slides .hero-slider-dot:nth-child(3) {
+      display: none;
+    }
+
+    @keyframes heroReportFirst {
+      0%,
+      43% {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      50%,
+      93% {
+        opacity: 0;
+        pointer-events: none;
+      }
+      100% {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    @keyframes heroReportSecond {
+      0%,
+      43%,
+      100% {
+        opacity: 0;
+        pointer-events: none;
+      }
+      50%,
+      93% {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    @keyframes heroReportDotFirst {
+      0%,
+      43% {
+        background: #f2a900;
+        transform: scale(1.18);
+      }
+      50%,
+      93% {
+        background: rgba(7, 95, 142, 0.34);
+        transform: scale(1);
+      }
+      100% {
+        background: #f2a900;
+        transform: scale(1.18);
+      }
+    }
+
+    @keyframes heroReportDotSecond {
+      0%,
+      43%,
+      100% {
+        background: rgba(7, 95, 142, 0.34);
+        transform: scale(1);
+      }
+      50%,
+      93% {
+        background: #f2a900;
+        transform: scale(1.18);
+      }
     }
 
     @keyframes heroSlideCycle {
@@ -840,6 +1214,48 @@
       box-shadow: 0 20px 52px rgba(7, 60, 92, 0.18);
       transform: none;
       backdrop-filter: blur(10px);
+    }
+
+    .hero-slider-shell--representative-focus .hero-copy-panel {
+      left: clamp(28px, 4.6vw, 64px);
+      top: 50%;
+      bottom: auto;
+      width: min(390px, calc(42% - 22px));
+      padding: 20px 22px 22px;
+      transform: translateY(-40%);
+      z-index: 3;
+      background: rgba(255, 255, 255, 0.90);
+    }
+
+    .hero-slider-shell--representative-focus .hero-copy-panel h1 {
+      font-size: clamp(29px, 3vw, 40px);
+      line-height: 1.22;
+    }
+
+    .hero-slider-shell--representative-focus .hero-copy-panel .hero-lead {
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .hero-slider-shell--representative-focus .hero-copy-panel .hero-actions {
+      gap: 9px;
+      margin-top: 15px;
+    }
+
+    .hero-slider-shell--representative-focus .hero-copy-panel .hero-actions .btn {
+      min-height: 48px;
+      padding: 11px 17px 13px;
+      font-size: 13px;
+    }
+
+    .hero-slider-shell--representative-focus .hero-feature-strip {
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .hero-slider-shell--representative-focus .hero-feature {
+      min-height: 48px;
+      padding: 6px 5px;
     }
 
     .hero-copy-panel .eyebrow {
@@ -898,6 +1314,299 @@
       font-size: 9px;
       font-weight: 800;
       line-height: 1.3;
+    }
+
+    .hero-consult-panel {
+      display: none;
+    }
+
+    .hero-slider-shell--consultation-focus .hero-consult-panel {
+      position: absolute;
+      right: clamp(28px, 4.5vw, 62px);
+      top: 50%;
+      z-index: 3;
+      display: flex;
+      width: min(450px, 39%);
+      min-height: 420px;
+      flex-direction: column;
+      justify-content: center;
+      transform: translateY(-50%);
+      color: #fff;
+    }
+
+    .hero-consult-kicker {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 30px;
+      padding: 5px 12px 6px;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff9b8;
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.2;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-consult-panel h2 {
+      margin-top: 14px;
+      color: #fff;
+      font-family: var(--serif);
+      font-size: clamp(28px, 2.8vw, 42px);
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: 0;
+      text-shadow: 0 12px 28px rgba(7, 60, 92, 0.26);
+    }
+
+    .hero-consult-lead {
+      max-width: 390px;
+      margin-top: 12px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.75;
+    }
+
+    .hero-consult-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .hero-consult-card {
+      position: relative;
+      box-sizing: border-box;
+      min-width: 0;
+      min-height: 188px;
+      padding: 16px 14px 15px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 106% 112%, rgba(7, 95, 142, 0.07) 0 34%, transparent 35%),
+        rgba(255, 255, 255, 0.96);
+      box-shadow: 0 18px 44px rgba(7, 60, 92, 0.22);
+      color: var(--blue-dark);
+      text-align: center;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .hero-consult-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 50px rgba(7, 60, 92, 0.27);
+    }
+
+    .hero-consult-card::before {
+      content: none;
+    }
+
+    .hero-consult-label {
+      display: inline-block;
+      color: #507083;
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .hero-consult-card strong {
+      position: relative;
+      z-index: 1;
+      display: block;
+      min-height: 82px;
+      margin: 11px auto 10px;
+      color: var(--blue);
+      font-size: 20px;
+      font-weight: 950;
+      line-height: 1.25;
+    }
+
+    .hero-consult-card em {
+      display: grid;
+      width: 84px;
+      height: 84px;
+      margin: 4px auto 0;
+      place-items: center;
+      border-radius: 999px;
+      background: #fff3c7;
+      color: #d98500;
+      font-size: 30px;
+      font-style: normal;
+      line-height: 1;
+      box-shadow: inset 0 0 0 3px rgba(242, 169, 0, 0.16);
+    }
+
+    .hero-consult-card--cta em {
+      background: #e9f8fb;
+      color: var(--blue);
+      font-size: 28px;
+      box-shadow: inset 0 0 0 3px rgba(7, 95, 142, 0.12);
+    }
+
+    .hero-consult-card small {
+      position: relative;
+      z-index: 1;
+      display: block;
+      color: #506575;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .hero-consult-main-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      min-height: 46px;
+      margin-top: 16px;
+      padding: 11px 22px 13px;
+      border-radius: 999px;
+      background: var(--orange);
+      box-shadow: 0 9px 0 rgba(185, 120, 0, 0.26);
+      color: #062b42;
+      font-size: 14px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .hero-slider-shell--consultation-focus .hero-slider-dots {
+      bottom: 18px;
+    }
+
+    .hero-slider-shell--consultation-focus .hero-slider-dot {
+      background: rgba(255, 255, 255, 0.38);
+      transform: scale(1);
+    }
+
+    .hero-slider-shell--consultation-focus .hero-slider-dot:nth-child(2) {
+      background: #f2a900;
+      transform: scale(1.18);
+    }
+
+    .hero-team-panel {
+      display: none;
+    }
+
+    .hero-slider-shell--team-focus .hero-team-panel {
+      position: absolute;
+      left: auto;
+      right: clamp(34px, 5.6vw, 78px);
+      bottom: clamp(34px, 4.2vw, 54px);
+      z-index: 3;
+      display: grid;
+      width: min(940px, calc(100% - 80px));
+      grid-template-columns: minmax(285px, 0.9fr) minmax(330px, 1fr) minmax(126px, auto);
+      gap: 14px;
+      align-items: center;
+      min-height: 120px;
+      padding: 16px 18px 16px 22px;
+      overflow: hidden;
+      border: 3px solid rgba(159, 216, 210, 0.70);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 20px 44px rgba(7, 60, 92, 0.18);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-team-kicker {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 28px;
+      align-items: center;
+      padding: 5px 12px 6px;
+      border-radius: 999px;
+      background: rgba(242, 169, 0, 0.16);
+      color: #a66b00;
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .hero-team-panel h2 {
+      display: block;
+      margin-top: 8px;
+      color: var(--blue-dark);
+      font-family: var(--serif);
+      font-size: clamp(22px, 1.78vw, 29px);
+      font-weight: 900;
+      line-height: 1.16;
+      letter-spacing: 0;
+      word-break: keep-all;
+    }
+
+    .hero-team-title-line {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .hero-team-lead {
+      margin-top: 8px;
+      color: #4f6471;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.55;
+      line-break: strict;
+      word-break: keep-all;
+    }
+
+    .hero-team-chips {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(98px, 1fr));
+      gap: 8px;
+    }
+
+    .hero-team-chip {
+      display: grid;
+      min-height: 56px;
+      place-items: center;
+      padding: 9px 11px;
+      border: 1px solid rgba(7, 95, 142, 0.12);
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(239, 249, 250, 0.88));
+      color: var(--blue);
+      font-size: clamp(11px, 0.76vw, 12px);
+      font-weight: 900;
+      line-height: 1.2;
+      text-align: center;
+      white-space: nowrap;
+      word-break: keep-all;
+      box-shadow: 0 10px 22px rgba(7, 95, 142, 0.10);
+    }
+
+    .hero-team-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 124px;
+      min-height: 46px;
+      padding: 10px 16px 12px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 7px 0 rgba(0, 74, 110, 0.20);
+    }
+
+    .hero-slider-shell--team-focus .hero-slider-dots {
+      bottom: 14px;
+    }
+
+    .hero-slider-shell--team-focus .hero-slider-dot {
+      background: rgba(7, 95, 142, 0.28);
+      transform: scale(1);
+    }
+
+    .hero-slider-shell--team-focus .hero-slider-dot:nth-child(3) {
+      background: #f2a900;
+      transform: scale(1.18);
     }
 
     .hero-slider-dots {
@@ -2326,6 +3035,14 @@
           linear-gradient(180deg, rgba(7, 95, 142, 0.08), rgba(7, 95, 142, 0.12));
       }
 
+      .hero-slider-shell--representative-focus::before,
+      .hero-slider-shell--consultation-focus::before,
+      .hero-slider-shell--team-focus::before {
+        inset: -18px;
+        background-position: 58% 18%;
+        filter: blur(16px) saturate(0.92);
+      }
+
       .hero-copy-panel {
         left: 20px;
         right: 20px;
@@ -2358,6 +3075,306 @@
 
       .hero-slide--representative {
         background-position: center 22%;
+      }
+
+      .hero-slider-shell--representative-focus .hero-slide--representative {
+        inset: 0 0 auto;
+        width: 100%;
+        height: 62%;
+        background-size: min(760px, 116vw) auto;
+        background-position: center 8px;
+        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 68%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 0%, #000 68%, transparent 100%);
+      }
+
+      .hero-slider-shell--representative-focus .hero-copy-panel {
+        left: 24px;
+        right: 24px;
+        top: auto;
+        bottom: 24px;
+        width: auto;
+        max-width: 560px;
+        padding: 18px 18px 17px;
+        transform: none;
+      }
+
+      .hero-slider-shell--representative-focus .hero-copy-panel h1 {
+        font-size: 31px;
+      }
+
+      .hero-slider-shell--representative-focus .hero-copy-panel .hero-lead {
+        display: none;
+      }
+
+      .hero-slider-shell--consultation-focus {
+        background:
+          linear-gradient(180deg, #eff9fb 0%, #eff9fb 52%, #0b7a93 52.5%, #0786a0 100%);
+      }
+
+      .hero-slider-shell--consultation-focus::after {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 42%, rgba(255, 255, 255, 0.90) 54%, rgba(7, 122, 147, 0.90) 67%, rgba(7, 122, 147, 0.96) 100%);
+      }
+
+      .hero-slider-shell--consultation-focus .hero-slide,
+      .hero-slider-shell--consultation-focus .hero-slider-dot {
+        animation: none;
+      }
+
+      .hero-slider-shell--consultation-focus .hero-slide {
+        opacity: 0;
+        transform: scale(1);
+      }
+
+      .hero-slider-shell--consultation-focus .hero-slide--consultation {
+        inset: 0 0 auto;
+        width: 100%;
+        height: 54%;
+        opacity: 1;
+        background-size: cover;
+        background-position: 25% 50%;
+        clip-path: none;
+        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
+      }
+
+      .hero-slider-shell--consultation-focus .hero-copy-panel {
+        display: none;
+      }
+
+      .hero-slider-shell--consultation-focus .hero-consult-panel {
+        left: 18px;
+        right: 18px;
+        top: auto;
+        bottom: 28px;
+        width: auto;
+        min-height: 0;
+        padding: 18px 18px 17px;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 24px;
+        background: rgba(7, 122, 147, 0.92);
+        box-shadow: 0 20px 52px rgba(7, 60, 92, 0.22);
+        transform: none;
+        backdrop-filter: blur(10px);
+      }
+
+      .hero-consult-panel h2 {
+        margin-top: 10px;
+        font-size: 29px;
+        line-height: 1.18;
+      }
+
+      .hero-consult-lead {
+        display: none;
+      }
+
+      .hero-consult-cards {
+        gap: 9px;
+        margin-top: 13px;
+      }
+
+      .hero-consult-card {
+        min-height: 136px;
+        padding: 12px 9px 11px;
+        border-radius: 18px;
+      }
+
+      .hero-consult-card strong {
+        min-height: 60px;
+        margin: 7px auto 7px;
+        font-size: 15px;
+      }
+
+      .hero-consult-card em {
+        width: 58px;
+        height: 58px;
+        font-size: 22px;
+      }
+
+      .hero-consult-card small {
+        font-size: 9px;
+      }
+
+      .hero-consult-main-cta {
+        width: 100%;
+        min-height: 44px;
+        margin-top: 12px;
+        font-size: 13px;
+      }
+
+      .hero-slider-shell--report-two-slides {
+        background:
+          linear-gradient(180deg, #eff9fb 0%, #eff9fb 52%, #0b7a93 52.5%, #0786a0 100%);
+      }
+
+      .hero-slider-shell--report-two-slides::before {
+        inset: -18px;
+        background-position: 58% 18%;
+        filter: blur(16px) saturate(0.92);
+      }
+
+      .hero-slider-shell--report-two-slides::after {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 42%, rgba(255, 255, 255, 0.90) 54%, rgba(7, 122, 147, 0.72) 67%, rgba(7, 122, 147, 0.86) 100%);
+      }
+
+      .hero-slider-shell--report-two-slides .hero-slide,
+      .hero-slider-shell--report-two-slides .hero-slider-dot {
+        animation: none;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-slide {
+        opacity: 0;
+        transform: scale(1);
+      }
+
+      .hero-slider-shell--report-two-slides .hero-slide--representative {
+        inset: 0 0 auto;
+        width: 100%;
+        height: 62%;
+        opacity: 1;
+        background-size: min(760px, 116vw) auto;
+        background-position: center 8px;
+        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 68%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 0%, #000 68%, transparent 100%);
+        animation: heroReportFirst 14s ease-in-out infinite;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-slide--consultation {
+        inset: 0 0 auto;
+        width: 100%;
+        height: 54%;
+        opacity: 0;
+        background-size: cover;
+        background-position: 25% 50%;
+        clip-path: none;
+        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
+        animation: heroReportSecond 14s ease-in-out infinite;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-slide--team,
+      .hero-slider-shell--report-two-slides .hero-team-panel {
+        display: none;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-copy-panel {
+        left: 24px;
+        right: 24px;
+        top: auto;
+        bottom: 24px;
+        width: auto;
+        max-width: 560px;
+        padding: 18px 18px 17px;
+        transform: none;
+        opacity: 1;
+        animation: heroReportFirst 14s ease-in-out infinite;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-copy-panel h1 {
+        font-size: 31px;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-copy-panel .hero-lead {
+        display: none;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-consult-panel {
+        left: 18px;
+        right: 18px;
+        top: auto;
+        bottom: 28px;
+        width: auto;
+        min-height: 0;
+        padding: 18px 18px 17px;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 24px;
+        background: rgba(7, 122, 147, 0.92);
+        box-shadow: 0 20px 52px rgba(7, 60, 92, 0.22);
+        transform: none;
+        backdrop-filter: blur(10px);
+        animation: heroReportSecond 14s ease-in-out infinite;
+      }
+
+      .hero-slider-shell--team-focus {
+        background:
+          linear-gradient(180deg, #edf8fa 0%, #f6fbf7 56%, #eff9fb 56.5%, #fff7e7 100%);
+      }
+
+      .hero-slider-shell--team-focus::after {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.04) 42%, rgba(255, 255, 255, 0.72) 57%, rgba(239, 249, 251, 0.98) 100%),
+          linear-gradient(180deg, rgba(7, 95, 142, 0.04), rgba(7, 95, 142, 0.10));
+      }
+
+      .hero-slider-shell--team-focus .hero-slide,
+      .hero-slider-shell--team-focus .hero-slider-dot {
+        animation: none;
+      }
+
+      .hero-slider-shell--team-focus .hero-slide {
+        opacity: 0;
+        transform: scale(1);
+      }
+
+      .hero-slider-shell--team-focus .hero-slide--team {
+        inset: 0 0 auto;
+        width: 100%;
+        height: 60%;
+        opacity: 1;
+        background-size: 100% auto;
+        background-position: center top;
+        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
+      }
+
+      .hero-slider-shell--team-focus .hero-copy-panel,
+      .hero-slider-shell--team-focus .hero-consult-panel {
+        display: none;
+      }
+
+      .hero-slider-shell--team-focus .hero-team-panel {
+        left: 18px;
+        right: 18px;
+        width: auto;
+        bottom: 28px;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        min-height: 0;
+        padding: 18px;
+        border-radius: 24px;
+      }
+
+      .hero-team-panel h2 {
+        display: block;
+        font-size: 27px;
+      }
+
+      .hero-team-title-line {
+        display: block;
+        white-space: nowrap;
+      }
+
+      .hero-team-lead {
+        display: none;
+      }
+
+      .hero-team-chips {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+      .hero-team-chip {
+        min-height: 48px;
+        padding: 7px 4px;
+        border-radius: 16px;
+        font-size: 10px;
+      }
+
+      .hero-team-cta {
+        width: 100%;
+        min-height: 44px;
+        font-size: 13px;
       }
 
       .hero-slide--consultation {
@@ -2693,12 +3710,37 @@
         height: min(610px, calc(100svh - 96px));
       }
 
+      .hero-slider-shell--representative-focus {
+        min-height: 640px;
+        height: min(660px, calc(100svh - 84px));
+      }
+
+      .hero-slider-shell--representative-focus::after {
+        z-index: 2;
+        background:
+          linear-gradient(180deg, rgba(7, 60, 92, 0.01) 0%, rgba(7, 60, 92, 0.01) 46%, rgba(255, 255, 255, 0.68) 68%, rgba(255, 255, 255, 0.98) 100%),
+          linear-gradient(180deg, rgba(7, 95, 142, 0.06), rgba(7, 95, 142, 0.10));
+      }
+
       .hero-copy-panel {
         left: 14px;
         right: 14px;
         bottom: 42px;
         padding: 15px 15px 14px;
         border-radius: 18px;
+      }
+
+      .hero-slider-shell--representative-focus .hero-copy-panel {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        padding: 14px 14px 13px;
+      }
+
+      .hero-slider-shell--representative-focus .hero-slide--representative {
+        height: 60%;
+        background-size: min(520px, 128vw) auto;
+        background-position: center 12px;
       }
 
       .hero-copy-panel .eyebrow {
@@ -2711,12 +3753,24 @@
         line-height: 1.24 !important;
       }
 
+      .hero-slider-shell--representative-focus .hero-copy-panel h1 {
+        font-size: 25px !important;
+        line-height: 1.22 !important;
+      }
+
       .hero-copy-panel .hero-lead {
         display: none;
       }
 
       .hero-copy-panel .hero-actions {
         margin-top: 12px !important;
+      }
+
+      .hero-slider-shell--representative-focus .hero-copy-panel .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 10px !important;
       }
 
       .hero-copy-panel .hero-actions .btn {
@@ -2726,9 +3780,20 @@
         white-space: nowrap !important;
       }
 
+      .hero-slider-shell--representative-focus .hero-copy-panel .hero-actions .btn {
+        min-height: 44px;
+        padding: 0 5px;
+        font-size: 12px !important;
+      }
+
       .hero-feature-strip {
         gap: 6px;
         margin-top: 10px;
+      }
+
+      .hero-slider-shell--representative-focus .hero-feature-strip {
+        gap: 5px;
+        margin-top: 8px;
       }
 
       .hero-feature {
@@ -2737,13 +3802,27 @@
         border-radius: 10px;
       }
 
+      .hero-slider-shell--representative-focus .hero-feature {
+        min-height: 42px;
+        padding: 5px 3px;
+      }
+
       .hero-feature strong {
         font-size: 13px;
+      }
+
+      .hero-slider-shell--representative-focus .hero-feature strong {
+        font-size: 11px;
       }
 
       .hero-feature span {
         margin-top: 4px;
         font-size: 9px;
+      }
+
+      .hero-slider-shell--representative-focus .hero-feature span {
+        margin-top: 2px;
+        font-size: 8px;
       }
 
       .hero-slider-dots {
@@ -3110,7 +4189,7 @@
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-slider-shell">
+      <div class="hero-slider-shell hero-slider-shell--report-two-slides">
         <div class="hero-slides" aria-hidden="true">
           <span class="hero-slide hero-slide--representative"></span>
           <span class="hero-slide hero-slide--consultation"></span>
@@ -3131,6 +4210,37 @@
             <div class="hero-feature"><strong>森下・両国</strong><span>各駅から徒歩7分</span></div>
             <div class="hero-feature"><strong>土日祝・夜間</strong><span>事前予約で対応</span></div>
           </div>
+        </div>
+        <div class="hero-consult-panel" aria-label="相談とアクセスの案内">
+          <p class="hero-consult-kicker">ご相談の流れ</p>
+          <h2>必要な手続きと<br>相談の流れを<br>見える形へ。</h2>
+          <p class="hero-consult-lead">資料を見ながら状況を伺い、必要な確認を整理します。</p>
+          <div class="hero-consult-cards">
+            <a class="hero-consult-card hero-consult-card--access" href="#office">
+              <span class="hero-consult-label">森下・両国</span>
+              <strong>各駅から<em>7分</em></strong>
+              <small>森下駅・JR両国駅から徒歩7分</small>
+            </a>
+            <a class="hero-consult-card hero-consult-card--cta" href="contact.html">
+              <span class="hero-consult-label">初回相談</span>
+              <strong>個人様・法人様<em>無料</em></strong>
+              <small>土日祝・夜間も事前予約で対応</small>
+            </a>
+          </div>
+          <a class="hero-consult-main-cta" href="contact.html">無料相談を予約する</a>
+        </div>
+        <div class="hero-team-panel" aria-label="事務所体制の案内">
+          <div class="hero-team-copy">
+            <p class="hero-team-kicker">事務所の全体像</p>
+            <h2><span class="hero-team-title-line">複数の専門スタッフが</span><span class="hero-team-title-line">チームで担当</span></h2>
+            <p class="hero-team-lead">多角的な視点できめ細かくサポートします。</p>
+          </div>
+          <div class="hero-team-chips" aria-label="主な対応領域">
+            <span class="hero-team-chip">相続・遺言</span>
+            <span class="hero-team-chip">不動産登記</span>
+            <span class="hero-team-chip">法人登記</span>
+          </div>
+          <a class="hero-team-cta" href="#services">業務内容を見る</a>
         </div>
         <div class="hero-slider-dots" aria-hidden="true">
           <span class="hero-slider-dot"></span>
