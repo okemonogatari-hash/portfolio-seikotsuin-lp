@@ -3204,7 +3204,7 @@
 
       .hero-slider-shell--report-two-slides {
         background:
-          linear-gradient(180deg, #eff9fb 0%, #eff9fb 52%, #0b7a93 52.5%, #0786a0 100%);
+          linear-gradient(180deg, #eff9fb 0%, #eff9fb 47%, #0b7a93 47.5%, #0786a0 100%);
       }
 
       .hero-slider-shell--report-two-slides::before {
@@ -3215,7 +3215,7 @@
 
       .hero-slider-shell--report-two-slides::after {
         background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 42%, rgba(255, 255, 255, 0.90) 54%, rgba(7, 122, 147, 0.72) 67%, rgba(7, 122, 147, 0.86) 100%);
+          linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 38%, rgba(7, 122, 147, 0.18) 48%, rgba(7, 122, 147, 0.82) 62%, rgba(7, 122, 147, 0.92) 100%);
       }
 
       .hero-slider-shell--report-two-slides .hero-slide,
@@ -3243,13 +3243,13 @@
       .hero-slider-shell--report-two-slides .hero-slide--consultation {
         inset: 0 0 auto;
         width: 100%;
-        height: 54%;
+        height: 50%;
         opacity: 0;
         background-size: cover;
-        background-position: 25% 50%;
+        background-position: 25% 44%;
         clip-path: none;
-        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
-        mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
+        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 82%, rgba(0, 0, 0, 0.42) 92%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 0%, #000 82%, rgba(0, 0, 0, 0.42) 92%, transparent 100%);
         animation: heroReportSecond 14s ease-in-out infinite;
       }
 
@@ -3280,20 +3280,75 @@
       }
 
       .hero-slider-shell--report-two-slides .hero-consult-panel {
-        left: 18px;
-        right: 18px;
-        top: auto;
-        bottom: 28px;
+        left: 16px;
+        right: 16px;
+        top: 42%;
+        bottom: auto;
         width: auto;
         min-height: 0;
-        padding: 18px 18px 17px;
-        border: 1px solid rgba(255, 255, 255, 0.72);
-        border-radius: 24px;
-        background: rgba(7, 122, 147, 0.92);
-        box-shadow: 0 20px 52px rgba(7, 60, 92, 0.22);
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
         transform: none;
-        backdrop-filter: blur(10px);
+        backdrop-filter: none;
         animation: heroReportSecond 14s ease-in-out infinite;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-consult-kicker,
+      .hero-slider-shell--report-two-slides .hero-consult-lead,
+      .hero-slider-shell--report-two-slides .hero-consult-main-cta {
+        display: none;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-consult-panel h2 {
+        order: 2;
+        margin: 14px auto 0;
+        max-width: 330px;
+        color: #fff;
+        font-size: 25px;
+        line-height: 1.28;
+        text-align: center;
+        text-shadow: 0 10px 24px rgba(7, 60, 92, 0.22);
+      }
+
+      .hero-slider-shell--report-two-slides .hero-consult-panel h2 br {
+        display: none;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-consult-cards {
+        order: 1;
+        gap: 10px;
+        margin-top: 0;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-consult-card {
+        min-height: 120px;
+        padding: 11px 8px 10px;
+        border-radius: 14px;
+        box-shadow: 0 12px 28px rgba(7, 60, 92, 0.20);
+      }
+
+      .hero-slider-shell--report-two-slides .hero-consult-label {
+        font-size: 10px;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-consult-card strong {
+        min-height: 50px;
+        margin: 6px auto;
+        font-size: 14px;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-consult-card em {
+        width: 50px;
+        height: 50px;
+        font-size: 21px;
+      }
+
+      .hero-slider-shell--report-two-slides .hero-consult-card small {
+        font-size: 8px;
+        line-height: 1.3;
       }
 
       .hero-slider-shell--team-focus {
