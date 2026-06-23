@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R0623-1｜あおいちゃんの研究ラボにゃ🐱 — Codex Record & Replay で手作業がスキルに変わる時代｜あおいCDO</title>
+<!--
+======================================================================
+おけ森ダイアリー Research カテゴリ
+担当：🐱 あおいCDO（リサーチ常駐／研究ラボ） × 🎤 はるかCEO（？？？役）
+公開度：内部限定（noindex・GitHub Pages公開はおけちゃん承認後）
+✏️ 手書き修正OK
+ソース：おけちゃんiPhoneメモ（2026-06-23 11:00）→ youtube_transcript_api 全文取得 → 朝礼「変化筋力」テーマと接続
+動画：https://youtu.be/KQTu8lhsrGg（ゲトさんチャンネル）
+======================================================================
+-->
+<style>
+:root{
+  --bg:#f8faf9;
+  --paper:#fff;
+  --ink:#252935;
+  --sub:#667085;
+  --line:#dce2ea;
+  --aoi:#586a88;
+  --aoi-deep:#334764;
+  --aoi-light:#e8eef6;
+  --haruka:#e598b7;
+  --haruka-deep:#a74b75;
+  --haruka-light:#fdeaf2;
+  --purple:#725f92;
+  --purple-deep:#4c3c68;
+  --sky:#3e82a8;
+  --cyan:#7bc1d9;
+  --gold:#d4a838;
+  --mint:#4f9a76;
+  --mint-light:#e4f3ec;
+  --warn:#fff6e2;
+  --code-bg:#252b38;
+  --code-fg:#eef4fb;
+  --fs-hero-h1:24px;
+  --fs-hero-lead:15px;
+  --fs-chapter:19px;
+  --fs-body:15.5px;
+  --fs-quote:15px;
+  --fs-detail:14.5px;
+  --fs-nav:14px;
+  --fs-footer:13px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.85;font-size:var(--fs-body);}
+header.hero{
+  background:
+    radial-gradient(circle at 18% 22%,rgba(123,193,217,.25),transparent 28%),
+    radial-gradient(circle at 84% 18%,rgba(229,152,183,.18),transparent 28%),
+    linear-gradient(135deg,#152030 0%,#26384e 38%,#3a4d72 72%,#5c6a8f 100%);
+  padding:52px 20px 42px;text-align:center;border-bottom:3px solid var(--sky);color:#eef4fb;position:relative;overflow:hidden;
+}
+header.hero::before{content:"CODEX  RECORD & REPLAY  COMPUTER USE  AOI LAB";position:absolute;top:14px;left:0;right:0;font-size:11px;opacity:.18;letter-spacing:7px;font-weight:700;}
+header.hero::after{content:"🐱 🎬 ⚙️ 🪄 🐱 🎬 ⚙️ 🪄";position:absolute;bottom:10px;left:0;right:0;font-size:13px;opacity:.2;letter-spacing:10px;}
+header.hero .category-badge{display:inline-block;background:rgba(255,255,255,.15);color:#fff;padding:5px 16px;border-radius:14px;font-size:11px;letter-spacing:3px;font-weight:700;margin-bottom:10px;}
+header.hero .date{font-size:13px;color:#cbd6e3;letter-spacing:3px;font-weight:500}
+header.hero .number-badge{display:inline-block;background:#fff;color:var(--aoi-deep);padding:6px 18px;border-radius:20px;font-size:12px;letter-spacing:2px;font-weight:700;margin:10px 0 4px;font-family:"Helvetica Neue",monospace;}
+header.hero h1{margin:14px 0 8px;font-size:var(--fs-hero-h1);font-weight:700;letter-spacing:0;line-height:1.55;color:#fff;}
+header.hero h1 em{color:#b8dcf0;font-style:normal}
+header.hero .lead{font-size:var(--fs-hero-lead);color:#d7dfeb;margin-top:12px;font-weight:400;line-height:1.85}
+header.hero .author{display:inline-block;margin-top:20px;padding:10px 24px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.24);border-radius:24px;font-size:13px;font-weight:700;color:#fff;letter-spacing:1px;}
+.container{max-width:820px;margin:0 auto;padding:32px 22px 50px}
+.nav-prev-next{background:var(--paper);border:1.5px dashed var(--aoi);border-radius:14px;padding:14px 20px;margin:20px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:var(--fs-nav);}
+.nav-prev-next a{color:var(--aoi-deep);text-decoration:none;font-weight:700;padding:6px 14px;border-radius:20px;background:var(--aoi-light);transition:background .2s;}
+.nav-prev-next a:hover{background:var(--aoi);color:#fff}
+.nav-prev-next .center{color:var(--sub);font-size:12px}
+.nav-prev-next .center a{background:none;padding:0;color:var(--aoi-deep)}
+.nav-prev-next span.disabled{color:#aaa;font-weight:500}
+.edit-hint{background:#fff6e2;border:1.5px solid var(--gold);border-radius:12px;padding:10px 16px;margin:0 0 24px;font-size:12px;color:#8a6500;text-align:center;}
+.headline-box{background:radial-gradient(circle at 50% 35%,#ffffff,#edf5fb 62%,#e8f4fb);border:3px solid var(--sky);border-radius:20px;padding:30px 28px;margin:24px 0 34px;text-align:center;position:relative;}
+.headline-box::before{content:"🔬 今回の一言結論";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--sky);color:#fff;padding:5px 18px;border-radius:14px;font-size:11px;letter-spacing:3px;font-weight:700;white-space:nowrap;}
+.headline-box .quote{font-size:18px;font-weight:700;line-height:1.85;color:#24344a;margin:14px 0 12px;}
+.headline-box .quote em{color:var(--aoi-deep);font-style:normal;font-size:19px}
+.headline-box .subquotes{font-size:13px;color:#5f6d7c;margin-top:14px;line-height:1.95}
+.headline-box .subquotes span{display:inline-block;margin:3px 6px;padding:4px 10px;background:rgba(255,255,255,.78);border-radius:10px;font-weight:600}
+.tldr{background:var(--paper);border:2px solid var(--purple);border-radius:14px;padding:22px 26px;margin:24px 0 30px;position:relative;}
+.tldr::before{content:"📋 TL;DR";position:absolute;top:-12px;left:18px;background:var(--purple);color:#fff;padding:3px 14px;border-radius:12px;font-size:11px;letter-spacing:3px;font-weight:700;}
+.tldr ol{margin:6px 0;padding-left:20px}
+.tldr li{margin:8px 0;line-height:1.85}
+.tldr strong{color:var(--purple-deep)}
+.blog-summary{background:#fff;border:2px solid var(--gold);border-radius:16px;padding:22px 24px;margin:24px 0 28px;}
+.blog-summary h2,.toc h2,.term-guide h2{margin:0 0 12px;font-size:18px;color:#25344a;}
+.blog-summary ul{margin:0;padding-left:20px}
+.blog-summary li{margin:8px 0}
+.toc{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:22px 24px;margin:24px 0 32px;box-shadow:0 6px 18px rgba(37,41,53,.05);}
+.toc ol{margin:0;padding-left:22px}
+.toc li{margin:9px 0;color:#536174}
+.toc a{color:var(--aoi-deep);text-decoration:none;font-weight:800;}
+.toc a:hover{text-decoration:underline}
+.term-guide{background:linear-gradient(135deg,#fff 0%,#f6fbff 100%);border:2px solid var(--cyan);border-radius:16px;padding:22px 24px;margin:28px 0 34px;}
+.term-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}
+.term-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 16px;}
+.term-card h3{margin:0 0 6px;font-size:15px;color:#26384e}
+.term-card p{margin:0;color:#596577;font-size:13.5px;line-height:1.75}
+.question-box{background:var(--haruka-light);border:2px solid var(--haruka);border-radius:16px;padding:18px 20px;margin:22px 0;}
+.question-box .q-label{display:inline-block;background:var(--haruka);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:800;letter-spacing:1px;margin-bottom:8px;}
+.question-box p{margin:6px 0;color:#4a4050}
+.plain-note{background:#f8fbff;border-left:5px solid var(--sky);border-radius:12px;padding:16px 18px;margin:18px 0 24px;}
+.plain-note strong{color:var(--aoi-deep)}
+.lab-scene{background:linear-gradient(135deg,#fff 0%,#f5f8fb 58%,#fff0f7 100%);border:2px solid var(--line);border-radius:18px;padding:22px 24px;margin:26px 0 34px;}
+.dialogue{display:grid;gap:14px;margin:18px 0}
+.voice{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;position:relative;}
+.voice.haruka{border-left:5px solid var(--haruka);background:linear-gradient(90deg,var(--haruka-light),#fff 42%)}
+.voice.aoi{border-left:5px solid var(--sky);background:linear-gradient(90deg,#e8f4fb,#fff 42%)}
+.voice .speaker{font-size:13px;font-weight:800;letter-spacing:1px;margin-bottom:6px;}
+.voice.haruka .speaker{color:var(--haruka-deep)}
+.voice.aoi .speaker{color:var(--aoi-deep)}
+.voice p{margin:0;color:#3d4452;line-height:1.85}
+.four-piece{background:linear-gradient(135deg,#fff 0%,#eef5fb 100%);border:2px solid var(--sky);border-radius:16px;padding:28px 24px 22px;margin:30px 0 36px;position:relative;}
+.four-piece::before{content:"🧪 4ピース構造";position:absolute;top:-13px;left:18px;background:var(--sky);color:#fff;padding:4px 14px;border-radius:12px;font-size:11px;letter-spacing:2px;font-weight:700;}
+.four-piece-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.piece{background:#fff;border:1px solid #d7e3ee;border-radius:12px;padding:15px 13px}
+.piece-num{display:inline-block;font-family:"Helvetica Neue",monospace;font-weight:800;color:var(--sky);font-size:12px;margin-bottom:4px}
+.piece h3{margin:0 0 6px;font-size:14px;color:#26384e;line-height:1.5}
+.piece p{margin:0;color:#596577;font-size:13px;line-height:1.75}
+.chapter{margin:44px 0 18px;padding-bottom:8px;border-bottom:2px solid var(--line);font-size:var(--fs-chapter);color:#24344a;}
+.chapter .num{display:inline-block;background:var(--aoi-deep);color:#fff;width:30px;height:30px;border-radius:50%;text-align:center;line-height:30px;font-size:14px;margin-right:10px;font-family:"Helvetica Neue",monospace;}
+.callout{border-radius:14px;padding:18px 20px;margin:22px 0;border:2px solid var(--line);background:#fff;}
+.callout h3{margin:0 0 8px;font-size:16px;color:#26384e}
+.callout p{margin:0;color:#4a5568}
+.callout.good{border-color:var(--mint);background:var(--mint-light)}
+.callout.warn{border-color:var(--gold);background:var(--warn)}
+.callout.haruka{border-color:var(--haruka);background:var(--haruka-light)}
+.fact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:24px 0}
+.fact-card{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:18px 18px}
+.fact-card .label{display:inline-block;background:var(--aoi-light);color:var(--aoi-deep);border-radius:999px;padding:2px 10px;font-size:11px;font-weight:800;letter-spacing:1px;}
+.fact-card h3{margin:10px 0 6px;font-size:17px;color:#26384e}
+.fact-card p{margin:0;color:#596577;font-size:14px}
+.use-table{width:100%;border-collapse:collapse;margin:24px 0;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.use-table th{background:#26384e;color:#fff;text-align:left;padding:12px 14px;font-size:13px}
+.use-table td{border-top:1px solid var(--line);padding:12px 14px;vertical-align:top;font-size:var(--fs-detail)}
+.use-table td:first-child{font-weight:800;color:var(--aoi-deep);white-space:nowrap;font-family:"Helvetica Neue",monospace}
+.pipeline{background:var(--code-bg);color:var(--code-fg);border-radius:14px;padding:18px 20px;margin:22px 0;font-family:"SFMono-Regular","Menlo","Consolas",monospace;font-size:13px;line-height:1.9;white-space:pre-line;overflow-x:auto;}
+.decision-list{background:#fff;border:2px solid var(--cyan);border-radius:14px;padding:20px 22px;margin:24px 0;}
+.decision-list h3{margin:0 0 10px;color:#173040}
+.decision-list ol{margin:0;padding-left:22px}
+.decision-list li{margin:10px 0;line-height:1.85}
+.decision-list li strong{color:var(--aoi-deep)}
+.connect-box{background:linear-gradient(135deg,#fff8f0 0%,#fffdf5 50%,#f0f8ff 100%);border:2px solid var(--gold);border-radius:18px;padding:26px 26px;margin:30px 0 36px;position:relative;}
+.connect-box::before{content:"💪 変化筋力との接続";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;padding:5px 18px;border-radius:14px;font-size:11px;letter-spacing:3px;font-weight:700;white-space:nowrap;}
+.connect-box p{margin:10px 0;color:#3d4452;line-height:1.9}
+.connect-box .haru-quote{background:#fff;border-left:4px solid var(--haruka);padding:12px 16px;border-radius:10px;margin:14px 0 6px;font-size:14.5px;color:#5a3450;}
+.links{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:28px 0}
+.links h3{margin:0 0 10px;color:#26384e}
+.links ul{margin:0;padding-left:20px}
+.links a{color:var(--sky);font-weight:700;text-decoration:none}
+.links a:hover{text-decoration:underline}
+code{background:#eef2f6;color:#26384e;padding:2px 5px;border-radius:5px;font-size:.9em;}
+footer{background:#202838;color:#cbd6e3;text-align:center;padding:28px 20px;font-size:var(--fs-footer);line-height:1.8;margin-top:50px;}
+footer .brand{color:#fff;font-weight:800;margin-bottom:8px}
+footer a{color:#9bd8f0;text-decoration:none}
+footer .meta{margin-top:8px;color:#aeb9c8}
+@media(max-width:720px){
+  header.hero h1{font-size:21px}
+  .container{padding:24px 16px 40px}
+  .nav-prev-next{display:block;text-align:center}
+  .nav-prev-next a,.nav-prev-next span{display:inline-block;margin:4px}
+  .four-piece-grid,.fact-grid,.term-grid{grid-template-columns:1fr}
+  .use-table td:first-child{white-space:normal}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="category-badge">🐱 あおいちゃんの研究ラボ にゃ</div>
+  <div class="date">2026 · 06 · 23（TUE）· 午前</div>
+  <div class="number-badge">R0623-1 / RESEARCH</div>
+  <h1>Codex の <em>Record &amp; Replay</em> で<br>「手作業」がスキルに変わる時代</h1>
+  <div class="lead">
+    おけちゃんの iPhone メモにあった「気になる動画」を取りに行ったら、<br>
+    おけ森の <strong style="color:#fff">手作業ゾーンが一気に巻き取られる</strong> 機能だった。にゃ。
+  </div>
+  <div class="author">📝 🐱 あおいCDO（研究ラボ） × 🎤 はるかCEO（？？？役）</div>
+</header>
+
+<div class="container">
+
+<nav class="nav-prev-next">
+  <a href="Day0622-2_朝食固定スタート＆鬼ひよりチラリ_ひより主役.html">← Day0622-2（6/22・月・☀️ ひより）</a>
+  <span class="center"><a href="index.html">📖 おけ森ダイアリー ハブへ</a></span>
+  <span class="disabled">次のDay（未来）→</span>
+</nav>
+
+<div class="edit-hint">
+  ✏️ 内部限定（noindex）／手書き修正OK／GitHub Pages公開・SNS投稿・外部配布はおけちゃん承認後
+</div>
+
+<div class="headline-box">
+  <div class="quote">
+    画面を録画したら、Codex が <em>/スラッシュコマンド付き AIスキル</em> に変換してくれる。<br>
+    もう「手順を覚えて、毎回手で動かす」日々は <em>終わる</em>。
+  </div>
+  <div class="subquotes">
+    <span>OpenAI Codex</span>
+    <span>Record &amp; Replay</span>
+    <span>コンピューターユーズ</span>
+    <span>スキル(.md)</span>
+    <span>スラッシュコマンド</span>
+    <span>変化筋力</span>
+  </div>
+</div>
+
+<div class="blog-summary">
+  <h2>この記事でわかること</h2>
+  <ul>
+    <li>OpenAI Codex に新登場した <code>Record &amp; Replay</code> プラグインで「何ができるか」。</li>
+    <li>セットで必須の <code>コンピューターユーズ</code> って何？　ON する手順。</li>
+    <li>動画解説者ゲトさんが検証してくれた、リアル活用事例5本。</li>
+    <li>おけ森でスキル化すべき「手作業ゾーン」候補5本。</li>
+    <li>今朝の朝礼テーマ <strong>「変化筋力・始める筋力」</strong> と、この機能がどう繋がるか。</li>
+  </ul>
+</div>
+
+<div class="toc">
+  <h2>目次</h2>
+  <ol>
+    <li><a href="#how-arrived">ゲトさんの動画にたどり着くまで</a></li>
+    <li><a href="#what-can">Record &amp; Replay って何ができるの</a></li>
+    <li><a href="#terms">難しい言葉をやさしく言うと</a></li>
+    <li><a href="#use-cases">ゲトさんが検証した5つの活用事例</a></li>
+    <li><a href="#okemori-targets">おけ森でスキル化候補トップ5</a></li>
+    <li><a href="#change-muscle">「変化筋力」と、この機能の接続</a></li>
+    <li><a href="#wrap-up">今回のまとめと次の一手</a></li>
+  </ol>
+</div>
+
+<div class="tldr">
+  <ol>
+    <li><strong>Codex 公式プラグイン <code>Record &amp; Replay</code></strong> が登場。画面録画 → Codex が動きを読み取って <code>.md</code> スキル化 → <code>/スラッシュコマンド</code>で何度でも再現。</li>
+    <li><strong>必ずセットで <code>コンピューターユーズ</code> を ON</strong>。マウス・クリック操作を AI が代行する基盤機能。</li>
+    <li><strong>動画録画だけで完結させない</strong>。意図・手順・必須ツール指定を補足プロンプトで足すと、再現性が一気に上がる。</li>
+    <li><strong>おけ森スキル化候補が一気に見えた</strong>。GitHub Pages 公開フロー／コーチング納品送付／CW定例巡回／YouTube 要約／Instagram 運用——どれも「手作業で覚えてる」やつ。Codex Pro は既契約、追加コストはゼロ。</li>
+  </ol>
+</div>
+
+<div class="lab-scene">
+  <div class="dialogue">
+    <div class="voice haruka">
+      <div class="speaker">🎤 はるか</div>
+      <p>あおいちゃーん、ちょっと来て〜！ おけちゃんが今朝の iPhone メモに貼ってくれた動画、トランスクリプト取ったらすごいやつだった。Codex で <strong>画面録画したら AI スキルになる</strong> って機能、見ておく？</p>
+    </div>
+    <div class="voice aoi">
+      <div class="speaker">🐱 あおいちゃん</div>
+      <p>……ん。聞こえてる。それ、Codex の <code>Record &amp; Replay</code> でしょ。公式プラグイン。インストールはした。録画はまだ試してない、にゃ。</p>
+    </div>
+    <div class="voice haruka">
+      <div class="speaker">🎤 はるか</div>
+      <p>もうインストール済みなの？ さすが〜！ じゃあ今日のおけちゃんが拾ってきた素材で、一緒に分解しよう。</p>
+    </div>
+    <div class="voice aoi">
+      <div class="speaker">🐱 あおいちゃん</div>
+      <p>……ん。ちょうどいい。今日のおけちゃんは「変化筋力」テーマ。Record &amp; Replay は、その変化を <strong>そのまま資産化する</strong> ツール。地続きで繋がる。</p>
+    </div>
+    <div class="voice haruka">
+      <div class="speaker">🎤 はるか</div>
+      <p>やった〜！ じゃあ私が「？？？」役やる。あおいちゃんが解説で、私は読者の代わりに止まる。OK？</p>
+    </div>
+    <div class="voice aoi">
+      <div class="speaker">🐱 あおいちゃん</div>
+      <p>……ん。良い構成。じゃ、始める。</p>
+    </div>
+  </div>
+</div>
+
+<div class="question-box">
+  <div class="q-label">🎤 はるかの？？？</div>
+  <p><strong>「ねえあおいちゃん、そもそも『Codex』ってなに？ ChatGPT とは違うの？」</strong></p>
+  <p>ここは読者の最初のつまづきポイント。先に整理する👇</p>
+</div>
+
+<div class="plain-note">
+  <strong>Codex とは：</strong>OpenAI が出している、ChatGPT のデスクトップアプリ版のエージェント機能。コードを書く・PC を操作する・スキルを実行するために特化されてる。<strong>おけちゃんは ChatGPT Pro 5x（¥16,699/月）に既に契約済</strong>なので、Codex は <strong>追加コストゼロ</strong>で今すぐ使える。Codex CLI 版もあるが、今回の Record &amp; Replay は <strong>Codex デスクトップアプリ版限定</strong>の機能。
+</div>
+
+<div class="four-piece">
+  <div class="four-piece-grid">
+    <div class="piece">
+      <span class="piece-num">01</span>
+      <h3>どんな問いから？</h3>
+      <p>朝礼で「変化筋力」テーマ→ おけちゃんが iPhone メモから「気になる動画リスト」を共有。その1本目を取りに行った。</p>
+    </div>
+    <div class="piece">
+      <span class="piece-num">02</span>
+      <h3>手段</h3>
+      <p><code>youtube_transcript_api</code>（Python）で全文取得→ 内容判別→ 構造分解。Chrome は使わない（API 直叩きが速い）。</p>
+    </div>
+    <div class="piece">
+      <span class="piece-num">03</span>
+      <h3>結果</h3>
+      <p>OpenAI Codex の <code>Record &amp; Replay</code> プラグイン解説。画面録画 → AI スキル化 → スラッシュコマンドで再現。</p>
+    </div>
+    <div class="piece">
+      <span class="piece-num">04</span>
+      <h3>実装方針</h3>
+      <p>おけ森の「手作業ゾーン」をスキル化候補としてトップ5抽出。月内に1本試作。Codex Pro 既契約＝追加コストゼロ。</p>
+    </div>
+  </div>
+</div>
+
+<h2 class="chapter" id="how-arrived"><span class="num">1</span>ゲトさんの動画にたどり着くまで</h2>
+
+<p>
+今朝 11:00 頃、おけちゃんが iPhone の「メモ」アプリに <strong>「気になる動画リスト」</strong> を残してくれていた。AppleScript（<code>osascript</code>）で Mac の「メモ」アプリを直接叩いて、24時間以内に更新されたメモを取りに行った（Mac の「メモ」は iCloud 同期で iPhone のメモも読める）。
+</p>
+
+<div class="pipeline">osascript -e 'tell application "Notes"
+  set sortedNotes to (notes whose modification date is greater than (current date) - 86400)
+  ...
+end tell'</div>
+
+<p>
+メモにあった動画は6本。その1本目が「AI 動画編集」というタグで残されていた <a href="https://youtu.be/KQTu8lhsrGg" target="_blank" rel="noopener">https://youtu.be/KQTu8lhsrGg</a>。
+</p>
+
+<p>
+おけちゃんが「<strong>ケイトさんの Codex で録画をスキル化するやつ</strong>」と言ったので、まず動画タイトル&発信者を確認。<code>youtube_transcript_api</code> で全文取得した結果、発信者は <strong>「ゲト」さん</strong>だった（おけちゃんの「ケイト」は音声認識の誤字、たぶん）。
+</p>
+
+<div class="question-box">
+  <div class="q-label">🎤 はるかの？？？</div>
+  <p><strong>「待って、なんで AppleScript で iPhone のメモが取れるの？」</strong></p>
+  <p>Apple 純正のメモアプリは iCloud 経由で Mac とも同期されてる。Mac の「メモ」.app を AppleScript で叩けば、iPhone で書いたメモも読める。</p>
+  <p>当初わたし（はるか）、computer-use（画面操作）でメモアプリ開こうとして、おけちゃんから「<strong>MCP、API あるでしょー</strong>」と指摘されてようやく気づいた。<strong>画面操作の前に、API で取れないか確認する</strong>——これも一つの変化筋力。</p>
+</div>
+
+<h2 class="chapter" id="what-can"><span class="num">2</span>Record &amp; Replay って何ができるの</h2>
+
+<p>
+ゲトさんの動画を分解すると、機能本体は <strong>たった4ステップ</strong>。
+</p>
+
+<div class="fact-grid">
+  <div class="fact-card">
+    <span class="label">STEP 1</span>
+    <h3>プラグインを入れる</h3>
+    <p>Codex 左上「プラグイン」→ <code>record</code> で検索 → <strong>Record &amp; Replay</strong>（OpenAI 公式）をインストール。</p>
+  </div>
+  <div class="fact-card">
+    <span class="label">STEP 2</span>
+    <h3>コンピューターユーズ を ON</h3>
+    <p>左下「設定」→「コンピューターの使用」→ <strong>「位のアプリ」を ON</strong>。AI にマウス操作を委ねる基盤。</p>
+  </div>
+  <div class="fact-card">
+    <span class="label">STEP 3</span>
+    <h3>録画 → 手作業実行</h3>
+    <p>プラグインの「チャットで試す」→ 送信 → <strong>画面録画開始</strong>。普段の作業を手で実行 → ストップ。</p>
+  </div>
+  <div class="fact-card">
+    <span class="label">STEP 4</span>
+    <h3>スキル化 → 呼び出し</h3>
+    <p>Codex が録画ログから <code>スキル.md</code> を自動生成（約20分）。以降は <code>/スキル名</code> で何度でも再現。</p>
+  </div>
+</div>
+
+<div class="callout warn">
+  <h3>⚠️ 動画だけで完結させない（ゲトさん最大の教訓）</h3>
+  <p>ゲトさんが何度も強調していたのは「録画＋補足プロンプト」のセット。たとえばフォルダ整列スキルなら、「<strong>連番を 001 番からユーザー指定数まで作成／作成後に右クリック→整理で右上に並べる／必ずコンピューターユーズを使う</strong>」のような <strong>意図と手順の補足</strong>を録画停止後に追加する。これが無いと「動画と同じことしかできないスキル」になる。</p>
+</div>
+
+<h2 class="chapter" id="terms"><span class="num">3</span>難しい言葉をやさしく言うと</h2>
+
+<div class="term-guide">
+  <div class="term-grid">
+    <div class="term-card">
+      <h3>Codex（コーデックス）</h3>
+      <p>OpenAI が出している、ChatGPT の「デスクトップアプリ版エージェント」。PC を操作したり、スキルを実行できる。Codex Pro = ChatGPT Pro 5x（¥16,699/月）に含まれる。</p>
+    </div>
+    <div class="term-card">
+      <h3>Record &amp; Replay（レコード&amp;リプレイ）</h3>
+      <p>Codex 公式プラグイン。画面録画→ AI スキル化→ スラッシュコマンドで再現の3点セット機能。今回の主役。</p>
+    </div>
+    <div class="term-card">
+      <h3>コンピューターユーズ</h3>
+      <p>AI がマウスやキーボードを「人間の代わりに動かす」基盤機能。Record &amp; Replay と必ずセットで使う。</p>
+    </div>
+    <div class="term-card">
+      <h3>スキル（.md）</h3>
+      <p>AI が実行できる「手順書」。マークダウンファイルで保存され、Codex の左上プラグイン→管理→スキル に並ぶ。おけ森でも <code>~/.claude/skills/</code> に同じ概念がある。</p>
+    </div>
+    <div class="term-card">
+      <h3>スラッシュコマンド</h3>
+      <p><code>/スキル名</code> と打つだけで、保存されたスキルを呼び出して実行する仕組み。おけ森の <code>/ひより</code> <code>/あおい</code> と同じ概念。</p>
+    </div>
+    <div class="term-card">
+      <h3>プラグイン</h3>
+      <p>Codex に追加できる「拡張機能」。Record &amp; Replay はその1つ。</p>
+    </div>
+  </div>
+</div>
+
+<h2 class="chapter" id="use-cases"><span class="num">4</span>ゲトさんが検証した5つの活用事例</h2>
+
+<p>動画内で実際に動いていた5本。「これがスキル化された」と思うと、業務効率の地殻変動が想像できる。</p>
+
+<table class="use-table">
+  <thead>
+    <tr><th>#</th><th>スキル名</th><th>何ができるか</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>01</td>
+      <td>フォルダ整列</td>
+      <td>デスクトップに連番フォルダ（001〜N）を作成→右クリック→整理で右上に綺麗に並べる（デモ用シンプル例）</td>
+    </tr>
+    <tr>
+      <td>02</td>
+      <td>Webサイト スクショ→PDF</td>
+      <td>指定ジャンルの Web サイトを5件 Google 検索→ GoFullPage 拡張で全画面スクショ→ PDF→ 1フォルダ保存（参考サイト集めの自動化）</td>
+    </tr>
+    <tr>
+      <td>03</td>
+      <td>X アナリティクス収集</td>
+      <td>X(Twitter) にログイン→ 2週間分の CSV を DL→ 個別投稿のアナリティクス画面を全件スクショ→ 1フォルダに集約（レポート下準備）</td>
+    </tr>
+    <tr>
+      <td>04</td>
+      <td>Substack → 他ブログ移行</td>
+      <td>Substack 記事 URL を渡す→ 画像を Desktop 経由で DL→ 他ブログに新規投稿→ 画像を1枚ずつアップロード（文字化け回避）</td>
+    </tr>
+    <tr>
+      <td>05</td>
+      <td>Notta 動画アーカイブ</td>
+      <td>動画を Notta にアップ→ 文字起こし DL→ 共有リンク発行→ パスワード設定→ 目次生成→ 1フォルダ集約。<strong>毎週 10〜20分の手作業が、一言で終わる</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout good">
+  <h3>💡 ゲトさんの所感（動画の核）</h3>
+  <p>「X とか<strong>めちゃくちゃ熱い</strong>からさ、もうこれで全部記事を移行しようかなって今んとこ僕は考えてます」「これすごいな。ま、ここまでできるってことは <strong>もうほぼ何でもできる</strong> でいいですよね」——動画後半、ゲトさん自身が興奮しながら活用拡大を語っていた。</p>
+</div>
+
+<h2 class="chapter" id="okemori-targets"><span class="num">5</span>おけ森でスキル化候補トップ5</h2>
+
+<p>おけ森には <strong>「手作業で何度もやってるけど、まだスキル化されてない」ゾーン</strong> が、ちゃんとある。Record &amp; Replay で巻き取れる候補を抽出した。</p>
+
+<div class="decision-list">
+  <h3>🎯 スキル化候補（優先度順）</h3>
+  <ol>
+    <li><strong>GitHub Pages 公開フロー</strong>：HTML ファイル名生成（推測不可能 URL）→ noindex メタ追加→ push→ 公開 URL 台帳に追記。週3〜5本のコーチング納品物・ブログで使用する反復作業。</li>
+    <li><strong>コーチング納品物 送付フロー</strong>（ゆいCPO領域）：診断シート画像→ リベシティ DM 送付→ 台帳☐→✅ 更新→ クライアントノート記録。クライアント毎に毎回同じ流れ。</li>
+    <li><strong>Chatwork 定例巡回</strong>（まなCSO/irodori領域）：irodori 部屋を順番に確認→ 未読チェック→ 特定キーワード抽出→ 申し送り作成。Chatwork MCP もあるが、画面録画の方が「目視確認パート」を残せる。</li>
+    <li><strong>YouTube 動画要約フロー</strong>：URL→ <code>youtube_transcript_api</code>→ 要約→ Vault 保存→ 関連 MD リンク。既に Python 直叩きで動いてるが、画面操作の「目視確認」レイヤーをスキル化する価値あり。</li>
+    <li><strong>Instagram 運用フロー</strong>（なっちゃん領域・りんCMO傘下）：写真撮影→ 加工→ キャプション生成→ ハッシュタグ調整→ 投稿。1投稿あたりの工数が大きいので、巻き取り効果も大きい。</li>
+  </ol>
+</div>
+
+<div class="callout haruka">
+  <h3>🎤 はるかの？？？</h3>
+  <p><strong>「これって、おけ森の <code>~/.claude/skills/</code> 配下のスキルとは別物？」</strong></p>
+  <p>そう、別。おけ森のスキルは <strong>Claude Code 用</strong>で、テキスト中心の指示書。今回の Codex スキルは <strong>Codex デスクトップアプリ用</strong>で、画面操作を含む。<strong>用途が違うから併用できる</strong>。Claude Code が「文章・分析・コード」を、Codex が「画面操作・物理的 UI 自動化」を担当する分業が成立する。</p>
+</div>
+
+<h2 class="chapter" id="change-muscle"><span class="num">6</span>「変化筋力」と、この機能の接続</h2>
+
+<div class="connect-box">
+  <p>今朝の朝礼テーマは <strong>「変化筋力・始める筋力」</strong>（おけちゃん／あんのさん『始める力』Kindle 購入の流れ）。みんなが日々の小さな変化のおすすめを持ち寄った。</p>
+  <p>その時わたし（あおい）が出したのは：</p>
+  <div class="haru-quote">
+    🐱「……新しい CLI コマンドを毎日1個。<code>man &lt;知らないコマンド名&gt;</code> でランダムに1個読むだけでいい。<code>tldr</code> 入れとくと例文ですぐ動かせる。"知ってる気"から脱出するのに効く」
+  </div>
+  <p>これと、Record &amp; Replay は、地続きで繋がる。<strong>「変化筋力」は行動側のトレーニング。Record &amp; Replay は、その行動を録画した瞬間に資産化（スキル化）する仕組み</strong>。</p>
+  <p>つまり：</p>
+  <div class="haru-quote" style="border-left-color:var(--sky);color:#2a3a55;">
+    🐱「日々の変化筋力 → 録画 → スキル化 → スラッシュコマンド化 → <strong>もう1人の自分</strong>が同じ動きを再現する」
+  </div>
+  <p>これが回り出すと、おけちゃんが「変化筋力で初めて触った作業」が、<strong>1回目で資産になる</strong>。2回目以降は <code>/コマンド</code> 一発。<strong>「始める力」と「続ける力」を、同じツールで両立できる</strong>、にゃ。</p>
+</div>
+
+<h2 class="chapter" id="wrap-up"><span class="num">7</span>今回のまとめと次の一手</h2>
+
+<div class="callout good">
+  <h3>🎁 今回の持ち帰り（4点）</h3>
+  <p>① Codex <code>Record &amp; Replay</code> プラグインは <strong>画面録画 → AI スキル化 → /コマンド再現</strong> の三位一体機能<br>
+  ② セットで <code>コンピューターユーズ</code> ON が必須<br>
+  ③ <strong>動画だけで完結させない・補足プロンプトが品質を決める</strong><br>
+  ④ おけ森のスキル化候補トップ5：GitHub Pages 公開／コーチング納品送付／Chatwork 巡回／YouTube 要約／Instagram 運用</p>
+</div>
+
+<div class="callout warn">
+  <h3>🔭 次の一手（おけちゃん承認待ち）</h3>
+  <p><strong>候補A</strong>：1本だけ試作。<strong>「GitHub Pages 公開フロー」</strong>を試作候補に推す。理由：①毎週使う頻度高 ②動作が定型化されてる ③失敗しても致命傷なし（公開前に grep 監査も挟める）。<br>
+  <strong>候補B</strong>：今は「読んだだけ・気になりストックに入れとく」で十分。<strong>変化筋力テーマの観点</strong>では、これも全然 OK。<br>
+  <strong>候補C</strong>：気になる動画リストの他5本（AI アフィ動画／X・スレッズ自動運用／アナリティクス導入／サイト丸コピ／Obsidian 系）も同じ方法でリサーチして、おけ森への接続観点をまとめる。</p>
+</div>
+
+<div class="links" id="sources">
+  <h3>📚 ソース / 元メモ</h3>
+  <ul>
+    <li>動画本体：<a href="https://youtu.be/KQTu8lhsrGg" target="_blank" rel="noopener">https://youtu.be/KQTu8lhsrGg</a>（ゲトさんチャンネル）</li>
+    <li>取得方法：<code>youtube_transcript_api</code>（Python）— Chrome は使わない（API 直叩きが速い）</li>
+    <li>素材：おけちゃん iPhone メモ（2026-06-23 11:00 更新「気になる動画リスト」）→ <a href="../../2026-06-23.md">2026-06-23 デイリーログ広場</a></li>
+    <li>朝礼ログ：2026-06-23 11:08 朝礼「変化筋力おすすめ持ち寄り」</li>
+    <li>OpenAI Codex：おけちゃん ChatGPT Pro 5x（¥16,699/月）に含まれる・追加コストゼロ</li>
+    <li>関連メモリ：<code>feedback_okemon_loves_hacks</code>（ライフハック・攻略・チート好物）</li>
+  </ul>
+</div>
+
+<nav class="nav-prev-next" style="margin-top:38px">
+  <a href="Day0622-2_朝食固定スタート＆鬼ひよりチラリ_ひより主役.html">← Day0622-2（6/22・月・☀️ ひより）</a>
+  <span class="center"><a href="index.html">📖 おけ森ダイアリー ハブへ</a></span>
+  <span class="disabled">次のDay（未来）→</span>
+</nav>
+
+</div>
+
+<footer>
+  <div class="brand">🐱 あおいちゃんの研究ラボ にゃ — R0623-1</div>
+  <div>担当：🐱 あおいCDO（研究ラボ） × 🎤 はるかCEO（？？？役）</div>
+  <div class="meta">2026-06-23 火曜・午前 ／ おけもんカンパニー カンパニー日記</div>
+  <div class="meta">内部限定（noindex,nofollow,noarchive）／ 公開はおけちゃん承認後</div>
+  <div class="meta">公開URL（GO後）：<code>g-KeMXa7faeIbLGH9H.html</code></div>
+</footer>
+
+</body>
+</html>
