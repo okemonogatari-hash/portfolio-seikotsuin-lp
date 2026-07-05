@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>AI現場伴走室｜医療・介護・保育の現場にAIを定着させる — ワタシトリセツ</title>
-<meta name="description" content="現場16年の伴走者が、AIを「現場が使える」ところまで一緒に落とし込みます。記録・計画書・連絡帳——「書く仕事」に夜が消えていく現場を、定着するまで伴走して変えます。">
-<meta property="og:title" content="AI現場伴走室｜医療・介護・保育の現場にAIを定着させる">
-<meta property="og:description" content="現場16年の伴走者が、AIを「現場が使える」ところまで一緒に落とし込みます。記録・計画書・連絡帳の「書く仕事」を、定着するまで伴走。">
+<title>AI現場伴走室｜介護・医療現場で使えるAI研修と導入伴走 — ワタシトリセツ</title>
+<meta name="description" content="現場16年の伴走者が、AIを介護・医療の現場で明日から使えるところまで一緒に落とし込みます。記録・申し送り・研修資料づくりを、助成金活用の可能性まで含めて伴走します。">
+<meta property="og:title" content="AI現場伴走室｜介護・医療現場で使えるAI研修と導入伴走">
+<meta property="og:description" content="AIを知っているで終わらせず、介護・医療の現場で明日から使えるところまで。助成金活用の可能性も含めて導入設計します。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/okemon-care-ai.html">
 <meta property="og:image" content="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/ogp-care-ai.png">
@@ -100,6 +100,18 @@ header{position:sticky;top:0;background:rgba(250,246,239,.9);backdrop-filter:blu
 .powered p{font-size:.86rem;color:var(--ink-60)}
 .powered p b{color:var(--ink)}
 
+/* grant */
+.grant-band{background:var(--green-pale);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:92px 0}
+.grant-grid{display:grid;grid-template-columns:1.05fr 1.2fr;gap:54px;align-items:start}
+@media(max-width:820px){.grant-grid{grid-template-columns:1fr;gap:32px}}
+.grant-copy p{font-size:.94rem;color:var(--ink-60);margin-bottom:18px}
+.grant-copy strong{color:var(--ink)}
+.grant-checks{display:grid;gap:12px}
+.grant-check{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px;box-shadow:0 12px 32px -24px rgba(29,114,104,.32)}
+.grant-check b{display:block;font-family:'Zen Maru Gothic';font-size:.98rem;margin-bottom:4px}
+.grant-check span{display:block;font-size:.82rem;color:var(--ink-60);line-height:1.8}
+.grant-note{font-size:.76rem;color:var(--ink-60);margin-top:16px}
+
 /* architecture */
 .arch{background:var(--green);color:#fff}
 .arch .kicker{color:#efb59b}
@@ -162,10 +174,10 @@ header{position:sticky;top:0;background:rgba(250,246,239,.9);backdrop-filter:blu
 .faq{background:var(--paper);border-top:1px solid var(--line-soft)}
 .faq-list{margin-top:46px;border-top:1px solid var(--line)}
 .faq-item{border-bottom:1px solid var(--line);padding:32px 6px}
-.faq-q{font-weight:700;font-size:1rem;display:grid;grid-template-columns:36px 1fr;gap:12px;line-height:1.8}
-.faq-q::before{content:"Q";font-family:'Quicksand';font-weight:300;color:var(--peach);font-size:1.3rem}
-.faq-a{margin-top:12px;display:grid;grid-template-columns:36px 1fr;gap:12px;font-size:.92rem;color:var(--ink-60)}
-.faq-a::before{content:"A";font-family:'Quicksand';font-weight:300;color:var(--green);font-size:1.3rem}
+.faq-q{font-weight:700;font-size:1rem;padding-left:48px;position:relative;line-height:1.8}
+.faq-q::before{content:"Q";position:absolute;left:0;top:0;font-family:'Quicksand';font-weight:300;color:var(--peach);font-size:1.3rem}
+.faq-a{margin-top:12px;padding-left:48px;position:relative;font-size:.92rem;color:var(--ink-60);line-height:2}
+.faq-a::before{content:"A";position:absolute;left:0;top:0;font-family:'Quicksand';font-weight:300;color:var(--green);font-size:1.3rem}
 
 /* philosophy */
 .philosophy{background:var(--green-pale);padding:140px 0;position:relative;overflow:hidden}
@@ -224,9 +236,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 
 <header>
   <div class="wrap nav">
-    <div class="logo">🍑 AI現場伴走室 <small>医療・介護・保育のAI導入支援｜ワタシトリセツ</small></div>
+    <div class="logo">🍑 AI現場伴走室 <small>介護・医療・福祉のAI導入支援｜ワタシトリセツ</small></div>
     <nav class="nav-links">
       <a href="#services">事業内容</a>
+      <a href="#grant">助成金</a>
       <a href="#message">代表メッセージ</a>
       <a href="#faq">よくある質問</a>
       <a class="nav-cta" href="#contact">無料相談</a>
@@ -240,15 +253,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
     <span class="kicker">Care × AI, Human Partner</span>
     <h1>
       <span class="w" style="animation-delay:.1s">16年、現場にいた人間が、</span><br>
-      <span class="w" style="animation-delay:.35s">AIを<span class="u">「現場が使える」</span>ところまで</span><br>
+      <span class="w" style="animation-delay:.35s">AIを<span class="u">「明日から使える」</span>ところまで</span><br>
       <span class="w" style="animation-delay:.6s">一緒に落とし込みます。</span>
     </h1>
-    <p class="hero-sub">医療・介護・保育のための、AI導入支援。記録・計画書・連絡帳——「書く仕事」に夜が消えていく現場を、定着するまで伴走して変えます。</p>
+    <p class="hero-sub">介護・医療・福祉現場のための、AI研修と導入伴走。記録・申し送り・研修資料づくりを、職員さんが実際に使える形まで整えます。条件が合う場合は、助成金活用の可能性も一緒に整理します。</p>
     <div class="cta-row">
       <a class="btn btn-fill" href="#contact">無料相談を申し込む</a>
       <a class="btn btn-line" href="#services">事業内容を見る</a>
     </div>
-    <p class="hero-assure">オンライン1時間・相談は無料・<b>売り込みはありません。</b></p>
+    <p class="hero-assure">オンライン1時間・相談は無料・<b>売り込みはありません。</b> 助成金は、対象条件の整理から一緒に見ます。</p>
   </div>
   <div class="hanko"><span>現場十六年</span></div>
 </div>
@@ -258,18 +271,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
   <div class="wrap about-grid">
     <div>
       <span class="kicker">About</span>
-      <h2>「ケアの時間」より、<br>「書く時間」が長い夜。</h2>
+      <h2>AIを入れたい。<br>でも、何を任せればいいか分からない。</h2>
     </div>
     <div class="about-body">
-      <p><strong>AIが、現場の記録の下書きを書けるって知っていますか。</strong></p>
-      <p>AIは、若い人向けの難しい道具ではありません。支援日誌、個別支援計画、看護記録、保育の連絡帳やおたより——これまで職員さんが残業して書いていたものを、任せられる時代になっています。</p>
+      <p><strong>AIは、現場の記録・申し送り・研修資料の下書きまで手伝えます。</strong></p>
+      <p>ただし、ツールを入れただけでは現場は変わりません。支援日誌、個別支援計画、看護記録、連絡帳、会議メモ——これまで職員さんが残業して書いていたものを、現場の言葉で扱える形にする設計が必要です。</p>
       <div class="pains">
         <span>「興味はあるけど、何から始めればいいか分からない」</span>
+        <span>「記録・申し送り・研修資料、どこから任せればいいか分からない」</span>
         <span>「うちの職員には難しそう」</span>
-        <span>「研修を受けたけど、現場は変わらなかった」</span>
+        <span>「研修を受けたけど、職員全体に広がらなかった」</span>
       </div>
       <p>現場から届くのは、こんな声です。原因は道具ではありません。<strong>現場の言葉に翻訳して、定着するまで隣にいる人がいなかった</strong>からです。</p>
-      <p>私は介護・障害福祉の現場で16年働き、コーチングでは3年間で1,000人以上と対話してきました。いま自分の事務所はAI社員11人と運営しています。<span class="about-sign">「聴く力」と「現場の言葉」を持った実践者が、御社に伴走します。</span></p>
+      <p>私は介護・障害福祉の現場で16年働き、コーチングでは3年間で1,000人以上と対話してきました。いま自分の事務所はAI社員11人と運営しています。<span class="about-sign">「聴く力」と「現場の言葉」を持った実践者が、御社の業務に合わせて、AIを使える状態まで伴走します。</span></p>
     </div>
   </div>
 </section>
@@ -280,7 +294,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
     <span class="kicker">Facts</span>
     <div class="num-grid rv">
       <div class="num-cell"><div class="n" data-count="16">0<small>年</small></div><div class="l">介護・障害福祉の現場経験<br>（特養・サビ管・施設長）</div></div>
-      <div class="num-cell"><div class="n" data-count="30">0<small>回+</small></div><div class="l">AI導入支援の会を直近2ヶ月で開催<br>累計200名以上が参加（進行中）</div></div>
+      <div class="num-cell"><div class="n" data-count="40">0<small>回+</small></div><div class="l">AI導入支援の会・勉強会を開催<br>延べ約160名が参加（進行中）</div></div>
       <div class="num-cell"><div class="n" data-count="1000">0<small>人+</small></div><div class="l">コーチングで重ねた対話（3年間）<br>＝ 現場の本音を引き出すヒアリング力</div></div>
       <div class="num-cell"><div class="n" data-count="11">0<small>人</small></div><div class="l">自社で運用するAI社員<br>（経理・営業資料・このHPまで）</div></div>
     </div>
@@ -299,7 +313,34 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
   </div>
 </div>
 
-<!-- 5. ARCHITECTURE -->
+<!-- 5. GRANT -->
+<section class="grant-band" id="grant">
+  <div class="wrap grant-grid">
+    <div class="grant-copy rv">
+      <span class="kicker">Subsidy Planning</span>
+      <h2>研修費の不安も、<br>最初から一緒に設計します。</h2>
+      <p>介護・医療・福祉の法人研修では、条件が合う場合に <strong>人材開発支援助成金</strong> などを検討できる可能性があります。</p>
+      <p>大切なのは、「助成金ありき」で売り込むことではなく、現場で本当に使える研修にしたうえで、制度に合う形へ整理できるかを見ることです。</p>
+      <p class="grant-note">※ 助成金の対象可否は法人様の雇用状況・研修内容・実施時期で変わります。申請代行や支給保証は行いません。必要に応じて社労士さん・労働局確認へ進められるよう、研修設計と資料整理をサポートします。</p>
+    </div>
+    <div class="grant-checks rv">
+      <div class="grant-check">
+        <b>1. 現場業務から研修テーマを決める</b>
+        <span>記録、申し送り、研修資料、会議メモなど、実際に軽くしたい業務から設計します。</span>
+      </div>
+      <div class="grant-check">
+        <b>2. 10時間以上のOFF-JT設計を検討する</b>
+        <span>助成金を検討する場合は、制度要件に合う研修時間・内容かを安全に確認します。</span>
+      </div>
+      <div class="grant-check">
+        <b>3. 職員さんが使える形まで残す</b>
+        <span>研修後に現場へ残る指示文、手順書、チェックリストまで一緒に整えます。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. ARCHITECTURE -->
 <section class="arch">
   <div class="wrap">
     <span class="kicker">How it works</span>
@@ -335,7 +376,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
   </div>
 </section>
 
-<!-- 6. SERVICES -->
+<!-- 7. SERVICES -->
 <section id="services">
   <div class="wrap">
     <span class="kicker">Services</span>
@@ -343,7 +384,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
     <p class="lead">主役は「定着するまでの伴走」。施設の状況に合わせて、必要なものだけ組み合わせます。</p>
 
     <div class="sv-grid">
-      <a class="sv-card" href="#sv1"><span class="no">01</span><h3>AI業務棚卸し →<br>研修＋導入伴走</h3><p>主力サービス。業務の棚卸しから、職員研修、現場で使えるようになるまで。</p><span class="more">詳細を見る →</span></a>
+      <a class="sv-card" href="#sv1"><span class="no">01</span><h3>AI業務棚卸し →<br>研修＋導入伴走</h3><p>主力サービス。業務の棚卸しから、職員研修、現場で使えるようになるまで。助成金活用の可能性も整理します。</p><span class="more">詳細を見る →</span></a>
       <a class="sv-card" href="#sv2"><span class="no">02</span><h3>現場定着顧問</h3><p>「結局使われなくなる」を防ぐ、研修後の月次伴走。</p><span class="more">詳細を見る →</span></a>
       <a class="sv-card" href="#sv3"><span class="no">03</span><h3>現場ツールの個別製作</h3><p>リマインド通知・記録テンプレ・スプレッドシート自動化など。</p><span class="more">詳細を見る →</span></a>
       <a class="sv-card" href="#sv4"><span class="no">04</span><h3>HP・販促物の制作</h3><p>採用・広報に。必要な施設さまにだけ、ご一緒します。</p><span class="more">詳細を見る →</span></a>
@@ -353,8 +394,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
       <div class="no">01</div>
       <div>
         <h3>AI業務棚卸し → 研修＋導入伴走</h3>
-        <p>まず業務を一緒に棚卸しして、「AIで変わる順」を設計します。そのうえで職員向け研修（専門用語なし）を行い、研修で終わらせず、<strong>現場で実際に使い始めるところまで</strong>伴走します。医療・介護・保育、それぞれの記録様式に合わせて設計します。</p>
-        <div class="grant-line">条件によっては国の助成金（人材開発支援助成金）が活用できるケースがあります。貴施設が対象になりそうかは、無料相談の場でその場で確認できます。<br><span style="font-size:.78rem;color:var(--ink-60)">※ 申請代行はできません（社労士の独占業務のため）。書類づくりのサポートと、要件に合う研修設計まで一緒に行います。</span></div>
+        <p>まず業務を一緒に棚卸しして、「AIで変わる順」を設計します。そのうえで職員向け研修（専門用語なし）を行い、研修で終わらせず、<strong>現場で実際に使い始めるところまで</strong>伴走します。介護・医療・福祉、それぞれの記録様式に合わせて設計します。</p>
+        <div class="grant-line">条件が合う場合は、人材開発支援助成金などの活用可能性も含めて整理できます。対象可否は法人様の状況や研修内容で確認が必要です。<br><span style="font-size:.78rem;color:var(--ink-60)">※ 申請代行・支給保証はできません。社労士さんや労働局確認へ進めやすいよう、研修内容・カリキュラム・必要情報の整理を一緒に行います。</span></div>
       </div>
     </div>
 
@@ -362,7 +403,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
       <div class="no">02</div>
       <div>
         <h3>現場定着顧問</h3>
-        <p>研修のあと、現場には必ず「これってどうやるんだっけ」が生まれます。月次の振り返り・職員さんからの質問対応・新しい業務への横展開までを継続して支え、<strong>「導入したのに使われない」を構造的に防ぎます。</strong></p>
+        <p>研修のあと、現場には必ず「これってどうやるんだっけ」が生まれます。月次の振り返り・職員さんからの質問対応・新しい業務への横展開までを継続して支え、<strong>「導入したのに使われない」を構造的に防ぎます。</strong>助成金を使う研修の場合も、研修後に何が現場へ残るかまで設計します。</p>
         <p class="sub-items">月次レビュー／質問随時対応／新規業務への展開設計</p>
       </div>
     </div>
@@ -383,7 +424,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
         <p>採用や広報にHPが必要な施設さまには、制作もご一緒できます。AI活用で制作コストを抑えながら、現場の言葉が伝わるページをつくります。<span style="color:var(--ink-60);font-size:.88rem">（こちらは付帯サービスです。無理にはおすすめしません）</span></p>
       </div>
     </div>
-    <p style="font-size:.86rem;color:var(--ink-60)">料金は、内容と施設の状況に合わせて無料相談の場でご案内します。</p>
+    <p style="font-size:.86rem;color:var(--ink-60)">料金は、内容と施設の状況に合わせて無料相談の場でご案内します。法人研修として組む場合は、助成金活用の可能性もあわせて整理します。</p>
   </div>
 </section>
 
@@ -443,10 +484,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
           <li><span class="yr">3年</span><span>特別養護老人ホーム — 介護職員として、現場のいちばん忙しい時間を</span></li>
           <li><span class="yr">10年</span><span>障害福祉・サービス管理責任者 — 個別支援計画・記録・監査対応。「書く仕事」の重さを誰より知る10年</span></li>
           <li><span class="yr">3年</span><span>グループホーム施設長 — シフト・人材・経営。管理者の孤独と人手不足の現実</span></li>
-          <li><span class="yr">現在</span><span>医療・介護・保育専門のAI導入伴走へ</span></li>
+          <li><span class="yr">現在</span><span>介護・医療・福祉専門のAI導入伴走へ</span></li>
         </ul>
         <p>サビ管の更新月の絶望も、夜勤明けに記録の山と向き合う気持ちも、体で知っています。だから私は、御社の職員さんと同じ言葉で話せます。AIの専門用語は、私が現場の言葉に翻訳します。</p>
-        <p>この2ヶ月は、AI導入支援の会を30回以上ひらき、のべ200名以上の方と一緒に手を動かしてきました。コーチングでは3年間で1,000人以上と対話を重ねてきました。AIの話の前に、まず現場の話を「聴く」こと。それが私の仕事の始め方です。</p>
+        <p>この2ヶ月は、AI導入支援の会・勉強会を40回以上ひらき、延べ約160名の方と一緒に手を動かしてきました。コーチングでは3年間で1,000人以上と対話を重ねてきました。AIの話の前に、まず現場の話を「聴く」こと。それが私の仕事の始め方です。</p>
         <p>独立した今、自分の事務所はAI社員11人と運営しています。経理も、営業資料も、このホームページも、AIとつくりました。うまくいったことだけでなく、失敗した設定や続かなかった仕組みも、すべて記録しています。その実践のノウハウごと、お渡しします。</p>
         <p class="strong-line">ケアに使える時間を、現場に返したい。それがこの仕事を始めた理由です。</p>
       </div>
@@ -476,6 +517,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
         <div class="faq-q">研修だけ受けて、結局使われなくなりそうで不安です。</div>
         <div class="faq-a">そこが一番の核心です。だから研修を「やって終わり」にせず、現場で実際に使い始めるところまで伴走するのを標準にしています。それでも不安な施設さまには、月次の定着顧問をご用意しています。</div>
       </div>
+      <div class="faq-item">
+        <div class="faq-q">助成金を使ってAI研修を受けられますか。</div>
+        <div class="faq-a">条件が合う場合は、人材開発支援助成金などの活用可能性があります。ただし、法人様の雇用状況・研修時間・研修内容・実施時期によって確認が必要です。申請代行や支給保証はできませんが、社労士さんや労働局に確認しやすいよう、研修内容や必要情報の整理まで一緒に行います。</div>
+      </div>
     </div>
   </div>
 </section>
@@ -503,7 +548,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
       <tr><th>代表</th><td>おけもん</td></tr>
       <tr><th>拠点</th><td>兵庫県</td></tr>
       <tr><th>対応エリア</th><td>兵庫・大阪を中心に訪問対応／オンラインは全国</td></tr>
-      <tr><th>事業内容</th><td>医療・介護・保育向けAI導入支援／AI業務棚卸し・職員研修・定着伴走／現場業務ツールの製作／HP・販促物制作</td></tr>
+      <tr><th>事業内容</th><td>介護・医療・福祉向けAI導入支援／AI業務棚卸し・職員研修・定着伴走／助成金活用可能性の整理／現場業務ツールの製作／HP・販促物制作</td></tr>
       <tr><th>連絡先</th><td>okemonogatari@gmail.com</td></tr>
     </table>
   </div>
@@ -514,8 +559,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
   <div class="wrap-n">
     <span class="kicker">Contact</span>
     <h2>まず、現場の話を<br>聞かせてください。</h2>
-    <p>1時間の無料相談で、「AIならここが変えられそう」の案出しまでその場で行います。助成金が使えそうかどうかも、その場で一緒に確認します。</p>
-    <a class="btn btn-fill" href="mailto:okemonogatari@gmail.com?subject=【無料相談】AI導入の相談">無料相談を申し込む</a>
+    <p>1時間の無料相談で、「AIならここが変えられそう」の案出しまでその場で行います。法人研修として組めそうか、助成金活用の可能性を整理できそうかも、断定せず一緒に確認します。</p>
+    <a class="btn btn-fill" href="mailto:okemonogatari@gmail.com?subject=【無料相談】AI導入・助成金活用の相談">無料相談を申し込む</a>
     <p class="assure">オンライン1時間・相談は無料・売り込みはありません。<br>必須は、お名前・メールアドレス・ご相談内容だけ。<br>「まだ何も決まっていない」段階でも大丈夫です。平日夜・土日も対応できます（現場のシフト、分かっていますので）。</p>
   </div>
 </div>
@@ -526,7 +571,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
     <div>
       <span class="kicker">Free Gift</span>
       <h2>「うちの業務、AIでどこが変わる？」を<br>自分で確かめられるシートを、無料で。</h2>
-      <p class="lead">実際の棚卸しで使っているシートの一般版です。医療・介護・保育、それぞれの「AIに任せやすい業務」が一覧でわかります。</p>
+      <p class="lead">実際の棚卸しで使っているシートの一般版です。介護・医療・福祉それぞれの「AIに任せやすい業務」が一覧でわかります。</p>
       <div class="read-list">
         <a href="ai-grant-sample-case.html"><span>サンプル事例：ある施設の8ヶ月（導入の流れがわかる読みもの）</span><span class="arr">→</span></a>
         <a href="ai-grant-guide.html"><span>助成金のしくみ、やさしい解説</span><span class="arr">→</span></a>
@@ -545,7 +590,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 <!-- 14. FOOTER -->
 <footer>
   <div class="wrap">
-    <span>🍑 AI現場伴走室 — 医療・介護・保育の現場にAIを定着させる</span>
+    <span>🍑 AI現場伴走室 — 介護・医療・福祉の現場にAIを定着させる</span>
     <span>© 2026 ワタシトリセツ</span>
   </div>
 </footer>
