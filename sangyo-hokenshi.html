@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>あなたの職場に、産業保健師さんを入れませんか？｜月1万円から始める健康経営</title>
+<meta name="description" content="働く人の心と体の不調に、休職・離職になる前に気づける職場へ。産業保健師の訪問サポートは月1万円から。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --color-primary:#1A3C4C;
+  --color-primary-deep:#122C39;
+  --color-primary-pale:#E7EEF0;
+  --color-accent:#C9A961;
+  --color-accent-dark:#A88A47;
+  --color-bg:#F7F5F0;
+  --color-bg-white:#FFFFFF;
+  --color-text:#2D2D2D;
+  --color-text-light:#6B6B6B;
+  --color-border:#E5E0D5;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--color-text);background:var(--color-bg);line-height:2;font-size:15.5px;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+.serif{font-family:'Noto Serif JP',serif;}
+
+/* ===== header ===== */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,245,240,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--color-border);}
+.header-inner{max-width:1120px;margin:0 auto;padding:14px 5vw;display:flex;align-items:center;justify-content:space-between;}
+.logo{line-height:1.4;}
+.logo .en{font-family:'Inter',sans-serif;font-size:.6rem;letter-spacing:.32em;color:var(--color-accent-dark);text-transform:uppercase;display:block;}
+.logo .ja{font-family:'Noto Serif JP',serif;font-size:1.02rem;font-weight:600;letter-spacing:.12em;color:var(--color-primary);}
+.header-nav{display:flex;align-items:center;gap:28px;}
+.header-nav a.nav-link{font-size:.82rem;letter-spacing:.08em;color:var(--color-text);transition:color .3s;}
+.header-nav a.nav-link:hover{color:var(--color-accent-dark);}
+.btn-nav{background:var(--color-primary);color:#fff;padding:11px 26px;font-size:.8rem;letter-spacing:.14em;transition:background .35s;white-space:nowrap;}
+.btn-nav:hover{background:var(--color-accent-dark);}
+@media(max-width:820px){.header-nav a.nav-link{display:none;}.btn-nav{padding:10px 18px;font-size:.76rem;letter-spacing:.08em;}}
+
+/* ===== hero ===== */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;color:#fff;
+  background:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=75') center/cover no-repeat;}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(18,44,57,.9) 0%,rgba(26,60,76,.74) 50%,rgba(18,44,57,.9) 100%);}
+.hero-inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:140px 5vw 120px;width:100%;}
+.hero-label{font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--color-accent);animation:heroFadeIn .8s .2s both;}
+.hero-label::before{content:'';display:inline-block;width:40px;height:1px;background:var(--color-accent);vertical-align:middle;margin-right:16px;}
+.hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(25px,5.2vw,56px);font-weight:600;line-height:1.65;letter-spacing:.06em;margin:26px 0 22px;animation:heroSlideUp .9s .35s both;}
+.hero-sub{font-size:clamp(14px,1.6vw,17px);font-weight:300;line-height:2.2;letter-spacing:.06em;color:rgba(255,255,255,.88);animation:heroSlideUp .9s .55s both;}
+.hero-sub strong{font-weight:500;color:var(--color-accent);}
+.hero-sub em{font-style:normal;font-weight:500;color:var(--color-accent);}
+.hero-btns{display:flex;flex-wrap:wrap;gap:16px;margin-top:44px;animation:heroSlideUp .9s .75s both;}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--color-accent);color:#fff;padding:18px 42px;font-size:.9rem;font-weight:500;letter-spacing:.12em;white-space:nowrap;transition:background .35s,transform .3s,box-shadow .3s;}
+.btn-primary:hover{background:var(--color-accent-dark);transform:translateY(-2px);box-shadow:0 12px 28px rgba(18,44,57,.35);}
+.btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:transparent;color:#fff;padding:18px 42px;font-size:.9rem;letter-spacing:.12em;border:1px solid rgba(255,255,255,.55);white-space:nowrap;transition:background .35s,border-color .35s;}
+.btn-secondary:hover{background:rgba(255,255,255,.12);border-color:#fff;}
+@media(max-width:480px){.btn-primary,.btn-secondary{padding:16px 26px;font-size:.84rem;letter-spacing:.08em;width:100%;}}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;font-family:'Inter',sans-serif;font-size:.62rem;letter-spacing:.34em;color:rgba(255,255,255,.7);text-transform:uppercase;animation:heroFadeIn 1s 1.2s both;}
+.hero-scroll::after{content:'';display:block;width:1px;height:44px;background:linear-gradient(to bottom,var(--color-accent),transparent);margin:10px auto 0;}
+@keyframes heroFadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes heroSlideUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+/* ===== trust bar ===== */
+.trust-bar{background:var(--color-bg-white);border-bottom:1px solid var(--color-border);}
+.trust-inner{max-width:1120px;margin:0 auto;padding:52px 5vw;display:grid;grid-template-columns:repeat(4,1fr);}
+.trust-item{text-align:center;padding:6px 14px;border-left:1px solid var(--color-border);}
+.trust-item:first-child{border-left:none;}
+.trust-num{font-family:'Noto Serif JP',serif;font-size:clamp(21px,2.6vw,30px);font-weight:700;color:var(--color-primary);line-height:1.5;}
+.trust-num em{font-style:normal;color:var(--color-accent-dark);}
+.trust-label{font-size:.74rem;letter-spacing:.1em;color:var(--color-text-light);margin-top:6px;line-height:1.7;}
+@media(max-width:820px){.trust-inner{grid-template-columns:repeat(2,1fr);gap:26px 0;}.trust-item:nth-child(3){border-left:none;}}
+
+/* ===== 共通セクション ===== */
+.section{padding:110px 5vw;}
+.section-inner{max-width:1120px;margin:0 auto;}
+.section-label{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.32em;color:var(--color-accent-dark);text-transform:uppercase;display:block;}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(23px,3.4vw,34px);font-weight:600;letter-spacing:.08em;line-height:1.7;margin-top:14px;position:relative;padding-bottom:18px;}
+.section-title::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--color-accent);transition:width .7s cubic-bezier(.22,1,.36,1) .25s;}
+.is-visible .section-title::after{width:44px;}
+.section-head.center{text-align:center;}
+.section-head.center .section-title::after{left:50%;transform:translateX(-50%);}
+.section-lead{margin-top:26px;color:var(--color-text-light);font-weight:300;letter-spacing:.04em;}
+
+/* ===== concept ===== */
+.concept{background:var(--color-bg);text-align:center;}
+.concept-copy{font-family:'Noto Serif JP',serif;font-size:clamp(19px,2.6vw,27px);font-weight:500;line-height:2.3;letter-spacing:.1em;color:var(--color-primary);}
+.concept-copy em{font-style:normal;color:var(--color-accent-dark);}
+.concept-text{max-width:680px;margin:36px auto 0;text-align:left;color:var(--color-text-light);font-weight:300;}
+.concept-text strong{font-weight:500;color:var(--color-text);}
+
+/* ===== problems ===== */
+.problems{background:var(--color-bg-white);}
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 40px;margin-top:56px;}
+.problem-item{border-left:2px solid var(--color-accent);padding-left:22px;}
+.problem-item i{color:var(--color-accent-dark);font-size:1.1rem;}
+.problem-item h3{font-family:'Noto Serif JP',serif;font-size:1.02rem;font-weight:600;letter-spacing:.05em;line-height:1.8;margin:10px 0 8px;}
+.problem-item p{font-size:.85rem;color:var(--color-text-light);line-height:1.95;font-weight:300;}
+@media(max-width:820px){.problem-grid{grid-template-columns:1fr;gap:34px;}}
+.problem-close{margin-top:64px;text-align:center;}
+.problem-close p{font-family:'Noto Serif JP',serif;font-size:clamp(16px,2vw,20px);letter-spacing:.08em;color:var(--color-primary);line-height:2.2;}
+
+/* ===== divider ===== */
+.divider{position:relative;height:300px;background:url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1800&q=75') center/cover no-repeat;display:flex;align-items:center;justify-content:center;}
+.divider::after{content:'';position:absolute;inset:0;background:rgba(18,44,57,.62);}
+.divider blockquote{position:relative;z-index:2;color:#fff;font-family:'Noto Serif JP',serif;font-size:clamp(16px,2.4vw,22px);letter-spacing:.14em;line-height:2.2;text-align:center;padding:0 5vw;}
+.divider blockquote small{display:block;font-family:'Inter',sans-serif;font-size:.62rem;letter-spacing:.34em;color:var(--color-accent);text-transform:uppercase;margin-top:16px;}
+
+/* ===== features ===== */
+.features{background:var(--color-bg);}
+.feature-row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:80px;}
+.feature-row:first-of-type{margin-top:64px;}
+.feature-row.reverse .feature-photo{order:2;}
+.feature-photo{overflow:hidden;}
+.feature-photo img{width:100%;height:380px;object-fit:cover;transition:transform .8s ease;}
+.feature-photo:hover img{transform:scale(1.04);}
+.feature-num{font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.3em;color:var(--color-accent-dark);}
+.feature-body h3{font-family:'Noto Serif JP',serif;font-size:clamp(19px,2.4vw,25px);font-weight:600;letter-spacing:.06em;line-height:1.9;margin:14px 0 20px;}
+.feature-body p{color:var(--color-text-light);font-weight:300;font-size:.92rem;line-height:2.1;}
+.feature-body p strong{font-weight:500;color:var(--color-text);}
+.feature-point{margin-top:22px;background:var(--color-bg-white);border:1px solid var(--color-border);padding:18px 22px;font-size:.85rem;line-height:2;}
+.feature-point i{color:var(--color-accent-dark);margin-right:10px;}
+@media(max-width:820px){.feature-row{grid-template-columns:1fr;gap:28px;margin-top:64px;}.feature-row.reverse .feature-photo{order:0;}.feature-photo img{height:240px;}}
+
+/* ===== pricing ===== */
+.pricing{background:var(--color-bg-white);}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;border:1px solid var(--color-border);}
+.price-card{padding:48px 34px;border-left:1px solid var(--color-border);display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s;background:var(--color-bg-white);}
+.price-card:first-child{border-left:none;}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(26,60,76,.08);}
+.price-card.featured{background:var(--color-primary);color:#fff;}
+.price-name{font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--color-accent-dark);}
+.price-card.featured .price-name{color:var(--color-accent);}
+.price-ja{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:600;letter-spacing:.08em;margin:8px 0 22px;}
+.price-value{font-family:'Noto Serif JP',serif;font-size:clamp(28px,3vw,36px);font-weight:700;color:var(--color-primary);line-height:1.4;padding-bottom:22px;border-bottom:1px solid var(--color-border);}
+.price-card.featured .price-value{color:#fff;border-bottom-color:rgba(255,255,255,.25);}
+.price-value small{font-size:.85rem;font-weight:400;letter-spacing:.06em;}
+.price-list{list-style:none;margin-top:24px;flex:1;}
+.price-list li{font-size:.85rem;font-weight:300;line-height:2;padding:7px 0 7px 26px;position:relative;}
+.price-card.featured .price-list li{color:rgba(255,255,255,.9);}
+.price-list li::before{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;left:0;top:7px;font-size:.72rem;color:var(--color-accent-dark);}
+.price-card.featured .price-list li::before{color:var(--color-accent);}
+.price-tag{display:inline-block;margin-bottom:14px;font-size:.68rem;letter-spacing:.2em;padding:4px 12px;border:1px solid var(--color-accent);color:var(--color-accent);align-self:flex-start;}
+.price-note{margin-top:36px;font-size:.78rem;color:var(--color-text-light);text-align:center;font-weight:300;letter-spacing:.04em;}
+@media(max-width:820px){.price-grid{grid-template-columns:1fr;}.price-card{border-left:none;border-top:1px solid var(--color-border);}.price-card:first-child{border-top:none;}}
+
+/* ===== scenes ===== */
+.scenes{background:var(--color-bg);}
+.scene-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px;}
+.scene-item{background:var(--color-bg-white);border:1px solid var(--color-border);padding:40px 34px;transition:transform .35s,box-shadow .35s;}
+.scene-item:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(26,60,76,.08);}
+.scene-item .scene-icon{width:52px;height:52px;border:1px solid var(--color-accent);display:flex;align-items:center;justify-content:center;color:var(--color-accent-dark);font-size:1.2rem;}
+.scene-item h3{font-family:'Noto Serif JP',serif;font-size:1.05rem;font-weight:600;letter-spacing:.05em;line-height:1.9;margin:22px 0 12px;}
+.scene-item p{font-size:.85rem;color:var(--color-text-light);font-weight:300;line-height:2;}
+@media(max-width:820px){.scene-grid{grid-template-columns:1fr;gap:26px;}}
+
+/* ===== flow ===== */
+.flow{background:var(--color-bg-white);}
+.flow-list{margin-top:60px;display:grid;grid-template-columns:repeat(5,1fr);gap:0;}
+.flow-step{position:relative;padding:0 22px;text-align:center;}
+.flow-step:not(:last-child)::after{content:'';position:absolute;top:26px;right:-8px;width:16px;height:1px;background:var(--color-accent);}
+.flow-num{font-family:'Inter',sans-serif;width:52px;height:52px;margin:0 auto;border:1px solid var(--color-primary);color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:600;letter-spacing:.05em;transition:transform .3s,background .3s,color .3s;}
+.flow-step:hover .flow-num{transform:scale(1.1);background:var(--color-primary);color:#fff;}
+.flow-step h3{font-family:'Noto Serif JP',serif;font-size:.98rem;font-weight:600;letter-spacing:.06em;margin:20px 0 8px;}
+.flow-step p{font-size:.78rem;color:var(--color-text-light);font-weight:300;line-height:1.9;text-align:left;}
+@media(max-width:820px){.flow-list{grid-template-columns:1fr;gap:34px;}.flow-step{display:grid;grid-template-columns:52px 1fr;gap:20px;text-align:left;padding:0;}.flow-step h3{margin:0 0 6px;}.flow-step:not(:last-child)::after{display:none;}.flow-num{margin:0;}}
+
+/* ===== faq ===== */
+.faq{background:var(--color-bg);}
+.faq-list{max-width:820px;margin:52px auto 0;}
+.faq-item{background:var(--color-bg-white);border:1px solid var(--color-border);margin-bottom:14px;}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 26px;background:none;border:none;cursor:pointer;font-family:'Noto Serif JP',serif;font-size:.98rem;font-weight:600;letter-spacing:.05em;color:var(--color-text);text-align:left;line-height:1.8;}
+.faq-q .q-mark{font-family:'Inter',sans-serif;color:var(--color-accent-dark);font-weight:700;margin-right:6px;}
+.faq-q i{color:var(--color-accent-dark);transition:transform .35s;flex-shrink:0;}
+.faq-item.open .faq-q i{transform:rotate(180deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease;}
+.faq-a-inner{padding:0 26px 24px;font-size:.88rem;font-weight:300;color:var(--color-text-light);line-height:2.1;}
+.faq-a-inner strong{font-weight:500;color:var(--color-text);}
+
+/* ===== final CTA ===== */
+.final-cta{position:relative;background:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=75') center/cover no-repeat;padding:130px 5vw;text-align:center;color:#fff;}
+.final-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(18,44,57,.93) 0%,rgba(26,60,76,.86) 100%);}
+.final-inner{position:relative;z-index:2;max-width:760px;margin:0 auto;}
+.final-inner .section-label{color:var(--color-accent);}
+.final-title{font-family:'Noto Serif JP',serif;font-size:clamp(23px,3.2vw,34px);font-weight:600;letter-spacing:.08em;line-height:1.9;margin:18px 0 24px;}
+.final-text{font-weight:300;font-size:.94rem;line-height:2.2;color:rgba(255,255,255,.85);}
+.final-btns{margin-top:44px;display:flex;justify-content:center;flex-wrap:wrap;gap:16px;}
+.final-note{margin-top:34px;font-size:.75rem;color:rgba(255,255,255,.55);letter-spacing:.06em;}
+
+/* ===== footer ===== */
+.footer{background:var(--color-primary-deep);color:rgba(255,255,255,.6);padding:44px 5vw;text-align:center;}
+.footer .logo .en{color:var(--color-accent);}
+.footer .logo .ja{color:#fff;}
+.footer p{font-size:.72rem;letter-spacing:.1em;margin-top:18px;font-weight:300;}
+
+/* ===== scroll animation ===== */
+.fade-in,.fade-in-left,.fade-in-right{opacity:0;transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);}
+.fade-in{transform:translateY(28px);}
+.fade-in-left{transform:translateX(-36px);}
+.fade-in-right{transform:translateX(36px);}
+.fade-in.is-visible,.fade-in-left.is-visible,.fade-in-right.is-visible{opacity:1;transform:none;}
+.stagger>*{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
+.stagger.is-visible>*{opacity:1;transform:none;}
+.stagger.is-visible>*:nth-child(1){transition-delay:.05s;}
+.stagger.is-visible>*:nth-child(2){transition-delay:.15s;}
+.stagger.is-visible>*:nth-child(3){transition-delay:.25s;}
+.stagger.is-visible>*:nth-child(4){transition-delay:.35s;}
+.stagger.is-visible>*:nth-child(5){transition-delay:.45s;}
+.stagger.is-visible>*:nth-child(6){transition-delay:.55s;}
+</style>
+</head>
+<body>
+
+<!-- header -->
+<header class="header">
+  <div class="header-inner">
+    <a class="logo" href="#top">
+      <span class="en">Occupational Health Nurse</span>
+      <span class="ja">産業保健師のいる職場づくり</span>
+    </a>
+    <nav class="header-nav">
+      <a class="nav-link" href="#problems">よくあるお悩み</a>
+      <a class="nav-link" href="#features">選ばれる理由</a>
+      <a class="nav-link" href="#pricing">料金プラン</a>
+      <a class="nav-link" href="#faq">よくある質問</a>
+      <a class="btn-nav" href="#contact">相談してみる</a>
+    </nav>
+  </div>
+</header>
+
+<!-- hero -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <span class="hero-label">Occupational Health Nurse</span>
+    <h1 class="hero-title">あなたの職場に、<br>産業保健師さんを<br>入れませんか？</h1>
+    <p class="hero-sub">社員の心と体の不調に、休職・離職になる<em>前</em>に気づける職場へ。<br>働く人の健康を守る専門職による訪問サポートが、<strong>月1万円から</strong>始められます。</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#contact"><i class="fa-regular fa-comments"></i>まずは話を聞いてみる</a>
+      <a class="btn-secondary" href="#pricing">料金プランを見る<i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- trust bar -->
+<div class="trust-bar fade-in">
+  <div class="trust-inner">
+    <div class="trust-item"><div class="trust-num">月<em>1</em>万円〜</div><div class="trust-label">雇用より、ずっと身軽に</div></div>
+    <div class="trust-item"><div class="trust-num">月<em>1</em>回〜</div><div class="trust-label">訪問・オンライン対応</div></div>
+    <div class="trust-item"><div class="trust-num">守秘義務</div><div class="trust-label">相談内容は本人の同意なく<br>会社に伝わりません</div></div>
+    <div class="trust-item"><div class="trust-num">少人数OK</div><div class="trust-label">50人未満の職場こそ<br>お役に立てます</div></div>
+  </div>
+</div>
+
+<!-- concept -->
+<section class="section concept">
+  <div class="section-inner fade-in">
+    <span class="section-label">Concept</span>
+    <p class="concept-copy" style="margin-top:28px;">病気になってから、ではなく。<br>不調の<em>芽</em>のうちに、気づける職場へ。</p>
+    <div class="concept-text">
+      <p><strong>産業保健師</strong>とは、看護師の資格を持ち、「働く人の健康」を専門にする保健のプロフェッショナルです。治療をする人ではなく、<strong>不調を未然に防ぐ人</strong>。健康診断の結果を活かし、面談で心と体の声を聞き、職場環境を整える——そんな「予防」の専門職です。</p>
+      <p style="margin-top:18px;">法律で産業医の選任が義務づけられているのは、従業員50人以上の事業場。裏を返せば、<strong>それより小さな職場の健康管理は「空白地帯」になりがち</strong>です。その空白を、必要な分だけ、無理のない費用で埋められるのが産業保健師の訪問サポートです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- problems -->
+<section class="section problems" id="problems">
+  <div class="section-inner">
+    <div class="section-head center fade-in">
+      <span class="section-label">Problems</span>
+      <h2 class="section-title">こんなことに、困っていませんか？</h2>
+    </div>
+    <div class="problem-grid stagger">
+      <div class="problem-item">
+        <i class="fa-regular fa-face-tired"></i>
+        <h3>休みがちな社員に、どう声をかけていいかわからない</h3>
+        <p>心配だけど、下手に踏み込むとパワハラやプライバシーの問題になりそうで、様子見のまま時間だけが過ぎていく。</p>
+      </div>
+      <div class="problem-item">
+        <i class="fa-regular fa-eye-slash"></i>
+        <h3>メンタル不調に気づいたときには、もう手遅れ</h3>
+        <p>「まさかあの人が」という休職・退職。サインは出ていたはずなのに、拾える人が社内に誰もいなかった。</p>
+      </div>
+      <div class="problem-item">
+        <i class="fa-regular fa-folder-open"></i>
+        <h3>健康診断が「受けっぱなし」になっている</h3>
+        <p>結果票を配って終わり。要再検査のまま放置されている社員がいても、フォローする仕組みがない。</p>
+      </div>
+      <div class="problem-item">
+        <i class="fa-regular fa-comment-dots"></i>
+        <h3>社員が悩みを抱え込んでいる気がする</h3>
+        <p>上司には評価が気になって言えない。同僚には噂になりそうで言えない。社内に「安心して話せる場所」がない。</p>
+      </div>
+      <div class="problem-item">
+        <i class="fa-solid fa-person-walking-arrow-right"></i>
+        <h3>急な休職・離職のたびに、現場が回らなくなる</h3>
+        <p>採用と引き継ぎのコストは想像以上。「辞める前に手を打てたら」と毎回思うのに、打つ手がわからない。</p>
+      </div>
+      <div class="problem-item">
+        <i class="fa-regular fa-building"></i>
+        <h3>従業員50人未満で、産業医がいない</h3>
+        <p>健康管理は大事だとわかっているが、専門家を雇う余裕はない。結果、経営者が一人で抱え込んでいる。</p>
+      </div>
+    </div>
+    <div class="problem-close fade-in">
+      <p>その悩み、ぜんぶ<span class="serif" style="color:var(--color-accent-dark);">「社外の保健のプロ」</span>に任せられます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- divider -->
+<div class="divider">
+  <blockquote class="fade-in">「相談できる人がいる」——<br>それだけで、職場の空気は変わります。<small>Workplace Wellbeing</small></blockquote>
+</div>
+
+<!-- features -->
+<section class="section features" id="features">
+  <div class="section-inner">
+    <div class="section-head center fade-in">
+      <span class="section-label">Features</span>
+      <h2 class="section-title">産業保健師「ならでは」のメリット</h2>
+      <p class="section-lead">カウンセラーとも、産業医とも、上司とも違う。<br>「ちょうどいい距離感の専門職」だからできることがあります。</p>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-photo fade-in-left"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=75" alt="面談の様子" loading="lazy"></div>
+      <div class="feature-body fade-in-right">
+        <span class="feature-num">FEATURE 01</span>
+        <h3>「業務はわかる。でも直属じゃない」<br>——だから、本音が話せる</h3>
+        <p>定期的に職場へ通うので、<strong>仕事の内容も、職場の空気も、人間関係もわかっている</strong>。それでいて上司でも人事でもないから、<strong>評価にも査定にも一切関係ない</strong>。この絶妙な立ち位置が、産業保健師の最大の強みです。</p>
+        <p style="margin-top:14px;">「上司に言うほどじゃないけど、しんどい」——そんな段階の小さなSOSを受け止められるのは、社外のカウンセラーでも産業医でもなく、この距離感だからこそです。</p>
+        <div class="feature-point"><i class="fa-solid fa-lock"></i>保健師には守秘義務があります。相談内容が本人の同意なく会社に伝わることはありません。</div>
+      </div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-photo fade-in-right"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=75" alt="健康診断結果のフォロー" loading="lazy"></div>
+      <div class="feature-body fade-in-left">
+        <span class="feature-num">FEATURE 02</span>
+        <h3>不調の「芽」の段階でキャッチして、<br>休職・離職になる前に手を打つ</h3>
+        <p>顔色、口数、残業時間、健診結果——。専門職の目で定期的に職場を見ているから、<strong>本人も気づいていない不調のサイン</strong>を早い段階で拾えます。</p>
+        <p style="margin-top:14px;">健康診断の「受けっぱなし」も卒業。要再検査の受診勧奨や生活習慣の相談まで、<strong>結果を配ったあとのフォロー</strong>を専門職が引き受けます。</p>
+        <div class="feature-point"><i class="fa-solid fa-seedling"></i>休職者が出てからの対応より、出さないための予防のほうが、ずっと低コストです。</div>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-photo fade-in-left"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=75" alt="経営への報告" loading="lazy"></div>
+      <div class="feature-body fade-in-right">
+        <span class="feature-num">FEATURE 03</span>
+        <h3>現場の声を、個人が特定されない形で<br>経営に届ける「橋渡し役」</h3>
+        <p>個々の相談内容は守秘義務で守りながら、<strong>「職場全体としてどこに健康リスクがあるか」</strong>を整理して経営側にフィードバックします。</p>
+        <p style="margin-top:14px;">社員は安心して話せて、経営者は現場の実態がわかる。<strong>どちらの味方でもなく、「職場の健康」の味方</strong>だから成り立つ橋渡しです。</p>
+        <div class="feature-point"><i class="fa-solid fa-arrows-left-right"></i>「経営に伝わらない不満」が退職理由になる前に、健全なルートで声が届きます。</div>
+      </div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-photo fade-in-right"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=75" alt="身軽な契約" loading="lazy"></div>
+      <div class="feature-body fade-in-left">
+        <span class="feature-num">FEATURE 04</span>
+        <h3>雇わなくていい。<br>月1万円から、必要な分だけ</h3>
+        <p>専門職を一人雇用すれば、年間数百万円。訪問契約なら、<strong>月1回のオンライン面談から気軽に始められます</strong>。</p>
+        <p style="margin-top:14px;">まずは小さく始めて、職場に合うと感じたら訪問回数を増やす。<strong>会社の規模とフェーズに合わせて調整できる</strong>のも、外部契約ならではの身軽さです。</p>
+        <div class="feature-point"><i class="fa-solid fa-scale-balanced"></i>「健康経営はまだ早い」と思っていた規模の会社にこそ、フィットする仕組みです。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- pricing -->
+<section class="section pricing" id="pricing">
+  <div class="section-inner">
+    <div class="section-head center fade-in">
+      <span class="section-label">Pricing</span>
+      <h2 class="section-title">料金プラン</h2>
+      <p class="section-lead">最安、月1万円から。会社の規模とお悩みに合わせて選べます。</p>
+    </div>
+    <div class="price-grid stagger">
+      <div class="price-card">
+        <span class="price-name">Light</span>
+        <div class="price-ja">ライトプラン</div>
+        <div class="price-value">¥10,000<small>/月〜</small></div>
+        <ul class="price-list">
+          <li>オンライン面談　月1回</li>
+          <li>メール・チャット相談窓口</li>
+          <li>健康診断結果の確認とアドバイス</li>
+          <li>まず「相談できる人がいる」状態をつくりたい職場に</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <span class="price-tag">おすすめ</span>
+        <span class="price-name">Standard</span>
+        <div class="price-ja">スタンダードプラン</div>
+        <div class="price-value">¥30,000<small>/月〜</small></div>
+        <ul class="price-list">
+          <li>職場訪問　月1回（半日）</li>
+          <li>社員個別面談＋オンライン相談窓口</li>
+          <li>健診事後フォロー（受診勧奨・保健指導）</li>
+          <li>経営者への職場健康レポート</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <span class="price-name">Full Support</span>
+        <div class="price-ja">しっかりサポートプラン</div>
+        <div class="price-value">¥50,000<small>/月〜</small></div>
+        <ul class="price-list">
+          <li>職場訪問　月2回</li>
+          <li>個別面談・ストレス対策の企画運営</li>
+          <li>休職者・復職者のサポート</li>
+          <li>衛生委員会や社内研修のお手伝い</li>
+        </ul>
+      </div>
+    </div>
+    <p class="price-note">※ 金額・内容は一例です。従業員数や訪問頻度に応じて、お見積もりのうえ最適なプランをご提案します。</p>
+  </div>
+</section>
+
+<!-- scenes -->
+<section class="section scenes">
+  <div class="section-inner">
+    <div class="section-head center fade-in">
+      <span class="section-label">Scenes</span>
+      <h2 class="section-title">こんな使い方ができます</h2>
+    </div>
+    <div class="scene-grid stagger">
+      <div class="scene-item">
+        <div class="scene-icon"><i class="fa-regular fa-calendar-check"></i></div>
+        <h3>月1回の「保健室の日」をつくる</h3>
+        <p>訪問日は誰でも立ち寄れる相談日に。体のこと、眠りのこと、家族のこと。「病院に行くほどじゃない」相談の受け皿になります。</p>
+      </div>
+      <div class="scene-item">
+        <div class="scene-icon"><i class="fa-regular fa-clipboard"></i></div>
+        <h3>健診のあとの「そのまま」をなくす</h3>
+        <p>要再検査・要精密検査の社員への受診勧奨、数値が気になる人への生活習慣アドバイス。健診を「やりっぱなし」にしません。</p>
+      </div>
+      <div class="scene-item">
+        <div class="scene-icon"><i class="fa-regular fa-handshake"></i></div>
+        <h3>復職する社員の伴走役に</h3>
+        <p>休職からの復帰は、本人も受け入れる側も不安なもの。面談を重ねながら、無理のない復帰ペースを一緒に整えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- flow -->
+<section class="section flow">
+  <div class="section-inner">
+    <div class="section-head center fade-in">
+      <span class="section-label">Flow</span>
+      <h2 class="section-title">導入までの流れ</h2>
+    </div>
+    <div class="flow-list stagger">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div><h3>お問い合わせ</h3><p>まずはお気軽にご連絡ください。「何を頼めるのか聞きたい」だけでも歓迎です。</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div><h3>ヒアリング</h3><p>職場の状況・お悩み・ご予算をおうかがいします。オンラインで30分ほどです。</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div><h3>プランのご提案</h3><p>職場に合わせたサポート内容とお見積もりをご提案します。</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <div><h3>ご契約</h3><p>内容にご納得いただけたら契約へ。月単位の身軽な契約です。</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">05</div>
+        <div><h3>サポート開始</h3><p>訪問・オンラインでのサポートを開始。始めてからの調整もいつでもできます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- faq -->
+<section class="section faq" id="faq">
+  <div class="section-inner">
+    <div class="section-head center fade-in">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">よくある質問</h2>
+    </div>
+    <div class="faq-list fade-in">
+      <div class="faq-item">
+        <button class="faq-q"><span><span class="q-mark">Q.</span>産業医と何が違うのですか？</span><i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">産業医は医師として診断や就業の可否判定などを担う存在で、従業員50人以上の事業場では選任が義務づけられています。産業保健師は看護職の立場から、<strong>日常的な健康相談・予防・面談・健診フォロー</strong>を担います。「医師に相談」より一歩手前の、気軽に話せる窓口とイメージしてください。産業医がいる会社では連携役として、いない会社では健康管理の入り口として機能します。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span><span class="q-mark">Q.</span>社員数が少ないのですが、お願いできますか？</span><i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">はい、むしろ<strong>少人数の職場こそおすすめ</strong>です。産業医の選任義務がない50人未満の職場は健康管理が空白になりやすく、一人の休職が経営に与える影響も大きいためです。数名規模の会社でもご相談いただけます。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span><span class="q-mark">Q.</span>社員の相談内容は、会社に報告されるのですか？</span><i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">保健師には守秘義務があり、<strong>本人の同意なく個別の相談内容を会社にお伝えすることはありません</strong>。会社へは「職場全体の傾向と課題」という個人が特定されない形で報告します。この線引きがあるからこそ、社員は安心して話せます。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span><span class="q-mark">Q.</span>訪問なしで、オンラインだけでも頼めますか？</span><i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">可能です。ライトプランはオンライン面談と相談窓口が中心の設計です。まずはオンラインで始めて、必要に応じて訪問を組み合わせる会社さまも多いです。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span><span class="q-mark">Q.</span>契約期間の縛りはありますか？</span><i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">月単位の契約が基本で、長期の縛りは設けていません。「まず3ヶ月試してみる」といった始め方もご相談いただけます。</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- final CTA -->
+<section class="final-cta" id="contact">
+  <div class="final-inner fade-in">
+    <span class="section-label">Contact</span>
+    <h2 class="final-title">「うちの会社の場合はどうだろう？」<br>から、始めませんか。</h2>
+    <p class="final-text">導入するかどうかは、話を聞いてから決めていただいて大丈夫です。<br>職場の状況をおうかがいして、産業保健師にできること・できないことを正直にお伝えします。</p>
+    <div class="final-btns">
+      <a class="btn-primary" href="#top"><i class="fa-regular fa-envelope"></i>お問い合わせはこちら</a>
+    </div>
+    <p class="final-note">※ 本ページはご提案用のサンプルです。導入時はこちらに実際のお問い合わせ窓口（フォーム・メール・電話）が入ります。</p>
+  </div>
+</section>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="logo">
+    <span class="en">Occupational Health Nurse</span>
+    <span class="ja serif">産業保健師のいる職場づくり</span>
+  </div>
+  <p>本ページは提案用サンプルです。掲載の料金・プラン内容は一例です。</p>
+</footer>
+
+<script>
+// スクロールアニメーション（三重フォールバック方式：scroll + resize + 500msポーリング）
+(function(){
+  var els = Array.prototype.slice.call(document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger'));
+  function check(){
+    var vh = window.innerHeight;
+    els = els.filter(function(el){
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.88 && r.bottom > 0) { el.classList.add('is-visible'); return false; }
+      return true;
+    });
+  }
+  window.addEventListener('scroll', check, {passive:true});
+  window.addEventListener('resize', check);
+  setInterval(check, 500);
+  check();
+})();
+
+// FAQ アコーディオン
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var item = btn.closest('.faq-item');
+    var ans = item.querySelector('.faq-a');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(o){
+      o.classList.remove('open');
+      o.querySelector('.faq-a').style.maxHeight = null;
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      ans.style.maxHeight = ans.scrollHeight + 'px';
+    }
+  });
+});
+</script>
+</body>
+</html>
