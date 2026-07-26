@@ -228,7 +228,10 @@ header{position:sticky;top:0;background:rgba(250,246,239,.9);backdrop-filter:blu
 .read-list .arr{color:var(--peach)}
 
 footer{background:var(--ink);color:#8d897f;padding:40px 0;font-size:.76rem;border-top:1px solid #3a3934}
-footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.f-social{display:flex;gap:18px}
+.f-social a{color:#8d897f;text-decoration:none;transition:color .3s}
+.f-social a:hover{color:var(--cream)}
 
 </style>
 </head>
@@ -236,8 +239,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 
 <header>
   <div class="wrap nav">
-    <div class="logo">🍑 AI現場伴走室 <small>介護・医療・福祉のAI導入支援｜ワタシトリセツ</small></div>
+    <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit">🍑 AI現場伴走室</a> <small>介護・医療・福祉のAI導入支援｜ワタシトリセツ</small></div>
     <nav class="nav-links">
+      <a href="index.html">← トップ</a>
       <a href="#services">事業内容</a>
       <a href="#grant">助成金</a>
       <a href="#message">代表メッセージ</a>
@@ -591,6 +595,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span>🍑 AI現場伴走室 — 介護・医療・福祉の現場にAIを定着させる</span>
+    <span class="f-social">
+      <a href="https://x.com/okemonogatari" target="_blank" rel="noopener">X</a>
+      <a href="https://www.facebook.com/profile.php?id=100092520273429" target="_blank" rel="noopener">Facebook</a>
+    </span>
     <span>© 2026 ワタシトリセツ</span>
   </div>
 </footer>

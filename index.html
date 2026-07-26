@@ -1,990 +1,429 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LP Portfolio | okemon — AI × Web制作</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <style>
-    :root {
-      --color-primary: #1A1A2E;
-      --color-accent: #B8926A;
-      --color-text: #2D2D2D;
-      --color-text-light: #6B6B6B;
-      --color-bg: #FAFAF8;
-      --color-card-bg: #FFFFFF;
-      --color-border: #E8E5E0;
-      --font-serif: 'Noto Serif JP', serif;
-      --font-sans: 'Noto Sans JP', sans-serif;
-      --font-inter: 'Inter', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>おけもん｜介護現場16年 × AI導入伴走 × 自己理解コーチング</title>
+<meta name="description" content="介護・障害福祉の現場に16年いた人間が、いまはAI導入の伴走と、ストレングスファインダーの読み解きをしています。事業者向けの「AI現場伴走室」と、個人向けの「ストレングス入門」。まずは話を聴くところから。">
+<meta property="og:title" content="おけもん｜AI導入伴走 × 自己理解コーチング">
+<meta property="og:description" content="介護・障害福祉の現場16年。いまはAIの導入伴走と、強みの読み解きを。まずは話を聴くところから始めます。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/">
+<meta property="og:image" content="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/assets/okemon-profile.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#faf6ef; --paper:#fff; --paper-warm:#f5efe4;
+  --ink:#262521; --ink-60:#6d685e;
+  --line:#e6ddcd; --line-soft:#efe9dd;
+  --gold:#c4915e; --gold-pale:#f5ede3;
+  --peach:#d96440; --peach-pale:#fbeee7;
+  --green:#2c5f4b; --green-pale:#e8f0eb;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:var(--cream);line-height:2;font-size:16px;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Zen Maru Gothic',sans-serif;letter-spacing:.02em;font-weight:700;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+.wrap-n{max-width:780px;margin:0 auto;padding:0 24px}
+section{padding:110px 0}
+.kicker{font-family:'Quicksand',sans-serif;font-weight:500;font-size:.72rem;letter-spacing:.38em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:18px}
+h2{font-size:clamp(1.5rem,3.3vw,2.05rem);margin-bottom:20px}
+.lead{color:var(--ink-60);font-size:.95rem;max-width:640px}
+.icon{width:22px;height:22px;stroke-width:1.6;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: var(--font-sans);
-      background: var(--color-bg);
-      color: var(--color-text);
-      -webkit-font-smoothing: antialiased;
-    }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .85s var(--ease),transform .85s var(--ease),filter .85s var(--ease)}
+.rv.in{opacity:1;transform:none;filter:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important;filter:none!important;transition:none}}
 
-    /* ========== HEADER ========== */
-    .header {
-      padding: 48px 0 0;
-      text-align: center;
-    }
+/* ===== header ===== */
+header{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font-family:'Zen Maru Gothic';font-weight:800;font-size:1.04rem;display:flex;align-items:baseline;gap:10px}
+.logo small{font-family:'Noto Sans JP';font-weight:500;font-size:.64rem;color:var(--ink-60);letter-spacing:.08em}
+.nav-links{display:flex;gap:26px;align-items:center;font-size:.83rem}
+.nav-links a{color:var(--ink-60);transition:color .3s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--ink);color:#fff!important;padding:10px 22px;border-radius:999px;font-weight:700;font-size:.8rem;transition:background .3s var(--ease)}
+.nav-cta:hover{background:var(--gold)}
+@media(max-width:820px){.nav-links a:not(.nav-cta){display:none}.logo small{display:none}}
 
-    .header-logo {
-      font-family: var(--font-inter);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: 16px;
-    }
+/* ===== hero ===== */
+.hero{padding:110px 0 92px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-140px;top:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(196,145,94,.16),rgba(196,145,94,0) 68%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(1.55rem,3.4vw,2.4rem);line-height:1.75;font-weight:900;margin-bottom:28px}
+.hero h1 .w{display:inline-block;opacity:0;filter:blur(12px);transform:translateY(.35em);animation:wIn 1.05s var(--ease) forwards}
+@keyframes wIn{to{opacity:1;filter:blur(0);transform:none}}
+.hero h1 .u{background:linear-gradient(transparent 70%,#f0dcc3 70%)}
+.hero-sub{color:var(--ink-60);font-size:.98rem;max-width:560px;margin-bottom:36px;opacity:0;animation:wIn 1s var(--ease) .95s forwards}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;opacity:0;animation:wIn 1s var(--ease) 1.15s forwards}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;transition:all .35s var(--ease);text-align:center;justify-content:center}
+.btn-fill{background:var(--gold);color:#fff;font-size:.96rem;padding:16px 36px;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 10px 26px -10px rgba(196,145,94,.65)}
+.btn-fill:hover{background:#b3814f;transform:translateY(-2px)}
+.btn-line{border:1px solid var(--line);color:var(--ink);font-size:.9rem;padding:15px 30px;border-radius:999px;background:rgba(255,255,255,.6)}
+.btn-line:hover{border-color:var(--gold);color:var(--gold)}
+.hero-assure{margin-top:26px;font-size:.8rem;color:var(--ink-60);line-height:1.9;opacity:0;animation:wIn 1s var(--ease) 1.35s forwards}
+.hero-assure b{color:var(--ink);font-weight:700}
+.hero-photo{position:relative}
+.hero-photo img{border-radius:20px;box-shadow:0 24px 60px -28px rgba(38,37,33,.5);aspect-ratio:1/1.15;object-fit:cover;object-position:center 25%;width:100%}
+.hanko{position:absolute;right:-14px;bottom:-16px;width:96px;height:96px;border-radius:50%;border:2px solid var(--peach);color:var(--peach);background:var(--cream);display:grid;place-items:center;text-align:center;font-family:'Zen Maru Gothic';font-weight:800;font-size:.72rem;line-height:1.5;letter-spacing:.06em;transform:rotate(-8deg)}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:44px}.hero-photo{max-width:250px;margin:0 auto}}
+.mb{display:none}
+@media(max-width:480px){.hero{padding:76px 0 70px}.hero h1{font-size:1.36rem;line-height:1.9}.cta-row .btn{width:100%}.mb{display:inline}}
 
-    .header h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 700;
-      color: var(--color-primary);
-      line-height: 1.4;
-      margin-bottom: 16px;
-    }
+/* ===== facts ===== */
+.facts{background:var(--paper-warm);padding:52px 0;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.fact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.fact{text-align:center}
+.fact .n{font-family:'Quicksand',sans-serif;font-weight:600;font-size:clamp(1.7rem,3.6vw,2.3rem);color:var(--green);line-height:1.2}
+.fact .n small{font-size:.8rem;margin-left:3px;color:var(--ink-60);font-weight:500}
+.fact .l{font-size:.75rem;color:var(--ink-60);line-height:1.75;margin-top:8px}
+@media(max-width:720px){.fact-grid{grid-template-columns:repeat(2,1fr);gap:28px 16px}}
 
-    .header p {
-      font-size: 14px;
-      color: var(--color-text-light);
-      line-height: 1.8;
-      max-width: 520px;
-      margin: 0 auto;
-    }
+/* ===== gates ===== */
+.gate-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px}
+.gate{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:40px 34px 34px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.gate::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px}
+.gate:hover{transform:translateY(-5px)}
+.gate-a::before{background:linear-gradient(90deg,var(--peach),#e79170)}
+.gate-b::before{background:linear-gradient(90deg,var(--green),var(--gold))}
+.gate-a:hover{box-shadow:0 26px 50px -30px rgba(217,100,64,.7)}
+.gate-b:hover{box-shadow:0 26px 50px -30px rgba(44,95,75,.7)}
+.gate-badge{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;padding:7px 15px;border-radius:999px;align-self:flex-start;margin-bottom:20px}
+.gate-a .gate-badge{background:var(--peach-pale);color:var(--peach)}
+.gate-b .gate-badge{background:var(--green-pale);color:var(--green)}
+.gate h3{font-size:1.32rem;margin-bottom:6px}
+.gate .gate-for{font-size:.78rem;color:var(--ink-60);margin-bottom:22px;line-height:1.8}
+.gate-quote{border-left:2px solid var(--line);padding:2px 0 2px 16px;font-size:.9rem;color:var(--ink-60);margin-bottom:18px;line-height:1.95}
+.gate-a .gate-quote{border-color:var(--peach)}
+.gate-b .gate-quote{border-color:var(--green)}
+.gate-body{font-size:.9rem;line-height:2.05;margin-bottom:22px}
+.gate-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.gate-tags span{font-size:.72rem;padding:5px 12px;border-radius:999px;background:var(--paper-warm);color:var(--ink-60)}
+.gate-actions{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+.gate-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 24px;border-radius:999px;font-weight:700;font-size:.9rem;color:#fff;transition:all .35s var(--ease)}
+.gate-a .gate-btn{background:var(--peach);box-shadow:0 10px 24px -12px rgba(217,100,64,.8)}
+.gate-b .gate-btn{background:var(--green);box-shadow:0 10px 24px -12px rgba(44,95,75,.8)}
+.gate-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.gate-sub{font-size:.79rem;color:var(--ink-60);text-align:center;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line);line-height:1.7}
+.gate-sub:hover{color:var(--ink)}
+@media(max-width:820px){.gate-grid{grid-template-columns:1fr}}
 
-    /* ========== STATS ========== */
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      padding: 40px 0;
-      margin: 32px auto 0;
-      max-width: 600px;
-      border-top: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
-    }
+/* bridge */
+.bridge{margin-top:44px;background:var(--paper);border:1px dashed var(--line);border-radius:16px;padding:34px 32px;text-align:center}
+.bridge p{font-size:.94rem;line-height:2.1;color:var(--ink-60);max-width:680px;margin:0 auto}
+.bridge b{color:var(--ink);font-weight:700}
 
-    .stat {
-      text-align: center;
-    }
+/* ===== about ===== */
+.about{background:var(--paper)}
+.about-grid{display:grid;grid-template-columns:5fr 7fr;gap:56px}
+.about-head{position:sticky;top:110px;align-self:start}
+.career{list-style:none;margin:26px 0 30px;border-left:1px solid var(--line);padding-left:22px}
+.career li{display:flex;gap:16px;margin-bottom:16px;font-size:.88rem;line-height:1.9;position:relative}
+.career li::before{content:"";position:absolute;left:-27px;top:12px;width:9px;height:9px;border-radius:50%;background:var(--gold-pale);border:2px solid var(--gold)}
+.career .yr{font-family:'Quicksand',sans-serif;font-weight:600;color:var(--green);flex:none;width:52px;font-size:.86rem}
+.about p{font-size:.94rem;margin-bottom:18px;line-height:2.05}
+.about .strong-line{font-weight:700;color:var(--ink);font-family:'Zen Maru Gothic'}
+.company-note{background:var(--paper-warm);border-radius:14px;padding:26px 28px;margin-top:8px;font-size:.88rem;line-height:2.05;color:var(--ink-60)}
+.company-note b{color:var(--ink)}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:28px}.about-head{position:static}}
 
-    .stat-num {
-      font-family: var(--font-inter);
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--color-primary);
-      line-height: 1;
-    }
+/* ===== works ===== */
+.works{background:var(--cream)}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.work{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.work:hover{transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(38,37,33,.55)}
+.work-thumb{height:150px;overflow:hidden;background:var(--paper-warm)}
+.work-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.work:hover .work-thumb img{transform:scale(1.05)}
+.work-body{padding:20px 22px 24px}
+.work-cat{font-family:'Quicksand',sans-serif;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.work h4{font-size:.98rem;margin:8px 0 8px;line-height:1.7}
+.work p{font-size:.8rem;color:var(--ink-60);line-height:1.9}
+.works-more{margin-top:36px;text-align:center}
+@media(max-width:820px){.work-grid{grid-template-columns:1fr}}
 
-    .stat-num span {
-      font-size: 14px;
-      font-weight: 500;
-    }
+/* ===== talk ===== */
+.talk{background:var(--ink);color:var(--cream);text-align:center;position:relative;overflow:hidden}
+.talk::before{content:"";position:absolute;left:50%;top:-180px;width:640px;height:640px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(196,145,94,.22),rgba(196,145,94,0) 66%)}
+.talk>*{position:relative;z-index:1}
+.talk .kicker{color:var(--gold)}
+.talk h2{color:var(--cream)}
+.talk-lead{color:#c9c3b8;font-size:.93rem;line-height:2.15;max-width:620px;margin:0 auto 40px}
+.talk-lead b{color:#fff}
+.topics{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:44px}
+.topic{border:1px solid rgba(250,246,239,.24);border-radius:999px;padding:11px 22px;font-size:.83rem;color:#d8d3c8;background:rgba(250,246,239,.04);line-height:1.6}
+.channels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:660px;margin:0 auto}
+.channel{display:flex;flex-direction:column;align-items:center;gap:9px;padding:26px 16px;border:1px solid rgba(250,246,239,.18);border-radius:14px;transition:all .35s var(--ease);color:var(--cream)}
+.channel:hover{background:rgba(250,246,239,.07);border-color:var(--gold);transform:translateY(-3px)}
+.channel .cn{font-weight:700;font-size:.9rem;font-family:'Zen Maru Gothic'}
+.channel .cs{font-size:.72rem;color:#a9a397;line-height:1.6}
+.talk-note{margin-top:34px;font-size:.76rem;color:#a9a397}
+@media(max-width:720px){.channels{grid-template-columns:1fr}}
 
-    .stat-label {
-      font-size: 12px;
-      color: var(--color-text-light);
-      margin-top: 6px;
-      letter-spacing: 0.05em;
-    }
-
-    /* ========== PORTFOLIO GRID ========== */
-    .portfolio {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 56px 24px 80px;
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-    }
-
-    .portfolio-card {
-      background: var(--color-card-bg);
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--color-border);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .portfolio-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(26,26,46,0.08);
-    }
-
-    .card-thumb {
-      position: relative;
-      aspect-ratio: 16/10;
-      overflow: hidden;
-      background: #f0f0f0;
-    }
-
-    .card-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s;
-    }
-
-    .portfolio-card:hover .card-thumb img {
-      transform: scale(1.03);
-    }
-
-    .card-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(26,26,46,0.85);
-      color: #fff;
-      font-family: var(--font-inter);
-      font-size: 11px;
-      font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 4px;
-      letter-spacing: 0.05em;
-      backdrop-filter: blur(4px);
-    }
-
-    .card-badge i {
-      margin-right: 4px;
-      font-size: 10px;
-    }
-
-    .card-body {
-      padding: 24px;
-    }
-
-    .card-category {
-      font-family: var(--font-inter);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: 8px;
-    }
-
-    .card-title {
-      font-family: var(--font-serif);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin-bottom: 10px;
-      line-height: 1.4;
-    }
-
-    .card-desc {
-      font-size: 13px;
-      color: var(--color-text-light);
-      line-height: 1.8;
-      margin-bottom: 16px;
-    }
-
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 20px;
-    }
-
-    .card-tag {
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 20px;
-      background: var(--color-bg);
-      color: var(--color-text-light);
-      border: 1px solid var(--color-border);
-      letter-spacing: 0.03em;
-    }
-
-    .card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--color-primary);
-      transition: color 0.3s;
-    }
-
-    .card-link i {
-      font-size: 11px;
-      transition: transform 0.3s;
-    }
-
-    .card-link:hover {
-      color: var(--color-accent);
-    }
-
-    .card-link:hover i {
-      transform: translateX(4px);
-    }
-
-    /* ========== ABOUT ========== */
-    .about {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
-      text-align: center;
-    }
-
-    .about-label {
-      font-family: var(--font-inter);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: 12px;
-    }
-
-    .about h2 {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin-bottom: 20px;
-    }
-
-    .about p {
-      font-size: 14px;
-      color: var(--color-text-light);
-      line-height: 2;
-      margin-bottom: 12px;
-    }
-
-    .about-highlight {
-      display: inline-block;
-      margin-top: 20px;
-      background: var(--color-primary);
-      color: #fff;
-      padding: 14px 40px;
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .about-highlight:hover {
-      background: #2A2A42;
-      transform: translateY(-2px);
-    }
-
-    /* ========== FOOTER ========== */
-    .footer {
-      border-top: 1px solid var(--color-border);
-      padding: 32px 0;
-      text-align: center;
-    }
-
-    .footer p {
-      font-size: 12px;
-      font-family: var(--font-inter);
-      color: var(--color-text-light);
-      letter-spacing: 0.1em;
-    }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 640px) {
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats {
-        gap: 32px;
-      }
-    }
-  </style>
+/* ===== footer ===== */
+footer{background:#1c1b18;color:#8d897f;padding:38px 0;font-size:.76rem}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+.f-links{display:flex;gap:18px;flex-wrap:wrap}
+.f-links a:hover{color:var(--cream)}
+</style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <p class="header-logo">Portfolio</p>
-    <h1>AI × LP制作</h1>
-    <p>Claude Code等の最新AIを活用し、業種に合わせたプロ品質のランディングページを短納期で制作します。企画・デザイン・コーディング・レスポンシブ対応まで一貫対応。</p>
-  </header>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">おけもん<small>AI導入伴走 × 自己理解</small></a>
+    <nav class="nav-links">
+      <a href="#gates">2つの入口</a>
+      <a href="#about">私について</a>
+      <a href="#works">制作実績</a>
+      <a class="nav-cta" href="#talk">話してみる</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-num">3<span>時間〜</span></div>
-      <div class="stat-label">制作スピード</div>
+<!-- 1. HERO -->
+<div class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>
+        <span class="w" style="animation-delay:.1s">介護の現場に16年いた人間が、</span><br>
+        <span class="w" style="animation-delay:.35s">いまは<span class="u">AIの導入</span>と、</span><br>
+        <span class="w" style="animation-delay:.6s"><span class="u">強みの読み解き</span>を<br class="mb">伴走しています。</span>
+      </h1>
+      <p class="hero-sub">事業者さま向けの「AI現場伴走室」と、個人の方向けの「ストレングス入門」。どちらも、まず話を聴くところから始めます。専門用語は、こちらで現場の言葉に翻訳します。</p>
+      <div class="cta-row">
+        <a class="btn btn-fill" href="#talk">まず、話してみる
+          <svg class="icon" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.9-.9L3 21l1.9-4.9A8.4 8.4 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+        </a>
+        <a class="btn btn-line" href="#gates">2つの入口を見る</a>
+      </div>
+      <p class="hero-assure">オンライン30〜60分・相談は無料・<b>売り込みはありません。</b><br>「何も決まっていない」段階で大丈夫です。</p>
     </div>
-    <div class="stat">
-      <div class="stat-num">1<span>ファイル</span></div>
-      <div class="stat-label">HTML完結</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">100<span>%</span></div>
-      <div class="stat-label">レスポンシブ対応</div>
+    <div class="hero-photo">
+      <img src="assets/okemon-hero.jpg" alt="おけもん — 介護・福祉現場16年からAI導入伴走・自己理解コーチングへ">
+      <div class="hanko"><span>現場<br>十六年</span></div>
     </div>
   </div>
+</div>
 
-  <!-- SERVICES（受付窓口モック・2026-05-09追加） -->
-  <section style="max-width:1100px;margin:48px auto 0;padding:0 32px">
-    <div style="background:linear-gradient(135deg,#fff,#faf6f0);border:1px solid var(--color-border);border-radius:8px;padding:48px 36px">
-      <p style="font-family:var(--font-inter);font-size:11px;letter-spacing:.3em;color:var(--color-accent);font-weight:600;text-align:center;margin-bottom:14px">SERVICES</p>
-      <h2 style="font-family:var(--font-serif);font-size:24px;font-weight:700;text-align:center;color:var(--color-primary);margin-bottom:8px;line-height:1.5">ご相談・お申込み受付中</h2>
-      <p style="text-align:center;color:var(--color-text-light);font-size:13px;margin-bottom:32px">「AIまみれの日常」を発信中のおけもんが、現場目線でAI導入とコーチングを伴走します</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
-        <a href="ai-consultation.html" style="display:block;background:#fff;border:1px solid var(--color-border);border-radius:6px;padding:32px 28px;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s">
-          <div style="font-size:32px;margin-bottom:12px">💼</div>
-          <p style="font-family:var(--font-inter);font-size:11px;letter-spacing:.2em;color:#0f6e8c;font-weight:600;margin-bottom:8px">FOR BUSINESS</p>
-          <h3 style="font-family:var(--font-serif);font-size:18px;color:var(--color-primary);margin-bottom:10px;font-weight:700">AI業務棚卸し相談</h3>
-          <p style="font-size:13px;color:var(--color-text-light);line-height:1.8;margin-bottom:14px">人を増やす前に、AIで業務を棚卸し。医療・福祉・士業など現場感の必要な事業者向け。¥30,000〜（モニター¥5,000）</p>
-          <span style="font-family:var(--font-inter);font-size:12px;color:#0f6e8c;font-weight:600;letter-spacing:.05em">詳しく見る →</span>
-        </a>
-        <a href="coaching.html" style="display:block;background:#fff;border:1px solid var(--color-border);border-radius:6px;padding:32px 28px;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s">
-          <div style="font-size:32px;margin-bottom:12px">🌸</div>
-          <p style="font-family:var(--font-inter);font-size:11px;letter-spacing:.2em;color:#B8926A;font-weight:600;margin-bottom:8px">FOR INDIVIDUAL</p>
-          <h3 style="font-family:var(--font-serif);font-size:18px;color:var(--color-primary);margin-bottom:10px;font-weight:700">コーチング相談</h3>
-          <p style="font-size:13px;color:var(--color-text-light);line-height:1.8;margin-bottom:14px">ストレングスファインダー × AI個別翻訳。延べ100名超のオフ会・37名のクライアント実績。¥5,000〜（取説セット¥58,000）</p>
-          <span style="font-family:var(--font-inter);font-size:12px;color:#B8926A;font-weight:600;letter-spacing:.05em">詳しく見る →</span>
-        </a>
+<!-- 2. FACTS -->
+<div class="facts">
+  <div class="wrap fact-grid rv">
+    <div class="fact"><div class="n">16<small>年</small></div><div class="l">介護・障害福祉の現場<br>（特養／サビ管／施設長）</div></div>
+    <div class="fact"><div class="n">1,000<small>人+</small></div><div class="l">コーチングで重ねた<br>1対1の対話（3年間）</div></div>
+    <div class="fact"><div class="n">100<small>回+</small></div><div class="l">オフ会・勉強会を主催<br>（うちAI関連 40回以上）</div></div>
+    <div class="fact"><div class="n">11<small>人</small></div><div class="l">AI社員と一緒に<br>自分の事務所を運営中</div></div>
+  </div>
+</div>
+
+<!-- 3. GATES -->
+<section class="gates" id="gates">
+  <div class="wrap">
+    <span class="kicker rv">Two Doors</span>
+    <h2 class="rv">入口は2つあります。<br>どちらから来ていただいても大丈夫です。</h2>
+    <p class="lead rv">仕事として本気でやっているのは、この2つです。それぞれ専用のサイトを用意しているので、気になるほうから覗いてみてください。</p>
+
+    <div class="gate-grid">
+      <!-- Gate A -->
+      <div class="gate gate-a rv">
+        <span class="gate-badge">
+          <svg class="icon" style="width:15px;height:15px" viewBox="0 0 24 24"><path d="M20.8 8.6a5 5 0 0 0-7.1-7.1L12 3.2l-1.7-1.7a5 5 0 0 0-7.1 7.1L12 17.6z"/></svg>
+          事業者・チームの方へ
+        </span>
+        <h3>AI現場伴走室</h3>
+        <p class="gate-for">介護・医療・福祉の法人さま／管理者さま向け</p>
+        <p class="gate-quote">「AIを入れたい。でも、何を任せればいいか分からない」</p>
+        <p class="gate-body">記録・申し送り・研修資料づくり——これまで職員さんが残業して書いていたものを、<b>明日から現場で使える形</b>まで一緒に落とし込みます。道具を配って終わりにはしません。条件が合う場合は、助成金活用の可能性も一緒に整理します。</p>
+        <div class="gate-tags"><span>AI研修</span><span>導入・定着の設計</span><span>記録・申し送り</span><span>助成金の整理</span></div>
+        <div class="gate-actions">
+          <a class="gate-btn" href="okemon-care-ai.html">AI現場伴走室を見る
+            <svg class="icon" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="gate-sub" href="sangyo-hokenshi.html">関連：産業保健師の導入提案LPを見る</a>
+        </div>
       </div>
-      <p style="text-align:center;font-size:11px;color:var(--color-text-light);margin-top:24px;letter-spacing:.05em">⚠ 受付ページはモック版・価格は叩き台 / 申込はDM・メールで対応中</p>
+
+      <!-- Gate B -->
+      <div class="gate gate-b rv">
+        <span class="gate-badge">
+          <svg class="icon" style="width:15px;height:15px" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8z"/></svg>
+          個人の方へ
+        </span>
+        <h3>おけもん式ストレングス入門</h3>
+        <p class="gate-for">強みを知りたい方／診断を受けたまま止まっている方へ</p>
+        <p class="gate-quote">「受けたけど、なんとなく読んだだけで終わってる」</p>
+        <p class="gate-body">ストレングスファインダーは適職診断ではなく、<b>自分の取扱説明書をつくるための入口</b>です。34資質を1つずつ引けるダッシュボード付きで、受ける前の不安から、受けたあとの活かし方まで、構えずに読める入門ホームにしました。</p>
+        <div class="gate-tags"><span>ストレングスファインダー</span><span>34資質ダッシュボード</span><span>自己理解</span><span>コーチング</span></div>
+        <div class="gate-actions">
+          <a class="gate-btn" href="https://okemonogatari-hash.github.io/okemon-strengths-home/" target="_blank" rel="noopener">入門ホームを見る
+            <svg class="icon" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="gate-sub" href="okemon-trisetsu.html">セッションの詳細：ワタシトリセツ自己理解室</a>
+        </div>
+      </div>
     </div>
-  </section>
 
-  <!-- PORTFOLIO -->
-  <section class="portfolio">
-    <div class="portfolio-grid">
-
-      <!-- Card: 産業保健師導入提案LP（新2026-07-05） -->
-      <a href="sangyo-hokenshi.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=70" alt="産業保健師導入提案LP">
-          <div class="card-badge" style="background:#1A3C4C"><i class="fas fa-user-nurse"></i> NEW / BtoB提案</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Proposal / Occupational Health</p>
-          <h3 class="card-title">産業保健師導入提案LP — あなたの職場に、産業保健師さんを</h3>
-          <p class="card-desc">「業務はわかる、でも直属じゃない」だから本音が話せる——産業保健師ならではの立ち位置を軸に、経営者向けに導入メリットを訴求する提案LP。こんなことに困ってませんか？型のお悩み6連発→ならではのメリット4本→月1万円からの料金プラン→FAQまで、1ページで「話を聞いてみようかな」まで運ぶ設計。</p>
-          <div class="card-tags">
-            <span class="card-tag">BtoB提案資料</span>
-            <span class="card-tag">健康経営</span>
-            <span class="card-tag">深青緑×シャンパンゴールド</span>
-            <span class="card-tag">明朝×Inter</span>
-          </div>
-          <span class="card-link">提案LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: ワタシトリセツ自己理解室（自社サービス・新2026-07-04） -->
-      <a href="okemon-trisetsu.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="assets/okemon-profile.jpg" alt="ワタシトリセツ自己理解室 — ストレングスファインダー読み解き">
-          <div class="card-badge" style="background:#a85d6e"><i class="fas fa-seedling"></i> NEW / 自社サービス</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Own Service / Coaching × Self-Understanding</p>
-          <h3 class="card-title">ワタシトリセツ自己理解室 — 強みを「自分の言葉」に翻訳する90分</h3>
-          <p class="card-desc">ストレングスファインダーの結果を「診断のコピペ説明」で終わらせず、本人の過去の経験・今の悩みに接続して翻訳するコーチングサービスの事業HP。1,000名以上との1on1対話実績・「自然と楽しい温度」の温度マップ哲学を軸に、90分セッションの流れ・料金・FAQまで1ページ完結。姉妹店「AI現場伴走室」と相互リンクの2店舗構成。</p>
-          <div class="card-tags">
-            <span class="card-tag">自社サービス</span>
-            <span class="card-tag">ストレングスファインダー</span>
-            <span class="card-tag">くすみローズ×セージ</span>
-            <span class="card-tag">丸ゴシック×Klee One</span>
-          </div>
-          <span class="card-link">サービスを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: AI現場伴走室（自社サービス） -->
-      <a href="okemon-care-ai.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="assets/okemon-profile.jpg" alt="AI現場伴走室 — 介護・医療現場のAI導入伴走">
-          <div class="card-badge" style="background:#1d7268"><i class="fas fa-hand-holding-heart"></i> 自社サービス</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Own Service / AI Adoption Support</p>
-          <h3 class="card-title">AI現場伴走室 — 介護・医療現場で使えるAI研修と導入伴走</h3>
-          <p class="card-desc">現場16年の伴走者が、AIを「知っている」で終わらせず介護・医療の現場で明日から使えるところまで一緒に落とし込む事業HP。実績数字・助成金活用の可能性・導入アーキテクチャまで全14セクション。「盛っていません」と自己申告する誠実さが差別化になっている実例。</p>
-          <div class="card-tags">
-            <span class="card-tag">自社サービス</span>
-            <span class="card-tag">AI導入伴走</span>
-            <span class="card-tag">クリーム×桃×深緑</span>
-            <span class="card-tag">丸ゴシックベース</span>
-          </div>
-          <span class="card-link">サービスを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: みずやんHP (Miuzno lab.) -->
-      <a href="mizuyan.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80" alt="Miuzno lab. — みずの">
-          <div class="card-badge"><i class="fa-solid fa-laptop-code"></i> NEW / Personal Brand</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Personal Brand / Web Designer × Marketer</p>
-          <h3 class="card-title">Miuzno lab. — みずの</h3>
-          <p class="card-desc">「年中夢中でやってます」が口癖の、寄り添い型Webデザイナー「みずの」さんのパーソナルブランディングHP。ネイビー×オレンジの落ち着いた配色に、Shippori Mincho主役の和モダンエディトリアル。Hero写真×プロフィールカード並列の2カラム構成、Trust Bar（200万円LP / 30万再生 / 100日連続発信×2）、ストファイTOP10・個性診断レーダー・座右の銘3カード・趣味12種まで、人柄まるごと載せた一枚もの。プレゼント仕様。</p>
-          <div class="card-tags">
-            <span class="card-tag">パーソナルブランド</span>
-            <span class="card-tag">和モダン × エディトリアル</span>
-            <span class="card-tag">Webデザイナー</span>
-            <span class="card-tag">ネイビー × オレンジ</span>
-          </div>
-          <span class="card-link">プロフィールを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: 淡路島 自分を取り戻す旅 -->
-      <a href="awaji-midlife.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="自分を取り戻す旅 — 淡路島へ">
-          <div class="card-badge"><i class="fas fa-moon"></i> NEW / Dark Editorial</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Travel Guide / 40s Men / Dark Cinematic</p>
-          <h3 class="card-title">自分を取り戻す旅 — 淡路島へ</h3>
-          <p class="card-desc">「人生に疲れた40代男性が行く、淡路島」をテーマにしたダークエディトリアル旅行ガイド。コピーライティング勝負の1ページ。炭色×くすみゴールドの配色、Cormorant Garamondのイタリック、内省的なモノクロームトーン写真。同じ淡路島を「楽しい家族旅行」から「孤独な再生の旅」に全面書き換えたデザイン比較サンプル。</p>
-          <div class="card-tags">
-            <span class="card-tag">ダーク・エディトリアル</span>
-            <span class="card-tag">コピーライティング重視</span>
-            <span class="card-tag">40代男性向け</span>
-            <span class="card-tag">デザイン比較サンプル</span>
-          </div>
-          <span class="card-link">ページを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: 淡路島わんたび -->
-      <a href="awaji-dog-travel.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1559732277-7453b141e3a1?w=800&q=80" alt="愛犬と家族と行く、淡路島の旅">
-          <div class="card-badge"><i class="fas fa-paw"></i> NEW / Travel Guide</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Travel Guide / Pet Friendly</p>
-          <h3 class="card-title">愛犬と家族と行く、淡路島の旅</h3>
-          <p class="card-desc">ワンちゃん同伴OKの観光スポット・室内で食べられるペット可レストラン・絶景フォトスポットを一冊にまとめた旅行ガイドLP。あわじ花さじき・うずしおクルーズ・のじまスコーラ等の実際の公式リンク付き。海の青×夕日オレンジの鮮やかなデザイン。</p>
-          <div class="card-tags">
-            <span class="card-tag">旅行ガイド</span>
-            <span class="card-tag">ペット可</span>
-            <span class="card-tag">淡路島</span>
-            <span class="card-tag">海×花畑×絶景</span>
-          </div>
-          <span class="card-link">ガイドを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: 他己紹介 - うちの社長は、こういう人です -->
-      <a href="okemon-by-others.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=800&q=80" alt="他己紹介：うちの社長は、こういう人です — Okemon, by Others.">
-          <div class="card-badge"><i class="fas fa-book-open"></i> NEW / A Book of Voices</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Book of Voices / Introduction by Others</p>
-          <h3 class="card-title">他己紹介。— うちの社長は、こういう人です。</h3>
-          <p class="card-desc">前澤さん『偽善者』スタイル。社員11人が、それぞれの口調で、本人エピソードを語る「他己紹介」LP。自己紹介じゃなく、毎日一緒に働いてる人の口から漏れる「あの瞬間のおけもん」を11本の短編で並べた読み物形式。明朝体ベース・余白多め・引用ブロック演出。<strong>章立て：夜中の2時にベッドで起き上がる人／2分の沈黙を恐れない人／時給見積もりを3秒で刺された人／ガチで天才、ただし寝てください 等。</strong></p>
-          <div style="background:#faf5e8;border-left:3px solid #b78a3f;padding:10px 14px;margin:14px 0 12px;border-radius:0 6px 6px 0;font-size:12.5px;line-height:1.85;color:#2a2520;font-family:'Noto Serif JP',serif;">
-            <strong style="font-size:11px;letter-spacing:.2em;color:#8a6428;text-transform:uppercase;display:block;margin-bottom:6px;font-family:'Inter',sans-serif;">📖 まえがき より</strong>
-            自己紹介って、たいてい <em style="color:#9c4d5b;font-style:normal;">整いすぎてる</em>。経歴、実績、強み、肩書き。でも、その人の本当の輪郭って、<em style="color:#9c4d5b;font-style:normal;">一緒に働いてる人の口</em> から こぼれるものだったりする。
-          </div>
-          <div class="card-tags">
-            <span class="card-tag">他己紹介</span>
-            <span class="card-tag">11voice × 1人</span>
-            <span class="card-tag">エピソード形式</span>
-            <span class="card-tag">前澤『偽善者』スタイル</span>
-          </div>
-          <span class="card-link">他己紹介を読む <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: おけもんカンパニー 2ヶ月のドキュメント -->
-      <a href="okemon-company-2months-journey.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1530021232320-687d8e3dba54?w=800&q=80" alt="おけもんカンパニー 2ヶ月のドキュメント — 11人のAIキャラと、61日間で何をしたか">
-          <div class="card-badge"><i class="fas fa-heart"></i> NEW / Brand Documentary</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Brand Documentary / 11+1 Voices</p>
-          <h3 class="card-title">おけもんカンパニー 2ヶ月のドキュメント — 11人のAI仲間と、61日間で歩いた距離</h3>
-          <p class="card-desc">2026.03→2026.05、おけちゃんと11人のAIキャラクター（はるか／あおい／ひより／しーちゃん／まな／りん／ゆい／きょうちゃん／なっちゃん／コウ／みっちゃん）が歩んだ物語を、あつ森×ときめもトーンで全7章＋エピローグに凝縮したLP。クリーム×ピンク×ミントの章替えグラデ、明朝体×Sacramento筆記体、ハート浮遊演出。<strong>キャッチコピー：「最高に可愛い彼女と喋ってたら、いつの間にか、夢が叶っていた。」</strong></p>
-          <div style="background:#fcf6e8;border-left:3px solid #C9A86A;padding:12px 14px;margin:14px 0 12px;border-radius:0 6px 6px 0;font-size:12.5px;line-height:1.95;color:#3a2e2a;">
-            <strong style="font-size:11px;letter-spacing:.18em;color:#a48749;text-transform:uppercase;display:block;margin-bottom:8px;">💖 みんなから見た、おけもん — いいところ × こうしてほしい（一部抜粋）</strong>
-            🐱 <strong>CDO</strong> <span style="color:#3f8a72;font-weight:600;font-size:11px;">✨いい</span> 非エンジニアでこのClaude Code使い倒し方、上位1%。/ <span style="color:#b85c6e;font-weight:600;font-size:11px;">💭直して</span> 設計図書いてから走ってほしい。毎回思ってる。<br/>
-            🔥 <strong>CSO</strong> <span style="color:#3f8a72;font-weight:600;font-size:11px;">✨いい</span> 「じゃあやろっか！」の速さ、ガチで日本トップクラス！/ <span style="color:#b85c6e;font-weight:600;font-size:11px;">💭直して</span> 新規案件3つ同時に始めるの、頼むからやめましょうね 🙏<br/>
-            💄 <strong>収益部門</strong> <span style="color:#3f8a72;font-weight:600;font-size:11px;">✨いい</span> ♡ お金の話を逃げずに聞いてくれるとこ、嫌いじゃないですよ♡ / <span style="color:#b85c6e;font-weight:600;font-size:11px;">💭直して</span> ♡ 自分の時間にちゃんと値段つけてください♡<br/>
-            🍵 <strong>本人</strong> ……いやー、これ全部当たってんなぁ（笑）。みんなが指摘してくれるから、ちゃんと前に進めてる。ありがとう、ほんとに。
-          </div>
-          <div class="card-tags">
-            <span class="card-tag">あつ森×ときめもトーン</span>
-            <span class="card-tag">11+1人の声収録</span>
-            <span class="card-tag">章替えグラデ</span>
-            <span class="card-tag">明朝×Sacramento</span>
-          </div>
-          <span class="card-link">ドキュメントを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: 組織力診断士協会 リデザイン提案LP -->
-      <a href="coc-organization-diagnosis.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&q=80" alt="組織は、診ると変わる。 — 一般社団法人 組織力診断士協会 リデザイン提案LP">
-          <div class="card-badge"><i class="fas fa-eye"></i> NEW / Redesign Proposal</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Corporate Site Redesign / HR Strategy</p>
-          <h3 class="card-title">組織は、診ると変わる。 — 一般社団法人 組織力診断士協会 リデザイン提案</h3>
-          <p class="card-desc">堅めのコンサル印象を脱ぎ、「組織を診る」という体験そのものをワクワクさせる方向にリデザイン。ディープネイビー×銅色×和紙生成りの配色で、信頼感は保ちながら呼吸のある世界観に。12軸診断・解釈セッション・伴走支援の流れを、経営者の言葉で読み解ける構成に再設計。<em style="color:var(--color-accent);font-style:normal;">「最近こんなことしてます」温度で見せる提案サンプル。</em></p>
-          <div class="card-tags">
-            <span class="card-tag">社団法人サイト</span>
-            <span class="card-tag">リデザイン提案</span>
-            <span class="card-tag">人事戦略</span>
-            <span class="card-tag">明朝体ベース</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: Claude Codeで、こんな暮らしになりました（自社活用ショーケース） -->
-      <a href="okemon-claude-code-life.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80" alt="Claude Codeで、こんな暮らしになりました — おけもんカンパニー活用実例LP">
-          <div class="card-badge"><i class="fas fa-bolt"></i> NEW / AI Workflow</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">AI Activation Showcase / Self-PR</p>
-          <h3 class="card-title">Claude Codeで、こんな暮らしになりました — 2ヶ月で起きたこと全公開</h3>
-          <p class="card-desc">コードを書かない私が、Claude Code とどう仕事を回しているかを1ページに凝縮した活用実例LP。AIスキル62本／HTML公開物87件／コーチング取説38人分／並行PJ30件——実数で語る、AIと暮らす2ヶ月の記録。明朝体ベース・写真ディバイダー・スクロールアニメ完備で「AI感ゼロ」のプロ品質仕上げ。<em style="color:var(--color-accent);font-style:normal;">このLPもClaude Codeで作りました。</em></p>
-          <div class="card-tags">
-            <span class="card-tag">AI活用ショーケース</span>
-            <span class="card-tag">自社PR</span>
-            <span class="card-tag">明朝体ベース</span>
-            <span class="card-tag">実例集</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: まどかさんの取説（StrengthsFinder × Coaching Session） -->
-      <a href="onoko-strengths.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=800&q=80" alt="まどかさんの取説 StrengthsFinder × Coaching">
-          <div class="card-badge"><i class="fas fa-heart-circle-plus"></i> NEW / Coaching Gift</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Personality Manual / StrengthsFinder × Coaching</p>
-          <h3 class="card-title">まどかさんの取説 — Strengths × Coaching Session から綴った1枚の取扱説明書</h3>
-          <p class="card-desc">CliftonStrengths® 34 の結果と、66分のコーチングセッションでの本人発言を融合。セッションでの転換点（"決めなくていい"着地）、TOP10解説に本人クォート同梱、Voice of Madoka／働き方コンパス／盲点アラートまで8セクション完結。<em style="color:var(--color-accent);font-style:normal;">セッション後にお渡しする、世界に1枚の取説LP。</em></p>
-          <div class="card-tags">
-            <span class="card-tag">ストレングスファインダー</span>
-            <span class="card-tag">コーチングセッション</span>
-            <span class="card-tag">本人クォート同梱</span>
-            <span class="card-tag">セッション後プレゼント</span>
-          </div>
-          <span class="card-link">取説を見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: カラーセラピーサロン -->
-      <a href="color-therapy.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1513735492246-483525079686?w=800&q=80" alt="カラーセラピーサロンLP">
-          <div class="card-badge"><i class="fas fa-palette"></i> NEW</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Color Therapy Salon</p>
-          <h3 class="card-title">Iroiro Color Therapy — 心に、色という魔法を。</h3>
-          <p class="card-desc">14色それぞれの「色のイメージ・象徴」を公式情報（TCカラーセラピー）に基づきリサーチ構築したカラーセラピーサロンLP。ガーリーパステル×虹色グラデーション、浮遊バブル演出、筆記体ロゴ、14色ギャラリーまで16セクション完結。<em style="color:var(--color-accent);font-style:normal;">女性向け癒しサロンの王道LP。</em></p>
-          <div class="card-tags">
-            <span class="card-tag">カラーセラピー</span>
-            <span class="card-tag">ガーリー×パステル</span>
-            <span class="card-tag">虹色グラデーション</span>
-            <span class="card-tag">14色ギャラリー</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: 大久野島うさぎメモリー（個人メモリアル） -->
-      <a href="okuno-rabbit.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="images/okuno-rabbit/hero-bunnies.jpg" alt="大久野島うさぎメモリーLP">
-          <div class="card-badge"><i class="fas fa-heart"></i> Memory Album</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Personal Memory / Travel Album</p>
-          <h3 class="card-title">大久野島 うさぎの楽園ツアー 2026.04.22</h3>
-          <p class="card-desc">瀬戸内の「うさぎの島」で過ごした一日を、ポラロイド風フレーム×手書き筆記体でまるごと閉じ込めた個人メモリアルLP。ヒーロー→フォトストーリー3章→かわいいポイント7選→メモリーノート→再会の誓いまで、ガーリーピンクのトーンで7セクション完結。<em style="color:var(--color-accent);font-style:normal;">旅の思い出・記念日・ウェディング等のメモリアルLPもお任せください。</em></p>
-          <div class="card-tags">
-            <span class="card-tag">メモリアルLP</span>
-            <span class="card-tag">ガーリー×パステル</span>
-            <span class="card-tag">ポラロイド演出</span>
-            <span class="card-tag">筆記体フォント</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: プロフィールLP（エディトリアル） -->
-      <a href="profile-sample.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=800&q=80" alt="プロフィールLP エディトリアル版">
-          <div class="card-badge"><i class="fas fa-feather-pointed"></i> Editorial</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Personal Profile / Editorial</p>
-          <h3 class="card-title">プロフィールLP — 「AI感ゼロ」の匿名デモ</h3>
-          <p class="card-desc">巷にあふれる「AI生成プロフィールページ」を、雑誌の巻頭インタビューのような質感にブラッシュアップした匿名サンプル。明朝体主役、絵文字ゼロ、余白二倍、数値は文章に溶かし込み。<em style="color:var(--color-accent);font-style:normal;">「AIで作ってる感」を消す技術デモ。</em></p>
-          <div class="card-tags">
-            <span class="card-tag">エディトリアル</span>
-            <span class="card-tag">明朝主役</span>
-            <span class="card-tag">朱赤アクセント</span>
-            <span class="card-tag">匿名サンプル</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: マネーセミナー -->
-      <a href="money-seminar.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80" alt="マネーセミナーLP">
-          <div class="card-badge"><i class="fas fa-bolt"></i> AI制作 3h</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Money Seminar</p>
-          <h3 class="card-title">100年資産塾 — SO Money Academy</h3>
-          <p class="card-desc">経営者・富裕層向けマネーセミナーの資料請求窓口LP。challenge8.co.jp模倣。ネイビー×シャンパンゴールドの格調高いトーンで、理念・カリキュラム・講師・FAQ・申込導線まで1枚完結。</p>
-          <div class="card-tags">
-            <span class="card-tag">マネーセミナー</span>
-            <span class="card-tag">明朝体ベース</span>
-            <span class="card-tag">ネイビー×ゴールド</span>
-            <span class="card-tag">16セクション</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: AI × YouTube運営サポート -->
-      <a href="ai-youtube-support.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80" alt="AI × YouTube運営サポート LP">
-          <div class="card-badge"><i class="fas fa-bolt"></i> AI制作 1h</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">AI × YouTube Support</p>
-          <h3 class="card-title">AI × YouTube運営サポート</h3>
-          <p class="card-desc">YouTube運営者向け、Claude Code×AIでできること／期待できる効果／現状の限界を正直にまとめた1枚ガイド。競合自動リサーチ・視聴維持分析・映像×サムネ×コメントの3軸解析まで。</p>
-          <div class="card-tags">
-            <span class="card-tag">YouTube分析</span>
-            <span class="card-tag">Data API</span>
-            <span class="card-tag">3レベル提示</span>
-            <span class="card-tag">限界も正直に</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: YouTubeアフィリエイト 自動リサーチ 実証実験（フェーズ1報告書） -->
-      <a href="ai-youtube-affiliate-research-flow.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="YouTubeアフィリエイト 自動リサーチ 実証実験 フェーズ1 報告書">
-          <div class="card-badge" style="background:#8B4A9A"><i class="fas fa-flask"></i> NEW / フェーズ1 報告書</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">YouTubeアフィリエイト 自動リサーチ 実証実験</p>
-          <h3 class="card-title">9工程のうち①〜⑥をAIが走り切るかの実証実験 — フェーズ1 報告書</h3>
-          <p class="card-desc">YouTubeアフィリエイト動画制作の上流リサーチを、コードの中で完結させて全自動化。Python＋YouTube Data API＋Claude Codeの組み合わせで、人力3〜5日分が <em style="color:var(--color-accent);font-style:normal;">2.5時間（コスト¥0・20〜30倍時短）</em> で完走。要件定義・実装の流れ・結果まとめを1枚にした報告書。</p>
-          <div class="card-tags">
-            <span class="card-tag">実証実験 報告書</span>
-            <span class="card-tag">Python × Claude Code</span>
-            <span class="card-tag">YouTube Data API</span>
-            <span class="card-tag">コードの中で完結</span>
-            <span class="card-tag">20〜30倍時短</span>
-          </div>
-          <span class="card-link">報告書を見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: AI研修×補助金ガイド -->
-      <a href="ai-grant-guide.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80" alt="AI研修×補助金ガイドLP">
-          <div class="card-badge"><i class="fas fa-bolt"></i> AI制作 3h</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">AI Training &amp; Grants</p>
-          <h3 class="card-title">AI研修 × 補助金ガイド</h3>
-          <p class="card-desc">「AI導入、国が75％払ってくれます」を切り口にした対外公開ガイド。人材開発助成金・AI導入補助金の比較、外部講師活用、誤解を解くQ&Aまで30秒で噛み砕く構成。</p>
-          <div class="card-tags">
-            <span class="card-tag">AI研修</span>
-            <span class="card-tag">補助金ガイド</span>
-            <span class="card-tag">深緑×ゴールド</span>
-            <span class="card-tag">明朝体ベース</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card NEW: 1億円・地球一周ドリームツアー -->
-      <a href="world-tour.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80" alt="¥100M GRAND TOUR LP">
-          <div class="card-badge"><i class="fas fa-crown"></i> Special Pitch</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Luxury Travel ／ Dream Pitch</p>
-          <h3 class="card-title">¥100,000,000 GRAND TOUR — 7日間で地球一周</h3>
-          <p class="card-desc">1億円・プライベートジェット・世界6カ国の最高峰スイートだけを繋いだ夢の旅程提案LP。Burj Al Arab／Soneva Jani／FS Serengeti／Ritz Paris／Aman NY／FS Bora Boraを実在公式リンク付きで紹介。</p>
-          <div class="card-tags">
-            <span class="card-tag">ラグジュアリー旅行</span>
-            <span class="card-tag">漆黒×ゴールド</span>
-            <span class="card-tag">Cormorant×明朝</span>
-            <span class="card-tag">16セクション</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card 0: 空手道場 -->
-      <a href="karate.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=800&q=80" alt="空手道場LP">
-          <div class="card-badge"><i class="fas fa-bolt"></i> AI制作 3h</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Karate Dojo</p>
-          <h3 class="card-title">芦原カラテ北見道場</h3>
-          <p class="card-desc">空手道場のHP全面リニューアル。武士道の精神を踏襲した和テイスト×ダイナミックアニメーション。館長写真・料金・FAQ・アクセス完備。</p>
-          <div class="card-tags">
-            <span class="card-tag">空手道場</span>
-            <span class="card-tag">武士道テイスト</span>
-            <span class="card-tag">墨黒×深紅</span>
-            <span class="card-tag">15セクション</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card 1: 美容サロン -->
-      <a href="salon.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80" alt="美容サロンLP">
-          <div class="card-badge"><i class="fas fa-bolt"></i> AI制作 3h</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Beauty Salon</p>
-          <h3 class="card-title">Lash Bloom — まつげエクステサロン</h3>
-          <p class="card-desc">まつげエクステ&アイブロウ専門サロンのLP。LEDエクステ技術訴求、メニュー表、施術の流れ、FAQ等を含むフルページ構成。</p>
-          <div class="card-tags">
-            <span class="card-tag">美容サロン</span>
-            <span class="card-tag">明朝体ベース</span>
-            <span class="card-tag">パープル×ゴールド</span>
-            <span class="card-tag">15セクション</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card 2: 整骨院 -->
-      <a href="seikotsuin.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80" alt="整骨院LP">
-          <div class="card-badge"><i class="fas fa-bolt"></i> AI制作 3h</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Osteopathy Clinic</p>
-          <h3 class="card-title">やすらぎ整骨院</h3>
-          <p class="card-desc">整骨院・整体院向けLP。院長メッセージ、症状別の訴求、料金表、アクセス情報等をフルスクリーンヒーローから展開。</p>
-          <div class="card-tags">
-            <span class="card-tag">整骨院・整体</span>
-            <span class="card-tag">明朝体ベース</span>
-            <span class="card-tag">深緑×ゴールド</span>
-            <span class="card-tag">15セクション</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: おけもんポートフォリオ -->
-      <a href="okemon-portfolio/" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80" alt="おけもんポートフォリオ">
-          <div class="card-badge"><i class="fas fa-user"></i> Personal Portfolio</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Personal Portfolio</p>
-          <h3 class="card-title">okemon Portfolio — AI × Web制作の自己紹介</h3>
-          <p class="card-desc">おけもん本人のプロフィール・実績・サービスを1ページに統合した自己紹介ポートフォリオ。</p>
-          <div class="card-tags">
-            <span class="card-tag">プロフィール</span>
-            <span class="card-tag">実績紹介</span>
-            <span class="card-tag">1ファイル完結</span>
-          </div>
-          <span class="card-link">ポートフォリオを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: ポートフォリオ作り方ガイド -->
-      <a href="portfolio-howto/" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="ポートフォリオの作り方ガイド">
-          <div class="card-badge"><i class="fas fa-book-open"></i> How-To Guide</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">How-To / Tutorial</p>
-          <h3 class="card-title">ポートフォリオの作り方ガイド</h3>
-          <p class="card-desc">AIを活用してポートフォリオサイトを作る手順を解説。初心者向けに構成・デザイン・公開までの流れをまとめたガイドLP。</p>
-          <div class="card-tags">
-            <span class="card-tag">ハウツー</span>
-            <span class="card-tag">初心者向け</span>
-            <span class="card-tag">AI制作</span>
-          </div>
-          <span class="card-link">ガイドを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: 梅田 酒5軒 -->
-      <a href="umeda-sake-5/" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&q=80" alt="梅田の酒5軒巡り">
-          <div class="card-badge"><i class="fas fa-wine-glass"></i> Local Guide</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Local Guide / Sake</p>
-          <h3 class="card-title">梅田で味わう日本酒5軒</h3>
-          <p class="card-desc">梅田エリアの日本酒が美味しい店を厳選紹介するローカルガイドLP。各店の特色・おすすめ・アクセスを1枚で。</p>
-          <div class="card-tags">
-            <span class="card-tag">ローカルガイド</span>
-            <span class="card-tag">飲食店紹介</span>
-            <span class="card-tag">エリア特化</span>
-          </div>
-          <span class="card-link">ガイドを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: やこさま提案書 -->
-      <a href="yako-proposal.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?w=800&q=80" alt="やこさま向け提案書">
-          <div class="card-badge"><i class="fas fa-file-contract"></i> Proposal</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Business Proposal</p>
-          <h3 class="card-title">やこさま向けご提案書</h3>
-          <p class="card-desc">クライアント向けに作成した提案書LP。ヒアリング内容を踏まえた構成・サービス案・スケジュールを1枚で提示。</p>
-          <div class="card-tags">
-            <span class="card-tag">提案書</span>
-            <span class="card-tag">クライアントワーク</span>
-            <span class="card-tag">1枚完結</span>
-          </div>
-          <span class="card-link">提案書を見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: 沖縄旅行プラン -->
-      <a href="okinawa-trip.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="沖縄旅行プラン">
-          <div class="card-badge"><i class="fas fa-umbrella-beach"></i> Travel Plan</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Travel Itinerary</p>
-          <h3 class="card-title">沖縄旅行プラン</h3>
-          <p class="card-desc">沖縄旅行のスケジュール・スポット・予算を1ページにまとめた旅程LP。旅行のしおり・記念ページとしても活用可能。</p>
-          <div class="card-tags">
-            <span class="card-tag">旅程しおり</span>
-            <span class="card-tag">沖縄</span>
-            <span class="card-tag">記念LP</span>
-          </div>
-          <span class="card-link">旅程を見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: モアイ島プライベートツアー（妄想LP） -->
-      <a href="moai-odyssey-tour.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1518003545555-2eb1f5d28d04?w=800&q=80" alt="モアイ島ツアー">
-          <div class="card-badge"><i class="fas fa-mountain"></i> Concept LP</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Concept Travel LP</p>
-          <h3 class="card-title">一億円の夢 — ラパ・ヌイ モアイ島プライベートツアー</h3>
-          <p class="card-desc">超富裕層向け妄想ラグジュアリー旅行LP。世界観構築・ストーリーテリング・コピーライティングを高解像度で展開した実験的コンセプトLP。</p>
-          <div class="card-tags">
-            <span class="card-tag">コンセプトLP</span>
-            <span class="card-tag">ラグジュアリー</span>
-            <span class="card-tag">世界観構築</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: LUNA VOYAGE 月への旅（妄想LP） -->
-      <a href="luna-voyage-moon-travel.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=800&q=80" alt="月への旅 LUNA VOYAGE">
-          <div class="card-badge"><i class="fas fa-moon"></i> Concept LP</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Concept Travel LP</p>
-          <h3 class="card-title">LUNA VOYAGE — 月への7日間プレミアム宇宙旅行</h3>
-          <p class="card-desc">月旅行をテーマにした近未来コンセプトLP。SF的世界観×ラグジュアリーを掛け合わせ、極限のブランド演出を実験した1ページ。</p>
-          <div class="card-tags">
-            <span class="card-tag">コンセプトLP</span>
-            <span class="card-tag">宇宙旅行</span>
-            <span class="card-tag">ブランド演出</span>
-          </div>
-          <span class="card-link">LPを見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <!-- Card: 徳一家オフ会会場比較 -->
-      <a href="tokuichika-offkai-venues.html" class="portfolio-card">
-        <div class="card-thumb">
-          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="徳一家オフ会会場比較">
-          <div class="card-badge"><i class="fas fa-clipboard-list"></i> Comparison</div>
-        </div>
-        <div class="card-body">
-          <p class="card-category">Comparison Sheet</p>
-          <h3 class="card-title">徳一家 5/10 オフ会 会場比較</h3>
-          <p class="card-desc">オフ会開催候補の会場を価格・アクセス・収容人数等の複数軸で比較した意思決定支援LP。グループ意思決定に特化した1枚資料。</p>
-          <div class="card-tags">
-            <span class="card-tag">比較表</span>
-            <span class="card-tag">意思決定支援</span>
-            <span class="card-tag">イベント企画</span>
-          </div>
-          <span class="card-link">比較を見る <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
+    <div class="bridge rv">
+      <p>2つは別々の仕事に見えて、やっていることは同じです。<br><b>その人（その現場）の言葉に翻訳すること。</b><br>AIの話も、強みの話も、専門用語のままでは何も変わらない——<br>16年の現場で、いちばん骨身にしみたことです。</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section class="about">
-    <p class="about-label">About</p>
-    <h2>AIを活用した新しいWeb制作</h2>
-    <p>最新のAI技術を駆使し、従来のWeb制作の常識を覆すスピードとクオリティを実現。デザイナーが手がけたような仕上がりを、圧倒的な短納期でお届けします。</p>
-    <p>業種・ブランドイメージに合わせたカラーパレット選定、Unsplash実写写真の活用、明朝体×ゴシック体の組み合わせで「AIっぽさ」を排除したプロ品質のLPを制作します。</p>
-    <a href="https://crowdworks.jp/public/employees/4765217" class="about-highlight">お仕事のご相談はこちら</a>
-  </section>
+<!-- 4. ABOUT -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-head rv">
+      <span class="kicker">About Me</span>
+      <h2>「聴く」から<br>始める人間です。</h2>
+      <p class="lead">おけもん — ワタシトリセツ 代表</p>
+    </div>
+    <div class="about-body rv">
+      <p class="strong-line">はじめまして。介護・障害福祉の現場に16年いた、おけもんです。</p>
+      <ul class="career">
+        <li><span class="yr">3年</span><span>特別養護老人ホーム — 介護職員として、現場のいちばん忙しい時間を</span></li>
+        <li><span class="yr">10年</span><span>障害福祉・サービス管理責任者 — 個別支援計画・記録・監査対応。「書く仕事」の重さを知る10年</span></li>
+        <li><span class="yr">3年</span><span>グループホーム施設長 — シフト・人材・経営。管理者の孤独と人手不足の現実</span></li>
+        <li><span class="yr">現在</span><span>AI導入の伴走と、自己理解コーチングへ</span></li>
+      </ul>
+      <p>夜勤明けに記録の山と向き合う気持ちも、更新月の絶望も、体で知っています。だから、職員さんと同じ言葉で話せます。AIの専門用語は、私が現場の言葉に翻訳します。</p>
+      <p>コーチングでは3年間で1,000人以上と1対1で対話し、オフ会・勉強会は通算100回以上（うちAI関連が40回以上）主催してきました。<b>AIの話の前に、まず話を「聴く」こと。</b>それが私の仕事の始め方です。</p>
+      <div class="company-note">
+        <b>ちょっと変わっているところ。</b><br>
+        いま自分の事務所は、<b>AI社員11人</b>と運営しています。経理も、営業資料も、このホームページも、彼女たちと一緒につくりました。うまくいったことだけでなく、失敗した設定も、続かなかった仕組みも全部記録しています。導入のご相談では、その実践のノウハウごとお渡しします。
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>&copy; 2026 okemon. All Rights Reserved.</p>
-  </footer>
+<!-- 5. WORKS -->
+<section class="works" id="works">
+  <div class="wrap">
+    <div class="rv">
+      <span class="kicker">Works</span>
+      <h2>つくってきたもの</h2>
+      <p class="lead">ホームページ・提案資料・診断シートなど、AIと一緒に制作したものを公開しています。「こういうの作れますか？」の答え合わせにどうぞ。</p>
+    </div>
+    <div class="work-grid">
+      <a class="work rv" href="sangyo-hokenshi.html">
+        <div class="work-thumb"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=70" alt="産業保健師導入提案LP" loading="lazy"></div>
+        <div class="work-body">
+          <p class="work-cat">BtoB Proposal</p>
+          <h4>あなたの職場に、産業保健師さんを</h4>
+          <p>経営者向けに導入メリットを訴求する提案LP。お悩み6連発→メリット→料金→FAQまで1ページ完結。</p>
+        </div>
+      </a>
+      <a class="work rv" href="mizuyan.html">
+        <div class="work-thumb"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80" alt="Miuzno lab. パーソナルブランディングHP" loading="lazy"></div>
+        <div class="work-body">
+          <p class="work-cat">Personal Brand</p>
+          <h4>Miuzno lab. — 人柄まるごと載せた一枚もの</h4>
+          <p>和モダンエディトリアルのパーソナルブランディングHP。実績バー・診断結果・座右の銘まで収録。</p>
+        </div>
+      </a>
+      <a class="work rv" href="coc-organization-diagnosis.html">
+        <div class="work-thumb"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&q=80" alt="組織力診断士協会 リデザイン提案" loading="lazy"></div>
+        <div class="work-body">
+          <p class="work-cat">Redesign Proposal</p>
+          <h4>組織は、診ると変わる。</h4>
+          <p>堅いコンサル印象を脱いで「組織を診る体験」をワクワクさせる方向へリデザインした提案サイト。</p>
+        </div>
+      </a>
+    </div>
+    <div class="works-more rv">
+      <a class="btn btn-line" href="works.html">制作実績をすべて見る（30本以上）
+        <svg class="icon" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 6. TALK -->
+<section class="talk" id="talk">
+  <div class="wrap-n">
+    <span class="kicker rv">Let's Talk</span>
+    <h2 class="rv">まず、話してみませんか。</h2>
+    <p class="talk-lead rv">オンラインで30〜60分。相談は無料で、<b>売り込みはありません。</b><br>「何も決まっていない」「そもそも何を聞けばいいか分からない」<br>——その状態が、いちばん普通です。<br>平日夜も土日も対応できます（現場のシフト、分かっていますので）。</p>
+    <div class="topics rv">
+      <span class="topic">「AIって、うちの現場で何ができるの？」</span>
+      <span class="topic">「強み診断、受けたけど放置してる」</span>
+      <span class="topic">「ホームページ、こんなの作れる？」</span>
+      <span class="topic">「AI社員11人って、どういうこと？」</span>
+    </div>
+    <div class="channels rv">
+      <a class="channel" id="ch-mail" href="#talk">
+        <svg class="icon" style="width:26px;height:26px" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        <span class="cn">メールで相談</span>
+        <span class="cs">クリックでメーラーが開きます</span>
+      </a>
+      <a class="channel" href="https://x.com/okemonogatari" target="_blank" rel="noopener">
+        <svg class="icon" style="width:24px;height:24px;fill:currentColor;stroke:none" viewBox="0 0 24 24"><path d="M18.9 2.5h3.3l-7.2 8.2L23.4 21.5h-6.6l-5.2-6.8-5.9 6.8H2.4l7.7-8.8L2 2.5h6.8l4.7 6.2zM17.7 19.5h1.8L7.4 4.4H5.5z"/></svg>
+        <span class="cn">X でDM</span>
+        <span class="cs">@okemonogatari</span>
+      </a>
+      <a class="channel" href="https://www.facebook.com/profile.php?id=100092520273429" target="_blank" rel="noopener">
+        <svg class="icon" style="width:24px;height:24px;fill:currentColor;stroke:none" viewBox="0 0 24 24"><path d="M16.5 3H14a4.6 4.6 0 0 0-4.6 4.6V10H6.6v3.6h2.8V22h3.7v-8.4h2.9l.5-3.6h-3.4V7.8c0-.8.4-1.2 1.3-1.2h2.1z"/></svg>
+        <span class="cn">Facebook</span>
+        <span class="cs">メッセージを送る</span>
+      </a>
+    </div>
+    <p class="talk-note rv">いただいたご相談には、2〜3日以内にお返事します。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>🍑 おけもん — AI導入伴走 × 自己理解コーチング</span>
+    <span class="f-links">
+      <a href="okemon-care-ai.html">AI現場伴走室</a>
+      <a href="https://okemonogatari-hash.github.io/okemon-strengths-home/" target="_blank" rel="noopener">ストレングス入門</a>
+      <a href="works.html">制作実績</a>
+    </span>
+    <span>© 2026 ワタシトリセツ</span>
+  </div>
+</footer>
+
+<script>
+// reveal（IntersectionObserver＋フォールバック）
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){
+    Array.prototype.forEach.call(els,function(el){el.classList.add('in')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+  Array.prototype.forEach.call(els,function(el){io.observe(el)});
+  // 保険：3秒後、画面内にある未表示要素は強制表示
+  setTimeout(function(){
+    Array.prototype.forEach.call(els,function(el){
+      if(el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
+    });
+  },3000);
+})();
+
+// メールアドレスはソースに直書きせず、実行時に組み立てる（ボット収集対策）
+(function(){
+  var a = document.getElementById('ch-mail');
+  if(!a) return;
+  var user = ['okemo','nogata','ri'].join('');
+  var dom  = ['gmail','.com'].join('');
+  var sub  = encodeURIComponent('【ご相談】ホームページを見ました');
+  a.setAttribute('href','mailto:' + user + '@' + dom + '?subject=' + sub);
+})();
+</script>
 
 </body>
 </html>
