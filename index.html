@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>おけもん｜介護現場16年 × AI導入伴走 × 自己理解コーチング</title>
-<meta name="description" content="介護・障害福祉の現場に16年いた人間が、いまはAI導入の伴走と、ストレングスファインダーの読み解きをしています。事業者向けの「AI現場伴走室」と、個人向けの「ストレングス入門」。まずは話を聴くところから。">
+<title>おけもん｜介護の現場16年から、AI導入と強みの読み解きへ</title>
+<meta name="description" content="介護・障害福祉の現場に16年いました。いまは施設・事業所さん向けのAI導入と、個人の方向けの強みの読み解きを手伝っています。相談は無料、売り込みはしません。">
 <meta property="og:title" content="おけもん｜AI導入伴走 × 自己理解コーチング">
-<meta property="og:description" content="介護・障害福祉の現場16年。いまはAIの導入伴走と、強みの読み解きを。まずは話を聴くところから始めます。">
+<meta property="og:description" content="介護・障害福祉の現場に16年。いまはAIの導入と、強みの読み解きを手伝っています。むずかしい言葉は使いません。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/">
-<meta property="og:image" content="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/assets/okemon-profile.jpg">
+<meta property="og:image" content="https://okemonogatari-hash.github.io/portfolio-seikotsuin-lp/assets/okemon-hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍑</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,7 +58,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.9);backdrop
 
 /* ===== hero ===== */
 .hero{padding:110px 0 92px;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;right:-140px;top:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(196,145,94,.16),rgba(196,145,94,0) 68%);pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:center;position:relative;z-index:1}
 .hero h1{font-size:clamp(1.55rem,3.4vw,2.4rem);line-height:1.75;font-weight:900;margin-bottom:28px}
 .hero h1 .w{display:inline-block;opacity:0;filter:blur(12px);transform:translateY(.35em);animation:wIn 1.05s var(--ease) forwards}
@@ -67,14 +66,14 @@ header{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.9);backdrop
 .hero-sub{color:var(--ink-60);font-size:.98rem;max-width:560px;margin-bottom:36px;opacity:0;animation:wIn 1s var(--ease) .95s forwards}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;opacity:0;animation:wIn 1s var(--ease) 1.15s forwards}
 .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;transition:all .35s var(--ease);text-align:center;justify-content:center}
-.btn-fill{background:var(--gold);color:#fff;font-size:.96rem;padding:16px 36px;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 10px 26px -10px rgba(196,145,94,.65)}
+.btn-fill{background:var(--gold);color:#fff;font-size:.96rem;padding:16px 36px;border-radius:999px}
 .btn-fill:hover{background:#b3814f;transform:translateY(-2px)}
 .btn-line{border:1px solid var(--line);color:var(--ink);font-size:.9rem;padding:15px 30px;border-radius:999px;background:rgba(255,255,255,.6)}
 .btn-line:hover{border-color:var(--gold);color:var(--gold)}
 .hero-assure{margin-top:26px;font-size:.8rem;color:var(--ink-60);line-height:1.9;opacity:0;animation:wIn 1s var(--ease) 1.35s forwards}
 .hero-assure b{color:var(--ink);font-weight:700}
 .hero-photo{position:relative}
-.hero-photo img{border-radius:20px;box-shadow:0 24px 60px -28px rgba(38,37,33,.5);aspect-ratio:1/1.15;object-fit:cover;object-position:center 25%;width:100%}
+.hero-photo img{border-radius:20px;box-shadow:0 6px 20px -12px rgba(38,37,33,.35);aspect-ratio:1/1.15;object-fit:cover;object-position:center 25%;width:100%}
 .hanko{position:absolute;right:-14px;bottom:-16px;width:96px;height:96px;border-radius:50%;border:2px solid var(--peach);color:var(--peach);background:var(--cream);display:grid;place-items:center;text-align:center;font-family:'Zen Maru Gothic';font-weight:800;font-size:.72rem;line-height:1.5;letter-spacing:.06em;transform:rotate(-8deg)}
 @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:44px}.hero-photo{max-width:250px;margin:0 auto}}
 .mb{display:none}
@@ -93,11 +92,11 @@ header{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.9);backdrop
 .gate-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px}
 .gate{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:40px 34px 34px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .gate::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px}
-.gate:hover{transform:translateY(-5px)}
-.gate-a::before{background:linear-gradient(90deg,var(--peach),#e79170)}
-.gate-b::before{background:linear-gradient(90deg,var(--green),var(--gold))}
-.gate-a:hover{box-shadow:0 26px 50px -30px rgba(217,100,64,.7)}
-.gate-b:hover{box-shadow:0 26px 50px -30px rgba(44,95,75,.7)}
+.gate:hover{transform:translateY(-3px)}
+.gate-a::before{background:var(--peach)}
+.gate-b::before{background:var(--green)}
+.gate-a:hover{border-color:var(--peach)}
+.gate-b:hover{border-color:var(--green)}
 .gate-badge{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;padding:7px 15px;border-radius:999px;align-self:flex-start;margin-bottom:20px}
 .gate-a .gate-badge{background:var(--peach-pale);color:var(--peach)}
 .gate-b .gate-badge{background:var(--green-pale);color:var(--green)}
@@ -111,8 +110,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.9);backdrop
 .gate-tags span{font-size:.72rem;padding:5px 12px;border-radius:999px;background:var(--paper-warm);color:var(--ink-60)}
 .gate-actions{margin-top:auto;display:flex;flex-direction:column;gap:12px}
 .gate-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 24px;border-radius:999px;font-weight:700;font-size:.9rem;color:#fff;transition:all .35s var(--ease)}
-.gate-a .gate-btn{background:var(--peach);box-shadow:0 10px 24px -12px rgba(217,100,64,.8)}
-.gate-b .gate-btn{background:var(--green);box-shadow:0 10px 24px -12px rgba(44,95,75,.8)}
+.gate-a .gate-btn{background:var(--peach)}
+.gate-b .gate-btn{background:var(--green)}
 .gate-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
 .gate-sub{font-size:.79rem;color:var(--ink-60);text-align:center;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line);line-height:1.7}
 .gate-sub:hover{color:var(--ink)}
@@ -141,7 +140,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.9);backdrop
 .works{background:var(--cream)}
 .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
 .work{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-.work:hover{transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(38,37,33,.55)}
+.work:hover{transform:translateY(-3px);border-color:var(--gold)}
 .work-thumb{height:150px;overflow:hidden;background:var(--paper-warm)}
 .work-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .work:hover .work-thumb img{transform:scale(1.05)}
@@ -154,7 +153,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.9);backdrop
 
 /* ===== talk ===== */
 .talk{background:var(--ink);color:var(--cream);text-align:center;position:relative;overflow:hidden}
-.talk::before{content:"";position:absolute;left:50%;top:-180px;width:640px;height:640px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(196,145,94,.22),rgba(196,145,94,0) 66%)}
 .talk>*{position:relative;z-index:1}
 .talk .kicker{color:var(--gold)}
 .talk h2{color:var(--cream)}
@@ -162,13 +160,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.9);backdrop
 .talk-lead b{color:#fff}
 .topics{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:44px}
 .topic{border:1px solid rgba(250,246,239,.24);border-radius:999px;padding:11px 22px;font-size:.83rem;color:#d8d3c8;background:rgba(250,246,239,.04);line-height:1.6}
-.channels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:660px;margin:0 auto}
-.channel{display:flex;flex-direction:column;align-items:center;gap:9px;padding:26px 16px;border:1px solid rgba(250,246,239,.18);border-radius:14px;transition:all .35s var(--ease);color:var(--cream)}
-.channel:hover{background:rgba(250,246,239,.07);border-color:var(--gold);transform:translateY(-3px)}
-.channel .cn{font-weight:700;font-size:.9rem;font-family:'Zen Maru Gothic'}
+.channels{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 40px;max-width:680px;margin:0 auto}
+.channel{display:flex;align-items:center;gap:11px;padding:12px 4px;border-bottom:1px solid rgba(250,246,239,.22);transition:border-color .3s var(--ease),color .3s var(--ease);color:var(--cream)}
+.channel:hover{border-color:var(--gold);color:var(--gold)}
+.channel .cn{font-weight:700;font-size:.92rem;font-family:'Zen Maru Gothic'}
 .channel .cs{font-size:.72rem;color:#a9a397;line-height:1.6}
 .talk-note{margin-top:34px;font-size:.76rem;color:#a9a397}
-@media(max-width:720px){.channels{grid-template-columns:1fr}}
+@media(max-width:720px){.channels{flex-direction:column;align-items:stretch;gap:0}.channel{justify-content:flex-start}}
 
 /* ===== footer ===== */
 footer{background:#1c1b18;color:#8d897f;padding:38px 0;font-size:.76rem}
@@ -181,7 +179,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 
 <header>
   <div class="wrap nav">
-    <a class="logo" href="#top">おけもん<small>AI導入伴走 × 自己理解</small></a>
+    <a class="logo" href="#top">おけもん<small>AIの導入と、強みの読み解き</small></a>
     <nav class="nav-links">
       <a href="#gates">2つの入口</a>
       <a href="#about">私について</a>
@@ -196,18 +194,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
   <div class="wrap hero-grid">
     <div>
       <h1>
-        <span class="w" style="animation-delay:.1s">介護の現場に16年いた人間が、</span><br>
+        <span class="w" style="animation-delay:.1s">介護の現場に、16年いました。</span><br>
         <span class="w" style="animation-delay:.35s">いまは<span class="u">AIの導入</span>と、</span><br>
-        <span class="w" style="animation-delay:.6s"><span class="u">強みの読み解き</span>を<br class="mb">伴走しています。</span>
+        <span class="w" style="animation-delay:.6s"><span class="u">強みの読み解き</span>を<br class="mb">手伝っています。</span>
       </h1>
-      <p class="hero-sub">事業者さま向けの「AI現場伴走室」と、個人の方向けの「ストレングス入門」。どちらも、まず話を聴くところから始めます。専門用語は、こちらで現場の言葉に翻訳します。</p>
+      <p class="hero-sub">施設・事業所さん向けのAI導入と、個人の方向けの強みの読み解き。やっているのはこの2つです。むずかしい言葉は使いません。まず、困っていることを聞かせてください。</p>
       <div class="cta-row">
         <a class="btn btn-fill" href="#talk">まず、話してみる
           <svg class="icon" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.9-.9L3 21l1.9-4.9A8.4 8.4 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
         </a>
         <a class="btn btn-line" href="#gates">2つの入口を見る</a>
       </div>
-      <p class="hero-assure">オンライン30〜60分・相談は無料・<b>売り込みはありません。</b><br>「何も決まっていない」段階で大丈夫です。</p>
+      <p class="hero-assure">相談は無料、オンラインで30分〜1時間くらい。<b>売り込みはしません。</b><br>何も決まっていない状態のままで、どうぞ。</p>
     </div>
     <div class="hero-photo">
       <img src="assets/okemon-hero.jpg" alt="おけもん — 介護・福祉現場16年からAI導入伴走・自己理解コーチングへ">
@@ -219,10 +217,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 <!-- 2. FACTS -->
 <div class="facts">
   <div class="wrap fact-grid rv">
-    <div class="fact"><div class="n">16<small>年</small></div><div class="l">介護・障害福祉の現場<br>（特養／サビ管／施設長）</div></div>
-    <div class="fact"><div class="n">1,000<small>人+</small></div><div class="l">コーチングで重ねた<br>1対1の対話（3年間）</div></div>
-    <div class="fact"><div class="n">100<small>回+</small></div><div class="l">オフ会・勉強会を主催<br>（うちAI関連 40回以上）</div></div>
-    <div class="fact"><div class="n">11<small>人</small></div><div class="l">AI社員と一緒に<br>自分の事務所を運営中</div></div>
+    <div class="fact"><div class="n">16<small>年</small></div><div class="l">介護・障害福祉の現場に<br>いた年数（特養／サビ管／施設長）</div></div>
+    <div class="fact"><div class="n">1,000<small>人+</small></div><div class="l">この3年で1対1で<br>話してきた人数</div></div>
+    <div class="fact"><div class="n">100<small>回+</small></div><div class="l">これまでに開いたオフ会・勉強会<br>（うちAI関連が40回以上）</div></div>
+    <div class="fact"><div class="n">11<small>人</small></div><div class="l">一緒に事務所を回している<br>AI社員</div></div>
   </div>
 </div>
 
@@ -230,8 +228,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 <section class="gates" id="gates">
   <div class="wrap">
     <span class="kicker rv">Two Doors</span>
-    <h2 class="rv">入口は2つあります。<br>どちらから来ていただいても大丈夫です。</h2>
-    <p class="lead rv">仕事として本気でやっているのは、この2つです。それぞれ専用のサイトを用意しているので、気になるほうから覗いてみてください。</p>
+    <h2 class="rv">入口はふたつ。<br>どちらから入ってもらっても大丈夫です。</h2>
+    <p class="lead rv">仕事として本気でやっているのは、この2つ。それぞれ別にサイトを作ってあるので、気になるほうを覗いてみてください。</p>
 
     <div class="gate-grid">
       <!-- Gate A -->
@@ -241,15 +239,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
           事業者・チームの方へ
         </span>
         <h3>AI現場伴走室</h3>
-        <p class="gate-for">介護・医療・福祉の法人さま／管理者さま向け</p>
+        <p class="gate-for">介護・医療・福祉の法人さん、管理者さんへ</p>
         <p class="gate-quote">「AIを入れたい。でも、何を任せればいいか分からない」</p>
-        <p class="gate-body">記録・申し送り・研修資料づくり——これまで職員さんが残業して書いていたものを、<b>明日から現場で使える形</b>まで一緒に落とし込みます。道具を配って終わりにはしません。条件が合う場合は、助成金活用の可能性も一緒に整理します。</p>
+        <p class="gate-body">記録、申し送り、研修資料。職員さんが残業して書いていたものを、<b>明日から使える形</b>にするところまで一緒にやります。ツールを渡して終わり、にはしません。研修の内容によっては助成金が使えることもあるので、そこも一緒に調べます。</p>
         <div class="gate-tags"><span>AI研修</span><span>導入・定着の設計</span><span>記録・申し送り</span><span>助成金の整理</span></div>
         <div class="gate-actions">
           <a class="gate-btn" href="okemon-care-ai.html">AI現場伴走室を見る
             <svg class="icon" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="gate-sub" href="sangyo-hokenshi.html">関連：産業保健師の導入提案LPを見る</a>
+          <a class="gate-sub" href="sangyo-hokenshi.html">産業保健師さん向けの提案ページもあります</a>
         </div>
       </div>
 
@@ -260,21 +258,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
           個人の方へ
         </span>
         <h3>おけもん式ストレングス入門</h3>
-        <p class="gate-for">強みを知りたい方／診断を受けたまま止まっている方へ</p>
+        <p class="gate-for">強みを知りたい方、診断を受けたまま止まっている方へ</p>
         <p class="gate-quote">「受けたけど、なんとなく読んだだけで終わってる」</p>
-        <p class="gate-body">ストレングスファインダーは適職診断ではなく、<b>自分の取扱説明書をつくるための入口</b>です。34資質を1つずつ引けるダッシュボード付きで、受ける前の不安から、受けたあとの活かし方まで、構えずに読める入門ホームにしました。</p>
+        <p class="gate-body">ストレングスファインダーは「向いてる仕事」を当てるテストじゃありません。<b>自分の取扱説明書をつくるための入口</b>です。34の資質を1つずつ引けるようにして、受ける前の不安から受けたあとの使い道まで、身構えずに読めるページにしました。</p>
         <div class="gate-tags"><span>ストレングスファインダー</span><span>34資質ダッシュボード</span><span>自己理解</span><span>コーチング</span></div>
         <div class="gate-actions">
           <a class="gate-btn" href="https://okemonogatari-hash.github.io/okemon-strengths-home/" target="_blank" rel="noopener">入門ホームを見る
             <svg class="icon" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="gate-sub" href="okemon-trisetsu.html">セッションの詳細：ワタシトリセツ自己理解室</a>
+          <a class="gate-sub" href="okemon-trisetsu.html">セッションの中身は「ワタシトリセツ自己理解室」で</a>
         </div>
       </div>
     </div>
 
     <div class="bridge rv">
-      <p>2つは別々の仕事に見えて、やっていることは同じです。<br><b>その人（その現場）の言葉に翻訳すること。</b><br>AIの話も、強みの話も、専門用語のままでは何も変わらない——<br>16年の現場で、いちばん骨身にしみたことです。</p>
+      <p>別々の仕事に見えますが、やっていることは同じです。<br><b>相手の言葉に、置きかえること。</b><br>どんなにいい仕組みでも、言葉が現場に届いていなければ使われないまま終わります。<br>16年、その場面を何度も見てきました。</p>
     </div>
   </div>
 </section>
@@ -284,7 +282,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
   <div class="wrap about-grid">
     <div class="about-head rv">
       <span class="kicker">About Me</span>
-      <h2>「聴く」から<br>始める人間です。</h2>
+      <h2>AIの話より先に、<br>現場の話を聞きます。</h2>
       <p class="lead">おけもん — ワタシトリセツ 代表</p>
     </div>
     <div class="about-body rv">
@@ -293,13 +291,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
         <li><span class="yr">3年</span><span>特別養護老人ホーム — 介護職員として、現場のいちばん忙しい時間を</span></li>
         <li><span class="yr">10年</span><span>障害福祉・サービス管理責任者 — 個別支援計画・記録・監査対応。「書く仕事」の重さを知る10年</span></li>
         <li><span class="yr">3年</span><span>グループホーム施設長 — シフト・人材・経営。管理者の孤独と人手不足の現実</span></li>
-        <li><span class="yr">現在</span><span>AI導入の伴走と、自己理解コーチングへ</span></li>
+        <li><span class="yr">いま</span><span>AIの導入と、強みの読み解きを仕事に</span></li>
       </ul>
-      <p>夜勤明けに記録の山と向き合う気持ちも、更新月の絶望も、体で知っています。だから、職員さんと同じ言葉で話せます。AIの専門用語は、私が現場の言葉に翻訳します。</p>
-      <p>コーチングでは3年間で1,000人以上と1対1で対話し、オフ会・勉強会は通算100回以上（うちAI関連が40回以上）主催してきました。<b>AIの話の前に、まず話を「聴く」こと。</b>それが私の仕事の始め方です。</p>
+      <p>夜勤明けに記録の山と向き合う気持ちも、更新月の絶望も、体で知っています。だから職員さんと同じ言葉で話せます。むずかしい用語はこちらで噛みくだくので、身構えなくて大丈夫です。</p>
+      <p>この3年で、1,000人以上と1対1で話してきました。オフ会や勉強会も通算100回以上（うちAI関連が40回以上）。それだけ数を重ねて分かったのは、<b>たいていの人は答えをもう持っていて、まだ言葉になっていないだけ</b>ということでした。だからいつも、聞くほうから始めます。</p>
       <div class="company-note">
         <b>ちょっと変わっているところ。</b><br>
-        いま自分の事務所は、<b>AI社員11人</b>と運営しています。経理も、営業資料も、このホームページも、彼女たちと一緒につくりました。うまくいったことだけでなく、失敗した設定も、続かなかった仕組みも全部記録しています。導入のご相談では、その実践のノウハウごとお渡しします。
+        いま自分の事務所は、<b>AI社員11人</b>と回しています。経理も、営業資料も、このホームページも、みんなと一緒に作ったものです。うまくいった話だけじゃなく、設定をミスした話も、作ったけど続かなかった仕組みの話も、そのまま記録に残してあります。ご相談のときは、そのへんの失敗談ごとお渡しします。
       </div>
     </div>
   </div>
@@ -311,7 +309,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
     <div class="rv">
       <span class="kicker">Works</span>
       <h2>つくってきたもの</h2>
-      <p class="lead">ホームページ・提案資料・診断シートなど、AIと一緒に制作したものを公開しています。「こういうの作れますか？」の答え合わせにどうぞ。</p>
+      <p class="lead">ホームページ、提案資料、診断シート。AIと一緒に作ったものを置いてあります。「こういうのも作れる？」と思ったら、まずここを見てみてください。</p>
     </div>
     <div class="work-grid">
       <a class="work rv" href="sangyo-hokenshi.html">
@@ -319,15 +317,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
         <div class="work-body">
           <p class="work-cat">BtoB Proposal</p>
           <h4>あなたの職場に、産業保健師さんを</h4>
-          <p>経営者向けに導入メリットを訴求する提案LP。お悩み6連発→メリット→料金→FAQまで1ページ完結。</p>
+          <p>「産業保健師さんって、何をしてくれるの？」に経営者目線で答えた提案ページ。悩み、できること、料金、よくある質問まで1枚に。</p>
         </div>
       </a>
       <a class="work rv" href="mizuyan.html">
         <div class="work-thumb"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80" alt="Miuzno lab. パーソナルブランディングHP" loading="lazy"></div>
         <div class="work-body">
           <p class="work-cat">Personal Brand</p>
-          <h4>Miuzno lab. — 人柄まるごと載せた一枚もの</h4>
-          <p>和モダンエディトリアルのパーソナルブランディングHP。実績バー・診断結果・座右の銘まで収録。</p>
+          <h4>Miuzno lab. — 人柄ごと載せた一枚もの</h4>
+          <p>Webデザイナーさんの自己紹介サイト。実績も、診断結果も、趣味も、その人らしさごと1枚に載せました。</p>
         </div>
       </a>
       <a class="work rv" href="coc-organization-diagnosis.html">
@@ -335,7 +333,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
         <div class="work-body">
           <p class="work-cat">Redesign Proposal</p>
           <h4>組織は、診ると変わる。</h4>
-          <p>堅いコンサル印象を脱いで「組織を診る体験」をワクワクさせる方向へリデザインした提案サイト。</p>
+          <p>かたい印象だったサイトを、「うちの組織も診てみたい」と思える方向に作り替えた提案版です。</p>
         </div>
       </a>
     </div>
@@ -352,7 +350,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
   <div class="wrap-n">
     <span class="kicker rv">Let's Talk</span>
     <h2 class="rv">まず、話してみませんか。</h2>
-    <p class="talk-lead rv">オンラインで30〜60分。相談は無料で、<b>売り込みはありません。</b><br>「何も決まっていない」「そもそも何を聞けばいいか分からない」<br>——その状態が、いちばん普通です。<br>平日夜も土日も対応できます（現場のシフト、分かっていますので）。</p>
+    <p class="talk-lead rv">オンラインで30分〜1時間。無料ですし、<b>売り込みもしません。</b><br>「何も決まってない」「そもそも何を聞けばいいか分からない」。<br>だいたいの方が、そこからスタートです。<br>平日の夜も土日も大丈夫。現場のシフト、分かっていますので。</p>
     <div class="topics rv">
       <span class="topic">「AIって、うちの現場で何ができるの？」</span>
       <span class="topic">「強み診断、受けたけど放置してる」</span>
@@ -363,7 +361,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
       <a class="channel" id="ch-mail" href="#talk">
         <svg class="icon" style="width:26px;height:26px" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
         <span class="cn">メールで相談</span>
-        <span class="cs">クリックでメーラーが開きます</span>
       </a>
       <a class="channel" href="https://x.com/okemonogatari" target="_blank" rel="noopener">
         <svg class="icon" style="width:24px;height:24px;fill:currentColor;stroke:none" viewBox="0 0 24 24"><path d="M18.9 2.5h3.3l-7.2 8.2L23.4 21.5h-6.6l-5.2-6.8-5.9 6.8H2.4l7.7-8.8L2 2.5h6.8l4.7 6.2zM17.7 19.5h1.8L7.4 4.4H5.5z"/></svg>
@@ -373,16 +370,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
       <a class="channel" href="https://www.facebook.com/profile.php?id=100092520273429" target="_blank" rel="noopener">
         <svg class="icon" style="width:24px;height:24px;fill:currentColor;stroke:none" viewBox="0 0 24 24"><path d="M16.5 3H14a4.6 4.6 0 0 0-4.6 4.6V10H6.6v3.6h2.8V22h3.7v-8.4h2.9l.5-3.6h-3.4V7.8c0-.8.4-1.2 1.3-1.2h2.1z"/></svg>
         <span class="cn">Facebook</span>
-        <span class="cs">メッセージを送る</span>
       </a>
     </div>
-    <p class="talk-note rv">いただいたご相談には、2〜3日以内にお返事します。</p>
+    <p class="talk-note rv">2〜3日のうちにお返事します。</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span>🍑 おけもん — AI導入伴走 × 自己理解コーチング</span>
+    <span>🍑 おけもん — 介護の現場から、AIと自己理解の仕事へ</span>
     <span class="f-links">
       <a href="okemon-care-ai.html">AI現場伴走室</a>
       <a href="https://okemonogatari-hash.github.io/okemon-strengths-home/" target="_blank" rel="noopener">ストレングス入門</a>
