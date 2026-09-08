@@ -11,3 +11,5 @@
 #result-title{text-wrap:balance}.play-board{scroll-margin-top:92px} .guide p{overflow-wrap:anywhere}
 
 @media(max-width:800px){.hero{padding-top:28px}.hero-lead{font-size:clamp(16px,4.5vw,19px)}}
+
+#result-title{white-space:pre-line;text-wrap:initial}
