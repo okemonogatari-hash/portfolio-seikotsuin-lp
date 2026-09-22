@@ -70,3 +70,5 @@ git worktree add --detach ../homepage-v1-preview homepage-v1-20260922
 - 日本語校正版 v11：homepage-world.html。本人指定のAntigravity CLIからGemini Proで全文校正し、6か所反映・全文再確認。タグ homepage-v11-japanese-20260922。変更案・採否・検証はassets/homepage-v11/。v10へは既存タグで戻せる。公開mainは変更なし。
 
 - 本文・写真の修正案 v12：homepage-world.html / okemon-care-ai.html。「自分が聴いていたい」から「支える人にも、ゆとりと笑顔を。」へ読み手視点に変更。ChatGPT生成写真3点、具体的な支援内容、写真と短い文章の交互配置。旧版homepage-world-v11.html/okemon-care-ai-v11.htmlと比較可能。タグhomepage-v12-reader-first-20260922。設計・原本・指示・Gemini再確認・QAはassets/homepage-v12/。公開mainはv8のまま。
+
+- 画像の使い回し修正 v13：重複team.webpを総合/伴走室の両方から除外。実務研修と下書き照合の専用画像を各1枚新規生成し、伴走室にはメモ→AI下書き→人の確認をHTMLで説明。本文場面画像4配置の重複なしを監査。タグhomepage-v13-distinct-scenes-20260922。原本/プロンプト/検証はassets/homepage-v13/。v12へは既存タグで戻れる。
