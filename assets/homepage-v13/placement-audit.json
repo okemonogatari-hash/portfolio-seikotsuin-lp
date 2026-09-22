@@ -1,0 +1,22 @@
+[
+  {
+    "page": "homepage-world.html",
+    "asset": "assets/homepage-v13/training.webp",
+    "sha256": "93d6256f3c8c7d1e53da5e5f6c2aaa46c0b1f5b4bcbb6ad5155115914023f482"
+  },
+  {
+    "page": "homepage-world.html",
+    "asset": "assets/homepage-v12/strengths.webp",
+    "sha256": "ff694854d77e6ba6a601cbf71a22ab92473884bfd06224d3ded2b756789874f0"
+  },
+  {
+    "page": "okemon-care-ai.html",
+    "asset": "assets/homepage-v13/draft-review.webp",
+    "sha256": "cb645bbcdf4949d89edc84fa24b2297c4ee3cf31b024cbb1575c64e88421259b"
+  },
+  {
+    "page": "okemon-care-ai.html",
+    "asset": "assets/homepage-v12/care.webp",
+    "sha256": "63c754e3aa2c435019cb17a91038105f5fea1c57164436e1ecd9efeae1b9b751"
+  }
+]
