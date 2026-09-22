@@ -40,3 +40,15 @@ git worktree add --detach ../homepage-v1-preview homepage-v1-20260922
 ## 写真・風景の参考調査（同日追記）
 
 本人の補足に合わせ、写真風画像・風景が効くX原投稿とInspoの実例を調査。`homepage-photo-references.html` に出典・画像・TTPする構図を保存。v1/v2のタグは維持し、追加の画像生成や本番更新は行っていない。
+
+## v3：写真の3パターン（2026-09-22）
+
+本人がまとさんの方向を選び、複数パターン制作を依頼。比較入口は `homepage-lab.html`。過去のv1/v2にも切り替えられる。
+
+| 案 | ファイル | 見せ方 |
+|---|---|---|
+| A / Studio | `homepage-studio.html` | 中央見出し、小さなボタン、本人写真をもとにしたAI素材との合成。まとさんの構図が起点。 |
+| B / Landscape | `homepage-landscape.html` | 森のアトリエを写真風に描き、画面全体に。 |
+| C / Editorial | `homepage-editorial.html` | 自然光の机の写真と大きな文字を左右に分ける。 |
+
+3案一式のタグ：`homepage-v3-patterns-20260922`。画像原本・圧縮画像・生成指示・設計・QAは `assets/homepage-experiments/`。本番mainはこの作業の対象外。
