@@ -174,7 +174,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 .f-links{display:flex;gap:18px;flex-wrap:wrap}
 .f-links a:hover{color:var(--cream)}
 </style>
-<link rel="stylesheet" href="assets/homepage-v2/refresh.css">
 </head>
 <body>
 
@@ -191,18 +190,29 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 </header>
 
 <!-- 1. HERO -->
-<main>
-<section class="hero" id="top" aria-labelledby="hero-title">
-  <img class="hero-art" src="assets/homepage-v2/hero.webp" width="1536" height="1024" fetchpriority="high" alt="明るい森のアトリエで、カピバラのおけもんとインコがパソコンとノートを広げているイラスト">
-  <div class="wrap hero-grid"><div class="hero-copy">
-    <p class="hero-eyebrow">AIと、強みと。おけもんの小さな実験室。</p>
-    <h1 id="hero-title"><span>「やってみたい」を、</span><span>いっしょに。</span></h1>
-    <p class="hero-sub">自分の強みを知ることも、<br>AIでできることを増やすことも。<br>おしゃべりしながら、ひとつずつ形にしていきます。</p>
-    <div class="cta-row"><a class="btn btn-fill" href="#gates">できることを見る <span aria-hidden="true">↗</span></a><a class="hero-more" href="#about">おけもんって、どんな人？</a></div>
-    <p class="hero-assure">まだ、やりたいことが決まっていなくても大丈夫。</p>
-  </div></div>
-  <p class="hero-note">ひとりで考えるより、いっしょに試してみよう。</p>
-</section>
+<div class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>
+        <span class="w" style="animation-delay:.1s">介護の現場に、16年いました。</span><br>
+        <span class="w" style="animation-delay:.35s">いまは<span class="u">AIの導入</span>と、</span><br>
+        <span class="w" style="animation-delay:.6s"><span class="u">強みの読み解き</span>を<br class="mb">手伝っています。</span>
+      </h1>
+      <p class="hero-sub">施設・事業所さん向けのAI導入と、個人の方向けの強みの読み解き。やっているのはこの2つです。むずかしい言葉は使いません。まず、困っていることを聞かせてください。</p>
+      <div class="cta-row">
+        <a class="btn btn-fill" href="#talk">まず、話してみる
+          <svg class="icon" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.9-.9L3 21l1.9-4.9A8.4 8.4 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+        </a>
+        <a class="btn btn-line" href="#gates">2つの入口を見る</a>
+      </div>
+      <p class="hero-assure">相談は無料、オンラインで30分〜1時間くらい。<b>売り込みはしません。</b><br>何も決まっていない状態のままで、どうぞ。</p>
+    </div>
+    <div class="hero-photo">
+      <img src="assets/okemon-hero.jpg" alt="おけもん — 介護・福祉現場16年からAI導入伴走・自己理解コーチングへ">
+      <div class="hanko"><span>現場<br>十六年</span></div>
+    </div>
+  </div>
+</div>
 
 <!-- 2. FACTS -->
 <div class="facts">
@@ -218,8 +228,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 <section class="gates" id="gates">
   <div class="wrap">
     <span class="kicker rv">Two Doors</span>
-    <h2 class="rv">いま、気になっているのは<br>どちらですか。</h2>
-    <p class="lead rv">仕事にAIを取り入れたい。自分の強みをもっと知りたい。<br>気になる入口から、のぞいてみてください。</p>
+    <h2 class="rv">入口はふたつ。<br>どちらから入ってもらっても大丈夫です。</h2>
+    <p class="lead rv">仕事として本気でやっているのは、この2つ。それぞれ別にサイトを作ってあるので、気になるほうを覗いてみてください。</p>
 
     <div class="gate-grid">
       <!-- Gate A -->
@@ -274,8 +284,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
       <span class="kicker">About Me</span>
       <h2>AIの話より先に、<br>現場の話を聞きます。</h2>
       <p class="lead">おけもん — ワタシトリセツ 代表</p>
-      <img class="profile-portrait" src="assets/okemon-hero.jpg" width="300" height="330" loading="lazy" alt="パソコンの前に座るおけもん本人">
-      <p class="portrait-caption">介護・障害福祉の現場から、AIと自己理解の仕事へ。</p>
     </div>
     <div class="about-body rv">
       <p class="strong-line">はじめまして。介護・障害福祉の現場に16年いた、おけもんです。</p>
@@ -368,7 +376,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
   </div>
 </section>
 
-</main>
 <footer>
   <div class="wrap">
     <span>🍑 おけもん — 介護の現場から、AIと自己理解の仕事へ</span>
