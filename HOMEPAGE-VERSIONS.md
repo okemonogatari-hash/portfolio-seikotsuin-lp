@@ -60,3 +60,5 @@ git worktree add --detach ../homepage-v1-preview homepage-v1-20260922
 - 比較画面`homepage-lab.html`にDを追加。A/Dはローカルの同一オリジンで表示し、「ページだけ開く」は各公開URLへ。
 - 公開作業は別worktree `release/` / branch `codex/homepage-publish-20260922`。v4 commit a3cd0c3、v5 commit 77efa53。公開HTML・画像とローカルの一致、公開ブラウザー表示を確認済み。
 - 版を戻す手順はmainの`HOMEPAGE-RELEASES.md`。既存v1/v2/v3タグは不変。
+
+- Aのv8：homepage-v8-atmosphere-20260922 / 公開commit b11f21e。人物を囲む写真・キャラ・ガラス・紙・風の軌道を重ねた版。比較用homepage-public.htmlも同内容。
