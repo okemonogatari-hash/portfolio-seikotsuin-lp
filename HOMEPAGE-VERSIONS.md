@@ -36,3 +36,7 @@ git worktree add --detach ../homepage-v1-preview homepage-v1-20260922
 - `homepage-before-20260922.html`：当日の公開HTMLを保持した比較用。
 
 採用した工程：森のRefero/DESIGN.mdメモを踏まえ、先に参考の色・余白・情景の役割を整理。キャラクター画像を生成した後、文字とリンクをHTMLで組み、スマホ・PCで確認。参考： https://styles.refero.design/ 、 https://toirostudio.com/ 、 https://www.vill.tenkawa.nara.jp/tourism/ 。特定サイトのコードや画像は流用していない。
+
+## 写真・風景の参考調査（同日追記）
+
+本人の補足に合わせ、写真風画像・風景が効くX原投稿とInspoの実例を調査。`homepage-photo-references.html` に出典・画像・TTPする構図を保存。v1/v2のタグは維持し、追加の画像生成や本番更新は行っていない。
