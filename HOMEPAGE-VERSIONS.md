@@ -62,3 +62,5 @@ git worktree add --detach ../homepage-v1-preview homepage-v1-20260922
 - 版を戻す手順はmainの`HOMEPAGE-RELEASES.md`。既存v1/v2/v3タグは不変。
 
 - Aのv8：homepage-v8-atmosphere-20260922 / 公開commit b11f21e。人物を囲む写真・キャラ・ガラス・紙・風の軌道を重ねた版。比較用homepage-public.htmlも同内容。
+
+- 質感・構図の修正案 v9：homepage-craft.html / 比較入口 homepage-quality-study.html。セージ・アイボリー・真鍮でまとめ、小さな陶器のキャラをノートとコンパスに配置。homepage-v9-craft-study-20260922として保存。本人の採用未確認、公開トップのv8は変更なし。

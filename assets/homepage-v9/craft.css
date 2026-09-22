@@ -1,0 +1,39 @@
+/* One visual language: objects share a studio, light, palette and scale hierarchy. */
+.craft{--accent:#527365}
+.craft .hero h1{font-family:var(--sans);font-size:clamp(32px,3.65vw,46px);font-weight:500;letter-spacing:-.04em;line-height:1.6}
+.craft .hero h1 em{font-weight:500}
+.craft .hero .eyebrow{font-size:10px;letter-spacing:.12em;color:#7c847c;margin-bottom:15px}
+.craft .hero-sub{font-size:12px;color:#768078;line-height:2.15;margin:20px 18px 20px}
+.craft .hero-sub span{display:inline-block}
+.craft .hero .button{min-height:42px;font-size:11px;background:#31473d;border-color:#31473d;padding:8px 19px}
+.craft .hero{padding-top:30px}
+.studio-visual.craft-scene{width:min(1040px,100%);max-width:1040px;max-height:none;margin:12px auto 0;overflow:hidden;isolation:isolate}
+.craft-canvas{position:relative;width:100%;aspect-ratio:2.1}
+.craft-scene .craft-material{position:absolute;width:100%;max-width:none;left:0;top:-7%;height:auto;will-change:transform}
+.craft-left{clip-path:inset(0 50% 0 0);animation:craft-left 9s ease-in-out -3s infinite;transform-origin:26% 36%}
+.craft-right{clip-path:inset(0 0 0 50%);animation:craft-right 11s ease-in-out -7s infinite;transform-origin:78% 36%}
+.craft-scene .craft-person{position:absolute;width:77%;max-width:none;left:11.5%;top:2%;z-index:2}
+@keyframes craft-left{0%,100%{transform:translate3d(-3px,12px,0) rotate(-1.4deg)}50%{transform:translate3d(7px,-13px,0) rotate(1.6deg)}}
+@keyframes craft-right{0%,100%{transform:translate3d(5px,-12px,0) rotate(1.5deg)}50%{transform:translate3d(-7px,14px,0) rotate(-1.4deg)}}
+.craft .motion-controls{position:relative;right:auto;bottom:auto;display:flex;justify-content:center;margin:0 auto 14px}
+.craft .motion-toggle{background:transparent;color:#7c887c;border-color:#dde1d6}
+.craft-scene.motion-paused .motion-layer,.craft-scene.motion-offscreen .motion-layer{animation-play-state:paused}
+@media(min-width:681px) and (max-height:750px){.craft .hero{padding-top:18px}.craft .hero h1{font-size:33px}.craft .hero-sub{margin:10px 18px 14px}.studio-visual.craft-scene{width:min(880px,100%);margin-top:8px}.craft-canvas{aspect-ratio:2.25}}
+@media(max-width:680px){.craft .hero{padding-top:30px}.craft .hero h1{font-size:clamp(25px,7.8vw,34px);line-height:1.65}.craft .hero .eyebrow{font-size:9px;margin-bottom:15px}.craft .hero-sub{font-size:11px;line-height:2.1;margin:18px 20px}.studio-visual.craft-scene{width:116%;margin-left:-8%;margin-top:17px}.craft-canvas{aspect-ratio:1.7}.craft-scene .craft-material{top:6%}.craft-scene .craft-person{top:12%;width:88%;left:6%}.craft-left{animation-name:craft-left-mobile}.craft-right{animation-name:craft-right-mobile}.craft .motion-controls{margin-top:0;margin-bottom:10px;padding:0}}
+@keyframes craft-left-mobile{0%,100%{transform:translate3d(0,7px,0) rotate(-1.6deg)}50%{transform:translate3d(5px,-10px,0) rotate(1.2deg)}}
+@keyframes craft-right-mobile{0%,100%{transform:translate3d(0,-9px,0) rotate(1.5deg)}50%{transform:translate3d(-4px,10px,0) rotate(-1.4deg)}}
+@media(prefers-reduced-motion:reduce){.craft-scene .motion-layer{animation:none!important;will-change:auto}.craft .motion-controls{display:none}}
+/* Match the generated composition's real bounds without stretching any object. */
+.craft-canvas{aspect-ratio:1.9}
+.craft-scene .craft-material{width:86%;left:7%;top:-1%}
+.craft-scene .craft-person{width:74%;left:13%;top:7%}
+@media(min-width:681px) and (max-height:750px){.craft-canvas{aspect-ratio:2.1}.craft-scene .craft-material{width:82%;left:9%;top:-5%}.craft-scene .craft-person{width:72%;left:14%;top:4%}}
+@media(max-width:680px){.craft-canvas{aspect-ratio:1.5}.craft-scene .craft-material{width:100%;left:0;top:7%}.craft-scene .craft-person{width:89%;left:5.5%;top:20%}}
+/* Clear the portrait's paper edge where the objects sit behind its shoulders. */
+.craft-scene .craft-person{mix-blend-mode:multiply}
+.craft-scene .craft-left{left:3%}
+.craft-scene .craft-right{left:10%}
+@media(min-width:681px) and (max-height:750px){.craft-canvas{aspect-ratio:2}.craft-scene .craft-left{left:4%}.craft-scene .craft-right{left:12%}.craft-scene .craft-person{width:69%;left:15.5%;top:4%}}
+@media(max-width:680px){.craft-scene .craft-left{left:-3%}.craft-scene .craft-right{left:3%}.craft-scene .craft-person{width:83%;left:8.5%;top:20%}}
+@media(min-width:681px) and (max-height:750px){.craft .hero h1{font-size:30px;line-height:1.5}.craft .hero .eyebrow{margin-bottom:8px}.craft .hero-sub{margin:9px 18px 12px}.studio-visual.craft-scene{width:min(820px,100%);margin-top:0}}
+@media(max-width:680px){.studio-visual.craft-scene{width:100%;margin-left:0}.craft-canvas{aspect-ratio:1.35}.craft-scene .craft-material{width:94%;top:5%}.craft-scene .craft-left{left:1%}.craft-scene .craft-right{left:5%}.craft-scene .craft-person{top:18%}}
