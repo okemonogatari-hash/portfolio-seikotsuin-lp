@@ -1,0 +1,13 @@
+{
+  "method": "Antigravity CLI agy",
+  "requested_model": "gemini-3.1-pro",
+  "effort": "high",
+  "status": "SUCCESS",
+  "scope": [
+    "homepage-world.html",
+    "okemon-care-ai.html"
+  ],
+  "verdict": "ready",
+  "issues": [],
+  "limitation": "文章の追加修正指摘なし。本人の美的採用・効果・公開の確認を意味しない。"
+}
