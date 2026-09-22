@@ -15,3 +15,5 @@
 公開元はGitHub Pages / main / root。反映後はPagesビルド結果だけでなく、公開URLと配信画像を匿名アクセスで読み戻す。
 
 - 浮遊モーション版：homepage-v6-floating-20260922。トップの人物は固定、左右の小物が異なる周期で浮遊。停止・再開ボタン付き。静止版へ戻す場合はhomepage-v4-public-20260922からindex.htmlとassets/homepage-v4/styles.css・script.jsを合わせて戻す。海景版はそのまま。
+
+- おけもんの相棒版：homepage-v7-companions-20260922。カピバラ＋PC、インコ＋コンパスの透過素材へ変更。v6へ戻す場合はv6タグからindex.htmlとassets/homepage-v4/styles.cssを合わせて戻す。新しい画像・生成指示はassets/homepage-v7/。
