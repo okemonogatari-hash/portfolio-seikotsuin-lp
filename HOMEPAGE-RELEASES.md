@@ -13,3 +13,5 @@
 トップだけ初版へ戻す場合：`git restore --source=homepage-v1-20260922 -- index.html` を専用ブランチで実行し、リンク・画像・画面を確認して新しいcommitとしてmainへ反映する。v4へ戻す場合はsourceをhomepage-v4-public-20260922へ変更する。force-pushや履歴削除は不要。タグの内容を変更しない。
 
 公開元はGitHub Pages / main / root。反映後はPagesビルド結果だけでなく、公開URLと配信画像を匿名アクセスで読み戻す。
+
+- 浮遊モーション版：homepage-v6-floating-20260922。トップの人物は固定、左右の小物が異なる周期で浮遊。停止・再開ボタン付き。静止版へ戻す場合はhomepage-v4-public-20260922からindex.htmlとassets/homepage-v4/styles.css・script.jsを合わせて戻す。海景版はそのまま。
