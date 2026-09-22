@@ -52,3 +52,11 @@ git worktree add --detach ../homepage-v1-preview homepage-v1-20260922
 | C / Editorial | `homepage-editorial.html` | 自然光の机の写真と大きな文字を左右に分ける。 |
 
 3案一式のタグ：`homepage-v3-patterns-20260922`。画像原本・圧縮画像・生成指示・設計・QAは `assets/homepage-experiments/`。本番mainはこの作業の対象外。
+
+## 2026-09-22 公開版と海景版
+
+- Aの公開版：`homepage-public.html`（比較用コピー）。本番はmainの`index.html`、タグ`homepage-v4-public-20260922`。
+- Dの追加版：`homepage-coastal.html`、タグ`homepage-v5-coastal-20260922`。わどさん指定記事の写真・明朝体・余白を参考に、新規生成2画像で構成。
+- 比較画面`homepage-lab.html`にDを追加。A/Dはローカルの同一オリジンで表示し、「ページだけ開く」は各公開URLへ。
+- 公開作業は別worktree `release/` / branch `codex/homepage-publish-20260922`。v4 commit a3cd0c3、v5 commit 77efa53。公開HTML・画像とローカルの一致、公開ブラウザー表示を確認済み。
+- 版を戻す手順はmainの`HOMEPAGE-RELEASES.md`。既存v1/v2/v3タグは不変。
