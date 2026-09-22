@@ -17,3 +17,5 @@
 - 浮遊モーション版：homepage-v6-floating-20260922。トップの人物は固定、左右の小物が異なる周期で浮遊。停止・再開ボタン付き。静止版へ戻す場合はhomepage-v4-public-20260922からindex.htmlとassets/homepage-v4/styles.css・script.jsを合わせて戻す。海景版はそのまま。
 
 - おけもんの相棒版：homepage-v7-companions-20260922。カピバラ＋PC、インコ＋コンパスの透過素材へ変更。v6へ戻す場合はv6タグからindex.htmlとassets/homepage-v4/styles.cssを合わせて戻す。新しい画像・生成指示はassets/homepage-v7/。
+
+- 素材と風の流れを重ねた版：homepage-v8-atmosphere-20260922。写真窓・ガラスの芽・紙飛行機・メモ・光の軌道を加え、14要素を異なる周期で動かす。v7に戻す場合はv7タグからindex.htmlを戻す（v4共通CSS/JSはv8で変更していない）。新しい原本・生成指示・QAはassets/homepage-v8/。履歴を削除せず、新しいcommitで反映する。
