@@ -66,3 +66,5 @@ git worktree add --detach ../homepage-v1-preview homepage-v1-20260922
 - 質感・構図の修正案 v9：homepage-craft.html / 比較入口 homepage-quality-study.html。セージ・アイボリー・真鍮でまとめ、小さな陶器のキャラをノートとコンパスに配置。homepage-v9-craft-study-20260922として保存。本人の採用未確認、公開トップのv8は変更なし。
 
 - 個別の浮遊・奥行き修正案 v10：homepage-world.html / 比較入口 homepage-world-study.html。v9の左右2群を分け、7つの新規透過素材と既存の芽を個別配置。大小・重なり・浮遊軌道・奥行き別マウス追従を設計。タグ homepage-v10-world-study-20260922。設計・生成指示・原本・QAはassets/homepage-v10/。公開トップはv8のまま。
+
+- 日本語校正版 v11：homepage-world.html。本人指定のAntigravity CLIからGemini Proで全文校正し、6か所反映・全文再確認。タグ homepage-v11-japanese-20260922。変更案・採否・検証はassets/homepage-v11/。v10へは既存タグで戻せる。公開mainは変更なし。
