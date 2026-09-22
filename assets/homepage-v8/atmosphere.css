@@ -1,0 +1,64 @@
+/* v8: a breeze through Okemon's little studio. Every moving part shares pause controls. */
+.studio-visual.atmosphere-scene{width:min(1080px,100%);max-width:1080px;max-height:none;margin:24px auto 0;overflow:hidden}
+.atmosphere-scene .personal-canvas{aspect-ratio:2.3;perspective:1100px}
+.atmosphere-scene .personal-portrait{position:absolute;width:76%;max-width:none;left:12%;top:-1%;z-index:3}
+.scene-air,.atmosphere-scene .personal-companions{position:absolute;inset:0}
+.atmosphere-scene .personal-companions{z-index:4}
+.wind-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.wind-track{stroke:url(#wind-color);stroke-width:1.15}
+.wind-track.fine{stroke-width:.7;opacity:.6}
+.wind-travel{stroke:#85b7a2;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:40 960;animation:wind-stream 13s linear -3s infinite;opacity:.7}
+.wind-travel.second{stroke:#c6986e;stroke-width:1.7;stroke-dasharray:24 976;animation-duration:18s;animation-delay:-11s}
+@keyframes wind-stream{to{stroke-dashoffset:-1000}}
+.atmosphere-scene .personal-capy{width:25%;left:12.5%;top:24%;animation:capy-drift 7.8s ease-in-out -2.2s infinite;filter:drop-shadow(0 18px 15px #56735c10)}
+.atmosphere-scene .personal-bird{width:23%;right:11.5%;top:5%;animation:bird-swoop 8.8s ease-in-out -4s infinite;filter:drop-shadow(0 18px 13px #546c6210)}
+@keyframes capy-drift{0%,100%{transform:translate3d(-8px,14px,0) rotate(-5deg)}25%{transform:translate3d(7px,-9px,0) rotate(-1deg)}50%{transform:translate3d(14px,-25px,0) rotate(5deg)}75%{transform:translate3d(-3px,-5px,0) rotate(1deg)}}
+@keyframes bird-swoop{0%,100%{transform:translate3d(7px,-17px,0) rotate(5deg)}30%{transform:translate3d(-15px,9px,0) rotate(-6deg)}65%{transform:translate3d(4px,24px,0) rotate(-1deg)}}
+.float-window{position:absolute;left:3.5%;top:7%;width:17%;padding:7px 7px 10px;border:1px solid #fff;border-radius:13px;background:#ffffffb8;box-shadow:1px 8px 0 #d2d7cb30,0 16px 30px #3c554816;transform:rotate(-11deg);animation:window-drift 12s ease-in-out -5s infinite}
+.window-photo{overflow:hidden;aspect-ratio:1.5;border-radius:8px}.window-photo img{height:100%;width:100%;object-fit:cover;object-position:62% 50%}
+.float-window span{display:block;font-size:clamp(6px,.9vw,10px);letter-spacing:.14em;text-align:left;color:#677e74;padding:7px 3px 0}
+@keyframes window-drift{0%,100%{transform:translate3d(0,8px,0) rotate(-12deg) rotateY(9deg)}50%{transform:translate3d(14px,-16px,0) rotate(-3deg) rotateY(-5deg)}}
+.atmosphere-scene .glass-sprout{position:absolute;width:14%;right:0;top:3%;animation:sprout-drift 10.3s ease-in-out -1s infinite;filter:drop-shadow(0 12px 10px #50855c0b)}
+@keyframes sprout-drift{0%,100%{transform:translate3d(-8px,5px,0) rotate(9deg)}50%{transform:translate3d(-17px,30px,0) rotate(-8deg)}}
+.idea-note{position:absolute;right:7%;top:59%;width:20%;padding:16px 18px 18px;border-radius:4px 4px 24px 4px;text-align:left;background:linear-gradient(140deg,#fffdfa 40%,#f1ecda);border:1px solid #e2dac366;box-shadow:3px 5px 0 #eee8d6,0 18px 26px #5f493414;animation:note-drift 10.8s ease-in-out -2s infinite}
+.note-eyebrow{font-size:9px;color:#8c998a;letter-spacing:.13em}.idea-note i{display:block;width:64%;height:1px;background:#d0d8c9;margin-top:9px}.idea-note i:nth-of-type(2){width:45%;margin-bottom:14px}.note-message{font-family:var(--serif);font-size:clamp(8px,1.2vw,13px);white-space:nowrap;color:#526351}.idea-note b{position:absolute;right:10px;top:19px;font-size:30px;color:#e4b759;font-weight:400;line-height:1}
+@keyframes note-drift{0%,100%{transform:translate3d(0,9px,0) rotate(10deg) rotateY(-8deg)}50%{transform:translate3d(-17px,-16px,0) rotate(-3deg) rotateY(6deg)}}
+.paper-plane{position:absolute;left:4%;top:65%;width:12%;filter:drop-shadow(0 10px 6px #546c6818);animation:plane-flight 11.5s ease-in-out -4s infinite;transform-origin:center}
+@keyframes plane-flight{0%,100%{transform:translate3d(-4px,13px,0) rotate(-15deg)}30%{transform:translate3d(26px,-17px,0) rotate(5deg)}65%{transform:translate3d(44px,0,0) rotate(16deg)}}
+.glass-orb{position:absolute;border-radius:50%;border:1px solid #ffffffd9;box-shadow:inset -6px -8px 10px #518d7e1a,inset 4px 5px 9px #fff8,0 9px 18px #6482730d;animation:orb-drift 9s ease-in-out infinite}
+.orb-mint{width:5.5%;aspect-ratio:1;left:29%;top:6%;background:radial-gradient(circle at 28% 24%,#fff 0%,#ffffffc2 10%,#d6eee466 30%,#a7cfbb66 75%,#739f8766);animation-delay:-3s}
+.orb-amber{width:4%;aspect-ratio:1;right:4%;top:48%;background:radial-gradient(circle at 28% 24%,#fff 0%,#ffffffd9 10%,#efc68144 35%,#dca06866 80%);animation-duration:13s}
+@keyframes orb-drift{0%,100%{transform:translate3d(-4px,10px,0) scale(.95)}50%{transform:translate3d(12px,-17px,0) scale(1.07)}}
+.little-seed{position:absolute;width:9px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff4cd,#d3a465);box-shadow:0 3px 5px #a77c3620;animation:seed-drift 8s ease-in-out infinite}
+.seed-one{left:8%;top:50%;animation-delay:-1s}.seed-two{left:26%;top:86%;width:6px;animation-duration:11s;animation-delay:-4s}.seed-three{right:26%;top:7%;width:7px;animation-duration:9s;animation-delay:-6s}.seed-four{right:1.5%;top:77%;width:6px;animation-duration:12s;animation-delay:-8s;background:#91b9a6}
+@keyframes seed-drift{0%,100%{transform:translate3d(0,8px,0)}50%{transform:translate3d(10px,-12px,0)}}
+.atmosphere-scene.motion-paused *,.atmosphere-scene.motion-offscreen *{animation-play-state:paused!important}
+.studio .motion-controls{position:relative;right:auto;bottom:auto;display:flex;justify-content:center;margin:0 auto 13px;z-index:4}.motion-toggle{background:#fbf9f5}
+@media(min-width:681px) and (max-height:750px){.studio-visual.atmosphere-scene{width:min(900px,100%);max-height:none;margin-top:12px}.atmosphere-scene .personal-canvas{aspect-ratio:2.45}.studio .motion-controls{margin-top:-5px;margin-bottom:8px}.idea-note{padding:10px 14px}.idea-note i{margin-top:6px}.idea-note i:nth-of-type(2){margin-bottom:6px}}
+@media(max-width:680px){
+ .studio-visual.atmosphere-scene{width:100%;margin:22px 0 0;overflow:hidden}
+ .atmosphere-scene .personal-canvas{aspect-ratio:1.32}
+ .atmosphere-scene .personal-portrait{width:124%;left:-12%;top:10%}
+ .atmosphere-scene .personal-capy{width:36%;left:0;top:29%;animation-name:capy-mobile}
+ .atmosphere-scene .personal-bird{width:33%;right:0;top:16%;animation-name:bird-mobile}
+ .float-window{width:25%;left:5%;top:6%;padding:4px 4px 6px;border-radius:8px;animation-name:window-mobile}.window-photo{border-radius:5px}.float-window span{font-size:6px;padding:5px 1px 0;letter-spacing:.06em}
+ .atmosphere-scene .glass-sprout{width:20%;right:8%;top:0;animation-name:sprout-mobile}
+ .idea-note{width:29%;right:5%;top:65%;padding:9px 9px 10px;border-radius:3px 3px 16px 3px;animation-name:note-mobile}.note-eyebrow{font-size:6px}.note-message{font-size:8px}.idea-note i{margin-top:6px}.idea-note i:nth-of-type(2){margin-bottom:8px}.idea-note b{font-size:19px;right:8px;top:18px}
+ .paper-plane{left:4%;top:74%;width:16%;animation-name:plane-mobile}
+ .orb-mint{width:7%;left:30%;top:3%}.orb-amber{width:5%;right:3%;top:55%}
+ .seed-two{left:23%;top:90%}.seed-three{right:28%;top:20%}.seed-four{right:7%;top:91%}
+ .wind-lines{height:95%;top:4%}.wind-travel{stroke-width:2}
+ .studio .motion-controls{margin:2px auto 10px;padding:0}
+}
+@keyframes capy-mobile{0%,100%{transform:translate3d(-2px,10px,0) rotate(-6deg)}50%{transform:translate3d(9px,-17px,0) rotate(5deg)}}
+@keyframes bird-mobile{0%,100%{transform:translate3d(1px,-12px,0) rotate(6deg)}50%{transform:translate3d(-10px,14px,0) rotate(-7deg)}}
+@keyframes window-mobile{0%,100%{transform:translate3d(0,3px,0) rotate(-10deg)}50%{transform:translate3d(6px,-8px,0) rotate(0)}}
+@keyframes sprout-mobile{0%,100%{transform:translate3d(0,1px,0) rotate(9deg)}50%{transform:translate3d(-5px,12px,0) rotate(-8deg)}}
+@keyframes note-mobile{0%,100%{transform:translate3d(0,7px,0) rotate(8deg)}50%{transform:translate3d(-4px,-9px,0) rotate(-5deg)}}
+@keyframes plane-mobile{0%,100%{transform:translate3d(0,4px,0) rotate(-10deg)}50%{transform:translate3d(15px,-11px,0) rotate(12deg)}}
+@media(prefers-reduced-motion:reduce){.atmosphere-scene *{animation:none!important;will-change:auto!important}.wind-travel{display:none}}
+/* Give the paper note its own line boxes, including at narrow widths. */
+.note-eyebrow,.note-message{display:block;line-height:1.6}
+@media(max-width:680px){.idea-note{top:63%}.atmosphere-scene .personal-bird{right:3%;top:23%}.atmosphere-scene .glass-sprout{right:2%;top:1%}.orb-mint{top:9%}.note-message{font-size:clamp(6.5px,2.05vw,8px)}}
+
+.studio .hero-sub span{display:inline-block}
