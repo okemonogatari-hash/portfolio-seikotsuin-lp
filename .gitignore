@@ -6,3 +6,8 @@ scripts/zoom_transcript_*.py
 /irodori_zoom_archive/
 *.pyc
 .DS_Store
+# IRODORI-specific automation and private calendar snapshot
+/data/calendar_asarei.json
+/scripts/generate_dashboard.py
+/scripts/post_brief.py
+/scripts/zoom_transcript_local_save.py
