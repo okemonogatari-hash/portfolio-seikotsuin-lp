@@ -3,5 +3,6 @@
 data/
 scripts/__pycache__/
 scripts/zoom_transcript_*.py
+/irodori_zoom_archive/
 *.pyc
 .DS_Store
