@@ -97,3 +97,16 @@
 .built-name h3,.field-item h3,.field-gallery h3,.section h2{word-break:auto-phrase}
 @media(max-width:680px){.field-item .field-num{font-size:34px}}
 .field-item .field-num{white-space:nowrap}
+
+/* v2 (2026-10-08): Used by / link English / prototype badge */
+.built-used{font-size:13px;line-height:1.85;color:var(--ink);margin:0 0 14px;padding-left:12px;border-left:2px solid #c9d6c9}
+.built-used b{font-weight:600;color:#3f5b4b}
+.built-body .text-link .link-en{font-size:13px;color:var(--muted);font-weight:400}
+.built-stage.trial{background:#f6ece0;color:#6a4520}
+.built-note span[lang=en]{display:block;margin-top:4px}
+.built-body .text-link{gap:20px;max-width:100%}
+.built-body .text-link .link-label{min-width:0}
+.built-stage.trial{flex-wrap:wrap;row-gap:0}
+.built-stage .stage-ja{white-space:nowrap}
+@media(max-width:680px){.built-stage.trial{border-radius:14px}.built-stage.trial span[lang=en]{flex-basis:100%;padding-left:15px}}
+@media(max-width:360px){.talk h2{font-size:22px}}
