@@ -1,0 +1,99 @@
+/* 2026-10-08 Claude for Startups: who / what / Claude's role / who uses it, on top of v8. Light only. */
+:root{--warm:#f4f0e7;--mint-soft:#edf2ec;--pill:#e7efe7;--pill-ink:#3f5b4b}
+.en-strip{border-bottom:1px solid var(--line);background:var(--paper)}
+.en-strip p{width:min(860px,calc(100% - 40px));margin:0 auto;padding:16px 0 18px;text-align:center;font-size:13px;line-height:1.85;color:var(--muted)}
+.en-strip b{font-weight:600;color:var(--ink);letter-spacing:.04em;margin-right:6px}
+.en-strip a{color:var(--ink);border-bottom:1px solid currentColor;white-space:nowrap}
+.en-strip a:hover{color:var(--accent)}
+.en-lead{font-size:13px;line-height:1.85;color:var(--muted);margin-top:14px;padding-left:12px;border-left:2px solid #c9d6c9}
+.section-intro .en-lead{margin-top:16px}
+
+/* Built with Claude */
+.built-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.built-item{display:grid;grid-template-columns:100px minmax(0,1fr) minmax(0,1.25fr);column-gap:38px;padding:44px 0;border-bottom:1px solid var(--line)}
+.built-no{font:43px/1.3 var(--serif);color:#6b7967}
+.built-stage{display:inline-flex;align-items:center;gap:8px;font-size:11px;line-height:1.6;color:var(--pill-ink);background:var(--pill);border-radius:30px;padding:3px 12px 3px 10px}
+.built-stage:before{content:"";width:7px;height:7px;border-radius:50%;background:#5f9677;box-shadow:0 0 0 3px #5f967726}
+.built-stage.trial:before{background:#c08a4f;box-shadow:0 0 0 3px #c08a4f26}
+.built-name h3{font-size:24px;line-height:1.6;margin:14px 0 4px}
+.built-en{font-size:12px;letter-spacing:.04em;color:var(--muted)}
+.built-body{font-size:14px;color:var(--muted)}
+.built-body>p{margin-bottom:16px}
+.built-facts{margin:0 0 16px;border-top:1px dashed #d3d6cb}
+.built-facts div{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:14px;padding:10px 0;border-bottom:1px dashed #d3d6cb}
+.built-facts dt{font-size:12px;color:var(--accent);font-weight:500}
+.built-facts dd{margin:0;font-size:13px;color:var(--ink);line-height:1.8}
+.built-body .en-lead{margin:0 0 6px}
+.built-body .text-link{color:var(--ink)}
+.built-note{font-size:12px;color:var(--muted);padding-top:12px}
+
+/* In the field */
+.field{background:var(--warm)}
+.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px}
+.field-item{border-top:1px solid #d9d6c8;padding:34px 0 36px}
+.field-num{font:500 40px/1.3 var(--serif);color:var(--accent);letter-spacing:.02em}
+.field-num small{font-size:16px;margin-left:4px;color:var(--ink)}
+.field-item h3{font-size:19px;line-height:1.7;margin:10px 0 10px}
+.field-item p{font-size:14px;color:var(--muted)}
+.field-item .en-lead{margin-top:12px}
+.field-gallery{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:center;margin-top:18px;padding:26px 30px;background:#fbf9f5cc;border:1px solid #e2ddcf;border-radius:4px}
+.field-gallery h3{font-size:18px;line-height:1.7;margin-bottom:6px}
+.field-gallery p{font-size:13px;color:var(--muted)}
+.field-gallery .text-link{color:var(--ink);white-space:nowrap}
+
+/* Company + English summary */
+.company .section-head{margin-bottom:38px}
+.company-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:start}
+.company-table{margin:0;border-top:1px solid var(--line)}
+.company-table div{display:grid;grid-template-columns:9.5em minmax(0,1fr);gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
+.company-table dt{font-size:12px;color:var(--muted);line-height:1.7}
+.company-table dt span{display:block;font-size:11px;letter-spacing:.04em}
+.company-table dd{margin:0;font-size:14px;line-height:1.85;color:var(--ink)}
+.company-table dd span[lang=en]{display:block;font-size:12px;color:var(--muted)}
+.company-table .pending{font-size:12px;color:var(--accent)}
+.company-table a{border-bottom:1px solid currentColor}
+.en-summary{background:var(--mint-soft);border:1px solid #d5e0d5;border-radius:4px;padding:34px 34px 30px}
+.en-summary .eyebrow{margin-bottom:10px}
+.en-summary h3{font-family:var(--serif);font-size:22px;line-height:1.5;margin-bottom:16px}
+.en-summary p{font-size:14px;line-height:1.85;color:#3e4a42;margin-bottom:14px}
+.en-summary ul{margin:0 0 14px;padding-left:1.2em;font-size:14px;line-height:1.8;color:#3e4a42}
+.en-summary li{margin-bottom:6px}
+.en-summary a{color:var(--ink);border-bottom:1px solid currentColor}
+
+@media(max-width:950px){
+  .built-item{grid-template-columns:55px minmax(0,1fr);column-gap:20px}
+  .built-body{grid-column:2;margin-top:20px}
+  .field-grid{gap:0 32px}
+  .company-grid{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:680px){
+  .en-strip p{font-size:13px;text-align:left;padding:14px 0 16px}
+  .built-item{grid-template-columns:34px minmax(0,1fr);column-gap:13px;padding:32px 0}
+  .built-no{font-size:27px}
+  .built-name h3{font-size:21px}
+  .built-facts div{grid-template-columns:1fr;gap:2px}
+  .field-grid{grid-template-columns:1fr}
+  .field-item{padding:28px 0 30px}
+  .field-num{font-size:34px}
+  .field-gallery{grid-template-columns:1fr;padding:22px 20px}
+  .company-table div{grid-template-columns:1fr;gap:4px;padding:14px 0}
+  .en-summary{padding:26px 20px 22px}
+  .en-summary h3{font-size:20px}
+}
+
+/* doc-gate pass 1 (2026-10-08): new text >= 12.4px and >= 4.5:1 on its own ground */
+.built-no{color:#5d6a59}
+.built-stage{font-size:13px}
+.built-en,.built-note,.built-facts dt,.company-table dt span,.company-table dd span[lang=en],.company-table .pending{font-size:13px}
+.built-facts dt{color:#9a4834}
+.company-table .pending{color:#9a4834}
+.field{--muted:#5a6159}
+.field .field-num{color:#963f2c}
+.field-gallery{background:#fbf9f5}
+.built-name h3,.field-item h3,.field-gallery h3,.en-summary h3{text-wrap:balance}
+.company-table dt{font-size:13px}
+.field-item .field-num{font:500 40px/1.3 var(--serif);color:#963f2c;letter-spacing:.02em;margin:0}
+.field-item .field-num small{font-size:17px;margin-left:4px;color:var(--ink)}
+.built-name h3,.field-item h3,.field-gallery h3,.section h2{word-break:auto-phrase}
+@media(max-width:680px){.field-item .field-num{font-size:34px}}
+.field-item .field-num{white-space:nowrap}
