@@ -45,3 +45,11 @@ jobs:
             sleep 5
           done
           exit 1
+      - name: Tell Bing and others (IndexNow)
+        # 鍵ファイルはサイト直下の 26f944543db05950d5bd429f9ef3ae87.txt。アカウント無しで Bing などへ「更新したよ」を伝える
+        run: |
+          sleep 90   # GitHub Pages の反映待ち
+          URLS=$(python3 -c "import re;print(','.join('\"'+u+'\"' for u in re.findall(r'<loc>([^<]+)</loc>',open('sitemap.xml').read())))")
+          curl -s -o /dev/null -w "IndexNow HTTP %{http_code}\n" -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "{\"host\":\"okemori.com\",\"key\":\"26f944543db05950d5bd429f9ef3ae87\",\"keyLocation\":\"https://okemori.com/26f944543db05950d5bd429f9ef3ae87.txt\",\"urlList\":[$URLS]}"
