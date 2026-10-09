@@ -1,0 +1,47 @@
+name: Okemon Notes (notes/_src/*.md → 記事・一覧・サイトマップ)
+
+# りんが notes/_src/ に Markdown を1枚、notes/images/ に画像を1枚置いて push すると、
+# scripts/build_notes.py が記事ページ・一覧・トップの便り節・sitemap.xml を作り直してコミットする。
+# ローカルで先に build を回してから push した場合は差分が無いので何もしない。
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'notes/_src/**'
+      - 'notes/images/**'
+      - 'scripts/build_notes.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: notes-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build notes
+        run: python3 scripts/build_notes.py
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add notes index.html sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "おけもん便り: 記事・一覧・サイトマップを作り直し（自動）"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          exit 1

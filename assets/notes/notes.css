@@ -1,0 +1,62 @@
+/* おけもん便り / Notes（2026-10-09）。homepage-v4/styles.css の上に載せる。ライト基調1本。 */
+.wrap-narrow{width:min(760px,calc(100% - 40px));margin:0 auto}
+.notes-page main{padding:64px 0 96px}
+.notes-page .nav a:last-child{border-bottom:0}
+.notes-page .nav a[aria-current]{border-bottom:1px solid currentColor}
+.notes-page .eyebrow a{border-bottom:1px solid currentColor}
+.notes-page h1{font-size:clamp(26px,3.4vw,38px);line-height:1.6;letter-spacing:.03em;margin:14px 0 18px}
+.note-meta{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:28px}
+.note-meta time{font-family:var(--serif);color:var(--ink);letter-spacing:.06em}
+.note-figure{margin:0 0 34px}
+.note-figure img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line);background:#eeefe8}
+.note-figure figcaption{font-size:12px;color:var(--muted);padding-top:8px}
+.note-body{font-size:16px;line-height:2.05}
+.note-body p{margin:0 0 1.3em}
+.note-body h2{font-size:21px;line-height:1.7;margin:1.8em 0 .6em}
+.note-body ul{margin:0 0 1.3em;padding-left:1.3em}
+.note-body a{border-bottom:1px solid currentColor}
+.note-body a:hover,.note-made a:hover,.note-pager a:hover strong{color:var(--accent)}
+.note-made{margin:40px 0 0;padding:20px 22px;background:#eef2ec;border-left:3px solid #5f9677}
+.note-made-label{font-size:12px;letter-spacing:.08em;color:#3f5b4b;font-weight:600;margin-bottom:6px}
+.note-made p{font-size:15px;line-height:1.9}
+.note-made .made-link{white-space:nowrap;border-bottom:1px solid currentColor;margin-left:4px}
+.note-pager{display:grid;gap:12px;margin-top:48px;border-top:1px solid var(--line);padding-top:24px}
+.note-pager a{display:block;font-size:14px}
+.note-pager small{display:block;font-size:12px;color:var(--muted)}
+.note-pager .pager-all{border-bottom:1px solid currentColor;justify-self:start;padding:6px 0}
+
+.notes-lead{font-size:15px;color:var(--muted);margin-bottom:34px}
+.notes-lead span{display:block;font-size:13px;margin-top:6px}
+.notes-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.notes-list li{border-bottom:1px solid var(--line)}
+.notes-item{display:grid;grid-template-columns:220px minmax(0,1fr);gap:26px;align-items:center;padding:24px 0;transition:padding .2s}
+.notes-item:hover{padding-left:6px}
+.notes-item img{width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line);background:#eeefe8}
+.notes-item-text{display:block}
+.notes-item time{display:block;font:13px/1.6 var(--serif);letter-spacing:.06em;color:var(--muted)}
+.notes-item strong{display:block;font:500 19px/1.65 var(--serif);margin:4px 0 6px}
+.notes-item:hover strong{color:var(--accent)}
+.notes-item small{display:block;font-size:13px;line-height:1.8;color:var(--muted)}
+
+/* トップの節（index.html） */
+.notes-home .notes-list{margin-top:0}
+.notes-home .section-intro .en-lead{display:block}
+.notes-home .work-more{margin-top:26px}
+
+@media(max-width:680px){
+  .notes-page main{padding:40px 0 72px}
+  .notes-page .header-in{flex-wrap:wrap;gap:8px;padding-top:14px;padding-bottom:14px}
+  .notes-page .nav{display:flex;position:static;width:100%;background:transparent;border:0;padding:0;flex-direction:row;flex-wrap:wrap;gap:4px 18px}
+  .notes-page .nav a{padding:8px 0;font-size:13px}
+  .note-body{font-size:15px}
+  .notes-item{grid-template-columns:1fr;gap:12px;padding:22px 0}
+  .notes-item strong{font-size:18px}
+}
+
+/* 便りのページだけ、小さい字を 13px 以上へ（トップの既存デザインは触らない） */
+.notes-page .brand small{font-size:13px;letter-spacing:.04em}
+.notes-page .nav{font-size:14px}
+.notes-page .eyebrow{font-size:13px}
+.notes-page .footer{font-size:13px}
+.notes-page .note-figure figcaption{font-size:13px}
+.notes-page h1{text-wrap:balance;word-break:auto-phrase}

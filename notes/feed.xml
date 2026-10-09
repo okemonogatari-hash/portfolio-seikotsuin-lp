@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>おけもん便り</title>
+<link href="https://okemori.com/notes/"/>
+<link rel="self" href="https://okemori.com/notes/feed.xml"/>
+<id>https://okemori.com/notes/</id>
+<updated>2026-10-09T09:00:00+09:00</updated>
+<author><name>Okemon Company</name></author>
+<entry><title>おけもんの仕事に、住所ができました</title><link href="https://okemori.com/notes/2026-10-09-okemori-address/"/><id>https://okemori.com/notes/2026-10-09-okemori-address/</id><updated>2026-10-09T09:00:00+09:00</updated><summary>今週、おけもんの仕事に「住所」ができました。okemori.com です。これまでホームページは GitHub の一室を借りていて、メールは Gmail でした。どちらも便利ですが、自分の名前の住所ではありません。名刺や請求書に載せる場所も、初めての方が「この人は誰で、何を作って</summary></entry>
+</feed>
