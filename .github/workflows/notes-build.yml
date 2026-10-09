@@ -1,8 +1,10 @@
-name: Okemon Notes (notes/_src/*.md → 記事・一覧・サイトマップ)
+name: Okemon Notes & Plays (便り・日々の遊び → ページ・サイトマップ)
 
 # りんが notes/_src/ に Markdown を1枚、notes/images/ に画像を1枚置いて push すると、
 # scripts/build_notes.py が記事ページ・一覧・トップの便り節・sitemap.xml を作り直してコミットする。
 # ローカルで先に build を回してから push した場合は差分が無いので何もしない。
+# 2026-10-09：「日々、AIで遊んでます」の棚も同じ道。森の台帳 → plays/plays.json とサムネが push されると、
+# scripts/build_plays.py が /plays/ とトップの節を作り、build_notes.py がサイトマップに /plays/ を入れる。
 on:
   push:
     branches: [main]
@@ -10,6 +12,9 @@ on:
       - 'notes/_src/**'
       - 'notes/images/**'
       - 'scripts/build_notes.py'
+      - 'plays/plays.json'
+      - 'plays/thumbs/**'
+      - 'scripts/build_plays.py'
   workflow_dispatch:
 
 permissions:
@@ -28,18 +33,20 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Build notes
-        run: python3 scripts/build_notes.py
+      - name: Build plays & notes
+        run: |
+          python3 scripts/build_plays.py
+          python3 scripts/build_notes.py
       - name: Commit & push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add notes index.html sitemap.xml
+          git add notes plays index.html sitemap.xml
           if git diff --cached --quiet; then
             echo "No changes"
             exit 0
           fi
-          git commit -m "おけもん便り: 記事・一覧・サイトマップを作り直し（自動）"
+          git commit -m "便り・日々の遊び: ページ・一覧・サイトマップを作り直し（自動）"
           for i in 1 2 3; do
             git pull --rebase origin main && git push origin HEAD:main && exit 0
             sleep 5

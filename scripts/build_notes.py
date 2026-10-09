@@ -137,6 +137,7 @@ def head(title, desc, canonical, prefix, og_image, og_type="article", extra=""):
 <div class="wrap header-in">
 <a class="brand" href="{prefix}">おけもん<small>AIの導入と、強みの読み解き</small></a>
 <nav class="nav notes-nav" aria-label="メインナビゲーション">
+<a href="{prefix}plays/">日々の遊び</a>
 <a href="{prefix}notes/">おけもん便り</a>
 <a href="{prefix}#built">Claudeで作る物</a>
 <a href="{prefix}#company">事業者情報</a>
@@ -303,14 +304,27 @@ def build_feed(notes: list[dict]) -> str:
 """
 
 
+def plays_updated() -> str | None:
+    """日々、AIで遊んでます（plays/plays.json・scripts/build_plays.py が一覧を作る）の最新の日付"""
+    f = SITE / "plays" / "plays.json"
+    if not f.is_file() or not (SITE / "plays" / "index.html").is_file():
+        return None
+    return json.loads(f.read_text(encoding="utf-8")).get("updated") or None
+
+
 def build_sitemap(notes: list[dict]) -> str:
     latest = notes[0]["date"] if notes else None
+    plays = plays_updated()
+    if plays and (latest is None or plays > latest):
+        latest = plays
     rows = []
     for path, freq, pri in STATIC_PAGES:
         lm = f"<lastmod>{latest}</lastmod>" if (path == "/" and latest) else ""
         rows.append(f"<url><loc>{BASE}{path}</loc>{lm}<changefreq>{freq}</changefreq><priority>{pri}</priority></url>")
+    if plays:
+        rows.append(f"<url><loc>{BASE}/plays/</loc><lastmod>{plays}</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>")
     if notes:
-        rows.append(f"<url><loc>{BASE}/notes/</loc><lastmod>{latest}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>")
+        rows.append(f"<url><loc>{BASE}/notes/</loc><lastmod>{notes[0]['date']}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>")
     for n in notes:
         rows.append(f"<url><loc>{BASE}/notes/{n['slug']}/</loc><lastmod>{n.get('updated', n['date'])}</lastmod><priority>0.6</priority></url>")
     return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(rows) + "\n</urlset>\n"
