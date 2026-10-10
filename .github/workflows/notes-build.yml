@@ -56,7 +56,7 @@ jobs:
         # 鍵ファイルはサイト直下の 26f944543db05950d5bd429f9ef3ae87.txt。アカウント無しで Bing などへ「更新したよ」を伝える
         run: |
           sleep 90   # GitHub Pages の反映待ち
-          URLS=$(python3 -c "import re;print(','.join('\"'+u+'\"' for u in re.findall(r'<loc>([^<]+)</loc>',open('sitemap.xml').read())))")
+          URLS=$(python3 -c "import re;print(','.join('\"'+u+'\"' for u in re.findall(r'<loc>([^<]+)</loc>',open('sitemap.xml').read()) if u.startswith('https://okemori.com/')))")   # IndexNow は host と同じ住所だけ受ける。motion.okemori.com は外して送る
           curl -s -o /dev/null -w "IndexNow HTTP %{http_code}\n" -X POST https://api.indexnow.org/indexnow \
             -H "Content-Type: application/json; charset=utf-8" \
             -d "{\"host\":\"okemori.com\",\"key\":\"26f944543db05950d5bd429f9ef3ae87\",\"keyLocation\":\"https://okemori.com/26f944543db05950d5bd429f9ef3ae87.txt\",\"urlList\":[$URLS]}"

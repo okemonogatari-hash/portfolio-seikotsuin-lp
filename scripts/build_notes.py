@@ -32,6 +32,11 @@ STATIC_PAGES = [
     ("/okemon-claude-code-life.html", "monthly", "0.5"),
     ("/okemon-trisetsu.html", "monthly", "0.5"),
 ]
+# okemori.com の下の別の住所（サブドメイン）に置いた物。Search Console はドメインプロパティなので同じ持ち主として読まれる。
+# motion.okemori.com＝モーションレシピ（Cloudflare Workers の中継。中身は html-share-box/motion-recipe/・2026-10-10）
+EXTERNAL_PAGES = [
+    ("https://motion.okemori.com/", "weekly", "0.8"),
+]
 
 REQUIRED = ("title", "date", "image", "image_alt", "made")
 NAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-([a-z0-9][a-z0-9-]*)\.md$")
@@ -321,6 +326,8 @@ def build_sitemap(notes: list[dict]) -> str:
     for path, freq, pri in STATIC_PAGES:
         lm = f"<lastmod>{latest}</lastmod>" if (path == "/" and latest) else ""
         rows.append(f"<url><loc>{BASE}{path}</loc>{lm}<changefreq>{freq}</changefreq><priority>{pri}</priority></url>")
+    for loc, freq, pri in EXTERNAL_PAGES:
+        rows.append(f"<url><loc>{loc}</loc><changefreq>{freq}</changefreq><priority>{pri}</priority></url>")
     if plays:
         rows.append(f"<url><loc>{BASE}/plays/</loc><lastmod>{plays}</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>")
     if notes:
