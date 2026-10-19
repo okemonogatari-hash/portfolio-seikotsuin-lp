@@ -2,7 +2,7 @@
  "title": "日々、AIで遊んでます / Made with AI, daily",
  "about": "おけもんカンパニーが毎日のように AI で作っている物の棚。元は森の台帳（outputs/startups-hp-2026-10-08/plays/）",
  "updated": "2026-10-19",
- "count": 94,
+ "count": 95,
  "items": [
   {
    "id": "film-collection",
@@ -65,6 +65,19 @@
    "en": "A paper radio tunes to Wednesday, and a pop-up book opens.",
    "open": "https://motion.okemori.com/#w-suiyo-radio-ehon",
    "video": "https://motion.okemori.com/gallery/suiyo-radio-ehon.mp4",
+   "aspect": "16:9",
+   "from": "見本集",
+   "kind_label": "モーション"
+  },
+  {
+   "id": "space-notebook",
+   "kind": "motion",
+   "date": "2026-10-19",
+   "title": "育てる仕事のノート",
+   "line": "手描きの人物と紙の受け渡しで見せる111秒の解説",
+   "en": "A motion graphic made with Claude Code.",
+   "open": "https://motion.okemori.com/#w-space-notebook",
+   "video": "https://motion.okemori.com/gallery/space-notebook.mp4",
    "aspect": "16:9",
    "from": "見本集",
    "kind_label": "モーション"
