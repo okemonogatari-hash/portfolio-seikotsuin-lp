@@ -2,7 +2,7 @@
  "title": "日々、AIで遊んでます / Made with AI, daily",
  "about": "おけもんカンパニーが毎日のように AI で作っている物の棚。元は森の台帳（outputs/startups-hp-2026-10-08/plays/）",
  "updated": "2026-10-20",
- "count": 97,
+ "count": 98,
  "items": [
   {
    "id": "drip-anatomy",
@@ -27,6 +27,19 @@
    "open": "https://motion.okemori.com/#w-bakery-board",
    "video": "https://motion.okemori.com/gallery/bakery-board.mp4",
    "aspect": "9:16",
+   "from": "見本集",
+   "kind_label": "モーション"
+  },
+  {
+   "id": "wagashi-cm",
+   "kind": "motion",
+   "date": "2026-10-20",
+   "title": "お店のURLから作る30秒CM・和菓子屋さん",
+   "line": "煮干ラーメンのCMをお手本に",
+   "en": "A motion graphic made with Claude Code.",
+   "open": "https://motion.okemori.com/#w-wagashi-cm",
+   "video": "https://motion.okemori.com/gallery/wagashi-cm.mp4",
+   "aspect": "16:9",
    "from": "見本集",
    "kind_label": "モーション"
   },
