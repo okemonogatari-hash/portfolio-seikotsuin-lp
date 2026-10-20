@@ -2,7 +2,7 @@
  "title": "日々、AIで遊んでます / Made with AI, daily",
  "about": "おけもんカンパニーが毎日のように AI で作っている物の棚。元は森の台帳（outputs/startups-hp-2026-10-08/plays/）",
  "updated": "2026-10-20",
- "count": 96,
+ "count": 97,
  "items": [
   {
    "id": "drip-anatomy",
@@ -14,6 +14,19 @@
    "open": "https://motion.okemori.com/#w-drip-anatomy",
    "video": "https://motion.okemori.com/gallery/drip-anatomy.mp4",
    "aspect": "1:1",
+   "from": "見本集",
+   "kind_label": "モーション"
+  },
+  {
+   "id": "bakery-board",
+   "kind": "motion",
+   "date": "2026-10-20",
+   "title": "焼きたて時刻の案内板",
+   "line": "煮干ラーメンのCMをお手本に",
+   "en": "A motion graphic made with Claude Code.",
+   "open": "https://motion.okemori.com/#w-bakery-board",
+   "video": "https://motion.okemori.com/gallery/bakery-board.mp4",
+   "aspect": "9:16",
    "from": "見本集",
    "kind_label": "モーション"
   },
