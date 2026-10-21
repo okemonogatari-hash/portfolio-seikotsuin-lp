@@ -2,7 +2,7 @@
  "title": "日々、AIで遊んでます / Made with AI, daily",
  "about": "おけもんカンパニーが毎日のように AI で作っている物の棚。元は森の台帳（outputs/startups-hp-2026-10-08/plays/）",
  "updated": "2026-10-21",
- "count": 100,
+ "count": 101,
  "items": [
   {
    "id": "cafe-styles",
@@ -14,6 +14,19 @@
    "open": "https://motion.okemori.com/#w-cafe-styles",
    "video": "https://motion.okemori.com/gallery/cafe-styles.mp4",
    "aspect": "16:9",
+   "from": "見本集",
+   "kind_label": "モーション"
+  },
+  {
+   "id": "night-market",
+   "kind": "motion",
+   "date": "2026-10-21",
+   "title": "夜市のお知らせ",
+   "line": "ISO-GLOW（光だけが灯る模型）をお手本に",
+   "en": "Night-market announcement: a street drawn only in ASCII characters, lit back into real lanterns each time an amber beam sweeps through, ending on the date.",
+   "open": "https://motion.okemori.com/#w-night-market",
+   "video": "https://motion.okemori.com/gallery/night-market.mp4",
+   "aspect": "1:1",
    "from": "見本集",
    "kind_label": "モーション"
   },
