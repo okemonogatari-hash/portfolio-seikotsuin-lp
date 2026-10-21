@@ -36,7 +36,7 @@
    "date": "2026-10-21",
    "title": "たのむのは、1行だけ。（架空の献立アプリの画面デモ・横長）",
    "line": "N01ennn の3画面くらべをお手本に",
-   "en": "A motion graphic made with Claude Code.",
+   "en": "Ask the AI in one line: a cursor types a single request into a fictional dinner-planner app, the answer streams in, a blank plate is drawn into a rice bowl, and the view zooms with every click from menu to steps to shopping list, then shrinks back to the one input box.",
    "open": "https://motion.okemori.com/#w-ai-oneline",
    "video": "https://motion.okemori.com/gallery/ai-oneline.mp4",
    "aspect": "16:9",
