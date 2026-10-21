@@ -365,9 +365,10 @@ def main() -> int:
     home = SITE / "index.html"
     h = home.read_text(encoding="utf-8")
     new_h, k = re.subn(r"<!-- notes:start.*?<!-- notes:end -->", build_home_block(notes), h, flags=re.S)
-    if k != 1:
-        raise SystemExit("[NG] index.html に <!-- notes:start --> 〜 <!-- notes:end --> が1組見つからない")
-    if new_h != h:
+    if k > 1:
+        raise SystemExit("[NG] index.html に <!-- notes:start --> 〜 <!-- notes:end --> が2組以上ある")
+    # 2026-10-21 トップを3本（ストレングス・介護医療のAI・モーション）に絞り、便り節はトップから外した。枠が無ければトップは触らない
+    if k == 1 and new_h != h:
         home.write_text(new_h, encoding="utf-8")
     (SITE / "sitemap.xml").write_text(build_sitemap(notes), encoding="utf-8")
     print(f"[済] 記事 {len(notes)} 本 / notes/index.html / notes/feed.xml / index.html の便り節 / sitemap.xml")
