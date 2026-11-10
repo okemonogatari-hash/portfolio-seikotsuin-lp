@@ -136,7 +136,7 @@ def head(title, desc, canonical, prefix, og_image, og_type="article", extra=""):
 <meta name="twitter:site" content="@okemonogatari">
 <meta name="theme-color" content="#fbf9f5">
 {extra}<!-- Cloudflare Web Analytics -->
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "372f883f08a84d8a81ed2273e1e7e3e2"}}'></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "415d4fbe2d46441c80adf4ae36e87a1f"}}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
 <body class="notes-page">

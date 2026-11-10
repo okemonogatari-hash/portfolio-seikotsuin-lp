@@ -133,7 +133,7 @@ def build_page(data: dict) -> str:
 {json.dumps(ld, ensure_ascii=False)}
 </script>
 <!-- Cloudflare Web Analytics -->
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "372f883f08a84d8a81ed2273e1e7e3e2"}}'></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "415d4fbe2d46441c80adf4ae36e87a1f"}}'></script>
 <!-- End Cloudflare Web Analytics -->
 </head>
 <body class="notes-page plays-page">
